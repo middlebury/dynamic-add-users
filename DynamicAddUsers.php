@@ -7,6 +7,10 @@ Author: Adam Franco
 Author URI: http://www.adamfranco.com/
 */
 
+if (!defined('DYNADDUSERS_JS_DIR'))
+	define('DYNADDUSERS_JS_DIR', trailingslashit( get_bloginfo('wpurl') ).'wp-content/mu-plugins'.'/'. dirname( plugin_basename(__FILE__)));
+
+
 // Hook for adding admin menus
 add_action('admin_menu', 'dynaddusers_add_pages');
 
@@ -16,6 +20,12 @@ function dynaddusers_add_pages () {
     add_options_page('Add New Users', 'Add New Users', 'administrator', 'dynaddusers', 'dynaddusers_options_page');
 
 }
+
+// Hooks for AJAX lookups of users/groups
+add_action("admin_head", 'dynaddusers_javascript');
+add_action('wp_ajax_dynaddusers_search_users', 'dynaddusers_search_users');
+add_action('wp_ajax_dynaddusers_search_groups', 'dynaddusers_search_groups');
+
 
 // Options page
 function dynaddusers_options_page () {
@@ -61,7 +71,8 @@ function dynaddusers_options_page () {
 	print "\n<p>Search for users or groups by name or email address to add them to your blog.</p>";
 	print "\n<form action='".$_SERVER['REQUEST_URI']."' method='post'>";
 	print "\n<h3>Add An Individual User</h3>";
-	print "\n<input type='text' name='user' value='' size='40'/>";
+	print "\n<input type='text' id='dynaddusers_user_search' name='user_search' value='' size='50'/>";
+	print "\n<input type='hidden' id='dynaddusers_user' name='user' value=''/>";
 	print "\n<input type='submit' value='Add User'/>";
 	print "\n as ";
 	dynaddusers_print_role_element();
@@ -69,13 +80,120 @@ function dynaddusers_options_page () {
 	print "\n<p>".$userResults."</p>";
 	print "\n<form action='".$_SERVER['REQUEST_URI']."' method='post'>";
 	print "\n<h3>Bulk-Add Users By Group</h3>";
-	print "\n<input type='text' name='group' value='' size='40'/>";
+	print "\n<input type='text' id='dynaddusers_group_search' name='group_search' value='' size='50'/>";
+	print "\n<input type='hidden' id='dynaddusers_group' name='group' value=''/>";
 	print "\n<input type='submit' value='Add Group Members'/>";
 	print "\n as ";
 	dynaddusers_print_role_element();
 	print "\n</form>";
 	print "\n<p>".$groupResults."</p>";
 	print "\n</div>";
+}
+
+add_action('admin_init', 'dynaddusers_init');
+function dynaddusers_init () {
+	wp_enqueue_script('autocomplete', DYNADDUSERS_JS_DIR.'/jquery.autocomplete.min.js', array('jquery'));
+	wp_enqueue_style('autocomplete', DYNADDUSERS_JS_DIR.'/jquery.autocomplete.css', array('jquery'));
+}
+
+function dynaddusers_javascript () {
+?>
+
+	<script type="text/javascript" >
+	// <![CDATA[
+
+	jQuery(document).ready( function($) {
+		$("#dynaddusers_user_search").autocomplete(ajaxurl, {
+			extraParams: {
+				'action': 'dynaddusers_search_users'
+			},
+			delay: 600,
+			max: 100,
+			minChars: 3,
+			formatItem: function (data, i, max, value, term) {
+				if (value) {
+					var parts = value.split("\t");
+					if (parts[1])
+						return parts[1];
+					else
+						return parts[0];
+				} else {
+					return data;
+				}
+			}
+		}).result(function(event, data, formatted) {
+			if (data) {
+				var parts = data[0].split("\t");
+				if (parts[1])
+					$('#dynaddusers_user_search').val(parts[1]);
+				else
+					$('#dynaddusers_user_search').val(parts[0]);
+
+				$('#dynaddusers_user').val(parts[0]);
+			}
+		});
+
+		$("#dynaddusers_group_search").autocomplete(ajaxurl, {
+			extraParams: {
+				'action': 'dynaddusers_search_groups'
+			},
+			delay: 600,
+			max: 100,
+			minChars: 3,
+			formatItem: function (data, i, max, value, term) {
+				if (value) {
+					var parts = value.split("\t");
+					if (parts[1])
+						return parts[1];
+					else
+						return parts[0];
+				} else {
+					return data;
+				}
+			}
+		}).result(function(event, data, formatted) {
+			if (data) {
+				var parts = data[0].split("\t");
+				if (parts[1])
+					$('#dynaddusers_group_search').val(parts[1]);
+				else
+					$('#dynaddusers_group_search').val(parts[0]);
+
+				$('#dynaddusers_group').val(parts[0]);
+			}
+		});
+	});
+
+	// ]]>
+	</script>
+
+<?php
+}
+
+// Fullfill the search-users hook
+function dynaddusers_search_users () {
+	while (ob_get_level())
+		ob_end_clean();
+	header('Content-Type: text/plain');
+	if ($_REQUEST['q']) {
+		foreach (dynaddusers_get_user_matches($_REQUEST['q']) as $user) {
+			print $user['user_login']."\t".$user['display_name']." (".$user['user_email'].")\n";
+		}
+	}
+	exit;
+}
+
+// Fullfill the search-groups hook
+function dynaddusers_search_groups () {
+	while (ob_get_level())
+		ob_end_clean();
+	header('Content-Type: text/plain');
+	if ($_REQUEST['q']) {
+		foreach (dynaddusers_get_group_matches($_REQUEST['q']) as $id => $displayName) {
+			print $id."\t".$displayName."\n";
+		}
+	}
+	exit;
 }
 
 /**
@@ -168,6 +286,13 @@ function dynaddusers_create_user (array $userInfo) {
 	return $user;
 }
 
+/*********************************************************
+ * The methods below are particular to the authentication/directory
+ * system this plugin is working against. They should be reworked
+ * if going against a different sort of directory system.
+ *********************************************************/
+
+
 /**
  * Fetch an array user logins and display names for a given search string.
  * Ex: array('1' => 'John Doe', '2' => 'Jane Doe');
@@ -180,8 +305,15 @@ function dynaddusers_create_user (array $userInfo) {
  * @since 1/8/10
  */
 function dynaddusers_get_user_matches ($search) {
-	// <##>
-	return array();
+	$xpath = dynaddusers_midd_lookup(array(
+		'action'	=> 'search_users',
+		'query'		=> $search,
+	));
+	$matches = array();
+	foreach($xpath->query('/cas:results/cas:entry') as $entry) {
+		$matches[] = dynaddusers_midd_get_info($entry, $xpath);
+	}
+	return $matches;
 }
 
 /**
@@ -196,8 +328,15 @@ function dynaddusers_get_user_matches ($search) {
  * @since 1/8/10
  */
 function dynaddusers_get_group_matches ($search) {
-	// <##>
-	return array();
+	$xpath = dynaddusers_midd_lookup(array(
+		'action'	=> 'search_groups',
+		'query'		=> $search,
+	));
+	$matches = array();
+	foreach($xpath->query('/cas:results/cas:entry') as $entry) {
+		$matches[dynaddusers_midd_get_group_id($entry, $xpath)] = dynaddusers_midd_get_group_display_name($entry, $xpath);
+	}
+	return $matches;
 }
 
 /**
@@ -313,7 +452,21 @@ function dynaddusers_midd_lookup (array $parameters) {
 function dynaddusers_midd_get_info (DOMElement $entry, DOMXPath $xpath) {
 	$info = array();
 	$info['user_login'] = dynaddusers_midd_get_login($entry, $xpath);
+	$info['user_email'] = dynaddusers_midd_get_attribute('EMail', $entry, $xpath);
+
+	preg_match('/^(.+)@(.+)$/', $info['user_email'], $matches);
+	$emailUser = $matches[1];
+	$emailDomain = $matches[2];
+	if ($login = dynaddusers_midd_get_attribute('Login', $entry, $xpath))
+		$nicename = $login;
+	else
+		$nicename = $emailUser;
+
+	$info['user_nicename'] = $nicename;
+	$info['nickname'] = $nicename;
 	$info['first_name'] = dynaddusers_midd_get_attribute('FirstName', $entry, $xpath);
+	$info['last_name'] = dynaddusers_midd_get_attribute('LastName', $entry, $xpath);
+	$info['display_name'] = $info['first_name']." ".$info['last_name'];
 	return $info;
 }
 
@@ -333,6 +486,42 @@ function dynaddusers_midd_get_login (DOMElement $entry, DOMXPath $xpath) {
 }
 
 /**
+ * Answer the group id field for an cas:entry element.
+ *
+ * @param DOMElement $entry
+ * @param DOMXPath $xpath
+ * @return string
+ * @since 1/8/10
+ */
+function dynaddusers_midd_get_group_id (DOMElement $entry, DOMXPath $xpath) {
+	$elements = $xpath->query('./cas:group', $entry);
+	if ($elements->length !== 1)
+		throw new Exception('Could not get group id. Expecting one cas:group element, found '.$elements->length.'.');
+	return $elements->item(0)->nodeValue;
+}
+
+/**
+ * Answer the group display name for an cas:entry element.
+ *
+ * @param DOMElement $entry
+ * @param DOMXPath $xpath
+ * @return string
+ * @since 1/8/10
+ */
+function dynaddusers_midd_get_group_display_name (DOMElement $entry, DOMXPath $xpath) {
+	$displayName = dynaddusers_midd_get_attribute('DisplayName', $entry, $xpath);
+	$id = dynaddusers_midd_get_group_id($entry, $xpath);
+
+	// Reverse the DN and trim off the domain parts.
+	$path = ldap_explode_dn($id, 1);
+	unset($path['count']);
+	$path = array_slice(array_reverse($path), 2);
+
+	$displayName .= " (".implode(' > ', $path).")";
+
+	return $displayName;
+}
+/**
  * Answer the login field for an cas:entry element.
  *
  * @param string $attribute
@@ -345,5 +534,5 @@ function dynaddusers_midd_get_attribute ($attribute, DOMElement $entry, DOMXPath
 	$elements = $xpath->query('./cas:attribute[@name = "'.$attribute.'"]', $entry);
 	if (!$elements->length)
 		return '';
-	return $elements->item(0)->nodeValue;
+	return $elements->item(0)->getAttribute('value');
 }
