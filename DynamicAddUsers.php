@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: DynamicAddUsers
-Plugin URI: http://chisel.middlebury.edu/
+Plugin URI:
 Description: Replaces the 'Add User' screen with a dynamic search for users and groups
 Author: Adam Franco
 Author URI: http://www.adamfranco.com/
@@ -16,9 +16,30 @@ add_action('admin_menu', 'dynaddusers_add_pages');
 
 // action for the above hook
 function dynaddusers_add_pages () {
-	// Add a new submenu under Options:
-    add_options_page('Add New Users', 'Add New Users', 'administrator', 'dynaddusers', 'dynaddusers_options_page');
+	// Add a new submenu under Users:
+    add_submenu_page('users.php','Add New Users', 'Add New', 'administrator', 'dynaddusers', 'dynaddusers_options_page');
 
+    // Re-write the Users submenu to replace the built-in 'Add New' submenu
+    // with our plugin
+	global $submenu;
+	// Find our key
+	$dynaddusersKey = null;
+	if (!isset($submenu['users.php']))
+		return;
+	foreach ($submenu['users.php'] as $key => $array) {
+		if ($array[2] == 'dynaddusers') {
+			$dynaddusersKey = $key;
+			break;
+		}
+	}
+	if ($dynaddusersKey) {
+		// wp-admin/menu.php hard-codes the user-new option at position 10.
+		// Replace it with our menu
+		unset($submenu['users.php'][10]);
+		$submenu['users.php'][10] = $submenu['users.php'][$dynaddusersKey];
+		unset($submenu['users.php'][$dynaddusersKey]);
+		ksort($submenu['users.php']);
+	}
 }
 
 // Hooks for AJAX lookups of users/groups
