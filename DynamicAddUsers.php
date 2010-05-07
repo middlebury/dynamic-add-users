@@ -124,6 +124,9 @@ function dynaddusers_javascript () {
 	// <![CDATA[
 
 	jQuery(document).ready( function($) {
+		if(!$("#dynaddusers_user_search").length) {
+			return;
+		}
 		$("#dynaddusers_user_search").autocomplete(ajaxurl, {
 			extraParams: {
 				'action': 'dynaddusers_search_users'
