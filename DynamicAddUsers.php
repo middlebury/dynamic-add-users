@@ -437,7 +437,15 @@ function dynaddusers_get_member_info ($groupId) {
 // 	var_dump($xpath->document->saveXML());
 	$memberInfo = array();
 	foreach($xpath->query('/cas:results/cas:entry') as $entry) {
-		$memberInfo[] = dynaddusers_midd_get_info($entry, $xpath);
+		try {
+			$memberInfo[] = dynaddusers_midd_get_info($entry, $xpath);
+		} catch (Exception $e) {
+			if ($e->getCode() == 65004) {
+				// Ignore any groups that we encounter
+			} else {
+				throw $e;
+			}
+		}
 	}
 	return $memberInfo;
 }
@@ -504,8 +512,12 @@ function dynaddusers_midd_get_info (DOMElement $entry, DOMXPath $xpath) {
  */
 function dynaddusers_midd_get_login (DOMElement $entry, DOMXPath $xpath) {
 	$elements = $xpath->query('./cas:user', $entry);
-	if ($elements->length !== 1)
-		throw new Exception('Could not get user login. Expecting one cas:user element, found '.$elements->length.'.');
+	if ($elements->length !== 1) {
+		if ($xpath->query('./cas:group', $entry)->length)
+			throw new Exception('Could not get user login. Expecting one cas:user element, found a cas:group instead.', 65004);
+		else
+			throw new Exception('Could not get user login. Expecting one cas:user element, found '.$elements->length.'.');
+	}
 	return $elements->item(0)->nodeValue;
 }
 
