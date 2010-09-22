@@ -90,7 +90,7 @@ function dynaddusers_options_page () {
 	print "\n<div id='icon-users' class='icon32'> <br/> </div>";
 	print "\n<h2>Add New Users</h2>";
 	print "\n<p>Search for users or groups by name or email address to add them to your blog.</p>";
-	print "\n<form action='".$_SERVER['REQUEST_URI']."' method='post'>";
+	print "\n<form id='dynaddusers_user_form' action='".$_SERVER['REQUEST_URI']."' method='post'>";
 	print "\n<h3>Add An Individual User</h3>";
 	print "\n<input type='text' id='dynaddusers_user_search' name='user_search' value='' size='50'/>";
 	print "\n<input type='hidden' id='dynaddusers_user' name='user' value=''/>";
@@ -99,7 +99,7 @@ function dynaddusers_options_page () {
 	dynaddusers_print_role_element();
 	print "\n</form>";
 	print "\n<p>".$userResults."</p>";
-	print "\n<form action='".$_SERVER['REQUEST_URI']."' method='post'>";
+	print "\n<form id='dynaddusers_group_form' action='".$_SERVER['REQUEST_URI']."' method='post'>";
 	print "\n<h3>Bulk-Add Users By Group</h3>";
 	print "\n<input type='text' id='dynaddusers_group_search' name='group_search' value='' size='50'/>";
 	print "\n<input type='hidden' id='dynaddusers_group' name='group' value=''/>";
@@ -185,6 +185,20 @@ function dynaddusers_javascript () {
 					$('#dynaddusers_group_search').val(parts[0]);
 
 				$('#dynaddusers_group').val(parts[0]);
+			}
+		});
+
+		// Check for users being selected
+		$('#dynaddusers_user_form').submit(function() {
+			if (!$('#dynaddusers_user').val()) {
+				alert('Please select a user from the search results.');
+				return false;
+			}
+		});
+		$('#dynaddusers_group_form').submit(function() {
+			if (!$('#dynaddusers_group').val()) {
+				alert('Please select a group from the search results.');
+				return false;
 			}
 		});
 	});
