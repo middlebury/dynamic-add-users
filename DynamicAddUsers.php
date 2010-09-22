@@ -114,7 +114,8 @@ function dynaddusers_options_page () {
 add_action('admin_init', 'dynaddusers_init');
 function dynaddusers_init () {
 	wp_enqueue_script('autocomplete', DYNADDUSERS_JS_DIR.'/jquery.autocomplete.min.js', array('jquery'));
-	wp_enqueue_style('autocomplete', DYNADDUSERS_JS_DIR.'/jquery.autocomplete.css', array('jquery'));
+	wp_register_style('autocomplete', DYNADDUSERS_JS_DIR.'/jquery.autocomplete.css');
+	wp_enqueue_style('autocomplete');
 }
 
 function dynaddusers_javascript () {
