@@ -893,7 +893,7 @@ function dynaddusers_remove_users_in_group ($group_id) {
 	foreach ($members as $info) {
 		try {
 			$user = dynaddusers_get_user($info);
-			if (is_user_member_of_blog($user->ID, $blog_id)) {
+			if (is_user_member_of_blog($user->ID, $blog_id) && $user->ID != get_current_user_id()) {
 				remove_user_from_blog($user->ID, $blog_id);
 				print "<br/>Removed ".$user->display_name;
 			}
