@@ -10,6 +10,40 @@ Author URI: http://www.adamfranco.com/
 if (!defined('DYNADDUSERS_JS_DIR'))
 	define('DYNADDUSERS_JS_DIR', trailingslashit( get_bloginfo('wpurl') ).'wp-content/mu-plugins'.'/'. dirname( plugin_basename(__FILE__)));
 
+// Install actions
+register_activation_hook(__FILE__, 'dynaddusers_install');
+
+/**
+ * Install hook.
+ */
+function dynaddusers_install () {
+	global $wpdb;
+	$dynaddusers_db_version = '0.1';
+
+	$groups = $wpdb->base_prefix . "dynaddusers_groups";
+	$synced = $wpdb->base_prefix . "dynaddusers_synced";
+	if ($wpdb->get_var("SHOW TABLES LIKE '$groups'") != $groups) {
+		require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+
+		$sql = "CREATE TABLE " . $groups . " (
+			blog_id int(11) NOT NULL,
+			group_id varchar(255) NOT NULL,
+			role varchar(25) NOT NULL,
+			PRIMARY KEY  (blog_id,group_id)
+		);";
+		dbDelta($sql);
+
+		$sql = "CREATE TABLE " . $synced . " (
+			blog_id int(11) NOT NULL,
+			group_id varchar(255) NOT NULL,
+			user_id int(11) NOT NULL,
+			PRIMARY KEY  (blog_id,group_id,user_id)
+		);";
+		dbDelta($sql);
+
+		add_option("dynaddusers_db_version", $dynaddusers_db_version);
+	}
+}
 
 // Hook for adding admin menus
 add_action('admin_menu', 'dynaddusers_add_pages');
@@ -67,6 +101,11 @@ function dynaddusers_options_page () {
 	}
 	$userResults = ob_get_clean();
 
+	if ($_POST['group_sync'] == 'once')
+		$sync = false;
+	else
+		$sync = true;
+
 	ob_start();
 	if (isset($_POST['group']) && $_POST['group']) {
 		$memberInfo = dynaddusers_get_member_info($_POST['group']);
@@ -83,8 +122,21 @@ function dynaddusers_options_page () {
 					print "Error: ".htmlentities($e->getMessage());
 				}
 			}
+
+			// Should we keep this group in sync
+			if ($sync) {
+				dynaddusers_keep_in_sync($_POST['group'], $_POST['role']);
+			}
 		}
 	}
+
+	if (!empty($_POST['sync_group_remove'])) {
+		if (!empty($_POST['stop_syncing_and_remove_users'])) {
+			dynaddusers_remove_users_in_group($_POST['sync_group_remove']);
+		}
+		dynaddusers_stop_syncing($_POST['sync_group_remove']);
+	}
+
 	$groupResults = ob_get_clean();
 	print "\n<div class='wrap'>";
 	print "\n<div id='icon-users' class='icon32'> <br/> </div>";
@@ -99,6 +151,7 @@ function dynaddusers_options_page () {
 	dynaddusers_print_role_element();
 	print "\n</form>";
 	print "\n<p>".$userResults."</p>";
+
 	print "\n<form id='dynaddusers_group_form' action='".$_SERVER['REQUEST_URI']."' method='post'>";
 	print "\n<h3>Bulk-Add Users By Group</h3>";
 	print "\n<input type='text' id='dynaddusers_group_search' name='group_search' value='' size='50'/>";
@@ -106,9 +159,43 @@ function dynaddusers_options_page () {
 	print "\n<input type='submit' value='Add Group Members'/>";
 	print "\n as ";
 	dynaddusers_print_role_element();
+	print "\n<br/>";
+	print "\n<label><input type='radio' id='dynaddusers_sync' name='group_sync' value='sync' ".($sync?"checked='checked'":"")."/> Keep in Sync</label>";
+	print "\n &nbsp; &nbsp; <label><input type='radio' id='dynaddusers_sync' name='group_sync' value='once' ".(!$sync?"checked='checked'":"")."/> Add once</label>";
 	print "\n</form>";
 	print "\n<p>".$groupResults."</p>";
 	print "\n</div>";
+
+	print "\n<h3>Synced Groups</h3>";
+	$groups = dynaddusers_get_synced_groups();
+	if (!count($groups)) {
+		print "<p><em>none</em></p>";
+	} else {
+		print "\n<table id='dynaddusers_groups'>";
+		print "\n<thead>";
+		print "\n\t<tr><th>Group</th><th>Role</th><th>Actions</th></tr>";
+		print "\n</thead>";
+		print "\n<tbody>";
+		foreach ($groups as $group) {
+			print "\n\t<tr>";
+			print "\n\t\t<td>";
+			print dynaddusers_get_group_display_name_from_dn($group->group_id);
+			print "\n\t\t</td>";
+			print "\n\t\t<td style='padding-left: 10px; padding-right: 10px;'>";
+			print $group->role;
+			print "\n\t\t</td>";
+			print "\n\t\t<td>";
+			print "\n\t\t\t<form action='"."' method='post'>";
+			print "\n\t\t\t<input type='hidden' name='sync_group_remove' value='".htmlentities($group->group_id)."'/>";
+			print "\n\t\t\t<input type='submit' name='stop_syncing' value='Stop Syncing'/>";
+			print "\n\t\t\t<input type='submit' name='stop_syncing_and_remove_users' value='Stop Syncing And Remove Users'/>";
+			print "\n\t\t\t</form>";
+			print "\n\t\t</td>";
+			print "\n\t</tr>";
+		}
+		print "\n</tbody>";
+		print "\n</table>";
+	}
 }
 
 add_action('admin_init', 'dynaddusers_init');
@@ -563,15 +650,25 @@ function dynaddusers_midd_get_group_display_name (DOMElement $entry, DOMXPath $x
 	$displayName = dynaddusers_midd_get_attribute('DisplayName', $entry, $xpath);
 	$id = dynaddusers_midd_get_group_id($entry, $xpath);
 
-	// Reverse the DN and trim off the domain parts.
-	$path = ldap_explode_dn($id, 1);
-	unset($path['count']);
-	$path = array_slice(array_reverse($path), 2);
-
-	$displayName .= " (".implode(' > ', $path).")";
+	$displayName .= " (".dynaddusers_get_group_display_name_from_dn($id).")";
 
 	return $displayName;
 }
+
+/**
+ * Answer a group display name from a DN.
+ *
+ * @param strin $dn
+ * @return string
+ */
+function dynaddusers_get_group_display_name_from_dn ($dn) {
+	// Reverse the DN and trim off the domain parts.
+	$path = ldap_explode_dn($dn, 1);
+	unset($path['count']);
+	$path = array_slice(array_reverse($path), 2);
+	return implode(' > ', $path);
+}
+
 /**
  * Answer the login field for an cas:entry element.
  *
@@ -586,4 +683,107 @@ function dynaddusers_midd_get_attribute ($attribute, DOMElement $entry, DOMXPath
 	if (!$elements->length)
 		return '';
 	return $elements->item(0)->getAttribute('value');
+}
+
+/**
+ * Answer an array of groups that will be kept in sync for this blog.
+ *
+ * @return array
+ */
+function dynaddusers_get_synced_groups () {
+	global $wpdb;
+	$groups = $wpdb->base_prefix . "dynaddusers_groups";
+	return $wpdb->get_results($wpdb->prepare(
+		"SELECT
+			*
+		FROM
+			$groups
+		WHERE
+			blog_id = %d
+		ORDER BY
+			group_id
+		",
+		get_current_blog_id()
+	));
+}
+
+/**
+ * Keep a group in sync for the current blog.
+ *
+ * @param string $group_id
+ * @param string $role
+ * @return void
+ */
+function dynaddusers_keep_in_sync ($group_id, $role) {
+	$synced = dynaddusers_get_synced_groups();
+	foreach ($synced as $group) {
+		if ($group->group_id == $group_id)
+			return false;
+	}
+
+	global $wpdb;
+	$groups = $wpdb->base_prefix . "dynaddusers_groups";
+	$wpdb->insert($groups, array(
+		'blog_id' => get_current_blog_id(),
+		'group_id' => $group_id,
+		'role' => $role,
+	));
+}
+
+/**
+ * Stop syncing a group.
+ *
+ * @param string $group_id
+ * @return void
+ */
+function dynaddusers_stop_syncing ($group_id) {
+	global $wpdb;
+	$groups = $wpdb->base_prefix . "dynaddusers_groups";
+	$wpdb->query($wpdb->prepare(
+		"DELETE FROM
+			$groups
+		WHERE
+			blog_id = %d
+			AND group_id = %s
+		",
+		get_current_blog_id(),
+		$group_id
+	));
+	$synced = $wpdb->base_prefix . "dynaddusers_synced";
+	$wpdb->query($wpdb->prepare(
+		"DELETE FROM
+			$synced
+		WHERE
+			blog_id = %d
+			AND group_id = %s
+		",
+		get_current_blog_id(),
+		$group_id
+	));
+}
+
+/**
+ * Remove all of the users in a group from a blog.
+ *
+ * @param string $group_id
+ * @return void
+ */
+function dynaddusers_remove_users_in_group ($group_id) {
+	$blog_id = get_current_blog_id();
+	$members = dynaddusers_get_member_info($group_id);
+	if (!is_array($members)) {
+		print "Couldn't fetch group info.";
+		return;
+	}
+	foreach ($members as $info) {
+		try {
+			$user = dynaddusers_get_user($info);
+			if (is_user_member_of_blog($user->ID, $blog_id)) {
+				remove_user_from_blog($user->ID, $blog_id);
+				print "<br/>Removed ".$user->display_name;
+			}
+		} catch (Exception $e) {
+			print "Error: ".htmlentities($e->getMessage());
+		}
+	}
 }
