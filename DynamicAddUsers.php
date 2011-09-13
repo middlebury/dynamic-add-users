@@ -29,7 +29,9 @@ function dynaddusers_install () {
 			blog_id int(11) NOT NULL,
 			group_id varchar(255) NOT NULL,
 			role varchar(25) NOT NULL,
-			PRIMARY KEY  (blog_id,group_id)
+			last_sync datetime default NULL,
+			PRIMARY KEY  (blog_id,group_id),
+			KEY last_sync (last_sync)
 		);";
 		dbDelta($sql);
 
@@ -196,6 +198,10 @@ function dynaddusers_options_page () {
 		print "\n</tbody>";
 		print "\n</table>";
 	}
+
+// 	print "<h3>Syncing groups</h3>";
+// 	dynaddusers_sync_all_groups ();
+// 	print "<em>Groups synced</em></p>";
 }
 
 add_action('admin_init', 'dynaddusers_init');
@@ -340,11 +346,14 @@ function dynaddusers_print_role_element () {
  *
  * @param object $user
  * @param string $role
+ * @param optional int $dest_blog_id
  * @return void
  * @since 1/8/10
  */
-function dynaddusers_add_user_to_blog ($user, $role) {
-	global $blog_id;
+function dynaddusers_add_user_to_blog ($user, $role, $blog_id = null) {
+	if (is_null($blog_id)) {
+		$blog_id = get_current_blog_id();
+	}
 	if (!$blog_id)
 		throw new Exception('No current $blog_id available.');
 	if (!strlen($role))
@@ -353,12 +362,7 @@ function dynaddusers_add_user_to_blog ($user, $role) {
 	if (is_user_member_of_blog($user->ID, $blog_id))
 		throw new Exception("User ".$user->display_name." is already a member of this blog.");
 
-	add_existing_user_to_blog(
-		array(
-			'user_id' => $user->ID,
-			'role' => $role
-		)
-	);
+	add_user_to_blog($blog_id, $user->ID, $role);
 }
 
 /**
@@ -760,6 +764,117 @@ function dynaddusers_stop_syncing ($group_id) {
 		get_current_blog_id(),
 		$group_id
 	));
+}
+
+// Schedule cron jobs for group syncing
+add_action('dynaddusers_group_sync_event', 'dynaddusers_sync_all_groups');
+function dynaddusers_activation() {
+	if ( !wp_next_scheduled( 'dynaddusers_group_sync_event' ) ) {
+		wp_schedule_event(time(), 'daily', 'dynaddusers_group_sync_event');
+	}
+}
+add_action('wp', 'dynaddusers_activation');
+
+/**
+ * Synchronize all groups.
+ *
+ * @return void
+ */
+function dynaddusers_sync_all_groups () {
+	global $wpdb;
+	$groups_table = $wpdb->base_prefix . "dynaddusers_groups";
+	$groups_to_sync = $wpdb->get_results($wpdb->prepare(
+		"SELECT
+			*
+		FROM
+			$groups_table
+		ORDER BY
+			blog_id
+		"
+	));
+	foreach ($groups_to_sync as $group_to_sync) {
+		try {
+			dynaddusers_sync_group($group_to_sync->blog_id, $group_to_sync->group_id, $group_to_sync->role);
+		} catch (Exception $e) {
+			user_error($e->getMessage(), E_USER_ERROR);
+		}
+	}
+}
+
+/**
+ * Synchronize a group.
+ *
+ * @param int $blog_id
+ * @param string $groups_id
+ * @param string $role
+ * @return void
+ */
+function dynaddusers_sync_group ($blog_id, $group_id, $role) {
+	global $wpdb;
+	$memberInfo = dynaddusers_get_member_info($group_id);
+	if (!is_array($memberInfo)) {
+		throw new Exception("Could not find members for '".$group_id."'.");
+	} else {
+		$user_ids = array();
+		foreach ($memberInfo as $info) {
+			try {
+				$user = dynaddusers_get_user($info);
+				$user_ids[] = $user->ID;
+				if (!is_user_member_of_blog($user->ID, $blog_id))
+					dynaddusers_add_user_to_blog($user, $role, $blog_id);
+			} catch (Exception $e) {
+				user_error($e->getMessage(), E_USER_ERROR);
+			}
+		}
+
+		// Remove users who have left the group.
+		$table = $wpdb->base_prefix . "dynaddusers_synced";
+		$query = "SELECT user_id
+				FROM $table
+				WHERE
+					blog_id = %d
+					AND group_id = %s";
+		$args = array($blog_id, $group_id);
+		if (count($user_ids)) {
+			$placeholders = array_fill(0, count($user_ids), '%d');
+			$query .= "\n\t AND user_id NOT IN (".implode(', ', $placeholders).")";
+			$args = array_merge($args, $user_ids);
+		}
+		$missing_users = $wpdb->get_col($wpdb->prepare($query, $args));
+		foreach ($missing_users as $user_id) {
+			if (is_user_member_of_blog($user_id, $blog_id)) {
+				remove_user_from_blog($user_id, $blog_id);
+			}
+		}
+
+		// Update our list of synced users.
+		$query = "DELETE FROM $table
+				WHERE
+					blog_id = %d
+					AND group_id = %s";
+		if (count($user_ids)) {
+			$query .= "\n\t AND user_id NOT IN (".implode(', ', $placeholders).")";
+		}
+		$wpdb->query($wpdb->prepare($query, $args));
+		foreach ($user_ids as $user_id) {
+			$wpdb->insert($table, array('blog_id' => $blog_id, 'group_id' => $group_id, 'user_id' => $user_id));
+		}
+
+		// Record our sync time.
+		$groups_table = $wpdb->base_prefix . "dynaddusers_groups";
+		$wpdb->query($wpdb->prepare(
+			"UPDATE
+				$groups_table
+			SET
+				last_sync = NOW()
+			WHERE
+				blog_id = %d
+				AND group_id = %s
+			",
+			$blog_id,
+			$group_id
+		));
+	}
 }
 
 /**
