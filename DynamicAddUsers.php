@@ -689,6 +689,10 @@ function dynaddusers_midd_get_attribute ($attribute, DOMElement $entry, DOMXPath
 	return $elements->item(0)->getAttribute('value');
 }
 
+/*********************************************************
+ * The methods below are related to synchronizing groups.
+ *********************************************************/
+
 /**
  * Answer an array of groups that will be kept in sync for this blog.
  *
@@ -792,9 +796,19 @@ function dynaddusers_sync_all_groups () {
 			blog_id
 		"
 	));
-	foreach ($groups_to_sync as $group_to_sync) {
+	dynaddusers_sync_groups($groups_to_sync);
+}
+
+/**
+ * Sync a list of groups.
+ *
+ * @param array $groups
+ * @return void
+ */
+function dynaddusers_sync_groups (array $groups) {
+	foreach ($groups as $group) {
 		try {
-			dynaddusers_sync_group($group_to_sync->blog_id, $group_to_sync->group_id, $group_to_sync->role);
+			dynaddusers_sync_group($group->blog_id, $group->group_id, $group->role);
 		} catch (Exception $e) {
 			user_error($e->getMessage(), E_USER_ERROR);
 		}
