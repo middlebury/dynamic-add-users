@@ -127,16 +127,16 @@ function dynaddusers_options_page () {
 				print "\n\t<br/>";
 				try {
 					$user = dynaddusers_get_user($info);
-					dynaddusers_add_user_to_blog($user, $_POST['role']);
+					// Should we keep this group in sync?
+					if ($sync)
+						$sync_group = $_POST['group'];
+					else
+						$sync_group = null;
+					dynaddusers_add_user_to_blog($user, $_POST['role'], NULL, $sync_group);
 					print "Added ".$user->display_name.' as '.strip_tags($_POST['role']);
 				} catch (Exception $e) {
 					print "Error: ".htmlentities($e->getMessage());
 				}
-			}
-
-			// Should we keep this group in sync
-			if ($sync) {
-				dynaddusers_keep_in_sync($_POST['group'], $_POST['role']);
 			}
 		}
 	}
@@ -356,10 +356,11 @@ function dynaddusers_print_role_element () {
  * @param object $user
  * @param string $role
  * @param optional int $dest_blog_id
+ * @param option string $sync_group If passed, mark this role assignment as synchronized with this group.
  * @return void
  * @since 1/8/10
  */
-function dynaddusers_add_user_to_blog ($user, $role, $blog_id = null) {
+function dynaddusers_add_user_to_blog ($user, $role, $blog_id = null, $sync_group = null) {
 	if (is_null($blog_id)) {
 		$blog_id = get_current_blog_id();
 	}
@@ -372,6 +373,13 @@ function dynaddusers_add_user_to_blog ($user, $role, $blog_id = null) {
 		throw new Exception("User ".$user->display_name." is already a member of this blog.");
 
 	add_user_to_blog($blog_id, $user->ID, $role);
+
+	// Note that they are now going to be managed as part of the group.
+	if ($sync_group) {
+		global $wpdb;
+		$sync_table = $wpdb->base_prefix . "dynaddusers_synced";
+		$wpdb->insert($sync_table, array('blog_id' => $blog_id, 'group_id' => $sync_group, 'user_id' => $user->ID));
+	}
 }
 
 /**
@@ -844,7 +852,7 @@ function dynaddusers_sync_group ($blog_id, $group_id, $role) {
 				$user = dynaddusers_get_user($info);
 				$user_ids[] = $user->ID;
 				if (!is_user_member_of_blog($user->ID, $blog_id))
-					dynaddusers_add_user_to_blog($user, $role, $blog_id);
+					dynaddusers_add_user_to_blog($user, $role, $blog_id, $group_id);
 			} catch (Exception $e) {
 				user_error($e->getMessage(), E_USER_ERROR);
 			}
