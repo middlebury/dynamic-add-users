@@ -7,18 +7,27 @@ Author: Adam Franco
 Author URI: http://www.adamfranco.com/
 */
 
+global $dynaddusers_db_version;
+$dynaddusers_db_version = '0.1';
+
 if (!defined('DYNADDUSERS_JS_DIR'))
 	define('DYNADDUSERS_JS_DIR', trailingslashit( get_bloginfo('wpurl') ).'wp-content/mu-plugins'.'/'. dirname( plugin_basename(__FILE__)));
 
-// Install actions
-register_activation_hook(__FILE__, 'dynaddusers_install');
+// Database table check
+function dynaddusers_update_db_check() {
+    global $dynaddusers_db_version;
+    if (get_site_option( 'dynaddusers_db_version' ) != $dynaddusers_db_version) {
+        dynaddusers_install();
+    }
+}
+add_action( 'plugins_loaded', 'dynaddusers_update_db_check' );
 
 /**
  * Install hook.
  */
 function dynaddusers_install () {
 	global $wpdb;
-	$dynaddusers_db_version = '0.1';
+	global $dynaddusers_db_version;
 
 	$groups = $wpdb->base_prefix . "dynaddusers_groups";
 	$synced = $wpdb->base_prefix . "dynaddusers_synced";
