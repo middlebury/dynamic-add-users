@@ -932,6 +932,13 @@ function dynaddusers_sync_groups (array $groups) {
  */
 function dynaddusers_sync_group ($blog_id, $group_id, $role) {
 	global $wpdb;
+	$role_levels = array(
+		'subscriber' => 1,
+		'contributor' => 2,
+		'author' => 3,
+		'editor' => 4,
+		'administrator' => 5,
+	);
 	$changes = array();
 	$memberInfo = dynaddusers_get_member_info($group_id);
 	if (!is_array($memberInfo)) {
@@ -942,7 +949,7 @@ function dynaddusers_sync_group ($blog_id, $group_id, $role) {
 			try {
 				$user = dynaddusers_get_user($info);
 				$user_ids[] = $user->ID;
-				if (!is_user_member_of_blog($user->ID, $blog_id)) {
+				if (!is_user_member_of_blog($user->ID, $blog_id) || $role_levels[$role] > $role_levels[$user->roles[0]]) {
 					dynaddusers_add_user_to_blog($user, $role, $blog_id, $group_id);
 					$changes[] = 'Added '.$user->display_name.' as '.dynaddusers_article($role).' '.$role.'.';
 				}
@@ -967,7 +974,7 @@ function dynaddusers_sync_group ($blog_id, $group_id, $role) {
 		$missing_users = $wpdb->get_col($wpdb->prepare($query, $args));
 		foreach ($missing_users as $user_id) {
 			$user = new WP_User($user_id);
-			if (is_user_member_of_blog($user_id, $blog_id)) {
+			if (is_user_member_of_blog($user_id, $blog_id) && $role_levels[$role] == $role_levels[$user->roles[0]]) {
 				remove_user_from_blog($user_id, $blog_id);
 				$changes[] = 'Removed '.$user->display_name.'.';
 			}
