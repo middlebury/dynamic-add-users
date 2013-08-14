@@ -132,8 +132,8 @@ function dynaddusers_options_page () {
 		if (!is_array($memberInfo)) {
 			print "Could not find members for '".$_POST['group']."'.";
 		} else {
+			dynaddusers_keep_in_sync($_POST['group'], strip_tags($_POST['role']));
 			foreach ($memberInfo as $info) {
-				print "\n\t<br/>";
 				try {
 					$user = dynaddusers_get_user($info);
 					// Should we keep this group in sync?
@@ -142,14 +142,17 @@ function dynaddusers_options_page () {
 					else
 						$sync_group = null;
 					dynaddusers_add_user_to_blog($user, $_POST['role'], NULL, $sync_group);
-					print "Added ".$user->display_name.' as '.strip_tags($_POST['role']);
+					print "Added ".$user->display_name.' as '.dynaddusers_article($_POST['role']).' '.strip_tags($_POST['role']);
 				} catch (Exception $e) {
-					print "Error: ".htmlentities($e->getMessage());
+					print htmlentities($e->getMessage());
 				}
+				print "\n\t<br/>";
 			}
 		}
 	}
+	$groupResults = ob_get_clean();
 
+	ob_start();
 	if (!empty($_POST['sync_group_id'])) {
 		if (!empty($_POST['stop_syncing_and_remove_users'])) {
 			dynaddusers_remove_users_in_group($_POST['sync_group_id']);
@@ -158,19 +161,17 @@ function dynaddusers_options_page () {
 			dynaddusers_stop_syncing($_POST['sync_group_id']);
 		} else {
 			$changes = dynaddusers_sync_group(get_current_blog_id(), $_POST['sync_group_id'], $_POST['role']);
-			print "<p>";
-			print "<strong>Synchronizing ".htmlentities($_POST['sync_group_id']).":</strong>\n<br/>";
-			print "<em> &nbsp; &nbsp; ";
+			print "<strong>Synchronizing ".dynaddusers_get_group_display_name_from_dn($_POST['sync_group_id']).":</strong>\n<br/>";
+			print " &nbsp; &nbsp; ";
 			if (count($changes)) {
 				print implode("\n<br/> &nbsp; &nbsp; ", $changes);
 			} else {
 				print "No changes to synchronize.";
 			}
-			print "</em></p>";
 		}
 	}
+	$groupSyncResults = ob_get_clean();
 
-	$groupResults = ob_get_clean();
 	print "\n<div class='wrap'>";
 	print "\n<div id='icon-users' class='icon32'> <br/> </div>";
 	print "\n<h2>Add New Users</h2>";
@@ -183,7 +184,9 @@ function dynaddusers_options_page () {
 	print "\n as ";
 	dynaddusers_print_role_element();
 	print "\n</form>";
-	print "\n<p>".$userResults."</p>";
+	if (strlen($userResults)) {
+		print "\n<p style='border: 1px solid red; color: red; padding: 0.5em;'>".$userResults."</p>";
+	}
 
 	print "\n<form id='dynaddusers_group_form' action='".$_SERVER['REQUEST_URI']."' method='post'>";
 	print "\n<h3>Bulk-Add Users By Group</h3>";
@@ -196,8 +199,9 @@ function dynaddusers_options_page () {
 	print "\n<label><input type='radio' id='dynaddusers_sync' name='group_sync' value='sync' ".($sync?"checked='checked'":"")."/> Keep in Sync</label>";
 	print "\n &nbsp; &nbsp; <label><input type='radio' id='dynaddusers_sync' name='group_sync' value='once' ".(!$sync?"checked='checked'":"")."/> Add once</label>";
 	print "\n</form>";
-	print "\n<p>".$groupResults."</p>";
-	print "\n</div>";
+	if (strlen($groupResults)) {
+		print "\n<p style='border: 1px solid red; color: red; padding: 0.5em;'>".$groupResults."</p>";
+	}
 
 	print "\n<h3>Synced Groups</h3>";
 	print "\n<p>Users who are members of synced groups will automatically be added-to or removed-from the site each time they log into WordPress. If you wish to fully synchronize a group so that you can see all potential users in the WordPress user-list, press the <em>Sync Now</em> button.</p>";
@@ -232,6 +236,11 @@ function dynaddusers_options_page () {
 		print "\n</tbody>";
 		print "\n</table>";
 	}
+	if (strlen($groupSyncResults)) {
+		print "\n<p style='border: 1px solid red; color: red; padding: 0.5em;'>".$groupSyncResults."</p>";
+	}
+
+	print "\n</div>";
 }
 
 add_action('admin_init', 'dynaddusers_init');
@@ -390,8 +399,19 @@ function dynaddusers_add_user_to_blog ($user, $role, $blog_id = null, $sync_grou
 	if (!strlen($role))
 		throw new Exception('No $role specified.');
 
-	if (is_user_member_of_blog($user->ID, $blog_id))
-		throw new Exception("User ".$user->display_name." is already a member of this blog.");
+	$role_levels = array(
+		'subscriber' => 1,
+		'contributor' => 2,
+		'author' => 3,
+		'editor' => 4,
+		'administrator' => 5,
+	);
+
+	if (is_user_member_of_blog($user->ID, $blog_id) && $role_levels[$user->roles[0]] > $role_levels[$role]) {
+		throw new Exception("User ".$user->display_name." is already ".dynaddusers_article($user->roles[0]).' '.$user->roles[0]." of this blog, not reducing to ".dynaddusers_article($role).' '.$role.'.');
+	} else if (is_user_member_of_blog($user->ID, $blog_id) && $role_levels[$user->roles[0]] == $role_levels[$role]) {
+		throw new Exception("User ".$user->display_name." is already ".dynaddusers_article($user->roles[0]).' '.$user->roles[0]." of this blog.");
+	}
 
 	add_user_to_blog($blog_id, $user->ID, $role);
 
@@ -401,6 +421,19 @@ function dynaddusers_add_user_to_blog ($user, $role, $blog_id = null, $sync_grou
 		$sync_table = $wpdb->base_prefix . "dynaddusers_synced";
 		$wpdb->insert($sync_table, array('blog_id' => $blog_id, 'group_id' => $sync_group, 'user_id' => $user->ID));
 	}
+}
+
+/**
+ * Answer the article 'a' or 'an' for a word.
+ *
+ * @param string $word
+ * @return string 'a' or 'an'
+ */
+function dynaddusers_article ($word) {
+	if (preg_match('/^[aeiou]/', $word))
+		return 'an';
+	else
+		return 'a';
 }
 
 /**
@@ -911,7 +944,7 @@ function dynaddusers_sync_group ($blog_id, $group_id, $role) {
 				$user_ids[] = $user->ID;
 				if (!is_user_member_of_blog($user->ID, $blog_id)) {
 					dynaddusers_add_user_to_blog($user, $role, $blog_id, $group_id);
-					$changes[] = 'Added '.$user->display_name.' as a/an '.$role.'.';
+					$changes[] = 'Added '.$user->display_name.' as '.dynaddusers_article($role).' '.$role.'.';
 				}
 			} catch (Exception $e) {
 				user_error($e->getMessage(), E_USER_ERROR);
@@ -933,6 +966,7 @@ function dynaddusers_sync_group ($blog_id, $group_id, $role) {
 		}
 		$missing_users = $wpdb->get_col($wpdb->prepare($query, $args));
 		foreach ($missing_users as $user_id) {
+			$user = new WP_User($user_id);
 			if (is_user_member_of_blog($user_id, $blog_id)) {
 				remove_user_from_blog($user_id, $blog_id);
 				$changes[] = 'Removed '.$user->display_name.'.';
