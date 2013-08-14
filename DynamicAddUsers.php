@@ -132,7 +132,8 @@ function dynaddusers_options_page () {
 		if (!is_array($memberInfo)) {
 			print "Could not find members for '".$_POST['group']."'.";
 		} else {
-			dynaddusers_keep_in_sync($_POST['group'], strip_tags($_POST['role']));
+			if ($sync)
+				dynaddusers_keep_in_sync($_POST['group'], strip_tags($_POST['role']));
 			foreach ($memberInfo as $info) {
 				try {
 					$user = dynaddusers_get_user($info);
