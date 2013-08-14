@@ -56,6 +56,15 @@ function dynaddusers_install () {
 	}
 }
 
+// Hook for logging in
+function dynaddusers_login($user_login, $user = null) {
+	$user = get_userdatabylogin($user_login);
+	if (phpCAS::isAuthenticated()) {
+		dynaddusers_sync_user($user->ID, phpCAS::getAttribute('MemberOf'));
+	}
+}
+add_action('wp_login', 'dynaddusers_login');
+
 // Hook for adding admin menus
 add_action('admin_menu', 'dynaddusers_add_pages');
 
@@ -223,10 +232,6 @@ function dynaddusers_options_page () {
 		print "\n</tbody>";
 		print "\n</table>";
 	}
-
-// 	print "<h3>Syncing groups</h3>";
-// 	dynaddusers_sync_all_groups ();
-// 	print "<em>Groups synced</em></p>";
 }
 
 add_action('admin_init', 'dynaddusers_init');
@@ -396,6 +401,36 @@ function dynaddusers_add_user_to_blog ($user, $role, $blog_id = null, $sync_grou
 		$sync_table = $wpdb->base_prefix . "dynaddusers_synced";
 		$wpdb->insert($sync_table, array('blog_id' => $blog_id, 'group_id' => $sync_group, 'user_id' => $user->ID));
 	}
+}
+
+/**
+ * Remove a user from a blog
+ *
+ * @param int $user_id
+ * @param string $group_id
+ * @param int $blog_id
+ * @return void
+ */
+function dynaddusers_remove_user_from_blog ($user_id, $group_id, $blog_id) {
+	// remove the user from the blog if they are a member
+	if (is_user_member_of_blog($user_id, $blog_id))
+		remove_user_from_blog($user_id, $blog_id);
+
+	// Update our list of synced users, cleaning up if needed.
+	global $wpdb;
+	$synced = $wpdb->base_prefix . "dynaddusers_synced";
+	$wpdb->query($wpdb->prepare(
+		"DELETE FROM
+			$synced
+		WHERE
+			blog_id = %d
+			AND group_id = %s
+			AND user_id = %d
+		",
+		$blog_id,
+		$group_id,
+		$user_id
+	));
 }
 
 /**
@@ -803,14 +838,20 @@ function dynaddusers_stop_syncing ($group_id) {
 	));
 }
 
-// Schedule cron jobs for group syncing
-add_action('dynaddusers_group_sync_event', 'dynaddusers_sync_all_groups');
-function dynaddusers_activation() {
-	if ( !wp_next_scheduled( 'dynaddusers_group_sync_event' ) ) {
-		wp_schedule_event(time(), 'daily', 'dynaddusers_group_sync_event');
-	}
-}
-add_action('wp', 'dynaddusers_activation');
+// For now we will try to avoid syncing all groups via cron as this may take a
+// really long time. Instead we will sync all of the groups for a blog when viewing
+// the user page, and add/remove individuals from all of their groups on login.
+// Hopefully these incremental updates will be sufficient and avoid unneeded big
+// synchronizations.
+//
+// // Schedule cron jobs for group syncing
+// add_action('dynaddusers_group_sync_event', 'dynaddusers_sync_all_groups');
+// function dynaddusers_activation() {
+// 	if ( !wp_next_scheduled( 'dynaddusers_group_sync_event' ) ) {
+// 		wp_schedule_event(time(), 'daily', 'dynaddusers_group_sync_event');
+// 	}
+// }
+// add_action('wp', 'dynaddusers_activation');
 
 /**
  * Synchronize all groups.
@@ -928,6 +969,95 @@ function dynaddusers_sync_group ($blog_id, $group_id, $role) {
 	}
 	return $changes;
 }
+
+/**
+ * Synchronize a user given their new list of groups.
+ *
+ * @param object $user
+ * @param array $groups_ids
+ * @return void
+ */
+function dynaddusers_sync_user ($user_id, array $group_ids) {
+	global $wpdb;
+
+	$group_table = $wpdb->base_prefix . "dynaddusers_groups";
+	$synced_table = $wpdb->base_prefix . "dynaddusers_synced";
+
+	$role_levels = array(
+		'subscriber' => 1,
+		'contributor' => 2,
+		'author' => 3,
+		'editor' => 4,
+		'administrator' => 5,
+	);
+
+	// Get a list of all existing roles handled by the DAU
+	$query = "SELECT
+		g.blog_id, g.group_id, g.role
+	FROM
+		$group_table g
+	WHERE
+		";
+	$args = array();
+	if (count($group_ids)) {
+		$placeholders = array_fill(0, count($group_ids), '%s');
+		$query .= "\n\tg.group_id IN (".implode(', ', $placeholders).")";
+		$args = array_merge($args, $group_ids);
+	}
+	$roles_to_ensure = $wpdb->get_results($wpdb->prepare($query, $args));
+	foreach ($roles_to_ensure as $role_to_ensure) {
+		switch_to_blog($role_to_ensure->blog_id);
+		$user = new WP_User( $user_id );
+		// If the user has no role or a lesser role.
+		// Otherwise, we'll assume that it was customized by the blog admin and ignore it.
+		if (empty($user->roles[0])) {
+			dynaddusers_add_user_to_blog($user, $role_to_ensure->role, $role_to_ensure->blog_id, $role_to_ensure->group_id);
+		}
+		// If the user has a lesser role than their group would provide, upgrade them
+		else if ($role_levels[$user->roles[0]] < $role_levels[$role_to_ensure->role]) {
+			dynaddusers_add_user_to_blog($user, $role_to_ensure->role, $role_to_ensure->blog_id, $role_to_ensure->group_id);
+		}
+	}
+	// Switch back to the current blog if we left it.
+	restore_current_blog();
+
+	// Get a list of the blogs where the user was previously added, but is no longer
+	// in one of the groups
+	$query = "SELECT
+		g.blog_id, g.group_id, g.role
+	FROM
+		$group_table g
+		INNER JOIN $synced_table s ON (g.blog_id = s.blog_id AND g.group_id = s.group_id)
+	WHERE
+		s.user_id = %s
+		";
+	$args = array($user_id);
+	if (count($group_ids)) {
+		$placeholders = array_fill(0, count($group_ids), '%s');
+		$query .= "\n\t AND s.group_id NOT IN (".implode(', ', $placeholders).")";
+		$args = array_merge($args, $group_ids);
+	}
+	$roles_gone = $wpdb->get_results($wpdb->prepare($query, $args));
+	foreach ($roles_gone as $role_gone) {
+		// If the group-role assignment is gone...
+		// ...AND the user currently has that role...
+		// ...AND the user doesn't have that role through another group
+		// take away that role.
+		// If they have a lesser role through another group apply that,
+		// otherwise, remove them from the blog.
+		switch_to_blog($role_gone->blog_id);
+		$user = new WP_User( $user_id );
+
+		// Only change or remove the role if the role was the same as the one
+		// set by this plugin before. Otherwise, we'll assume that it was customized
+		// by the blog admin and ignore it.
+		if (empty($user->roles[0]) || $user->roles[0] == $role_gone->role) {
+			dynaddusers_remove_user_from_blog($user_id, $role_gone->group_id, $role_gone->blog_id);
+		}
+	}
+
+	// Switch back to the current blog if we left it.
+	restore_current_blog();
 }
 
 /**
