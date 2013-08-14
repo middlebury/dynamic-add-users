@@ -190,7 +190,7 @@ function dynaddusers_options_page () {
 	}
 
 	print "\n<form id='dynaddusers_group_form' action='".$_SERVER['REQUEST_URI']."' method='post'>";
-	print "\n<h3>Bulk-Add Users By Group</h3>";
+	print "\n<h3>Add Users By Group</h3>";
 	print "\n<input type='text' id='dynaddusers_group_search' name='group_search' value='' size='50'/>";
 	print "\n<input type='hidden' id='dynaddusers_group' name='group' value=''/>";
 	print "\n<input type='submit' value='Add Group Members'/>";
