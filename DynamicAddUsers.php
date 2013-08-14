@@ -112,7 +112,7 @@ function dynaddusers_options_page () {
 	}
 	$userResults = ob_get_clean();
 
-	if ($_POST['group_sync'] == 'once')
+	if (isset($_POST['group_sync']) && $_POST['group_sync'] == 'once')
 		$sync = false;
 	else
 		$sync = true;
@@ -141,11 +141,24 @@ function dynaddusers_options_page () {
 		}
 	}
 
-	if (!empty($_POST['sync_group_remove'])) {
+	if (!empty($_POST['sync_group_id'])) {
 		if (!empty($_POST['stop_syncing_and_remove_users'])) {
-			dynaddusers_remove_users_in_group($_POST['sync_group_remove']);
+			dynaddusers_remove_users_in_group($_POST['sync_group_id']);
+			dynaddusers_stop_syncing($_POST['sync_group_id']);
+		} else if (!empty($_POST['stop_syncing'])) {
+			dynaddusers_stop_syncing($_POST['sync_group_id']);
+		} else {
+			$changes = dynaddusers_sync_group(get_current_blog_id(), $_POST['sync_group_id'], $_POST['role']);
+			print "<p>";
+			print "<strong>Synchronizing ".htmlentities($_POST['sync_group_id']).":</strong>\n<br/>";
+			print "<em> &nbsp; &nbsp; ";
+			if (count($changes)) {
+				print implode("\n<br/> &nbsp; &nbsp; ", $changes);
+			} else {
+				print "No changes to synchronize.";
+			}
+			print "</em></p>";
 		}
-		dynaddusers_stop_syncing($_POST['sync_group_remove']);
 	}
 
 	$groupResults = ob_get_clean();
@@ -178,9 +191,10 @@ function dynaddusers_options_page () {
 	print "\n</div>";
 
 	print "\n<h3>Synced Groups</h3>";
+	print "\n<p>Users who are members of synced groups will automatically be added-to or removed-from the site each time they log into WordPress. If you wish to fully synchronize a group so that you can see all potential users in the WordPress user-list, press the <em>Sync Now</em> button.</p>";
 	$groups = dynaddusers_get_synced_groups();
 	if (!count($groups)) {
-		print "<p><em>none</em></p>";
+		print "\n<p><em>none</em></p>";
 	} else {
 		print "\n<table id='dynaddusers_groups'>";
 		print "\n<thead>";
@@ -197,7 +211,9 @@ function dynaddusers_options_page () {
 			print "\n\t\t</td>";
 			print "\n\t\t<td>";
 			print "\n\t\t\t<form action='"."' method='post'>";
-			print "\n\t\t\t<input type='hidden' name='sync_group_remove' value='".htmlentities($group->group_id)."'/>";
+			print "\n\t\t\t<input type='hidden' name='sync_group_id' value='".htmlentities($group->group_id)."'/>";
+			print "\n\t\t\t<input type='hidden' name='role' value='".$group->role."'/>";
+			print "\n\t\t\t<input type='submit' name='sync_now' value='Sync Now'/>";
 			print "\n\t\t\t<input type='submit' name='stop_syncing' value='Stop Syncing'/>";
 			print "\n\t\t\t<input type='submit' name='stop_syncing_and_remove_users' value='Stop Syncing And Remove Users'/>";
 			print "\n\t\t\t</form>";
@@ -842,6 +858,7 @@ function dynaddusers_sync_groups (array $groups) {
  */
 function dynaddusers_sync_group ($blog_id, $group_id, $role) {
 	global $wpdb;
+	$changes = array();
 	$memberInfo = dynaddusers_get_member_info($group_id);
 	if (!is_array($memberInfo)) {
 		throw new Exception("Could not find members for '".$group_id."'.");
@@ -851,8 +868,10 @@ function dynaddusers_sync_group ($blog_id, $group_id, $role) {
 			try {
 				$user = dynaddusers_get_user($info);
 				$user_ids[] = $user->ID;
-				if (!is_user_member_of_blog($user->ID, $blog_id))
+				if (!is_user_member_of_blog($user->ID, $blog_id)) {
 					dynaddusers_add_user_to_blog($user, $role, $blog_id, $group_id);
+					$changes[] = 'Added '.$user->display_name.' as a/an '.$role.'.';
+				}
 			} catch (Exception $e) {
 				user_error($e->getMessage(), E_USER_ERROR);
 			}
@@ -875,6 +894,7 @@ function dynaddusers_sync_group ($blog_id, $group_id, $role) {
 		foreach ($missing_users as $user_id) {
 			if (is_user_member_of_blog($user_id, $blog_id)) {
 				remove_user_from_blog($user_id, $blog_id);
+				$changes[] = 'Removed '.$user->display_name.'.';
 			}
 		}
 
@@ -906,6 +926,8 @@ function dynaddusers_sync_group ($blog_id, $group_id, $role) {
 			$group_id
 		));
 	}
+	return $changes;
+}
 }
 
 /**
