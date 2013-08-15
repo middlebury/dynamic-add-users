@@ -827,12 +827,15 @@ function dynaddusers_get_synced_groups () {
 function dynaddusers_keep_in_sync ($group_id, $role) {
 	$synced = dynaddusers_get_synced_groups();
 	foreach ($synced as $group) {
-		if ($group->group_id == $group_id)
+		if ($group->group_id == $group_id && $group->role == $role)
 			return false;
 	}
-
 	global $wpdb;
 	$groups = $wpdb->base_prefix . "dynaddusers_groups";
+	$wpdb->delete($groups, array(
+		'blog_id' => get_current_blog_id(),
+		'group_id' => $group_id,
+	));
 	$wpdb->insert($groups, array(
 		'blog_id' => get_current_blog_id(),
 		'group_id' => $group_id,
