@@ -121,33 +121,33 @@ function dynaddusers_options_page () {
 	}
 	$userResults = ob_get_clean();
 
-	if (isset($_POST['group_sync']) && $_POST['group_sync'] == 'once')
-		$sync = false;
-	else
-		$sync = true;
-
 	ob_start();
-	if (isset($_POST['group']) && $_POST['group']) {
-		$memberInfo = dynaddusers_get_member_info($_POST['group']);
-		if (!is_array($memberInfo)) {
-			print "Could not find members for '".$_POST['group']."'.";
+	$sync = true;
+	if (!empty($_POST['group'])) {
+		if (isset($_POST['group_sync']) && $_POST['group_sync'] == 'sync') {
+			dynaddusers_keep_in_sync($_POST['group'], strip_tags($_POST['role']));
+			$changes = dynaddusers_sync_group(get_current_blog_id(), $_POST['group'], strip_tags($_POST['role']));
+			if (count($changes)) {
+				print implode("\n<br/>", $changes);
+			} else {
+				print "No changes to synchronize.";
+			}
 		} else {
-			if ($sync)
-				dynaddusers_keep_in_sync($_POST['group'], strip_tags($_POST['role']));
-			foreach ($memberInfo as $info) {
-				try {
-					$user = dynaddusers_get_user($info);
-					// Should we keep this group in sync?
-					if ($sync)
-						$sync_group = $_POST['group'];
-					else
-						$sync_group = null;
-					dynaddusers_add_user_to_blog($user, $_POST['role'], NULL, $sync_group);
-					print "Added ".$user->display_name.' as '.dynaddusers_article($_POST['role']).' '.strip_tags($_POST['role']);
-				} catch (Exception $e) {
-					print htmlentities($e->getMessage());
+			$sync = false;
+			$memberInfo = dynaddusers_get_member_info($_POST['group']);
+			if (!is_array($memberInfo)) {
+				print "Could not find members for '".$_POST['group']."'.";
+			} else {
+				foreach ($memberInfo as $info) {
+					try {
+						$user = dynaddusers_get_user($info);
+						dynaddusers_add_user_to_blog($user, $_POST['role']);
+						print "Added ".$user->display_name.' as '.dynaddusers_article($_POST['role']).' '.strip_tags($_POST['role']);
+					} catch (Exception $e) {
+						print htmlentities($e->getMessage());
+					}
+					print "\n\t<br/>";
 				}
-				print "\n\t<br/>";
 			}
 		}
 	}
@@ -1123,7 +1123,7 @@ function dynaddusers_remove_users_in_group ($group_id) {
 			$user = dynaddusers_get_user($info);
 			if (is_user_member_of_blog($user->ID, $blog_id) && $user->ID != get_current_user_id()) {
 				remove_user_from_blog($user->ID, $blog_id);
-				print "<br/>Removed ".$user->display_name;
+				print "Removed ".$user->display_name."<br/>\n";
 			}
 		} catch (Exception $e) {
 			print "Error: ".htmlentities($e->getMessage());
