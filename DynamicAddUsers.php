@@ -921,7 +921,7 @@ function dynaddusers_sync_groups (array $groups) {
 		try {
 			dynaddusers_sync_group($group->blog_id, $group->group_id, $group->role);
 		} catch (Exception $e) {
-			user_error($e->getMessage(), E_USER_ERROR);
+			user_error($e->getMessage(), E_USER_WARNING);
 		}
 	}
 }
@@ -958,7 +958,7 @@ function dynaddusers_sync_group ($blog_id, $group_id, $role) {
 					$changes[] = 'Added '.$user->display_name.' as '.dynaddusers_article($role).' '.$role.'.';
 				}
 			} catch (Exception $e) {
-				user_error($e->getMessage(), E_USER_ERROR);
+				user_error($e->getMessage(), E_USER_WARNING);
 			}
 		}
 
