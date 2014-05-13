@@ -60,7 +60,14 @@ function dynaddusers_install () {
 function dynaddusers_login($user_login, $user = null) {
 	$user = get_userdatabylogin($user_login);
 	if (phpCAS::isAuthenticated()) {
-		dynaddusers_sync_user($user->ID, phpCAS::getAttribute('MemberOf'));
+		$member_of = phpCAS::getAttribute('MemberOf');
+		// Ensure that $member of isn't just a null value.
+		if (empty($member_of))
+			$member_of = array();
+		// Case for a single string/integer value for the attribute.
+		if (!is_array($member_of))
+			$member_of = array($member_of);
+		dynaddusers_sync_user($user->ID, $member_of);
 	}
 }
 add_action('wp_login', 'dynaddusers_login');
