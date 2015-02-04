@@ -253,9 +253,7 @@ function dynaddusers_options_page () {
 
 add_action('admin_init', 'dynaddusers_init');
 function dynaddusers_init () {
-	wp_enqueue_script('autocomplete', DYNADDUSERS_JS_DIR.'/jquery.autocomplete.min.js', array('jquery'));
-	wp_register_style('autocomplete', DYNADDUSERS_JS_DIR.'/jquery.autocomplete.css');
-	wp_enqueue_style('autocomplete');
+	wp_enqueue_script('jquery-ui-autocomplete');
 }
 
 function dynaddusers_javascript () {
@@ -268,63 +266,53 @@ function dynaddusers_javascript () {
 		if(!$("#dynaddusers_user_search").length) {
 			return;
 		}
-		$("#dynaddusers_user_search").autocomplete(ajaxurl, {
-			extraParams: {
-				'action': 'dynaddusers_search_users'
-			},
+		$("#dynaddusers_user_search").autocomplete({
+			source: ajaxurl + "?action=dynaddusers_search_users",
 			delay: 600,
-			max: 100,
-			minChars: 3,
-			formatItem: function (data, i, max, value, term) {
-				if (value) {
-					var parts = value.split("\t");
-					if (parts[1])
-						return parts[1];
-					else
-						return parts[0];
-				} else {
-					return data;
+			minLength: 3,
+			select: function (event, ui) {
+				this.value = ui.item.label;
+				$('#dynaddusers_user').val(ui.item.value);
+				event.preventDefault();
+			},
+			focus: function (event, ui) {
+				this.value = ui.item.label;
+				event.preventDefault();
+			},
+			change: function (event, ui) {
+				// Ensure that the hidden is set, though it should be by select.
+				if (ui.item && ui.item.value) {
+					$('#dynaddusers_user').val(ui.item.value);
 				}
-			}
-		}).result(function(event, data, formatted) {
-			if (data) {
-				var parts = data[0].split("\t");
-				if (parts[1])
-					$('#dynaddusers_user_search').val(parts[1]);
-				else
-					$('#dynaddusers_user_search').val(parts[0]);
-
-				$('#dynaddusers_user').val(parts[0]);
+				// Clear out the hidden field is cleared if we don't have a chosen item or delete the choice.
+				else {
+					$('#dynaddusers_user').val('');
+				}
 			}
 		});
 
-		$("#dynaddusers_group_search").autocomplete(ajaxurl, {
-			extraParams: {
-				'action': 'dynaddusers_search_groups'
-			},
+		$("#dynaddusers_group_search").autocomplete({
+			source: ajaxurl + "?action=dynaddusers_search_groups",
 			delay: 600,
-			max: 100,
-			minChars: 3,
-			formatItem: function (data, i, max, value, term) {
-				if (value) {
-					var parts = value.split("\t");
-					if (parts[1])
-						return parts[1];
-					else
-						return parts[0];
-				} else {
-					return data;
+			minLength: 3,
+			select: function (event, ui) {
+				this.value = ui.item.label;
+				$('#dynaddusers_group').val(ui.item.value);
+				event.preventDefault();
+			},
+			focus: function (event, ui) {
+				this.value = ui.item.label;
+				event.preventDefault();
+			},
+			change: function (event, ui) {
+				// Ensure that the hidden is set, though it should be by select.
+				if (ui.item && ui.item.value) {
+					$('#dynaddusers_group').val(ui.item.value);
 				}
-			}
-		}).result(function(event, data, formatted) {
-			if (data) {
-				var parts = data[0].split("\t");
-				if (parts[1])
-					$('#dynaddusers_group_search').val(parts[1]);
-				else
-					$('#dynaddusers_group_search').val(parts[0]);
-
-				$('#dynaddusers_group').val(parts[0]);
+				// Clear out the hidden field is cleared if we don't have a chosen item or delete the choice.
+				else {
+					$('#dynaddusers_group').val('');
+				}
 			}
 		});
 
@@ -353,12 +341,17 @@ function dynaddusers_javascript () {
 function dynaddusers_search_users () {
 	while (ob_get_level())
 		ob_end_clean();
-	header('Content-Type: text/plain');
-	if ($_REQUEST['q']) {
-		foreach (dynaddusers_get_user_matches($_REQUEST['q']) as $user) {
-			print $user['user_login']."\t".$user['display_name']." (".$user['user_email'].")\n";
+	header('Content-Type: text/json');
+	$results = array();
+	if ($_REQUEST['term']) {
+		foreach (dynaddusers_get_user_matches($_REQUEST['term']) as $user) {
+			$results[] = array(
+				'value' => $user['user_login'],
+				'label' => $user['display_name']." (".$user['user_email'].")",
+			);
 		}
 	}
+	print json_encode($results);
 	exit;
 }
 
@@ -366,12 +359,17 @@ function dynaddusers_search_users () {
 function dynaddusers_search_groups () {
 	while (ob_get_level())
 		ob_end_clean();
-	header('Content-Type: text/plain');
-	if ($_REQUEST['q']) {
-		foreach (dynaddusers_get_group_matches($_REQUEST['q']) as $id => $displayName) {
-			print $id."\t".$displayName."\n";
+	header('Content-Type: text/json');
+	$results = array();
+	if ($_REQUEST['term']) {
+		foreach (dynaddusers_get_group_matches($_REQUEST['term']) as $id => $displayName) {
+			$results[] = array(
+				'value' => $id,
+				'label' => $displayName,
+			);
 		}
 	}
+	print json_encode($results);
 	exit;
 }
 
