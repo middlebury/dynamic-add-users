@@ -13,6 +13,15 @@ $dynaddusers_db_version = '0.1';
 if (!defined('DYNADDUSERS_JS_DIR'))
 	define('DYNADDUSERS_JS_DIR', trailingslashit( get_bloginfo('wpurl') ).'wp-content/mu-plugins'.'/'. dirname( plugin_basename(__FILE__)));
 
+// Redirect all requests to the WordPress built-in user creation page.
+function dynaddusers_admin_redirect() {
+	global $pagenow;
+	if ( $pagenow == 'user-new.php' ) {
+		wp_redirect( admin_url( 'users.php?page=dynaddusers' ), 301 );
+	}
+}
+add_action( 'admin_init', 'dynaddusers_admin_redirect' );
+
 // Database table check
 function dynaddusers_update_db_check() {
     global $dynaddusers_db_version;
