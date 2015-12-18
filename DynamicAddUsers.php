@@ -685,11 +685,23 @@ function dynaddusers_get_member_info ($groupId) {
 function dynaddusers_midd_lookup (array $parameters) {
 	if (!defined('DYNADDUSERS_CAS_DIRECTORY_URL'))
 		throw new Exception('DYNADDUSERS_CAS_DIRECTORY_URL must be defined.');
-	if (defined('DYNADDUSERS_CAS_DIRECTORY_ADMIN_ACCESS'))
-		$parameters['ADMIN_ACCESS'] = DYNADDUSERS_CAS_DIRECTORY_ADMIN_ACCESS;
-
+	if (defined('DYNADDUSERS_CAS_DIRECTORY_ADMIN_ACCESS')) {
+		$opts = array(
+			'http' => array(
+				'header' =>
+					"ADMIN_ACCESS: ".DYNADDUSERS_CAS_DIRECTORY_ADMIN_ACCESS."\r\n".
+					"User-Agent: WordPress DynamicAddUsers\r\n",
+			)
+		);
+		$context = stream_context_create($opts);
+	} else {
+		$context = null;
+	}
+	$xml_string = file_get_contents(DYNADDUSERS_CAS_DIRECTORY_URL.'?'.http_build_query($parameters), false, $context);
+	if (!$xml_string)
+		throw new Exception('Could not load XML information for '.print_r($parameters, true));
 	$doc = new DOMDocument;
-	if (!$doc->load(DYNADDUSERS_CAS_DIRECTORY_URL.'?'.http_build_query($parameters)))
+	if (!$doc->loadXML($xml_string))
 		throw new Exception('Could not load XML information for '.print_r($parameters, true));
 
 	$xpath = new DOMXPath($doc);
