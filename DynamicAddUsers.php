@@ -67,7 +67,7 @@ function dynaddusers_install () {
 
 // Hook for logging in
 function dynaddusers_login($user_login, $user = null) {
-	$user = get_userdatabylogin($user_login);
+	$user = get_user_by('login', $user_login);
 	if (phpCAS::isAuthenticated()) {
 		$member_of = phpCAS::getAttribute('MemberOf');
 		// Ensure that $member of isn't just a null value.
