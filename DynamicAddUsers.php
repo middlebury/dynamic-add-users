@@ -423,11 +423,11 @@ function dynaddusers_add_user_to_blog ($user, $role, $blog_id = null, $sync_grou
 	);
 
 	if (is_user_member_of_blog($user->ID, $blog_id)) {
-		$user_capabilites = array_keys($user->allcaps);
-		if ($role_levels[$user_capabilites[0]] > $role_levels[$role]) {
-			throw new Exception("User ".$user->display_name." is already ".dynaddusers_article($user_capabilites[0]).' '.$user_capabilites[0]." of this blog, not reducing to ".dynaddusers_article($role).' '.$role.'.');
-		} else if ($role_levels[$user_capabilites[0]] == $role_levels[$role]) {
-			throw new Exception("User ".$user->display_name." is already ".dynaddusers_article($user_capabilites[0]).' '.$user_capabilites[0]." of this blog.");
+		$existing_role = dynaddusers_get_existing_role($user->ID, $blog_id);
+		if ($role_levels[$existing_role] > $role_levels[$role]) {
+			throw new Exception("User ".$user->display_name." is already ".dynaddusers_article($existing_role).' '.$existing_role." of this blog, not reducing to ".dynaddusers_article($role).' '.$role.'.');
+		} else if ($role_levels[$existing_role] == $role_levels[$role]) {
+			throw new Exception("User ".$user->display_name." is already ".dynaddusers_article($existing_role).' '.$existing_role." of this blog.");
 		}
 	}
 
@@ -985,8 +985,8 @@ function dynaddusers_sync_group ($blog_id, $group_id, $role) {
 			try {
 				$user = dynaddusers_get_user($info);
 				$user_ids[] = $user->ID;
-				$user_capabilites = array_keys($user->allcaps);
-				if (!is_user_member_of_blog($user->ID, $blog_id) || $role_levels[$role] > $role_levels[$user_capabilites[0]]) {
+				$existing_role = dynaddusers_get_existing_role($user->ID, $blog_id);
+				if (!is_user_member_of_blog($user->ID, $blog_id) || $role_levels[$role] > $role_levels[$existing_role]) {
 					dynaddusers_add_user_to_blog($user, $role, $blog_id, $group_id);
 					$changes[] = 'Added '.$user->display_name.' as '.dynaddusers_article($role).' '.$role.'.';
 				}
@@ -1010,9 +1010,9 @@ function dynaddusers_sync_group ($blog_id, $group_id, $role) {
 		}
 		$missing_users = $wpdb->get_col($wpdb->prepare($query, $args));
 		foreach ($missing_users as $user_id) {
+			$existing_role = dynaddusers_get_existing_role($user_id, $blog_id);
 			$user = new WP_User($user_id);
-			$user_capabilites = array_keys($user->allcaps);
-			if (is_user_member_of_blog($user_id, $blog_id) && $role_levels[$role] == $role_levels[$user_capabilites[0]]) {
+			if (is_user_member_of_blog($user_id, $blog_id) && $role_levels[$role] == $role_levels[$existing_role]) {
 				remove_user_from_blog($user_id, $blog_id);
 				$changes[] = 'Removed '.$user->display_name.'.';
 			}
@@ -1047,6 +1047,39 @@ function dynaddusers_sync_group ($blog_id, $group_id, $role) {
 		));
 	}
 	return $changes;
+}
+
+/**
+ * Get an existing role for the user.
+ *
+ * @param int $user_id
+ * @param optional int $blog_id
+ *		If NULL or not passed, the current blog will be queried.
+ * @return mixed string role or NULL if none.
+ */
+function dynaddusers_get_existing_role($user_id, $blog_id = NULL) {
+	if (!is_null($blog_id)) {
+		switch_to_blog($blog_id);
+	}
+	$user = new WP_User( $user_id );
+	$role_levels = array(
+		'subscriber' => 1,
+		'contributor' => 2,
+		'author' => 3,
+		'editor' => 4,
+		'administrator' => 5,
+	);
+	$existing_role = NULL;
+	foreach (array_keys(array_reverse($role_levels)) as $role) {
+		if (isset($user->allcaps[$role]) && $user->allcaps[$role]) {
+			$existing_role = $role;
+			break;
+		}
+	}
+	if (!is_null($blog_id)) {
+		restore_current_blog();
+	}
+	return $existing_role;
 }
 
 /**
@@ -1085,16 +1118,14 @@ function dynaddusers_sync_user ($user_id, array $group_ids) {
 	}
 	$roles_to_ensure = $wpdb->get_results($wpdb->prepare($query, $args));
 	foreach ($roles_to_ensure as $role_to_ensure) {
-		switch_to_blog($role_to_ensure->blog_id);
-		$user = new WP_User( $user_id );
-		$user_capabilites = array_keys($user->allcaps);
+		$existing_role = dynaddusers_get_existing_role($user_id, $role_to_ensure->blog_id);
 		// If the user has no role or a lesser role.
 		// Otherwise, we'll assume that it was customized by the blog admin and ignore it.
-		if (empty($user_capabilites[0])) {
+		if (empty($existing_role)) {
 			dynaddusers_add_user_to_blog($user, $role_to_ensure->role, $role_to_ensure->blog_id, $role_to_ensure->group_id);
 		}
 		// If the user has a lesser role than their group would provide, upgrade them
-		else if ($role_levels[$user_capabilites[0]] < $role_levels[$role_to_ensure->role]) {
+		else if ($role_levels[$existing_role] < $role_levels[$role_to_ensure->role]) {
 			dynaddusers_add_user_to_blog($user, $role_to_ensure->role, $role_to_ensure->blog_id, $role_to_ensure->group_id);
 		}
 	}
@@ -1125,13 +1156,11 @@ function dynaddusers_sync_user ($user_id, array $group_ids) {
 		// take away that role.
 		// If they have a lesser role through another group apply that,
 		// otherwise, remove them from the blog.
-		switch_to_blog($role_gone->blog_id);
-		$user = new WP_User( $user_id );
-		$user_capabilites = array_keys($user->allcaps);
+		$existing_role = dynaddusers_get_existing_role($user_id, $role_gone->blog_id);
 		// Only change or remove the role if the role was the same as the one
 		// set by this plugin before. Otherwise, we'll assume that it was customized
 		// by the blog admin and ignore it.
-		if (empty($user_capabilites[0]) || $user_capabilites[0] == $role_gone->role) {
+		if (empty($existing_role) || $existing_role == $role_gone->role) {
 			dynaddusers_remove_user_from_blog($user_id, $role_gone->group_id, $role_gone->blog_id);
 		}
 	}
