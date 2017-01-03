@@ -513,8 +513,6 @@ function dynaddusers_get_user (array $userInfo) {
  * @since 1/8/10
  */
 function dynaddusers_create_user (array $userInfo) {
-	require_once(ABSPATH.WPINC.'/registration.php');
-
 	$required = array('user_login', 'user_email', 'user_nicename', 'nickname', 'display_name');
 	foreach ($required as $field) {
 		if (!isset($userInfo[$field]))
