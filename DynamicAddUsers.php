@@ -1023,9 +1023,6 @@ function dynaddusers_sync_group ($blog_id, $group_id, $role) {
 				WHERE
 					blog_id = %d
 					AND group_id = %s";
-		if (count($user_ids)) {
-			$query .= "\n\t AND user_id NOT IN (".implode(', ', $placeholders).")";
-		}
 		$wpdb->query($wpdb->prepare($query, $args));
 		foreach ($user_ids as $user_id) {
 			$wpdb->insert($table, array('blog_id' => $blog_id, 'group_id' => $group_id, 'user_id' => $user_id));
