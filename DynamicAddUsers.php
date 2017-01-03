@@ -437,7 +437,7 @@ function dynaddusers_add_user_to_blog ($user, $role, $blog_id = null, $sync_grou
 	if ($sync_group) {
 		global $wpdb;
 		$sync_table = $wpdb->base_prefix . "dynaddusers_synced";
-		$sync_exists = $wpdb->get_row("SELECT * FROM $sync_table WHERE blog_id = $blog_id AND group_id = $sync_group AND user_id = $user->ID");
+		$sync_exists = $wpdb->get_row($wpdb->prepare("SELECT * FROM $sync_table WHERE blog_id = %d AND group_id = %s AND user_id = %d", $blog_id, $sync_group, $user->ID));
 		if (is_null($sync_exists)) {
 			$wpdb->insert($sync_table, array('blog_id' => $blog_id, 'group_id' => $sync_group, 'user_id' => $user->ID));
 		}
