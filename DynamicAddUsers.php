@@ -495,7 +495,7 @@ function dynaddusers_remove_user_from_blog ($user_id, $group_id, $blog_id) {
  * @since 1/8/10
  */
 function dynaddusers_get_user (array $userInfo) {
-	$user = get_userdatabylogin($userInfo['user_login']);
+	$user = get_user_by('login', $userInfo['user_login']);
 	if (is_object($user))
 		return $user;
 
