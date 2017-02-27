@@ -690,7 +690,7 @@ function dynaddusers_midd_lookup (array $parameters) {
 		$opts = array(
 			'http' => array(
 				'header' =>
-					"Admin-Access: ".DYNADDUSERS_CAS_DIRECTORY_ADMIN_ACCESS."\r\n".
+					"ADMIN_ACCESS: ".DYNADDUSERS_CAS_DIRECTORY_ADMIN_ACCESS."\r\n".
 					"User-Agent: WordPress DynamicAddUsers\r\n",
 			)
 		);
