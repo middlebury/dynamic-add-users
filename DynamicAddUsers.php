@@ -1098,6 +1098,8 @@ function dynaddusers_sync_user ($user_id, array $group_ids) {
 		'administrator' => 5,
 	);
 
+	$user = new WP_User( $user_id );
+
 	// Get a list of all existing roles handled by the DAU
 	$query = "SELECT
 		g.blog_id, g.group_id, g.role
