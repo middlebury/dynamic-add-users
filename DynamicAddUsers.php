@@ -701,6 +701,26 @@ function dynaddusers_get_member_info ($groupId) {
 }
 
 /**
+ * Answer an array of user ids synced to a blog for a group.
+ *
+ * @param int $blog_id
+ * @param string $group_id
+ * @return array
+ */
+function dynaddusers_get_synced_users_for_group($blog_id, $group_id) {
+	// Get a list of users currently synced by the DAU
+	global $wpdb;
+	$table = $wpdb->base_prefix . "dynaddusers_synced";
+	$query = "SELECT user_id
+			FROM $table
+			WHERE
+				blog_id = %d
+				AND group_id = %s";
+	$args = array($blog_id, $group_id);
+	return $wpdb->get_col($wpdb->prepare($query, $args));
+}
+
+/**
  * Lookup directory information and return it as an XPath object
  *
  * @param array $parameters
@@ -1205,16 +1225,16 @@ function dynaddusers_sync_user ($user_id, array $group_ids) {
  */
 function dynaddusers_remove_users_in_group ($group_id) {
 	$blog_id = get_current_blog_id();
-	$members = dynaddusers_get_member_info($group_id);
+	$members = dynaddusers_get_synced_users_for_group($blog_id, $group_id);
 	if (!is_array($members)) {
 		print "Couldn't fetch group info.";
 		return;
 	}
-	foreach ($members as $info) {
+	foreach ($members as $user_id) {
 		try {
-			$user = dynaddusers_get_user($info);
-			if (is_user_member_of_blog($user->ID, $blog_id) && $user->ID != get_current_user_id()) {
-				remove_user_from_blog($user->ID, $blog_id);
+			$user = get_userdata($user_id);
+			if (is_user_member_of_blog($user_id, $blog_id) && $user_id != get_current_user_id()) {
+				remove_user_from_blog($user_id, $blog_id);
 				print "Removed ".$user->display_name."<br/>\n";
 			}
 		} catch (Exception $e) {
