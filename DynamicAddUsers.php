@@ -1158,7 +1158,15 @@ function dynaddusers_sync_user ($user_id, array $group_ids) {
 		// set by this plugin before. Otherwise, we'll assume that it was customized
 		// by the blog admin and ignore it.
 		if (empty($existing_role) || $existing_role == $role_gone->role) {
-			dynaddusers_remove_user_from_blog($user_id, $role_gone->group_id, $role_gone->blog_id);
+			// Verify that the group still exists and don't remove the user if it is gone.
+			// This is particularly a problem for class groups which disapear after several years.
+			try {
+				$memberInfo = dynaddusers_get_member_info($role_gone->group_id);
+				dynaddusers_remove_user_from_blog($user_id, $role_gone->group_id, $role_gone->blog_id);
+			} catch (Exception $e) {
+				// Skip removal for missing groups
+			}
+
 		}
 	}
 
