@@ -140,30 +140,38 @@ function dynaddusers_options_page () {
 	ob_start();
 	$sync = true;
 	if (!empty($_POST['group'])) {
-		if (isset($_POST['group_sync']) && $_POST['group_sync'] == 'sync') {
-			dynaddusers_keep_in_sync($_POST['group'], strip_tags($_POST['role']));
-			$changes = dynaddusers_sync_group(get_current_blog_id(), $_POST['group'], strip_tags($_POST['role']));
-			if (count($changes)) {
-				print implode("\n<br/>", $changes);
-			} else {
-				print "No changes to synchronize.";
-			}
-		} else {
-			$sync = false;
-			$memberInfo = dynaddusers_get_member_info($_POST['group']);
-			if (!is_array($memberInfo)) {
-				print "Could not find members for '".$_POST['group']."'.";
-			} else {
-				foreach ($memberInfo as $info) {
-					try {
-						$user = dynaddusers_get_user($info);
-						dynaddusers_add_user_to_blog($user, $_POST['role']);
-						print "Added ".$user->display_name.' as '.dynaddusers_article($_POST['role']).' '.strip_tags($_POST['role']);
-					} catch (Exception $e) {
-						print htmlentities($e->getMessage());
-					}
-					print "\n\t<br/>";
+		try {
+			if (isset($_POST['group_sync']) && $_POST['group_sync'] == 'sync') {
+				dynaddusers_keep_in_sync($_POST['group'], strip_tags($_POST['role']));
+				$changes = dynaddusers_sync_group(get_current_blog_id(), $_POST['group'], strip_tags($_POST['role']));
+				if (count($changes)) {
+					print implode("\n<br/>", $changes);
+				} else {
+					print "No changes to synchronize.";
 				}
+			} else {
+				$sync = false;
+				$memberInfo = dynaddusers_get_member_info($_POST['group']);
+				if (!is_array($memberInfo)) {
+					print "Could not find members for '".$_POST['group']."'.";
+				} else {
+					foreach ($memberInfo as $info) {
+						try {
+							$user = dynaddusers_get_user($info);
+							dynaddusers_add_user_to_blog($user, $_POST['role']);
+							print "Added ".$user->display_name.' as '.dynaddusers_article($_POST['role']).' '.strip_tags($_POST['role']);
+						} catch (Exception $e) {
+							print esc_html($e->getMessage());
+						}
+						print "\n\t<br/>";
+					}
+				}
+			}
+		} catch (Exception $e) {
+			if ($e->getCode() == 404) {
+				print "Group '".esc_html($_POST['group'])."' was not found. You may want to stop syncing.";
+			} else {
+				print "Error: " . esc_html($e->getMessage());
 			}
 		}
 	}
@@ -172,18 +180,34 @@ function dynaddusers_options_page () {
 	ob_start();
 	if (!empty($_POST['sync_group_id'])) {
 		if (!empty($_POST['stop_syncing_and_remove_users'])) {
-			dynaddusers_remove_users_in_group($_POST['sync_group_id']);
-			dynaddusers_stop_syncing($_POST['sync_group_id']);
+			try {
+				dynaddusers_remove_users_in_group($_POST['sync_group_id']);
+				dynaddusers_stop_syncing($_POST['sync_group_id']);
+			} catch (Exception $e) {
+				if ($e->getCode() == 404) {
+					print "Group '".esc_html($_POST['sync_group_id'])."' was not found. You may want to stop syncing.";
+				} else {
+					print "Error: " . esc_html($e->getMessage());
+				}
+			}
 		} else if (!empty($_POST['stop_syncing'])) {
 			dynaddusers_stop_syncing($_POST['sync_group_id']);
 		} else {
-			$changes = dynaddusers_sync_group(get_current_blog_id(), $_POST['sync_group_id'], $_POST['role']);
-			print "<strong>Synchronizing ".dynaddusers_get_group_display_name_from_dn($_POST['sync_group_id']).":</strong>\n<br/>";
-			print " &nbsp; &nbsp; ";
-			if (count($changes)) {
-				print implode("\n<br/> &nbsp; &nbsp; ", $changes);
-			} else {
-				print "No changes to synchronize.";
+			try {
+				$changes = dynaddusers_sync_group(get_current_blog_id(), $_POST['sync_group_id'], $_POST['role']);
+				print "<strong>Synchronizing ".dynaddusers_get_group_display_name_from_dn($_POST['sync_group_id']).":</strong>\n<br/>";
+				print " &nbsp; &nbsp; ";
+				if (count($changes)) {
+					print implode("\n<br/> &nbsp; &nbsp; ", $changes);
+				} else {
+					print "No changes to synchronize.";
+				}
+			} catch (Exception $e) {
+				if ($e->getCode() == 404) {
+					print "Group '".esc_html($_POST['sync_group_id'])."' was not found. You may want to stop syncing.";
+				} else {
+					print "Error: " . esc_html($e->getMessage());
+				}
 			}
 		}
 	}
@@ -686,24 +710,23 @@ function dynaddusers_get_member_info ($groupId) {
 function dynaddusers_midd_lookup (array $parameters) {
 	if (!defined('DYNADDUSERS_CAS_DIRECTORY_URL'))
 		throw new Exception('DYNADDUSERS_CAS_DIRECTORY_URL must be defined.');
+	$args = [
+		'timeout' => 120,
+		'user-agent' => 'WordPress DynamicAddUsers',
+	];
 	if (defined('DYNADDUSERS_CAS_DIRECTORY_ADMIN_ACCESS')) {
-		$opts = array(
-			'http' => array(
-				'header' =>
-					"Admin-Access: ".DYNADDUSERS_CAS_DIRECTORY_ADMIN_ACCESS."\r\n".
-					"User-Agent: WordPress DynamicAddUsers\r\n",
-			)
-		);
-		$context = stream_context_create($opts);
-	} else {
-		$context = null;
+		$args['headers']["Admin-Access"] = DYNADDUSERS_CAS_DIRECTORY_ADMIN_ACCESS;
 	}
-	$xml_string = file_get_contents(DYNADDUSERS_CAS_DIRECTORY_URL.'?'.http_build_query($parameters), false, $context);
-	if (!$xml_string)
+	$response = wp_remote_get(DYNADDUSERS_CAS_DIRECTORY_URL.'?'.http_build_query($parameters), $args);
+	if ( !is_array( $response )) {
 		throw new Exception('Could not load XML information for '.print_r($parameters, true));
+	}
+	$xml_string = $response['body'];
+	if (!$xml_string || $response['response']['code'] >= 300)
+		throw new Exception('Could not load XML information for '.print_r($parameters, true), $response['response']['code']);
 	$doc = new DOMDocument;
 	if (!$doc->loadXML($xml_string))
-		throw new Exception('Could not load XML information for '.print_r($parameters, true));
+		throw new Exception('Could not load XML information for '.print_r($parameters, true), $response['response']['code']);
 
 	$xpath = new DOMXPath($doc);
 	$xpath->registerNamespace('cas', 'http://www.yale.edu/tp/cas');
