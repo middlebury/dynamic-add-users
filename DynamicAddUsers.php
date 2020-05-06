@@ -547,8 +547,46 @@ function dynaddusers_create_user (array $userInfo) {
 
 	// Create a new user with a random pass since we are using external logins.
 	$userId = wpmu_create_user($userInfo['user_login'], md5(rand().serialize($userInfo)), $userInfo['user_email']);
-	if (!$userId)
+
+	// If we don't have a user-id, check for old accounts with conflicting email
+	// addresses.
+	if (!$userId) {
+		$oldUser = get_user_by('email', $userInfo['user_email']);
+		if (is_object($oldUser)) {
+			// Verify that the old user no longer exists in the directory.
+			try {
+				$oldUserInfo = dynaddusers_get_user_info($oldUser->get('user_login'));
+				if (!empty($oldUserInfo)) {
+					throw new Exception("Could not create a user for ".print_r($userInfo, true) . '. An existing user with that email address exists in WordPress and the directory.');
+				}
+			}
+			catch (Exception $e) {
+				if ($e->getCode() == 404) {
+					// The old user's ID no longer exists in the directory. It should be safe
+					// to move their email out of the way.
+					if (preg_match('/^(.+)@(middlebury|miis)\.edu$/', $userInfo['user_email'], $m)) {
+						// Change the old-user's email to something else.
+						$replacementEmail = $m[1].'-old-replaced@'.$m[2].'.edu';
+						wp_update_user(['ID' => $oldUser->id, 'user_email' => $replacementEmail]);
+
+						// Try creating the new user account again.
+						$userId = wpmu_create_user($userInfo['user_login'], md5(rand().serialize($userInfo)), $userInfo['user_email']);
+					}
+					else {
+						throw new Exception("Could not create a user for ".print_r($userInfo, true) . '. An existing user with that email address exists in WordPress but the email domain is not middlebury.edu or miis.edu.');
+					}
+				}
+				else {
+					throw $e;
+				}
+			}
+		}
+	}
+
+	// If we still don't have a userId, throw an exception.
+	if (!$userId) {
 		throw new Exception("Could not create a user for ".print_r($userInfo, true));
+	}
 
 	// Add the rest of the user information
 	$userInfo['ID'] = $userId;
@@ -638,8 +676,13 @@ function dynaddusers_get_user_info ($login) {
 	));
 // 	var_dump($xpath->document->saveXML());
 	$entries = $xpath->query('/cas:results/cas:entry');
-	if ($entries->length !== 1)
+	if ($entries->length < 1) {
+		throw new Exception('Could not get user. Expecting 1 entry, found '.$entries->length, 404);
+	}
+	else if ($entries->length > 1) {
 		throw new Exception('Could not get user. Expecting 1 entry, found '.$entries->length);
+	}
+
 	$entry = $entries->item(0);
 
 	return dynaddusers_midd_get_info($entry, $xpath);
