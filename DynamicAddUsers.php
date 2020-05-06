@@ -568,6 +568,7 @@ function dynaddusers_create_user (array $userInfo) {
 						// Change the old-user's email to something else.
 						$replacementEmail = $m[1].'-old-replaced@'.$m[2].'.edu';
 						wp_update_user(['ID' => $oldUser->id, 'user_email' => $replacementEmail]);
+						trigger_error('DynamicAddUsers: Renamed email for old account ' . $oldUser->id . ' / '. $oldUser->get('user_login') . ' from ' . $userInfo['user_email'] . ' to ' . $replacementEmail . '. This address was reused in new user account ' . $userInfo['user_login'], E_USER_WARNING);
 
 						// Try creating the new user account again.
 						$userId = wpmu_create_user($userInfo['user_login'], md5(rand().serialize($userInfo)), $userInfo['user_email']);
