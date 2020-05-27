@@ -65,21 +65,27 @@ function dynaddusers_install () {
 	}
 }
 
-// Hook for logging in
-function dynaddusers_login($user_login, $user = null) {
-	$user = get_user_by('login', $user_login);
-	if (phpCAS::isAuthenticated()) {
-		$member_of = phpCAS::getAttribute('MemberOf');
-		// Ensure that $member of isn't just a null value.
-		if (empty($member_of))
-			$member_of = array();
-		// Case for a single string/integer value for the attribute.
-		if (!is_array($member_of))
-			$member_of = array($member_of);
-		dynaddusers_sync_user($user->ID, $member_of);
+// Hook for logging in.
+// After login, try to load groups from the CAS Directory web service.
+function dynaddusers_on_login(WP_User $user, array $attributes) {
+	if (!empty($attributes['http://middlebury.edu/MiddleburyCollegeUID'][0])) {
+		try {
+			$groups = dynaddusers_get_user_groups($attributes['http://middlebury.edu/MiddleburyCollegeUID'][0]);
+			dynaddusers_sync_user($user->ID, $groups);
+		} catch (Exception $e) {
+			if ($e->getCode() == 404) {
+				// Skip if not found in the data source.
+				trigger_error('DynamicAddUsers: Tried to update user groups for  ' . $user->id . ' / '. $attributes['http://middlebury.edu/MiddleburyCollegeUID'][0] . ' but they were not found the directory service.', E_USER_NOTICE);
+			} else {
+				throw $e;
+			}
+		}
+	} else {
+		trigger_error('DynamicAddUsers: Tried to update user groups for  ' . $user->id . ' / '. print_r($attributes, true) . ' but they do not have a http://middlebury.edu/MiddleburyCollegeUID attribute set.', E_USER_WARNING);
 	}
 }
-add_action('wp_login', 'dynaddusers_login');
+add_action('wp_saml_auth_new_user_authenticated', 'dynaddusers_on_login', 10, 2);
+add_action('wp_saml_auth_existing_user_authenticated', 'dynaddusers_on_login', 10, 2);
 
 // Hook for adding admin menus
 add_action('admin_menu', 'dynaddusers_add_pages');
@@ -687,6 +693,36 @@ function dynaddusers_get_user_info ($login) {
 	$entry = $entries->item(0);
 
 	return dynaddusers_midd_get_info($entry, $xpath);
+}
+
+/**
+ * Fetch an array of group DNs for a user.
+ *
+ * Throws an exception if the user isn't found in the underlying data-source.
+ *
+ * @param string $login
+ * @return array or NULL if not user login found
+ * @since 1/8/10
+ */
+function dynaddusers_get_user_groups ($login) {
+	$xpath = dynaddusers_midd_lookup(array(
+		'action'	=> 'get_user',
+		'id'		=> $login,
+		'include_membership' => 'TRUE',
+	));
+	$entries = $xpath->query('/cas:results/cas:entry');
+	if ($entries->length < 1) {
+		throw new Exception('Could not get user. Expecting 1 entry, found '.$entries->length, 404);
+	}
+	else if ($entries->length > 1) {
+		throw new Exception('Could not get user. Expecting 1 entry, found '.$entries->length);
+	}
+
+	$groups = [];
+	foreach ($xpath->query('cas:attribute[@name="MemberOf"]', $entries->item(0)) as $attribute) {
+		$groups[] = $attribute->getAttribute('value');
+	}
+	return $groups;
 }
 
 /**
