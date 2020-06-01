@@ -73,7 +73,7 @@ function dynaddusers_on_login(WP_User $user, array $attributes) {
 			$groups = dynaddusers_get_user_groups($attributes['http://middlebury.edu/MiddleburyCollegeUID'][0]);
 			dynaddusers_sync_user($user->ID, $groups);
 		} catch (Exception $e) {
-			if ($e->getCode() == 404) {
+			if ($e->getCode() == 404 || $e->getCode() == 400) {
 				// Skip if not found in the data source.
 				trigger_error('DynamicAddUsers: Tried to update user groups for  ' . $user->id . ' / '. $attributes['http://middlebury.edu/MiddleburyCollegeUID'][0] . ' but they were not found the directory service.', E_USER_NOTICE);
 			} else {
