@@ -68,6 +68,9 @@ function dynaddusers_install () {
 // Hook for logging in.
 // After login, try to load groups from the CAS Directory web service.
 function dynaddusers_on_login(WP_User $user, array $attributes) {
+	// Default to no groups.
+	$groups = [];
+
 	if (!empty($attributes['http://middlebury.edu/MiddleburyCollegeUID'][0])) {
 		try {
 			$groups = dynaddusers_get_user_groups($attributes['http://middlebury.edu/MiddleburyCollegeUID'][0]);
@@ -83,9 +86,34 @@ function dynaddusers_on_login(WP_User $user, array $attributes) {
 	} else {
 		trigger_error('DynamicAddUsers: Tried to update user groups for  ' . $user->id . ' / '. print_r($attributes, true) . ' but they do not have a http://middlebury.edu/MiddleburyCollegeUID attribute set.', E_USER_WARNING);
 	}
+
+	// Let other modules take action based on user groups.
+	// See dynaddusers_update_user_on_login(WP_User $user, array $groups) for
+	// an example.
+	do_action('dynaddusers_update_user_on_login', $user, $groups);
 }
 add_action('wp_saml_auth_new_user_authenticated', 'dynaddusers_on_login', 10, 2);
 add_action('wp_saml_auth_existing_user_authenticated', 'dynaddusers_on_login', 10, 2);
+
+
+/**
+ * Set/unset roles and capabilities for the user based on groups.
+ *
+ * @param WP_User $user
+ * @param array $groups
+ */
+function dynaddusers_update_user_on_login(WP_User $user, array $groups) {
+	/*
+	// Example: Let institution users do something.
+	if (in_array('CN=institution,OU=General,OU=Groups,DC=middlebury,DC=edu', $groups)) {
+		$user->add_cap('middlebury_custom_capability');
+	}
+	// For all other users disallow this capability.
+	else {
+		$user->remove_cap('middlebury_custom_capability');
+	}
+	*/
+}
 
 // Hook for adding admin menus
 add_action('admin_menu', 'dynaddusers_add_pages');
