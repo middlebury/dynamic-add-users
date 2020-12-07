@@ -674,7 +674,9 @@ function dynaddusers_get_user_matches ($search) {
 			$matches[] = $databaseMatch;
 		}
 	}
-	return $matches;
+
+	// Filter matches if needed.
+	return apply_filters('dynaddusers__filter_user_matches', $matches);
 }
 
 /**
@@ -708,6 +710,25 @@ function dynaddusers_get_user_matches_from_db($search) {
 	}
 	return $matches;
 }
+
+/**
+ * Filter out old guest accounts that shouldn't be able to log in any more.
+ *
+ * values will look like: guest_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ *
+ * @param array $userMatches
+ * @return array The filtered matches.
+ */
+function dynaddusers_filter_old_guest_accounts($matches) {
+	$results = [];
+	foreach ($matches as $match) {
+		if (!preg_match('/^guest_[a-z0-9]{31,34}$/i', $match['user_login'])) {
+			$results[] = $match;
+		}
+	}
+	return $results;
+}
+add_filter('dynaddusers__filter_user_matches', 'dynaddusers_filter_old_guest_accounts');
 
 /**
  * Fetch an array group ids and display names for a given search string.
