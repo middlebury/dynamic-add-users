@@ -660,6 +660,52 @@ function dynaddusers_get_user_matches ($search) {
 	foreach($xpath->query('/cas:results/cas:entry') as $entry) {
 		$matches[] = dynaddusers_midd_get_info($entry, $xpath);
 	}
+	// Merge in any users from the WordPress database that aren't already in the results.
+	$databaseMatches = dynaddusers_get_user_matches_from_db($search);
+	foreach ($databaseMatches as $databaseMatch) {
+		$inResults = FALSE;
+		foreach ($matches as $match) {
+			if ($match['user_login'] == $databaseMatch['user_login']) {
+				$inResults = TRUE;
+				break;
+			}
+		}
+		if (!$inResults) {
+			$matches[] = $databaseMatch;
+		}
+	}
+	return $matches;
+}
+
+/**
+ * Fetch an array user logins and display names for a given search string.
+ * Ex: array('1' => 'John Doe', '2' => 'Jane Doe');
+ *
+ * @param string $search
+ * @return array
+ */
+function dynaddusers_get_user_matches_from_db($search) {
+	$query = new WP_User_Query( [
+		'search' => '*'.esc_attr( $search ).'*',
+		'search_columns' => [
+			'user_login',
+			'user_nicename',
+			'user_email',
+		],
+		'blog_id' => 1,
+	] );
+	$results = $query->get_results();
+	$matches = [];
+	foreach ($results as $result) {
+		$data = $result->data;
+		$matches[] = [
+			'user_login' => $data->user_login,
+			'user_email' => $data->user_email,
+			'user_nicename' => $data->user_nicename,
+			'nickname' => $data->nickname,
+			'display_name' => $data->display_name,
+		];
+	}
 	return $matches;
 }
 
