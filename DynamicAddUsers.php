@@ -665,7 +665,7 @@ function dynaddusers_get_user_matches ($search) {
 	foreach ($databaseMatches as $databaseMatch) {
 		$inResults = FALSE;
 		foreach ($matches as $match) {
-			if ($match['user_login'] == $databaseMatch['user_login']) {
+			if (mb_strtolower($match['user_login']) == mb_strtolower($databaseMatch['user_login'])) {
 				$inResults = TRUE;
 				break;
 			}
