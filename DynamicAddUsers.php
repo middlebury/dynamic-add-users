@@ -156,16 +156,34 @@ add_action('wp_ajax_dynaddusers_search_groups', 'dynaddusers_search_groups');
 function dynaddusers_options_page () {
 	ob_start();
 	if (isset($_POST['user']) && $_POST['user']) {
-		$info = dynaddusers_get_user_info($_POST['user']);
-		if (!is_array($info)) {
-			print "Could not find user '".$_POST['user']."'.";
+		try {
+			$info = dynaddusers_get_user_info($_POST['user']);
+			if (!is_array($info)) {
+				print "Could not find user '".$_POST['user']."'.";
+			} else {
+				try {
+					// Get or create the user object.
+					$user = dynaddusers_get_user($info);
+				} catch (Exception $e) {
+					print "Error: ".htmlentities($e->getMessage());
+				}
+			}
+		} catch (Exception $e) {
+			// If a users wasn't found/created via info in the CAS directory, look in
+			// the local user database for a matching user.
+			if ($e->getCode() >= 400 && $e->getCode() < 500) {
+				$user = get_user_by('login', $_POST['user']);
+			}
+		}
+
+		if (empty($user)) {
+			print "Could not find user '".esc_attr($_POST['user'])."'.";
 		} else {
 			try {
-				$user = dynaddusers_get_user($info);
 				dynaddusers_add_user_to_blog($user, $_POST['role']);
 				print "Added ".$user->display_name.' as '.strip_tags($_POST['role']);
 			} catch (Exception $e) {
-				print "Error: ".htmlentities($e->getMessage());
+				print $e->getMessage();
 			}
 		}
 	}
