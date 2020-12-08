@@ -704,7 +704,6 @@ function dynaddusers_get_user_matches_from_db($search) {
 			'user_login' => $data->user_login,
 			'user_email' => $data->user_email,
 			'user_nicename' => $data->user_nicename,
-			'nickname' => $data->nickname,
 			'display_name' => $data->display_name,
 		];
 	}
