@@ -7,6 +7,32 @@ Author: Adam Franco
 Author URI: http://www.adamfranco.com/
 */
 
+require_once( dirname(__FILE__) . '/src/DynamicAddUsers/Directory/CASDirectory/Directory.php' );
+require_once( dirname(__FILE__) . '/src/DynamicAddUsers/Directory/DirectoryBase.php' );
+
+use \DynamicAddUsers\Directory\CASDirectory\Directory AS CasDirectoryDirectory;
+use \DynamicAddUsers\Directory\DirectoryBase;
+
+/**
+ * Answer the currently configured directory implementation.
+ *
+ * @return \DynamicAddUsers\Directory\DirectoryInterface
+ */
+function dynaddusers_get_directory() {
+	static $directory;
+	if (!isset($directory)) {
+		if (!defined('DYNADDUSERS_CAS_DIRECTORY_URL')) {
+			throw new Exception('DYNADDUSERS_CAS_DIRECTORY_URL must be defined.');
+		}
+		if (!defined('DYNADDUSERS_CAS_DIRECTORY_ADMIN_ACCESS')) {
+			throw new Exception('DYNADDUSERS_CAS_DIRECTORY_ADMIN_ACCESS must be defined.');
+		}
+		$directory = new CasDirectoryDirectory(DYNADDUSERS_CAS_DIRECTORY_URL, DYNADDUSERS_CAS_DIRECTORY_ADMIN_ACCESS);
+	}
+	return $directory;
+}
+
+
 global $dynaddusers_db_version;
 $dynaddusers_db_version = '0.1';
 
@@ -73,7 +99,7 @@ function dynaddusers_on_login(WP_User $user, array $attributes) {
 
 	if (!empty($attributes['http://middlebury.edu/MiddleburyCollegeUID'][0])) {
 		try {
-			$groups = dynaddusers_get_user_groups($attributes['http://middlebury.edu/MiddleburyCollegeUID'][0]);
+			$groups = dynaddusers_get_directory()->getGroupsForUser($attributes['http://middlebury.edu/MiddleburyCollegeUID'][0]);
 			dynaddusers_sync_user($user->ID, $groups);
 		} catch (Exception $e) {
 			if ($e->getCode() == 404 || $e->getCode() == 400) {
@@ -157,7 +183,7 @@ function dynaddusers_options_page () {
 	ob_start();
 	if (isset($_POST['user']) && $_POST['user']) {
 		try {
-			$info = dynaddusers_get_user_info($_POST['user']);
+			$info = dynaddusers_get_directory()->getUserInfo($_POST['user']);
 			if (!is_array($info)) {
 				print "Could not find user '".$_POST['user']."'.";
 			} else {
@@ -203,7 +229,7 @@ function dynaddusers_options_page () {
 				}
 			} else {
 				$sync = false;
-				$memberInfo = dynaddusers_get_member_info($_POST['group']);
+				$memberInfo = dynaddusers_get_directory()->getGroupMemberInfo($_POST['group']);
 				if (!is_array($memberInfo)) {
 					print "Could not find members for '".$_POST['group']."'.";
 				} else {
@@ -247,7 +273,7 @@ function dynaddusers_options_page () {
 		} else {
 			try {
 				$changes = dynaddusers_sync_group(get_current_blog_id(), $_POST['sync_group_id'], $_POST['role']);
-				print "<strong>Synchronizing ".dynaddusers_get_group_display_name_from_dn($_POST['sync_group_id']).":</strong>\n<br/>";
+				print "<strong>Synchronizing  ". DirectoryBase::convertDnToDisplayPath($_POST['sync_group_id']) . ":</strong>\n<br/>";
 				print " &nbsp; &nbsp; ";
 				if (count($changes)) {
 					print implode("\n<br/> &nbsp; &nbsp; ", $changes);
@@ -310,7 +336,7 @@ function dynaddusers_options_page () {
 		foreach ($groups as $group) {
 			print "\n\t<tr>";
 			print "\n\t\t<td>";
-			print dynaddusers_get_group_display_name_from_dn($group->group_id);
+			print DirectoryBase::convertDnToDisplayPath($group->group_id);
 			print "\n\t\t</td>";
 			print "\n\t\t<td style='padding-left: 10px; padding-right: 10px;'>";
 			print $group->role;
@@ -429,7 +455,7 @@ function dynaddusers_search_users () {
 	header('Content-Type: text/json');
 	$results = array();
 	if ($_REQUEST['term']) {
-		foreach (dynaddusers_get_user_matches($_REQUEST['term']) as $user) {
+		foreach (dynaddusers_get_directory()->getUsersBySearch($_REQUEST['term']) as $user) {
 			$results[] = array(
 				'value' => $user['user_login'],
 				'label' => $user['display_name']." (".$user['user_email'].")",
@@ -447,7 +473,7 @@ function dynaddusers_search_groups () {
 	header('Content-Type: text/json');
 	$results = array();
 	if ($_REQUEST['term']) {
-		foreach (dynaddusers_get_group_matches($_REQUEST['term']) as $id => $displayName) {
+		foreach (dynaddusers_get_directory()->getGroupsBySearch($_REQUEST['term']) as $id => $displayName) {
 			$results[] = array(
 				'value' => $id,
 				'label' => $displayName,
@@ -651,83 +677,6 @@ function dynaddusers_create_user (array $userInfo) {
 	return $user;
 }
 
-/*********************************************************
- * The methods below are particular to the authentication/directory
- * system this plugin is working against. They should be reworked
- * if going against a different sort of directory system.
- *********************************************************/
-
-
-/**
- * Fetch an array user logins and display names for a given search string.
- * Ex: array('1' => 'John Doe', '2' => 'Jane Doe');
- *
- * Re-write this method to use your own searching logic if you do not wish
- * to make use of the same web-service.
- *
- * @param string $search
- * @return array
- * @since 1/8/10
- */
-function dynaddusers_get_user_matches ($search) {
-	$xpath = dynaddusers_midd_lookup(array(
-		'action'	=> 'search_users',
-		'query'		=> $search,
-	));
-	$matches = array();
-	foreach($xpath->query('/cas:results/cas:entry') as $entry) {
-		$matches[] = dynaddusers_midd_get_info($entry, $xpath);
-	}
-	// Merge in any users from the WordPress database that aren't already in the results.
-	$databaseMatches = dynaddusers_get_user_matches_from_db($search);
-	foreach ($databaseMatches as $databaseMatch) {
-		$inResults = FALSE;
-		foreach ($matches as $match) {
-			if (mb_strtolower($match['user_login']) == mb_strtolower($databaseMatch['user_login'])) {
-				$inResults = TRUE;
-				break;
-			}
-		}
-		if (!$inResults) {
-			$matches[] = $databaseMatch;
-		}
-	}
-
-	// Filter matches if needed.
-	return apply_filters('dynaddusers__filter_user_matches', $matches);
-}
-
-/**
- * Fetch an array user logins and display names for a given search string.
- * Ex: array('1' => 'John Doe', '2' => 'Jane Doe');
- *
- * @param string $search
- * @return array
- */
-function dynaddusers_get_user_matches_from_db($search) {
-	$query = new WP_User_Query( [
-		'search' => '*'.esc_attr( $search ).'*',
-		'search_columns' => [
-			'user_login',
-			'user_nicename',
-			'user_email',
-		],
-		'blog_id' => 1,
-	] );
-	$results = $query->get_results();
-	$matches = [];
-	foreach ($results as $result) {
-		$data = $result->data;
-		$matches[] = [
-			'user_login' => $data->user_login,
-			'user_email' => $data->user_email,
-			'user_nicename' => $data->user_nicename,
-			'display_name' => $data->display_name,
-		];
-	}
-	return $matches;
-}
-
 /**
  * Filter out old guest accounts that shouldn't be able to log in any more.
  *
@@ -737,160 +686,15 @@ function dynaddusers_get_user_matches_from_db($search) {
  * @return array The filtered matches.
  */
 function dynaddusers_filter_old_guest_accounts($matches) {
-	$results = [];
-	foreach ($matches as $match) {
-		if (!preg_match('/^guest_[a-z0-9]{31,34}$/i', $match['user_login'])) {
-			$results[] = $match;
-		}
-	}
-	return $results;
+  $results = [];
+  foreach ($matches as $match) {
+    if (!preg_match('/^guest_[a-z0-9]{31,34}$/i', $match['user_login'])) {
+      $results[] = $match;
+    }
+  }
+  return $results;
 }
 add_filter('dynaddusers__filter_user_matches', 'dynaddusers_filter_old_guest_accounts');
-
-/**
- * Fetch an array group ids and display names for a given search string.
- * Ex: array('100' => 'All Students', '5' => 'Faculty');
- *
- * Re-write this method to use your own searching logic if you do not wish
- * to make use of the same web-service.
- *
- * @param string $search
- * @return array
- * @since 1/8/10
- */
-function dynaddusers_get_group_matches ($search) {
-	$xpath = dynaddusers_midd_lookup(array(
-		'action'	=> 'search_groups',
-		'query'		=> $search,
-	));
-	$matches = array();
-	foreach($xpath->query('/cas:results/cas:entry') as $entry) {
-		$matches[dynaddusers_midd_get_group_id($entry, $xpath)] = dynaddusers_midd_get_group_display_name($entry, $xpath);
-	}
-	return $matches;
-}
-
-/**
- * Fetch an array user info for a login string.
- * Elements:
- *	user_login		The login field that will match or be inserted into the users table.
- *	user_email
- *	user_nicename
- *	nickname
- *	display_name
- *	first_name
- *	last_name
- *
- * Re-write this method to use your own searching logic if you do not wish
- * to make use of the same web-service.
- *
- * @param string $login
- * @return array or NULL if not user login found
- * @since 1/8/10
- */
-function dynaddusers_get_user_info ($login) {
-	$xpath = dynaddusers_midd_lookup(array(
-		'action'	=> 'get_user',
-		'id'		=> $login,
-	));
-// 	var_dump($xpath->document->saveXML());
-	$entries = $xpath->query('/cas:results/cas:entry');
-	if ($entries->length < 1) {
-		throw new Exception('Could not get user. Expecting 1 entry, found '.$entries->length, 404);
-	}
-	else if ($entries->length > 1) {
-		throw new Exception('Could not get user. Expecting 1 entry, found '.$entries->length);
-	}
-
-	$entry = $entries->item(0);
-
-	return dynaddusers_midd_get_info($entry, $xpath);
-}
-
-/**
- * Fetch an array of group DNs for a user.
- *
- * Throws an exception if the user isn't found in the underlying data-source.
- *
- * @param string $login
- * @return array or NULL if not user login found
- * @since 1/8/10
- */
-function dynaddusers_get_user_groups ($login) {
-	$xpath = dynaddusers_midd_lookup(array(
-		'action'	=> 'get_user',
-		'id'		=> $login,
-		'include_membership' => 'TRUE',
-	));
-	$entries = $xpath->query('/cas:results/cas:entry');
-	if ($entries->length < 1) {
-		throw new Exception('Could not get user. Expecting 1 entry, found '.$entries->length, 404);
-	}
-	else if ($entries->length > 1) {
-		throw new Exception('Could not get user. Expecting 1 entry, found '.$entries->length);
-	}
-
-	$groups = [];
-	foreach ($xpath->query('cas:attribute[@name="MemberOf"]', $entries->item(0)) as $attribute) {
-		$groups[] = $attribute->getAttribute('value');
-	}
-	return $groups;
-}
-
-/**
- * Fetch a two-dimensional array user info for every member of a group.
- * Ex:
- *	array(
- *		array(
- *			'user_login' => '1',
- *			'user_email' => 'john.doe@example.com',
- *			...
- *		),
- *		array(
- *			'user_login' => '2',
- *			'user_email' => 'jane.doe@example.com',
- *			...
- *		),
- *		...
- *	);
- *
- *
- * Elements:
- *	user_login		The login field that will match or be inserted into the users table.
- *	user_email
- *	user_nicename
- *	nickname
- *	display_name
- *	first_name
- *	last_name
- *
- * Re-write this method to use your own searching logic if you do not wish
- * to make use of the same web-service.
- *
- * @param string $groupId
- * @return array or NULL if group id not found
- * @since 1/8/10
- */
-function dynaddusers_get_member_info ($groupId) {
-	$xpath = dynaddusers_midd_lookup(array(
-		'action'	=> 'get_group_members',
-		'id'		=> $groupId,
-	));
-// 	var_dump($xpath->document->saveXML());
-	$memberInfo = array();
-	foreach($xpath->query('/cas:results/cas:entry') as $entry) {
-		try {
-			$memberInfo[] = dynaddusers_midd_get_info($entry, $xpath);
-		} catch (Exception $e) {
-			if ($e->getCode() == 65004) {
-				// Ignore any groups that we encounter
-			} else {
-				throw $e;
-			}
-		}
-	}
-	return $memberInfo;
-}
 
 /**
  * Answer an array of user ids synced to a blog for a group.
@@ -912,149 +716,6 @@ function dynaddusers_get_synced_users_for_group($blog_id, $group_id) {
 	return $wpdb->get_col($wpdb->prepare($query, $args));
 }
 
-/**
- * Lookup directory information and return it as an XPath object
- *
- * @param array $parameters
- * @return DOMXPath
- * @since 1/8/10
- */
-function dynaddusers_midd_lookup (array $parameters) {
-	if (!defined('DYNADDUSERS_CAS_DIRECTORY_URL'))
-		throw new Exception('DYNADDUSERS_CAS_DIRECTORY_URL must be defined.');
-	$args = [
-		'timeout' => 120,
-		'user-agent' => 'WordPress DynamicAddUsers',
-	];
-	if (defined('DYNADDUSERS_CAS_DIRECTORY_ADMIN_ACCESS')) {
-		$args['headers']["Admin-Access"] = DYNADDUSERS_CAS_DIRECTORY_ADMIN_ACCESS;
-	}
-	$response = wp_remote_get(DYNADDUSERS_CAS_DIRECTORY_URL.'?'.http_build_query($parameters), $args);
-	if ( !is_array( $response )) {
-		throw new Exception('Could not load XML information for '.print_r($parameters, true));
-	}
-	$xml_string = $response['body'];
-	if (!$xml_string || $response['response']['code'] >= 300)
-		throw new Exception('Could not load XML information for '.print_r($parameters, true), $response['response']['code']);
-	$doc = new DOMDocument;
-	if (!$doc->loadXML($xml_string))
-		throw new Exception('Could not load XML information for '.print_r($parameters, true), $response['response']['code']);
-
-	$xpath = new DOMXPath($doc);
-	$xpath->registerNamespace('cas', 'http://www.yale.edu/tp/cas');
-
-	return $xpath;
-}
-
-/**
- * Answer the user info matching a cas:entry element.
- *
- * @param DOMElement $entry
- * @param DOMXPath $xpath
- * @return string
- * @since 1/8/10
- */
-function dynaddusers_midd_get_info (DOMElement $entry, DOMXPath $xpath) {
-	$info = array();
-	$info['user_login'] = dynaddusers_midd_get_login($entry, $xpath);
-	$info['user_email'] = dynaddusers_midd_get_attribute('EMail', $entry, $xpath);
-
-	preg_match('/^(.+)@(.+)$/', $info['user_email'], $matches);
-	$emailUser = $matches[1];
-	$emailDomain = $matches[2];
-	if ($login = dynaddusers_midd_get_attribute('Login', $entry, $xpath))
-		$nicename = $login;
-	else
-		$nicename = $emailUser;
-
-	$info['user_nicename'] = $nicename;
-	$info['nickname'] = $nicename;
-	$info['first_name'] = dynaddusers_midd_get_attribute('FirstName', $entry, $xpath);
-	$info['last_name'] = dynaddusers_midd_get_attribute('LastName', $entry, $xpath);
-	$info['display_name'] = $info['first_name']." ".$info['last_name'];
-	return $info;
-}
-
-/**
- * Answer the login field for an cas:entry element.
- *
- * @param DOMElement $entry
- * @param DOMXPath $xpath
- * @return string
- * @since 1/8/10
- */
-function dynaddusers_midd_get_login (DOMElement $entry, DOMXPath $xpath) {
-	$elements = $xpath->query('./cas:user', $entry);
-	if ($elements->length !== 1) {
-		if ($xpath->query('./cas:group', $entry)->length)
-			throw new Exception('Could not get user login. Expecting one cas:user element, found a cas:group instead.', 65004);
-		else
-			throw new Exception('Could not get user login. Expecting one cas:user element, found '.$elements->length.'.');
-	}
-	return $elements->item(0)->nodeValue;
-}
-
-/**
- * Answer the group id field for an cas:entry element.
- *
- * @param DOMElement $entry
- * @param DOMXPath $xpath
- * @return string
- * @since 1/8/10
- */
-function dynaddusers_midd_get_group_id (DOMElement $entry, DOMXPath $xpath) {
-	$elements = $xpath->query('./cas:group', $entry);
-	if ($elements->length !== 1)
-		throw new Exception('Could not get group id. Expecting one cas:group element, found '.$elements->length.'.');
-	return $elements->item(0)->nodeValue;
-}
-
-/**
- * Answer the group display name for an cas:entry element.
- *
- * @param DOMElement $entry
- * @param DOMXPath $xpath
- * @return string
- * @since 1/8/10
- */
-function dynaddusers_midd_get_group_display_name (DOMElement $entry, DOMXPath $xpath) {
-	$displayName = dynaddusers_midd_get_attribute('DisplayName', $entry, $xpath);
-	$id = dynaddusers_midd_get_group_id($entry, $xpath);
-
-	$displayName .= " (".dynaddusers_get_group_display_name_from_dn($id).")";
-
-	return $displayName;
-}
-
-/**
- * Answer a group display name from a DN.
- *
- * @param strin $dn
- * @return string
- */
-function dynaddusers_get_group_display_name_from_dn ($dn) {
-	// Reverse the DN and trim off the domain parts.
-	$path = ldap_explode_dn($dn, 1);
-	unset($path['count']);
-	$path = array_slice(array_reverse($path), 2);
-	return implode(' > ', $path);
-}
-
-/**
- * Answer the login field for an cas:entry element.
- *
- * @param string $attribute
- * @param DOMElement $entry
- * @param DOMXPath $xpath
- * @return string
- * @since 1/8/10
- */
-function dynaddusers_midd_get_attribute ($attribute, DOMElement $entry, DOMXPath $xpath) {
-	$elements = $xpath->query('./cas:attribute[@name = "'.$attribute.'"]', $entry);
-	if (!$elements->length)
-		return '';
-	return $elements->item(0)->getAttribute('value');
-}
 
 /*********************************************************
  * The methods below are related to synchronizing groups.
@@ -1209,7 +870,7 @@ function dynaddusers_sync_group ($blog_id, $group_id, $role) {
 		'administrator' => 5,
 	);
 	$changes = array();
-	$memberInfo = dynaddusers_get_member_info($group_id);
+	$memberInfo = dynaddusers_get_directory()->getGroupMemberInfo($group_id);
 	if (!is_array($memberInfo)) {
 		throw new Exception("Could not find members for '".$group_id."'.");
 	} else {
@@ -1396,7 +1057,7 @@ function dynaddusers_sync_user ($user_id, array $group_ids) {
 			// Verify that the group still exists and don't remove the user if it is gone.
 			// This is particularly a problem for class groups which disapear after several years.
 			try {
-				$memberInfo = dynaddusers_get_member_info($role_gone->group_id);
+				$memberInfo = dynaddusers_get_directory()->getGroupMemberInfo($role_gone->group_id);
 				dynaddusers_remove_user_from_blog($user_id, $role_gone->group_id, $role_gone->blog_id);
 			} catch (Exception $e) {
 				// Skip removal for missing groups
