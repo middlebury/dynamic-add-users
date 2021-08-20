@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: DynamicAddUsers
+Plugin Name: Dynamic Add Users
 Plugin URI:
 Description: Replaces the 'Add User' screen with a dynamic search for users and groups
 Author: Adam Franco
