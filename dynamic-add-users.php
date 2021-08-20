@@ -37,7 +37,7 @@ global $dynaddusers_db_version;
 $dynaddusers_db_version = '0.1';
 
 if (!defined('DYNADDUSERS_JS_DIR'))
-	define('DYNADDUSERS_JS_DIR', trailingslashit( get_bloginfo('wpurl') ).'wp-content/mu-plugins'.'/'. dirname( plugin_basename(__FILE__)));
+	define('DYNADDUSERS_JS_DIR', trailingslashit( get_bloginfo('wpurl') ).'wp-content/plugins'.'/'. dirname( plugin_basename(__FILE__)));
 
 // Redirect all requests to the WordPress built-in user creation page.
 function dynaddusers_admin_redirect() {
