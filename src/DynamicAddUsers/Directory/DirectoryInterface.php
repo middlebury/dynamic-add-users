@@ -37,13 +37,13 @@ interface DirectoryInterface
   /**
    * Fetch an array user info for a login string.
    * Elements:
-   *	user_login		The login field that will match or be inserted into the users table.
-   *	user_email
-   *	user_nicename
-   *	nickname
-   *	display_name
-   *	first_name
-   *	last_name
+   *  user_login    The login field that will match or be inserted into the users table.
+   *  user_email
+   *  user_nicename
+   *  nickname
+   *  display_name
+   *  first_name
+   *  last_name
    *
    * @param string $login
    * @return array
@@ -66,29 +66,29 @@ interface DirectoryInterface
   /**
    * Fetch a two-dimensional array user info for every member of a group.
    * Ex:
-   *	array(
-   *		array(
-   *			'user_login' => '1',
-   *			'user_email' => 'john.doe@example.com',
-   *			...
-   *		),
-   *		array(
-   *			'user_login' => '2',
-   *			'user_email' => 'jane.doe@example.com',
-   *			...
-   *		),
-   *		...
-   *	);
+   *  array(
+   *    array(
+   *      'user_login' => '1',
+   *      'user_email' => 'john.doe@example.com',
+   *      ...
+   *    ),
+   *    array(
+   *      'user_login' => '2',
+   *      'user_email' => 'jane.doe@example.com',
+   *      ...
+   *    ),
+   *    ...
+   *  );
    *
    *
    * Elements:
-   *	user_login		The login field that will match or be inserted into the users table.
-   *	user_email
-   *	user_nicename
-   *	nickname
-   *	display_name
-   *	first_name
-   *	last_name
+   *  user_login    The login field that will match or be inserted into the users table.
+   *  user_email
+   *  user_nicename
+   *  nickname
+   *  display_name
+   *  first_name
+   *  last_name
    *
    * Note: IDs and values are defined by the underlying implementation and can
    * only be assumed to be strings.
