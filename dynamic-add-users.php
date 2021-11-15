@@ -11,11 +11,13 @@ require_once( dirname(__FILE__) . '/src/DynamicAddUsers/Directory/CASDirectory/D
 require_once( dirname(__FILE__) . '/src/DynamicAddUsers/Directory/DirectoryBase.php' );
 require_once( dirname(__FILE__) . '/src/DynamicAddUsers/UserManager.php' );
 require_once( dirname(__FILE__) . '/src/DynamicAddUsers/GroupSyncer.php' );
+require_once( dirname(__FILE__) . '/src/DynamicAddUsers/LoginMapper/WpSamlAuthLoginMapper.php' );
 
 use \DynamicAddUsers\Directory\CASDirectory\Directory AS CasDirectoryDirectory;
 use \DynamicAddUsers\Directory\DirectoryBase;
 use \DynamicAddUsers\UserManager;
 use \DynamicAddUsers\GroupSyncer;
+use \DynamicAddUsers\LoginMapper\WpSamlAuthLoginMapper;
 
 /**
  * Answer the currently configured directory implementation.
@@ -61,6 +63,24 @@ function dynaddusers_get_group_syncer() {
 	}
 	return $groupSyncer;
 }
+
+/**
+ * Answer the currently configured login-mapper implementation.
+ *
+ * @return \DynamicAddUsers\LoginMapper\LoginMapperInterface
+ */
+function dynaddusers_get_login_mapper() {
+	static $loginMapper;
+	if (!isset($loginMapper)) {
+		$loginMapper = new WpSamlAuthLoginMapper();
+	}
+	return $loginMapper;
+}
+
+/**
+ * Set up login actions.
+ */
+dynaddusers_get_login_mapper()->setup();
 
 
 global $dynaddusers_db_version;
@@ -121,26 +141,34 @@ function dynaddusers_install () {
 	}
 }
 
-// Hook for logging in.
-// After login, try to load groups from the CAS Directory web service.
-function dynaddusers_on_login(WP_User $user, array $attributes) {
+/**
+ * Action to take on user login.
+ *
+ * LoginMapperInterface implementations *should* call this function after
+ * attempting to map a login response to an external user identifier.
+ *
+ * @param WP_User $user
+ *   The user who has authenticated.
+ * @param optional string $external_user_id
+ *   If the login attributes map to an external user identifier that can be
+ *   looked up in the directory service, that ID should be passed here.
+ */
+function dynaddusers_on_login(WP_User $user, $external_user_id = NULL) {
 	// Default to no groups.
 	$groups = [];
 
-	if (!empty($attributes['http://middlebury.edu/MiddleburyCollegeUID'][0])) {
+	if (!is_null($external_user_id)) {
 		try {
-			$groups = dynaddusers_get_directory()->getGroupsForUser($attributes['http://middlebury.edu/MiddleburyCollegeUID'][0]);
+			$groups = dynaddusers_get_directory()->getGroupsForUser($external_user_id);
 			dynaddusers_get_group_syncer()->syncUser($user->ID, $groups);
 		} catch (Exception $e) {
 			if ($e->getCode() == 404 || $e->getCode() == 400) {
 				// Skip if not found in the data source.
-				trigger_error('DynamicAddUsers: Tried to update user groups for  ' . $user->id . ' / '. $attributes['http://middlebury.edu/MiddleburyCollegeUID'][0] . ' but they were not found the directory service.', E_USER_NOTICE);
+				trigger_error('DynamicAddUsers: Tried to update user groups for  ' . $user->id . ' / '. $external_user_id . ' but they were not found the directory service.', E_USER_NOTICE);
 			} else {
 				throw $e;
 			}
 		}
-	} else {
-		trigger_error('DynamicAddUsers: Tried to update user groups for  ' . $user->id . ' / '. print_r($attributes, true) . ' but they do not have a http://middlebury.edu/MiddleburyCollegeUID attribute set.', E_USER_WARNING);
 	}
 
 	// Let other modules take action based on user groups.
@@ -148,9 +176,6 @@ function dynaddusers_on_login(WP_User $user, array $attributes) {
 	// an example.
 	do_action('dynaddusers_update_user_on_login', $user, $groups);
 }
-add_action('wp_saml_auth_new_user_authenticated', 'dynaddusers_on_login', 10, 2);
-add_action('wp_saml_auth_existing_user_authenticated', 'dynaddusers_on_login', 10, 2);
-
 
 /**
  * Set/unset roles and capabilities for the user based on groups.
