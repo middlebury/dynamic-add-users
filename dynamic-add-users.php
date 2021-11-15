@@ -27,17 +27,17 @@ use \DynamicAddUsers\Admin\AddUsers;
  * @return \DynamicAddUsers\Directory\DirectoryInterface
  */
 function dynaddusers_get_directory() {
-	static $directory;
-	if (!isset($directory)) {
-		if (!defined('DYNADDUSERS_CAS_DIRECTORY_URL')) {
-			throw new Exception('DYNADDUSERS_CAS_DIRECTORY_URL must be defined.');
-		}
-		if (!defined('DYNADDUSERS_CAS_DIRECTORY_ADMIN_ACCESS')) {
-			throw new Exception('DYNADDUSERS_CAS_DIRECTORY_ADMIN_ACCESS must be defined.');
-		}
-		$directory = new CasDirectoryDirectory(DYNADDUSERS_CAS_DIRECTORY_URL, DYNADDUSERS_CAS_DIRECTORY_ADMIN_ACCESS);
-	}
-	return $directory;
+  static $directory;
+  if (!isset($directory)) {
+    if (!defined('DYNADDUSERS_CAS_DIRECTORY_URL')) {
+      throw new Exception('DYNADDUSERS_CAS_DIRECTORY_URL must be defined.');
+    }
+    if (!defined('DYNADDUSERS_CAS_DIRECTORY_ADMIN_ACCESS')) {
+      throw new Exception('DYNADDUSERS_CAS_DIRECTORY_ADMIN_ACCESS must be defined.');
+    }
+    $directory = new CasDirectoryDirectory(DYNADDUSERS_CAS_DIRECTORY_URL, DYNADDUSERS_CAS_DIRECTORY_ADMIN_ACCESS);
+  }
+  return $directory;
 }
 
 /**
@@ -46,11 +46,11 @@ function dynaddusers_get_directory() {
  * @return \DynamicAddUsers\Directory\DirectoryInterface
  */
 function dynaddusers_get_user_manager() {
-	static $userManager;
-	if (!isset($userManager)) {
-		$userManager = new UserManager(dynaddusers_get_directory());
-	}
-	return $userManager;
+  static $userManager;
+  if (!isset($userManager)) {
+    $userManager = new UserManager(dynaddusers_get_directory());
+  }
+  return $userManager;
 }
 
 /**
@@ -59,11 +59,11 @@ function dynaddusers_get_user_manager() {
  * @return \DynamicAddUsers\Directory\DirectoryInterface
  */
 function dynaddusers_get_group_syncer() {
-	static $groupSyncer;
-	if (!isset($groupSyncer)) {
-		$groupSyncer = new GroupSyncer(dynaddusers_get_directory(), dynaddusers_get_user_manager());
-	}
-	return $groupSyncer;
+  static $groupSyncer;
+  if (!isset($groupSyncer)) {
+    $groupSyncer = new GroupSyncer(dynaddusers_get_directory(), dynaddusers_get_user_manager());
+  }
+  return $groupSyncer;
 }
 
 /**
@@ -72,11 +72,11 @@ function dynaddusers_get_group_syncer() {
  * @return \DynamicAddUsers\LoginMapper\LoginMapperInterface
  */
 function dynaddusers_get_login_mapper() {
-	static $loginMapper;
-	if (!isset($loginMapper)) {
-		$loginMapper = new WpSamlAuthLoginMapper();
-	}
-	return $loginMapper;
+  static $loginMapper;
+  if (!isset($loginMapper)) {
+    $loginMapper = new WpSamlAuthLoginMapper();
+  }
+  return $loginMapper;
 }
 
 // Database table check.
@@ -92,33 +92,33 @@ add_action( 'plugins_loaded', 'dynaddusers_update_db_check' );
  * Install hook.
  */
 function dynaddusers_install () {
-	global $wpdb;
+  global $wpdb;
 
-	$groups = $wpdb->base_prefix . "dynaddusers_groups";
-	$synced = $wpdb->base_prefix . "dynaddusers_synced";
-	if ($wpdb->get_var("SHOW TABLES LIKE '$groups'") != $groups) {
-		require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+  $groups = $wpdb->base_prefix . "dynaddusers_groups";
+  $synced = $wpdb->base_prefix . "dynaddusers_synced";
+  if ($wpdb->get_var("SHOW TABLES LIKE '$groups'") != $groups) {
+    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 
-		$sql = "CREATE TABLE " . $groups . " (
-			blog_id int(11) NOT NULL,
-			group_id varchar(255) NOT NULL,
-			role varchar(25) NOT NULL,
-			last_sync datetime default NULL,
-			PRIMARY KEY  (blog_id,group_id),
-			KEY last_sync (last_sync)
-		);";
-		dbDelta($sql);
+    $sql = "CREATE TABLE " . $groups . " (
+      blog_id int(11) NOT NULL,
+      group_id varchar(255) NOT NULL,
+      role varchar(25) NOT NULL,
+      last_sync datetime default NULL,
+      PRIMARY KEY  (blog_id,group_id),
+      KEY last_sync (last_sync)
+    );";
+    dbDelta($sql);
 
-		$sql = "CREATE TABLE " . $synced . " (
-			blog_id int(11) NOT NULL,
-			group_id varchar(255) NOT NULL,
-			user_id int(11) NOT NULL,
-			PRIMARY KEY  (blog_id,group_id,user_id)
-		);";
-		dbDelta($sql);
+    $sql = "CREATE TABLE " . $synced . " (
+      blog_id int(11) NOT NULL,
+      group_id varchar(255) NOT NULL,
+      user_id int(11) NOT NULL,
+      PRIMARY KEY  (blog_id,group_id,user_id)
+    );";
+    dbDelta($sql);
 
-		add_option("dynaddusers_db_version", DYNADDUSERS_DB_VERSION);
-	}
+    add_option("dynaddusers_db_version", DYNADDUSERS_DB_VERSION);
+  }
 }
 
 // Set up login actions.
@@ -150,27 +150,27 @@ AddUsers::init(dynaddusers_get_directory(), dynaddusers_get_user_manager(), dyna
  *   looked up in the directory service, that ID should be passed here.
  */
 function dynaddusers_on_login(WP_User $user, $external_user_id = NULL) {
-	// Default to no groups.
-	$groups = [];
+  // Default to no groups.
+  $groups = [];
 
-	if (!is_null($external_user_id)) {
-		try {
-			$groups = dynaddusers_get_directory()->getGroupsForUser($external_user_id);
-			dynaddusers_get_group_syncer()->syncUser($user->ID, $groups);
-		} catch (Exception $e) {
-			if ($e->getCode() == 404 || $e->getCode() == 400) {
-				// Skip if not found in the data source.
-				trigger_error('DynamicAddUsers: Tried to update user groups for  ' . $user->id . ' / '. $external_user_id . ' but they were not found the directory service.', E_USER_NOTICE);
-			} else {
-				throw $e;
-			}
-		}
-	}
+  if (!is_null($external_user_id)) {
+    try {
+      $groups = dynaddusers_get_directory()->getGroupsForUser($external_user_id);
+      dynaddusers_get_group_syncer()->syncUser($user->ID, $groups);
+    } catch (Exception $e) {
+      if ($e->getCode() == 404 || $e->getCode() == 400) {
+        // Skip if not found in the data source.
+        trigger_error('DynamicAddUsers: Tried to update user groups for  ' . $user->id . ' / '. $external_user_id . ' but they were not found the directory service.', E_USER_NOTICE);
+      } else {
+        throw $e;
+      }
+    }
+  }
 
-	// Let other modules take action based on user groups.
-	// See dynaddusers_update_user_on_login(WP_User $user, array $groups) for
-	// an example.
-	do_action('dynaddusers_update_user_on_login', $user, $groups);
+  // Let other modules take action based on user groups.
+  // See dynaddusers_update_user_on_login(WP_User $user, array $groups) for
+  // an example.
+  do_action('dynaddusers_update_user_on_login', $user, $groups);
 }
 
 /**
@@ -180,16 +180,16 @@ function dynaddusers_on_login(WP_User $user, $external_user_id = NULL) {
  * @param array $groups
  */
 function dynaddusers_update_user_on_login(WP_User $user, array $groups) {
-	/*
-	// Example: Let institution users do something.
-	if (in_array('CN=institution,OU=General,OU=Groups,DC=middlebury,DC=edu', $groups)) {
-		$user->add_cap('middlebury_custom_capability');
-	}
-	// For all other users disallow this capability.
-	else {
-		$user->remove_cap('middlebury_custom_capability');
-	}
-	*/
+  /*
+  // Example: Let institution users do something.
+  if (in_array('CN=institution,OU=General,OU=Groups,DC=middlebury,DC=edu', $groups)) {
+    $user->add_cap('middlebury_custom_capability');
+  }
+  // For all other users disallow this capability.
+  else {
+    $user->remove_cap('middlebury_custom_capability');
+  }
+  */
 }
 
 /**
@@ -221,8 +221,8 @@ add_filter('dynaddusers__filter_user_matches', 'dynaddusers_filter_old_guest_acc
 // // Schedule cron jobs for group syncing
 // add_action('dynaddusers_group_sync_event', 'dynaddusers_sync_all_groups');
 // function dynaddusers_activation() {
-// 	if ( !wp_next_scheduled( 'dynaddusers_group_sync_event' ) ) {
-// 		wp_schedule_event(time(), 'daily', 'dynaddusers_group_sync_event');
-// 	}
+//   if ( !wp_next_scheduled( 'dynaddusers_group_sync_event' ) ) {
+//     wp_schedule_event(time(), 'daily', 'dynaddusers_group_sync_event');
+//   }
 // }
 // add_action('wp', 'dynaddusers_activation');
