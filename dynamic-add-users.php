@@ -85,13 +85,10 @@ function dynaddusers_get_login_mapper() {
 dynaddusers_get_login_mapper()->setup();
 
 
-global $dynaddusers_db_version;
-$dynaddusers_db_version = '0.1';
-
-// Database table check
+// Database table check.
+define('DYNADDUSERS_DB_VERSION', '0.1');
 function dynaddusers_update_db_check() {
-    global $dynaddusers_db_version;
-    if (get_site_option( 'dynaddusers_db_version' ) != $dynaddusers_db_version) {
+    if (get_site_option( 'dynaddusers_db_version' ) != DYNADDUSERS_DB_VERSION) {
         dynaddusers_install();
     }
 }
@@ -102,7 +99,6 @@ add_action( 'plugins_loaded', 'dynaddusers_update_db_check' );
  */
 function dynaddusers_install () {
 	global $wpdb;
-	global $dynaddusers_db_version;
 
 	$groups = $wpdb->base_prefix . "dynaddusers_groups";
 	$synced = $wpdb->base_prefix . "dynaddusers_synced";
@@ -127,7 +123,7 @@ function dynaddusers_install () {
 		);";
 		dbDelta($sql);
 
-		add_option("dynaddusers_db_version", $dynaddusers_db_version);
+		add_option("dynaddusers_db_version", DYNADDUSERS_DB_VERSION);
 	}
 }
 
