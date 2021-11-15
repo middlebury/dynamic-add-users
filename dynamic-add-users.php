@@ -88,10 +88,6 @@ dynaddusers_get_login_mapper()->setup();
 global $dynaddusers_db_version;
 $dynaddusers_db_version = '0.1';
 
-if (!defined('DYNADDUSERS_JS_DIR'))
-	define('DYNADDUSERS_JS_DIR', trailingslashit( get_bloginfo('wpurl') ).'wp-content/plugins'.'/'. dirname( plugin_basename(__FILE__)));
-	
-
 // Database table check
 function dynaddusers_update_db_check() {
     global $dynaddusers_db_version;
