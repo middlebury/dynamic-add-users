@@ -3,7 +3,7 @@
 namespace DynamicAddUsers;
 
 /**
- *
+ * User Managers provide the ability to get or create users and assign roles.
  */
 interface UserManagerInterface
 {

@@ -3,7 +3,7 @@
 namespace DynamicAddUsers;
 
 /**
- *
+ * Group Syncers assign roles in WordPress sites based on group membership.
  */
 interface GroupSyncerInterface
 {
