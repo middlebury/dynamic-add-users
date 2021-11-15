@@ -7,14 +7,14 @@ Author: Adam Franco
 Author URI: http://www.adamfranco.com/
 */
 
-require_once( dirname(__FILE__) . '/src/DynamicAddUsers/Directory/CASDirectory/Directory.php' );
+require_once( dirname(__FILE__) . '/src/DynamicAddUsers/Directory/CASDirectoryDirectory.php' );
 require_once( dirname(__FILE__) . '/src/DynamicAddUsers/Directory/DirectoryBase.php' );
 require_once( dirname(__FILE__) . '/src/DynamicAddUsers/UserManager.php' );
 require_once( dirname(__FILE__) . '/src/DynamicAddUsers/GroupSyncer.php' );
 require_once( dirname(__FILE__) . '/src/DynamicAddUsers/LoginMapper/WpSamlAuthLoginMapper.php' );
 require_once( dirname(__FILE__) . '/src/DynamicAddUsers/Admin/AddUsers.php' );
 
-use \DynamicAddUsers\Directory\CASDirectory\Directory AS CasDirectoryDirectory;
+use \DynamicAddUsers\Directory\CASDirectoryDirectory;
 use \DynamicAddUsers\Directory\DirectoryBase;
 use \DynamicAddUsers\UserManager;
 use \DynamicAddUsers\GroupSyncer;
