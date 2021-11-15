@@ -152,10 +152,10 @@ class GroupSyncer implements GroupSyncerInterface
     WHERE
       ";
     $args = array();
-    if (count($group_ids)) {
-      $placeholders = array_fill(0, count($group_ids), '%s');
+    if (count($groups)) {
+      $placeholders = array_fill(0, count($groups), '%s');
       $query .= "\n\tg.group_id IN (".implode(', ', $placeholders).")";
-      $args = array_merge($args, $group_ids);
+      $args = array_merge($args, $groups);
     }
     $roles_to_ensure = $wpdb->get_results($wpdb->prepare($query, $args));
     foreach ($roles_to_ensure as $role_to_ensure) {
@@ -184,10 +184,10 @@ class GroupSyncer implements GroupSyncerInterface
       s.user_id = %s
       ";
     $args = array($user_id);
-    if (count($group_ids)) {
-      $placeholders = array_fill(0, count($group_ids), '%s');
+    if (count($groups)) {
+      $placeholders = array_fill(0, count($groups), '%s');
       $query .= "\n\t AND s.group_id NOT IN (".implode(', ', $placeholders).")";
-      $args = array_merge($args, $group_ids);
+      $args = array_merge($args, $groups);
     }
     $roles_gone = $wpdb->get_results($wpdb->prepare($query, $args));
     foreach ($roles_gone as $role_gone) {
