@@ -7,174 +7,33 @@ Author: Adam Franco
 Author URI: http://www.adamfranco.com/
 */
 
-require_once( dirname(__FILE__) . '/src/DynamicAddUsers/Directory/CASDirectoryDirectory.php' );
-require_once( dirname(__FILE__) . '/src/DynamicAddUsers/Directory/DirectoryBase.php' );
-require_once( dirname(__FILE__) . '/src/DynamicAddUsers/UserManager.php' );
-require_once( dirname(__FILE__) . '/src/DynamicAddUsers/GroupSyncer.php' );
-require_once( dirname(__FILE__) . '/src/DynamicAddUsers/LoginMapper/WpSamlAuthLoginMapper.php' );
-require_once( dirname(__FILE__) . '/src/DynamicAddUsers/Admin/AddUsers.php' );
+require_once( dirname(__FILE__) . '/src/DynamicAddUsers/DynamicAddUsersPlugin.php' );
 
-use \DynamicAddUsers\Directory\CASDirectoryDirectory;
-use \DynamicAddUsers\Directory\DirectoryBase;
-use \DynamicAddUsers\UserManager;
-use \DynamicAddUsers\GroupSyncer;
-use \DynamicAddUsers\LoginMapper\WpSamlAuthLoginMapper;
-use \DynamicAddUsers\Admin\AddUsers;
+use \DynamicAddUsers\DynamicAddUsersPlugin;
+use WP_User;
 
 /**
- * Answer the currently configured directory implementation.
+ * Answer the plugin class.
  *
- * @return \DynamicAddUsers\Directory\DirectoryInterface
+ * @return \DynamicAddUsers\DynamicAddUsersPluginInterface
  */
-function dynaddusers_get_directory() {
-  static $directory;
-  if (!isset($directory)) {
-    if (!defined('DYNADDUSERS_CAS_DIRECTORY_URL')) {
-      throw new Exception('DYNADDUSERS_CAS_DIRECTORY_URL must be defined.');
-    }
-    if (!defined('DYNADDUSERS_CAS_DIRECTORY_ADMIN_ACCESS')) {
-      throw new Exception('DYNADDUSERS_CAS_DIRECTORY_ADMIN_ACCESS must be defined.');
-    }
-    $directory = new CasDirectoryDirectory(DYNADDUSERS_CAS_DIRECTORY_URL, DYNADDUSERS_CAS_DIRECTORY_ADMIN_ACCESS);
+function dynaddusers_plugin() {
+  static $plugin;
+  if (!isset($plugin)) {
+    $plugin = new DynamicAddUsersPlugin();
   }
-  return $directory;
+  return $plugin;
 }
+
+// Initialize the plugin instance.
+dynaddusers_plugin();
 
 /**
- * Answer the currently configured directory implementation.
+ * Action: Set/unset roles and capabilities for the user based on groups.
  *
- * @return \DynamicAddUsers\Directory\DirectoryInterface
- */
-function dynaddusers_get_user_manager() {
-  static $userManager;
-  if (!isset($userManager)) {
-    $userManager = new UserManager(dynaddusers_get_directory());
-  }
-  return $userManager;
-}
-
-/**
- * Answer the currently configured directory implementation.
- *
- * @return \DynamicAddUsers\Directory\DirectoryInterface
- */
-function dynaddusers_get_group_syncer() {
-  static $groupSyncer;
-  if (!isset($groupSyncer)) {
-    $groupSyncer = new GroupSyncer(dynaddusers_get_directory(), dynaddusers_get_user_manager());
-  }
-  return $groupSyncer;
-}
-
-/**
- * Answer the currently configured login-mapper implementation.
- *
- * @return \DynamicAddUsers\LoginMapper\LoginMapperInterface
- */
-function dynaddusers_get_login_mapper() {
-  static $loginMapper;
-  if (!isset($loginMapper)) {
-    $loginMapper = new WpSamlAuthLoginMapper();
-  }
-  return $loginMapper;
-}
-
-// Database table check.
-define('DYNADDUSERS_DB_VERSION', '0.1');
-function dynaddusers_update_db_check() {
-    if (get_site_option( 'dynaddusers_db_version' ) != DYNADDUSERS_DB_VERSION) {
-        dynaddusers_install();
-    }
-}
-add_action( 'plugins_loaded', 'dynaddusers_update_db_check' );
-
-/**
- * Install hook.
- */
-function dynaddusers_install () {
-  global $wpdb;
-
-  $groups = $wpdb->base_prefix . "dynaddusers_groups";
-  $synced = $wpdb->base_prefix . "dynaddusers_synced";
-  if ($wpdb->get_var("SHOW TABLES LIKE '$groups'") != $groups) {
-    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-
-    $sql = "CREATE TABLE " . $groups . " (
-      blog_id int(11) NOT NULL,
-      group_id varchar(255) NOT NULL,
-      role varchar(25) NOT NULL,
-      last_sync datetime default NULL,
-      PRIMARY KEY  (blog_id,group_id),
-      KEY last_sync (last_sync)
-    );";
-    dbDelta($sql);
-
-    $sql = "CREATE TABLE " . $synced . " (
-      blog_id int(11) NOT NULL,
-      group_id varchar(255) NOT NULL,
-      user_id int(11) NOT NULL,
-      PRIMARY KEY  (blog_id,group_id,user_id)
-    );";
-    dbDelta($sql);
-
-    add_option("dynaddusers_db_version", DYNADDUSERS_DB_VERSION);
-  }
-}
-
-// Set up login actions.
-dynaddusers_get_login_mapper()->setup();
-// Initialize and register our AddUsers interface.
-AddUsers::init(dynaddusers_get_directory(), dynaddusers_get_user_manager(), dynaddusers_get_group_syncer());
-
-/**
- * Action to take on user login.
- *
- * LoginMapperInterface implementations *should* call this function after
- * attempting to map a login response to an external user identifier.
- *
- * Flow of actions:
- *   1. A LoginMapperInterface implementation hooks into the authentication
- *      plugin's post-authentication action and maps the user attributes to an
- *      external user-id that is valid in the DirectoryInterface implementation.
- *   2. The LoginMapperInterface implementation calls dynaddusers_on_login().
- *   3. dynaddusers_on_login() looks up a user's groups in the
- *      DirectoryInterface implementation.
- *   4. dynaddusers_on_login() passes the user and their groups to the
- *      GroupSyncerInterface implementation to set appropriate roles in target
- *      sites.
- *
- * @param WP_User $user
- *   The user who has authenticated.
- * @param optional string $external_user_id
- *   If the login attributes map to an external user identifier that can be
- *   looked up in the directory service, that ID should be passed here.
- */
-function dynaddusers_on_login(WP_User $user, $external_user_id = NULL) {
-  // Default to no groups.
-  $groups = [];
-
-  if (!is_null($external_user_id)) {
-    try {
-      $groups = dynaddusers_get_directory()->getGroupsForUser($external_user_id);
-      dynaddusers_get_group_syncer()->syncUser($user->ID, $groups);
-    } catch (Exception $e) {
-      if ($e->getCode() == 404 || $e->getCode() == 400) {
-        // Skip if not found in the data source.
-        trigger_error('DynamicAddUsers: Tried to update user groups for  ' . $user->id . ' / '. $external_user_id . ' but they were not found the directory service.', E_USER_NOTICE);
-      } else {
-        throw $e;
-      }
-    }
-  }
-
-  // Let other modules take action based on user groups.
-  // See dynaddusers_update_user_on_login(WP_User $user, array $groups) for
-  // an example.
-  do_action('dynaddusers_update_user_on_login', $user, $groups);
-}
-
-/**
- * Set/unset roles and capabilities for the user based on groups.
+ * This plugin will call
+ *   doAction('dynaddusers_update_user_on_login', $user, $groups)
+ * when a user logs in. Below is an example implementation.
  *
  * @param WP_User $user
  * @param array $groups
@@ -189,6 +48,69 @@ function dynaddusers_update_user_on_login(WP_User $user, array $groups) {
   else {
     $user->remove_cap('middlebury_custom_capability');
   }
+  */
+}
+
+/**
+ * Filter: Filter directory results when searching for users.
+ *
+ * Each match is an array like:
+ *
+ *  [
+ *    'user_login' => '',
+ *    'user_email' => '',
+ *    'user_nicename' => '',
+ *    'display_name' => '',
+ *  ]
+ *
+ * @param array $userMatches
+ * @return array The filtered matches.
+ */
+function dynaddusers_filter_user_matches($matches) {
+  /*
+  // Example: Filter out accounts prefixed with 'guest_'.
+  $results = [];
+  foreach ($matches as $match) {
+    if (!preg_match('/^guest_[a-z0-9]{31,34}$/i', $match['user_login'])) {
+      $results[] = $match;
+    }
+  }
+  return $results;
+  */
+}
+
+/**
+ * Filter: Filter directory results when searching for groups.
+ *
+ * Each matches is an array of group ID => display name. Keys and values depend
+ * on the directory implementation and should not have their format assumed.
+ * Examples:
+ *
+ *  [
+ *    '100' => 'All Students',
+ *    '5' => 'Faculty',
+ *  ]
+ *
+ * or
+ *
+ *  [
+ *    'cn=All Students,OU=Groups,DC=middlebury,DC=edu' => 'All Students',
+ *    'cn=Faculty,OU=Groups,DC=middlebury,DC=edu' => 'Faculty',
+ *  ]
+ *
+ * @param array $matches
+ * @return array The filtered matches.
+ */
+function dynaddusers_filter_group_matches($matches) {
+  /*
+  // Example: Filter out groups prefixed with 'xx' or 'zz'.
+  $results = [];
+  foreach ($matches as $id => $displayName) {
+    if (!preg_match('/^(xx|zz).+$/i', $displayName)) {
+      $results[$id] = $displayName;
+    }
+  }
+  return $results;
   */
 }
 
@@ -209,7 +131,7 @@ function dynaddusers_filter_old_guest_accounts($matches) {
   }
   return $results;
 }
-add_filter('dynaddusers__filter_user_matches', 'dynaddusers_filter_old_guest_accounts');
+add_filter('dynaddusers_filter_user_matches', 'dynaddusers_filter_old_guest_accounts');
 
 
 // For now we will try to avoid syncing all groups via cron as this may take a

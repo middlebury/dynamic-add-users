@@ -36,7 +36,7 @@ abstract class DirectoryBase
     }
 
     // Filter matches if needed.
-    return apply_filters('dynaddusers__filter_user_matches', $matches);
+    return apply_filters('dynaddusers_filter_user_matches', $matches);
   }
 
   /**
@@ -78,6 +78,31 @@ abstract class DirectoryBase
     }
     return $matches;
   }
+
+  /**
+   * Fetch an array group ids and display names for a given search string.
+   * Ex: ['100' => 'All Students', '5' => 'Faculty']
+   *
+   * Re-write this method to use your own searching logic if you do not wish
+   * to make use of the same web-service.
+   *
+   * @param string $search
+   * @return array
+   */
+  public function getGroupsBySearch ($search) {
+    $matches = $this->getGroupsBySearchFromDirectory();
+    // Filter matches if needed.
+    return apply_filters('dynaddusers_filter_group_matches', $matches);
+  }
+
+  /**
+   * Fetch an array group ids and display names for a given search string.
+   * Ex: array('100' => 'All Students', '5' => 'Faculty');
+   *
+   * @param string $search
+   * @return array
+   */
+  abstract protected function getGroupsBySearchFromDirectory ($search);
 
   /**
    * Answer a group display name from a DN.

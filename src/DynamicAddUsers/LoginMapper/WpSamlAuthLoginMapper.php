@@ -3,27 +3,42 @@
 namespace DynamicAddUsers\LoginMapper;
 
 require_once( dirname(__FILE__) . '/LoginMapperInterface.php' );
+require_once( dirname(__FILE__) . '/../DynamicAddUsersPluginInterface.php' );
 
 use Exception;
 use WP_User;
+use DynamicAddUsers\DynamicAddUsersPluginInterface;
 
 /**
  * Map user logins to a user id that can be referenced in the Directory system.
  *
  * Implementations of the LoginMapper *should* take action on user login and
  * call
- *    dynaddusers_on_login(WP_User $user, $external_user_id = NULL)
+ *    DynamicAddUsersPluginInterface::onLogin(WP_User $user, $external_user_id = NULL)
  * after extracting the external user identifier from the login attributes.
- * dynaddusers_on_login() should be called on every login, even if no external
- * user identifier is present in the login attributes.
+ * DynamicAddUsersPluginInterface::onLogin() should be called on every login,
+ * even if no external user identifier is present in the login attributes.
  */
 class WpSamlAuthLoginMapper implements LoginMapperInterface
 {
 
   /**
-   * Set up any login actions and needed configuration.
+   * @var \DynamicAddUsers\DynamicAddUsersPluginInterface $dynamicAddUsersPlugin
+   *   The plugin instance which will this implementation will call
+   *   onLogin(WP_User $user, $external_user_id = NULL) on user login.
    */
-  public function setup () {
+  protected $dynamicAddUsersPlugin;
+
+  /**
+   * Set up any login actions and needed configuration.
+   *
+   * @param \DynamicAddUsers\DynamicAddUsersPluginInterface $dynamicAddUsersPlugin
+   *   The plugin instance which will this implementation will call
+   *   onLogin(WP_User $user, $external_user_id = NULL) on user login.
+   */
+  public function setup (DynamicAddUsersPluginInterface $dynamicAddUsersPlugin) {
+    $this->dynamicAddUsersPlugin = $dynamicAddUsersPlugin;
+
     if (!defined('DYNADDUSERS_WP_SAML_AUTH_USER_ID_ATTRIBUTE')) {
       throw new Exception('DYNADDUSERS_WP_SAML_AUTH_USER_ID_ATTRIBUTE must be defined.');
     }
@@ -50,7 +65,7 @@ class WpSamlAuthLoginMapper implements LoginMapperInterface
     else {
       trigger_error('DynamicAddUsers: Tried to user groups for  ' . $user->id . ' / '. print_r($attributes, true) . ' but they do not have a ' . DYNADDUSERS_WP_SAML_AUTH_USER_ID_ATTRIBUTE . ' attribute set.', E_USER_WARNING);
     }
-    dynaddusers_on_login($user, $external_user_id);
+    $this->dynamicAddUsersPlugin->onLogin($user, $external_user_id);
   }
 
 
