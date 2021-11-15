@@ -114,25 +114,7 @@ function dynaddusers_filter_group_matches($matches) {
   */
 }
 
-/**
- * Filter out old guest accounts that shouldn't be able to log in any more.
- *
- * values will look like: guest_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- *
- * @param array $userMatches
- * @return array The filtered matches.
- */
-function dynaddusers_filter_old_guest_accounts($matches) {
-  $results = [];
-  foreach ($matches as $match) {
-    if (!preg_match('/^guest_[a-z0-9]{31,34}$/i', $match['user_login'])) {
-      $results[] = $match;
-    }
-  }
-  return $results;
-}
-add_filter('dynaddusers_filter_user_matches', 'dynaddusers_filter_old_guest_accounts');
-
+require_once( dirname(__FILE__) . '/src/middlebury-tweaks.php' );
 
 // For now we will try to avoid syncing all groups via cron as this may take a
 // really long time. Instead we will sync all of the groups for a blog when viewing
