@@ -9,7 +9,7 @@ Author URI: http://www.adamfranco.com/
 
 require_once( dirname(__FILE__) . '/src/DynamicAddUsers/DynamicAddUsersPlugin.php' );
 
-use \DynamicAddUsers\DynamicAddUsersPlugin;
+use DynamicAddUsers\DynamicAddUsersPlugin;
 use WP_User;
 
 /**
@@ -27,6 +27,11 @@ function dynaddusers_plugin() {
 
 // Initialize the plugin instance.
 dynaddusers_plugin();
+
+
+/*******************************************************
+ * Actions and Filters
+ *******************************************************/
 
 /**
  * Action: Set/unset roles and capabilities for the user based on groups.
@@ -63,7 +68,12 @@ function dynaddusers_update_user_on_login(WP_User $user, array $groups) {
  *    'display_name' => '',
  *  ]
  *
- * @param array $userMatches
+ * This plugin will call
+ *   apply_filters('dynaddusers_filter_user_matches', $matches)
+ * when searches against the directory are run. Below is an example
+ * implementation.
+ *
+ * @param array $matches
  * @return array The filtered matches.
  */
 function dynaddusers_filter_user_matches($matches) {
@@ -98,6 +108,11 @@ function dynaddusers_filter_user_matches($matches) {
  *    'cn=Faculty,OU=Groups,DC=middlebury,DC=edu' => 'Faculty',
  *  ]
  *
+ * This plugin will call
+ *   apply_filters('dynaddusers_filter_group_matches', $matches)
+ * when searches against the directory are run. Below is an example
+ * implementation.
+ *
  * @param array $matches
  * @return array The filtered matches.
  */
@@ -114,19 +129,5 @@ function dynaddusers_filter_group_matches($matches) {
   */
 }
 
-require_once( dirname(__FILE__) . '/src/middlebury-tweaks.php' );
 
-// For now we will try to avoid syncing all groups via cron as this may take a
-// really long time. Instead we will sync all of the groups for a blog when viewing
-// the user page, and add/remove individuals from all of their groups on login.
-// Hopefully these incremental updates will be sufficient and avoid unneeded big
-// synchronizations.
-//
-// // Schedule cron jobs for group syncing
-// add_action('dynaddusers_group_sync_event', 'dynaddusers_sync_all_groups');
-// function dynaddusers_activation() {
-//   if ( !wp_next_scheduled( 'dynaddusers_group_sync_event' ) ) {
-//     wp_schedule_event(time(), 'daily', 'dynaddusers_group_sync_event');
-//   }
-// }
-// add_action('wp', 'dynaddusers_activation');
+require_once( dirname(__FILE__) . '/src/middlebury-tweaks.php' );
