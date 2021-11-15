@@ -79,12 +79,6 @@ function dynaddusers_get_login_mapper() {
 	return $loginMapper;
 }
 
-/**
- * Set up login actions.
- */
-dynaddusers_get_login_mapper()->setup();
-
-
 // Database table check.
 define('DYNADDUSERS_DB_VERSION', '0.1');
 function dynaddusers_update_db_check() {
@@ -127,11 +121,27 @@ function dynaddusers_install () {
 	}
 }
 
+// Set up login actions.
+dynaddusers_get_login_mapper()->setup();
+// Initialize and register our AddUsers interface.
+AddUsers::init(dynaddusers_get_directory(), dynaddusers_get_user_manager(), dynaddusers_get_group_syncer());
+
 /**
  * Action to take on user login.
  *
  * LoginMapperInterface implementations *should* call this function after
  * attempting to map a login response to an external user identifier.
+ *
+ * Flow of actions:
+ *   1. A LoginMapperInterface implementation hooks into the authentication
+ *      plugin's post-authentication action and maps the user attributes to an
+ *      external user-id that is valid in the DirectoryInterface implementation.
+ *   2. The LoginMapperInterface implementation calls dynaddusers_on_login().
+ *   3. dynaddusers_on_login() looks up a user's groups in the
+ *      DirectoryInterface implementation.
+ *   4. dynaddusers_on_login() passes the user and their groups to the
+ *      GroupSyncerInterface implementation to set appropriate roles in target
+ *      sites.
  *
  * @param WP_User $user
  *   The user who has authenticated.
@@ -181,8 +191,6 @@ function dynaddusers_update_user_on_login(WP_User $user, array $groups) {
 	}
 	*/
 }
-
-AddUsers::init(dynaddusers_get_directory(), dynaddusers_get_user_manager(), dynaddusers_get_group_syncer());
 
 /**
  * Filter out old guest accounts that shouldn't be able to log in any more.
