@@ -39,7 +39,7 @@ interface DynamicAddUsersPluginInterface
   public function getLoginMapper();
 
   /*******************************************************
-   * Login flow -- Internal methods.
+   * Login flow -- Internal methods of the plugin.
    *******************************************************/
 
   /**
@@ -69,5 +69,45 @@ interface DynamicAddUsersPluginInterface
    *   looked up in the directory service, that ID should be passed here.
    */
   public function onLogin(WP_User $user, $external_user_id = NULL);
+
+  /*******************************************************
+   * Configuration -- Internal methods of the plugin.
+   *******************************************************/
+
+  /**
+   * Answer an array of directory implementations that can be configured.
+   *
+   * Format:
+   *   [id => label]
+   *
+   * @return array
+   */
+  public function getDirectoryImplementations();
+
+  /**
+   * Set the directory implementation to use.
+   *
+   * @param string $id
+   *   The identifier of the implementation that should be used.
+   */
+  public function setDirectoryImplementation($id);
+
+  /**
+   * Answer an array of LoginMapper implementations that can be configured.
+   *
+   * Format:
+   *   [id => label]
+   *
+   * @return array
+   */
+  public function getLoginMapperImplementations();
+
+  /**
+   * Set the LoginMapper implementation to use.
+   *
+   * @param string $id
+   *   The identifier of the implementation that should be used.
+   */
+  public function setLoginMapperImplementation($id);
 
 }

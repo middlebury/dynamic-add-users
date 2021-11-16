@@ -16,6 +16,26 @@ class CasDirectoryDirectory extends DirectoryBase implements DirectoryInterface
 {
 
   /**
+   * Answer an identifier for this implementation.
+   *
+   * @return string
+   *   The implementation id.
+   */
+  public static function id() {
+    return 'cas_directory';
+  }
+
+  /**
+   * Answer a label for this implementation.
+   *
+   * @return string
+   *   The implementation label.
+   */
+  public static function label() {
+    return 'CAS Directory';
+  }
+
+  /**
    * @var string $directoryUrl
    *   The directory URL to use for user-information lookup.
    */
@@ -27,10 +47,12 @@ class CasDirectoryDirectory extends DirectoryBase implements DirectoryInterface
    */
   protected $accessToken;
 
-  public function __construct($directoryUrl, $accessToken) {
+  public function __construct() {
+    $directoryUrl = $this->getSetting('dynamic_add_users__cas_directory__directory_url');
     if (!filter_var($directoryUrl, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED)) {
       throw new \InvalidArgumentException('$directoryUrl must be a valid URL with path. \'' . $directoryUrl . '\' given.');
     }
+    $accessToken = $this->getSetting('dynamic_add_users__cas_directory__access_token');
     if (empty($accessToken)) {
       throw new \InvalidArgumentException('$accessToken must be specified.');
     }
@@ -318,6 +340,52 @@ class CasDirectoryDirectory extends DirectoryBase implements DirectoryInterface
     $displayName .= " (" . self::convertDnToDisplayPath($id) . ")";
 
     return $displayName;
+  }
+
+  /**
+   * Answer an array of settings used by this directory.
+   *
+   * This is a nested array that describes the form elements/settings used by
+   * this implementation. Options is only needed for select/radio/checkboxes
+   * type fields.
+   *
+   * Format:
+   *    [
+   *      'setting-key' => [
+   *        'label' => 'setting label',
+   *        'description' => 'description of the setting.',
+   *        'value' => 'current value',
+   *        'type' => 'select',
+   *        'options' => [
+   *          'value' => 'label',
+   *          'value2' => 'label2',
+   *        ],
+   *      ],
+   *      'setting-key-2' => [
+   *        'label' => 'setting label2',
+   *        'description' => 'description of the setting.',
+   *        'value' => 'current value',
+   *        'type' => 'text',
+   *      ],
+   *    ]
+   *
+   * @return array
+   */
+  public function getSettings() {
+    return [
+      'dynamic_add_users__cas_directory__directory_url' => [
+        'label' => 'Directory URL',
+        'description' => 'URL of the CAS Directory web service. Example: https://login.middlebury.edu/directory/',
+        'value' => $this->getSetting('dynamic_add_users__cas_directory__directory_url'),
+        'type' => 'text',
+      ],
+      'dynamic_add_users__cas_directory__access_token' => [
+        'label' => 'Access Token',
+        'description' => 'The access token passed to the CAS Directory web service in an Admin-Access header.',
+        'value' => $this->getSetting('dynamic_add_users__cas_directory__access_token'),
+        'type' => 'password',
+      ],
+    ];
   }
 
 }

@@ -2,10 +2,14 @@
 
 namespace DynamicAddUsers\Directory;
 
+require_once( dirname(__FILE__) . '/../ConfigurableInterface.php' );
+
+use DynamicAddUsers\ConfigurableInterface;
+
 /**
  *
  */
-interface DirectoryInterface
+interface DirectoryInterface extends ConfigurableInterface
 {
 
   /**

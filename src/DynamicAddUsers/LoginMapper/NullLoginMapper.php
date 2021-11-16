@@ -20,7 +20,7 @@ use DynamicAddUsers\DynamicAddUsersPluginInterface;
  * DynamicAddUsersPluginInterface::onLogin() should be called on every login,
  * even if no external user identifier is present in the login attributes.
  */
-class WpSamlAuthLoginMapper extends LoginMapperBase implements LoginMapperInterface
+class NullLoginMapper extends LoginMapperBase implements LoginMapperInterface
 {
 
   /**
@@ -30,7 +30,7 @@ class WpSamlAuthLoginMapper extends LoginMapperBase implements LoginMapperInterf
    *   The implementation id.
    */
   public static function id() {
-    return 'wp_saml_auth';
+    return 'null_login_mapper';
   }
 
   /**
@@ -40,7 +40,7 @@ class WpSamlAuthLoginMapper extends LoginMapperBase implements LoginMapperInterf
    *   The implementation label.
    */
   public static function label() {
-    return 'WP Saml Auth';
+    return 'Null Login Mapper';
   }
 
   /**
@@ -59,32 +59,6 @@ class WpSamlAuthLoginMapper extends LoginMapperBase implements LoginMapperInterf
    */
   public function setup (DynamicAddUsersPluginInterface $dynamicAddUsersPlugin) {
     $this->dynamicAddUsersPlugin = $dynamicAddUsersPlugin;
-
-    add_action('wp_saml_auth_new_user_authenticated', [$this, 'onLogin'], 10, 2);
-    add_action('wp_saml_auth_existing_user_authenticated', [$this, 'onLogin'], 10, 2);
-  }
-
-  /**
-   * Callback action to take on login via the WpSaml module.
-   *
-   * @param WP_User $user
-   *   The user that logged in.
-   * @param array $attributes
-   *   User attributes from the SAML response.
-   */
-  public function onLogin(WP_User $user, array $attributes) {
-    $userIdAttribute = $this->getSetting('dynamic_add_users__wp_saml_auth__user_id_attribute');
-    if (!empty($userIdAttribute)) {
-      throw new Exception('DynamicAddUsers WP Saml Auth user ID attribute must be defined.');
-    }
-    $external_user_id = NULL;
-    if (!empty($attributes[$userIdAttribute][0])) {
-      $external_user_id = $attributes[$userIdAttribute][0];
-    }
-    else {
-      trigger_error('DynamicAddUsers: Tried to user groups for  ' . $user->id . ' / '. print_r($attributes, true) . ' but they do not have a ' . $userIdAttribute . ' attribute set.', E_USER_WARNING);
-    }
-    $this->dynamicAddUsersPlugin->onLogin($user, $external_user_id);
   }
 
   /**
@@ -117,14 +91,7 @@ class WpSamlAuthLoginMapper extends LoginMapperBase implements LoginMapperInterf
    * @return array
    */
   public function getSettings() {
-    return [
-      'dynamic_add_users__wp_saml_auth__user_id_attribute' => [
-        'label' => 'User Id Attribute',
-        'description' => 'The attribute to use as the external user id in the SAML response. This should map to the user-ids known to the Directory implementation. Example: http://middlebury.edu/MiddleburyCollegeUID',
-        'value' => $this->getSetting('dynamic_add_users__wp_saml_auth__user_id_attribute'),
-        'type' => 'text',
-      ],
-    ];
+    return [];
   }
 
 }

@@ -3,8 +3,10 @@
 namespace DynamicAddUsers\LoginMapper;
 
 require_once( dirname(__FILE__) . '/../DynamicAddUsersPluginInterface.php' );
+require_once( dirname(__FILE__) . '/../ConfigurableInterface.php' );
 
 use DynamicAddUsers\DynamicAddUsersPluginInterface;
+use DynamicAddUsers\ConfigurableInterface;
 
 /**
  * Map user logins to a user id that can be referenced in the Directory system.
@@ -16,7 +18,7 @@ use DynamicAddUsers\DynamicAddUsersPluginInterface;
  * DynamicAddUsersPluginInterface::onLogin() should be called on every login,
  * even if no external user identifier is present in the login attributes.
  */
-interface LoginMapperInterface
+interface LoginMapperInterface extends ConfigurableInterface
 {
 
   /**

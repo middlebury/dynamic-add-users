@@ -4,18 +4,23 @@ namespace DynamicAddUsers;
 
 require_once( dirname(__FILE__) . '/DynamicAddUsersPluginInterface.php' );
 require_once( dirname(__FILE__) . '/Directory/CASDirectoryDirectory.php' );
-require_once( dirname(__FILE__) . '/Directory/DirectoryBase.php' );
+require_once( dirname(__FILE__) . '/Directory/NullDirectory.php' );
 require_once( dirname(__FILE__) . '/UserManager.php' );
 require_once( dirname(__FILE__) . '/GroupSyncer.php' );
 require_once( dirname(__FILE__) . '/LoginMapper/WpSamlAuthLoginMapper.php' );
+require_once( dirname(__FILE__) . '/LoginMapper/NullLoginMapper.php' );
 require_once( dirname(__FILE__) . '/Admin/AddUsers.php' );
+require_once( dirname(__FILE__) . '/Admin/NetworkSettings.php' );
 
 use DynamicAddUsers\Directory\CASDirectoryDirectory;
-use DynamicAddUsers\Directory\DirectoryBase;
+use DynamicAddUsers\Directory\NullDirectory;
+use DynamicAddUsers\Directory\DirectoryInterface;
 use DynamicAddUsers\UserManager;
 use DynamicAddUsers\GroupSyncer;
+use DynamicAddUsers\LoginMapper\NullLoginMapper;
 use DynamicAddUsers\LoginMapper\WpSamlAuthLoginMapper;
 use DynamicAddUsers\Admin\AddUsers;
+use DynamicAddUsers\Admin\NetworkSettings;
 use WP_User;
 use Exception;
 
@@ -35,6 +40,8 @@ class DynamicAddUsersPlugin implements DynamicAddUsersPluginInterface
     $this->getLoginMapper();
     // Register our AddUsers interface.
     AddUsers::init($this->getDirectory(), $this->getUserManager(), $this->getGroupSyncer());
+    // Register our NetworkSettings interface.
+    NetworkSettings::init($this);
   }
 
   /*******************************************************
@@ -72,13 +79,18 @@ class DynamicAddUsersPlugin implements DynamicAddUsersPluginInterface
    */
   public function getDirectory() {
     if (!isset($this->directory)) {
-      if (!defined('DYNADDUSERS_CAS_DIRECTORY_URL')) {
-        throw new Exception('DYNADDUSERS_CAS_DIRECTORY_URL must be defined.');
+      // Try to load the configured directory implementation.
+      $implementationId = get_site_option('dynamic_add_users__directory_impl', 'null_directory');
+      foreach ($this->getImplementingClasses('DynamicAddUsers\Directory\DirectoryInterface') as $class) {
+        if ($class::id() == $implementationId) {
+          $this->directory = new $class();
+        }
       }
-      if (!defined('DYNADDUSERS_CAS_DIRECTORY_ADMIN_ACCESS')) {
-        throw new Exception('DYNADDUSERS_CAS_DIRECTORY_ADMIN_ACCESS must be defined.');
+
+      // Set a null directory by default to allow bootstrapping of bad values.
+      if (!isset($this->directory)) {
+        $this->directory = new NullDirectory();
       }
-      $this->directory = new CasDirectoryDirectory(DYNADDUSERS_CAS_DIRECTORY_URL, DYNADDUSERS_CAS_DIRECTORY_ADMIN_ACCESS);
     }
     return $this->directory;
   }
@@ -114,8 +126,18 @@ class DynamicAddUsersPlugin implements DynamicAddUsersPluginInterface
    */
   public function getLoginMapper() {
     if (!isset($this->loginMapper)) {
-      $this->loginMapper = new WpSamlAuthLoginMapper();
-      $this->loginMapper->setup($this);
+      // Try to load the configured directory implementation.
+      $implementationId = get_site_option('dynamic_add_users__login_mapper_impl', 'null_login_mapper');
+      foreach ($this->getImplementingClasses('DynamicAddUsers\LoginMapper\LoginMapperInterface') as $class) {
+        if ($class::id() == $implementationId) {
+          $this->loginMapper = new $class();
+        }
+      }
+
+      // Set a null directory by default to allow bootstrapping of bad values.
+      if (!isset($this->loginMapper)) {
+        $this->loginMapper = new NullLoginMapper();
+      }
     }
     return $this->loginMapper;
   }
@@ -220,6 +242,93 @@ class DynamicAddUsersPlugin implements DynamicAddUsersPluginInterface
 
       add_option("dynaddusers_db_version", self::DYNADDUSERS_DB_VERSION);
     }
+  }
+
+  /*******************************************************
+   * Configuration -- Internal methods of the plugin.
+   *******************************************************/
+
+  /**
+   * Answer an array of directory implementations that can be configured.
+   *
+   * Format:
+   *   [id => label]
+   *
+   * @return array
+   */
+  public function getDirectoryImplementations() {
+    $implementations = [];
+    foreach ($this->getImplementingClasses('DynamicAddUsers\Directory\DirectoryInterface') as $class) {
+      $implementations[$class::id()] = $class::label();
+    }
+    return $implementations;
+  }
+
+  /**
+   * Set the directory implementation to use.
+   *
+   * @param string $id
+   *   The identifier of the implementation that should be used.
+   */
+  public function setDirectoryImplementation($id) {
+    $implementations = $this->getDirectoryImplementations();
+    if (isset($implementations[$id])) {
+      update_site_option('dynamic_add_users__directory_impl', $id);
+      unset($this->directory);
+    }
+    else {
+      throw new Exception('Directory ID, '.esc_attr($id).' is not one of [' . implode(', ', array_keys($implementations)) . '].');
+    }
+  }
+
+  /**
+   * Answer an array of LoginMapper implementations that can be configured.
+   *
+   * Format:
+   *   [id => label]
+   *
+   * @return array
+   */
+  public function getLoginMapperImplementations() {
+    $implementations = [];
+    foreach ($this->getImplementingClasses('DynamicAddUsers\LoginMapper\LoginMapperInterface') as $class) {
+      $implementations[$class::id()] = $class::label();
+    }
+    return $implementations;
+  }
+
+  /**
+   * Set the LoginMapper implementation to use.
+   *
+   * @param string $id
+   *   The identifier of the implementation that should be used.
+   */
+  public function setLoginMapperImplementation($id) {
+    $implementations = $this->getLoginMapperImplementations();
+    if (isset($implementations[$id])) {
+      update_site_option('dynamic_add_users__login_mapper_impl', $id);
+      unset($this->loginMapper);
+    }
+    else {
+      throw new Exception('Login Mapper ID, '.esc_attr($id).' is not one of [' . implode(', ', array_keys($implementations)). '].');
+    }
+  }
+
+  /**
+   * Answer an array of class-names that implement an interface.
+   *
+   * From: https://stackoverflow.com/a/12230576/15872
+   *
+   * @return array
+   *   An array of class-names.
+   */
+  protected function getImplementingClasses( $interfaceName ) {
+    return array_filter(
+        get_declared_classes(),
+        function( $className ) use ( $interfaceName ) {
+            return in_array( $interfaceName, class_implements( $className ) );
+        }
+    );
   }
 
 }
