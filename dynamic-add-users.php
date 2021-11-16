@@ -42,11 +42,11 @@ use DynamicAddUsers\DynamicAddUsersPlugin;
 use WP_User;
 
 /**
- * Answer the plugin class.
+ * Answer the plugin instance.
  *
  * @return \DynamicAddUsers\DynamicAddUsersPluginInterface
  */
-function dynaddusers_plugin() {
+function dynamic_add_users() {
   static $plugin;
   if (!isset($plugin)) {
     $plugin = new DynamicAddUsersPlugin();
@@ -55,7 +55,7 @@ function dynaddusers_plugin() {
 }
 
 // Initialize the plugin instance.
-dynaddusers_plugin();
+dynamic_add_users();
 
 
 /*******************************************************
@@ -66,13 +66,13 @@ dynaddusers_plugin();
  * Action: Set/unset roles and capabilities for the user based on groups.
  *
  * This plugin will call
- *   doAction('dynaddusers_update_user_on_login', $user, $groups)
+ *   doAction('dynamic_add_users__update_user_on_login', $user, $groups)
  * when a user logs in. Below is an example implementation.
  *
  * @param WP_User $user
  * @param array $groups
  */
-function dynaddusers_update_user_on_login(WP_User $user, array $groups) {
+function dynamic_add_users__update_user_on_login(WP_User $user, array $groups) {
   /*
   // Example: Let institution users do something.
   if (in_array('CN=institution,OU=General,OU=Groups,DC=middlebury,DC=edu', $groups)) {
@@ -98,14 +98,14 @@ function dynaddusers_update_user_on_login(WP_User $user, array $groups) {
  *  ]
  *
  * This plugin will call
- *   apply_filters('dynaddusers_filter_user_matches', $matches)
+ *   apply_filters('dynamic_add_users__filter_user_matches', $matches)
  * when searches against the directory are run. Below is an example
  * implementation.
  *
  * @param array $matches
  * @return array The filtered matches.
  */
-function dynaddusers_filter_user_matches($matches) {
+function dynamic_add_users__filter_user_matches($matches) {
   /*
   // Example: Filter out accounts prefixed with 'guest_'.
   $results = [];
@@ -138,14 +138,14 @@ function dynaddusers_filter_user_matches($matches) {
  *  ]
  *
  * This plugin will call
- *   apply_filters('dynaddusers_filter_group_matches', $matches)
+ *   apply_filters('dynamic_add_users__filter_group_matches', $matches)
  * when searches against the directory are run. Below is an example
  * implementation.
  *
  * @param array $matches
  * @return array The filtered matches.
  */
-function dynaddusers_filter_group_matches($matches) {
+function dynamic_add_users__filter_group_matches($matches) {
   /*
   // Example: Filter out groups prefixed with 'xx' or 'zz'.
   $results = [];

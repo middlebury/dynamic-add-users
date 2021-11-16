@@ -58,7 +58,7 @@ interface DynamicAddUsersPluginInterface
    *   4. onLogin() passes the user and their groups to the
    *      GroupSyncerInterface implementation to set appropriate roles in target
    *      sites.
-   *   5. onLogin() finishes and triggers the 'dynaddusers_update_user_on_login'
+   *   5. onLogin() finishes and triggers the 'dynamic_add_users__update_user_on_login'
    *      action to allow other modules to take actions on login.
    *
    *

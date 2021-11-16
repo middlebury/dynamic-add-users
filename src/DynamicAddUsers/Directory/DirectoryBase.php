@@ -36,7 +36,7 @@ abstract class DirectoryBase
     }
 
     // Filter matches if needed.
-    return apply_filters('dynaddusers_filter_user_matches', $matches);
+    return apply_filters('dynamic_add_users__filter_user_matches', $matches);
   }
 
   /**
@@ -92,7 +92,7 @@ abstract class DirectoryBase
   public function getGroupsBySearch ($search) {
     $matches = $this->getGroupsBySearchFromDirectory();
     // Filter matches if needed.
-    return apply_filters('dynaddusers_filter_group_matches', $matches);
+    return apply_filters('dynamic_add_users__filter_group_matches', $matches);
   }
 
   /**

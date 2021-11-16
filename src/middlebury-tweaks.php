@@ -17,4 +17,4 @@ function dynaddusers_filter_old_guest_accounts($matches) {
   }
   return $results;
 }
-add_filter('dynaddusers_filter_user_matches', 'dynaddusers_filter_old_guest_accounts');
+add_filter('dynamic_add_users__filter_user_matches', 'dynaddusers_filter_old_guest_accounts');
