@@ -39,7 +39,7 @@ class DynamicAddUsersPlugin implements DynamicAddUsersPluginInterface
     // Set up login actions.
     $this->getLoginMapper();
     // Register our AddUsers interface.
-    AddUsers::init($this->getDirectory(), $this->getUserManager(), $this->getGroupSyncer());
+    AddUsers::init($this);
     // Register our NetworkSettings interface.
     NetworkSettings::init($this);
   }

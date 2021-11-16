@@ -2,9 +2,8 @@
 
 namespace DynamicAddUsers\Admin;
 
-use DynamicAddUsers\Directory\DirectoryInterface;
-use DynamicAddUsers\GroupSyncerInterface;
-use DynamicAddUsers\UserManagerInterface;
+use DynamicAddUsers\DynamicAddUsersPluginInterface;
+use DynamicAddUsers\Directory\DirectoryBase;
 
 /**
  * Class to generate the AddUsers interface that is presented to site-admins.
@@ -14,53 +13,31 @@ class AddUsers {
   /**
    * Create a new instance.
    *
-   * @param \DynamicAddUsers\Directory\DirectoryInterface $directory
-   *   The directory service implementation for user/group lookup.
-   * @param \DynamicAddUsers\UserManagerInterface $userManger
-   *   The service implementation for user creation/updates.
-   * @param \DynamicAddUsers\GroupSyncerInterface $groupSyncer
-   *   The service implementation for synchronizing group memberships to roles.
+   * @param \DynamicAddUsers\DynamicAddUsersPluginInterface $plugin
+   *   The plugin instance.
    */
-  public static function init(DirectoryInterface $directory, UserManagerInterface $userManager, GroupSyncerInterface $groupSyncer) {
-    static $addUsers;
-    if (!isset($addUsers)) {
-      $addUsers = new static($directory, $userManager, $groupSyncer);
+  public static function init(DynamicAddUsersPluginInterface $plugin) {
+    static $networkSettings;
+    if (!isset($networkSettings)) {
+      $networkSettings = new static($plugin);
     }
-    return $addUsers;
+    return $networkSettings;
   }
 
   /**
-   * @var \DynamicAddUsers\Directory\DirectoryInterface $directory
-   *   The directory service implementation for user/group lookup.
+   * @var \DynamicAddUsers\DynamicAddUsersPluginInterface $plugin
+   *   The plugin instance.
    */
-  protected $directory;
-
-  /**
-   * @var \DynamicAddUsers\UserManagerInterface $userManger
-   *   The service implementation for user creation/updates.
-   */
-  protected $userManger;
-
-  /**
-   * @var \DynamicAddUsers\GroupSyncerInterface $groupSyncer
-   *   The service implementation for synchronizing group memberships to roles.
-   */
-  protected $groupSyncer;
+  protected $plugin;
 
   /**
    * Create a new instance.
    *
-   * @param \DynamicAddUsers\Directory\DirectoryInterface $directory
-   *   The directory service implementation for user/group lookup.
-   * @param \DynamicAddUsers\UserManagerInterface $userManger
-   *   The service implementation for user creation/updates.
-   * @param \DynamicAddUsers\GroupSyncerInterface $groupSyncer
-   *   The service implementation for synchronizing group memberships to roles.
+   * @param \DynamicAddUsers\DynamicAddUsersPluginInterface $plugin
+   *   The plugin instance.
    */
-  protected function __construct(DirectoryInterface $directory, UserManagerInterface $userManager, GroupSyncerInterface $groupSyncer) {
-    $this->directory = $directory;
-    $this->groupSyncer = $groupSyncer;
-    $this->userManger = $userManager;
+  protected function __construct(DynamicAddUsersPluginInterface $plugin) {
+    $this->plugin = $plugin;
 
     add_action('admin_menu', [$this, 'adminMenu']);
     // Hooks for AJAX lookups of users/groups
@@ -115,7 +92,7 @@ class AddUsers {
     ob_start();
     if (isset($_POST['user']) && $_POST['user']) {
       try {
-        $info = $this->directory->getUserInfo($_POST['user']);
+        $info = $this->plugin->getDirectory()->getUserInfo($_POST['user']);
         if (!is_array($info)) {
           print "Could not find user '".$_POST['user']."'.";
         } else {
@@ -152,8 +129,8 @@ class AddUsers {
     if (!empty($_POST['group'])) {
       try {
         if (isset($_POST['group_sync']) && $_POST['group_sync'] == 'sync') {
-          $this->groupSyncer->keepGroupInSync($_POST['group'], strip_tags($_POST['role']));
-          $changes = $this->groupSyncer->syncGroup(get_current_blog_id(), $_POST['group'], strip_tags($_POST['role']));
+          $this->plugin->getGroupSyncer()->keepGroupInSync($_POST['group'], strip_tags($_POST['role']));
+          $changes = $this->plugin->getGroupSyncer()->syncGroup(get_current_blog_id(), $_POST['group'], strip_tags($_POST['role']));
           if (count($changes)) {
             print implode("\n<br/>", $changes);
           } else {
@@ -161,7 +138,7 @@ class AddUsers {
           }
         } else {
           $sync = false;
-          $memberInfo = $this->directory->getGroupMemberInfo($_POST['group']);
+          $memberInfo = $this->plugin->getDirectory()->getGroupMemberInfo($_POST['group']);
           if (!is_array($memberInfo)) {
             print "Could not find members for '".$_POST['group']."'.";
           } else {
@@ -191,8 +168,8 @@ class AddUsers {
     if (!empty($_POST['sync_group_id'])) {
       if (!empty($_POST['stop_syncing_and_remove_users'])) {
         try {
-          $this->groupSyncer->removeUsersInGroup($_POST['sync_group_id']);
-          $this->groupSyncer->stopSyncingGroup($_POST['sync_group_id']);
+          $this->plugin->getGroupSyncer()->removeUsersInGroup($_POST['sync_group_id']);
+          $this->plugin->getGroupSyncer()->stopSyncingGroup($_POST['sync_group_id']);
         } catch (Exception $e) {
           if ($e->getCode() == 404) {
             print "Group '".esc_html($_POST['sync_group_id'])."' was not found. You may want to stop syncing.";
@@ -201,10 +178,10 @@ class AddUsers {
           }
         }
       } else if (!empty($_POST['stop_syncing'])) {
-        $this->groupSyncer->stopSyncingGroup($_POST['sync_group_id']);
+        $this->plugin->getGroupSyncer()->stopSyncingGroup($_POST['sync_group_id']);
       } else {
         try {
-          $changes = $this->groupSyncer->syncGroup(get_current_blog_id(), $_POST['sync_group_id'], $_POST['role']);
+          $changes = $this->plugin->getGroupSyncer()->syncGroup(get_current_blog_id(), $_POST['sync_group_id'], $_POST['role']);
           print "<strong>Synchronizing  ". DirectoryBase::convertDnToDisplayPath($_POST['sync_group_id']) . ":</strong>\n<br/>";
           print " &nbsp; &nbsp; ";
           if (count($changes)) {
@@ -256,7 +233,7 @@ class AddUsers {
 
     print "\n<h3>Synced Groups</h3>";
     print "\n<p>Users who are members of synced groups will automatically be added-to or removed-from the site each time they log into WordPress. If you wish to fully synchronize a group so that you can see all potential users in the WordPress user-list, press the <em>Sync Now</em> button.</p>";
-    $groups = $this->groupSyncer->getSyncedGroups();
+    $groups = $this->plugin->getGroupSyncer()->getSyncedGroups();
     if (!count($groups)) {
       print "\n<p><em>none</em></p>";
     } else {
@@ -382,7 +359,7 @@ class AddUsers {
     header('Content-Type: text/json');
     $results = array();
     if ($_REQUEST['term']) {
-      foreach ($this->directory->getUsersBySearch($_REQUEST['term']) as $user) {
+      foreach ($this->plugin->getDirectory()->getUsersBySearch($_REQUEST['term']) as $user) {
         $results[] = array(
           'value' => $user['user_login'],
           'label' => $user['display_name']." (".$user['user_email'].")",
@@ -400,7 +377,7 @@ class AddUsers {
     header('Content-Type: text/json');
     $results = array();
     if ($_REQUEST['term']) {
-      foreach ($this->directory->getGroupsBySearch($_REQUEST['term']) as $id => $displayName) {
+      foreach ($this->plugin->getDirectory()->getGroupsBySearch($_REQUEST['term']) as $id => $displayName) {
         $results[] = array(
           'value' => $id,
           'label' => $displayName,
