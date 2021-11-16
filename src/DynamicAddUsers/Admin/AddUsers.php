@@ -57,7 +57,7 @@ class AddUsers {
    * @param \DynamicAddUsers\GroupSyncerInterface $groupSyncer
    *   The service implementation for synchronizing group memberships to roles.
    */
-  protected function __consDYNADDUSERS_DB_VERSIONruct(DirectoryInterface $directory, UserManagerInterface $userManager, GroupSyncerInterface $groupSyncer) {
+  protected function __construct(DirectoryInterface $directory, UserManagerInterface $userManager, GroupSyncerInterface $groupSyncer) {
     $this->directory = $directory;
     $this->groupSyncer = $groupSyncer;
     $this->userManger = $userManager;
