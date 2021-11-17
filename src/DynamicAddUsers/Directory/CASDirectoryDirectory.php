@@ -35,26 +35,6 @@ class CasDirectoryDirectory extends DirectoryBase implements DirectoryInterface
     return 'CAS Directory';
   }
 
-  /**
-   * @var string $directoryUrl
-   *   The directory URL to use for user-information lookup.
-   */
-  protected $directoryUrl;
-
-  /**
-   * @var string $accessToken
-   *   The access token to use for user-information lookup.
-   */
-  protected $accessToken;
-
-  public function __construct() {
-    $directoryUrl = $this->getSetting('dynamic_add_users__cas_directory__directory_url');
-    $accessToken = $this->getSetting('dynamic_add_users__cas_directory__access_token');
-
-    $this->directoryUrl = $directoryUrl;
-    $this->accessToken = $accessToken;
-  }
-
   /** API Methods **/
 
   /**
@@ -228,8 +208,8 @@ class CasDirectoryDirectory extends DirectoryBase implements DirectoryInterface
       'timeout' => 120,
       'user-agent' => 'WordPress DynamicAddUsers',
     ];
-    $args['headers']["Admin-Access"] = $this->accessToken;
-    $response = wp_remote_get($this->directoryUrl . '?' . http_build_query($parameters), $args);
+    $args['headers']["Admin-Access"] = $this->getSetting('dynamic_add_users__cas_directory__access_token');
+    $response = wp_remote_get($this->getSetting('dynamic_add_users__cas_directory__directory_url') . '?' . http_build_query($parameters), $args);
     if ( !is_array( $response )) {
       throw new Exception('Could not load XML information for '.print_r($parameters, true));
     }
