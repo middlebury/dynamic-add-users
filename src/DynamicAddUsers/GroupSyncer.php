@@ -284,7 +284,7 @@ class GroupSyncer implements GroupSyncerInterface
           $existing_role = $this->userManager->getUsersCurrentRoleInBlog($user->ID, $blog_id);
           if (!is_user_member_of_blog($user->ID, $blog_id) || $role_levels[$role] > $role_levels[$existing_role]) {
             $this->userManager->addUserToBlog($user, $role, $blog_id, $group_id);
-            $changes[] = 'Added '.$user->display_name.' as '.dynaddusers_article($role).' '.$role.'.';
+            $changes[] = 'Added '.$user->display_name.' as '.$this->article($role).' '.$role.'.';
           }
         } catch (Exception $e) {
           user_error($e->getMessage(), E_USER_WARNING);
@@ -386,6 +386,19 @@ class GroupSyncer implements GroupSyncerInterface
           AND group_id = %s";
     $args = array($blog_id, $group_id);
     return $wpdb->get_col($wpdb->prepare($query, $args));
+  }
+
+  /**
+   * Answer the article 'a' or 'an' for a word.
+   *
+   * @param string $word
+   * @return string 'a' or 'an'
+   */
+  protected function article ($word) {
+    if (preg_match('/^[aeiou]/', $word))
+      return 'an';
+    else
+      return 'a';
   }
 
 }

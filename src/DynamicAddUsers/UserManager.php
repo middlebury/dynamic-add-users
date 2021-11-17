@@ -144,9 +144,9 @@ class UserManager implements UserManagerInterface
     if (is_user_member_of_blog($user->ID, $blog_id)) {
       $existing_role = $this->getUsersCurrentRoleInBlog($user->ID, $blog_id);
       if ($role_levels[$existing_role] > $role_levels[$role]) {
-        throw new Exception("User ".$user->display_name." is already ".dynaddusers_article($existing_role).' '.$existing_role." of this blog, not reducing to ".dynaddusers_article($role).' '.$role.'.');
+        throw new Exception("User ".$user->display_name." is already ".$this->article($existing_role).' '.$existing_role." of this blog, not reducing to ".$this->article($role).' '.$role.'.');
       } else if ($role_levels[$existing_role] == $role_levels[$role]) {
-        throw new Exception("User ".$user->display_name." is already ".dynaddusers_article($existing_role).' '.$existing_role." of this blog.");
+        throw new Exception("User ".$user->display_name." is already ".$this->article($existing_role).' '.$existing_role." of this blog.");
       }
     }
 
@@ -225,4 +225,18 @@ class UserManager implements UserManagerInterface
     }
     return $existing_role;
   }
+
+  /**
+   * Answer the article 'a' or 'an' for a word.
+   *
+   * @param string $word
+   * @return string 'a' or 'an'
+   */
+  protected function article ($word) {
+    if (preg_match('/^[aeiou]/', $word))
+      return 'an';
+    else
+      return 'a';
+  }
+
 }
