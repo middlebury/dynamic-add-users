@@ -127,4 +127,18 @@ class WpSamlAuthLoginMapper extends LoginMapperBase implements LoginMapperInterf
     ];
   }
 
+  /**
+   * Validate the settings and return an array of error messages.
+   *
+   * @return array
+   *   Any error messages for settings. If empty, settings are validated.
+   */
+  public function checkSettings() {
+    $messages = [];
+    if (empty($this->getSetting('dynamic_add_users__wp_saml_auth__user_id_attribute'))) {
+      $messages[] = 'The User ID Attribute must be specified.';
+    }
+    return $messages;
+  }
+
 }

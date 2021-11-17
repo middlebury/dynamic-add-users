@@ -49,13 +49,7 @@ class CasDirectoryDirectory extends DirectoryBase implements DirectoryInterface
 
   public function __construct() {
     $directoryUrl = $this->getSetting('dynamic_add_users__cas_directory__directory_url');
-    if (!filter_var($directoryUrl, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED)) {
-      throw new \InvalidArgumentException('$directoryUrl must be a valid URL with path. \'' . $directoryUrl . '\' given.');
-    }
     $accessToken = $this->getSetting('dynamic_add_users__cas_directory__access_token');
-    if (empty($accessToken)) {
-      throw new \InvalidArgumentException('$accessToken must be specified.');
-    }
 
     $this->directoryUrl = $directoryUrl;
     $this->accessToken = $accessToken;
@@ -386,6 +380,23 @@ class CasDirectoryDirectory extends DirectoryBase implements DirectoryInterface
         'type' => 'password',
       ],
     ];
+  }
+
+  /**
+   * Validate the settings and return an array of error messages.
+   *
+   * @return array
+   *   Any error messages for settings. If empty, settings are validated.
+   */
+  public function checkSettings() {
+    $messages = [];
+    if (!filter_var($this->getSetting('dynamic_add_users__cas_directory__directory_url'), FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED)) {
+      $messages[] = 'Directory URL must be a valid URL with path. \'' . $this->getSetting('dynamic_add_users__cas_directory__directory_url') . '\' given.';
+    }
+    if (empty($this->getSetting('dynamic_add_users__cas_directory__access_token'))) {
+      $messages[] = 'The Access Token must be specified.';
+    }
+    return $messages;
   }
 
 }

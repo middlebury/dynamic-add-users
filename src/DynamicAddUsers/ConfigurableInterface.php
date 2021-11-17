@@ -75,4 +75,20 @@ interface ConfigurableInterface
    */
   public function updateSetting($settingKey, $value);
 
+  /**
+   * Answer true if settings are valid, false otherwise.
+   *
+   * @return boolean
+   *   True if settings are valid, false otherwise.
+   */
+  public function settingsValid();
+
+  /**
+   * Validate the settings and return an array of error messages.
+   *
+   * @return array
+   *   Any error messages for settings. If empty, settings are validated.
+   */
+  public function checkSettings();
+
 }

@@ -140,6 +140,15 @@ class NetworkSettings {
     wp_nonce_field( 'dynamic_add_users_settings' );
     print "\n\t<input type='hidden' name='form_section' value='" . $serviceType . "'>";
     print "\n<h3>" . $serviceTypeLabel . " settings for '" . $service::label() . "'</h3>";
+    if (!$service->settingsValid()) {
+      print "\n<div class='error'>";
+      print "\n\t<ul>";
+      foreach ($service->checkSettings() as $message) {
+        print "\n\t\t<li><strong>" . $service::label() . ":</strong> " . esc_html($message) . "</li>";
+      }
+      print "\n\t</ul>";
+      print "\n</div>";
+    }
     print "\n<table class='form-table'>";
     $this->printSettingsFormElements($service->getSettings());
     print "\n</table>";

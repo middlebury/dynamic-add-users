@@ -162,4 +162,14 @@ class NullDirectory extends DirectoryBase implements DirectoryInterface
     return [];
   }
 
+  /**
+   * Validate the settings and return an array of error messages.
+   *
+   * @return array
+   *   Any error messages for settings. If empty, settings are validated.
+   */
+  public function checkSettings() {
+    return [];
+  }
+
 }

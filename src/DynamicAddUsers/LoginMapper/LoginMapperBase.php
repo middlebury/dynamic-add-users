@@ -33,4 +33,14 @@ abstract class LoginMapperBase
     update_site_option($settingKey, $value);
   }
 
+  /**
+   * Answer true if settings are valid, false otherwise.
+   *
+   * @return boolean
+   *   True if settings are valid, false otherwise.
+   */
+  public function settingsValid() {
+    return empty($this->checkSettings());
+  }
+
 }
