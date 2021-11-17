@@ -379,4 +379,190 @@ class CasDirectoryDirectory extends DirectoryBase implements DirectoryInterface
     return $messages;
   }
 
+  /**
+   * Answer an array of test argments that should be passed to our test function.
+   *
+   * This is a nested array that describes the form elements/arguments used by
+   * this implementation. Options is only needed for select/radio/checkboxes
+   * type fields.
+   *
+   * Format:
+   *    [
+   *      'argument' => [
+   *        'label' => 'argument label',
+   *        'description' => 'description of the argument.',
+   *        'value' => 'current value',
+   *        'type' => 'select',
+   *        'options' => [
+   *          'value' => 'label',
+   *          'value2' => 'label2',
+   *        ],
+   *      ],
+   *      'argument_2' => [
+   *        'label' => 'argument label2',
+   *        'description' => 'description of the argument.',
+   *        'value' => 'current value',
+   *        'type' => 'text',
+   *      ],
+   *    ]
+   *
+   * @return array
+   */
+  public function getTestArguments() {
+    return [
+      'query' => [
+        'label' => 'Query',
+        'description' => 'Query to send to the the directory service for user search/lookup or group search. Values should be: <dl><dt>User Lookup:</dt><dd>An external user-id</dd><dt>User Search:</dt><dd>A partial name/email.</dd><dt>Group Lookup:</dt><dd>A Group Id</dd><dt>Group Search:</dt><dd>A partial group name.</dd></dl>',
+        'value' => '',
+        'type' => 'text',
+      ],
+      'query_type' => [
+        'label' => 'Query Type',
+        'description' => 'What type of search to do.',
+        'value' => 'user_search',
+        'type' => 'select',
+        'options' => [
+          'user_lookup' => 'User Lookup',
+          'user_search' => 'User Search',
+          'group_lookup' => 'Group Lookup',
+          'group_search' => 'Group Search',
+        ],
+      ],
+    ];
+  }
+
+  /**
+   * If possible, test the settings against the backing system.
+   *
+   * @param array $arguments
+   *   An array of arguments [argument => value, argument_2 => value2] as
+   *   described by getTestArguments().
+   *
+   * @return array
+   *   An array of results with information about each test performed.
+   *   Each result should indicatate success or failure as well as a message.
+   *      [
+   *        [
+   *          'success' => true,
+   *          'message' => 'Host exists at the URL provided.',
+   *        ],
+   *        [
+   *          'success' => false,
+   *          'message' => 'Query for xyz failed.',
+   *        ],
+   *      ]
+   */
+  public function testSettings(array $arguments = []) {
+    $messages = [];
+
+    // test the setting existance.
+    $checkSettingsMessages = $this->checkSettings();
+    if (empty($checkSettingsMessages)) {
+      $messages[] = [
+        'success' => TRUE,
+        'message' => 'Settings have the correct format for Directory URL and Access Token.',
+      ];
+    }
+    else {
+      foreach ($checkSettingsMessages as $checkSettingsMessage) {
+        $messages[] = [
+          'success' => FALSE,
+          'message' => $checkSettingsMessage,
+        ];
+      }
+    }
+
+    if (empty($arguments['query'])) {
+      $messages[] = [
+        'success' => FALSE,
+        'message' => 'You must specify a query to execute this test.',
+      ];
+      return $messages;
+    }
+
+    switch($arguments['query_type']) {
+      case 'user_lookup':
+        try {
+          $info = $this->getUserInfo($arguments['query']);
+          $messages[] = [
+            'success' => TRUE,
+            'message' => 'Found user info for "' . esc_html($arguments['query']) . '": <pre>' . esc_html(print_r($info, true)) . '</pre>',
+          ];
+        }
+        catch (Exception $e) {
+          $messages[] = [
+            'success' => FALSE,
+            'message' => 'Failed to lookup user info for "' . esc_html($arguments['query']) . '" Code: ' . $e->getCode() . ' Message: ' . esc_html($message),
+          ];
+        }
+        try {
+          $groups = $this->getGroupsForUser($arguments['query']);
+          $messages[] = [
+            'success' => TRUE,
+            'message' => 'Found groups for "' . esc_html($arguments['query']) . '": <pre>' . esc_html(print_r($groups, true)) . '</pre>',
+          ];
+        }
+        catch (Exception $e) {
+          $messages[] = [
+            'success' => FALSE,
+            'message' => 'Failed to lookup user groups for "' . esc_html($arguments['query']) . '" Code: ' . $e->getCode() . ' Message: ' . esc_html($message),
+          ];
+        }
+        break;
+      case 'user_search':
+        try {
+          $infos = $this->getUsersBySearchFromDirectory($arguments['query']);
+          $messages[] = [
+            'success' => TRUE,
+            'message' => 'Found users matching "' . esc_html($arguments['query']) . '": <pre>' . esc_html(print_r($infos, true)) . '</pre>',
+          ];
+        }
+        catch (Exception $e) {
+          $messages[] = [
+            'success' => FALSE,
+            'message' => 'Failed to search users matching "' . esc_html($arguments['query']) . '" Code: ' . $e->getCode() . ' Message: ' . esc_html($message),
+          ];
+        }
+        break;
+      case 'group_lookup':
+        try {
+          $info = $this->getGroupMemberInfo($arguments['query']);
+          $messages[] = [
+            'success' => TRUE,
+            'message' => 'Found user info for members of "' . esc_html($arguments['query']) . '": <pre>' . esc_html(print_r($info, true)) . '</pre>',
+          ];
+        }
+        catch (Exception $e) {
+          $messages[] = [
+            'success' => FALSE,
+            'message' => 'Failed to lookup group members for "' . esc_html($arguments['query']) . '" Code: ' . $e->getCode() . ' Message: ' . esc_html($message),
+          ];
+        }
+        break;
+      case 'group_search':
+        try {
+          $groups = $this->getGroupsBySearchFromDirectory($arguments['query']);
+          $messages[] = [
+            'success' => TRUE,
+            'message' => 'Found groups matching "' . esc_html($arguments['query']) . '": <pre>' . esc_html(print_r($groups, true)) . '</pre>',
+          ];
+        }
+        catch (Exception $e) {
+          $messages[] = [
+            'success' => FALSE,
+            'message' => 'Failed to search groups matching "' . esc_html($arguments['query']) . '" Code: ' . $e->getCode() . ' Message: ' . esc_html($message),
+          ];
+        }
+        break;
+
+      default:
+        $messages[] = [
+          'success' => FALSE,
+          'message' => 'Unknown Query Type: "' . esc_html($arguments['query_type']) .'"',
+        ];
+    }
+
+    return $messages;
+  }
+
 }

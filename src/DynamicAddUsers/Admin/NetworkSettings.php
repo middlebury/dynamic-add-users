@@ -46,15 +46,42 @@ class NetworkSettings {
    * Handler for the 'network_admin_menu' action. Create our menu item[s].
    */
   public function networkAdminMenu () {
-    add_submenu_page('settings.php', 'Dynamic Add Users', 'Dynamic Add Users', 'manage_network', 'dynamic_add_users', [$this, 'settingsPage']);
+    add_submenu_page('settings.php', 'Dynamic Add Users', 'Dynamic Add Users', 'manage_network', 'dynamic_add_users', [$this, 'settingsController']);
   }
 
-  function settingsPage () {
+  /**
+   * Common entry point for our settings pages.
+   */
+  public function settingsController () {
     if (!current_user_can('manage_network')) {
       wp_die('You don\'t have permissions to use this page.');
     }
 
     print "\n<div class='wrap'>";
+
+    if (isset($_GET['tab']) && $_GET['tab'] == 'test') {
+      $this->printTabMenu('test');
+      $this->testPage();
+    }
+    else {
+      $this->printTabMenu('settings');
+      $this->settingsPage();
+    }
+
+    print "\n</div>";
+  }
+
+  public function printTabMenu($currentTab = 'settings') {
+    print "\n<h2 class='nav-tab-wrapper'>";
+    print "\n\t<a class='nav-tab " . ($currentTab == 'settings' ? 'nav-tab-active' : '') . "' href='" . network_admin_url( 'settings.php?page=dynamic_add_users&tab=settings' ) . "'>Settings</a>";
+    print "\n\t<a class='nav-tab " . ($currentTab == 'test' ? 'nav-tab-active' : '') . "' href='" . network_admin_url( 'settings.php?page=dynamic_add_users&tab=test' ) . "'>Test</a>";
+    print "\n</h2>";
+  }
+
+  /**
+   * Page for viewing/saving options.
+   */
+  function settingsPage () {
 
     // Save our form values.
     if ($_POST) {
@@ -122,7 +149,6 @@ class NetworkSettings {
     // LoginMapper settings.
     $this->printServiceForm('login_mapper', 'Login Mapper', $this->plugin->getLoginMapper());
 
-    print "\n</div>";
   }
 
   /**
@@ -162,7 +188,7 @@ class NetworkSettings {
    * @param array $settings
    *   The description of the form elements.
    */
-  protected function printSettingsFormElements($settings) {
+  protected function printSettingsFormElements(array $settings) {
     if (empty($settings)) {
       print "\n\t<tr valign='top'>";
       print "\n\t\t<td>";
@@ -215,6 +241,84 @@ class NetworkSettings {
           $service->updateSetting($settingId, $_POST[$settingId]);
         }
       }
+    }
+  }
+
+  function testPage () {
+    // Directory test.
+    $this->serviceTestForm('directory', 'Directory', $this->plugin->getDirectory());
+
+    // LoginMapper settings.
+    $this->serviceTestForm('login_mapper', 'Login Mapper', $this->plugin->getLoginMapper());
+  }
+
+  /**
+   * Print out the test form for one of our services.
+   *
+   * @param string $serviceType
+   *   The type of service
+   * @param string $serviceTypeLabel
+   *   A label for type of service
+   * @param \DynamicAddUsers\ConfigurableInterface $service
+   *   The service to print the form for.
+   */
+  protected function serviceTestForm($serviceType, $serviceTypeLabel, ConfigurableInterface $service) {
+    $formElements = $service->getTestArguments();
+    $args = [];
+    if ($_POST && $_POST['form_section'] == $serviceType) {
+      check_admin_referer('dynamic_add_users_test');
+      $args = $this->getSubmittedValues($formElements);
+      // Populate the last-submitted values to the form to allow re-playing the
+      // test.
+      foreach ($args as $key => $value) {
+        $formElements[$key]['value'] = $value;
+      }
+    }
+    print "\n<form method='post' action=''>";
+    wp_nonce_field( 'dynamic_add_users_test' );
+    print "\n\t<input type='hidden' name='form_section' value='" . $serviceType . "'>";
+    print "\n<h3>Test the '" . $service::label() . "' " . $serviceTypeLabel . "</h3>";
+    print "\n<table class='form-table'>";
+    $this->printSettingsFormElements($formElements);
+    print "\n</table>";
+    submit_button("Test the '" . $service::label() . "'" . $serviceTypeLabel);
+    print "\n</form>";
+
+    if ($_POST && $_POST['form_section'] == $serviceType) {
+      check_admin_referer('dynamic_add_users_test');
+      $this->runTest($serviceTypeLabel, $service, $args);
+    }
+  }
+
+  /**
+   * Answer arguments submitted in Post for this service.
+   *
+   * @param array $formElements
+   *   The description of the form elements.
+   */
+  protected function getSubmittedValues(array $formElements) {
+    $args = [];
+    foreach ($formElements as $key => $info) {
+      if (isset($_POST[$key])) {
+        $args[$key] = $_POST[$key];
+      }
+    }
+    return $args;
+  }
+
+  /**
+   * Print out the test form for one of our services.
+   *
+   * @param string $serviceTypeLabel
+   *   A label for type of service
+   * @param \DynamicAddUsers\ConfigurableInterface $service
+   *   The service to print the form for.
+   * @param array $args
+   *   The submitted form args for testing.
+   */
+  protected function runTest($serviceTypeLabel, ConfigurableInterface $service, array $args) {
+    foreach ($service->testSettings($args) as $result) {
+      print "\n<div class='" . ($result['success']? 'updated':'error') . "'><strong>" . $service::label() . ":</strong> " . $result['message'] . "</div>";
     }
   }
 

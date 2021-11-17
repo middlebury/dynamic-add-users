@@ -91,4 +91,58 @@ interface ConfigurableInterface
    */
   public function checkSettings();
 
+  /**
+   * Answer an array of test argments that should be passed to our test function.
+   *
+   * This is a nested array that describes the form elements/arguments used by
+   * this implementation. Options is only needed for select/radio/checkboxes
+   * type fields.
+   *
+   * Format:
+   *    [
+   *      'argument' => [
+   *        'label' => 'argument label',
+   *        'description' => 'description of the argument.',
+   *        'value' => 'current value',
+   *        'type' => 'select',
+   *        'options' => [
+   *          'value' => 'label',
+   *          'value2' => 'label2',
+   *        ],
+   *      ],
+   *      'argument_2' => [
+   *        'label' => 'argument label2',
+   *        'description' => 'description of the argument.',
+   *        'value' => 'current value',
+   *        'type' => 'text',
+   *      ],
+   *    ]
+   *
+   * @return array
+   */
+  public function getTestArguments();
+
+  /**
+   * If possible, test the settings against the backing system.
+   *
+   * @param array $arguments
+   *   An array of arguments [argument => value, argument_2 => value2] as
+   *   described by getTestArguments().
+   *
+   * @return array
+   *   An array of results with information about each test performed.
+   *   Each result should indicatate success or failure as well as a message.
+   *      [
+   *        [
+   *          'success' => true,
+   *          'message' => 'Host exists at the URL provided.',
+   *        ],
+   *        [
+   *          'success' => false,
+   *          'message' => 'Query for xyz failed.',
+   *        ],
+   *      ]
+   */
+  public function testSettings(array $arguments = []);
+
 }
