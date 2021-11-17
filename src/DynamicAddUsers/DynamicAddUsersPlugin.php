@@ -37,7 +37,7 @@ class DynamicAddUsersPlugin implements DynamicAddUsersPluginInterface
     // Check the database tables.
     add_action( 'plugins_loaded', [$this, 'checkDatabaseState'] );
     // Set up login actions.
-    $this->getLoginMapper();
+    $this->getLoginMapper()->setup($this);
     // Register our AddUsers interface.
     AddUsers::init($this);
     // Register our NetworkSettings interface.
