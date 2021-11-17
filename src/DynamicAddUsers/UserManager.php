@@ -143,9 +143,9 @@ class UserManager implements UserManagerInterface
 
     if (is_user_member_of_blog($user->ID, $blog_id)) {
       $existing_role = $this->getUsersCurrentRoleInBlog($user->ID, $blog_id);
-      if ($role_levels[$existing_role] > $role_levels[$role]) {
+      if ($existing_role && $role_levels[$existing_role] > $role_levels[$role]) {
         throw new Exception("User ".$user->display_name." is already ".$this->article($existing_role).' '.$existing_role." of this blog, not reducing to ".$this->article($role).' '.$role.'.');
-      } else if ($role_levels[$existing_role] == $role_levels[$role]) {
+      } else if ($existing_role && $role_levels[$existing_role] == $role_levels[$role]) {
         throw new Exception("User ".$user->display_name." is already ".$this->article($existing_role).' '.$existing_role." of this blog.");
       }
     }
