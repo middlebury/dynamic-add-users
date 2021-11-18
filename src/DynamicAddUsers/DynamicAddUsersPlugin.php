@@ -185,7 +185,7 @@ class DynamicAddUsersPlugin implements DynamicAddUsersPluginInterface
       } catch (Exception $e) {
         if ($e->getCode() == 404 || $e->getCode() == 400) {
           // Skip if not found in the data source.
-          trigger_error('DynamicAddUsers: Tried to update user groups for  ' . $user->id . ' / '. $external_user_id . ' but they were not found the directory service.', E_USER_NOTICE);
+          trigger_error('DynamicAddUsers: Tried to update user groups for  ' . $user->ID . ' / '. $external_user_id . ' but they were not found the directory service.', E_USER_NOTICE);
         } else {
           throw $e;
         }
