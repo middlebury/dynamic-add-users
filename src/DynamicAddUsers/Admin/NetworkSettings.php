@@ -104,44 +104,8 @@ class NetworkSettings {
       print "<div id='message' class='updated'><p>Options Saved</p></div>";
     }
 
-    // Print out our form.
-    print "\n<form method='post' action=''>";
-    wp_nonce_field( 'dynamic_add_users_settings' );
-    print "\n\t<input type='hidden' name='form_section' value='general'>";
-
-    print "\n<h2>Dynamic Add Users settings</h2>";
-    print "\n<table class='form-table'>";
-
-    print "\n\t<tr valign='top'>";
-    print "\n\t\t<th scope='row'>Directory implementation</th>";
-    print "\n\t\t<td>";
-    print '<select name="dynamic_add_users_directory_impl" id="dynamic_add_users_directory_impl">';
-    $current = $this->plugin->getDirectory()::id();
-    foreach ($this->plugin->getDirectoryImplementations() as $id => $label) {
-      print '<option value="' . esc_attr($id) . '"' . (($id == $current)? ' selected="selected"':'') . '>' . esc_attr($label) .'</option>';
-    }
-    print "</select>";
-    print "\n\t\t\t<p class='description'>The directory implementation to use for user/group lookup.</p>";
-    print "\n\t\t</td>";
-    print "\n\t</tr>";
-
-    print "\n\t<tr valign='top'>";
-    print "\n\t\t<th scope='row'>Login Mapper implementation</th>";
-    print "\n\t\t<td>";
-    print '<select name="dynamic_add_users_login_mapper_impl" id="dynamic_add_users_login_mapper_impl">';
-    $current = $this->plugin->getLoginMapper()::id();
-    foreach ($this->plugin->getLoginMapperImplementations() as $id => $label) {
-      print '<option value="' . esc_attr($id) . '"' . (($id == $current)? ' selected="selected"':'') . '>' . esc_attr($label) .'</option>';
-    }
-    print "</select>";
-    print "\n\t\t\t<p class='description'>The implementation to use for mapping login attributes to external user IDs that will be recognized by the directory.</p>";
-    print "\n\t\t</td>";
-    print "\n\t</tr>";
-
-    print "\n</table>";
-    submit_button();
-    print "\n</form>";
-
+    // Implementation choices.
+    $this->printForm('Dynamic Add Users settings', 'h2', 'dynamic_add_users_settings', $this->getImplementationChoices(), NULL, 'general');
 
     // Directory settings.
     $this->printServiceForm('directory', 'Directory', $this->plugin->getDirectory());
@@ -149,6 +113,40 @@ class NetworkSettings {
     // LoginMapper settings.
     $this->printServiceForm('login_mapper', 'Login Mapper', $this->plugin->getLoginMapper());
 
+  }
+
+  protected function printForm($headingText, $headingLevel, $nonceField, $elements, $submitButtonLabel = NULL, $section = NULL, $leadingMarkup = '') {
+    print "\n<form method='post' action=''>";
+    wp_nonce_field( $nonceField );
+    if ($section) {
+      print "\n\t<input type='hidden' name='form_section' value='" . $section . "'>";
+    }
+    print "\n<" . $headingLevel . ">" . $headingText . "</" . $headingLevel . ">";
+    print $leadingMarkup;
+    print "\n<table class='form-table'>";
+    $this->printFormElements($elements);
+    print "\n</table>";
+    submit_button($submitButtonLabel);
+    print "\n</form>";
+  }
+
+  protected function getImplementationChoices() {
+    return [
+      'dynamic_add_users_directory_impl' => [
+        'label' => 'Directory implementation',
+        'description' => 'The directory implementation to use for user/group lookup.',
+        'value' => $this->plugin->getDirectory()::id(),
+        'type' => 'select',
+        'options' => $this->plugin->getDirectoryImplementations(),
+      ],
+      'dynamic_add_users_login_mapper_impl' => [
+        'label' => 'Login Mapper implementation',
+        'description' => 'The implementation to use for mapping login attributes to external user IDs that will be recognized by the directory.',
+        'value' => $this->plugin->getLoginMapper()::id(),
+        'type' => 'select',
+        'options' => $this->plugin->getLoginMapperImplementations(),
+      ],
+    ];
   }
 
   /**
@@ -162,10 +160,7 @@ class NetworkSettings {
    *   The service to print the form for.
    */
   protected function printServiceForm($serviceType, $serviceTypeLabel, ConfigurableInterface $service) {
-    print "\n<form method='post' action=''>";
-    wp_nonce_field( 'dynamic_add_users_settings' );
-    print "\n\t<input type='hidden' name='form_section' value='" . $serviceType . "'>";
-    print "\n<h3>" . $serviceTypeLabel . " settings for '" . $service::label() . "'</h3>";
+    ob_start();
     if (!$service->settingsValid()) {
       print "\n<div class='error'>";
       print "\n\t<ul>";
@@ -175,49 +170,67 @@ class NetworkSettings {
       print "\n\t</ul>";
       print "\n</div>";
     }
-    print "\n<table class='form-table'>";
-    $this->printSettingsFormElements($service->getSettings());
-    print "\n</table>";
-    submit_button();
-    print "\n</form>";
+    $leadingMarkup = ob_get_clean();
+
+    $this->printForm(
+      $serviceTypeLabel . " settings for '" . $service::label() . "'",
+      'h3',
+      'dynamic_add_users_settings',
+      $this->getServiceSettingsElements($service),
+      NULL,
+      $serviceType,
+      $leadingMarkup
+    );
   }
 
   /**
-   * Helper function to print out settings form elements.
+   * Helper function to get settings form elements.
    *
-   * @param array $settings
+   * @param \DynamicAddUsers\ConfigurableInterface $service
+   *   The service to save options for.
+   */
+  protected function getServiceSettingsElements(ConfigurableInterface $service) {
+    $settings = $service->getSettings();
+    if (empty($settings)) {
+      $settings[] = [
+        'type' => 'description',
+        'label' => '',
+        'description' => 'This implementation has no settings.',
+      ];
+    }
+    return $settings;
+  }
+
+  /**
+   * Helper function to print out form elements.
+   *
+   * @param array $elements
    *   The description of the form elements.
    */
-  protected function printSettingsFormElements(array $settings) {
-    if (empty($settings)) {
+  protected function printFormElements(array $elements) {
+    foreach ($elements as $elementId => $element) {
       print "\n\t<tr valign='top'>";
+      print "\n\t\t<th scope='row'>" . $element['label'] . "</th>";
       print "\n\t\t<td>";
-      print "\n\t\t\t<p class='description'>This implementation has no settings.</p>";
+      if ($element['type'] == 'select') {
+        print '<select name="' . $elementId . '" id="' . $elementId . '">';
+        foreach ($element['options'] as $value => $label) {
+          print '<option value="' . esc_attr($value) . '"' . (($value == $element['value'])? ' selected="selected"':'') . '>' . esc_attr($label) .'</option>';
+        }
+        print "</select>";
+      }
+      elseif ($element['type'] == 'password') {
+        print '<input type="password" size="80" name="' . $elementId . '" id="' . $elementId . '" value="**********">';
+      }
+      elseif ($element['type'] == 'description') {
+        // No element.
+      }
+      else {
+        print '<input type="text" size="80" name="' . $elementId . '" id="' . $elementId . '" value="' . esc_attr($element['value']) . '">';
+      }
+      print "\n\t\t\t<p class='description'>" . $element['description'] . "</p>";
       print "\n\t\t</td>";
       print "\n\t</tr>";
-    }
-    else {
-      foreach ($settings as $settingId => $setting) {
-        print "\n\t<tr valign='top'>";
-        print "\n\t\t<th scope='row'>" . $setting['label'] . "</th>";
-        print "\n\t\t<td>";
-        if ($setting['type'] == 'select') {
-          print '<select name="' . $settingId . '" id="' . $settingId . '">';
-          foreach ($setting['options'] as $value => $label) {
-            print '<option value="' . esc_attr($value) . '"' . (($value == $setting['value'])? ' selected="selected"':'') . '>' . esc_attr($label) .'</option>';
-          }
-          print "</select>";
-        }
-        elseif ($setting['type'] == 'password') {
-          print '<input type="password" size="80" name="' . $settingId . '" id="' . $settingId . '" value="**********">';
-        }
-        else {
-          print '<input type="text" size="80" name="' . $settingId . '" id="' . $settingId . '" value="' . esc_attr($setting['value']) . '">';
-        }
-        print "\n\t\t\t<p class='description'>" . $setting['description'] . "</p>";
-        print "\n\t\t</td>";
-        print "\n\t</tr>";
-      }
     }
   }
 
@@ -274,15 +287,14 @@ class NetworkSettings {
         $formElements[$key]['value'] = $value;
       }
     }
-    print "\n<form method='post' action=''>";
-    wp_nonce_field( 'dynamic_add_users_test' );
-    print "\n\t<input type='hidden' name='form_section' value='" . $serviceType . "'>";
-    print "\n<h3>Test the '" . $service::label() . "' " . $serviceTypeLabel . "</h3>";
-    print "\n<table class='form-table'>";
-    $this->printSettingsFormElements($formElements);
-    print "\n</table>";
-    submit_button("Test the '" . $service::label() . "' " . $serviceTypeLabel);
-    print "\n</form>";
+    $this->printForm(
+      "Test the '" . $service::label() . "' " . $serviceTypeLabel,
+      'h3',
+      'dynamic_add_users_test',
+      $formElements,
+      "Test the '" . $service::label() . "' " . $serviceTypeLabel,
+      $serviceType
+    );
 
     if ($_POST && $_POST['form_section'] == $serviceType) {
       check_admin_referer('dynamic_add_users_test');
