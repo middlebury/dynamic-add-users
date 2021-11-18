@@ -281,7 +281,7 @@ class NetworkSettings {
     print "\n<table class='form-table'>";
     $this->printSettingsFormElements($formElements);
     print "\n</table>";
-    submit_button("Test the '" . $service::label() . "'" . $serviceTypeLabel);
+    submit_button("Test the '" . $service::label() . "' " . $serviceTypeLabel);
     print "\n</form>";
 
     if ($_POST && $_POST['form_section'] == $serviceType) {

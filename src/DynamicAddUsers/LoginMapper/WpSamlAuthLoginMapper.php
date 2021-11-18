@@ -224,7 +224,7 @@ class WpSamlAuthLoginMapper extends LoginMapperBase implements LoginMapperInterf
   public function getTestArguments() {
     return [
       'user_id' => [
-        'label' => 'WordPerss User ID',
+        'label' => 'WordPress User ID',
         'description' => 'A WordPress user ID to test the attributes of. If empty, defaults to the current user.',
         'value' => '',
         'type' => 'text',
