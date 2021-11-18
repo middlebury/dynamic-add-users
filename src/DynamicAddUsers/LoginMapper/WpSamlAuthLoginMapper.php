@@ -335,6 +335,34 @@ class WpSamlAuthLoginMapper extends LoginMapperBase implements LoginMapperInterf
           'success' => TRUE,
           'message' => 'Found a valid value of "' . $external_user_id . '" for the "' . $attributeId . '" attribute in the login attributes for ' . $userLabel . '.',
         ];
+
+        // Try user info and group lookup for this external id.
+        try {
+          $info = $this->dynamicAddUsersPlugin->getDirectory()->getUserInfo($external_user_id);
+          $messages[] = [
+            'success' => TRUE,
+            'message' => 'Found user info for "' . esc_html($external_user_id) . '": <pre>' . esc_html(print_r($info, true)) . '</pre>',
+          ];
+        }
+        catch (Exception $e) {
+          $messages[] = [
+            'success' => FALSE,
+            'message' => 'Failed to lookup user info for "' . esc_html($external_user_id) . '" Code: ' . $e->getCode() . ' Message: ' . esc_html($message),
+          ];
+        }
+        try {
+          $groups = $this->dynamicAddUsersPlugin->getDirectory()->getGroupsForUser($external_user_id);
+          $messages[] = [
+            'success' => TRUE,
+            'message' => 'Found groups for "' . esc_html($external_user_id) . '": <pre>' . esc_html(print_r($groups, true)) . '</pre>',
+          ];
+        }
+        catch (Exception $e) {
+          $messages[] = [
+            'success' => FALSE,
+            'message' => 'Failed to lookup user groups for "' . esc_html($external_user_id) . '" Code: ' . $e->getCode() . ' Message: ' . esc_html($message),
+          ];
+        }
       }
       else {
         $messages[] = [
