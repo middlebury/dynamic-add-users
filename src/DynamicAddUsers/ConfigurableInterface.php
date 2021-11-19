@@ -3,7 +3,7 @@
 namespace DynamicAddUsers;
 
 /**
- *
+ * Methods for working with configurable/pluggable components of DynamicAddUsers.
  */
 interface ConfigurableInterface
 {

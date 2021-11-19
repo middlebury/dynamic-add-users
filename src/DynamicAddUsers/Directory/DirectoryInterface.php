@@ -7,7 +7,8 @@ require_once( dirname(__FILE__) . '/../ConfigurableInterface.php' );
 use DynamicAddUsers\ConfigurableInterface;
 
 /**
- *
+ * Interface for pluggable directory implementations that can lookup user and
+ * group information.
  */
 interface DirectoryInterface extends ConfigurableInterface
 {

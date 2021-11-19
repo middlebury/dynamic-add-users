@@ -10,7 +10,10 @@ use DynamicAddUsers\Directory\DirectoryBase;
 use Exception;
 
 /**
+ * A Directory implementation that sources user and Group information from
+ * Middlebury's CAS Directory web service.
  *
+ * See: https://mediawiki.middlebury.edu/LIS/CAS_Directory
  */
 class CasDirectoryDirectory extends DirectoryBase implements DirectoryInterface
 {
