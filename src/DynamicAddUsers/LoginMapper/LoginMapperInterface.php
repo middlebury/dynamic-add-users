@@ -2,9 +2,6 @@
 
 namespace DynamicAddUsers\LoginMapper;
 
-require_once( dirname(__FILE__) . '/../DynamicAddUsersPluginInterface.php' );
-require_once( dirname(__FILE__) . '/../ConfigurableInterface.php' );
-
 use DynamicAddUsers\DynamicAddUsersPluginInterface;
 use DynamicAddUsers\ConfigurableInterface;
 

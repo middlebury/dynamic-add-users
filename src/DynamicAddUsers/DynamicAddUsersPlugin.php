@@ -2,17 +2,6 @@
 
 namespace DynamicAddUsers;
 
-require_once( dirname(__FILE__) . '/DynamicAddUsersPluginInterface.php' );
-require_once( dirname(__FILE__) . '/Directory/CASDirectoryDirectory.php' );
-require_once( dirname(__FILE__) . '/Directory/NullDirectory.php' );
-require_once( dirname(__FILE__) . '/UserManager.php' );
-require_once( dirname(__FILE__) . '/GroupSyncer.php' );
-require_once( dirname(__FILE__) . '/LoginMapper/WpSamlAuthLoginMapper.php' );
-require_once( dirname(__FILE__) . '/LoginMapper/UserLoginLoginMapper.php' );
-require_once( dirname(__FILE__) . '/LoginMapper/NullLoginMapper.php' );
-require_once( dirname(__FILE__) . '/Admin/AddUsers.php' );
-require_once( dirname(__FILE__) . '/Admin/NetworkSettings.php' );
-
 use DynamicAddUsers\Directory\CASDirectoryDirectory;
 use DynamicAddUsers\Directory\NullDirectory;
 use DynamicAddUsers\Directory\DirectoryInterface;
@@ -325,6 +314,19 @@ class DynamicAddUsersPlugin implements DynamicAddUsersPluginInterface
    *   An array of class-names.
    */
   protected function getImplementingClasses( $interfaceName ) {
+    // Ensure that our in-plugin implemenations get autoloaded so that they are
+    // discoverable by accessing a class constant.
+    // If other plugins provide implemenations they should ensure
+    // that they get loaded via include_once() or a similar mechanism.
+    static $loaded;
+    if (!$loaded) {
+      NullDirectory::load;
+      CASDirectoryDirectory::load;
+      NullLoginMapper::load;
+      UserLoginLoginMapper::load;
+      WpSamlAuthLoginMapper::load;
+    }
+
     return array_filter(
         get_declared_classes(),
         function( $className ) use ( $interfaceName ) {

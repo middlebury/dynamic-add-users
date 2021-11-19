@@ -10,6 +10,8 @@ use WP_User_Query;
 abstract class DirectoryBase
 {
 
+  const load = 1;
+
   /**
    * Fetch an array user logins and display names for a given search string.
    * Ex: array('1' => 'John Doe', '2' => 'Jane Doe');

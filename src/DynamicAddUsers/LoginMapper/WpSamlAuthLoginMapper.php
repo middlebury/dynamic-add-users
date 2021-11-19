@@ -2,10 +2,6 @@
 
 namespace DynamicAddUsers\LoginMapper;
 
-require_once( dirname(__FILE__) . '/LoginMapperInterface.php' );
-require_once( dirname(__FILE__) . '/LoginMapperBase.php' );
-require_once( dirname(__FILE__) . '/../DynamicAddUsersPluginInterface.php' );
-
 use Exception;
 use WP_User;
 use DynamicAddUsers\DynamicAddUsersPluginInterface;

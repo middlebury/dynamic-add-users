@@ -2,9 +2,6 @@
 
 namespace DynamicAddUsers;
 
-require_once( dirname(__FILE__) . '/Directory/DirectoryInterface.php' );
-require_once( dirname(__FILE__) . '/UserManagerInterface.php' );
-
 use DynamicAddUsers\Directory\DirectoryInterface;
 use Exception;
 use WP_User;

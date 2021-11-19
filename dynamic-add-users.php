@@ -36,7 +36,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 define( 'DYNAMIC_ADD_USERS_VERSION', '1.0.0' );
 
-require_once( dirname(__FILE__) . '/src/DynamicAddUsers/DynamicAddUsersPlugin.php' );
+require_once( __DIR__ . '/vendor/autoload.php' );
 
 use DynamicAddUsers\DynamicAddUsersPlugin;
 use WP_User;

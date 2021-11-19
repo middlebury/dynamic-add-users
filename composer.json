@@ -1,0 +1,27 @@
+{
+  "name": "middlebury/dynamic-add-users",
+  "description": "Dynamic Add Users replaces the 'Add User' screen with a dynamic directory search.",
+  "homepage": "https://github.com/middlebury/dynamic-add-users",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0+",
+  "authors": [
+    {
+      "name": "Adam Franco",
+      "email": "afranco@middlebury.edu",
+      "role": "Developer"
+    },
+    {
+      "name": "Middlebury",
+      "homepage": "https://www.middlebury.edu/"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/middlebury/dynamic-add-users/issues",
+    "source": "https://github.com/middlebury/dynamic-add-users"
+  },
+  "autoload": {
+    "psr-4": {
+      "DynamicAddUsers\\": "src/DynamicAddUsers/"
+    }
+  }
+}

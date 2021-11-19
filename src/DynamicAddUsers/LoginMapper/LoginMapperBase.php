@@ -2,12 +2,13 @@
 
 namespace DynamicAddUsers\LoginMapper;
 
-
 /**
  * A base class with common functionality for login mapper implementations.
  */
 abstract class LoginMapperBase
 {
+
+  const load = 1;
 
   /**
    * Answer the current value of a setting.

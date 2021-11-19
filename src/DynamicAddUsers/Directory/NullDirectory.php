@@ -2,9 +2,6 @@
 
 namespace DynamicAddUsers\Directory;
 
-require_once( dirname(__FILE__) . '/DirectoryInterface.php' );
-require_once( dirname(__FILE__) . '/DirectoryBase.php' );
-
 use DynamicAddUsers\Directory\DirectoryInterface;
 use DynamicAddUsers\Directory\DirectoryBase;
 use Exception;
