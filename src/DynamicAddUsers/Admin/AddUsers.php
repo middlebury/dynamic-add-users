@@ -31,6 +31,12 @@ class AddUsers {
   protected $plugin;
 
   /**
+   * @var DynamicAddUsers\UserManagerInterface $userManager
+   *   The user-manager service to use for manipulating users.
+   */
+  protected $userManager;
+
+  /**
    * Create a new instance.
    *
    * @param \DynamicAddUsers\DynamicAddUsersPluginInterface $plugin
@@ -38,6 +44,7 @@ class AddUsers {
    */
   protected function __construct(DynamicAddUsersPluginInterface $plugin) {
     $this->plugin = $plugin;
+    $this->userManager = $this->plugin->getUserManager();
 
     add_action('admin_menu', [$this, 'adminMenu']);
     // Hooks for AJAX lookups of users/groups
