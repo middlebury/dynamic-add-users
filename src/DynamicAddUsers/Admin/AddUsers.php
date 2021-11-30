@@ -98,7 +98,7 @@ class AddUsers {
         } else {
           try {
             // Get or create the user object.
-            $user = $this->userManager->getOrCreateUser($info);
+            $user = $this->plugin->getUserManager()->getOrCreateUser($info);
           } catch (Exception $e) {
             print "Error: ".htmlentities($e->getMessage());
           }
@@ -115,7 +115,7 @@ class AddUsers {
         print "Could not find user '".esc_attr($_POST['user'])."'.";
       } else {
         try {
-          $this->userManager->addUserToBlog($user, $_POST['role']);
+          $this->plugin->getUserManager()->addUserToBlog($user, $_POST['role']);
           print "Added ".$user->display_name.' as '.strip_tags($_POST['role']);
         } catch (Exception $e) {
           print $e->getMessage();
@@ -144,8 +144,8 @@ class AddUsers {
           } else {
             foreach ($memberInfo as $info) {
               try {
-                $user = $this->userManager->getOrCreateUser($info);
-                $this->userManager->addUserToBlog($user, $_POST['role']);
+                $user = $this->plugin->getUserManager()->getOrCreateUser($info);
+                $this->plugin->getUserManager()->addUserToBlog($user, $_POST['role']);
                 print "Added ".$user->display_name.' as '.$this->article($_POST['role']).' '.strip_tags($_POST['role']);
               } catch (Exception $e) {
                 print esc_html($e->getMessage());
