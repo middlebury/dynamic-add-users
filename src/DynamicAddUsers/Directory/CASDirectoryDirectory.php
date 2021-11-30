@@ -492,7 +492,7 @@ class CasDirectoryDirectory extends DirectoryBase implements DirectoryInterface
         catch (Exception $e) {
           $messages[] = [
             'success' => FALSE,
-            'message' => 'Failed to lookup user info for "' . esc_html($arguments['query']) . '" Code: ' . $e->getCode() . ' Message: ' . esc_html($message),
+            'message' => 'Failed to lookup user info for "' . esc_html($arguments['query']) . '" Code: ' . $e->getCode() . ' Message: ' . esc_html($e->getMessage()),
           ];
         }
         try {
@@ -505,7 +505,7 @@ class CasDirectoryDirectory extends DirectoryBase implements DirectoryInterface
         catch (Exception $e) {
           $messages[] = [
             'success' => FALSE,
-            'message' => 'Failed to lookup user groups for "' . esc_html($arguments['query']) . '" Code: ' . $e->getCode() . ' Message: ' . esc_html($message),
+            'message' => 'Failed to lookup user groups for "' . esc_html($arguments['query']) . '" Code: ' . $e->getCode() . ' Message: ' . esc_html($e->getMessage()),
           ];
         }
         break;
@@ -520,7 +520,7 @@ class CasDirectoryDirectory extends DirectoryBase implements DirectoryInterface
         catch (Exception $e) {
           $messages[] = [
             'success' => FALSE,
-            'message' => 'Failed to search users matching "' . esc_html($arguments['query']) . '" Code: ' . $e->getCode() . ' Message: ' . esc_html($message),
+            'message' => 'Failed to search users matching "' . esc_html($arguments['query']) . '" Code: ' . $e->getCode() . ' Message: ' . esc_html($e->getMessage()),
           ];
         }
         break;
@@ -535,7 +535,7 @@ class CasDirectoryDirectory extends DirectoryBase implements DirectoryInterface
         catch (Exception $e) {
           $messages[] = [
             'success' => FALSE,
-            'message' => 'Failed to lookup group members for "' . esc_html($arguments['query']) . '" Code: ' . $e->getCode() . ' Message: ' . esc_html($message),
+            'message' => 'Failed to lookup group members for "' . esc_html($arguments['query']) . '" Code: ' . $e->getCode() . ' Message: ' . esc_html($e->getMessage()),
           ];
         }
         break;
@@ -550,7 +550,7 @@ class CasDirectoryDirectory extends DirectoryBase implements DirectoryInterface
         catch (Exception $e) {
           $messages[] = [
             'success' => FALSE,
-            'message' => 'Failed to search groups matching "' . esc_html($arguments['query']) . '" Code: ' . $e->getCode() . ' Message: ' . esc_html($message),
+            'message' => 'Failed to search groups matching "' . esc_html($arguments['query']) . '" Code: ' . $e->getCode() . ' Message: ' . esc_html($e->getMessage()),
           ];
         }
         break;
