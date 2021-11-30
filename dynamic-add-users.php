@@ -3,7 +3,7 @@
  * Dynamic Add Users replaces the 'Add User' screen with a dynamic directory search.
  *
  * This plugin also allows searching for groups in a directory and bulk-adding
- * group members to a site as well as syncronizing site-roles based on group-membership.
+ * group members to a site as well as synchronizing site-roles based on group-membership.
  * It provides several services that other plugins can use to look up users and
  * groups and apply roles to users.
  *
