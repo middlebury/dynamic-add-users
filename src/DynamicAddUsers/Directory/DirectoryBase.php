@@ -92,7 +92,7 @@ abstract class DirectoryBase
    * @return array
    */
   public function getGroupsBySearch ($search) {
-    $matches = $this->getGroupsBySearchFromDirectory();
+    $matches = $this->getGroupsBySearchFromDirectory($search);
     // Filter matches if needed.
     return apply_filters('dynamic_add_users__filter_group_matches', $matches);
   }
