@@ -3,8 +3,9 @@
 namespace DynamicAddUsers;
 
 use DynamicAddUsers\Directory\CASDirectoryDirectory;
-use DynamicAddUsers\Directory\NullDirectory;
 use DynamicAddUsers\Directory\DirectoryInterface;
+use DynamicAddUsers\Directory\NullDirectory;
+use DynamicAddUsers\Directory\MicrosoftGraphDirectory;
 use DynamicAddUsers\UserManager;
 use DynamicAddUsers\GroupSyncer;
 use DynamicAddUsers\LoginMapper\NullLoginMapper;
@@ -322,6 +323,7 @@ class DynamicAddUsersPlugin implements DynamicAddUsersPluginInterface
     if (!$loaded) {
       NullDirectory::load;
       CASDirectoryDirectory::load;
+      MicrosoftGraphDirectory::load;
       NullLoginMapper::load;
       UserLoginLoginMapper::load;
       WpSamlAuthLoginMapper::load;
