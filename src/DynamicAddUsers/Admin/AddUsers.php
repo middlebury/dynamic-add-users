@@ -4,6 +4,7 @@ namespace DynamicAddUsers\Admin;
 
 use DynamicAddUsers\DynamicAddUsersPluginInterface;
 use DynamicAddUsers\Directory\DirectoryBase;
+use Exception;
 
 /**
  * Class to generate the AddUsers interface that is presented to site-admins.
