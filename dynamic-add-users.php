@@ -3,7 +3,7 @@
  * Dynamic Add Users replaces the 'Add User' screen with a dynamic directory search.
  *
  * This plugin also allows searching for groups in a directory and bulk-adding
- * group members to a site as well as syncronizing site-roles based on group-membership.
+ * group members to a site as well as synchronizing site-roles based on group-membership.
  * It provides several services that other plugins can use to look up users and
  * groups and apply roles to users.
  *
@@ -15,7 +15,7 @@
  * Plugin Name:       Dynamic Add Users
  * Plugin URI:        https://github.com/middlebury/dynamic-add-users
  * Description:       Replaces the 'Add User' screen with a dynamic search for users and groups.
- * Version:           1.0.0
+ * Version:           1.1.0
  * Author:            Middlebury College
  * Author URI:        https://github.com/middlebury/
  * License:           GPL-2.0+
@@ -34,7 +34,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'DYNAMIC_ADD_USERS_VERSION', '1.0.0' );
+define( 'DYNAMIC_ADD_USERS_VERSION', '1.1.0' );
 
 require_once( __DIR__ . '/vendor/autoload.php' );
 
