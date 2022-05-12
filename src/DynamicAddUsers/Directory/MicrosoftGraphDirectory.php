@@ -74,20 +74,22 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
     $matches = [];
 
     $path = "/groups";
-    $path .= "?\$filter=startswith(displayName, '" . urlencode($search) ."') or startswith(mail, '" . urlencode($search) ."')&\$count=true&\$top=10&\$orderby=displayName&\$select=displayName,mail,groupTypes,onpremisesdistinguishedname";
+    $path .= "?\$filter=startswith(displayName, '" . urlencode($search) ."') or startswith(mail, '" . urlencode($search) ."')&\$count=true&\$top=10&\$orderby=displayName&\$select=id,displayName,mail,description,groupTypes,onpremisesdistinguishedname";
 
-    var_dump($path);
+    // print_r($path);
 
     $result = $this->getGraph()
       ->createRequest("GET", $path)
       ->addHeaders(['ConsistencyLevel' => 'eventual'])
       ->setReturnType(Group::class)
       ->execute();
-    var_dump($result);
     if (is_array($result)) {
-      var_dump($result);
       foreach ($result as $group) {
-        $matches[$group->getId()] = $o365Group->getDisplayName();
+        // print_r($group);
+        $matches[$group->getId()] = $group->getDisplayName();
+        if ($group->getDescription()) {
+          $matches[$group->getId()] .= ' (' . $group->getDescription() . ')';
+        }
       }
     }
     return $matches;
