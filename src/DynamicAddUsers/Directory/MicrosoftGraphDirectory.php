@@ -49,13 +49,22 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
    * @return array
    */
   protected function getUsersBySearchFromDirectory ($search) {
-    $xpath = $this->query(array(
-      'action' => 'search_users',
-      'query' => $search,
-    ));
-    $matches = array();
-    foreach($xpath->query('/cas:results/cas:entry') as $entry) {
-      $matches[] = $this->extractUserInfo($entry, $xpath);
+    $matches = [];
+
+    $path = "/users";
+    $path .= "?\$filter=startswith(displayName, '" . urlencode($search) ."') or startswith(givenName, '" . urlencode($search) ."') or startswith(surname, '" . urlencode($search) ."') or startswith(mail, '" . urlencode($search) ."')&\$count=true&\$top=10&\$orderby=displayName&\$select=id,displayName,mail,givenName,surname,userPrincipalName,extension_a5f5e158fc8b49ce98aa89ab99fd2a76_middleburycollegeuid";
+
+    // print_r($path);
+
+    $result = $this->getGraph()
+      ->createRequest("GET", $path)
+      ->addHeaders(['ConsistencyLevel' => 'eventual'])
+      ->setReturnType(User::class)
+      ->execute();
+    if (is_array($result)) {
+      foreach ($result as $user) {
+        $matches[$user->getId()] = $this->extractUserInfo($user);
+      }
     }
     return $matches;
   }
@@ -331,93 +340,40 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
   }
 
   /**
-   * Answer the user info matching a cas:entry element.
+   * Answer the user info matching an MS Graph User object.
    *
-   * @param \DOMElement $entry
-   * @param \DOMXPath $xpath
+   * @param \Microsoft\Graph\Model\User $user
    * @return array
    */
-  protected function extractUserInfo (\DOMElement $entry, \DOMXPath $xpath) {
+  protected function extractUserInfo (User $user) {
     $info = array();
-    $info['user_login'] = $this->extractLogin($entry, $xpath);
-    $info['user_email'] = $this->extractAttribute('EMail', $entry, $xpath);
+    $properties = $user->getProperties();
+    print_r($properties);
+    if (empty($properties['extension_a5f5e158fc8b49ce98aa89ab99fd2a76_middleburycollegeuid'])) {
+      $login = $user->getUserPrincipalName();
+    } else {
+      $login = $properties['extension_a5f5e158fc8b49ce98aa89ab99fd2a76_middleburycollegeuid'];
+    }
+    $info['user_login'] = $login;
+    $info['user_email'] = $user->getMail();
 
     preg_match('/^(.+)@(.+)$/', $info['user_email'], $matches);
     $emailUser = $matches[1];
     $emailDomain = $matches[2];
-    if ($login = $this->extractAttribute('Login', $entry, $xpath))
-      $nicename = $login;
-    else
-      $nicename = $emailUser;
 
-    $info['user_nicename'] = $nicename;
-    $info['nickname'] = $nicename;
-    $info['first_name'] = $this->extractAttribute('FirstName', $entry, $xpath);
-    $info['last_name'] = $this->extractAttribute('LastName', $entry, $xpath);
-    $info['display_name'] = $info['first_name']." ".$info['last_name'];
-    return $info;
-  }
-
-  /**
-   * Answer the login field for an cas:entry element.
-   *
-   * @param \DOMElement $entry
-   * @param \DOMXPath $xpath
-   * @return string
-   */
-  protected function extractLogin (\DOMElement $entry, \DOMXPath $xpath) {
-    $elements = $xpath->query('./cas:user', $entry);
-    if ($elements->length !== 1) {
-      if ($xpath->query('./cas:group', $entry)->length)
-        throw new \Exception('Could not get user login. Expecting one cas:user element, found a cas:group instead.', 65004);
-      else
-        throw new \Exception('Could not get user login. Expecting one cas:user element, found '.$elements->length.'.');
+    $info['user_nicename'] = $emailUser;
+    $info['nickname'] = $user->getGivenName();
+    $info['first_name'] = $user->getGivenName();
+    $info['last_name'] = $user->getSurname();
+    $info['display_name'] = $user->getGivenName()." ".$user->getSurname();
+    if (empty($info['display_name'])) {
+      if (!empty($user->getDisplayName())) {
+        $info['display_name'] = $user->getDisplayName();
+      } else {
+        $info['display_name'] = $user->getUserPrincipalName();
+      }
     }
-    return $elements->item(0)->nodeValue;
-  }
-
-  /**
-   * Answer the login field for an cas:entry element.
-   *
-   * @param string $attribute
-   * @param \DOMElement $entry
-   * @param \DOMXPath $xpath
-   * @return string
-   */
-  protected function extractAttribute ($attribute, \DOMElement $entry, \DOMXPath $xpath) {
-    $elements = $xpath->query('./cas:attribute[@name = "'.$attribute.'"]', $entry);
-    if (!$elements->length)
-      return '';
-    return $elements->item(0)->getAttribute('value');
-  }
-
-  /**
-   * Answer the group id field for an cas:entry element.
-   *
-   * @param \DOMElement $entry
-   * @param \DOMXPath $xpath
-   * @return string
-   */
-  protected function extractGroupId (\DOMElement $entry, \DOMXPath $xpath) {
-    $elements = $xpath->query('./cas:group', $entry);
-    if ($elements->length !== 1)
-      throw new \Exception('Could not get group id. Expecting one cas:group element, found '.$elements->length.'.');
-    return $elements->item(0)->nodeValue;
-  }
-
-  /**
-   * Answer the group display name for an cas:entry element.
-   *
-   * @param \DOMElement $entry
-   * @param \DOMXPath $xpath
-   * @return string
-   */
-  protected function extractGroupDisplayName (\DOMElement $entry, \DOMXPath $xpath) {
-    $displayName = $this->extractAttribute('DisplayName', $entry, $xpath);
-    $id = $this->extractGroupId($entry, $xpath);
-    $displayName .= " (" . self::convertDnToDisplayPath($id) . ")";
-
-    return $displayName;
+    return $info;
   }
 
   /**
