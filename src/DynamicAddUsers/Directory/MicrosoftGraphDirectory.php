@@ -52,7 +52,7 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
     $matches = [];
 
     $path = "/users";
-    $path .= "?\$filter=startswith(displayName, '" . urlencode($search) ."') or startswith(givenName, '" . urlencode($search) ."') or startswith(surname, '" . urlencode($search) ."') or startswith(mail, '" . urlencode($search) ."')&\$count=true&\$top=10&\$orderby=displayName&\$select=id,displayName,mail,givenName,surname,userPrincipalName,extension_a5f5e158fc8b49ce98aa89ab99fd2a76_middleburycollegeuid";
+    $path .= "?\$filter=startswith(displayName, '" . urlencode($search) ."') or startswith(givenName, '" . urlencode($search) ."') or startswith(surname, '" . urlencode($search) ."') or startswith(mail, '" . urlencode($search) ."')&\$count=true&\$top=10&\$orderby=displayName&\$select=id,displayName,mail,givenName,surname,userPrincipalName,extension_a5f5e158fc8b49ce98aa89ab99fd2a76_middleburyCollegeUID";
 
     // print_r($path);
 
@@ -348,11 +348,11 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
   protected function extractUserInfo (User $user) {
     $info = array();
     $properties = $user->getProperties();
-    print_r($properties);
-    if (empty($properties['extension_a5f5e158fc8b49ce98aa89ab99fd2a76_middleburycollegeuid'])) {
-      $login = $user->getUserPrincipalName();
+    // print_r($properties);
+    if (empty($properties['extension_a5f5e158fc8b49ce98aa89ab99fd2a76_middleburyCollegeUID'])) {
+      $login = preg_replace('/@middleburycollege.onmicrosoft.com$/', '', $user->getUserPrincipalName());
     } else {
-      $login = $properties['extension_a5f5e158fc8b49ce98aa89ab99fd2a76_middleburycollegeuid'];
+      $login = $properties['extension_a5f5e158fc8b49ce98aa89ab99fd2a76_middleburyCollegeUID'];
     }
     $info['user_login'] = $login;
     $info['user_email'] = $user->getMail();
