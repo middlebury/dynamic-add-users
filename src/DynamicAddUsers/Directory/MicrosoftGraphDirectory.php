@@ -83,7 +83,7 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
     $matches = [];
 
     $path = "/groups";
-    $path .= "?\$filter=startswith(displayName, '" . urlencode($search) ."') or startswith(mail, '" . urlencode($search) ."')&\$count=true&\$top=10&\$orderby=displayName&\$select=id,displayName,mail,description,groupTypes,onpremisesdistinguishedname";
+    $path .= "?\$filter=startswith(displayName, '" . urlencode($search) ."') or startswith(mail, '" . urlencode($search) ."')&\$count=true&\$top=10&\$orderby=displayName&\$select=id,displayName,mail,description,groupTypes";
 
     // print_r($path);
 
