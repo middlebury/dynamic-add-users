@@ -122,33 +122,8 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
    * @return array
    */
   public function getUserInfo ($login) {
-    // First search by MiddleburyCollegeUID.
-    $path = "/users?\$filter=extension_a5f5e158fc8b49ce98aa89ab99fd2a76_middleburyCollegeUID eq '" . urlencode($login) ."'&\$count=true&\$top=10&\$orderby=displayName&\$select=id,displayName,mail,givenName,surname,userPrincipalName,extension_a5f5e158fc8b49ce98aa89ab99fd2a76_middleburyCollegeUID";
-    $result = $this->getGraph()
-      ->createRequest("GET", $path)
-      ->addHeaders(['ConsistencyLevel' => 'eventual'])
-      ->setReturnType(User::class)
-      ->execute();
-
-    // If not found and the login ends in 'ext', search on userPrincipalName.
-    if (empty($result) && preg_match('/ext$/i', $login)) {
-      $upn = preg_replace('/^(.+)ext$/i', '\1#EXT#@middleburycollege.onmicrosoft.com', $login);
-      $path = "/users?\$filter=userPrincipalName eq '" . urlencode($upn) ."'&\$count=true&\$top=10&\$orderby=displayName&\$select=id,displayName,mail,givenName,surname,userPrincipalName,extension_a5f5e158fc8b49ce98aa89ab99fd2a76_middleburyCollegeUID";
-      $result = $this->getGraph()
-        ->createRequest("GET", $path)
-        ->addHeaders(['ConsistencyLevel' => 'eventual'])
-        ->setReturnType(User::class)
-        ->execute();
-    }
-
-    if (count($result) < 1) {
-      throw new \Exception('Could not get user. Expecting 1 entry, found '.count($result), 404);
-    }
-    else if (count($result) > 1) {
-      throw new \Exception('Could not get user. Expecting 1 entry, found '.count($result));
-    }
-
-    return $this->extractUserInfo($result[0]);
+    $user = $this->fetchUserForLogin($login);
+    return $this->extractUserInfo($user);
   }
 
   /**
@@ -160,22 +135,21 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
    * @return array
    */
   public function getGroupsForUser ($login) {
-    $xpath = $this->query(array(
-      'action'  => 'get_user',
-      'id'    => $login,
-      'include_membership' => 'TRUE',
-    ));
-    $entries = $xpath->query('/cas:results/cas:entry');
-    if ($entries->length < 1) {
-      throw new \Exception('Could not get user. Expecting 1 entry, found '.$entries->length, 404);
-    }
-    else if ($entries->length > 1) {
-      throw new \Exception('Could not get user. Expecting 1 entry, found '.$entries->length);
-    }
-
+    $user = $this->fetchUserForLogin($login);
+    $path = "/users/".$user->getId()."/transitiveMemberOf?\$select=id,displayName,mail,description,groupTypes";
+    $result = $this->getGraph()
+      ->createRequest("GET", $path)
+      ->addHeaders(['ConsistencyLevel' => 'eventual'])
+      ->setReturnType(Group::class)
+      ->execute();
     $groups = [];
-    foreach ($xpath->query('cas:attribute[@name="MemberOf"]', $entries->item(0)) as $attribute) {
-      $groups[] = $attribute->getAttribute('value');
+    if (is_array($result)) {
+      foreach ($result as $group) {
+        $groups[$group->getId()] = $group->getDisplayName();
+        if ($group->getDescription()) {
+          $groups[$group->getId()] .= ' (' . $group->getDescription() . ')';
+        }
+      }
     }
     return $groups;
   }
@@ -319,33 +293,39 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
   }
 
   /**
-   * Execute a query against our underlying directory service.
+   * Answer an MS Graph User object matching a login string.
    *
-   * @param array $parameters
-   * @return \DOMXPath
-   *
+   * @param string $login
+   * @return Microsoft\Graph\Model\User
    */
-  protected function query(array $parameters) {
-    $args = [
-      'timeout' => 120,
-      'user-agent' => 'WordPress DynamicAddUsers',
-    ];
-    $args['headers']["Admin-Access"] = $this->getSetting('dynamic_add_users__cas_directory__access_token');
-    $response = wp_remote_get($this->getSetting('dynamic_add_users__cas_directory__directory_url') . '?' . http_build_query($parameters), $args);
-    if ( !is_array( $response )) {
-      throw new Exception('Could not load XML information for '.print_r($parameters, true));
+  protected function fetchUserForLogin($login) {
+    // First search by MiddleburyCollegeUID.
+    $path = "/users?\$filter=extension_a5f5e158fc8b49ce98aa89ab99fd2a76_middleburyCollegeUID eq '" . urlencode($login) ."'&\$count=true&\$top=10&\$orderby=displayName&\$select=id,displayName,mail,givenName,surname,userPrincipalName,extension_a5f5e158fc8b49ce98aa89ab99fd2a76_middleburyCollegeUID";
+    $result = $this->getGraph()
+      ->createRequest("GET", $path)
+      ->addHeaders(['ConsistencyLevel' => 'eventual'])
+      ->setReturnType(User::class)
+      ->execute();
+
+    // If not found and the login ends in 'ext', search on userPrincipalName.
+    if (empty($result) && preg_match('/ext$/i', $login)) {
+      $upn = preg_replace('/^(.+)ext$/i', '\1#EXT#@middleburycollege.onmicrosoft.com', $login);
+      $path = "/users?\$filter=userPrincipalName eq '" . urlencode($upn) ."'&\$count=true&\$top=10&\$orderby=displayName&\$select=id,displayName,mail,givenName,surname,userPrincipalName,extension_a5f5e158fc8b49ce98aa89ab99fd2a76_middleburyCollegeUID";
+      $result = $this->getGraph()
+        ->createRequest("GET", $path)
+        ->addHeaders(['ConsistencyLevel' => 'eventual'])
+        ->setReturnType(User::class)
+        ->execute();
     }
-    $xml_string = $response['body'];
-    if (!$xml_string || $response['response']['code'] >= 300)
-      throw new \Exception('Could not load XML information for '.print_r($parameters, true), $response['response']['code']);
-    $doc = new \DOMDocument;
-    if (!$doc->loadXML($xml_string))
-      throw new \Exception('Could not load XML information for '.print_r($parameters, true), $response['response']['code']);
 
-    $xpath = new \DOMXPath($doc);
-    $xpath->registerNamespace('cas', 'http://www.yale.edu/tp/cas');
+    if (count($result) < 1) {
+      throw new \Exception('Could not get user. Expecting 1 entry, found '.count($result), 404);
+    }
+    else if (count($result) > 1) {
+      throw new \Exception('Could not get user. Expecting 1 entry, found '.count($result));
+    }
 
-    return $xpath;
+    return $result[0];
   }
 
   /**
