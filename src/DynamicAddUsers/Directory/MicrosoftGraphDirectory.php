@@ -374,16 +374,15 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
     $info['nickname'] = $user->getGivenName();
     $info['first_name'] = $user->getGivenName();
     $info['last_name'] = $user->getSurname();
-    $info['display_name'] = $user->getGivenName()." ".$user->getSurname();
+    $info['display_name'] = trim($user->getGivenName()." ".$user->getSurname());
     if (empty($info['display_name'])) {
-      if (!empty($user->getDisplayName())) {
-        $info['display_name'] = $user->getDisplayName();
-      } else {
-        $info['display_name'] = $user->getUserPrincipalName();
-      }
+      $info['display_name'] = trim($user->getDisplayName());
+    }
+    if (empty($info['display_name'])) {
+      $info['display_name'] = $emailUser;
     }
     if (empty($info['nickname'])) {
-      $info['display_name'] = $info['display_name'];
+      $info['nickname'] = $emailUser;
     }
     return $info;
   }
