@@ -122,22 +122,33 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
    * @return array
    */
   public function getUserInfo ($login) {
-    $xpath = $this->query(array(
-      'action' => 'get_user',
-      'id' => $login,
-    ));
-  //   var_dump($xpath->document->saveXML());
-    $entries = $xpath->query('/cas:results/cas:entry');
-    if ($entries->length < 1) {
-      throw new \Exception('Could not get user. Expecting 1 entry, found '.$entries->length, 404);
-    }
-    else if ($entries->length > 1) {
-      throw new \Exception('Could not get user. Expecting 1 entry, found '.$entries->length);
+    // First search by MiddleburyCollegeUID.
+    $path = "/users?\$filter=extension_a5f5e158fc8b49ce98aa89ab99fd2a76_middleburyCollegeUID eq '" . urlencode($login) ."'&\$count=true&\$top=10&\$orderby=displayName&\$select=id,displayName,mail,givenName,surname,userPrincipalName,extension_a5f5e158fc8b49ce98aa89ab99fd2a76_middleburyCollegeUID";
+    $result = $this->getGraph()
+      ->createRequest("GET", $path)
+      ->addHeaders(['ConsistencyLevel' => 'eventual'])
+      ->setReturnType(User::class)
+      ->execute();
+
+    // If not found and the login ends in 'ext', search on userPrincipalName.
+    if (empty($result) && preg_match('/ext$/i', $login)) {
+      $upn = preg_replace('/^(.+)ext$/i', '\1#EXT#@middleburycollege.onmicrosoft.com', $login);
+      $path = "/users?\$filter=userPrincipalName eq '" . urlencode($upn) ."'&\$count=true&\$top=10&\$orderby=displayName&\$select=id,displayName,mail,givenName,surname,userPrincipalName,extension_a5f5e158fc8b49ce98aa89ab99fd2a76_middleburyCollegeUID";
+      $result = $this->getGraph()
+        ->createRequest("GET", $path)
+        ->addHeaders(['ConsistencyLevel' => 'eventual'])
+        ->setReturnType(User::class)
+        ->execute();
     }
 
-    $entry = $entries->item(0);
+    if (count($result) < 1) {
+      throw new \Exception('Could not get user. Expecting 1 entry, found '.count($result), 404);
+    }
+    else if (count($result) > 1) {
+      throw new \Exception('Could not get user. Expecting 1 entry, found '.count($result));
+    }
 
-    return $this->extractUserInfo($entry, $xpath);
+    return $this->extractUserInfo($result[0]);
   }
 
   /**
@@ -370,6 +381,9 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
       } else {
         $info['display_name'] = $user->getUserPrincipalName();
       }
+    }
+    if (empty($info['nickname'])) {
+      $info['display_name'] = $info['display_name'];
     }
     return $info;
   }
