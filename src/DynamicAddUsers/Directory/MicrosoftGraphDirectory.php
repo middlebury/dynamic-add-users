@@ -360,6 +360,7 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
     // print_r($properties);
     if (empty($properties['extension_a5f5e158fc8b49ce98aa89ab99fd2a76_middleburyCollegeUID'])) {
       $login = preg_replace('/@middleburycollege.onmicrosoft.com$/', '', $user->getUserPrincipalName());
+      $login = preg_replace('/#EXT#$/', 'ext', $login);
     } else {
       $login = $properties['extension_a5f5e158fc8b49ce98aa89ab99fd2a76_middleburyCollegeUID'];
     }
