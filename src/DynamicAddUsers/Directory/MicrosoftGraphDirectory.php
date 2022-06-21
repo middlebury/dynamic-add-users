@@ -200,23 +200,21 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
    * @return array or NULL if group id not found
    */
   public function getGroupMemberInfo ($groupId) {
-    $xpath = $this->query(array(
-      'action'  => 'get_group_members',
-      'id'    => $groupId,
-    ));
-  //   var_dump($xpath->document->saveXML());
-    $memberInfo = array();
-    foreach($xpath->query('/cas:results/cas:entry') as $entry) {
-      try {
-        $memberInfo[] = $this->extractUserInfo($entry, $xpath);
-      } catch (\Exception $e) {
-        if ($e->getCode() == 65004) {
-          // Ignore any groups that we encounter
-        } else {
-          throw $e;
-        }
+    $memberInfo = [];
+
+    $path = "/groups/" . urlencode($groupId) . "/transitiveMembers" ;
+    $path .= "?\$select=id,displayName,mail,givenName,surname,userPrincipalName,extension_a5f5e158fc8b49ce98aa89ab99fd2a76_middleburyCollegeUID";
+
+    $result = $this->getGraph()
+      ->createRequest("GET", $path)
+      ->setReturnType(User::class)
+      ->execute();
+    if (is_array($result)) {
+      foreach ($result as $user) {
+        $memberInfo[$user->getId()] = $this->extractUserInfo($user);
       }
     }
+
     return $memberInfo;
   }
 
