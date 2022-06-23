@@ -173,7 +173,7 @@ class AddUsers {
           $this->plugin->getGroupSyncer()->stopSyncingGroup($_POST['sync_group_id']);
         } catch (Exception $e) {
           if ($e->getCode() == 404) {
-            print "Group '".esc_html($_POST['sync_group_id'])."' was not found. You may want to stop syncing.";
+            print "Group '".esc_html($_POST['sync_group_label'])."' with ID '".esc_html($_POST['sync_group_id'])."' was not found. You may want to stop syncing.";
           } else {
             print "Error: " . esc_html($e->getMessage());
           }
@@ -183,7 +183,7 @@ class AddUsers {
       } else {
         try {
           $changes = $this->plugin->getGroupSyncer()->syncGroup(get_current_blog_id(), $_POST['sync_group_id'], $_POST['role']);
-          print "<strong>Synchronizing  ". DirectoryBase::getGroupDisplayLabel($_POST['sync_group_id']) . ":</strong>\n<br/>";
+          print "<strong>Synchronizing ".esc_html($_POST['sync_group_label']).":</strong>\n<br/>";
           print " &nbsp; &nbsp; ";
           if (count($changes)) {
             print implode("\n<br/> &nbsp; &nbsp; ", $changes);
@@ -192,7 +192,7 @@ class AddUsers {
           }
         } catch (Exception $e) {
           if ($e->getCode() == 404) {
-            print "Group '".esc_html($_POST['sync_group_id'])."' was not found. You may want to stop syncing.";
+            print "Group '".esc_html($_POST['sync_group_label'])."' with ID '".esc_html($_POST['sync_group_id'])."' was not found. You may want to stop syncing.";
           } else {
             print "Error: " . esc_html($e->getMessage());
           }
@@ -255,6 +255,7 @@ class AddUsers {
         print "\n\t\t\t<form action='"."' method='post'>";
         print "\n\t\t\t<input type='hidden' name='sync_group_id' value='".htmlentities($group->group_id)."'/>";
         print "\n\t\t\t<input type='hidden' name='role' value='".$group->role."'/>";
+        print "\n\t\t\t<input type='hidden' name='sync_group_label' value='" . esc_attr( DirectoryBase::getGroupDisplayLabel($group) ) . "'/>";
         print "\n\t\t\t<input type='submit' name='sync_now' value='Sync Now'/>";
         print "\n\t\t\t<input type='submit' name='stop_syncing' value='Stop Syncing'/>";
         print "\n\t\t\t<input type='submit' name='stop_syncing_and_remove_users' value='Stop Syncing And Remove Users'/>";
