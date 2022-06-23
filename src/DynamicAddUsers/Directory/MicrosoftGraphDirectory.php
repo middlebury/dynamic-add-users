@@ -96,7 +96,7 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
       foreach ($result as $group) {
         // print_r($group);
         $matches[$group->getId()] = $group->getDisplayName();
-        if ($group->getDescription()) {
+        if ($group->getDescription() && $group->getDescription() != $group->getDisplayName()) {
           $matches[$group->getId()] .= ' (' . $group->getDescription() . ')';
         }
       }
