@@ -130,8 +130,8 @@ class AddUsers {
     if (!empty($_POST['group'])) {
       try {
         if (isset($_POST['group_sync']) && $_POST['group_sync'] == 'sync') {
-          $this->plugin->getGroupSyncer()->keepGroupInSync($_POST['group'], strip_tags($_POST['role']));
-          $changes = $this->plugin->getGroupSyncer()->syncGroup(get_current_blog_id(), $_POST['group'], strip_tags($_POST['role']));
+          $this->plugin->getGroupSyncer()->keepGroupInSync($_POST['group'], strip_tags($_POST['role']), strip_tags($_POST['group_search']));
+          $changes = $this->plugin->getGroupSyncer()->syncGroup(get_current_blog_id(), $_POST['group'], strip_tags($_POST['role']), strip_tags($_POST['group_search']));
           if (count($changes)) {
             print implode("\n<br/>", $changes);
           } else {
@@ -183,7 +183,7 @@ class AddUsers {
       } else {
         try {
           $changes = $this->plugin->getGroupSyncer()->syncGroup(get_current_blog_id(), $_POST['sync_group_id'], $_POST['role']);
-          print "<strong>Synchronizing  ". DirectoryBase::convertDnToDisplayPath($_POST['sync_group_id']) . ":</strong>\n<br/>";
+          print "<strong>Synchronizing  ". DirectoryBase::getGroupDisplayLabel($_POST['sync_group_id']) . ":</strong>\n<br/>";
           print " &nbsp; &nbsp; ";
           if (count($changes)) {
             print implode("\n<br/> &nbsp; &nbsp; ", $changes);
@@ -246,7 +246,7 @@ class AddUsers {
       foreach ($groups as $group) {
         print "\n\t<tr>";
         print "\n\t\t<td>";
-        print DirectoryBase::convertDnToDisplayPath($group->group_id);
+        print DirectoryBase::getGroupDisplayLabel($group);
         print "\n\t\t</td>";
         print "\n\t\t<td style='padding-left: 10px; padding-right: 10px;'>";
         print $group->role;

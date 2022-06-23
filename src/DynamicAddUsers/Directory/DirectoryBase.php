@@ -107,12 +107,38 @@ abstract class DirectoryBase
   abstract protected function getGroupsBySearchFromDirectory ($search);
 
   /**
+   * Answer a group display label for a group object or group id.
+   *
+   * @param string $group_or_id
+   * @return string
+   */
+  public static function getGroupDisplayLabel ($group_or_id) {
+    if (is_object($group_or_id)) {
+      // Use the stored label if we have one.
+      if (!empty($group_or_id->group_label)) {
+        return $group_or_id->group_label;
+      }
+      // Otherwise, try to figure out a label from the ID.
+      $group_id = $group_or_id->group_id;
+    } else {
+      $group_id = $group_or_id;
+    }
+    // If we have a DN string, try to prettify it.
+    $label = trim(self::convertDnToDisplayPath($group_id));
+    if (!empty($label)) {
+      return $label;
+    }
+    // Just use the ID if nothing else.
+    return $group_id;
+  }
+
+  /**
    * Answer a group display name from a DN.
    *
    * @param strin $dn
    * @return string
    */
-  public static function convertDnToDisplayPath ($dn) {
+  protected static function convertDnToDisplayPath ($dn) {
     // Reverse the DN and trim off the domain parts.
     $path = ldap_explode_dn($dn, 1);
     unset($path['count']);

@@ -13,9 +13,10 @@ interface GroupSyncerInterface
    *
    * @param string $group_id
    * @param string $role
+   * @param string $groups_label
    * @return NULL
    */
-  public function keepGroupInSync ($group_id, $role);
+  public function keepGroupInSync ($group_id, $role, $group_label = NULL);
 
   /**
    * Answer an array of group ids that are kept in sync for the current blog.
@@ -62,9 +63,10 @@ interface GroupSyncerInterface
    * @param int $blog_id
    * @param string $groups_id
    * @param string $role
+   * @param string $group_label
    * @return NULL
    */
-  public function syncGroup ($blog_id, $group_id, $role);
+  public function syncGroup ($blog_id, $group_id, $role, $group_label = NULL);
 
   /**
    * Remove all of the users in a group from the current blog.

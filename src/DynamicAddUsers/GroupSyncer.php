@@ -44,7 +44,7 @@ class GroupSyncer implements GroupSyncerInterface
    * @param string $role
    * @return NULL
    */
-  public function keepGroupInSync ($group_id, $role) {
+  public function keepGroupInSync ($group_id, $role, $group_label = NULL) {
     $synced = $this->getSyncedGroups();
     foreach ($synced as $group) {
       if ($group->group_id == $group_id && $group->role == $role)
@@ -59,6 +59,7 @@ class GroupSyncer implements GroupSyncerInterface
     $wpdb->insert($groups, array(
       'blog_id' => get_current_blog_id(),
       'group_id' => $group_id,
+      'group_label' => $group_label,
       'role' => $role,
     ));
   }
@@ -243,7 +244,7 @@ class GroupSyncer implements GroupSyncerInterface
   public function syncGroups (array $groups) {
     foreach ($groups as $group) {
       try {
-        $this->syncGroup($group->blog_id, $group->group_id, $group->role);
+        $this->syncGroup($group->blog_id, $group->group_id, $group->role, $group->group_label);
       } catch (Exception $e) {
         user_error($e->getMessage(), E_USER_WARNING);
       }
@@ -256,9 +257,10 @@ class GroupSyncer implements GroupSyncerInterface
    * @param int $blog_id
    * @param string $groups_id
    * @param string $role
+   * @param string $group_label
    * @return NULL
    */
-  public function syncGroup ($blog_id, $group_id, $role) {
+  public function syncGroup ($blog_id, $group_id, $role, $group_label = NULL) {
     global $wpdb;
     $role_levels = array(
       'subscriber' => 1,
@@ -270,7 +272,7 @@ class GroupSyncer implements GroupSyncerInterface
     $changes = array();
     $memberInfo = $this->directory->getGroupMemberInfo($group_id);
     if (!is_array($memberInfo)) {
-      throw new Exception("Could not find members for '".$group_id."'.");
+      throw new Exception("Could not find members for group '".$group_label."' with id '".$group_id."'.");
     } else {
       $user_ids = array();
       foreach ($memberInfo as $info) {

@@ -192,7 +192,7 @@ class DynamicAddUsersPlugin implements DynamicAddUsersPluginInterface
   /*******************************************************
    * Database and install.
    *******************************************************/
-  const DYNADDUSERS_DB_VERSION = '0.1';
+  const DYNADDUSERS_DB_VERSION = '0.2';
 
   /**
    * Validate that our database state is current.
@@ -211,29 +211,40 @@ class DynamicAddUsersPlugin implements DynamicAddUsersPluginInterface
 
     $groups = $wpdb->base_prefix . "dynaddusers_groups";
     $synced = $wpdb->base_prefix . "dynaddusers_synced";
-    if ($wpdb->get_var("SHOW TABLES LIKE '$groups'") != $groups) {
+    $charset_collate = $wpdb->get_charset_collate();
+
+    $synced_groups_table_sql = "CREATE TABLE " . $groups . " (
+      blog_id int(11) NOT NULL,
+      group_id varchar(255) NOT NULL,
+      group_label VARCHAR(255) NULL,
+      role varchar(25) NOT NULL,
+      last_sync datetime default NULL,
+      PRIMARY KEY  (blog_id,group_id),
+      KEY last_sync (last_sync)
+    ) $charset_collate;";
+
+    $synced_users_table_sql = "CREATE TABLE " . $synced . " (
+      blog_id int(11) NOT NULL,
+      group_id varchar(255) NOT NULL,
+      user_id int(11) NOT NULL,
+      PRIMARY KEY  (blog_id,group_id,user_id)
+    ) $charset_collate;";
+
+    if ($wpdb->get_var("SHOW TABLES LIKE '$groups'") != $groups ) {
       require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-
-      $sql = "CREATE TABLE " . $groups . " (
-        blog_id int(11) NOT NULL,
-        group_id varchar(255) NOT NULL,
-        role varchar(25) NOT NULL,
-        last_sync datetime default NULL,
-        PRIMARY KEY  (blog_id,group_id),
-        KEY last_sync (last_sync)
-      );";
-      dbDelta($sql);
-
-      $sql = "CREATE TABLE " . $synced . " (
-        blog_id int(11) NOT NULL,
-        group_id varchar(255) NOT NULL,
-        user_id int(11) NOT NULL,
-        PRIMARY KEY  (blog_id,group_id,user_id)
-      );";
-      dbDelta($sql);
-
-      add_option("dynaddusers_db_version", self::DYNADDUSERS_DB_VERSION);
+      dbDelta($synced_groups_table_sql);
+      dbDelta($synced_users_table_sql);
+      add_site_option("dynaddusers_db_version", self::DYNADDUSERS_DB_VERSION);
     }
+
+    // Upgrade the schema if needed.
+    if ( version_compare( get_site_option("dynaddusers_db_version", '0.1'), self::DYNADDUSERS_DB_VERSION ) < 0 ) {
+      require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+      dbDelta($synced_groups_table_sql);
+      dbDelta($synced_users_table_sql);
+      update_site_option("dynaddusers_db_version", self::DYNADDUSERS_DB_VERSION);
+    }
+
   }
 
   /*******************************************************
