@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Segment File
 * PHP version 7
 *
@@ -176,7 +176,7 @@ class Segment extends \Microsoft\Graph\Model\Entity
     * Sets the media
     * Media associated with this segment.
     *
-    * @param Media $val The media
+    * @param Media[] $val The media
     *
     * @return Segment
     */

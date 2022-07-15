@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ManagedAppRegistration File
 * PHP version 7
 *
@@ -226,7 +226,7 @@ class ManagedAppRegistration extends Entity
     * Sets the flaggedReasons
     * Zero or more reasons an app registration is flagged. E.g. app running on rooted device
     *
-    * @param ManagedAppFlaggedReason $val The flaggedReasons
+    * @param ManagedAppFlaggedReason[] $val The flaggedReasons
     *
     * @return ManagedAppRegistration
     */
@@ -405,7 +405,7 @@ class ManagedAppRegistration extends Entity
     * Sets the appliedPolicies
     * Zero or more policys already applied on the registered app when it last synchronized with managment service.
     *
-    * @param ManagedAppPolicy $val The appliedPolicies
+    * @param ManagedAppPolicy[] $val The appliedPolicies
     *
     * @return ManagedAppRegistration
     */
@@ -435,7 +435,7 @@ class ManagedAppRegistration extends Entity
     * Sets the intendedPolicies
     * Zero or more policies admin intended for the app as of now.
     *
-    * @param ManagedAppPolicy $val The intendedPolicies
+    * @param ManagedAppPolicy[] $val The intendedPolicies
     *
     * @return ManagedAppRegistration
     */
@@ -465,7 +465,7 @@ class ManagedAppRegistration extends Entity
     * Sets the operations
     * Zero or more long running operations triggered on the app registration.
     *
-    * @param ManagedAppOperation $val The operations
+    * @param ManagedAppOperation[] $val The operations
     *
     * @return ManagedAppRegistration
     */

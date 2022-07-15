@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * OfferShiftRequest File
 * PHP version 7
 *
@@ -88,7 +88,7 @@ class OfferShiftRequest extends ScheduleChangeRequest
 
     /**
     * Gets the recipientUserId
-    * User ID of the recipient of the offer shift request.
+    * User id of the recipient of the offer shift request.
     *
     * @return string|null The recipientUserId
     */
@@ -103,7 +103,7 @@ class OfferShiftRequest extends ScheduleChangeRequest
 
     /**
     * Sets the recipientUserId
-    * User ID of the recipient of the offer shift request.
+    * User id of the recipient of the offer shift request.
     *
     * @param string $val The recipientUserId
     *
@@ -117,7 +117,7 @@ class OfferShiftRequest extends ScheduleChangeRequest
 
     /**
     * Gets the senderShiftId
-    * User ID of the sender of the offer shift request.
+    * User id of the sender of the offer shift request.
     *
     * @return string|null The senderShiftId
     */
@@ -132,7 +132,7 @@ class OfferShiftRequest extends ScheduleChangeRequest
 
     /**
     * Sets the senderShiftId
-    * User ID of the sender of the offer shift request.
+    * User id of the sender of the offer shift request.
     *
     * @param string $val The senderShiftId
     *

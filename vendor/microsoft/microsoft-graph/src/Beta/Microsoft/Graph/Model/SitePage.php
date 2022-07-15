@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * SitePage File
 * PHP version 7
 *
@@ -160,7 +160,7 @@ class SitePage extends BaseItem
     /**
     * Sets the webParts
     *
-    * @param WebPart $val The webParts
+    * @param WebPart[] $val The webParts
     *
     * @return SitePage
     */

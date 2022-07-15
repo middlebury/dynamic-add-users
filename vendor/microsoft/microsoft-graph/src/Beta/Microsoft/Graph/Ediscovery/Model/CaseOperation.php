@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * CaseOperation File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class CaseOperation extends \Beta\Microsoft\Graph\Model\Entity
 {
     /**
     * Gets the action
-    * The type of action the operation represents. Possible values are: addToReviewSet,applyTags,contentExport,convertToPdf,estimateStatistics
+    * The type of action the operation represents. Possible values are: addToReviewSet,applyTags,contentExport,convertToPdf,estimateStatistics, purgeData
     *
     * @return CaseAction|null The action
     */
@@ -45,7 +45,7 @@ class CaseOperation extends \Beta\Microsoft\Graph\Model\Entity
 
     /**
     * Sets the action
-    * The type of action the operation represents. Possible values are: addToReviewSet,applyTags,contentExport,convertToPdf,estimateStatistics
+    * The type of action the operation represents. Possible values are: addToReviewSet,applyTags,contentExport,convertToPdf,estimateStatistics, purgeData
     *
     * @param CaseAction $val The action
     *

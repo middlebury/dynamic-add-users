@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Event File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class Event extends OutlookItem
 {
     /**
     * Gets the allowNewTimeProposals
-    * true if the meeting organizer allows invitees to propose a new time when responding; otherwise, false. Optional. Default is true.
+    * true if the meeting organizer allows invitees to propose a new time when responding; otherwise false. Optional. Default is true.
     *
     * @return bool|null The allowNewTimeProposals
     */
@@ -41,7 +41,7 @@ class Event extends OutlookItem
 
     /**
     * Sets the allowNewTimeProposals
-    * true if the meeting organizer allows invitees to propose a new time when responding; otherwise, false. Optional. Default is true.
+    * true if the meeting organizer allows invitees to propose a new time when responding; otherwise false. Optional. Default is true.
     *
     * @param bool $val The allowNewTimeProposals
     *
@@ -73,7 +73,7 @@ class Event extends OutlookItem
     * Sets the attendees
     * The collection of attendees for the event.
     *
-    * @param Attendee $val The attendees
+    * @param Attendee[] $val The attendees
     *
     * @return Event
     */
@@ -507,7 +507,7 @@ class Event extends OutlookItem
     /**
     * Sets the locations
     *
-    * @param Location $val The locations
+    * @param Location[] $val The locations
     *
     * @return Event
     */
@@ -1090,7 +1090,7 @@ class Event extends OutlookItem
     * Sets the attachments
     * The collection of FileAttachment, ItemAttachment, and referenceAttachment attachments for the event. Navigation property. Read-only. Nullable.
     *
-    * @param Attachment $val The attachments
+    * @param Attachment[] $val The attachments
     *
     * @return Event
     */
@@ -1153,7 +1153,7 @@ class Event extends OutlookItem
     * Sets the extensions
     * The collection of open extensions defined for the event. Nullable.
     *
-    * @param Extension $val The extensions
+    * @param Extension[] $val The extensions
     *
     * @return Event
     */
@@ -1183,7 +1183,7 @@ class Event extends OutlookItem
     * Sets the instances
     * The occurrences of a recurring series, if the event is a series master. This property includes occurrences that are part of the recurrence pattern, and exceptions that have been modified, but does not include occurrences that have been cancelled from the series. Navigation property. Read-only. Nullable.
     *
-    * @param Event $val The instances
+    * @param Event[] $val The instances
     *
     * @return Event
     */
@@ -1213,7 +1213,7 @@ class Event extends OutlookItem
     * Sets the multiValueExtendedProperties
     * The collection of multi-value extended properties defined for the event. Read-only. Nullable.
     *
-    * @param MultiValueLegacyExtendedProperty $val The multiValueExtendedProperties
+    * @param MultiValueLegacyExtendedProperty[] $val The multiValueExtendedProperties
     *
     * @return Event
     */
@@ -1243,7 +1243,7 @@ class Event extends OutlookItem
     * Sets the singleValueExtendedProperties
     * The collection of single-value extended properties defined for the event. Read-only. Nullable.
     *
-    * @param SingleValueLegacyExtendedProperty $val The singleValueExtendedProperties
+    * @param SingleValueLegacyExtendedProperty[] $val The singleValueExtendedProperties
     *
     * @return Event
     */

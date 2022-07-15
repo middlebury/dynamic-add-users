@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * MobileThreatDefenseConnector File
 * PHP version 7
 *
@@ -50,6 +50,35 @@ class MobileThreatDefenseConnector extends Entity
     public function setAllowPartnerToCollectIOSApplicationMetadata($val)
     {
         $this->_propDict["allowPartnerToCollectIOSApplicationMetadata"] = boolval($val);
+        return $this;
+    }
+
+    /**
+    * Gets the allowPartnerToCollectIOSPersonalApplicationMetadata
+    * For IOS devices, allows the admin to configure whether the data sync partner may also collect metadata about personally installed applications from Intune
+    *
+    * @return bool|null The allowPartnerToCollectIOSPersonalApplicationMetadata
+    */
+    public function getAllowPartnerToCollectIOSPersonalApplicationMetadata()
+    {
+        if (array_key_exists("allowPartnerToCollectIOSPersonalApplicationMetadata", $this->_propDict)) {
+            return $this->_propDict["allowPartnerToCollectIOSPersonalApplicationMetadata"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the allowPartnerToCollectIOSPersonalApplicationMetadata
+    * For IOS devices, allows the admin to configure whether the data sync partner may also collect metadata about personally installed applications from Intune
+    *
+    * @param bool $val The allowPartnerToCollectIOSPersonalApplicationMetadata
+    *
+    * @return MobileThreatDefenseConnector
+    */
+    public function setAllowPartnerToCollectIOSPersonalApplicationMetadata($val)
+    {
+        $this->_propDict["allowPartnerToCollectIOSPersonalApplicationMetadata"] = boolval($val);
         return $this;
     }
 

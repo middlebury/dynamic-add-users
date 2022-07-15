@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * SmsAuthenticationMethodConfiguration File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class SmsAuthenticationMethodConfiguration extends AuthenticationMethodConfigura
     * Sets the includeTargets
     * A collection of users or groups who are enabled to use the authentication method.
     *
-    * @param SmsAuthenticationMethodTarget $val The includeTargets
+    * @param SmsAuthenticationMethodTarget[] $val The includeTargets
     *
     * @return SmsAuthenticationMethodConfiguration
     */

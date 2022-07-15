@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * CaseAction File
 * PHP version 7
 *
@@ -35,5 +35,7 @@ class CaseAction extends Enum
     const INDEX = "index";
     const ESTIMATE_STATISTICS = "estimateStatistics";
     const ADD_TO_REVIEW_SET = "addToReviewSet";
+    const HOLD_UPDATE = "holdUpdate";
     const UNKNOWN_FUTURE_VALUE = "unknownFutureValue";
+    const PURGE_DATA = "purgeData";
 }

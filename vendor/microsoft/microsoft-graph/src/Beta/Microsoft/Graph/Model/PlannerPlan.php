@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * PlannerPlan File
 * PHP version 7
 *
@@ -158,7 +158,6 @@ class PlannerPlan extends PlannerDelta
 
     /**
     * Gets the owner
-    * ID of the Group that owns the plan. A valid group must exist before this field can be set. After it is set, this property can’t be updated.
     *
     * @return string|null The owner
     */
@@ -173,7 +172,6 @@ class PlannerPlan extends PlannerDelta
 
     /**
     * Sets the owner
-    * ID of the Group that owns the plan. A valid group must exist before this field can be set. After it is set, this property can’t be updated.
     *
     * @param string $val The owner
     *
@@ -217,7 +215,7 @@ class PlannerPlan extends PlannerDelta
 
      /**
      * Gets the buckets
-    * Read-only. Nullable. Collection of buckets in the plan.
+    * Collection of buckets in the plan. Read-only. Nullable.
      *
      * @return array|null The buckets
      */
@@ -232,9 +230,9 @@ class PlannerPlan extends PlannerDelta
 
     /**
     * Sets the buckets
-    * Read-only. Nullable. Collection of buckets in the plan.
+    * Collection of buckets in the plan. Read-only. Nullable.
     *
-    * @param PlannerBucket $val The buckets
+    * @param PlannerBucket[] $val The buckets
     *
     * @return PlannerPlan
     */
@@ -246,7 +244,7 @@ class PlannerPlan extends PlannerDelta
 
     /**
     * Gets the details
-    * Read-only. Nullable. Additional details about the plan.
+    * Additional details about the plan. Read-only. Nullable.
     *
     * @return PlannerPlanDetails|null The details
     */
@@ -265,7 +263,7 @@ class PlannerPlan extends PlannerDelta
 
     /**
     * Sets the details
-    * Read-only. Nullable. Additional details about the plan.
+    * Additional details about the plan. Read-only. Nullable.
     *
     * @param PlannerPlanDetails $val The details
     *
@@ -280,7 +278,7 @@ class PlannerPlan extends PlannerDelta
 
      /**
      * Gets the tasks
-    * Read-only. Nullable. Collection of tasks in the plan.
+    * Collection of tasks in the plan. Read-only. Nullable.
      *
      * @return array|null The tasks
      */
@@ -295,9 +293,9 @@ class PlannerPlan extends PlannerDelta
 
     /**
     * Sets the tasks
-    * Read-only. Nullable. Collection of tasks in the plan.
+    * Collection of tasks in the plan. Read-only. Nullable.
     *
-    * @param PlannerTask $val The tasks
+    * @param PlannerTask[] $val The tasks
     *
     * @return PlannerPlan
     */

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * MeetingTimeSuggestion File
 * PHP version 7
 *
@@ -181,7 +181,7 @@ class MeetingTimeSuggestion extends Entity
 
     /**
     * Gets the organizerAvailability
-    * Availability of the meeting organizer for this meeting suggestion. The possible values are: free, tentative, busy, oof, workingElsewhere, unknown.
+    * Availability of the meeting organizer for this meeting suggestion. Possible values are: free, tentative, busy, oof, workingElsewhere, unknown.
     *
     * @return FreeBusyStatus|null The organizerAvailability
     */
@@ -200,7 +200,7 @@ class MeetingTimeSuggestion extends Entity
 
     /**
     * Sets the organizerAvailability
-    * Availability of the meeting organizer for this meeting suggestion. The possible values are: free, tentative, busy, oof, workingElsewhere, unknown.
+    * Availability of the meeting organizer for this meeting suggestion. Possible values are: free, tentative, busy, oof, workingElsewhere, unknown.
     *
     * @param FreeBusyStatus $val The value to assign to the organizerAvailability
     *

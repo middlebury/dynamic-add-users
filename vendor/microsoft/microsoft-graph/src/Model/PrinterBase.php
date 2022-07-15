@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * PrinterBase File
 * PHP version 7
 *
@@ -292,7 +292,7 @@ class PrinterBase extends Entity
     * Sets the jobs
     * The list of jobs that are queued for printing by the printer/printerShare.
     *
-    * @param PrintJob $val The jobs
+    * @param PrintJob[] $val The jobs
     *
     * @return PrinterBase
     */

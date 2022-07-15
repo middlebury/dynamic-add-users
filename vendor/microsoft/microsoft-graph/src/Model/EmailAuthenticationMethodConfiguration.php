@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * EmailAuthenticationMethodConfiguration File
 * PHP version 7
 *
@@ -77,7 +77,7 @@ class EmailAuthenticationMethodConfiguration extends AuthenticationMethodConfigu
     * Sets the includeTargets
     * A collection of users or groups who are enabled to use the authentication method.
     *
-    * @param AuthenticationMethodTarget $val The includeTargets
+    * @param AuthenticationMethodTarget[] $val The includeTargets
     *
     * @return EmailAuthenticationMethodConfiguration
     */

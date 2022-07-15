@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * SocialIdentityProvider File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class SocialIdentityProvider extends IdentityProviderBase
 {
     /**
     * Gets the clientId
-    * The identifier for the client application obtained when registering the application with the identity provider. Required.
+    * The client identifier for the application obtained when registering the application with the identity provider. Required.
     *
     * @return string|null The clientId
     */
@@ -41,7 +41,7 @@ class SocialIdentityProvider extends IdentityProviderBase
 
     /**
     * Sets the clientId
-    * The identifier for the client application obtained when registering the application with the identity provider. Required.
+    * The client identifier for the application obtained when registering the application with the identity provider. Required.
     *
     * @param string $val The clientId
     *

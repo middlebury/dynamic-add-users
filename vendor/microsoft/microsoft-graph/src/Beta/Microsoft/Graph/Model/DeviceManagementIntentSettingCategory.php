@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceManagementIntentSettingCategory File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class DeviceManagementIntentSettingCategory extends DeviceManagementSettingCateg
     * Sets the settings
     * The settings this category contains
     *
-    * @param DeviceManagementSettingInstance $val The settings
+    * @param DeviceManagementSettingInstance[] $val The settings
     *
     * @return DeviceManagementIntentSettingCategory
     */

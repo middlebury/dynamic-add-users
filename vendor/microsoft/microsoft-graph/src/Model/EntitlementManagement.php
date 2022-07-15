@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * EntitlementManagement File
 * PHP version 7
 *
@@ -27,6 +27,7 @@ class EntitlementManagement extends Entity
 
      /**
      * Gets the accessPackageAssignmentApprovals
+    * Approval stages for decisions associated with access package assignment requests.
      *
      * @return array|null The accessPackageAssignmentApprovals
      */
@@ -41,8 +42,9 @@ class EntitlementManagement extends Entity
 
     /**
     * Sets the accessPackageAssignmentApprovals
+    * Approval stages for decisions associated with access package assignment requests.
     *
-    * @param Approval $val The accessPackageAssignmentApprovals
+    * @param Approval[] $val The accessPackageAssignmentApprovals
     *
     * @return EntitlementManagement
     */
@@ -55,6 +57,7 @@ class EntitlementManagement extends Entity
 
      /**
      * Gets the accessPackages
+    * Represents access package objects.
      *
      * @return array|null The accessPackages
      */
@@ -69,8 +72,9 @@ class EntitlementManagement extends Entity
 
     /**
     * Sets the accessPackages
+    * Represents access package objects.
     *
-    * @param AccessPackage $val The accessPackages
+    * @param AccessPackage[] $val The accessPackages
     *
     * @return EntitlementManagement
     */
@@ -82,7 +86,38 @@ class EntitlementManagement extends Entity
 
 
      /**
+     * Gets the assignmentPolicies
+    * Access package assignment policies govern which subjects can request or be assigned an access package via an access package assignment.
+     *
+     * @return array|null The assignmentPolicies
+     */
+    public function getAssignmentPolicies()
+    {
+        if (array_key_exists("assignmentPolicies", $this->_propDict)) {
+           return $this->_propDict["assignmentPolicies"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the assignmentPolicies
+    * Access package assignment policies govern which subjects can request or be assigned an access package via an access package assignment.
+    *
+    * @param AccessPackageAssignmentPolicy[] $val The assignmentPolicies
+    *
+    * @return EntitlementManagement
+    */
+    public function setAssignmentPolicies($val)
+    {
+        $this->_propDict["assignmentPolicies"] = $val;
+        return $this;
+    }
+
+
+     /**
      * Gets the assignmentRequests
+    * Access package assignment requests created by or on behalf of a subject.
      *
      * @return array|null The assignmentRequests
      */
@@ -97,8 +132,9 @@ class EntitlementManagement extends Entity
 
     /**
     * Sets the assignmentRequests
+    * Access package assignment requests created by or on behalf of a subject.
     *
-    * @param AccessPackageAssignmentRequest $val The assignmentRequests
+    * @param AccessPackageAssignmentRequest[] $val The assignmentRequests
     *
     * @return EntitlementManagement
     */
@@ -111,6 +147,7 @@ class EntitlementManagement extends Entity
 
      /**
      * Gets the assignments
+    * The assignment of an access package to a subject for a period of time.
      *
      * @return array|null The assignments
      */
@@ -125,8 +162,9 @@ class EntitlementManagement extends Entity
 
     /**
     * Sets the assignments
+    * The assignment of an access package to a subject for a period of time.
     *
-    * @param AccessPackageAssignment $val The assignments
+    * @param AccessPackageAssignment[] $val The assignments
     *
     * @return EntitlementManagement
     */
@@ -139,6 +177,7 @@ class EntitlementManagement extends Entity
 
      /**
      * Gets the catalogs
+    * A container for access packages.
      *
      * @return array|null The catalogs
      */
@@ -153,8 +192,9 @@ class EntitlementManagement extends Entity
 
     /**
     * Sets the catalogs
+    * A container for access packages.
     *
-    * @param AccessPackageCatalog $val The catalogs
+    * @param AccessPackageCatalog[] $val The catalogs
     *
     * @return EntitlementManagement
     */
@@ -167,6 +207,7 @@ class EntitlementManagement extends Entity
 
      /**
      * Gets the connectedOrganizations
+    * Represents references to a directory or domain of another organization whose users can request access.
      *
      * @return array|null The connectedOrganizations
      */
@@ -181,8 +222,9 @@ class EntitlementManagement extends Entity
 
     /**
     * Sets the connectedOrganizations
+    * Represents references to a directory or domain of another organization whose users can request access.
     *
-    * @param ConnectedOrganization $val The connectedOrganizations
+    * @param ConnectedOrganization[] $val The connectedOrganizations
     *
     * @return EntitlementManagement
     */
@@ -194,6 +236,7 @@ class EntitlementManagement extends Entity
 
     /**
     * Gets the settings
+    * Represents the settings that control the behavior of Azure AD entitlement management.
     *
     * @return EntitlementManagementSettings|null The settings
     */
@@ -212,6 +255,7 @@ class EntitlementManagement extends Entity
 
     /**
     * Sets the settings
+    * Represents the settings that control the behavior of Azure AD entitlement management.
     *
     * @param EntitlementManagementSettings $val The settings
     *

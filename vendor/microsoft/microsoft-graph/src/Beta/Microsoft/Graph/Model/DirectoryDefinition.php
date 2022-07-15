@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DirectoryDefinition File
 * PHP version 7
 *
@@ -139,7 +139,7 @@ class DirectoryDefinition extends Entity
     * Sets the objects
     * Collection of objects supported by the directory.
     *
-    * @param ObjectDefinition $val The objects
+    * @param ObjectDefinition[] $val The objects
     *
     * @return DirectoryDefinition
     */

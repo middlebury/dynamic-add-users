@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * IosImportedPFXCertificateProfile File
 * PHP version 7
 *
@@ -77,7 +77,7 @@ class IosImportedPFXCertificateProfile extends IosCertificateProfile
     * Sets the managedDeviceCertificateStates
     * Certificate state for devices. This collection can contain a maximum of 2147483647 elements.
     *
-    * @param ManagedDeviceCertificateState $val The managedDeviceCertificateStates
+    * @param ManagedDeviceCertificateState[] $val The managedDeviceCertificateStates
     *
     * @return IosImportedPFXCertificateProfile
     */

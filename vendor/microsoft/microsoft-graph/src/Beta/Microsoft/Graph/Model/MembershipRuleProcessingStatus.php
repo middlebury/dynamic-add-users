@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * MembershipRuleProcessingStatus File
 * PHP version 7
 *
@@ -87,7 +87,7 @@ class MembershipRuleProcessingStatus extends Entity
 
     /**
     * Gets the status
-    * Current status of a dynamic group processing. Possible values are: NotStarted, Running, Succeeded, Failed, and UnknownFutureValue.   Required. Read-only.
+    * Current status of a dynamic group processing. Possible values are: NotStarted, Running, Succeeded, Failed, and UnknownFutureValue.  Required. Read-only.
     *
     * @return MembershipRuleProcessingStatusDetails|null The status
     */
@@ -106,7 +106,7 @@ class MembershipRuleProcessingStatus extends Entity
 
     /**
     * Sets the status
-    * Current status of a dynamic group processing. Possible values are: NotStarted, Running, Succeeded, Failed, and UnknownFutureValue.   Required. Read-only.
+    * Current status of a dynamic group processing. Possible values are: NotStarted, Running, Succeeded, Failed, and UnknownFutureValue.  Required. Read-only.
     *
     * @param MembershipRuleProcessingStatusDetails $val The value to assign to the status
     *

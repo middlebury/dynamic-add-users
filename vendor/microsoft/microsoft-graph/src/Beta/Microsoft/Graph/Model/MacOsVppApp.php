@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * MacOsVppApp File
 * PHP version 7
 *
@@ -168,7 +168,7 @@ class MacOsVppApp extends MobileApp
     * Sets the revokeLicenseActionResults
     * Results of revoke license actions on this app.
     *
-    * @param MacOsVppAppRevokeLicensesActionResult $val The revokeLicenseActionResults
+    * @param MacOsVppAppRevokeLicensesActionResult[] $val The revokeLicenseActionResults
     *
     * @return MacOsVppApp
     */
@@ -376,7 +376,7 @@ class MacOsVppApp extends MobileApp
     * Sets the assignedLicenses
     * The licenses assigned to this app.
     *
-    * @param MacOsVppAppAssignedLicense $val The assignedLicenses
+    * @param MacOsVppAppAssignedLicense[] $val The assignedLicenses
     *
     * @return MacOsVppApp
     */

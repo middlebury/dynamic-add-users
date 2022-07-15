@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * SettingValue File
 * PHP version 7
 *
@@ -25,7 +25,7 @@ class SettingValue extends Entity
 {
     /**
     * Gets the name
-    * Name of the setting (as defined by the groupSettingTemplate).
+    * Name of the setting (as defined by the directorySettingTemplate).
     *
     * @return string|null The name
     */
@@ -40,7 +40,7 @@ class SettingValue extends Entity
 
     /**
     * Sets the name
-    * Name of the setting (as defined by the groupSettingTemplate).
+    * Name of the setting (as defined by the directorySettingTemplate).
     *
     * @param string $val The value of the name
     *

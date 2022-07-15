@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Catalog File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class Catalog extends \Beta\Microsoft\Graph\Model\Entity
     * Sets the entries
     * Lists the content that you can approve for deployment. Read-only.
     *
-    * @param CatalogEntry $val The entries
+    * @param CatalogEntry[] $val The entries
     *
     * @return Catalog
     */

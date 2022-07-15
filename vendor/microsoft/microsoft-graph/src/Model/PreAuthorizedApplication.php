@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * PreAuthorizedApplication File
 * PHP version 7
 *
@@ -25,7 +25,7 @@ class PreAuthorizedApplication extends Entity
 {
     /**
     * Gets the appId
-    * The unique identifier for the application.
+    * The unique identifier for the client application.
     *
     * @return string|null The appId
     */
@@ -40,7 +40,7 @@ class PreAuthorizedApplication extends Entity
 
     /**
     * Sets the appId
-    * The unique identifier for the application.
+    * The unique identifier for the client application.
     *
     * @param string $val The value of the appId
     *
@@ -53,6 +53,7 @@ class PreAuthorizedApplication extends Entity
     }
     /**
     * Gets the delegatedPermissionIds
+    * The unique identifier for the oauth2PermissionScopes the application requires.
     *
     * @return string|null The delegatedPermissionIds
     */
@@ -67,6 +68,7 @@ class PreAuthorizedApplication extends Entity
 
     /**
     * Sets the delegatedPermissionIds
+    * The unique identifier for the oauth2PermissionScopes the application requires.
     *
     * @param string $val The value of the delegatedPermissionIds
     *

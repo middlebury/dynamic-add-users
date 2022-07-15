@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ConfigurationManagerActionType File
 * PHP version 7
 *
@@ -33,4 +33,7 @@ class ConfigurationManagerActionType extends Enum
     const REFRESH_USER_POLICY = "refreshUserPolicy";
     const WAKE_UP_CLIENT = "wakeUpClient";
     const APP_EVALUATION = "appEvaluation";
+    const QUICK_SCAN = "quickScan";
+    const FULL_SCAN = "fullScan";
+    const WINDOWS_DEFENDER_UPDATE_SIGNATURES = "windowsDefenderUpdateSignatures";
 }

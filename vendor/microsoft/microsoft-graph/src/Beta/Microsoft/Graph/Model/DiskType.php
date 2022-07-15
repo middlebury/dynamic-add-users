@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DiskType File
 * PHP version 7
 *
@@ -29,7 +29,8 @@ class DiskType extends Enum
     /**
     * The Enum DiskType
     */
-    const UNKOWN = "unkown";
+    const UNKNOWN = "unknown";
     const HDD = "hdd";
     const SSD = "ssd";
+    const UNKNOWN_FUTURE_VALUE = "unknownFutureValue";
 }

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * BookingCustomer File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class BookingCustomer extends BookingPerson
     * Sets the addresses
     * Addresses associated with the customer, including home, business and other addresses.
     *
-    * @param PhysicalAddress $val The addresses
+    * @param PhysicalAddress[] $val The addresses
     *
     * @return BookingCustomer
     */
@@ -74,7 +74,7 @@ class BookingCustomer extends BookingPerson
     * Sets the phones
     * Phone numbers associated with the customer, including home, business and mobile numbers.
     *
-    * @param Phone $val The phones
+    * @param Phone[] $val The phones
     *
     * @return BookingCustomer
     */

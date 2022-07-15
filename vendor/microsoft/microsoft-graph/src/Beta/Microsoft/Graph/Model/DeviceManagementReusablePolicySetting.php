@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceManagementReusablePolicySetting File
 * PHP version 7
 *
@@ -288,7 +288,7 @@ class DeviceManagementReusablePolicySetting extends Entity
     * Sets the referencingConfigurationPolicies
     * configuration policies referencing the current reusable setting. This property is read-only.
     *
-    * @param DeviceManagementConfigurationPolicy $val The referencingConfigurationPolicies
+    * @param DeviceManagementConfigurationPolicy[] $val The referencingConfigurationPolicies
     *
     * @return DeviceManagementReusablePolicySetting
     */

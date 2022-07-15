@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ExactMatchDataStoreBase File
 * PHP version 7
 *
@@ -42,7 +42,7 @@ class ExactMatchDataStoreBase extends Entity
     /**
     * Sets the columns
     *
-    * @param ExactDataMatchStoreColumn $val The columns
+    * @param ExactDataMatchStoreColumn[] $val The columns
     *
     * @return ExactMatchDataStoreBase
     */

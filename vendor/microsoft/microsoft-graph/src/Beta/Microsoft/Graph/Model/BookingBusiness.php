@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * BookingBusiness File
 * PHP version 7
 *
@@ -77,7 +77,7 @@ class BookingBusiness extends BookingNamedEntity
     * Sets the businessHours
     * The hours of operation for the business.
     *
-    * @param BookingWorkHours $val The businessHours
+    * @param BookingWorkHours[] $val The businessHours
     *
     * @return BookingBusiness
     */
@@ -200,6 +200,35 @@ class BookingBusiness extends BookingNamedEntity
     public function setIsPublished($val)
     {
         $this->_propDict["isPublished"] = boolval($val);
+        return $this;
+    }
+
+    /**
+    * Gets the languageTag
+    * The language of the self service booking page
+    *
+    * @return string|null The languageTag
+    */
+    public function getLanguageTag()
+    {
+        if (array_key_exists("languageTag", $this->_propDict)) {
+            return $this->_propDict["languageTag"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the languageTag
+    * The language of the self service booking page
+    *
+    * @param string $val The languageTag
+    *
+    * @return BookingBusiness
+    */
+    public function setLanguageTag($val)
+    {
+        $this->_propDict["languageTag"] = $val;
         return $this;
     }
 
@@ -343,7 +372,7 @@ class BookingBusiness extends BookingNamedEntity
     * Sets the appointments
     * All the appointments of this business. Read-only. Nullable.
     *
-    * @param BookingAppointment $val The appointments
+    * @param BookingAppointment[] $val The appointments
     *
     * @return BookingBusiness
     */
@@ -373,7 +402,7 @@ class BookingBusiness extends BookingNamedEntity
     * Sets the calendarView
     * The set of appointments of this business in a specified date range. Read-only. Nullable.
     *
-    * @param BookingAppointment $val The calendarView
+    * @param BookingAppointment[] $val The calendarView
     *
     * @return BookingBusiness
     */
@@ -403,13 +432,43 @@ class BookingBusiness extends BookingNamedEntity
     * Sets the customers
     * All the customers of this business. Read-only. Nullable.
     *
-    * @param BookingCustomer $val The customers
+    * @param BookingCustomer[] $val The customers
     *
     * @return BookingBusiness
     */
     public function setCustomers($val)
     {
         $this->_propDict["customers"] = $val;
+        return $this;
+    }
+
+
+     /**
+     * Gets the customQuestions
+    * All the custom questions of this business. Read-only. Nullable.
+     *
+     * @return array|null The customQuestions
+     */
+    public function getCustomQuestions()
+    {
+        if (array_key_exists("customQuestions", $this->_propDict)) {
+           return $this->_propDict["customQuestions"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the customQuestions
+    * All the custom questions of this business. Read-only. Nullable.
+    *
+    * @param BookingCustomQuestion[] $val The customQuestions
+    *
+    * @return BookingBusiness
+    */
+    public function setCustomQuestions($val)
+    {
+        $this->_propDict["customQuestions"] = $val;
         return $this;
     }
 
@@ -433,7 +492,7 @@ class BookingBusiness extends BookingNamedEntity
     * Sets the services
     * All the services offered by this business. Read-only. Nullable.
     *
-    * @param BookingService $val The services
+    * @param BookingService[] $val The services
     *
     * @return BookingBusiness
     */
@@ -463,7 +522,7 @@ class BookingBusiness extends BookingNamedEntity
     * Sets the staffMembers
     * All the staff members that provide services in this business. Read-only. Nullable.
     *
-    * @param BookingStaffMember $val The staffMembers
+    * @param BookingStaffMember[] $val The staffMembers
     *
     * @return BookingBusiness
     */

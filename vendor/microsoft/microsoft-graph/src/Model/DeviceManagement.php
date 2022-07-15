@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceManagement File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class DeviceManagement extends Entity
 {
     /**
     * Gets the intuneAccountId
-    * Intune Account Id for given tenant
+    * Intune Account ID for given tenant
     *
     * @return string|null The intuneAccountId
     */
@@ -41,7 +41,7 @@ class DeviceManagement extends Entity
 
     /**
     * Sets the intuneAccountId
-    * Intune Account Id for given tenant
+    * Intune Account ID for given tenant
     *
     * @param string $val The intuneAccountId
     *
@@ -172,7 +172,7 @@ class DeviceManagement extends Entity
     * Sets the termsAndConditions
     * The terms and conditions associated with device management of the company.
     *
-    * @param TermsAndConditions $val The termsAndConditions
+    * @param TermsAndConditions[] $val The termsAndConditions
     *
     * @return DeviceManagement
     */
@@ -202,7 +202,7 @@ class DeviceManagement extends Entity
     * Sets the deviceCompliancePolicies
     * The device compliance policies.
     *
-    * @param DeviceCompliancePolicy $val The deviceCompliancePolicies
+    * @param DeviceCompliancePolicy[] $val The deviceCompliancePolicies
     *
     * @return DeviceManagement
     */
@@ -265,7 +265,7 @@ class DeviceManagement extends Entity
     * Sets the deviceCompliancePolicySettingStateSummaries
     * The summary states of compliance policy settings for this account.
     *
-    * @param DeviceCompliancePolicySettingStateSummary $val The deviceCompliancePolicySettingStateSummaries
+    * @param DeviceCompliancePolicySettingStateSummary[] $val The deviceCompliancePolicySettingStateSummaries
     *
     * @return DeviceManagement
     */
@@ -328,7 +328,7 @@ class DeviceManagement extends Entity
     * Sets the deviceConfigurations
     * The device configurations.
     *
-    * @param DeviceConfiguration $val The deviceConfigurations
+    * @param DeviceConfiguration[] $val The deviceConfigurations
     *
     * @return DeviceManagement
     */
@@ -358,7 +358,7 @@ class DeviceManagement extends Entity
     * Sets the iosUpdateStatuses
     * The IOS software update installation statuses for this account.
     *
-    * @param IosUpdateDeviceStatus $val The iosUpdateStatuses
+    * @param IosUpdateDeviceStatus[] $val The iosUpdateStatuses
     *
     * @return DeviceManagement
     */
@@ -421,7 +421,7 @@ class DeviceManagement extends Entity
     * Sets the complianceManagementPartners
     * The list of Compliance Management Partners configured by the tenant.
     *
-    * @param ComplianceManagementPartner $val The complianceManagementPartners
+    * @param ComplianceManagementPartner[] $val The complianceManagementPartners
     *
     * @return DeviceManagement
     */
@@ -484,7 +484,7 @@ class DeviceManagement extends Entity
     * Sets the deviceCategories
     * The list of device categories with the tenant.
     *
-    * @param DeviceCategory $val The deviceCategories
+    * @param DeviceCategory[] $val The deviceCategories
     *
     * @return DeviceManagement
     */
@@ -514,7 +514,7 @@ class DeviceManagement extends Entity
     * Sets the deviceEnrollmentConfigurations
     * The list of device enrollment configurations
     *
-    * @param DeviceEnrollmentConfiguration $val The deviceEnrollmentConfigurations
+    * @param DeviceEnrollmentConfiguration[] $val The deviceEnrollmentConfigurations
     *
     * @return DeviceManagement
     */
@@ -544,7 +544,7 @@ class DeviceManagement extends Entity
     * Sets the deviceManagementPartners
     * The list of Device Management Partners configured by the tenant.
     *
-    * @param DeviceManagementPartner $val The deviceManagementPartners
+    * @param DeviceManagementPartner[] $val The deviceManagementPartners
     *
     * @return DeviceManagement
     */
@@ -574,7 +574,7 @@ class DeviceManagement extends Entity
     * Sets the exchangeConnectors
     * The list of Exchange Connectors configured by the tenant.
     *
-    * @param DeviceManagementExchangeConnector $val The exchangeConnectors
+    * @param DeviceManagementExchangeConnector[] $val The exchangeConnectors
     *
     * @return DeviceManagement
     */
@@ -604,7 +604,7 @@ class DeviceManagement extends Entity
     * Sets the mobileThreatDefenseConnectors
     * The list of Mobile threat Defense connectors configured by the tenant.
     *
-    * @param MobileThreatDefenseConnector $val The mobileThreatDefenseConnectors
+    * @param MobileThreatDefenseConnector[] $val The mobileThreatDefenseConnectors
     *
     * @return DeviceManagement
     */
@@ -667,7 +667,7 @@ class DeviceManagement extends Entity
     * Sets the detectedApps
     * The list of detected apps associated with a device.
     *
-    * @param DetectedApp $val The detectedApps
+    * @param DetectedApp[] $val The detectedApps
     *
     * @return DeviceManagement
     */
@@ -730,7 +730,7 @@ class DeviceManagement extends Entity
     * Sets the managedDevices
     * The list of managed devices.
     *
-    * @param ManagedDevice $val The managedDevices
+    * @param ManagedDevice[] $val The managedDevices
     *
     * @return DeviceManagement
     */
@@ -760,7 +760,7 @@ class DeviceManagement extends Entity
     * Sets the importedWindowsAutopilotDeviceIdentities
     * Collection of imported Windows autopilot devices.
     *
-    * @param ImportedWindowsAutopilotDeviceIdentity $val The importedWindowsAutopilotDeviceIdentities
+    * @param ImportedWindowsAutopilotDeviceIdentity[] $val The importedWindowsAutopilotDeviceIdentities
     *
     * @return DeviceManagement
     */
@@ -790,7 +790,7 @@ class DeviceManagement extends Entity
     * Sets the windowsAutopilotDeviceIdentities
     * The Windows autopilot device identities contained collection.
     *
-    * @param WindowsAutopilotDeviceIdentity $val The windowsAutopilotDeviceIdentities
+    * @param WindowsAutopilotDeviceIdentity[] $val The windowsAutopilotDeviceIdentities
     *
     * @return DeviceManagement
     */
@@ -820,7 +820,7 @@ class DeviceManagement extends Entity
     * Sets the notificationMessageTemplates
     * The Notification Message Templates.
     *
-    * @param NotificationMessageTemplate $val The notificationMessageTemplates
+    * @param NotificationMessageTemplate[] $val The notificationMessageTemplates
     *
     * @return DeviceManagement
     */
@@ -850,7 +850,7 @@ class DeviceManagement extends Entity
     * Sets the resourceOperations
     * The Resource Operations.
     *
-    * @param ResourceOperation $val The resourceOperations
+    * @param ResourceOperation[] $val The resourceOperations
     *
     * @return DeviceManagement
     */
@@ -880,7 +880,7 @@ class DeviceManagement extends Entity
     * Sets the roleAssignments
     * The Role Assignments.
     *
-    * @param DeviceAndAppManagementRoleAssignment $val The roleAssignments
+    * @param DeviceAndAppManagementRoleAssignment[] $val The roleAssignments
     *
     * @return DeviceManagement
     */
@@ -910,7 +910,7 @@ class DeviceManagement extends Entity
     * Sets the roleDefinitions
     * The Role Definitions.
     *
-    * @param RoleDefinition $val The roleDefinitions
+    * @param RoleDefinition[] $val The roleDefinitions
     *
     * @return DeviceManagement
     */
@@ -940,7 +940,7 @@ class DeviceManagement extends Entity
     * Sets the remoteAssistancePartners
     * The remote assist partners.
     *
-    * @param RemoteAssistancePartner $val The remoteAssistancePartners
+    * @param RemoteAssistancePartner[] $val The remoteAssistancePartners
     *
     * @return DeviceManagement
     */
@@ -1003,7 +1003,7 @@ class DeviceManagement extends Entity
     * Sets the telecomExpenseManagementPartners
     * The telecom expense management partners.
     *
-    * @param TelecomExpenseManagementPartner $val The telecomExpenseManagementPartners
+    * @param TelecomExpenseManagementPartner[] $val The telecomExpenseManagementPartners
     *
     * @return DeviceManagement
     */
@@ -1033,7 +1033,7 @@ class DeviceManagement extends Entity
     * Sets the troubleshootingEvents
     * The list of troubleshooting events for the tenant.
     *
-    * @param DeviceManagementTroubleshootingEvent $val The troubleshootingEvents
+    * @param DeviceManagementTroubleshootingEvent[] $val The troubleshootingEvents
     *
     * @return DeviceManagement
     */
@@ -1063,7 +1063,7 @@ class DeviceManagement extends Entity
     * Sets the windowsInformationProtectionAppLearningSummaries
     * The windows information protection app learning summaries.
     *
-    * @param WindowsInformationProtectionAppLearningSummary $val The windowsInformationProtectionAppLearningSummaries
+    * @param WindowsInformationProtectionAppLearningSummary[] $val The windowsInformationProtectionAppLearningSummaries
     *
     * @return DeviceManagement
     */
@@ -1093,7 +1093,7 @@ class DeviceManagement extends Entity
     * Sets the windowsInformationProtectionNetworkLearningSummaries
     * The windows information protection network learning summaries.
     *
-    * @param WindowsInformationProtectionNetworkLearningSummary $val The windowsInformationProtectionNetworkLearningSummaries
+    * @param WindowsInformationProtectionNetworkLearningSummary[] $val The windowsInformationProtectionNetworkLearningSummaries
     *
     * @return DeviceManagement
     */

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * IosEnterpriseWiFiConfiguration File
 * PHP version 7
 *
@@ -92,7 +92,7 @@ class IosEnterpriseWiFiConfiguration extends IosWiFiConfiguration
 
     /**
     * Gets the eapType
-    * Extensible Authentication Protocol (EAP). Indicates the type of EAP protocol set on the Wi-Fi endpoint (router). Possible values are: eapTls, leap, eapSim, eapTtls, peap, eapFast.
+    * Extensible Authentication Protocol (EAP). Indicates the type of EAP protocol set on the Wi-Fi endpoint (router). Possible values are: eapTls, leap, eapSim, eapTtls, peap, eapFast, teap.
     *
     * @return EapType|null The eapType
     */
@@ -111,7 +111,7 @@ class IosEnterpriseWiFiConfiguration extends IosWiFiConfiguration
 
     /**
     * Sets the eapType
-    * Extensible Authentication Protocol (EAP). Indicates the type of EAP protocol set on the Wi-Fi endpoint (router). Possible values are: eapTls, leap, eapSim, eapTtls, peap, eapFast.
+    * Extensible Authentication Protocol (EAP). Indicates the type of EAP protocol set on the Wi-Fi endpoint (router). Possible values are: eapTls, leap, eapSim, eapTtls, peap, eapFast, teap.
     *
     * @param EapType $val The eapType
     *
@@ -358,7 +358,7 @@ class IosEnterpriseWiFiConfiguration extends IosWiFiConfiguration
     * Sets the rootCertificatesForServerValidation
     * Trusted Root Certificates for Server Validation when EAP Type is configured to EAP-TLS/TTLS/FAST or PEAP. If you provide this value you do not need to provide trustedServerCertificateNames, and vice versa. This collection can contain a maximum of 500 elements.
     *
-    * @param IosTrustedRootCertificate $val The rootCertificatesForServerValidation
+    * @param IosTrustedRootCertificate[] $val The rootCertificatesForServerValidation
     *
     * @return IosEnterpriseWiFiConfiguration
     */

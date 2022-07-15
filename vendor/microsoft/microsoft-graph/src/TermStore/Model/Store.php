@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Store File
 * PHP version 7
 *
@@ -102,7 +102,7 @@ class Store extends \Microsoft\Graph\Model\Entity
     * Sets the groups
     * Collection of all groups available in the term store.
     *
-    * @param Group $val The groups
+    * @param Group[] $val The groups
     *
     * @return Store
     */
@@ -132,7 +132,7 @@ class Store extends \Microsoft\Graph\Model\Entity
     * Sets the sets
     * Collection of all sets available in the term store.
     *
-    * @param Set $val The sets
+    * @param Set[] $val The sets
     *
     * @return Store
     */

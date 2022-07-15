@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ItemActivityStat File
 * PHP version 7
 *
@@ -337,7 +337,7 @@ class ItemActivityStat extends Entity
     * Sets the activities
     * Exposes the itemActivities represented in this itemActivityStat resource.
     *
-    * @param ItemActivity $val The activities
+    * @param ItemActivity[] $val The activities
     *
     * @return ItemActivityStat
     */

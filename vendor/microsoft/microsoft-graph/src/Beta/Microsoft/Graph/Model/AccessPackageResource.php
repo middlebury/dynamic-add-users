@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AccessPackageResource File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class AccessPackageResource extends Entity
 {
     /**
     * Gets the addedBy
-    * Read-only.
+    * The name of the user or application that first added this resource. Read-only.
     *
     * @return string|null The addedBy
     */
@@ -41,7 +41,7 @@ class AccessPackageResource extends Entity
 
     /**
     * Sets the addedBy
-    * Read-only.
+    * The name of the user or application that first added this resource. Read-only.
     *
     * @param string $val The addedBy
     *
@@ -89,6 +89,7 @@ class AccessPackageResource extends Entity
 
      /**
      * Gets the attributes
+    * Contains information about the attributes to be collected from the requestor and sent to the resource application.
      *
      * @return array|null The attributes
      */
@@ -103,8 +104,9 @@ class AccessPackageResource extends Entity
 
     /**
     * Sets the attributes
+    * Contains information about the attributes to be collected from the requestor and sent to the resource application.
     *
-    * @param AccessPackageResourceAttribute $val The attributes
+    * @param AccessPackageResourceAttribute[] $val The attributes
     *
     * @return AccessPackageResource
     */
@@ -319,7 +321,7 @@ class AccessPackageResource extends Entity
 
     /**
     * Gets the accessPackageResourceEnvironment
-    * Contains the environment information for the resource. This can be set using either the @odata.bind annotation or the environment's originId.
+    * Contains the environment information for the resource. This can be set using either the @odata.bind annotation or the environment's originId.Supports $expand.
     *
     * @return AccessPackageResourceEnvironment|null The accessPackageResourceEnvironment
     */
@@ -338,7 +340,7 @@ class AccessPackageResource extends Entity
 
     /**
     * Sets the accessPackageResourceEnvironment
-    * Contains the environment information for the resource. This can be set using either the @odata.bind annotation or the environment's originId.
+    * Contains the environment information for the resource. This can be set using either the @odata.bind annotation or the environment's originId.Supports $expand.
     *
     * @param AccessPackageResourceEnvironment $val The accessPackageResourceEnvironment
     *
@@ -370,7 +372,7 @@ class AccessPackageResource extends Entity
     * Sets the accessPackageResourceRoles
     * Read-only. Nullable. Supports $expand.
     *
-    * @param AccessPackageResourceRole $val The accessPackageResourceRoles
+    * @param AccessPackageResourceRole[] $val The accessPackageResourceRoles
     *
     * @return AccessPackageResource
     */
@@ -400,7 +402,7 @@ class AccessPackageResource extends Entity
     * Sets the accessPackageResourceScopes
     * Read-only. Nullable. Supports $expand.
     *
-    * @param AccessPackageResourceScope $val The accessPackageResourceScopes
+    * @param AccessPackageResourceScope[] $val The accessPackageResourceScopes
     *
     * @return AccessPackageResource
     */

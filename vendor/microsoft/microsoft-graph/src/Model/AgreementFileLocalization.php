@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AgreementFileLocalization File
 * PHP version 7
 *
@@ -27,6 +27,7 @@ class AgreementFileLocalization extends AgreementFileProperties
 
      /**
      * Gets the versions
+    * Read-only. Customized versions of the terms of use agreement in the Azure AD tenant.
      *
      * @return array|null The versions
      */
@@ -41,8 +42,9 @@ class AgreementFileLocalization extends AgreementFileProperties
 
     /**
     * Sets the versions
+    * Read-only. Customized versions of the terms of use agreement in the Azure AD tenant.
     *
-    * @param AgreementFileVersion $val The versions
+    * @param AgreementFileVersion[] $val The versions
     *
     * @return AgreementFileLocalization
     */

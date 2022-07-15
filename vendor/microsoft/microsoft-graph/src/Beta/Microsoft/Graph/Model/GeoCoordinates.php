@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * GeoCoordinates File
 * PHP version 7
 *
@@ -53,7 +53,7 @@ class GeoCoordinates extends Entity
     }
     /**
     * Gets the latitude
-    * Optional. The latitude, in decimal, for the item. Read-only.
+    * Optional. The latitude, in decimal, for the item. Writable on OneDrive Personal.
     *
     * @return float|null The latitude
     */
@@ -68,7 +68,7 @@ class GeoCoordinates extends Entity
 
     /**
     * Sets the latitude
-    * Optional. The latitude, in decimal, for the item. Read-only.
+    * Optional. The latitude, in decimal, for the item. Writable on OneDrive Personal.
     *
     * @param float $val The value of the latitude
     *
@@ -81,7 +81,7 @@ class GeoCoordinates extends Entity
     }
     /**
     * Gets the longitude
-    * Optional. The longitude, in decimal, for the item. Read-only.
+    * Optional. The longitude, in decimal, for the item. Writable on OneDrive Personal.
     *
     * @return float|null The longitude
     */
@@ -96,7 +96,7 @@ class GeoCoordinates extends Entity
 
     /**
     * Sets the longitude
-    * Optional. The longitude, in decimal, for the item. Read-only.
+    * Optional. The longitude, in decimal, for the item. Writable on OneDrive Personal.
     *
     * @param float $val The value of the longitude
     *

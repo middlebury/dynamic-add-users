@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceManagementConfigurationPolicy File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class DeviceManagementConfigurationPolicy extends Entity
 {
     /**
     * Gets the createdDateTime
-    * Policy creation date and time. This property is read-only.
+    * Policy creation date and time
     *
     * @return \DateTime|null The createdDateTime
     */
@@ -45,7 +45,7 @@ class DeviceManagementConfigurationPolicy extends Entity
 
     /**
     * Sets the createdDateTime
-    * Policy creation date and time. This property is read-only.
+    * Policy creation date and time
     *
     * @param \DateTime $val The createdDateTime
     *
@@ -146,7 +146,7 @@ class DeviceManagementConfigurationPolicy extends Entity
 
     /**
     * Gets the lastModifiedDateTime
-    * Policy last modification date and time. This property is read-only.
+    * Policy last modification date and time
     *
     * @return \DateTime|null The lastModifiedDateTime
     */
@@ -165,7 +165,7 @@ class DeviceManagementConfigurationPolicy extends Entity
 
     /**
     * Sets the lastModifiedDateTime
-    * Policy last modification date and time. This property is read-only.
+    * Policy last modification date and time
     *
     * @param \DateTime $val The lastModifiedDateTime
     *
@@ -208,7 +208,7 @@ class DeviceManagementConfigurationPolicy extends Entity
 
     /**
     * Gets the platforms
-    * Platforms for this policy. Possible values are: none, android, iOS, macOS, windows10X, windows10.
+    * Platforms for this policy. Possible values are: none, android, iOS, macOS, windows10X, windows10, linux, unknownFutureValue.
     *
     * @return DeviceManagementConfigurationPlatforms|null The platforms
     */
@@ -227,7 +227,7 @@ class DeviceManagementConfigurationPolicy extends Entity
 
     /**
     * Sets the platforms
-    * Platforms for this policy. Possible values are: none, android, iOS, macOS, windows10X, windows10.
+    * Platforms for this policy. Possible values are: none, android, iOS, macOS, windows10X, windows10, linux, unknownFutureValue.
     *
     * @param DeviceManagementConfigurationPlatforms $val The platforms
     *
@@ -270,7 +270,7 @@ class DeviceManagementConfigurationPolicy extends Entity
 
     /**
     * Gets the settingCount
-    * Number of settings. This property is read-only.
+    * Number of settings
     *
     * @return int|null The settingCount
     */
@@ -285,7 +285,7 @@ class DeviceManagementConfigurationPolicy extends Entity
 
     /**
     * Sets the settingCount
-    * Number of settings. This property is read-only.
+    * Number of settings
     *
     * @param int $val The settingCount
     *
@@ -299,7 +299,7 @@ class DeviceManagementConfigurationPolicy extends Entity
 
     /**
     * Gets the technologies
-    * Technologies for this policy. Possible values are: none, mdm, windows10XManagement, configManager, microsoftSense, exchangeOnline, linuxMdm, unknownFutureValue.
+    * Technologies for this policy. Possible values are: none, mdm, windows10XManagement, configManager, appleRemoteManagement, microsoftSense, exchangeOnline, linuxMdm, enrollment, unknownFutureValue.
     *
     * @return DeviceManagementConfigurationTechnologies|null The technologies
     */
@@ -318,7 +318,7 @@ class DeviceManagementConfigurationPolicy extends Entity
 
     /**
     * Sets the technologies
-    * Technologies for this policy. Possible values are: none, mdm, windows10XManagement, configManager, microsoftSense, exchangeOnline, linuxMdm, unknownFutureValue.
+    * Technologies for this policy. Possible values are: none, mdm, windows10XManagement, configManager, appleRemoteManagement, microsoftSense, exchangeOnline, linuxMdm, enrollment, unknownFutureValue.
     *
     * @param DeviceManagementConfigurationTechnologies $val The technologies
     *
@@ -383,7 +383,7 @@ class DeviceManagementConfigurationPolicy extends Entity
     * Sets the assignments
     * Policy assignments
     *
-    * @param DeviceManagementConfigurationPolicyAssignment $val The assignments
+    * @param DeviceManagementConfigurationPolicyAssignment[] $val The assignments
     *
     * @return DeviceManagementConfigurationPolicy
     */
@@ -413,7 +413,7 @@ class DeviceManagementConfigurationPolicy extends Entity
     * Sets the settings
     * Policy settings
     *
-    * @param DeviceManagementConfigurationSetting $val The settings
+    * @param DeviceManagementConfigurationSetting[] $val The settings
     *
     * @return DeviceManagementConfigurationPolicy
     */

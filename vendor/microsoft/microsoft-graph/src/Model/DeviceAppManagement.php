@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceAppManagement File
 * PHP version 7
 *
@@ -168,7 +168,7 @@ class DeviceAppManagement extends Entity
     * Sets the managedEBooks
     * The Managed eBook.
     *
-    * @param ManagedEBook $val The managedEBooks
+    * @param ManagedEBook[] $val The managedEBooks
     *
     * @return DeviceAppManagement
     */
@@ -198,7 +198,7 @@ class DeviceAppManagement extends Entity
     * Sets the mobileAppCategories
     * The mobile app categories.
     *
-    * @param MobileAppCategory $val The mobileAppCategories
+    * @param MobileAppCategory[] $val The mobileAppCategories
     *
     * @return DeviceAppManagement
     */
@@ -228,7 +228,7 @@ class DeviceAppManagement extends Entity
     * Sets the mobileAppConfigurations
     * The Managed Device Mobile Application Configurations.
     *
-    * @param ManagedDeviceMobileAppConfiguration $val The mobileAppConfigurations
+    * @param ManagedDeviceMobileAppConfiguration[] $val The mobileAppConfigurations
     *
     * @return DeviceAppManagement
     */
@@ -258,7 +258,7 @@ class DeviceAppManagement extends Entity
     * Sets the mobileApps
     * The mobile apps.
     *
-    * @param MobileApp $val The mobileApps
+    * @param MobileApp[] $val The mobileApps
     *
     * @return DeviceAppManagement
     */
@@ -288,7 +288,7 @@ class DeviceAppManagement extends Entity
     * Sets the vppTokens
     * List of Vpp tokens for this organization.
     *
-    * @param VppToken $val The vppTokens
+    * @param VppToken[] $val The vppTokens
     *
     * @return DeviceAppManagement
     */
@@ -318,7 +318,7 @@ class DeviceAppManagement extends Entity
     * Sets the androidManagedAppProtections
     * Android managed app policies.
     *
-    * @param AndroidManagedAppProtection $val The androidManagedAppProtections
+    * @param AndroidManagedAppProtection[] $val The androidManagedAppProtections
     *
     * @return DeviceAppManagement
     */
@@ -348,7 +348,7 @@ class DeviceAppManagement extends Entity
     * Sets the defaultManagedAppProtections
     * Default managed app policies.
     *
-    * @param DefaultManagedAppProtection $val The defaultManagedAppProtections
+    * @param DefaultManagedAppProtection[] $val The defaultManagedAppProtections
     *
     * @return DeviceAppManagement
     */
@@ -378,7 +378,7 @@ class DeviceAppManagement extends Entity
     * Sets the iosManagedAppProtections
     * iOS managed app policies.
     *
-    * @param IosManagedAppProtection $val The iosManagedAppProtections
+    * @param IosManagedAppProtection[] $val The iosManagedAppProtections
     *
     * @return DeviceAppManagement
     */
@@ -408,7 +408,7 @@ class DeviceAppManagement extends Entity
     * Sets the managedAppPolicies
     * Managed app policies.
     *
-    * @param ManagedAppPolicy $val The managedAppPolicies
+    * @param ManagedAppPolicy[] $val The managedAppPolicies
     *
     * @return DeviceAppManagement
     */
@@ -438,7 +438,7 @@ class DeviceAppManagement extends Entity
     * Sets the managedAppRegistrations
     * The managed app registrations.
     *
-    * @param ManagedAppRegistration $val The managedAppRegistrations
+    * @param ManagedAppRegistration[] $val The managedAppRegistrations
     *
     * @return DeviceAppManagement
     */
@@ -468,7 +468,7 @@ class DeviceAppManagement extends Entity
     * Sets the managedAppStatuses
     * The managed app statuses.
     *
-    * @param ManagedAppStatus $val The managedAppStatuses
+    * @param ManagedAppStatus[] $val The managedAppStatuses
     *
     * @return DeviceAppManagement
     */
@@ -498,7 +498,7 @@ class DeviceAppManagement extends Entity
     * Sets the mdmWindowsInformationProtectionPolicies
     * Windows information protection for apps running on devices which are MDM enrolled.
     *
-    * @param MdmWindowsInformationProtectionPolicy $val The mdmWindowsInformationProtectionPolicies
+    * @param MdmWindowsInformationProtectionPolicy[] $val The mdmWindowsInformationProtectionPolicies
     *
     * @return DeviceAppManagement
     */
@@ -528,7 +528,7 @@ class DeviceAppManagement extends Entity
     * Sets the targetedManagedAppConfigurations
     * Targeted managed app configurations.
     *
-    * @param TargetedManagedAppConfiguration $val The targetedManagedAppConfigurations
+    * @param TargetedManagedAppConfiguration[] $val The targetedManagedAppConfigurations
     *
     * @return DeviceAppManagement
     */
@@ -558,7 +558,7 @@ class DeviceAppManagement extends Entity
     * Sets the windowsInformationProtectionPolicies
     * Windows information protection for apps running on devices which are not MDM enrolled.
     *
-    * @param WindowsInformationProtectionPolicy $val The windowsInformationProtectionPolicies
+    * @param WindowsInformationProtectionPolicy[] $val The windowsInformationProtectionPolicies
     *
     * @return DeviceAppManagement
     */

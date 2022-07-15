@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceManagementConfigurationTechnologies File
 * PHP version 7
 *
@@ -33,8 +33,10 @@ class DeviceManagementConfigurationTechnologies extends Enum
     const MDM = "mdm";
     const WINDOWS10_X_MANAGEMENT = "windows10XManagement";
     const CONFIG_MANAGER = "configManager";
+    const APPLE_REMOTE_MANAGEMENT = "appleRemoteManagement";
     const MICROSOFT_SENSE = "microsoftSense";
     const EXCHANGE_ONLINE = "exchangeOnline";
     const LINUX_MDM = "linuxMdm";
+    const ENROLLMENT = "enrollment";
     const UNKNOWN_FUTURE_VALUE = "unknownFutureValue";
 }

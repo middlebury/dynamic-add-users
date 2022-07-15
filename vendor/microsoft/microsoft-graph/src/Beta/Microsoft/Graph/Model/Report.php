@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Report File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class Report extends Entity
 
     /**
     * Gets the content
-    * Not yet documented
+    * Report content; details vary by report type.
     *
     * @return \GuzzleHttp\Psr7\Stream|null The content
     */
@@ -45,7 +45,7 @@ class Report extends Entity
 
     /**
     * Sets the content
-    * Not yet documented
+    * Report content; details vary by report type.
     *
     * @param \GuzzleHttp\Psr7\Stream $val The value to assign to the content
     *

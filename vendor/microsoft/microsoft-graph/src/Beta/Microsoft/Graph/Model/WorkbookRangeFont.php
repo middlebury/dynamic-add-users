@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * WorkbookRangeFont File
 * PHP version 7
 *
@@ -171,7 +171,7 @@ class WorkbookRangeFont extends Entity
 
     /**
     * Gets the underline
-    * Type of underline applied to the font. The possible values are: None, Single, Double, SingleAccountant, DoubleAccountant.
+    * Type of underline applied to the font. Possible values are: None, Single, Double, SingleAccountant, DoubleAccountant.
     *
     * @return string|null The underline
     */
@@ -186,7 +186,7 @@ class WorkbookRangeFont extends Entity
 
     /**
     * Sets the underline
-    * Type of underline applied to the font. The possible values are: None, Single, Double, SingleAccountant, DoubleAccountant.
+    * Type of underline applied to the font. Possible values are: None, Single, Double, SingleAccountant, DoubleAccountant.
     *
     * @param string $val The underline
     *

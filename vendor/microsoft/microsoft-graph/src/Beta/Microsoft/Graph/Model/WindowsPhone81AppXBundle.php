@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * WindowsPhone81AppXBundle File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class WindowsPhone81AppXBundle extends WindowsPhone81AppX
     * Sets the appXPackageInformationList
     * The list of AppX Package Information.
     *
-    * @param WindowsPackageInformation $val The appXPackageInformationList
+    * @param WindowsPackageInformation[] $val The appXPackageInformationList
     *
     * @return WindowsPhone81AppXBundle
     */

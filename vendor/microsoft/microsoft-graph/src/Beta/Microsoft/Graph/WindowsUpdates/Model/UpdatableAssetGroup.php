@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * UpdatableAssetGroup File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class UpdatableAssetGroup extends UpdatableAsset
     * Sets the members
     * Members of the group. Read-only.
     *
-    * @param UpdatableAsset $val The members
+    * @param UpdatableAsset[] $val The members
     *
     * @return UpdatableAssetGroup
     */

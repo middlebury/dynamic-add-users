@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * WorkbookRange File
 * PHP version 7
 *
@@ -490,7 +490,7 @@ class WorkbookRange extends Entity
 
     /**
     * Gets the valueTypes
-    * Represents the type of data of each cell. The possible values are: Unknown, Empty, String, Integer, Double, Boolean, Error. Read-only.
+    * Represents the type of data of each cell. Possible values are: Unknown, Empty, String, Integer, Double, Boolean, Error. Read-only.
     *
     * @return string|null The valueTypes
     */
@@ -505,7 +505,7 @@ class WorkbookRange extends Entity
 
     /**
     * Sets the valueTypes
-    * Represents the type of data of each cell. The possible values are: Unknown, Empty, String, Integer, Double, Boolean, Error. Read-only.
+    * Represents the type of data of each cell. Possible values are: Unknown, Empty, String, Integer, Double, Boolean, Error. Read-only.
     *
     * @param string $val The valueTypes
     *

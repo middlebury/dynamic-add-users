@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * CredentialUserRegistrationCount File
 * PHP version 7
 *
@@ -73,7 +73,7 @@ class CredentialUserRegistrationCount extends Entity
     * Sets the userRegistrationCounts
     * A collection of registration count and status information for users in your tenant.
     *
-    * @param UserRegistrationCount $val The userRegistrationCounts
+    * @param UserRegistrationCount[] $val The userRegistrationCounts
     *
     * @return CredentialUserRegistrationCount
     */

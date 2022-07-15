@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceManagementTroubleshootingEvent File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class DeviceManagementTroubleshootingEvent extends Entity
     * Sets the additionalInformation
     * A set of string key and string value pairs which provides additional information on the Troubleshooting event
     *
-    * @param KeyValuePair $val The additionalInformation
+    * @param KeyValuePair[] $val The additionalInformation
     *
     * @return DeviceManagementTroubleshootingEvent
     */

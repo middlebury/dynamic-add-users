@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * LegalHold File
 * PHP version 7
 *
@@ -354,7 +354,7 @@ class LegalHold extends \Beta\Microsoft\Graph\Model\Entity
     * Sets the siteSources
     * Data source entity for SharePoint sites associated with the legal hold.
     *
-    * @param SiteSource $val The siteSources
+    * @param SiteSource[] $val The siteSources
     *
     * @return LegalHold
     */
@@ -382,7 +382,7 @@ class LegalHold extends \Beta\Microsoft\Graph\Model\Entity
     /**
     * Sets the unifiedGroupSources
     *
-    * @param UnifiedGroupSource $val The unifiedGroupSources
+    * @param UnifiedGroupSource[] $val The unifiedGroupSources
     *
     * @return LegalHold
     */
@@ -412,7 +412,7 @@ class LegalHold extends \Beta\Microsoft\Graph\Model\Entity
     * Sets the userSources
     * Data source entity for a the legal hold. This is the container for a mailbox and OneDrive for Business site.
     *
-    * @param UserSource $val The userSources
+    * @param UserSource[] $val The userSources
     *
     * @return LegalHold
     */

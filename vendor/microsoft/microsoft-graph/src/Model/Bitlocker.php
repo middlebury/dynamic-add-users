@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Bitlocker File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class Bitlocker extends Entity
     * Sets the recoveryKeys
     * The recovery keys associated with the bitlocker entity.
     *
-    * @param BitlockerRecoveryKey $val The recoveryKeys
+    * @param BitlockerRecoveryKey[] $val The recoveryKeys
     *
     * @return Bitlocker
     */

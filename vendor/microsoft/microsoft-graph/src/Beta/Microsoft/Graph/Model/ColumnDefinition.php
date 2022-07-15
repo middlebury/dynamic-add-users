@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ColumnDefinition File
 * PHP version 7
 *
@@ -468,7 +468,7 @@ class ColumnDefinition extends Entity
 
     /**
     * Gets the indexed
-    * Specifies whether the column values can be used for sorting and searching.
+    * Specifies whether the column values can used for sorting and searching.
     *
     * @return bool|null The indexed
     */
@@ -483,7 +483,7 @@ class ColumnDefinition extends Entity
 
     /**
     * Sets the indexed
-    * Specifies whether the column values can be used for sorting and searching.
+    * Specifies whether the column values can used for sorting and searching.
     *
     * @param bool $val The indexed
     *
@@ -712,7 +712,7 @@ class ColumnDefinition extends Entity
 
     /**
     * Gets the propagateChanges
-    * If 'true', changes to this column will be propagated to lists that implement the column.
+    * If true, changes to this column will be propagated to lists that implement the column.
     *
     * @return bool|null The propagateChanges
     */
@@ -727,7 +727,7 @@ class ColumnDefinition extends Entity
 
     /**
     * Sets the propagateChanges
-    * If 'true', changes to this column will be propagated to lists that implement the column.
+    * If true, changes to this column will be propagated to lists that implement the column.
     *
     * @param bool $val The propagateChanges
     *
@@ -794,6 +794,39 @@ class ColumnDefinition extends Entity
     public function setRequired($val)
     {
         $this->_propDict["required"] = boolval($val);
+        return $this;
+    }
+
+    /**
+    * Gets the sourceContentType
+    * ContentType from which this column is inherited from. Used only to fetch contentTypes columns.
+    *
+    * @return ContentTypeInfo|null The sourceContentType
+    */
+    public function getSourceContentType()
+    {
+        if (array_key_exists("sourceContentType", $this->_propDict)) {
+            if (is_a($this->_propDict["sourceContentType"], "\Beta\Microsoft\Graph\Model\ContentTypeInfo") || is_null($this->_propDict["sourceContentType"])) {
+                return $this->_propDict["sourceContentType"];
+            } else {
+                $this->_propDict["sourceContentType"] = new ContentTypeInfo($this->_propDict["sourceContentType"]);
+                return $this->_propDict["sourceContentType"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the sourceContentType
+    * ContentType from which this column is inherited from. Used only to fetch contentTypes columns.
+    *
+    * @param ContentTypeInfo $val The sourceContentType
+    *
+    * @return ColumnDefinition
+    */
+    public function setSourceContentType($val)
+    {
+        $this->_propDict["sourceContentType"] = $val;
         return $this;
     }
 
@@ -964,7 +997,7 @@ class ColumnDefinition extends Entity
 
     /**
     * Gets the sourceColumn
-    * The source column for the content type column.
+    * The source column for content type column.
     *
     * @return ColumnDefinition|null The sourceColumn
     */
@@ -983,7 +1016,7 @@ class ColumnDefinition extends Entity
 
     /**
     * Sets the sourceColumn
-    * The source column for the content type column.
+    * The source column for content type column.
     *
     * @param ColumnDefinition $val The sourceColumn
     *

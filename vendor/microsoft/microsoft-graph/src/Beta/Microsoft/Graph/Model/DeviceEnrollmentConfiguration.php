@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceEnrollmentConfiguration File
 * PHP version 7
 *
@@ -83,6 +83,39 @@ class DeviceEnrollmentConfiguration extends Entity
     public function setDescription($val)
     {
         $this->_propDict["description"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the deviceEnrollmentConfigurationType
+    * Support for Enrollment Configuration Type
+    *
+    * @return DeviceEnrollmentConfigurationType|null The deviceEnrollmentConfigurationType
+    */
+    public function getDeviceEnrollmentConfigurationType()
+    {
+        if (array_key_exists("deviceEnrollmentConfigurationType", $this->_propDict)) {
+            if (is_a($this->_propDict["deviceEnrollmentConfigurationType"], "\Beta\Microsoft\Graph\Model\DeviceEnrollmentConfigurationType") || is_null($this->_propDict["deviceEnrollmentConfigurationType"])) {
+                return $this->_propDict["deviceEnrollmentConfigurationType"];
+            } else {
+                $this->_propDict["deviceEnrollmentConfigurationType"] = new DeviceEnrollmentConfigurationType($this->_propDict["deviceEnrollmentConfigurationType"]);
+                return $this->_propDict["deviceEnrollmentConfigurationType"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the deviceEnrollmentConfigurationType
+    * Support for Enrollment Configuration Type
+    *
+    * @param DeviceEnrollmentConfigurationType $val The deviceEnrollmentConfigurationType
+    *
+    * @return DeviceEnrollmentConfiguration
+    */
+    public function setDeviceEnrollmentConfigurationType($val)
+    {
+        $this->_propDict["deviceEnrollmentConfigurationType"] = $val;
         return $this;
     }
 
@@ -255,7 +288,7 @@ class DeviceEnrollmentConfiguration extends Entity
     * Sets the assignments
     * The list of group assignments for the device configuration profile
     *
-    * @param EnrollmentConfigurationAssignment $val The assignments
+    * @param EnrollmentConfigurationAssignment[] $val The assignments
     *
     * @return DeviceEnrollmentConfiguration
     */

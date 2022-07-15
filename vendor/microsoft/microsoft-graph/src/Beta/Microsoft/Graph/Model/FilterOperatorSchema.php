@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * FilterOperatorSchema File
 * PHP version 7
 *
@@ -110,7 +110,7 @@ class FilterOperatorSchema extends Entity
     * Sets the supportedAttributeTypes
     * Attribute types supported by the operator. Possible values are: Boolean, Binary, Reference, Integer, String.
     *
-    * @param AttributeType $val The supportedAttributeTypes
+    * @param AttributeType[] $val The supportedAttributeTypes
     *
     * @return FilterOperatorSchema
     */

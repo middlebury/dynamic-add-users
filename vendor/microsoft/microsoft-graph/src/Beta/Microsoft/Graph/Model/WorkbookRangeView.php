@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * WorkbookRangeView File
 * PHP version 7
 *
@@ -316,7 +316,7 @@ class WorkbookRangeView extends Entity
 
     /**
     * Gets the valueTypes
-    * Represents the type of data of each cell. Read-only. The possible values are: Unknown, Empty, String, Integer, Double, Boolean, Error.
+    * Represents the type of data of each cell. Read-only. Possible values are: Unknown, Empty, String, Integer, Double, Boolean, Error.
     *
     * @return string|null The valueTypes
     */
@@ -331,7 +331,7 @@ class WorkbookRangeView extends Entity
 
     /**
     * Sets the valueTypes
-    * Represents the type of data of each cell. Read-only. The possible values are: Unknown, Empty, String, Integer, Double, Boolean, Error.
+    * Represents the type of data of each cell. Read-only. Possible values are: Unknown, Empty, String, Integer, Double, Boolean, Error.
     *
     * @param string $val The valueTypes
     *
@@ -363,7 +363,7 @@ class WorkbookRangeView extends Entity
     * Sets the rows
     * Represents a collection of range views associated with the range. Read-only. Read-only.
     *
-    * @param WorkbookRangeView $val The rows
+    * @param WorkbookRangeView[] $val The rows
     *
     * @return WorkbookRangeView
     */

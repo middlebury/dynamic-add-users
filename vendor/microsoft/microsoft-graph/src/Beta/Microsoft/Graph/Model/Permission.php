@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Permission File
 * PHP version 7
 *
@@ -59,7 +59,6 @@ class Permission extends Entity
 
     /**
     * Gets the grantedTo
-    * For user type permissions, the details of the users &amp; applications for this permission. Read-only.
     *
     * @return IdentitySet|null The grantedTo
     */
@@ -78,7 +77,6 @@ class Permission extends Entity
 
     /**
     * Sets the grantedTo
-    * For user type permissions, the details of the users &amp; applications for this permission. Read-only.
     *
     * @param IdentitySet $val The grantedTo
     *
@@ -93,7 +91,6 @@ class Permission extends Entity
 
      /**
      * Gets the grantedToIdentities
-    * For link type permissions, the details of the users to whom permission was granted. Read-only.
      *
      * @return array|null The grantedToIdentities
      */
@@ -108,9 +105,8 @@ class Permission extends Entity
 
     /**
     * Sets the grantedToIdentities
-    * For link type permissions, the details of the users to whom permission was granted. Read-only.
     *
-    * @param IdentitySet $val The grantedToIdentities
+    * @param IdentitySet[] $val The grantedToIdentities
     *
     * @return Permission
     */
@@ -123,6 +119,7 @@ class Permission extends Entity
 
      /**
      * Gets the grantedToIdentitiesV2
+    * For link type permissions, the details of the users to whom permission was granted. Read-only.
      *
      * @return array|null The grantedToIdentitiesV2
      */
@@ -137,8 +134,9 @@ class Permission extends Entity
 
     /**
     * Sets the grantedToIdentitiesV2
+    * For link type permissions, the details of the users to whom permission was granted. Read-only.
     *
-    * @param SharePointIdentitySet $val The grantedToIdentitiesV2
+    * @param SharePointIdentitySet[] $val The grantedToIdentitiesV2
     *
     * @return Permission
     */
@@ -150,6 +148,7 @@ class Permission extends Entity
 
     /**
     * Gets the grantedToV2
+    * For user type permissions, the details of the users and applications for this permission. Read-only.
     *
     * @return SharePointIdentitySet|null The grantedToV2
     */
@@ -168,6 +167,7 @@ class Permission extends Entity
 
     /**
     * Sets the grantedToV2
+    * For user type permissions, the details of the users and applications for this permission. Read-only.
     *
     * @param SharePointIdentitySet $val The grantedToV2
     *
@@ -181,7 +181,7 @@ class Permission extends Entity
 
     /**
     * Gets the hasPassword
-    * This indicates whether password is set for this permission, it's only showing in response. Optional and Read-only and for OneDrive Personal only.
+    * Indicates whether the password is set for this permission. This property only appears in the response. Optional. Read-only. For OneDrive Personal only.
     *
     * @return bool|null The hasPassword
     */
@@ -196,7 +196,7 @@ class Permission extends Entity
 
     /**
     * Sets the hasPassword
-    * This indicates whether password is set for this permission, it's only showing in response. Optional and Read-only and for OneDrive Personal only.
+    * Indicates whether the password is set for this permission. This property only appears in the response. Optional. Read-only. For OneDrive Personal only.
     *
     * @param bool $val The hasPassword
     *
@@ -309,7 +309,7 @@ class Permission extends Entity
 
     /**
     * Gets the roles
-    * The type of permission, e.g. read. See below for the full list of roles. Read-only.
+    * The type of permission, for example, read. See below for the full list of roles. Read-only.
     *
     * @return string|null The roles
     */
@@ -324,7 +324,7 @@ class Permission extends Entity
 
     /**
     * Sets the roles
-    * The type of permission, e.g. read. See below for the full list of roles. Read-only.
+    * The type of permission, for example, read. See below for the full list of roles. Read-only.
     *
     * @param string $val The roles
     *
@@ -338,7 +338,7 @@ class Permission extends Entity
 
     /**
     * Gets the shareId
-    * A unique token that can be used to access this shared item via the **shares** API. Read-only.
+    * A unique token that can be used to access this shared item via the [shares API][]. Read-only.
     *
     * @return string|null The shareId
     */
@@ -353,7 +353,7 @@ class Permission extends Entity
 
     /**
     * Sets the shareId
-    * A unique token that can be used to access this shared item via the **shares** API. Read-only.
+    * A unique token that can be used to access this shared item via the [shares API][]. Read-only.
     *
     * @param string $val The shareId
     *

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * NetworkConnection File
 * PHP version 7
 *
@@ -25,7 +25,7 @@ class NetworkConnection extends Entity
 {
     /**
     * Gets the applicationName
-    * Name of the application managing the network connection (for example, Facebook or SMTP).
+    * Name of the application managing the network connection (for example, Facebook, SMTP, etc.).
     *
     * @return string|null The applicationName
     */
@@ -40,7 +40,7 @@ class NetworkConnection extends Entity
 
     /**
     * Sets the applicationName
-    * Name of the application managing the network connection (for example, Facebook or SMTP).
+    * Name of the application managing the network connection (for example, Facebook, SMTP, etc.).
     *
     * @param string $val The value of the applicationName
     *

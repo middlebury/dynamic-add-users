@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * GroupPolicyUploadedDefinitionFile File
 * PHP version 7
 *
@@ -86,35 +86,6 @@ class GroupPolicyUploadedDefinitionFile extends GroupPolicyDefinitionFile
         return $this;
     }
 
-    /**
-    * Gets the fileName
-    * The file name of the uploaded ADML file.
-    *
-    * @return string|null The fileName
-    */
-    public function getFileName()
-    {
-        if (array_key_exists("fileName", $this->_propDict)) {
-            return $this->_propDict["fileName"];
-        } else {
-            return null;
-        }
-    }
-
-    /**
-    * Sets the fileName
-    * The file name of the uploaded ADML file.
-    *
-    * @param string $val The fileName
-    *
-    * @return GroupPolicyUploadedDefinitionFile
-    */
-    public function setFileName($val)
-    {
-        $this->_propDict["fileName"] = $val;
-        return $this;
-    }
-
 
      /**
      * Gets the groupPolicyUploadedLanguageFiles
@@ -135,7 +106,7 @@ class GroupPolicyUploadedDefinitionFile extends GroupPolicyDefinitionFile
     * Sets the groupPolicyUploadedLanguageFiles
     * The list of ADML files associated with the uploaded ADMX file.
     *
-    * @param GroupPolicyUploadedLanguageFile $val The groupPolicyUploadedLanguageFiles
+    * @param GroupPolicyUploadedLanguageFile[] $val The groupPolicyUploadedLanguageFiles
     *
     * @return GroupPolicyUploadedDefinitionFile
     */
@@ -231,7 +202,7 @@ class GroupPolicyUploadedDefinitionFile extends GroupPolicyDefinitionFile
     * Sets the groupPolicyOperations
     * The list of operations on the uploaded ADMX file.
     *
-    * @param GroupPolicyOperation $val The groupPolicyOperations
+    * @param GroupPolicyOperation[] $val The groupPolicyOperations
     *
     * @return GroupPolicyUploadedDefinitionFile
     */

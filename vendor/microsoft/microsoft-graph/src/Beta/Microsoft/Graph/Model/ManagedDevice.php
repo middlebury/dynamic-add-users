@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ManagedDevice File
 * PHP version 7
 *
@@ -42,7 +42,7 @@ class ManagedDevice extends Entity
     /**
     * Sets the cloudPcRemoteActionResults
     *
-    * @param CloudPcRemoteActionResult $val The cloudPcRemoteActionResults
+    * @param CloudPcRemoteActionResult[] $val The cloudPcRemoteActionResults
     *
     * @return ManagedDevice
     */
@@ -256,6 +256,35 @@ class ManagedDevice extends Entity
     }
 
     /**
+    * Gets the bootstrapTokenEscrowed
+    * Reports if the managed device has an escrowed Bootstrap Token. This is only for macOS devices. If FALSE, no bootstrap token is escrowed. If TRUE, the device has escrowed a bootstrap token with Intune. This property is read-only.
+    *
+    * @return bool|null The bootstrapTokenEscrowed
+    */
+    public function getBootstrapTokenEscrowed()
+    {
+        if (array_key_exists("bootstrapTokenEscrowed", $this->_propDict)) {
+            return $this->_propDict["bootstrapTokenEscrowed"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the bootstrapTokenEscrowed
+    * Reports if the managed device has an escrowed Bootstrap Token. This is only for macOS devices. If FALSE, no bootstrap token is escrowed. If TRUE, the device has escrowed a bootstrap token with Intune. This property is read-only.
+    *
+    * @param bool $val The bootstrapTokenEscrowed
+    *
+    * @return ManagedDevice
+    */
+    public function setBootstrapTokenEscrowed($val)
+    {
+        $this->_propDict["bootstrapTokenEscrowed"] = boolval($val);
+        return $this;
+    }
+
+    /**
     * Gets the chassisType
     * Chassis type of the device. This property is read-only. Possible values are: unknown, desktop, laptop, worksWorkstation, enterpriseServer, phone, tablet, mobileOther, mobileUnknown.
     *
@@ -308,7 +337,7 @@ class ManagedDevice extends Entity
     * Sets the chromeOSDeviceInfo
     * List of properties of the ChromeOS Device.
     *
-    * @param ChromeOSDeviceProperty $val The chromeOSDeviceInfo
+    * @param ChromeOSDeviceProperty[] $val The chromeOSDeviceInfo
     *
     * @return ManagedDevice
     */
@@ -503,7 +532,7 @@ class ManagedDevice extends Entity
     * Sets the deviceActionResults
     * List of ComplexType deviceActionResult objects. This property is read-only.
     *
-    * @param DeviceActionResult $val The deviceActionResults
+    * @param DeviceActionResult[] $val The deviceActionResults
     *
     * @return ManagedDevice
     */
@@ -544,7 +573,7 @@ class ManagedDevice extends Entity
 
     /**
     * Gets the deviceEnrollmentType
-    * Enrollment type of the device. This property is read-only. Possible values are: unknown, userEnrollment, deviceEnrollmentManager, appleBulkWithUser, appleBulkWithoutUser, windowsAzureADJoin, windowsBulkUserless, windowsAutoEnrollment, windowsBulkAzureDomainJoin, windowsCoManagement, windowsAzureADJoinUsingDeviceAuth, appleUserEnrollment, appleUserEnrollmentWithServiceAccount.
+    * Enrollment type of the device. This property is read-only. Possible values are: unknown, userEnrollment, deviceEnrollmentManager, appleBulkWithUser, appleBulkWithoutUser, windowsAzureADJoin, windowsBulkUserless, windowsAutoEnrollment, windowsBulkAzureDomainJoin, windowsCoManagement, windowsAzureADJoinUsingDeviceAuth, appleUserEnrollment, appleUserEnrollmentWithServiceAccount, azureAdJoinUsingAzureVmExtension, androidEnterpriseDedicatedDevice, androidEnterpriseFullyManaged, androidEnterpriseCorporateWorkProfile.
     *
     * @return DeviceEnrollmentType|null The deviceEnrollmentType
     */
@@ -563,7 +592,7 @@ class ManagedDevice extends Entity
 
     /**
     * Sets the deviceEnrollmentType
-    * Enrollment type of the device. This property is read-only. Possible values are: unknown, userEnrollment, deviceEnrollmentManager, appleBulkWithUser, appleBulkWithoutUser, windowsAzureADJoin, windowsBulkUserless, windowsAutoEnrollment, windowsBulkAzureDomainJoin, windowsCoManagement, windowsAzureADJoinUsingDeviceAuth, appleUserEnrollment, appleUserEnrollmentWithServiceAccount.
+    * Enrollment type of the device. This property is read-only. Possible values are: unknown, userEnrollment, deviceEnrollmentManager, appleBulkWithUser, appleBulkWithoutUser, windowsAzureADJoin, windowsBulkUserless, windowsAutoEnrollment, windowsBulkAzureDomainJoin, windowsCoManagement, windowsAzureADJoinUsingDeviceAuth, appleUserEnrollment, appleUserEnrollmentWithServiceAccount, azureAdJoinUsingAzureVmExtension, androidEnterpriseDedicatedDevice, androidEnterpriseFullyManaged, androidEnterpriseCorporateWorkProfile.
     *
     * @param DeviceEnrollmentType $val The deviceEnrollmentType
     *
@@ -572,6 +601,35 @@ class ManagedDevice extends Entity
     public function setDeviceEnrollmentType($val)
     {
         $this->_propDict["deviceEnrollmentType"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the deviceFirmwareConfigurationInterfaceManaged
+    * Indicates whether the device is DFCI managed. When TRUE the device is DFCI managed. When FALSE, the device is not DFCI managed. The default value is FALSE.
+    *
+    * @return bool|null The deviceFirmwareConfigurationInterfaceManaged
+    */
+    public function getDeviceFirmwareConfigurationInterfaceManaged()
+    {
+        if (array_key_exists("deviceFirmwareConfigurationInterfaceManaged", $this->_propDict)) {
+            return $this->_propDict["deviceFirmwareConfigurationInterfaceManaged"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the deviceFirmwareConfigurationInterfaceManaged
+    * Indicates whether the device is DFCI managed. When TRUE the device is DFCI managed. When FALSE, the device is not DFCI managed. The default value is FALSE.
+    *
+    * @param bool $val The deviceFirmwareConfigurationInterfaceManaged
+    *
+    * @return ManagedDevice
+    */
+    public function setDeviceFirmwareConfigurationInterfaceManaged($val)
+    {
+        $this->_propDict["deviceFirmwareConfigurationInterfaceManaged"] = boolval($val);
         return $this;
     }
 
@@ -1383,7 +1441,7 @@ class ManagedDevice extends Entity
 
     /**
     * Gets the managementAgent
-    * Management channel of the device. Intune, EAS, etc. This property is read-only. Possible values are: eas, mdm, easMdm, intuneClient, easIntuneClient, configurationManagerClient, configurationManagerClientMdm, configurationManagerClientMdmEas, unknown, jamf, googleCloudDevicePolicyController.
+    * Management channel of the device. Intune, EAS, etc. This property is read-only. Possible values are: eas, mdm, easMdm, intuneClient, easIntuneClient, configurationManagerClient, configurationManagerClientMdm, configurationManagerClientMdmEas, unknown, jamf, googleCloudDevicePolicyController, microsoft365ManagedMdm, msSense, intuneAosp.
     *
     * @return ManagementAgentType|null The managementAgent
     */
@@ -1402,7 +1460,7 @@ class ManagedDevice extends Entity
 
     /**
     * Sets the managementAgent
-    * Management channel of the device. Intune, EAS, etc. This property is read-only. Possible values are: eas, mdm, easMdm, intuneClient, easIntuneClient, configurationManagerClient, configurationManagerClientMdm, configurationManagerClientMdmEas, unknown, jamf, googleCloudDevicePolicyController.
+    * Management channel of the device. Intune, EAS, etc. This property is read-only. Possible values are: eas, mdm, easMdm, intuneClient, easIntuneClient, configurationManagerClient, configurationManagerClientMdm, configurationManagerClientMdmEas, unknown, jamf, googleCloudDevicePolicyController, microsoft365ManagedMdm, msSense, intuneAosp.
     *
     * @param ManagementAgentType $val The managementAgent
     *
@@ -2336,7 +2394,7 @@ class ManagedDevice extends Entity
     * Sets the usersLoggedOn
     * Indicates the last logged on users of a device. This property is read-only.
     *
-    * @param LoggedOnUser $val The usersLoggedOn
+    * @param LoggedOnUser[] $val The usersLoggedOn
     *
     * @return ManagedDevice
     */
@@ -2453,7 +2511,7 @@ class ManagedDevice extends Entity
     * Sets the assignmentFilterEvaluationStatusDetails
     * Managed device mobile app configuration states for this device.
     *
-    * @param AssignmentFilterEvaluationStatusDetails $val The assignmentFilterEvaluationStatusDetails
+    * @param AssignmentFilterEvaluationStatusDetails[] $val The assignmentFilterEvaluationStatusDetails
     *
     * @return ManagedDevice
     */
@@ -2483,7 +2541,7 @@ class ManagedDevice extends Entity
     * Sets the deviceCompliancePolicyStates
     * Device compliance policy states for this device.
     *
-    * @param DeviceCompliancePolicyState $val The deviceCompliancePolicyStates
+    * @param DeviceCompliancePolicyState[] $val The deviceCompliancePolicyStates
     *
     * @return ManagedDevice
     */
@@ -2513,7 +2571,7 @@ class ManagedDevice extends Entity
     * Sets the deviceConfigurationStates
     * Device configuration states for this device.
     *
-    * @param DeviceConfigurationState $val The deviceConfigurationStates
+    * @param DeviceConfigurationState[] $val The deviceConfigurationStates
     *
     * @return ManagedDevice
     */
@@ -2543,7 +2601,7 @@ class ManagedDevice extends Entity
     * Sets the managedDeviceMobileAppConfigurationStates
     * Managed device mobile app configuration states for this device.
     *
-    * @param ManagedDeviceMobileAppConfigurationState $val The managedDeviceMobileAppConfigurationStates
+    * @param ManagedDeviceMobileAppConfigurationState[] $val The managedDeviceMobileAppConfigurationStates
     *
     * @return ManagedDevice
     */
@@ -2573,7 +2631,7 @@ class ManagedDevice extends Entity
     * Sets the securityBaselineStates
     * Security baseline states for this device.
     *
-    * @param SecurityBaselineState $val The securityBaselineStates
+    * @param SecurityBaselineState[] $val The securityBaselineStates
     *
     * @return ManagedDevice
     */
@@ -2603,7 +2661,7 @@ class ManagedDevice extends Entity
     * Sets the detectedApps
     * All applications currently installed on the device
     *
-    * @param DetectedApp $val The detectedApps
+    * @param DetectedApp[] $val The detectedApps
     *
     * @return ManagedDevice
     */
@@ -2666,7 +2724,7 @@ class ManagedDevice extends Entity
     * Sets the logCollectionRequests
     * List of log collection requests
     *
-    * @param DeviceLogCollectionResponse $val The logCollectionRequests
+    * @param DeviceLogCollectionResponse[] $val The logCollectionRequests
     *
     * @return ManagedDevice
     */
@@ -2696,7 +2754,7 @@ class ManagedDevice extends Entity
     * Sets the users
     * The primary users associated with the managed device.
     *
-    * @param User $val The users
+    * @param User[] $val The users
     *
     * @return ManagedDevice
     */
@@ -2708,7 +2766,7 @@ class ManagedDevice extends Entity
 
     /**
     * Gets the windowsProtectionState
-    * The device protection status.
+    * The device protection status. This property is read-only.
     *
     * @return WindowsProtectionState|null The windowsProtectionState
     */
@@ -2727,7 +2785,7 @@ class ManagedDevice extends Entity
 
     /**
     * Sets the windowsProtectionState
-    * The device protection status.
+    * The device protection status. This property is read-only.
     *
     * @param WindowsProtectionState $val The windowsProtectionState
     *

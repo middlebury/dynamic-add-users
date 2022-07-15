@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Operation File
 * PHP version 7
 *
@@ -92,7 +92,7 @@ class Operation extends Entity
 
     /**
     * Gets the status
-    * The current status of the operation: notStarted, running, completed, failed
+    * Possible values are: notStarted, running, completed, failed. Read-only.
     *
     * @return OperationStatus|null The status
     */
@@ -111,7 +111,7 @@ class Operation extends Entity
 
     /**
     * Sets the status
-    * The current status of the operation: notStarted, running, completed, failed
+    * Possible values are: notStarted, running, completed, failed. Read-only.
     *
     * @param OperationStatus $val The status
     *

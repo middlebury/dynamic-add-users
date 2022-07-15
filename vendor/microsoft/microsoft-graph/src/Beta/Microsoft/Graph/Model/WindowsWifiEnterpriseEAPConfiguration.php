@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * WindowsWifiEnterpriseEAPConfiguration File
 * PHP version 7
 *
@@ -237,7 +237,7 @@ class WindowsWifiEnterpriseEAPConfiguration extends WindowsWifiConfiguration
 
     /**
     * Gets the eapType
-    * Extensible Authentication Protocol (EAP). Indicates the type of EAP protocol set on the Wi-Fi endpoint (router). Possible values are: eapTls, leap, eapSim, eapTtls, peap, eapFast.
+    * Extensible Authentication Protocol (EAP). Indicates the type of EAP protocol set on the Wi-Fi endpoint (router). Possible values are: eapTls, leap, eapSim, eapTtls, peap, eapFast, teap.
     *
     * @return EapType|null The eapType
     */
@@ -256,7 +256,7 @@ class WindowsWifiEnterpriseEAPConfiguration extends WindowsWifiConfiguration
 
     /**
     * Sets the eapType
-    * Extensible Authentication Protocol (EAP). Indicates the type of EAP protocol set on the Wi-Fi endpoint (router). Possible values are: eapTls, leap, eapSim, eapTtls, peap, eapFast.
+    * Extensible Authentication Protocol (EAP). Indicates the type of EAP protocol set on the Wi-Fi endpoint (router). Possible values are: eapTls, leap, eapSim, eapTtls, peap, eapFast, teap.
     *
     * @param EapType $val The eapType
     *
@@ -826,7 +826,7 @@ class WindowsWifiEnterpriseEAPConfiguration extends WindowsWifiConfiguration
     * Sets the rootCertificatesForServerValidation
     * Specify root certificate for server validation. This collection can contain a maximum of 500 elements.
     *
-    * @param Windows81TrustedRootCertificate $val The rootCertificatesForServerValidation
+    * @param Windows81TrustedRootCertificate[] $val The rootCertificatesForServerValidation
     *
     * @return WindowsWifiEnterpriseEAPConfiguration
     */

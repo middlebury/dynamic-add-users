@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ApprovalWorkflowProvider File
 * PHP version 7
 *
@@ -69,7 +69,7 @@ class ApprovalWorkflowProvider extends Entity
     /**
     * Sets the businessFlows
     *
-    * @param BusinessFlow $val The businessFlows
+    * @param BusinessFlow[] $val The businessFlows
     *
     * @return ApprovalWorkflowProvider
     */
@@ -97,7 +97,7 @@ class ApprovalWorkflowProvider extends Entity
     /**
     * Sets the businessFlowsWithRequestsAwaitingMyDecision
     *
-    * @param BusinessFlow $val The businessFlowsWithRequestsAwaitingMyDecision
+    * @param BusinessFlow[] $val The businessFlowsWithRequestsAwaitingMyDecision
     *
     * @return ApprovalWorkflowProvider
     */
@@ -125,7 +125,7 @@ class ApprovalWorkflowProvider extends Entity
     /**
     * Sets the policyTemplates
     *
-    * @param GovernancePolicyTemplate $val The policyTemplates
+    * @param GovernancePolicyTemplate[] $val The policyTemplates
     *
     * @return ApprovalWorkflowProvider
     */

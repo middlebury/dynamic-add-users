@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceManagementTemplateSettingCategory File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class DeviceManagementTemplateSettingCategory extends DeviceManagementSettingCat
     * Sets the recommendedSettings
     * The settings this category contains
     *
-    * @param DeviceManagementSettingInstance $val The recommendedSettings
+    * @param DeviceManagementSettingInstance[] $val The recommendedSettings
     *
     * @return DeviceManagementTemplateSettingCategory
     */

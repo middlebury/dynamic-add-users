@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * UserExperienceAnalyticsBatteryHealthCapacityDetails File
 * PHP version 7
 *
@@ -137,6 +137,39 @@ class UserExperienceAnalyticsBatteryHealthCapacityDetails extends Entity
     public function setBatteryCapacityPoor($val)
     {
         $this->_propDict["batteryCapacityPoor"] = intval($val);
+        return $this;
+    }
+
+    /**
+    * Gets the lastRefreshedDateTime
+    * Recorded date time of this capacity details instance.
+    *
+    * @return \DateTime|null The lastRefreshedDateTime
+    */
+    public function getLastRefreshedDateTime()
+    {
+        if (array_key_exists("lastRefreshedDateTime", $this->_propDict)) {
+            if (is_a($this->_propDict["lastRefreshedDateTime"], "\DateTime") || is_null($this->_propDict["lastRefreshedDateTime"])) {
+                return $this->_propDict["lastRefreshedDateTime"];
+            } else {
+                $this->_propDict["lastRefreshedDateTime"] = new \DateTime($this->_propDict["lastRefreshedDateTime"]);
+                return $this->_propDict["lastRefreshedDateTime"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the lastRefreshedDateTime
+    * Recorded date time of this capacity details instance.
+    *
+    * @param \DateTime $val The lastRefreshedDateTime
+    *
+    * @return UserExperienceAnalyticsBatteryHealthCapacityDetails
+    */
+    public function setLastRefreshedDateTime($val)
+    {
+        $this->_propDict["lastRefreshedDateTime"] = $val;
         return $this;
     }
 

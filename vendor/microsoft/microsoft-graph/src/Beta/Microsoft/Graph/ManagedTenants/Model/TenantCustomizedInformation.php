@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * TenantCustomizedInformation File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class TenantCustomizedInformation extends \Beta\Microsoft\Graph\Model\Entity
     * Sets the contacts
     * The collection of contacts for the managed tenant. Optional.
     *
-    * @param TenantContactInformation $val The contacts
+    * @param TenantContactInformation[] $val The contacts
     *
     * @return TenantCustomizedInformation
     */

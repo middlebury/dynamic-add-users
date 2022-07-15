@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Journal File
 * PHP version 7
 *
@@ -212,7 +212,7 @@ class Journal extends Entity
     /**
     * Sets the journalLines
     *
-    * @param JournalLine $val The journalLines
+    * @param JournalLine[] $val The journalLines
     *
     * @return Journal
     */

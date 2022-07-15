@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceManagementAutopilotEvent File
 * PHP version 7
 *
@@ -858,7 +858,7 @@ class DeviceManagementAutopilotEvent extends Entity
     * Sets the policyStatusDetails
     * Policy and application status details for this device.
     *
-    * @param DeviceManagementAutopilotPolicyStatusDetail $val The policyStatusDetails
+    * @param DeviceManagementAutopilotPolicyStatusDetail[] $val The policyStatusDetails
     *
     * @return DeviceManagementAutopilotEvent
     */

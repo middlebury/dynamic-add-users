@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AccessPackageResourceScope File
 * PHP version 7
 *
@@ -229,7 +229,6 @@ class AccessPackageResourceScope extends Entity
 
     /**
     * Gets the accessPackageResource
-    * Read-only. Nullable.
     *
     * @return AccessPackageResource|null The accessPackageResource
     */
@@ -248,7 +247,6 @@ class AccessPackageResourceScope extends Entity
 
     /**
     * Sets the accessPackageResource
-    * Read-only. Nullable.
     *
     * @param AccessPackageResource $val The accessPackageResource
     *

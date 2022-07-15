@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceComplianceScript File
 * PHP version 7
 *
@@ -379,7 +379,7 @@ class DeviceComplianceScript extends Entity
     * Sets the assignments
     * The list of group assignments for the device compliance script
     *
-    * @param DeviceHealthScriptAssignment $val The assignments
+    * @param DeviceHealthScriptAssignment[] $val The assignments
     *
     * @return DeviceComplianceScript
     */
@@ -409,7 +409,7 @@ class DeviceComplianceScript extends Entity
     * Sets the deviceRunStates
     * List of run states for the device compliance script across all devices
     *
-    * @param DeviceComplianceScriptDeviceState $val The deviceRunStates
+    * @param DeviceComplianceScriptDeviceState[] $val The deviceRunStates
     *
     * @return DeviceComplianceScript
     */

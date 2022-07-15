@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ClientUserAgent File
 * PHP version 7
 *
@@ -59,7 +59,7 @@ class ClientUserAgent extends UserAgent
 
     /**
     * Gets the productFamily
-    * Identifies the family of application software used by this endpoint. Possible values are: unknown, teams, skypeForBusiness, lync, unknownFutureValue.
+    * Identifies the family of application software used by this endpoint. Possible values are: unknown, teams, skypeForBusiness, lync, unknownFutureValue, azureCommunicationServices.  Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: azureCommunicationServices.
     *
     * @return ProductFamily|null The productFamily
     */
@@ -78,7 +78,7 @@ class ClientUserAgent extends UserAgent
 
     /**
     * Sets the productFamily
-    * Identifies the family of application software used by this endpoint. Possible values are: unknown, teams, skypeForBusiness, lync, unknownFutureValue.
+    * Identifies the family of application software used by this endpoint. Possible values are: unknown, teams, skypeForBusiness, lync, unknownFutureValue, azureCommunicationServices.  Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: azureCommunicationServices.
     *
     * @param ProductFamily $val The value to assign to the productFamily
     *

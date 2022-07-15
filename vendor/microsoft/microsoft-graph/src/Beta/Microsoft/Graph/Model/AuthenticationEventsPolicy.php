@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AuthenticationEventsPolicy File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class AuthenticationEventsPolicy extends Entity
     * Sets the onSignupStart
     * A list of applicable actions to be taken on sign-up.
     *
-    * @param AuthenticationListener $val The onSignupStart
+    * @param AuthenticationListener[] $val The onSignupStart
     *
     * @return AuthenticationEventsPolicy
     */

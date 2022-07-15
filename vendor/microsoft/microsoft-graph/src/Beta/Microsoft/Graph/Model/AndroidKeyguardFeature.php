@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AndroidKeyguardFeature File
 * PHP version 7
 *
@@ -37,4 +37,7 @@ class AndroidKeyguardFeature extends Enum
     const FINGERPRINT = "fingerprint";
     const REMOTE_INPUT = "remoteInput";
     const ALL_FEATURES = "allFeatures";
+    const FACE = "face";
+    const IRIS = "iris";
+    const BIOMETRICS = "biometrics";
 }

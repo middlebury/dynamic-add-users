@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ManagedAppConfiguration File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class ManagedAppConfiguration extends ManagedAppPolicy
     * Sets the customSettings
     * A set of string key and string value pairs to be sent to apps for users to whom the configuration is scoped, unalterned by this service
     *
-    * @param KeyValuePair $val The customSettings
+    * @param KeyValuePair[] $val The customSettings
     *
     * @return ManagedAppConfiguration
     */

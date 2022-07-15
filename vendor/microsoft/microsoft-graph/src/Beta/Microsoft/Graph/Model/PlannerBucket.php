@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * PlannerBucket File
 * PHP version 7
 *
@@ -131,7 +131,7 @@ class PlannerBucket extends PlannerDelta
     * Sets the tasks
     * Read-only. Nullable. The collection of tasks in the bucket.
     *
-    * @param PlannerTask $val The tasks
+    * @param PlannerTask[] $val The tasks
     *
     * @return PlannerBucket
     */

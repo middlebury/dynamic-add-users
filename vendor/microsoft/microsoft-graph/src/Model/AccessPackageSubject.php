@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AccessPackageSubject File
 * PHP version 7
 *
@@ -113,6 +113,7 @@ class AccessPackageSubject extends Entity
 
     /**
     * Gets the onPremisesSecurityIdentifier
+    * A string representation of the principal's security identifier, if known, or null if the subject does not have a security identifier.
     *
     * @return string|null The onPremisesSecurityIdentifier
     */
@@ -127,6 +128,7 @@ class AccessPackageSubject extends Entity
 
     /**
     * Sets the onPremisesSecurityIdentifier
+    * A string representation of the principal's security identifier, if known, or null if the subject does not have a security identifier.
     *
     * @param string $val The onPremisesSecurityIdentifier
     *
@@ -169,6 +171,7 @@ class AccessPackageSubject extends Entity
 
     /**
     * Gets the subjectType
+    * The resource type of the subject. The possible values are: notSpecified, user, servicePrincipal, unknownFutureValue.
     *
     * @return AccessPackageSubjectType|null The subjectType
     */
@@ -187,6 +190,7 @@ class AccessPackageSubject extends Entity
 
     /**
     * Sets the subjectType
+    * The resource type of the subject. The possible values are: notSpecified, user, servicePrincipal, unknownFutureValue.
     *
     * @param AccessPackageSubjectType $val The subjectType
     *

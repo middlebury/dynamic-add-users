@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AppleDeviceFeaturesConfigurationBase File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class AppleDeviceFeaturesConfigurationBase extends DeviceConfiguration
     * Sets the airPrintDestinations
     * An array of AirPrint printers that should always be shown. This collection can contain a maximum of 500 elements.
     *
-    * @param AirPrintDestination $val The airPrintDestinations
+    * @param AirPrintDestination[] $val The airPrintDestinations
     *
     * @return AppleDeviceFeaturesConfigurationBase
     */

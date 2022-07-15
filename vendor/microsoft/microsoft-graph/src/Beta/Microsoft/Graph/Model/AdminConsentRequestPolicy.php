@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AdminConsentRequestPolicy File
 * PHP version 7
 *
@@ -143,7 +143,7 @@ class AdminConsentRequestPolicy extends Entity
 
      /**
      * Gets the reviewers
-    * The list of reviewers for the admin consent. Required.
+    * Required.
      *
      * @return array|null The reviewers
      */
@@ -158,9 +158,9 @@ class AdminConsentRequestPolicy extends Entity
 
     /**
     * Sets the reviewers
-    * The list of reviewers for the admin consent. Required.
+    * Required.
     *
-    * @param AccessReviewReviewerScope $val The reviewers
+    * @param AccessReviewReviewerScope[] $val The reviewers
     *
     * @return AdminConsentRequestPolicy
     */

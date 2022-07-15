@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * EnrollmentRestrictionPlatformType File
 * PHP version 7
 *
@@ -35,6 +35,5 @@ class EnrollmentRestrictionPlatformType extends Enum
     const WINDOWS_PHONE = "windowsPhone";
     const ANDROID = "android";
     const ANDROID_FOR_WORK = "androidForWork";
-    const ANDROID_AOSP = "androidAosp";
     const MAC = "mac";
 }

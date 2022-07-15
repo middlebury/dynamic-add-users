@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * RbacApplication File
 * PHP version 7
 *
@@ -42,7 +42,7 @@ class RbacApplication extends Entity
     /**
     * Sets the resourceNamespaces
     *
-    * @param UnifiedRbacResourceNamespace $val The resourceNamespaces
+    * @param UnifiedRbacResourceNamespace[] $val The resourceNamespaces
     *
     * @return RbacApplication
     */
@@ -72,7 +72,7 @@ class RbacApplication extends Entity
     * Sets the roleAssignments
     * Resource to grant access to users or groups.
     *
-    * @param UnifiedRoleAssignment $val The roleAssignments
+    * @param UnifiedRoleAssignment[] $val The roleAssignments
     *
     * @return RbacApplication
     */
@@ -102,13 +102,41 @@ class RbacApplication extends Entity
     * Sets the roleDefinitions
     * Resource representing the roles allowed by RBAC providers and the permissions assigned to the roles.
     *
-    * @param UnifiedRoleDefinition $val The roleDefinitions
+    * @param UnifiedRoleDefinition[] $val The roleDefinitions
     *
     * @return RbacApplication
     */
     public function setRoleDefinitions($val)
     {
         $this->_propDict["roleDefinitions"] = $val;
+        return $this;
+    }
+
+
+     /**
+     * Gets the transitiveRoleAssignments
+     *
+     * @return array|null The transitiveRoleAssignments
+     */
+    public function getTransitiveRoleAssignments()
+    {
+        if (array_key_exists("transitiveRoleAssignments", $this->_propDict)) {
+           return $this->_propDict["transitiveRoleAssignments"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the transitiveRoleAssignments
+    *
+    * @param UnifiedRoleAssignment[] $val The transitiveRoleAssignments
+    *
+    * @return RbacApplication
+    */
+    public function setTransitiveRoleAssignments($val)
+    {
+        $this->_propDict["transitiveRoleAssignments"] = $val;
         return $this;
     }
 
@@ -130,7 +158,7 @@ class RbacApplication extends Entity
     /**
     * Sets the roleAssignmentApprovals
     *
-    * @param Approval $val The roleAssignmentApprovals
+    * @param Approval[] $val The roleAssignmentApprovals
     *
     * @return RbacApplication
     */
@@ -143,6 +171,7 @@ class RbacApplication extends Entity
 
      /**
      * Gets the roleAssignmentScheduleInstances
+    * Instances for active role assignments.
      *
      * @return array|null The roleAssignmentScheduleInstances
      */
@@ -157,8 +186,9 @@ class RbacApplication extends Entity
 
     /**
     * Sets the roleAssignmentScheduleInstances
+    * Instances for active role assignments.
     *
-    * @param UnifiedRoleAssignmentScheduleInstance $val The roleAssignmentScheduleInstances
+    * @param UnifiedRoleAssignmentScheduleInstance[] $val The roleAssignmentScheduleInstances
     *
     * @return RbacApplication
     */
@@ -171,6 +201,7 @@ class RbacApplication extends Entity
 
      /**
      * Gets the roleAssignmentScheduleRequests
+    * Requests for active role assignments to principals through PIM.
      *
      * @return array|null The roleAssignmentScheduleRequests
      */
@@ -185,8 +216,9 @@ class RbacApplication extends Entity
 
     /**
     * Sets the roleAssignmentScheduleRequests
+    * Requests for active role assignments to principals through PIM.
     *
-    * @param UnifiedRoleAssignmentScheduleRequest $val The roleAssignmentScheduleRequests
+    * @param UnifiedRoleAssignmentScheduleRequest[] $val The roleAssignmentScheduleRequests
     *
     * @return RbacApplication
     */
@@ -199,6 +231,7 @@ class RbacApplication extends Entity
 
      /**
      * Gets the roleAssignmentSchedules
+    * Schedules for active role assignment operations.
      *
      * @return array|null The roleAssignmentSchedules
      */
@@ -213,8 +246,9 @@ class RbacApplication extends Entity
 
     /**
     * Sets the roleAssignmentSchedules
+    * Schedules for active role assignment operations.
     *
-    * @param UnifiedRoleAssignmentSchedule $val The roleAssignmentSchedules
+    * @param UnifiedRoleAssignmentSchedule[] $val The roleAssignmentSchedules
     *
     * @return RbacApplication
     */
@@ -227,6 +261,7 @@ class RbacApplication extends Entity
 
      /**
      * Gets the roleEligibilityScheduleInstances
+    * Instances for role eligibility requests.
      *
      * @return array|null The roleEligibilityScheduleInstances
      */
@@ -241,8 +276,9 @@ class RbacApplication extends Entity
 
     /**
     * Sets the roleEligibilityScheduleInstances
+    * Instances for role eligibility requests.
     *
-    * @param UnifiedRoleEligibilityScheduleInstance $val The roleEligibilityScheduleInstances
+    * @param UnifiedRoleEligibilityScheduleInstance[] $val The roleEligibilityScheduleInstances
     *
     * @return RbacApplication
     */
@@ -255,6 +291,7 @@ class RbacApplication extends Entity
 
      /**
      * Gets the roleEligibilityScheduleRequests
+    * Requests for role eligibilities for principals through PIM.
      *
      * @return array|null The roleEligibilityScheduleRequests
      */
@@ -269,8 +306,9 @@ class RbacApplication extends Entity
 
     /**
     * Sets the roleEligibilityScheduleRequests
+    * Requests for role eligibilities for principals through PIM.
     *
-    * @param UnifiedRoleEligibilityScheduleRequest $val The roleEligibilityScheduleRequests
+    * @param UnifiedRoleEligibilityScheduleRequest[] $val The roleEligibilityScheduleRequests
     *
     * @return RbacApplication
     */
@@ -283,6 +321,7 @@ class RbacApplication extends Entity
 
      /**
      * Gets the roleEligibilitySchedules
+    * Schedules for role eligibility operations.
      *
      * @return array|null The roleEligibilitySchedules
      */
@@ -297,8 +336,9 @@ class RbacApplication extends Entity
 
     /**
     * Sets the roleEligibilitySchedules
+    * Schedules for role eligibility operations.
     *
-    * @param UnifiedRoleEligibilitySchedule $val The roleEligibilitySchedules
+    * @param UnifiedRoleEligibilitySchedule[] $val The roleEligibilitySchedules
     *
     * @return RbacApplication
     */

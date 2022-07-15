@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * SecurityAction File
 * PHP version 7
 *
@@ -319,7 +319,7 @@ class SecurityAction extends Entity
     * Sets the parameters
     * Collection of parameters (key-value pairs) necessary to invoke the action, for example, URL or fileHash to block.). Required.
     *
-    * @param KeyValuePair $val The parameters
+    * @param KeyValuePair[] $val The parameters
     *
     * @return SecurityAction
     */
@@ -349,7 +349,7 @@ class SecurityAction extends Entity
     * Sets the states
     * Collection of securityActionState to keep the history of an action.
     *
-    * @param SecurityActionState $val The states
+    * @param SecurityActionState[] $val The states
     *
     * @return SecurityAction
     */

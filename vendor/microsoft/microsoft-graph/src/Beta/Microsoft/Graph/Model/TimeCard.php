@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * TimeCard File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class TimeCard extends ChangeTrackedEntity
     * Sets the breaks
     * The list of breaks associated with the timeCard.
     *
-    * @param TimeCardBreak $val The breaks
+    * @param TimeCardBreak[] $val The breaks
     *
     * @return TimeCard
     */

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * IosCompliancePolicy File
 * PHP version 7
 *
@@ -549,7 +549,7 @@ class IosCompliancePolicy extends DeviceCompliancePolicy
     * Sets the restrictedApps
     * Require the device to not have the specified apps installed. This collection can contain a maximum of 100 elements.
     *
-    * @param AppListItem $val The restrictedApps
+    * @param AppListItem[] $val The restrictedApps
     *
     * @return IosCompliancePolicy
     */

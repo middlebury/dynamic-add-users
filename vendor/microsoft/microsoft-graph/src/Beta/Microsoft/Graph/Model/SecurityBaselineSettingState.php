@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * SecurityBaselineSettingState File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class SecurityBaselineSettingState extends Entity
     * Sets the contributingPolicies
     * The policies that contribute to this setting instance
     *
-    * @param SecurityBaselineContributingPolicy $val The contributingPolicies
+    * @param SecurityBaselineContributingPolicy[] $val The contributingPolicies
     *
     * @return SecurityBaselineSettingState
     */
@@ -219,7 +219,7 @@ class SecurityBaselineSettingState extends Entity
     * Sets the sourcePolicies
     * The policies that contribute to this setting instance
     *
-    * @param SettingSource $val The sourcePolicies
+    * @param SettingSource[] $val The sourcePolicies
     *
     * @return SecurityBaselineSettingState
     */

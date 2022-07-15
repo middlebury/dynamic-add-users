@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AccessPackageResourceAttributeQuestion File
 * PHP version 7
 *
@@ -26,6 +26,7 @@ class AccessPackageResourceAttributeQuestion extends AccessPackageResourceAttrib
 
     /**
     * Gets the question
+    * The question asked in order to get the value of the attribute
     *
     * @return AccessPackageQuestion|null The question
     */
@@ -44,6 +45,7 @@ class AccessPackageResourceAttributeQuestion extends AccessPackageResourceAttrib
 
     /**
     * Sets the question
+    * The question asked in order to get the value of the attribute
     *
     * @param AccessPackageQuestion $val The value to assign to the question
     *

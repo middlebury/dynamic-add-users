@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Windows10GeneralConfiguration File
 * PHP version 7
 *
@@ -1276,7 +1276,7 @@ class Windows10GeneralConfiguration extends DeviceConfiguration
 
     /**
     * Gets the defenderSystemScanSchedule
-    * Defender day of the week for the system scan. Possible values are: userDefined, everyday, sunday, monday, tuesday, wednesday, thursday, friday, saturday.
+    * Defender day of the week for the system scan. Possible values are: userDefined, everyday, sunday, monday, tuesday, wednesday, thursday, friday, saturday, noScheduledScan.
     *
     * @return WeeklySchedule|null The defenderSystemScanSchedule
     */
@@ -1295,7 +1295,7 @@ class Windows10GeneralConfiguration extends DeviceConfiguration
 
     /**
     * Sets the defenderSystemScanSchedule
-    * Defender day of the week for the system scan. Possible values are: userDefined, everyday, sunday, monday, tuesday, wednesday, thursday, friday, saturday.
+    * Defender day of the week for the system scan. Possible values are: userDefined, everyday, sunday, monday, tuesday, wednesday, thursday, friday, saturday, noScheduledScan.
     *
     * @param WeeklySchedule $val The defenderSystemScanSchedule
     *

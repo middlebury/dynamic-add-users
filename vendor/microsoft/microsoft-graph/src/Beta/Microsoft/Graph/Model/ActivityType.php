@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ActivityType File
 * PHP version 7
 *
@@ -32,4 +32,5 @@ class ActivityType extends Enum
     const SIGNIN = "signin";
     const USER = "user";
     const UNKNOWN_FUTURE_VALUE = "unknownFutureValue";
+    const SERVICE_PRINCIPAL = "servicePrincipal";
 }

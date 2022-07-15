@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * WorkbookTable File
 * PHP version 7
 *
@@ -287,7 +287,7 @@ class WorkbookTable extends Entity
 
     /**
     * Gets the style
-    * Constant value that represents the Table style. The possible values are: TableStyleLight1 thru TableStyleLight21, TableStyleMedium1 thru TableStyleMedium28, TableStyleStyleDark1 thru TableStyleStyleDark11. A custom user-defined style present in the workbook can also be specified.
+    * Constant value that represents the Table style. Possible values are: TableStyleLight1 thru TableStyleLight21, TableStyleMedium1 thru TableStyleMedium28, TableStyleStyleDark1 thru TableStyleStyleDark11. A custom user-defined style present in the workbook can also be specified.
     *
     * @return string|null The style
     */
@@ -302,7 +302,7 @@ class WorkbookTable extends Entity
 
     /**
     * Sets the style
-    * Constant value that represents the Table style. The possible values are: TableStyleLight1 thru TableStyleLight21, TableStyleMedium1 thru TableStyleMedium28, TableStyleStyleDark1 thru TableStyleStyleDark11. A custom user-defined style present in the workbook can also be specified.
+    * Constant value that represents the Table style. Possible values are: TableStyleLight1 thru TableStyleLight21, TableStyleMedium1 thru TableStyleMedium28, TableStyleStyleDark1 thru TableStyleStyleDark11. A custom user-defined style present in the workbook can also be specified.
     *
     * @param string $val The style
     *
@@ -334,7 +334,7 @@ class WorkbookTable extends Entity
     * Sets the columns
     * Represents a collection of all the columns in the table. Read-only.
     *
-    * @param WorkbookTableColumn $val The columns
+    * @param WorkbookTableColumn[] $val The columns
     *
     * @return WorkbookTable
     */
@@ -364,7 +364,7 @@ class WorkbookTable extends Entity
     * Sets the rows
     * Represents a collection of all the rows in the table. Read-only.
     *
-    * @param WorkbookTableRow $val The rows
+    * @param WorkbookTableRow[] $val The rows
     *
     * @return WorkbookTable
     */

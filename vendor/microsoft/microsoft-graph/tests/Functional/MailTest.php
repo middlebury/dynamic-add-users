@@ -23,7 +23,7 @@ class MailTest extends TestCase
                             ->execute();
         $subject = new DateTime();
         $subject = $subject->format('Y-m-d H:i:s');
-
+        
         $message = new Model\Message();
         $message->setSubject($subject);
         $body = new Model\ItemBody();
@@ -57,7 +57,7 @@ class MailTest extends TestCase
                                             ->execute();
         $this->assertNotNull($mailFolderMessages);
     }
-
+    
     /**
     * @group functional
     */

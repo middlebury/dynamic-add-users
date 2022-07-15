@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * UnifiedRoleManagementPolicyRule File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class UnifiedRoleManagementPolicyRule extends Entity
 {
     /**
     * Gets the target
-    * The target for the policy rule.
+    * Not implemented. Defines details of scope that's targeted by role management policy rule. The details can include the principal type, the role assignment type, and actions affecting a role. Supports $filter (eq, ne).
     *
     * @return UnifiedRoleManagementPolicyRuleTarget|null The target
     */
@@ -45,7 +45,7 @@ class UnifiedRoleManagementPolicyRule extends Entity
 
     /**
     * Sets the target
-    * The target for the policy rule.
+    * Not implemented. Defines details of scope that's targeted by role management policy rule. The details can include the principal type, the role assignment type, and actions affecting a role. Supports $filter (eq, ne).
     *
     * @param UnifiedRoleManagementPolicyRuleTarget $val The target
     *

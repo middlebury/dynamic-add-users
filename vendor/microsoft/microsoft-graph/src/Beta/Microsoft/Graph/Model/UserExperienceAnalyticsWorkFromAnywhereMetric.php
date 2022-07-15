@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * UserExperienceAnalyticsWorkFromAnywhereMetric File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class UserExperienceAnalyticsWorkFromAnywhereMetric extends Entity
     * Sets the metricDevices
     * The work from anywhere metric devices.
     *
-    * @param UserExperienceAnalyticsWorkFromAnywhereDevice $val The metricDevices
+    * @param UserExperienceAnalyticsWorkFromAnywhereDevice[] $val The metricDevices
     *
     * @return UserExperienceAnalyticsWorkFromAnywhereMetric
     */

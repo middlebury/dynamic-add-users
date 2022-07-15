@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * WorkbookTableSort File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class WorkbookTableSort extends Entity
     * Sets the fields
     * Represents the current conditions used to last sort the table. Read-only.
     *
-    * @param WorkbookSortField $val The fields
+    * @param WorkbookSortField[] $val The fields
     *
     * @return WorkbookTableSort
     */
@@ -85,7 +85,7 @@ class WorkbookTableSort extends Entity
 
     /**
     * Gets the method
-    * Represents Chinese character ordering method last used to sort the table. The possible values are: PinYin, StrokeCount. Read-only.
+    * Represents Chinese character ordering method last used to sort the table. Possible values are: PinYin, StrokeCount. Read-only.
     *
     * @return string|null The method
     */
@@ -100,7 +100,7 @@ class WorkbookTableSort extends Entity
 
     /**
     * Sets the method
-    * Represents Chinese character ordering method last used to sort the table. The possible values are: PinYin, StrokeCount. Read-only.
+    * Represents Chinese character ordering method last used to sort the table. Possible values are: PinYin, StrokeCount. Read-only.
     *
     * @param string $val The method
     *

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * EducationAssignmentIndividualRecipient File
 * PHP version 7
 *
@@ -36,7 +36,7 @@ class EducationAssignmentIndividualRecipient extends EducationAssignmentRecipien
 
     /**
     * Gets the recipients
-    * A collection of IDs of the recipients.
+    * A collection of ids of the recipients.
     *
     * @return string|null The recipients
     */
@@ -51,7 +51,7 @@ class EducationAssignmentIndividualRecipient extends EducationAssignmentRecipien
 
     /**
     * Sets the recipients
-    * A collection of IDs of the recipients.
+    * A collection of ids of the recipients.
     *
     * @param string $val The value of the recipients
     *

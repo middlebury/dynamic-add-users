@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * SamlOrWsFedExternalDomainFederation File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class SamlOrWsFedExternalDomainFederation extends SamlOrWsFedProvider
     * Sets the domains
     * Collection of domain names of the external organizations that the tenant is federating with. Supports $filter (eq).
     *
-    * @param ExternalDomainName $val The domains
+    * @param ExternalDomainName[] $val The domains
     *
     * @return SamlOrWsFedExternalDomainFederation
     */

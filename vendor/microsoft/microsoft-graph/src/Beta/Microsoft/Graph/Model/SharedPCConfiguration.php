@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * SharedPCConfiguration File
 * PHP version 7
 *
@@ -59,7 +59,7 @@ class SharedPCConfiguration extends DeviceConfiguration
 
     /**
     * Gets the allowedAccounts
-    * Indicates which type of accounts are allowed to use on a shared PC. Possible values are: guest, domain.
+    * Indicates which type of accounts are allowed to use on a shared PC. Possible values are: notConfigured, guest, domain.
     *
     * @return SharedPCAllowedAccountType|null The allowedAccounts
     */
@@ -78,7 +78,7 @@ class SharedPCConfiguration extends DeviceConfiguration
 
     /**
     * Sets the allowedAccounts
-    * Indicates which type of accounts are allowed to use on a shared PC. Possible values are: guest, domain.
+    * Indicates which type of accounts are allowed to use on a shared PC. Possible values are: notConfigured, guest, domain.
     *
     * @param SharedPCAllowedAccountType $val The allowedAccounts
     *

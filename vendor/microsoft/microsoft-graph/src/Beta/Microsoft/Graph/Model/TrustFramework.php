@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * TrustFramework File
 * PHP version 7
 *
@@ -73,7 +73,7 @@ class TrustFramework implements \JsonSerializable
     /**
     * Sets the keySets
     *
-    * @param TrustFrameworkKeySet $val The keySets
+    * @param TrustFrameworkKeySet[] $val The keySets
     *
     * @return TrustFramework
     */
@@ -101,7 +101,7 @@ class TrustFramework implements \JsonSerializable
     /**
     * Sets the policies
     *
-    * @param TrustFrameworkPolicy $val The policies
+    * @param TrustFrameworkPolicy[] $val The policies
     *
     * @return TrustFramework
     */
@@ -143,6 +143,7 @@ class TrustFramework implements \JsonSerializable
     *
     * @return array The list of properties
     */
+    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         $serializableProperties = $this->getProperties();

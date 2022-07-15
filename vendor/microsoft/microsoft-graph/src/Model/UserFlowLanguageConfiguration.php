@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * UserFlowLanguageConfiguration File
 * PHP version 7
 *
@@ -102,7 +102,7 @@ class UserFlowLanguageConfiguration extends Entity
     * Sets the defaultPages
     * Collection of pages with the default content to display in a user flow for a specified language. This collection does not allow any kind of modification.
     *
-    * @param UserFlowLanguagePage $val The defaultPages
+    * @param UserFlowLanguagePage[] $val The defaultPages
     *
     * @return UserFlowLanguageConfiguration
     */
@@ -132,7 +132,7 @@ class UserFlowLanguageConfiguration extends Entity
     * Sets the overridesPages
     * Collection of pages with the overrides messages to display in a user flow for a specified language. This collection only allows to modify the content of the page, any other modification is not allowed (creation or deletion of pages).
     *
-    * @param UserFlowLanguagePage $val The overridesPages
+    * @param UserFlowLanguagePage[] $val The overridesPages
     *
     * @return UserFlowLanguageConfiguration
     */

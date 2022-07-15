@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceCompliancePolicyState File
 * PHP version 7
 *
@@ -133,7 +133,7 @@ class DeviceCompliancePolicyState extends Entity
     /**
     * Sets the settingStates
     *
-    * @param DeviceCompliancePolicySettingState $val The settingStates
+    * @param DeviceCompliancePolicySettingState[] $val The settingStates
     *
     * @return DeviceCompliancePolicyState
     */

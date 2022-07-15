@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * SettingTemplateValue File
 * PHP version 7
 *
@@ -25,7 +25,7 @@ class SettingTemplateValue extends Entity
 {
     /**
     * Gets the defaultValue
-    * Default value for the setting.
+    * Default value for the setting. Read-only.
     *
     * @return string|null The defaultValue
     */
@@ -40,7 +40,7 @@ class SettingTemplateValue extends Entity
 
     /**
     * Sets the defaultValue
-    * Default value for the setting.
+    * Default value for the setting. Read-only.
     *
     * @param string $val The value of the defaultValue
     *
@@ -53,7 +53,7 @@ class SettingTemplateValue extends Entity
     }
     /**
     * Gets the description
-    * Description of the setting.
+    * Description of the setting. Read-only.
     *
     * @return string|null The description
     */
@@ -68,7 +68,7 @@ class SettingTemplateValue extends Entity
 
     /**
     * Sets the description
-    * Description of the setting.
+    * Description of the setting. Read-only.
     *
     * @param string $val The value of the description
     *
@@ -81,7 +81,7 @@ class SettingTemplateValue extends Entity
     }
     /**
     * Gets the name
-    * Name of the setting.
+    * Name of the setting. Read-only.
     *
     * @return string|null The name
     */
@@ -96,7 +96,7 @@ class SettingTemplateValue extends Entity
 
     /**
     * Sets the name
-    * Name of the setting.
+    * Name of the setting. Read-only.
     *
     * @param string $val The value of the name
     *
@@ -109,7 +109,7 @@ class SettingTemplateValue extends Entity
     }
     /**
     * Gets the type
-    * Type of the setting.
+    * Type of the setting. Read-only.
     *
     * @return string|null The type
     */
@@ -124,7 +124,7 @@ class SettingTemplateValue extends Entity
 
     /**
     * Sets the type
-    * Type of the setting.
+    * Type of the setting. Read-only.
     *
     * @param string $val The value of the type
     *

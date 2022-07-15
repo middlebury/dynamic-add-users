@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * StagedFeatureName File
 * PHP version 7
 *
@@ -34,4 +34,6 @@ class StagedFeatureName extends Enum
     const PASSWORD_HASH_SYNC = "passwordHashSync";
     const EMAIL_AS_ALTERNATE_ID = "emailAsAlternateId";
     const UNKNOWN_FUTURE_VALUE = "unknownFutureValue";
+    const CERTIFICATE_BASED_AUTHENTICATION = "certificateBasedAuthentication";
+    const MULTI_FACTOR_AUTHENTICATION = "multiFactorAuthentication";
 }

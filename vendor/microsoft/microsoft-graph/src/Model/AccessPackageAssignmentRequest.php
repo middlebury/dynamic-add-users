@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AccessPackageAssignmentRequest File
 * PHP version 7
 *
@@ -26,6 +26,7 @@ class AccessPackageAssignmentRequest extends Entity
 {
     /**
     * Gets the completedDateTime
+    * The date of the end of processing, either successful or failure, of a request. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     *
     * @return \DateTime|null The completedDateTime
     */
@@ -44,6 +45,7 @@ class AccessPackageAssignmentRequest extends Entity
 
     /**
     * Sets the completedDateTime
+    * The date of the end of processing, either successful or failure, of a request. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     *
     * @param \DateTime $val The completedDateTime
     *
@@ -156,6 +158,7 @@ class AccessPackageAssignmentRequest extends Entity
 
     /**
     * Gets the state
+    * The state of the request. The possible values are: submitted, pendingApproval, delivering, delivered, deliveryFailed, denied, scheduled, canceled, partiallyDelivered, unknownFutureValue. Read-only.
     *
     * @return AccessPackageRequestState|null The state
     */
@@ -174,6 +177,7 @@ class AccessPackageAssignmentRequest extends Entity
 
     /**
     * Sets the state
+    * The state of the request. The possible values are: submitted, pendingApproval, delivering, delivered, deliveryFailed, denied, scheduled, canceled, partiallyDelivered, unknownFutureValue. Read-only.
     *
     * @param AccessPackageRequestState $val The state
     *
@@ -187,6 +191,7 @@ class AccessPackageAssignmentRequest extends Entity
 
     /**
     * Gets the status
+    * More information on the request processing status. Read-only.
     *
     * @return string|null The status
     */
@@ -201,6 +206,7 @@ class AccessPackageAssignmentRequest extends Entity
 
     /**
     * Sets the status
+    * More information on the request processing status. Read-only.
     *
     * @param string $val The status
     *
@@ -214,7 +220,7 @@ class AccessPackageAssignmentRequest extends Entity
 
     /**
     * Gets the accessPackage
-    * The access package associated with the accessPackageAssignmentRequest. An access package defines the collections of resource roles and the policies for how one or more users can get access to those resources. Read-only. Nullable.  Supports $expand.
+    * The access package associated with the accessPackageAssignmentRequest. An access package defines the collections of resource roles and the policies for how one or more users can get access to those resources. Read-only. Nullable. Supports $expand.
     *
     * @return AccessPackage|null The accessPackage
     */
@@ -233,7 +239,7 @@ class AccessPackageAssignmentRequest extends Entity
 
     /**
     * Sets the accessPackage
-    * The access package associated with the accessPackageAssignmentRequest. An access package defines the collections of resource roles and the policies for how one or more users can get access to those resources. Read-only. Nullable.  Supports $expand.
+    * The access package associated with the accessPackageAssignmentRequest. An access package defines the collections of resource roles and the policies for how one or more users can get access to those resources. Read-only. Nullable. Supports $expand.
     *
     * @param AccessPackage $val The accessPackage
     *
@@ -247,6 +253,7 @@ class AccessPackageAssignmentRequest extends Entity
 
     /**
     * Gets the assignment
+    * For a requestType of UserAdd or AdminAdd, this is an access package assignment requested to be created.  For a requestType of UserRemove, AdminRemove or SystemRemove, this has the id property of an existing assignment to be removed.   Supports $expand.
     *
     * @return AccessPackageAssignment|null The assignment
     */
@@ -265,6 +272,7 @@ class AccessPackageAssignmentRequest extends Entity
 
     /**
     * Sets the assignment
+    * For a requestType of UserAdd or AdminAdd, this is an access package assignment requested to be created.  For a requestType of UserRemove, AdminRemove or SystemRemove, this has the id property of an existing assignment to be removed.   Supports $expand.
     *
     * @param AccessPackageAssignment $val The assignment
     *

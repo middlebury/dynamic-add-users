@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * EducationClass File
 * PHP version 7
 *
@@ -55,7 +55,7 @@ class EducationClass extends Entity
 
     /**
     * Gets the course
-    * Course information for the class
+    * Course information for the class.
     *
     * @return EducationCourse|null The course
     */
@@ -74,7 +74,7 @@ class EducationClass extends Entity
 
     /**
     * Sets the course
-    * Course information for the class
+    * Course information for the class.
     *
     * @param EducationCourse $val The course
     *
@@ -88,7 +88,7 @@ class EducationClass extends Entity
 
     /**
     * Gets the createdBy
-    * Entity who created the class
+    * Entity who created the class.
     *
     * @return IdentitySet|null The createdBy
     */
@@ -107,7 +107,7 @@ class EducationClass extends Entity
 
     /**
     * Sets the createdBy
-    * Entity who created the class
+    * Entity who created the class.
     *
     * @param IdentitySet $val The createdBy
     *
@@ -237,7 +237,7 @@ class EducationClass extends Entity
 
     /**
     * Gets the externalSource
-    * How this class was created. Possible values are: sis, manual.
+    * The type of external source this resource was generated from (automatically determined from externalSourceDetail). Possible values are: sis, lms, or manual.
     *
     * @return EducationExternalSource|null The externalSource
     */
@@ -256,7 +256,7 @@ class EducationClass extends Entity
 
     /**
     * Sets the externalSource
-    * How this class was created. Possible values are: sis, manual.
+    * The type of external source this resource was generated from (automatically determined from externalSourceDetail). Possible values are: sis, lms, or manual.
     *
     * @param EducationExternalSource $val The externalSource
     *
@@ -357,7 +357,7 @@ class EducationClass extends Entity
 
     /**
     * Gets the term
-    * Term for this class.
+    * Term for the class.
     *
     * @return EducationTerm|null The term
     */
@@ -376,7 +376,7 @@ class EducationClass extends Entity
 
     /**
     * Sets the term
-    * Term for this class.
+    * Term for the class.
     *
     * @param EducationTerm $val The term
     *
@@ -391,6 +391,7 @@ class EducationClass extends Entity
 
      /**
      * Gets the assignmentCategories
+    * All categories associated with this class. Nullable.
      *
      * @return array|null The assignmentCategories
      */
@@ -405,8 +406,9 @@ class EducationClass extends Entity
 
     /**
     * Sets the assignmentCategories
+    * All categories associated with this class. Nullable.
     *
-    * @param EducationCategory $val The assignmentCategories
+    * @param EducationCategory[] $val The assignmentCategories
     *
     * @return EducationClass
     */
@@ -418,6 +420,7 @@ class EducationClass extends Entity
 
     /**
     * Gets the assignmentDefaults
+    * Specifies class-level defaults respected by new assignments created in the class.
     *
     * @return EducationAssignmentDefaults|null The assignmentDefaults
     */
@@ -436,6 +439,7 @@ class EducationClass extends Entity
 
     /**
     * Sets the assignmentDefaults
+    * Specifies class-level defaults respected by new assignments created in the class.
     *
     * @param EducationAssignmentDefaults $val The assignmentDefaults
     *
@@ -467,7 +471,7 @@ class EducationClass extends Entity
     * Sets the assignments
     * All assignments associated with this class. Nullable.
     *
-    * @param EducationAssignment $val The assignments
+    * @param EducationAssignment[] $val The assignments
     *
     * @return EducationClass
     */
@@ -479,6 +483,7 @@ class EducationClass extends Entity
 
     /**
     * Gets the assignmentSettings
+    * Specifies class-level assignments settings.
     *
     * @return EducationAssignmentSettings|null The assignmentSettings
     */
@@ -497,6 +502,7 @@ class EducationClass extends Entity
 
     /**
     * Sets the assignmentSettings
+    * Specifies class-level assignments settings.
     *
     * @param EducationAssignmentSettings $val The assignmentSettings
     *
@@ -561,7 +567,7 @@ class EducationClass extends Entity
     * Sets the members
     * All users in the class. Nullable.
     *
-    * @param EducationUser $val The members
+    * @param EducationUser[] $val The members
     *
     * @return EducationClass
     */
@@ -591,7 +597,7 @@ class EducationClass extends Entity
     * Sets the schools
     * All schools that this class is associated with. Nullable.
     *
-    * @param EducationSchool $val The schools
+    * @param EducationSchool[] $val The schools
     *
     * @return EducationClass
     */
@@ -621,7 +627,7 @@ class EducationClass extends Entity
     * Sets the teachers
     * All teachers in the class. Nullable.
     *
-    * @param EducationUser $val The teachers
+    * @param EducationUser[] $val The teachers
     *
     * @return EducationClass
     */

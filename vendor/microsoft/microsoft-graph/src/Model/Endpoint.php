@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Endpoint File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class Endpoint extends DirectoryObject
 {
     /**
     * Gets the capability
-    * Describes the capability that is associated with this resource. (e.g. Messages, Conversations, etc.)  Not nullable. Read-only.
+    * Describes the capability that is associated with this resource. (e.g. Messages, Conversations, etc.) Not nullable. Read-only.
     *
     * @return string|null The capability
     */
@@ -41,7 +41,7 @@ class Endpoint extends DirectoryObject
 
     /**
     * Sets the capability
-    * Describes the capability that is associated with this resource. (e.g. Messages, Conversations, etc.)  Not nullable. Read-only.
+    * Describes the capability that is associated with this resource. (e.g. Messages, Conversations, etc.) Not nullable. Read-only.
     *
     * @param string $val The capability
     *

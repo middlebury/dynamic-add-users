@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Tag File
 * PHP version 7
 *
@@ -201,7 +201,7 @@ class Tag extends \Beta\Microsoft\Graph\Model\Entity
     * Sets the childTags
     * Returns the tags that are a child of a tag.
     *
-    * @param Tag $val The childTags
+    * @param Tag[] $val The childTags
     *
     * @return Tag
     */

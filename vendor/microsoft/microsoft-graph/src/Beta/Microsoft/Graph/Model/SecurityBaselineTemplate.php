@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * SecurityBaselineTemplate File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class SecurityBaselineTemplate extends DeviceManagementTemplate
     * Sets the categoryDeviceStateSummaries
     * The security baseline per category device state summary
     *
-    * @param SecurityBaselineCategoryStateSummary $val The categoryDeviceStateSummaries
+    * @param SecurityBaselineCategoryStateSummary[] $val The categoryDeviceStateSummaries
     *
     * @return SecurityBaselineTemplate
     */
@@ -74,7 +74,7 @@ class SecurityBaselineTemplate extends DeviceManagementTemplate
     * Sets the deviceStates
     * The security baseline device states
     *
-    * @param SecurityBaselineDeviceState $val The deviceStates
+    * @param SecurityBaselineDeviceState[] $val The deviceStates
     *
     * @return SecurityBaselineTemplate
     */

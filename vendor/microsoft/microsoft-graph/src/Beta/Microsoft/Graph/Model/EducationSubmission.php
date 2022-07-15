@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * EducationSubmission File
 * PHP version 7
 *
@@ -220,7 +220,7 @@ class EducationSubmission extends Entity
 
     /**
     * Gets the status
-    * Read-Only. Possible values are: working, submitted, released, returned.
+    * Read-only. Possible values are: working, submitted, released, returned, unknownFutureValue and reassigned. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: reassigned.
     *
     * @return EducationSubmissionStatus|null The status
     */
@@ -239,7 +239,7 @@ class EducationSubmission extends Entity
 
     /**
     * Sets the status
-    * Read-Only. Possible values are: working, submitted, released, returned.
+    * Read-only. Possible values are: working, submitted, released, returned, unknownFutureValue and reassigned. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: reassigned.
     *
     * @param EducationSubmissionStatus $val The status
     *
@@ -386,7 +386,6 @@ class EducationSubmission extends Entity
 
      /**
      * Gets the outcomes
-    * Read-Write. Nullable.
      *
      * @return array|null The outcomes
      */
@@ -401,9 +400,8 @@ class EducationSubmission extends Entity
 
     /**
     * Sets the outcomes
-    * Read-Write. Nullable.
     *
-    * @param EducationOutcome $val The outcomes
+    * @param EducationOutcome[] $val The outcomes
     *
     * @return EducationSubmission
     */
@@ -416,7 +414,6 @@ class EducationSubmission extends Entity
 
      /**
      * Gets the resources
-    * Nullable.
      *
      * @return array|null The resources
      */
@@ -431,9 +428,8 @@ class EducationSubmission extends Entity
 
     /**
     * Sets the resources
-    * Nullable.
     *
-    * @param EducationSubmissionResource $val The resources
+    * @param EducationSubmissionResource[] $val The resources
     *
     * @return EducationSubmission
     */
@@ -446,7 +442,6 @@ class EducationSubmission extends Entity
 
      /**
      * Gets the submittedResources
-    * Read-only. Nullable.
      *
      * @return array|null The submittedResources
      */
@@ -461,9 +456,8 @@ class EducationSubmission extends Entity
 
     /**
     * Sets the submittedResources
-    * Read-only. Nullable.
     *
-    * @param EducationSubmissionResource $val The submittedResources
+    * @param EducationSubmissionResource[] $val The submittedResources
     *
     * @return EducationSubmission
     */

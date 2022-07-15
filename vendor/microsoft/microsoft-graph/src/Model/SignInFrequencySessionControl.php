@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * SignInFrequencySessionControl File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class SignInFrequencySessionControl extends ConditionalAccessSessionControl
 
     /**
     * Gets the type
-    * Possible values are: days, hours.
+    * Possible values are: days, hours, or null if frequencyInterval is everyTime .
     *
     * @return SigninFrequencyType|null The type
     */
@@ -45,7 +45,7 @@ class SignInFrequencySessionControl extends ConditionalAccessSessionControl
 
     /**
     * Sets the type
-    * Possible values are: days, hours.
+    * Possible values are: days, hours, or null if frequencyInterval is everyTime .
     *
     * @param SigninFrequencyType $val The value to assign to the type
     *

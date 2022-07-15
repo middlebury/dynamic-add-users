@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ApplicationSignInSummary File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class ApplicationSignInSummary extends Entity
 {
     /**
     * Gets the appDisplayName
-    * Name of the application that the user signed in to.
+    * Name of the application that the user signed into.
     *
     * @return string|null The appDisplayName
     */
@@ -41,7 +41,7 @@ class ApplicationSignInSummary extends Entity
 
     /**
     * Sets the appDisplayName
-    * Name of the application that the user signed in to.
+    * Name of the application that the user signed into.
     *
     * @param string $val The appDisplayName
     *

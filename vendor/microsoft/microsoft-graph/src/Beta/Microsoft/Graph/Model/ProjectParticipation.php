@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ProjectParticipation File
 * PHP version 7
 *
@@ -135,7 +135,7 @@ class ProjectParticipation extends ItemFacet
     * Sets the colleagues
     * Lists people that also worked on the project.
     *
-    * @param RelatedPerson $val The colleagues
+    * @param RelatedPerson[] $val The colleagues
     *
     * @return ProjectParticipation
     */
@@ -227,7 +227,7 @@ class ProjectParticipation extends ItemFacet
     * Sets the sponsors
     * The Person or people who sponsored the project.
     *
-    * @param RelatedPerson $val The sponsors
+    * @param RelatedPerson[] $val The sponsors
     *
     * @return ProjectParticipation
     */

@@ -81,7 +81,7 @@ class StreamTest extends TestCase
             $request->download($file->url(), $this->client);
         } finally {
             restore_error_handler();
-        }
+        } 
     }
 
     public function testSetReturnStream()

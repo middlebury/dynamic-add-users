@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * SharedDriveItem File
 * PHP version 7
 *
@@ -110,7 +110,7 @@ class SharedDriveItem extends BaseItem
     * Sets the items
     * All driveItems contained in the sharing root. This collection cannot be enumerated.
     *
-    * @param DriveItem $val The items
+    * @param DriveItem[] $val The items
     *
     * @return SharedDriveItem
     */

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * PrinterShare File
 * PHP version 7
 *
@@ -86,6 +86,37 @@ class PrinterShare extends PrinterBase
         return $this;
     }
 
+    /**
+    * Gets the viewPoint
+    *
+    * @return PrinterShareViewpoint|null The viewPoint
+    */
+    public function getViewPoint()
+    {
+        if (array_key_exists("viewPoint", $this->_propDict)) {
+            if (is_a($this->_propDict["viewPoint"], "\Beta\Microsoft\Graph\Model\PrinterShareViewpoint") || is_null($this->_propDict["viewPoint"])) {
+                return $this->_propDict["viewPoint"];
+            } else {
+                $this->_propDict["viewPoint"] = new PrinterShareViewpoint($this->_propDict["viewPoint"]);
+                return $this->_propDict["viewPoint"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the viewPoint
+    *
+    * @param PrinterShareViewpoint $val The viewPoint
+    *
+    * @return PrinterShare
+    */
+    public function setViewPoint($val)
+    {
+        $this->_propDict["viewPoint"] = $val;
+        return $this;
+    }
+
 
      /**
      * Gets the allowedGroups
@@ -106,7 +137,7 @@ class PrinterShare extends PrinterBase
     * Sets the allowedGroups
     * The groups whose users have access to print using the printer.
     *
-    * @param Group $val The allowedGroups
+    * @param Group[] $val The allowedGroups
     *
     * @return PrinterShare
     */
@@ -136,7 +167,7 @@ class PrinterShare extends PrinterBase
     * Sets the allowedUsers
     * The users who have access to print using the printer.
     *
-    * @param User $val The allowedUsers
+    * @param User[] $val The allowedUsers
     *
     * @return PrinterShare
     */

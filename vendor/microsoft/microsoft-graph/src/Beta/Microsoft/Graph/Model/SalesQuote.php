@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * SalesQuote File
 * PHP version 7
 *
@@ -1024,7 +1024,7 @@ class SalesQuote extends Entity
     /**
     * Sets the salesQuoteLines
     *
-    * @param SalesQuoteLine $val The salesQuoteLines
+    * @param SalesQuoteLine[] $val The salesQuoteLines
     *
     * @return SalesQuote
     */

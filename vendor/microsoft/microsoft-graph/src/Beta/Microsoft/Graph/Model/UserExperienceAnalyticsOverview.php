@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * UserExperienceAnalyticsOverview File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class UserExperienceAnalyticsOverview extends Entity
     * Sets the insights
     * The user experience analytics insights.
     *
-    * @param UserExperienceAnalyticsInsight $val The insights
+    * @param UserExperienceAnalyticsInsight[] $val The insights
     *
     * @return UserExperienceAnalyticsOverview
     */

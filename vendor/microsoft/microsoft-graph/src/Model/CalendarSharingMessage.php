@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * CalendarSharingMessage File
 * PHP version 7
 *
@@ -100,7 +100,7 @@ class CalendarSharingMessage extends Message
     /**
     * Sets the sharingMessageActions
     *
-    * @param CalendarSharingMessageAction $val The sharingMessageActions
+    * @param CalendarSharingMessageAction[] $val The sharingMessageActions
     *
     * @return CalendarSharingMessage
     */

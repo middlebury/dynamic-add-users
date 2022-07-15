@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * IntuneBrandingProfile File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class IntuneBrandingProfile extends Entity
     * Sets the companyPortalBlockedActions
     * Collection of blocked actions on the company portal as per platform and device ownership types.
     *
-    * @param CompanyPortalBlockedAction $val The companyPortalBlockedActions
+    * @param CompanyPortalBlockedAction[] $val The companyPortalBlockedActions
     *
     * @return IntuneBrandingProfile
     */
@@ -972,7 +972,7 @@ class IntuneBrandingProfile extends Entity
     * Sets the assignments
     * The list of group assignments for the branding profile
     *
-    * @param IntuneBrandingProfileAssignment $val The assignments
+    * @param IntuneBrandingProfileAssignment[] $val The assignments
     *
     * @return IntuneBrandingProfile
     */

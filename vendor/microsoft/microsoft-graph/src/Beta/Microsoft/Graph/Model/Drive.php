@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Drive File
 * PHP version 7
 *
@@ -203,7 +203,7 @@ class Drive extends BaseItem
     * Sets the activities
     * The list of recent activities that took place under this drive.
     *
-    * @param ItemActivityOLD $val The activities
+    * @param ItemActivityOLD[] $val The activities
     *
     * @return Drive
     */
@@ -233,7 +233,7 @@ class Drive extends BaseItem
     * Sets the bundles
     * Collection of [bundles][bundle] (albums and multi-select-shared sets of items). Only in personal OneDrive.
     *
-    * @param DriveItem $val The bundles
+    * @param DriveItem[] $val The bundles
     *
     * @return Drive
     */
@@ -263,7 +263,7 @@ class Drive extends BaseItem
     * Sets the following
     * The list of items the user is following. Only in OneDrive for Business.
     *
-    * @param DriveItem $val The following
+    * @param DriveItem[] $val The following
     *
     * @return Drive
     */
@@ -293,7 +293,7 @@ class Drive extends BaseItem
     * Sets the items
     * All items contained in the drive. Read-only. Nullable.
     *
-    * @param DriveItem $val The items
+    * @param DriveItem[] $val The items
     *
     * @return Drive
     */
@@ -389,7 +389,7 @@ class Drive extends BaseItem
     * Sets the special
     * Collection of common folders available in OneDrive. Read-only. Nullable.
     *
-    * @param DriveItem $val The special
+    * @param DriveItem[] $val The special
     *
     * @return Drive
     */

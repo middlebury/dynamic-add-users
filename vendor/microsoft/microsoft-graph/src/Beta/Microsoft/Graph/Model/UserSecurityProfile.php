@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * UserSecurityProfile File
 * PHP version 7
 *
@@ -42,7 +42,7 @@ class UserSecurityProfile extends Entity
     /**
     * Sets the accounts
     *
-    * @param UserAccount $val The accounts
+    * @param UserAccount[] $val The accounts
     *
     * @return UserSecurityProfile
     */

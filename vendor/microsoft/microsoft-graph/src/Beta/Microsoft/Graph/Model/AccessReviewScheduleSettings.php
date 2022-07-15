@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AccessReviewScheduleSettings File
 * PHP version 7
 *
@@ -85,8 +85,36 @@ class AccessReviewScheduleSettings extends Entity
         return $this;
     }
     /**
+    * Gets the decisionHistoriesForReviewersEnabled
+    * Indicates whether decisions on previous access review stages are available for reviewers on an accessReviewInstance with multiple subsequent stages. If not provided, the default is disabled (false).
+    *
+    * @return bool|null The decisionHistoriesForReviewersEnabled
+    */
+    public function getDecisionHistoriesForReviewersEnabled()
+    {
+        if (array_key_exists("decisionHistoriesForReviewersEnabled", $this->_propDict)) {
+            return $this->_propDict["decisionHistoriesForReviewersEnabled"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the decisionHistoriesForReviewersEnabled
+    * Indicates whether decisions on previous access review stages are available for reviewers on an accessReviewInstance with multiple subsequent stages. If not provided, the default is disabled (false).
+    *
+    * @param bool $val The value of the decisionHistoriesForReviewersEnabled
+    *
+    * @return AccessReviewScheduleSettings
+    */
+    public function setDecisionHistoriesForReviewersEnabled($val)
+    {
+        $this->_propDict["decisionHistoriesForReviewersEnabled"] = $val;
+        return $this;
+    }
+    /**
     * Gets the defaultDecision
-    * Decision chosen if defaultDecisionEnabled is true. Can be one of Approve, Deny, or Recommendation.
+    * Decision chosen if defaultDecisionEnabled is enabled. Can be one of Approve, Deny, or Recommendation.
     *
     * @return string|null The defaultDecision
     */
@@ -101,7 +129,7 @@ class AccessReviewScheduleSettings extends Entity
 
     /**
     * Sets the defaultDecision
-    * Decision chosen if defaultDecisionEnabled is true. Can be one of Approve, Deny, or Recommendation.
+    * Decision chosen if defaultDecisionEnabled is enabled. Can be one of Approve, Deny, or Recommendation.
     *
     * @param string $val The value of the defaultDecision
     *
@@ -142,7 +170,7 @@ class AccessReviewScheduleSettings extends Entity
     }
     /**
     * Gets the instanceDurationInDays
-    * Duration of each recurrence of review (accessReviewInstance) in number of days.
+    * Duration of each recurrence of review (accessReviewInstance) in number of days. NOTE: If the stageSettings of the accessReviewScheduleDefinition object is defined, its durationInDays setting will be used instead of the value of this property.
     *
     * @return int|null The instanceDurationInDays
     */
@@ -157,7 +185,7 @@ class AccessReviewScheduleSettings extends Entity
 
     /**
     * Sets the instanceDurationInDays
-    * Duration of each recurrence of review (accessReviewInstance) in number of days.
+    * Duration of each recurrence of review (accessReviewInstance) in number of days. NOTE: If the stageSettings of the accessReviewScheduleDefinition object is defined, its durationInDays setting will be used instead of the value of this property.
     *
     * @param int $val The value of the instanceDurationInDays
     *
@@ -227,6 +255,7 @@ class AccessReviewScheduleSettings extends Entity
 
     /**
     * Gets the recommendationInsightSettings
+    * Optional. Describes the types of insights that aid reviewers to make access review decisions. NOTE: If the stageSettings of the accessReviewScheduleDefinition object is defined, its recommendationInsightSettings setting will be used instead of the value of this property.
     *
     * @return AccessReviewRecommendationInsightSetting|null The recommendationInsightSettings
     */
@@ -245,6 +274,7 @@ class AccessReviewScheduleSettings extends Entity
 
     /**
     * Sets the recommendationInsightSettings
+    * Optional. Describes the types of insights that aid reviewers to make access review decisions. NOTE: If the stageSettings of the accessReviewScheduleDefinition object is defined, its recommendationInsightSettings setting will be used instead of the value of this property.
     *
     * @param AccessReviewRecommendationInsightSetting $val The value to assign to the recommendationInsightSettings
     *
@@ -258,7 +288,7 @@ class AccessReviewScheduleSettings extends Entity
 
     /**
     * Gets the recommendationLookBackDuration
-    * Optional field. Indicates the time period of inactivity (with respect to the start date of the review instance) that recommendations will be configured from. The recommendation will be to deny if the user is inactive during the look back duration. For reviews of groups and Azure AD roles, any duration is accepted. For reviews of applications, 30 days is the maximum duration. If not specified, the duration is 30 days.
+    * Optional field. Indicates the period of inactivity (with respect to the start date of the review instance) that recommendations will be configured from. The recommendation will be to deny if the user is inactive during the look-back duration. For reviews of groups and Azure AD roles, any duration is accepted. For reviews of applications, 30 days is the maximum duration. If not specified, the duration is 30 days. NOTE: If the stageSettings of the accessReviewScheduleDefinition object is defined, its recommendationLookBackDuration setting will be used instead of the value of this property.
     *
     * @return \DateInterval|null The recommendationLookBackDuration
     */
@@ -277,7 +307,7 @@ class AccessReviewScheduleSettings extends Entity
 
     /**
     * Sets the recommendationLookBackDuration
-    * Optional field. Indicates the time period of inactivity (with respect to the start date of the review instance) that recommendations will be configured from. The recommendation will be to deny if the user is inactive during the look back duration. For reviews of groups and Azure AD roles, any duration is accepted. For reviews of applications, 30 days is the maximum duration. If not specified, the duration is 30 days.
+    * Optional field. Indicates the period of inactivity (with respect to the start date of the review instance) that recommendations will be configured from. The recommendation will be to deny if the user is inactive during the look-back duration. For reviews of groups and Azure AD roles, any duration is accepted. For reviews of applications, 30 days is the maximum duration. If not specified, the duration is 30 days. NOTE: If the stageSettings of the accessReviewScheduleDefinition object is defined, its recommendationLookBackDuration setting will be used instead of the value of this property.
     *
     * @param \DateInterval $val The value to assign to the recommendationLookBackDuration
     *
@@ -290,7 +320,7 @@ class AccessReviewScheduleSettings extends Entity
     }
     /**
     * Gets the recommendationsEnabled
-    * Indicates whether decision recommendations are enabled or disabled.
+    * Indicates whether decision recommendations are enabled or disabled. NOTE: If the stageSettings of the accessReviewScheduleDefinition object is defined, its recommendationsEnabled setting will be used instead of the value of this property.
     *
     * @return bool|null The recommendationsEnabled
     */
@@ -305,7 +335,7 @@ class AccessReviewScheduleSettings extends Entity
 
     /**
     * Sets the recommendationsEnabled
-    * Indicates whether decision recommendations are enabled or disabled.
+    * Indicates whether decision recommendations are enabled or disabled. NOTE: If the stageSettings of the accessReviewScheduleDefinition object is defined, its recommendationsEnabled setting will be used instead of the value of this property.
     *
     * @param bool $val The value of the recommendationsEnabled
     *
@@ -319,7 +349,7 @@ class AccessReviewScheduleSettings extends Entity
 
     /**
     * Gets the recurrence
-    * Detailed settings for recurrence using the standard Outlook recurrence object. Only weekly and absoluteMonthly on recurrencePattern are supported. Use the property startDate on recurrenceRange to determine the day the review starts.
+    * Detailed settings for recurrence using the standard Outlook recurrence object. Note: Only dayOfMonth, interval, and type (weekly, absoluteMonthly) properties are supported. Use the property startDate on recurrenceRange to determine the day the review starts.
     *
     * @return PatternedRecurrence|null The recurrence
     */
@@ -338,7 +368,7 @@ class AccessReviewScheduleSettings extends Entity
 
     /**
     * Sets the recurrence
-    * Detailed settings for recurrence using the standard Outlook recurrence object. Only weekly and absoluteMonthly on recurrencePattern are supported. Use the property startDate on recurrenceRange to determine the day the review starts.
+    * Detailed settings for recurrence using the standard Outlook recurrence object. Note: Only dayOfMonth, interval, and type (weekly, absoluteMonthly) properties are supported. Use the property startDate on recurrenceRange to determine the day the review starts.
     *
     * @param PatternedRecurrence $val The value to assign to the recurrence
     *

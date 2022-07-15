@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * MediaInfo File
 * PHP version 7
 *
@@ -25,7 +25,7 @@ class MediaInfo extends Entity
 {
     /**
     * Gets the resourceId
-    * Optional. Used to uniquely identity the resource. If passed in, the prompt uri will be cached against this resourceId as a key.
+    * Optional, used to uniquely identity the resource. If passed the prompt uri will be cached against this resourceId as key.
     *
     * @return string|null The resourceId
     */
@@ -40,7 +40,7 @@ class MediaInfo extends Entity
 
     /**
     * Sets the resourceId
-    * Optional. Used to uniquely identity the resource. If passed in, the prompt uri will be cached against this resourceId as a key.
+    * Optional, used to uniquely identity the resource. If passed the prompt uri will be cached against this resourceId as key.
     *
     * @param string $val The value of the resourceId
     *
@@ -53,7 +53,7 @@ class MediaInfo extends Entity
     }
     /**
     * Gets the uri
-    * Path to the prompt that will be played. Currently supports only Wave file (.wav) format, single-channel, 16-bit samples with a 16,000 (16KHz) sampling rate.
+    * Path to the prompt to be played. Currently only Wave file (.wav) format, single-channel, 16-bit samples with a 16,000 (16KHz) sampling rate is only supported.
     *
     * @return string|null The uri
     */
@@ -68,7 +68,7 @@ class MediaInfo extends Entity
 
     /**
     * Sets the uri
-    * Path to the prompt that will be played. Currently supports only Wave file (.wav) format, single-channel, 16-bit samples with a 16,000 (16KHz) sampling rate.
+    * Path to the prompt to be played. Currently only Wave file (.wav) format, single-channel, 16-bit samples with a 16,000 (16KHz) sampling rate is only supported.
     *
     * @param string $val The value of the uri
     *

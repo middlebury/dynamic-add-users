@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ConnectedOrganization File
 * PHP version 7
 *
@@ -117,7 +117,7 @@ class ConnectedOrganization extends Entity
 
     /**
     * Gets the displayName
-    * The display name of the connected organization.
+    * The display name of the connected organization. Supports $filter (eq).
     *
     * @return string|null The displayName
     */
@@ -132,7 +132,7 @@ class ConnectedOrganization extends Entity
 
     /**
     * Sets the displayName
-    * The display name of the connected organization.
+    * The display name of the connected organization. Supports $filter (eq).
     *
     * @param string $val The displayName
     *
@@ -147,6 +147,7 @@ class ConnectedOrganization extends Entity
 
      /**
      * Gets the identitySources
+    * The identity sources in this connected organization, one of azureActiveDirectoryTenant, crossCloudAzureActiveDirectoryTenant, domainIdentitySource or externalDomainFederation. Read-only. Nullable. Supports $select and $filter(eq). To filter by the derived types, you must declare the resource using its full OData cast, for example, $filter=identitySources/any(is:is/microsoft.graph.azureActiveDirectoryTenant/tenantId eq 'bcfdfff4-cbc3-43f2-9000-ba7b7515054f').
      *
      * @return array|null The identitySources
      */
@@ -161,8 +162,9 @@ class ConnectedOrganization extends Entity
 
     /**
     * Sets the identitySources
+    * The identity sources in this connected organization, one of azureActiveDirectoryTenant, crossCloudAzureActiveDirectoryTenant, domainIdentitySource or externalDomainFederation. Read-only. Nullable. Supports $select and $filter(eq). To filter by the derived types, you must declare the resource using its full OData cast, for example, $filter=identitySources/any(is:is/microsoft.graph.azureActiveDirectoryTenant/tenantId eq 'bcfdfff4-cbc3-43f2-9000-ba7b7515054f').
     *
-    * @param IdentitySource $val The identitySources
+    * @param IdentitySource[] $val The identitySources
     *
     * @return ConnectedOrganization
     */
@@ -270,7 +272,6 @@ class ConnectedOrganization extends Entity
 
      /**
      * Gets the externalSponsors
-    * Nullable.
      *
      * @return array|null The externalSponsors
      */
@@ -285,9 +286,8 @@ class ConnectedOrganization extends Entity
 
     /**
     * Sets the externalSponsors
-    * Nullable.
     *
-    * @param DirectoryObject $val The externalSponsors
+    * @param DirectoryObject[] $val The externalSponsors
     *
     * @return ConnectedOrganization
     */
@@ -300,7 +300,6 @@ class ConnectedOrganization extends Entity
 
      /**
      * Gets the internalSponsors
-    * Nullable.
      *
      * @return array|null The internalSponsors
      */
@@ -315,9 +314,8 @@ class ConnectedOrganization extends Entity
 
     /**
     * Sets the internalSponsors
-    * Nullable.
     *
-    * @param DirectoryObject $val The internalSponsors
+    * @param DirectoryObject[] $val The internalSponsors
     *
     * @return ConnectedOrganization
     */

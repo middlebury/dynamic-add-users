@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * PrivilegedRole File
 * PHP version 7
 *
@@ -73,7 +73,7 @@ class PrivilegedRole extends Entity
     * Sets the assignments
     * The assignments for this role. Read-only. Nullable.
     *
-    * @param PrivilegedRoleAssignment $val The assignments
+    * @param PrivilegedRoleAssignment[] $val The assignments
     *
     * @return PrivilegedRole
     */

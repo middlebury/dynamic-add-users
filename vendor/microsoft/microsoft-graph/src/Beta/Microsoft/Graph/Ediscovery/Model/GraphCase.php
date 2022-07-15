@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * GraphCase File
 * PHP version 7
 *
@@ -329,7 +329,7 @@ class GraphCase extends \Beta\Microsoft\Graph\Model\Entity
     * Sets the custodians
     * Returns a list of case custodian objects for this case.  Nullable.
     *
-    * @param Custodian $val The custodians
+    * @param Custodian[] $val The custodians
     *
     * @return GraphCase
     */
@@ -359,7 +359,7 @@ class GraphCase extends \Beta\Microsoft\Graph\Model\Entity
     * Sets the legalHolds
     * Returns a list of case legalHold objects for this case.  Nullable.
     *
-    * @param LegalHold $val The legalHolds
+    * @param LegalHold[] $val The legalHolds
     *
     * @return GraphCase
     */
@@ -389,7 +389,7 @@ class GraphCase extends \Beta\Microsoft\Graph\Model\Entity
     * Sets the noncustodialDataSources
     * Returns a list of case noncustodialDataSource objects for this case.  Nullable.
     *
-    * @param NoncustodialDataSource $val The noncustodialDataSources
+    * @param NoncustodialDataSource[] $val The noncustodialDataSources
     *
     * @return GraphCase
     */
@@ -419,7 +419,7 @@ class GraphCase extends \Beta\Microsoft\Graph\Model\Entity
     * Sets the operations
     * Returns a list of case operation objects for this case. Nullable.
     *
-    * @param CaseOperation $val The operations
+    * @param CaseOperation[] $val The operations
     *
     * @return GraphCase
     */
@@ -449,7 +449,7 @@ class GraphCase extends \Beta\Microsoft\Graph\Model\Entity
     * Sets the reviewSets
     * Returns a list of reviewSet objects in the case. Read-only. Nullable.
     *
-    * @param ReviewSet $val The reviewSets
+    * @param ReviewSet[] $val The reviewSets
     *
     * @return GraphCase
     */
@@ -510,7 +510,7 @@ class GraphCase extends \Beta\Microsoft\Graph\Model\Entity
     * Sets the sourceCollections
     * Returns a list of sourceCollection objects associated with this case.
     *
-    * @param SourceCollection $val The sourceCollections
+    * @param SourceCollection[] $val The sourceCollections
     *
     * @return GraphCase
     */
@@ -540,7 +540,7 @@ class GraphCase extends \Beta\Microsoft\Graph\Model\Entity
     * Sets the tags
     * Returns a list of tag objects associated to this case.
     *
-    * @param Tag $val The tags
+    * @param Tag[] $val The tags
     *
     * @return GraphCase
     */

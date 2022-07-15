@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * PlannerRoster File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class PlannerRoster extends Entity
     * Sets the members
     * Retrieves the members of the plannerRoster.
     *
-    * @param PlannerRosterMember $val The members
+    * @param PlannerRosterMember[] $val The members
     *
     * @return PlannerRoster
     */
@@ -74,7 +74,7 @@ class PlannerRoster extends Entity
     * Sets the plans
     * Retrieves the plans contained by the plannerRoster.
     *
-    * @param PlannerPlan $val The plans
+    * @param PlannerPlan[] $val The plans
     *
     * @return PlannerRoster
     */

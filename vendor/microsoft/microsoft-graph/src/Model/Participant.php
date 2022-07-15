@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Participant File
 * PHP version 7
 *
@@ -135,7 +135,7 @@ class Participant extends Entity
     * Sets the mediaStreams
     * The list of media streams.
     *
-    * @param MediaStream $val The mediaStreams
+    * @param MediaStream[] $val The mediaStreams
     *
     * @return Participant
     */
@@ -176,7 +176,7 @@ class Participant extends Entity
 
     /**
     * Gets the recordingInfo
-    * Information about whether the participant has recording capability.
+    * Information on whether the participant has recording capability.
     *
     * @return RecordingInfo|null The recordingInfo
     */
@@ -195,7 +195,7 @@ class Participant extends Entity
 
     /**
     * Sets the recordingInfo
-    * Information about whether the participant has recording capability.
+    * Information on whether the participant has recording capability.
     *
     * @param RecordingInfo $val The recordingInfo
     *

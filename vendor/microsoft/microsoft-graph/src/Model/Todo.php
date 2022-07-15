@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Todo File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class Todo extends Entity
     * Sets the lists
     * The task lists in the users mailbox.
     *
-    * @param TodoTaskList $val The lists
+    * @param TodoTaskList[] $val The lists
     *
     * @return Todo
     */

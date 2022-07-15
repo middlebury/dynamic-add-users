@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ImportedWindowsAutopilotDeviceIdentityUpload File
 * PHP version 7
 *
@@ -110,7 +110,7 @@ class ImportedWindowsAutopilotDeviceIdentityUpload extends Entity
     * Sets the deviceIdentities
     * Collection of all Autopilot devices as a part of this upload.
     *
-    * @param ImportedWindowsAutopilotDeviceIdentity $val The deviceIdentities
+    * @param ImportedWindowsAutopilotDeviceIdentity[] $val The deviceIdentities
     *
     * @return ImportedWindowsAutopilotDeviceIdentityUpload
     */

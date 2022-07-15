@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceEnrollmentConfiguration File
 * PHP version 7
 *
@@ -226,7 +226,7 @@ class DeviceEnrollmentConfiguration extends Entity
     * Sets the assignments
     * The list of group assignments for the device configuration profile
     *
-    * @param EnrollmentConfigurationAssignment $val The assignments
+    * @param EnrollmentConfigurationAssignment[] $val The assignments
     *
     * @return DeviceEnrollmentConfiguration
     */

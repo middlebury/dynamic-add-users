@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ComplianceManagementPartner File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class ComplianceManagementPartner extends Entity
     * Sets the androidEnrollmentAssignments
     * User groups which enroll Android devices through partner.
     *
-    * @param ComplianceManagementPartnerAssignment $val The androidEnrollmentAssignments
+    * @param ComplianceManagementPartnerAssignment[] $val The androidEnrollmentAssignments
     *
     * @return ComplianceManagementPartner
     */
@@ -132,7 +132,7 @@ class ComplianceManagementPartner extends Entity
     * Sets the iosEnrollmentAssignments
     * User groups which enroll ios devices through partner.
     *
-    * @param ComplianceManagementPartnerAssignment $val The iosEnrollmentAssignments
+    * @param ComplianceManagementPartnerAssignment[] $val The iosEnrollmentAssignments
     *
     * @return ComplianceManagementPartner
     */
@@ -224,7 +224,7 @@ class ComplianceManagementPartner extends Entity
     * Sets the macOsEnrollmentAssignments
     * User groups which enroll Mac devices through partner.
     *
-    * @param ComplianceManagementPartnerAssignment $val The macOsEnrollmentAssignments
+    * @param ComplianceManagementPartnerAssignment[] $val The macOsEnrollmentAssignments
     *
     * @return ComplianceManagementPartner
     */

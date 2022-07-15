@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * WindowsVpnConfiguration File
 * PHP version 7
 *
@@ -106,7 +106,7 @@ class WindowsVpnConfiguration extends DeviceConfiguration
     * Sets the servers
     * List of VPN Servers on the network. Make sure end users can access these network locations. This collection can contain a maximum of 500 elements.
     *
-    * @param VpnServer $val The servers
+    * @param VpnServer[] $val The servers
     *
     * @return WindowsVpnConfiguration
     */

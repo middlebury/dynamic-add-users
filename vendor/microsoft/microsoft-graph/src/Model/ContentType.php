@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ContentType File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class ContentType extends Entity
 {
     /**
     * Gets the associatedHubsUrls
-    * List of canonical URLs for hub sites with which this content type is associated to. This will contain all hub sites where this content type is queued to be enforced or is already enforced. Enforcing a content type means that the content type will be applied to the lists in the enforced sites.
+    * List of canonical URLs for hub sites with which this content type is associated to. This will contain all hubsites where this content type is queued to be enforced or is already enforced. Enforcing a content type means that the content type will be applied to the lists in the enforced sites.
     *
     * @return string|null The associatedHubsUrls
     */
@@ -41,7 +41,7 @@ class ContentType extends Entity
 
     /**
     * Sets the associatedHubsUrls
-    * List of canonical URLs for hub sites with which this content type is associated to. This will contain all hub sites where this content type is queued to be enforced or is already enforced. Enforcing a content type means that the content type will be applied to the lists in the enforced sites.
+    * List of canonical URLs for hub sites with which this content type is associated to. This will contain all hubsites where this content type is queued to be enforced or is already enforced. Enforcing a content type means that the content type will be applied to the lists in the enforced sites.
     *
     * @param string $val The associatedHubsUrls
     *
@@ -390,7 +390,7 @@ class ContentType extends Entity
 
     /**
     * Gets the readOnly
-    * If true, the content type can't be modified unless this value is first set to false.
+    * If true, the content type cannot be modified unless this value is first set to false.
     *
     * @return bool|null The readOnly
     */
@@ -405,7 +405,7 @@ class ContentType extends Entity
 
     /**
     * Sets the readOnly
-    * If true, the content type can't be modified unless this value is first set to false.
+    * If true, the content type cannot be modified unless this value is first set to false.
     *
     * @param bool $val The readOnly
     *
@@ -419,7 +419,7 @@ class ContentType extends Entity
 
     /**
     * Gets the sealed
-    * If true, the content type can't be modified by users or through push-down operations. Only site collection administrators can seal or unseal content types.
+    * If true, the content type cannot be modified by users or through push-down operations. Only site collection administrators can seal or unseal content types.
     *
     * @return bool|null The sealed
     */
@@ -434,7 +434,7 @@ class ContentType extends Entity
 
     /**
     * Sets the sealed
-    * If true, the content type can't be modified by users or through push-down operations. Only site collection administrators can seal or unseal content types.
+    * If true, the content type cannot be modified by users or through push-down operations. Only site collection administrators can seal or unseal content types.
     *
     * @param bool $val The sealed
     *
@@ -499,7 +499,7 @@ class ContentType extends Entity
     * Sets the baseTypes
     * The collection of content types that are ancestors of this content type.
     *
-    * @param ContentType $val The baseTypes
+    * @param ContentType[] $val The baseTypes
     *
     * @return ContentType
     */
@@ -512,7 +512,7 @@ class ContentType extends Entity
 
      /**
      * Gets the columnLinks
-    * The collection of columns that are required by this content type.
+    * The collection of columns that are required by this content type
      *
      * @return array|null The columnLinks
      */
@@ -527,9 +527,9 @@ class ContentType extends Entity
 
     /**
     * Sets the columnLinks
-    * The collection of columns that are required by this content type.
+    * The collection of columns that are required by this content type
     *
-    * @param ColumnLink $val The columnLinks
+    * @param ColumnLink[] $val The columnLinks
     *
     * @return ContentType
     */
@@ -559,7 +559,7 @@ class ContentType extends Entity
     * Sets the columnPositions
     * Column order information in a content type.
     *
-    * @param ColumnDefinition $val The columnPositions
+    * @param ColumnDefinition[] $val The columnPositions
     *
     * @return ContentType
     */
@@ -589,7 +589,7 @@ class ContentType extends Entity
     * Sets the columns
     * The collection of column definitions for this contentType.
     *
-    * @param ColumnDefinition $val The columns
+    * @param ColumnDefinition[] $val The columns
     *
     * @return ContentType
     */

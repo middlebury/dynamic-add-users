@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Schedule File
 * PHP version 7
 *
@@ -365,7 +365,7 @@ class Schedule extends Entity
     /**
     * Sets the offerShiftRequests
     *
-    * @param OfferShiftRequest $val The offerShiftRequests
+    * @param OfferShiftRequest[] $val The offerShiftRequests
     *
     * @return Schedule
     */
@@ -393,7 +393,7 @@ class Schedule extends Entity
     /**
     * Sets the openShiftChangeRequests
     *
-    * @param OpenShiftChangeRequest $val The openShiftChangeRequests
+    * @param OpenShiftChangeRequest[] $val The openShiftChangeRequests
     *
     * @return Schedule
     */
@@ -421,7 +421,7 @@ class Schedule extends Entity
     /**
     * Sets the openShifts
     *
-    * @param OpenShift $val The openShifts
+    * @param OpenShift[] $val The openShifts
     *
     * @return Schedule
     */
@@ -451,7 +451,7 @@ class Schedule extends Entity
     * Sets the schedulingGroups
     * The logical grouping of users in the schedule (usually by role).
     *
-    * @param SchedulingGroup $val The schedulingGroups
+    * @param SchedulingGroup[] $val The schedulingGroups
     *
     * @return Schedule
     */
@@ -481,7 +481,7 @@ class Schedule extends Entity
     * Sets the shifts
     * The shifts in the schedule.
     *
-    * @param Shift $val The shifts
+    * @param Shift[] $val The shifts
     *
     * @return Schedule
     */
@@ -509,7 +509,7 @@ class Schedule extends Entity
     /**
     * Sets the swapShiftsChangeRequests
     *
-    * @param SwapShiftsChangeRequest $val The swapShiftsChangeRequests
+    * @param SwapShiftsChangeRequest[] $val The swapShiftsChangeRequests
     *
     * @return Schedule
     */
@@ -537,7 +537,7 @@ class Schedule extends Entity
     /**
     * Sets the timeCards
     *
-    * @param TimeCard $val The timeCards
+    * @param TimeCard[] $val The timeCards
     *
     * @return Schedule
     */
@@ -567,7 +567,7 @@ class Schedule extends Entity
     * Sets the timeOffReasons
     * The set of reasons for a time off in the schedule.
     *
-    * @param TimeOffReason $val The timeOffReasons
+    * @param TimeOffReason[] $val The timeOffReasons
     *
     * @return Schedule
     */
@@ -595,7 +595,7 @@ class Schedule extends Entity
     /**
     * Sets the timeOffRequests
     *
-    * @param TimeOffRequest $val The timeOffRequests
+    * @param TimeOffRequest[] $val The timeOffRequests
     *
     * @return Schedule
     */
@@ -625,7 +625,7 @@ class Schedule extends Entity
     * Sets the timesOff
     * The instances of times off in the schedule.
     *
-    * @param TimeOff $val The timesOff
+    * @param TimeOff[] $val The timesOff
     *
     * @return Schedule
     */

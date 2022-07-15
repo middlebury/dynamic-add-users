@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * PolicyRoot File
 * PHP version 7
 *
@@ -110,7 +110,7 @@ class PolicyRoot extends Entity
     * Sets the activityBasedTimeoutPolicies
     * The policy that controls the idle time out for web sessions for applications.
     *
-    * @param ActivityBasedTimeoutPolicy $val The activityBasedTimeoutPolicies
+    * @param ActivityBasedTimeoutPolicy[] $val The activityBasedTimeoutPolicies
     *
     * @return PolicyRoot
     */
@@ -173,13 +173,46 @@ class PolicyRoot extends Entity
     * Sets the claimsMappingPolicies
     * The claim-mapping policies for WS-Fed, SAML, OAuth 2.0, and OpenID Connect protocols, for tokens issued to a specific application.
     *
-    * @param ClaimsMappingPolicy $val The claimsMappingPolicies
+    * @param ClaimsMappingPolicy[] $val The claimsMappingPolicies
     *
     * @return PolicyRoot
     */
     public function setClaimsMappingPolicies($val)
     {
         $this->_propDict["claimsMappingPolicies"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the crossTenantAccessPolicy
+    * The custom rules that define an access scenario when interacting with external Azure AD tenants.
+    *
+    * @return CrossTenantAccessPolicy|null The crossTenantAccessPolicy
+    */
+    public function getCrossTenantAccessPolicy()
+    {
+        if (array_key_exists("crossTenantAccessPolicy", $this->_propDict)) {
+            if (is_a($this->_propDict["crossTenantAccessPolicy"], "\Microsoft\Graph\Model\CrossTenantAccessPolicy") || is_null($this->_propDict["crossTenantAccessPolicy"])) {
+                return $this->_propDict["crossTenantAccessPolicy"];
+            } else {
+                $this->_propDict["crossTenantAccessPolicy"] = new CrossTenantAccessPolicy($this->_propDict["crossTenantAccessPolicy"]);
+                return $this->_propDict["crossTenantAccessPolicy"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the crossTenantAccessPolicy
+    * The custom rules that define an access scenario when interacting with external Azure AD tenants.
+    *
+    * @param CrossTenantAccessPolicy $val The crossTenantAccessPolicy
+    *
+    * @return PolicyRoot
+    */
+    public function setCrossTenantAccessPolicy($val)
+    {
+        $this->_propDict["crossTenantAccessPolicy"] = $val;
         return $this;
     }
 
@@ -203,7 +236,7 @@ class PolicyRoot extends Entity
     * Sets the homeRealmDiscoveryPolicies
     * The policy to control Azure AD authentication behavior for federated users.
     *
-    * @param HomeRealmDiscoveryPolicy $val The homeRealmDiscoveryPolicies
+    * @param HomeRealmDiscoveryPolicy[] $val The homeRealmDiscoveryPolicies
     *
     * @return PolicyRoot
     */
@@ -233,7 +266,7 @@ class PolicyRoot extends Entity
     * Sets the permissionGrantPolicies
     * The policy that specifies the conditions under which consent can be granted.
     *
-    * @param PermissionGrantPolicy $val The permissionGrantPolicies
+    * @param PermissionGrantPolicy[] $val The permissionGrantPolicies
     *
     * @return PolicyRoot
     */
@@ -263,7 +296,7 @@ class PolicyRoot extends Entity
     * Sets the tokenIssuancePolicies
     * The policy that specifies the characteristics of SAML tokens issued by Azure AD.
     *
-    * @param TokenIssuancePolicy $val The tokenIssuancePolicies
+    * @param TokenIssuancePolicy[] $val The tokenIssuancePolicies
     *
     * @return PolicyRoot
     */
@@ -293,7 +326,7 @@ class PolicyRoot extends Entity
     * Sets the tokenLifetimePolicies
     * The policy that controls the lifetime of a JWT access token, an ID token, or a SAML 1.1/2.0 token issued by Azure AD.
     *
-    * @param TokenLifetimePolicy $val The tokenLifetimePolicies
+    * @param TokenLifetimePolicy[] $val The tokenLifetimePolicies
     *
     * @return PolicyRoot
     */
@@ -323,7 +356,7 @@ class PolicyRoot extends Entity
     * Sets the featureRolloutPolicies
     * The feature rollout policy associated with a directory object.
     *
-    * @param FeatureRolloutPolicy $val The featureRolloutPolicies
+    * @param FeatureRolloutPolicy[] $val The featureRolloutPolicies
     *
     * @return PolicyRoot
     */
@@ -386,7 +419,7 @@ class PolicyRoot extends Entity
     * Sets the conditionalAccessPolicies
     * The custom rules that define an access scenario.
     *
-    * @param ConditionalAccessPolicy $val The conditionalAccessPolicies
+    * @param ConditionalAccessPolicy[] $val The conditionalAccessPolicies
     *
     * @return PolicyRoot
     */
@@ -426,6 +459,66 @@ class PolicyRoot extends Entity
     public function setIdentitySecurityDefaultsEnforcementPolicy($val)
     {
         $this->_propDict["identitySecurityDefaultsEnforcementPolicy"] = $val;
+        return $this;
+    }
+
+
+     /**
+     * Gets the roleManagementPolicies
+    * Represents the role management policies.
+     *
+     * @return array|null The roleManagementPolicies
+     */
+    public function getRoleManagementPolicies()
+    {
+        if (array_key_exists("roleManagementPolicies", $this->_propDict)) {
+           return $this->_propDict["roleManagementPolicies"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the roleManagementPolicies
+    * Represents the role management policies.
+    *
+    * @param UnifiedRoleManagementPolicy[] $val The roleManagementPolicies
+    *
+    * @return PolicyRoot
+    */
+    public function setRoleManagementPolicies($val)
+    {
+        $this->_propDict["roleManagementPolicies"] = $val;
+        return $this;
+    }
+
+
+     /**
+     * Gets the roleManagementPolicyAssignments
+    * Represents the role management policy assignments.
+     *
+     * @return array|null The roleManagementPolicyAssignments
+     */
+    public function getRoleManagementPolicyAssignments()
+    {
+        if (array_key_exists("roleManagementPolicyAssignments", $this->_propDict)) {
+           return $this->_propDict["roleManagementPolicyAssignments"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the roleManagementPolicyAssignments
+    * Represents the role management policy assignments.
+    *
+    * @param UnifiedRoleManagementPolicyAssignment[] $val The roleManagementPolicyAssignments
+    *
+    * @return PolicyRoot
+    */
+    public function setRoleManagementPolicyAssignments($val)
+    {
+        $this->_propDict["roleManagementPolicyAssignments"] = $val;
         return $this;
     }
 

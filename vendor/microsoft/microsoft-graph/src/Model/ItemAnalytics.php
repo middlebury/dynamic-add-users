@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ItemAnalytics File
 * PHP version 7
 *
@@ -73,7 +73,7 @@ class ItemAnalytics extends Entity
     /**
     * Sets the itemActivityStats
     *
-    * @param ItemActivityStat $val The itemActivityStats
+    * @param ItemActivityStat[] $val The itemActivityStats
     *
     * @return ItemAnalytics
     */

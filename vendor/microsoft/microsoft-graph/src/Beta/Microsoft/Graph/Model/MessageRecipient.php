@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * MessageRecipient File
 * PHP version 7
 *
@@ -100,7 +100,7 @@ class MessageRecipient extends Entity
     /**
     * Sets the events
     *
-    * @param MessageEvent $val The events
+    * @param MessageEvent[] $val The events
     *
     * @return MessageRecipient
     */

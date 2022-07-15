@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * MobileAppContent File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class MobileAppContent extends Entity
     * Sets the containedApps
     * The collection of contained apps in a MobileLobApp acting as a package.
     *
-    * @param MobileContainedApp $val The containedApps
+    * @param MobileContainedApp[] $val The containedApps
     *
     * @return MobileAppContent
     */
@@ -74,7 +74,7 @@ class MobileAppContent extends Entity
     * Sets the files
     * The list of files for this app content version.
     *
-    * @param MobileAppContentFile $val The files
+    * @param MobileAppContentFile[] $val The files
     *
     * @return MobileAppContent
     */

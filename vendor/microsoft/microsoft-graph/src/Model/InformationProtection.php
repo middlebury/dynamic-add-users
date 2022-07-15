@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * InformationProtection File
 * PHP version 7
 *
@@ -73,7 +73,7 @@ class InformationProtection extends Entity
     /**
     * Sets the threatAssessmentRequests
     *
-    * @param ThreatAssessmentRequest $val The threatAssessmentRequests
+    * @param ThreatAssessmentRequest[] $val The threatAssessmentRequests
     *
     * @return InformationProtection
     */

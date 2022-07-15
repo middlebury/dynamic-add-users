@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ExternalItem File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class ExternalItem extends \Microsoft\Graph\Model\Entity
     * Sets the acl
     * An array of access control entries. Each entry specifies the access granted to a user or group. Required.
     *
-    * @param Acl $val The acl
+    * @param Acl[] $val The acl
     *
     * @return ExternalItem
     */

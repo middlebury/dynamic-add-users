@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * RecurrencePattern File
 * PHP version 7
 *
@@ -209,7 +209,7 @@ class RecurrencePattern extends Entity
 
     /**
     * Gets the type
-    * The recurrence pattern type: daily, weekly, absoluteMonthly, relativeMonthly, absoluteYearly, relativeYearly. Required.
+    * The recurrence pattern type: daily, weekly, absoluteMonthly, relativeMonthly, absoluteYearly, relativeYearly. Required. For more information, see values of type property.
     *
     * @return RecurrencePatternType|null The type
     */
@@ -228,7 +228,7 @@ class RecurrencePattern extends Entity
 
     /**
     * Sets the type
-    * The recurrence pattern type: daily, weekly, absoluteMonthly, relativeMonthly, absoluteYearly, relativeYearly. Required.
+    * The recurrence pattern type: daily, weekly, absoluteMonthly, relativeMonthly, absoluteYearly, relativeYearly. Required. For more information, see values of type property.
     *
     * @param RecurrencePatternType $val The value to assign to the type
     *

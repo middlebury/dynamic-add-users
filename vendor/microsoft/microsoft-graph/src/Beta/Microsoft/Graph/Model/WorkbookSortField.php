@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * WorkbookSortField File
 * PHP version 7
 *
@@ -81,7 +81,7 @@ class WorkbookSortField extends Entity
     }
     /**
     * Gets the dataOption
-    * Represents additional sorting options for this field. The possible values are: Normal, TextAsNumber.
+    * Represents additional sorting options for this field. Possible values are: Normal, TextAsNumber.
     *
     * @return string|null The dataOption
     */
@@ -96,7 +96,7 @@ class WorkbookSortField extends Entity
 
     /**
     * Sets the dataOption
-    * Represents additional sorting options for this field. The possible values are: Normal, TextAsNumber.
+    * Represents additional sorting options for this field. Possible values are: Normal, TextAsNumber.
     *
     * @param string $val The value of the dataOption
     *
@@ -170,7 +170,7 @@ class WorkbookSortField extends Entity
     }
     /**
     * Gets the sortOn
-    * Represents the type of sorting of this condition. The possible values are: Value, CellColor, FontColor, Icon.
+    * Represents the type of sorting of this condition. Possible values are: Value, CellColor, FontColor, Icon.
     *
     * @return string|null The sortOn
     */
@@ -185,7 +185,7 @@ class WorkbookSortField extends Entity
 
     /**
     * Sets the sortOn
-    * Represents the type of sorting of this condition. The possible values are: Value, CellColor, FontColor, Icon.
+    * Represents the type of sorting of this condition. Possible values are: Value, CellColor, FontColor, Icon.
     *
     * @param string $val The value of the sortOn
     *

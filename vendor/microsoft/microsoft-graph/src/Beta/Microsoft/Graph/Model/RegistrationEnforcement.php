@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * RegistrationEnforcement File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class RegistrationEnforcement extends Entity
 
     /**
     * Gets the authenticationMethodsRegistrationCampaign
-    * Run campaigns to remind users to set up targeted authentication methods.
+    * Run campaigns to remind users to setup targeted authentication methods.
     *
     * @return AuthenticationMethodsRegistrationCampaign|null The authenticationMethodsRegistrationCampaign
     */
@@ -45,7 +45,7 @@ class RegistrationEnforcement extends Entity
 
     /**
     * Sets the authenticationMethodsRegistrationCampaign
-    * Run campaigns to remind users to set up targeted authentication methods.
+    * Run campaigns to remind users to setup targeted authentication methods.
     *
     * @param AuthenticationMethodsRegistrationCampaign $val The value to assign to the authenticationMethodsRegistrationCampaign
     *

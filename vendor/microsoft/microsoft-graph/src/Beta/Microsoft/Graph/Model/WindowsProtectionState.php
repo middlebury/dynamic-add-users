@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * WindowsProtectionState File
 * PHP version 7
 *
@@ -644,7 +644,7 @@ class WindowsProtectionState extends Entity
     * Sets the detectedMalwareState
     * Device malware list
     *
-    * @param WindowsDeviceMalwareState $val The detectedMalwareState
+    * @param WindowsDeviceMalwareState[] $val The detectedMalwareState
     *
     * @return WindowsProtectionState
     */

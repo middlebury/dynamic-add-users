@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceShellScript File
 * PHP version 7
 *
@@ -383,7 +383,7 @@ class DeviceShellScript extends Entity
     * Sets the assignments
     * The list of group assignments for the device management script.
     *
-    * @param DeviceManagementScriptAssignment $val The assignments
+    * @param DeviceManagementScriptAssignment[] $val The assignments
     *
     * @return DeviceShellScript
     */
@@ -413,7 +413,7 @@ class DeviceShellScript extends Entity
     * Sets the deviceRunStates
     * List of run states for this script across all devices.
     *
-    * @param DeviceManagementScriptDeviceState $val The deviceRunStates
+    * @param DeviceManagementScriptDeviceState[] $val The deviceRunStates
     *
     * @return DeviceShellScript
     */
@@ -443,7 +443,7 @@ class DeviceShellScript extends Entity
     * Sets the groupAssignments
     * The list of group assignments for the device management script.
     *
-    * @param DeviceManagementScriptGroupAssignment $val The groupAssignments
+    * @param DeviceManagementScriptGroupAssignment[] $val The groupAssignments
     *
     * @return DeviceShellScript
     */
@@ -506,7 +506,7 @@ class DeviceShellScript extends Entity
     * Sets the userRunStates
     * List of run states for this script across all users.
     *
-    * @param DeviceManagementScriptUserState $val The userRunStates
+    * @param DeviceManagementScriptUserState[] $val The userRunStates
     *
     * @return DeviceShellScript
     */

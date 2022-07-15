@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * GovernanceResource File
 * PHP version 7
 *
@@ -255,7 +255,7 @@ class GovernanceResource extends Entity
     * Sets the roleAssignmentRequests
     * The collection of role assignment requests for the resource.
     *
-    * @param GovernanceRoleAssignmentRequest $val The roleAssignmentRequests
+    * @param GovernanceRoleAssignmentRequest[] $val The roleAssignmentRequests
     *
     * @return GovernanceResource
     */
@@ -285,7 +285,7 @@ class GovernanceResource extends Entity
     * Sets the roleAssignments
     * The collection of role assignments for the resource.
     *
-    * @param GovernanceRoleAssignment $val The roleAssignments
+    * @param GovernanceRoleAssignment[] $val The roleAssignments
     *
     * @return GovernanceResource
     */
@@ -315,7 +315,7 @@ class GovernanceResource extends Entity
     * Sets the roleDefinitions
     * The collection of role defintions for the resource.
     *
-    * @param GovernanceRoleDefinition $val The roleDefinitions
+    * @param GovernanceRoleDefinition[] $val The roleDefinitions
     *
     * @return GovernanceResource
     */
@@ -345,7 +345,7 @@ class GovernanceResource extends Entity
     * Sets the roleSettings
     * The collection of role settings for the resource.
     *
-    * @param GovernanceRoleSetting $val The roleSettings
+    * @param GovernanceRoleSetting[] $val The roleSettings
     *
     * @return GovernanceResource
     */

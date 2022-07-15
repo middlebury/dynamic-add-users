@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * PrintJob File
 * PHP version 7
 *
@@ -59,7 +59,6 @@ class PrintJob extends Entity
 
     /**
     * Gets the createdBy
-    * Read-only. Nullable.
     *
     * @return UserIdentity|null The createdBy
     */
@@ -78,7 +77,6 @@ class PrintJob extends Entity
 
     /**
     * Sets the createdBy
-    * Read-only. Nullable.
     *
     * @param UserIdentity $val The createdBy
     *
@@ -246,7 +244,6 @@ class PrintJob extends Entity
 
      /**
      * Gets the documents
-    * Read-only.
      *
      * @return array|null The documents
      */
@@ -261,9 +258,8 @@ class PrintJob extends Entity
 
     /**
     * Sets the documents
-    * Read-only.
     *
-    * @param PrintDocument $val The documents
+    * @param PrintDocument[] $val The documents
     *
     * @return PrintJob
     */
@@ -293,7 +289,7 @@ class PrintJob extends Entity
     * Sets the tasks
     * A list of printTasks that were triggered by this print job.
     *
-    * @param PrintTask $val The tasks
+    * @param PrintTask[] $val The tasks
     *
     * @return PrintJob
     */

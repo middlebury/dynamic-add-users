@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ChannelMembershipType File
 * PHP version 7
 *
@@ -32,4 +32,5 @@ class ChannelMembershipType extends Enum
     const STANDARD = "standard";
     const GRAPHPRIVATE = "private";
     const UNKNOWN_FUTURE_VALUE = "unknownFutureValue";
+    const SHARED = "shared";
 }

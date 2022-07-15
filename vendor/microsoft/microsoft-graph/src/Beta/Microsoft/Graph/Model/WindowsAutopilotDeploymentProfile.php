@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * WindowsAutopilotDeploymentProfile File
 * PHP version 7
 *
@@ -441,7 +441,7 @@ class WindowsAutopilotDeploymentProfile extends Entity
     * Sets the assignedDevices
     * The list of assigned devices for the profile.
     *
-    * @param WindowsAutopilotDeviceIdentity $val The assignedDevices
+    * @param WindowsAutopilotDeviceIdentity[] $val The assignedDevices
     *
     * @return WindowsAutopilotDeploymentProfile
     */
@@ -471,7 +471,7 @@ class WindowsAutopilotDeploymentProfile extends Entity
     * Sets the assignments
     * The list of group assignments for the profile.
     *
-    * @param WindowsAutopilotDeploymentProfileAssignment $val The assignments
+    * @param WindowsAutopilotDeploymentProfileAssignment[] $val The assignments
     *
     * @return WindowsAutopilotDeploymentProfile
     */

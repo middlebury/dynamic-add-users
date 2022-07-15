@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * UserSettings File
 * PHP version 7
 *
@@ -112,6 +112,39 @@ class UserSettings extends Entity
     public function setItemInsights($val)
     {
         $this->_propDict["itemInsights"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the contactMergeSuggestions
+    * The user's settings for the visibility of merge suggestion for the duplicate contacts in the user's contact list.
+    *
+    * @return ContactMergeSuggestions|null The contactMergeSuggestions
+    */
+    public function getContactMergeSuggestions()
+    {
+        if (array_key_exists("contactMergeSuggestions", $this->_propDict)) {
+            if (is_a($this->_propDict["contactMergeSuggestions"], "\Beta\Microsoft\Graph\Model\ContactMergeSuggestions") || is_null($this->_propDict["contactMergeSuggestions"])) {
+                return $this->_propDict["contactMergeSuggestions"];
+            } else {
+                $this->_propDict["contactMergeSuggestions"] = new ContactMergeSuggestions($this->_propDict["contactMergeSuggestions"]);
+                return $this->_propDict["contactMergeSuggestions"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the contactMergeSuggestions
+    * The user's settings for the visibility of merge suggestion for the duplicate contacts in the user's contact list.
+    *
+    * @param ContactMergeSuggestions $val The contactMergeSuggestions
+    *
+    * @return UserSettings
+    */
+    public function setContactMergeSuggestions($val)
+    {
+        $this->_propDict["contactMergeSuggestions"] = $val;
         return $this;
     }
 

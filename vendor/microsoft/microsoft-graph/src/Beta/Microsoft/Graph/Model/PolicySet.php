@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * PolicySet File
 * PHP version 7
 *
@@ -292,7 +292,7 @@ class PolicySet extends Entity
     * Sets the assignments
     * Assignments of the PolicySet.
     *
-    * @param PolicySetAssignment $val The assignments
+    * @param PolicySetAssignment[] $val The assignments
     *
     * @return PolicySet
     */
@@ -322,7 +322,7 @@ class PolicySet extends Entity
     * Sets the items
     * Items of the PolicySet with maximum count 100.
     *
-    * @param PolicySetItem $val The items
+    * @param PolicySetItem[] $val The items
     *
     * @return PolicySet
     */

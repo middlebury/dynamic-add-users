@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Session File
 * PHP version 7
 *
@@ -176,7 +176,7 @@ class Session extends \Microsoft\Graph\Model\Entity
     * Sets the modalities
     * List of modalities present in the session. Possible values are: unknown, audio, video, videoBasedScreenSharing, data, screenSharing, unknownFutureValue.
     *
-    * @param Modality $val The modalities
+    * @param Modality[] $val The modalities
     *
     * @return Session
     */
@@ -188,7 +188,7 @@ class Session extends \Microsoft\Graph\Model\Entity
 
     /**
     * Gets the startDateTime
-    * UTC time when the first user joined the session. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+    * UTC fime when the first user joined the session. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
     *
     * @return \DateTime|null The startDateTime
     */
@@ -207,7 +207,7 @@ class Session extends \Microsoft\Graph\Model\Entity
 
     /**
     * Sets the startDateTime
-    * UTC time when the first user joined the session. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+    * UTC fime when the first user joined the session. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
     *
     * @param \DateTime $val The startDateTime
     *
@@ -239,7 +239,7 @@ class Session extends \Microsoft\Graph\Model\Entity
     * Sets the segments
     * The list of segments involved in the session. Read-only. Nullable.
     *
-    * @param Segment $val The segments
+    * @param Segment[] $val The segments
     *
     * @return Session
     */

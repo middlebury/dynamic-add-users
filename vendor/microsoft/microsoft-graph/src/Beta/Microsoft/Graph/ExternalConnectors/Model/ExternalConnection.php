@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ExternalConnection File
 * PHP version 7
 *
@@ -24,6 +24,37 @@ namespace Beta\Microsoft\Graph\ExternalConnectors\Model;
 */
 class ExternalConnection extends \Beta\Microsoft\Graph\Model\Entity
 {
+    /**
+    * Gets the complianceSettings
+    *
+    * @return ComplianceSettings|null The complianceSettings
+    */
+    public function getComplianceSettings()
+    {
+        if (array_key_exists("complianceSettings", $this->_propDict)) {
+            if (is_a($this->_propDict["complianceSettings"], "\Beta\Microsoft\Graph\ExternalConnectors\Model\ComplianceSettings") || is_null($this->_propDict["complianceSettings"])) {
+                return $this->_propDict["complianceSettings"];
+            } else {
+                $this->_propDict["complianceSettings"] = new ComplianceSettings($this->_propDict["complianceSettings"]);
+                return $this->_propDict["complianceSettings"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the complianceSettings
+    *
+    * @param ComplianceSettings $val The complianceSettings
+    *
+    * @return ExternalConnection
+    */
+    public function setComplianceSettings($val)
+    {
+        $this->_propDict["complianceSettings"] = $val;
+        return $this;
+    }
+
     /**
     * Gets the configuration
     * Specifies additional application IDs that are allowed to manage the connection and to index content in the connection. Optional.
@@ -116,6 +147,66 @@ class ExternalConnection extends \Beta\Microsoft\Graph\Model\Entity
     }
 
     /**
+    * Gets the enabledContentExperiences
+    *
+    * @return ContentExperienceType|null The enabledContentExperiences
+    */
+    public function getEnabledContentExperiences()
+    {
+        if (array_key_exists("enabledContentExperiences", $this->_propDict)) {
+            if (is_a($this->_propDict["enabledContentExperiences"], "\Beta\Microsoft\Graph\ExternalConnectors\Model\ContentExperienceType") || is_null($this->_propDict["enabledContentExperiences"])) {
+                return $this->_propDict["enabledContentExperiences"];
+            } else {
+                $this->_propDict["enabledContentExperiences"] = new ContentExperienceType($this->_propDict["enabledContentExperiences"]);
+                return $this->_propDict["enabledContentExperiences"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the enabledContentExperiences
+    *
+    * @param ContentExperienceType $val The enabledContentExperiences
+    *
+    * @return ExternalConnection
+    */
+    public function setEnabledContentExperiences($val)
+    {
+        $this->_propDict["enabledContentExperiences"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the ingestedItemsCount
+    * The number of items ingested into a connection. This value is refreshed every 15 minutes. If the connection state is draft, then ingestedItemsCount will be null.
+    *
+    * @return int|null The ingestedItemsCount
+    */
+    public function getIngestedItemsCount()
+    {
+        if (array_key_exists("ingestedItemsCount", $this->_propDict)) {
+            return $this->_propDict["ingestedItemsCount"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the ingestedItemsCount
+    * The number of items ingested into a connection. This value is refreshed every 15 minutes. If the connection state is draft, then ingestedItemsCount will be null.
+    *
+    * @param int $val The ingestedItemsCount
+    *
+    * @return ExternalConnection
+    */
+    public function setIngestedItemsCount($val)
+    {
+        $this->_propDict["ingestedItemsCount"] = intval($val);
+        return $this;
+    }
+
+    /**
     * Gets the name
     * The display name of the connection to be displayed in the Microsoft 365 admin center. Maximum length of 128 characters. Required.
     *
@@ -179,7 +270,7 @@ class ExternalConnection extends \Beta\Microsoft\Graph\Model\Entity
 
     /**
     * Gets the state
-    * Indicates the current state of the connection. Possible values are: draft, ready, obsolete, limitExceeded, unknownFutureValue.
+    * Indicates the current state of the connection. Possible values are draft, ready, obsolete, and limitExceeded. Required.
     *
     * @return ConnectionState|null The state
     */
@@ -198,7 +289,7 @@ class ExternalConnection extends \Beta\Microsoft\Graph\Model\Entity
 
     /**
     * Sets the state
-    * Indicates the current state of the connection. Possible values are: draft, ready, obsolete, limitExceeded, unknownFutureValue.
+    * Indicates the current state of the connection. Possible values are draft, ready, obsolete, and limitExceeded. Required.
     *
     * @param ConnectionState $val The state
     *
@@ -213,7 +304,6 @@ class ExternalConnection extends \Beta\Microsoft\Graph\Model\Entity
 
      /**
      * Gets the groups
-    * Read-only. Nullable.
      *
      * @return array|null The groups
      */
@@ -228,9 +318,8 @@ class ExternalConnection extends \Beta\Microsoft\Graph\Model\Entity
 
     /**
     * Sets the groups
-    * Read-only. Nullable.
     *
-    * @param ExternalGroup $val The groups
+    * @param ExternalGroup[] $val The groups
     *
     * @return ExternalConnection
     */
@@ -243,7 +332,6 @@ class ExternalConnection extends \Beta\Microsoft\Graph\Model\Entity
 
      /**
      * Gets the items
-    * Read-only. Nullable.
      *
      * @return array|null The items
      */
@@ -258,9 +346,8 @@ class ExternalConnection extends \Beta\Microsoft\Graph\Model\Entity
 
     /**
     * Sets the items
-    * Read-only. Nullable.
     *
-    * @param ExternalItem $val The items
+    * @param ExternalItem[] $val The items
     *
     * @return ExternalConnection
     */
@@ -273,7 +360,6 @@ class ExternalConnection extends \Beta\Microsoft\Graph\Model\Entity
 
      /**
      * Gets the operations
-    * Read-only. Nullable.
      *
      * @return array|null The operations
      */
@@ -288,9 +374,8 @@ class ExternalConnection extends \Beta\Microsoft\Graph\Model\Entity
 
     /**
     * Sets the operations
-    * Read-only. Nullable.
     *
-    * @param ConnectionOperation $val The operations
+    * @param ConnectionOperation[] $val The operations
     *
     * @return ExternalConnection
     */
@@ -301,8 +386,38 @@ class ExternalConnection extends \Beta\Microsoft\Graph\Model\Entity
     }
 
     /**
+    * Gets the quota
+    *
+    * @return ConnectionQuota|null The quota
+    */
+    public function getQuota()
+    {
+        if (array_key_exists("quota", $this->_propDict)) {
+            if (is_a($this->_propDict["quota"], "\Beta\Microsoft\Graph\ExternalConnectors\Model\ConnectionQuota") || is_null($this->_propDict["quota"])) {
+                return $this->_propDict["quota"];
+            } else {
+                $this->_propDict["quota"] = new ConnectionQuota($this->_propDict["quota"]);
+                return $this->_propDict["quota"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the quota
+    *
+    * @param ConnectionQuota $val The quota
+    *
+    * @return ExternalConnection
+    */
+    public function setQuota($val)
+    {
+        $this->_propDict["quota"] = $val;
+        return $this;
+    }
+
+    /**
     * Gets the schema
-    * Read-only. Nullable.
     *
     * @return Schema|null The schema
     */
@@ -321,7 +436,6 @@ class ExternalConnection extends \Beta\Microsoft\Graph\Model\Entity
 
     /**
     * Sets the schema
-    * Read-only. Nullable.
     *
     * @param Schema $val The schema
     *

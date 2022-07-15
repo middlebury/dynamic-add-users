@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ConditionalAccessGrantControls File
 * PHP version 7
 *
@@ -58,7 +58,7 @@ class ConditionalAccessGrantControls extends Entity
     }
     /**
     * Gets the customAuthenticationFactors
-    * List of custom controls IDs required by the policy. For more information, see Custom controls.
+    * List of custom controls IDs required by the policy. To learn more about custom control, see Custom controls (preview).
     *
     * @return string|null The customAuthenticationFactors
     */
@@ -73,7 +73,7 @@ class ConditionalAccessGrantControls extends Entity
 
     /**
     * Sets the customAuthenticationFactors
-    * List of custom controls IDs required by the policy. For more information, see Custom controls.
+    * List of custom controls IDs required by the policy. To learn more about custom control, see Custom controls (preview).
     *
     * @param string $val The value of the customAuthenticationFactors
     *

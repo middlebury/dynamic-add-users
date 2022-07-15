@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ShiftPreferences File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class ShiftPreferences extends ChangeTrackedEntity
     * Sets the availability
     * Availability of the user to be scheduled for work and its recurrence pattern.
     *
-    * @param ShiftAvailability $val The availability
+    * @param ShiftAvailability[] $val The availability
     *
     * @return ShiftPreferences
     */

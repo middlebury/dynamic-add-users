@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * MobileLobApp File
 * PHP version 7
 *
@@ -131,7 +131,7 @@ class MobileLobApp extends MobileApp
     * Sets the contentVersions
     * The list of content versions for this app.
     *
-    * @param MobileAppContent $val The contentVersions
+    * @param MobileAppContent[] $val The contentVersions
     *
     * @return MobileLobApp
     */

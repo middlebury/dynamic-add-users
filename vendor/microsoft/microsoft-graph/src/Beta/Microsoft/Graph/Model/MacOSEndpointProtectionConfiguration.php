@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * MacOSEndpointProtectionConfiguration File
 * PHP version 7
 *
@@ -590,7 +590,7 @@ class MacOSEndpointProtectionConfiguration extends DeviceConfiguration
     * Sets the firewallApplications
     * List of applications with firewall settings. Firewall settings for applications not on this list are determined by the user. This collection can contain a maximum of 500 elements.
     *
-    * @param MacOSFirewallApplication $val The firewallApplications
+    * @param MacOSFirewallApplication[] $val The firewallApplications
     *
     * @return MacOSEndpointProtectionConfiguration
     */

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * RemoteAssistanceState File
 * PHP version 7
 *
@@ -29,7 +29,6 @@ class RemoteAssistanceState extends Enum
     /**
     * The Enum RemoteAssistanceState
     */
-    const NOT_CONFIGURED = "notConfigured";
     const DISABLED = "disabled";
     const ENABLED = "enabled";
 }

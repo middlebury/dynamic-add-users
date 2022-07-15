@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * MobileApp File
 * PHP version 7
 *
@@ -437,7 +437,7 @@ class MobileApp extends Entity
     * Sets the assignments
     * The list of group assignments for this mobile app.
     *
-    * @param MobileAppAssignment $val The assignments
+    * @param MobileAppAssignment[] $val The assignments
     *
     * @return MobileApp
     */
@@ -467,7 +467,7 @@ class MobileApp extends Entity
     * Sets the categories
     * The list of categories for this app.
     *
-    * @param MobileAppCategory $val The categories
+    * @param MobileAppCategory[] $val The categories
     *
     * @return MobileApp
     */

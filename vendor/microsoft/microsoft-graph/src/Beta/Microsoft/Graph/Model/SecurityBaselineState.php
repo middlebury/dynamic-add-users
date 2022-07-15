@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * SecurityBaselineState File
 * PHP version 7
 *
@@ -164,7 +164,7 @@ class SecurityBaselineState extends Entity
     * Sets the settingStates
     * The security baseline state for different settings for a device
     *
-    * @param SecurityBaselineSettingState $val The settingStates
+    * @param SecurityBaselineSettingState[] $val The settingStates
     *
     * @return SecurityBaselineState
     */

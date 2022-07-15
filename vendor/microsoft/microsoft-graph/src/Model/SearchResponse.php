@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * SearchResponse File
 * PHP version 7
 *
@@ -54,6 +54,72 @@ class SearchResponse extends Entity
     public function setHitsContainers($val)
     {
         $this->_propDict["hitsContainers"] = $val;
+         return $this;
+    }
+
+    /**
+    * Gets the queryAlterationResponse
+    * Provides details of query alteration response for spelling correction.
+    *
+    * @return AlterationResponse|null The queryAlterationResponse
+    */
+    public function getQueryAlterationResponse()
+    {
+        if (array_key_exists("queryAlterationResponse", $this->_propDict)) {
+            if (is_a($this->_propDict["queryAlterationResponse"], "\Microsoft\Graph\Model\AlterationResponse") || is_null($this->_propDict["queryAlterationResponse"])) {
+                return $this->_propDict["queryAlterationResponse"];
+            } else {
+                $this->_propDict["queryAlterationResponse"] = new AlterationResponse($this->_propDict["queryAlterationResponse"]);
+                return $this->_propDict["queryAlterationResponse"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the queryAlterationResponse
+    * Provides details of query alteration response for spelling correction.
+    *
+    * @param AlterationResponse $val The value to assign to the queryAlterationResponse
+    *
+    * @return SearchResponse The SearchResponse
+    */
+    public function setQueryAlterationResponse($val)
+    {
+        $this->_propDict["queryAlterationResponse"] = $val;
+         return $this;
+    }
+
+    /**
+    * Gets the resultTemplates
+    * A dictionary of resultTemplateIds and associated values, which include the name and JSON schema of the result templates.
+    *
+    * @return ResultTemplateDictionary|null The resultTemplates
+    */
+    public function getResultTemplates()
+    {
+        if (array_key_exists("resultTemplates", $this->_propDict)) {
+            if (is_a($this->_propDict["resultTemplates"], "\Microsoft\Graph\Model\ResultTemplateDictionary") || is_null($this->_propDict["resultTemplates"])) {
+                return $this->_propDict["resultTemplates"];
+            } else {
+                $this->_propDict["resultTemplates"] = new ResultTemplateDictionary($this->_propDict["resultTemplates"]);
+                return $this->_propDict["resultTemplates"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the resultTemplates
+    * A dictionary of resultTemplateIds and associated values, which include the name and JSON schema of the result templates.
+    *
+    * @param ResultTemplateDictionary $val The value to assign to the resultTemplates
+    *
+    * @return SearchResponse The SearchResponse
+    */
+    public function setResultTemplates($val)
+    {
+        $this->_propDict["resultTemplates"] = $val;
          return $this;
     }
     /**

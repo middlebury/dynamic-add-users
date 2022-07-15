@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceManagementIntent File
 * PHP version 7
 *
@@ -222,7 +222,7 @@ class DeviceManagementIntent extends Entity
     * Sets the assignments
     * Collection of assignments
     *
-    * @param DeviceManagementIntentAssignment $val The assignments
+    * @param DeviceManagementIntentAssignment[] $val The assignments
     *
     * @return DeviceManagementIntent
     */
@@ -252,7 +252,7 @@ class DeviceManagementIntent extends Entity
     * Sets the categories
     * Collection of setting categories within the intent
     *
-    * @param DeviceManagementIntentSettingCategory $val The categories
+    * @param DeviceManagementIntentSettingCategory[] $val The categories
     *
     * @return DeviceManagementIntent
     */
@@ -282,7 +282,7 @@ class DeviceManagementIntent extends Entity
     * Sets the deviceSettingStateSummaries
     * Collection of settings and their states and counts of devices that belong to corresponding state for all settings within the intent
     *
-    * @param DeviceManagementIntentDeviceSettingStateSummary $val The deviceSettingStateSummaries
+    * @param DeviceManagementIntentDeviceSettingStateSummary[] $val The deviceSettingStateSummaries
     *
     * @return DeviceManagementIntent
     */
@@ -312,7 +312,7 @@ class DeviceManagementIntent extends Entity
     * Sets the deviceStates
     * Collection of states of all devices that the intent is applied to
     *
-    * @param DeviceManagementIntentDeviceState $val The deviceStates
+    * @param DeviceManagementIntentDeviceState[] $val The deviceStates
     *
     * @return DeviceManagementIntent
     */
@@ -375,7 +375,7 @@ class DeviceManagementIntent extends Entity
     * Sets the settings
     * Collection of all settings to be applied
     *
-    * @param DeviceManagementSettingInstance $val The settings
+    * @param DeviceManagementSettingInstance[] $val The settings
     *
     * @return DeviceManagementIntent
     */
@@ -405,7 +405,7 @@ class DeviceManagementIntent extends Entity
     * Sets the userStates
     * Collection of states of all users that the intent is applied to
     *
-    * @param DeviceManagementIntentUserState $val The userStates
+    * @param DeviceManagementIntentUserState[] $val The userStates
     *
     * @return DeviceManagementIntent
     */

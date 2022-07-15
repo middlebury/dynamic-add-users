@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * OutlookTask File
 * PHP version 7
 *
@@ -495,7 +495,7 @@ class OutlookTask extends OutlookItem
     * Sets the attachments
     * The collection of fileAttachment, itemAttachment, and referenceAttachment attachments for the task.  Read-only. Nullable.
     *
-    * @param Attachment $val The attachments
+    * @param Attachment[] $val The attachments
     *
     * @return OutlookTask
     */
@@ -525,7 +525,7 @@ class OutlookTask extends OutlookItem
     * Sets the multiValueExtendedProperties
     * The collection of multi-value extended properties defined for the task. Read-only. Nullable.
     *
-    * @param MultiValueLegacyExtendedProperty $val The multiValueExtendedProperties
+    * @param MultiValueLegacyExtendedProperty[] $val The multiValueExtendedProperties
     *
     * @return OutlookTask
     */
@@ -555,7 +555,7 @@ class OutlookTask extends OutlookItem
     * Sets the singleValueExtendedProperties
     * The collection of single-value extended properties defined for the task. Read-only. Nullable.
     *
-    * @param SingleValueLegacyExtendedProperty $val The singleValueExtendedProperties
+    * @param SingleValueLegacyExtendedProperty[] $val The singleValueExtendedProperties
     *
     * @return OutlookTask
     */

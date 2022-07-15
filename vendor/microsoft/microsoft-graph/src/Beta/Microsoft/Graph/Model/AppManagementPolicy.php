@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AppManagementPolicy File
 * PHP version 7
 *
@@ -26,7 +26,6 @@ class AppManagementPolicy extends PolicyBase
 {
     /**
     * Gets the isEnabled
-    * Denotes whether the policy is enabled.
     *
     * @return bool|null The isEnabled
     */
@@ -41,7 +40,6 @@ class AppManagementPolicy extends PolicyBase
 
     /**
     * Sets the isEnabled
-    * Denotes whether the policy is enabled.
     *
     * @param bool $val The isEnabled
     *
@@ -55,7 +53,6 @@ class AppManagementPolicy extends PolicyBase
 
     /**
     * Gets the restrictions
-    * Restrictions that apply to an application or service principal object.
     *
     * @return AppManagementConfiguration|null The restrictions
     */
@@ -74,7 +71,6 @@ class AppManagementPolicy extends PolicyBase
 
     /**
     * Sets the restrictions
-    * Restrictions that apply to an application or service principal object.
     *
     * @param AppManagementConfiguration $val The restrictions
     *
@@ -89,7 +85,6 @@ class AppManagementPolicy extends PolicyBase
 
      /**
      * Gets the appliesTo
-    * Collection of application and service principals to which a policy is applied.
      *
      * @return array|null The appliesTo
      */
@@ -104,9 +99,8 @@ class AppManagementPolicy extends PolicyBase
 
     /**
     * Sets the appliesTo
-    * Collection of application and service principals to which a policy is applied.
     *
-    * @param DirectoryObject $val The appliesTo
+    * @param DirectoryObject[] $val The appliesTo
     *
     * @return AppManagementPolicy
     */

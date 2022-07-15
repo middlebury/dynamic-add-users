@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * RbacApplicationMultiple File
 * PHP version 7
 *
@@ -42,7 +42,7 @@ class RbacApplicationMultiple extends Entity
     /**
     * Sets the resourceNamespaces
     *
-    * @param UnifiedRbacResourceNamespace $val The resourceNamespaces
+    * @param UnifiedRbacResourceNamespace[] $val The resourceNamespaces
     *
     * @return RbacApplicationMultiple
     */
@@ -70,7 +70,7 @@ class RbacApplicationMultiple extends Entity
     /**
     * Sets the roleAssignments
     *
-    * @param UnifiedRoleAssignmentMultiple $val The roleAssignments
+    * @param UnifiedRoleAssignmentMultiple[] $val The roleAssignments
     *
     * @return RbacApplicationMultiple
     */
@@ -98,7 +98,7 @@ class RbacApplicationMultiple extends Entity
     /**
     * Sets the roleDefinitions
     *
-    * @param UnifiedRoleDefinition $val The roleDefinitions
+    * @param UnifiedRoleDefinition[] $val The roleDefinitions
     *
     * @return RbacApplicationMultiple
     */

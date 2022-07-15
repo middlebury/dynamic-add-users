@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AndroidDeviceOwnerVpnConfiguration File
 * PHP version 7
 *
@@ -135,7 +135,7 @@ class AndroidDeviceOwnerVpnConfiguration extends VpnConfiguration
     * Sets the customData
     * Custom data to define key/value pairs specific to a VPN provider. This collection can contain a maximum of 25 elements.
     *
-    * @param KeyValue $val The customData
+    * @param KeyValue[] $val The customData
     *
     * @return AndroidDeviceOwnerVpnConfiguration
     */
@@ -165,7 +165,7 @@ class AndroidDeviceOwnerVpnConfiguration extends VpnConfiguration
     * Sets the customKeyValueData
     * Custom data to define key/value pairs specific to a VPN provider. This collection can contain a maximum of 25 elements.
     *
-    * @param KeyValuePair $val The customKeyValueData
+    * @param KeyValuePair[] $val The customKeyValueData
     *
     * @return AndroidDeviceOwnerVpnConfiguration
     */
@@ -257,7 +257,7 @@ class AndroidDeviceOwnerVpnConfiguration extends VpnConfiguration
     * Sets the targetedMobileApps
     * Targeted mobile apps. This collection can contain a maximum of 500 elements.
     *
-    * @param AppListItem $val The targetedMobileApps
+    * @param AppListItem[] $val The targetedMobileApps
     *
     * @return AndroidDeviceOwnerVpnConfiguration
     */

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * UserExperienceAnalyticsCategory File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class UserExperienceAnalyticsCategory extends Entity
     * Sets the insights
     * The insights for the user experience analytics category.
     *
-    * @param UserExperienceAnalyticsInsight $val The insights
+    * @param UserExperienceAnalyticsInsight[] $val The insights
     *
     * @return UserExperienceAnalyticsCategory
     */
@@ -74,7 +74,7 @@ class UserExperienceAnalyticsCategory extends Entity
     * Sets the metricValues
     * The metric values for the user experience analytics category.
     *
-    * @param UserExperienceAnalyticsMetric $val The metricValues
+    * @param UserExperienceAnalyticsMetric[] $val The metricValues
     *
     * @return UserExperienceAnalyticsCategory
     */

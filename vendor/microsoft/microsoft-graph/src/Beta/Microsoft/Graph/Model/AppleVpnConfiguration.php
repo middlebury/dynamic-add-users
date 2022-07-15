@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AppleVpnConfiguration File
 * PHP version 7
 *
@@ -168,7 +168,7 @@ class AppleVpnConfiguration extends DeviceConfiguration
     * Sets the customData
     * Custom data when connection type is set to Custom VPN. Use this field to enable functionality not supported by Intune, but available in your VPN solution. Contact your VPN vendor to learn how to add these key/value pairs. This collection can contain a maximum of 25 elements.
     *
-    * @param KeyValue $val The customData
+    * @param KeyValue[] $val The customData
     *
     * @return AppleVpnConfiguration
     */
@@ -198,7 +198,7 @@ class AppleVpnConfiguration extends DeviceConfiguration
     * Sets the customKeyValueData
     * Custom data when connection type is set to Custom VPN. Use this field to enable functionality not supported by Intune, but available in your VPN solution. Contact your VPN vendor to learn how to add these key/value pairs. This collection can contain a maximum of 25 elements.
     *
-    * @param KeyValuePair $val The customKeyValueData
+    * @param KeyValuePair[] $val The customKeyValueData
     *
     * @return AppleVpnConfiguration
     */
@@ -460,7 +460,7 @@ class AppleVpnConfiguration extends DeviceConfiguration
     * Sets the onDemandRules
     * On-Demand Rules. This collection can contain a maximum of 500 elements.
     *
-    * @param VpnOnDemandRule $val The onDemandRules
+    * @param VpnOnDemandRule[] $val The onDemandRules
     *
     * @return AppleVpnConfiguration
     */

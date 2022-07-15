@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * FileSecurityProfile File
 * PHP version 7
 *
@@ -235,7 +235,7 @@ class FileSecurityProfile extends Entity
     /**
     * Sets the hashes
     *
-    * @param FileHash $val The hashes
+    * @param FileHash[] $val The hashes
     *
     * @return FileSecurityProfile
     */
@@ -294,7 +294,7 @@ class FileSecurityProfile extends Entity
     /**
     * Sets the malwareStates
     *
-    * @param MalwareState $val The malwareStates
+    * @param MalwareState[] $val The malwareStates
     *
     * @return FileSecurityProfile
     */
@@ -461,7 +461,7 @@ class FileSecurityProfile extends Entity
     /**
     * Sets the vulnerabilityStates
     *
-    * @param VulnerabilityState $val The vulnerabilityStates
+    * @param VulnerabilityState[] $val The vulnerabilityStates
     *
     * @return FileSecurityProfile
     */

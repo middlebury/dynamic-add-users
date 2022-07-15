@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceManagementSettingCategory File
 * PHP version 7
 *
@@ -102,7 +102,7 @@ class DeviceManagementSettingCategory extends Entity
     * Sets the settingDefinitions
     * The setting definitions this category contains
     *
-    * @param DeviceManagementSettingDefinition $val The settingDefinitions
+    * @param DeviceManagementSettingDefinition[] $val The settingDefinitions
     *
     * @return DeviceManagementSettingCategory
     */

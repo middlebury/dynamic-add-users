@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AppCatalogs File
 * PHP version 7
 *
@@ -73,7 +73,7 @@ class AppCatalogs implements \JsonSerializable
     /**
     * Sets the teamsApps
     *
-    * @param TeamsApp $val The teamsApps
+    * @param TeamsApp[] $val The teamsApps
     *
     * @return AppCatalogs
     */
@@ -115,6 +115,7 @@ class AppCatalogs implements \JsonSerializable
     *
     * @return array The list of properties
     */
+    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         $serializableProperties = $this->getProperties();

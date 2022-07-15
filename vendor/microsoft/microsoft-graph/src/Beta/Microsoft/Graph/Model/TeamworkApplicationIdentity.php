@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * TeamworkApplicationIdentity File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class TeamworkApplicationIdentity extends Identity
 
     /**
     * Gets the applicationIdentityType
-    * Type of application that is referenced. Possible values are: aadApplication, bot, tenantBot, office365Connector, outgoingWebhook, and unknownFutureValue.
+    * Type of application that is referenced. Possible values are: aadApplication, bot, tenantBot, office365Connector, and outgoingWebhook.
     *
     * @return TeamworkApplicationIdentityType|null The applicationIdentityType
     */
@@ -45,7 +45,7 @@ class TeamworkApplicationIdentity extends Identity
 
     /**
     * Sets the applicationIdentityType
-    * Type of application that is referenced. Possible values are: aadApplication, bot, tenantBot, office365Connector, outgoingWebhook, and unknownFutureValue.
+    * Type of application that is referenced. Possible values are: aadApplication, bot, tenantBot, office365Connector, and outgoingWebhook.
     *
     * @param TeamworkApplicationIdentityType $val The value to assign to the applicationIdentityType
     *

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * WorkbookChart File
 * PHP version 7
 *
@@ -321,7 +321,7 @@ class WorkbookChart extends Entity
     * Sets the series
     * Represents either a single series or collection of series in the chart. Read-only.
     *
-    * @param WorkbookChartSeries $val The series
+    * @param WorkbookChartSeries[] $val The series
     *
     * @return WorkbookChart
     */

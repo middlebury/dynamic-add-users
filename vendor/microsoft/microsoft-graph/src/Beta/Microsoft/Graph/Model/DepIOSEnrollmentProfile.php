@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DepIOSEnrollmentProfile File
 * PHP version 7
 *
@@ -396,7 +396,7 @@ class DepIOSEnrollmentProfile extends DepEnrollmentBaseProfile
     * Sets the managementCertificates
     * Management certificates for Apple Configurator
     *
-    * @param ManagementCertificateWithThumbprint $val The managementCertificates
+    * @param ManagementCertificateWithThumbprint[] $val The managementCertificates
     *
     * @return DepIOSEnrollmentProfile
     */
@@ -722,6 +722,35 @@ class DepIOSEnrollmentProfile extends DepEnrollmentBaseProfile
     public function setUpdateCompleteScreenDisabled($val)
     {
         $this->_propDict["updateCompleteScreenDisabled"] = boolval($val);
+        return $this;
+    }
+
+    /**
+    * Gets the userlessSharedAadModeEnabled
+    * Indicates that this apple device is designated to support 'shared device mode' scenarios. This is distinct from the 'shared iPad' scenario. See https://docs.microsoft.com/mem/intune/enrollment/device-enrollment-shared-ios
+    *
+    * @return bool|null The userlessSharedAadModeEnabled
+    */
+    public function getUserlessSharedAadModeEnabled()
+    {
+        if (array_key_exists("userlessSharedAadModeEnabled", $this->_propDict)) {
+            return $this->_propDict["userlessSharedAadModeEnabled"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the userlessSharedAadModeEnabled
+    * Indicates that this apple device is designated to support 'shared device mode' scenarios. This is distinct from the 'shared iPad' scenario. See https://docs.microsoft.com/mem/intune/enrollment/device-enrollment-shared-ios
+    *
+    * @param bool $val The userlessSharedAadModeEnabled
+    *
+    * @return DepIOSEnrollmentProfile
+    */
+    public function setUserlessSharedAadModeEnabled($val)
+    {
+        $this->_propDict["userlessSharedAadModeEnabled"] = boolval($val);
         return $this;
     }
 

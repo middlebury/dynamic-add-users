@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Dimension File
 * PHP version 7
 *
@@ -127,7 +127,7 @@ class Dimension extends Entity
     /**
     * Sets the dimensionValues
     *
-    * @param DimensionValue $val The dimensionValues
+    * @param DimensionValue[] $val The dimensionValues
     *
     * @return Dimension
     */

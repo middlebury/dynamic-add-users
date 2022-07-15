@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ExcludeTarget File
 * PHP version 7
 *
@@ -25,7 +25,7 @@ class ExcludeTarget extends Entity
 {
     /**
     * Gets the id
-    * The object identifier of an Azure Active Directory user or group.
+    * The object identifier of an Azure AD user or group.
     *
     * @return string|null The id
     */
@@ -40,7 +40,7 @@ class ExcludeTarget extends Entity
 
     /**
     * Sets the id
-    * The object identifier of an Azure Active Directory user or group.
+    * The object identifier of an Azure AD user or group.
     *
     * @param string $val The value of the id
     *

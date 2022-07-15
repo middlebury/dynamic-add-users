@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * IosPkcsCertificateProfile File
 * PHP version 7
 *
@@ -164,7 +164,7 @@ class IosPkcsCertificateProfile extends IosCertificateProfileBase
     * Sets the customSubjectAlternativeNames
     * Custom Subject Alternative Name Settings. This collection can contain a maximum of 500 elements.
     *
-    * @param CustomSubjectAlternativeName $val The customSubjectAlternativeNames
+    * @param CustomSubjectAlternativeName[] $val The customSubjectAlternativeNames
     *
     * @return IosPkcsCertificateProfile
     */
@@ -252,7 +252,7 @@ class IosPkcsCertificateProfile extends IosCertificateProfileBase
     * Sets the managedDeviceCertificateStates
     * Certificate state for devices. This collection can contain a maximum of 2147483647 elements.
     *
-    * @param ManagedDeviceCertificateState $val The managedDeviceCertificateStates
+    * @param ManagedDeviceCertificateState[] $val The managedDeviceCertificateStates
     *
     * @return IosPkcsCertificateProfile
     */

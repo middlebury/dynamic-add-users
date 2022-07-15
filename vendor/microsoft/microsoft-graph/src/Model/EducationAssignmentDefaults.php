@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * EducationAssignmentDefaults File
 * PHP version 7
 *
@@ -54,6 +54,39 @@ class EducationAssignmentDefaults extends Entity
     public function setAddedStudentAction($val)
     {
         $this->_propDict["addedStudentAction"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the addToCalendarAction
+    * Optional field to control adding assignments to students' and teachers' calendars when the assignment is published. The possible values are: none, studentsAndPublisher, studentsAndTeamOwners, unknownFutureValue, and studentsOnly. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: studentsOnly. The default value is none.
+    *
+    * @return EducationAddToCalendarOptions|null The addToCalendarAction
+    */
+    public function getAddToCalendarAction()
+    {
+        if (array_key_exists("addToCalendarAction", $this->_propDict)) {
+            if (is_a($this->_propDict["addToCalendarAction"], "\Microsoft\Graph\Model\EducationAddToCalendarOptions") || is_null($this->_propDict["addToCalendarAction"])) {
+                return $this->_propDict["addToCalendarAction"];
+            } else {
+                $this->_propDict["addToCalendarAction"] = new EducationAddToCalendarOptions($this->_propDict["addToCalendarAction"]);
+                return $this->_propDict["addToCalendarAction"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the addToCalendarAction
+    * Optional field to control adding assignments to students' and teachers' calendars when the assignment is published. The possible values are: none, studentsAndPublisher, studentsAndTeamOwners, unknownFutureValue, and studentsOnly. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: studentsOnly. The default value is none.
+    *
+    * @param EducationAddToCalendarOptions $val The addToCalendarAction
+    *
+    * @return EducationAssignmentDefaults
+    */
+    public function setAddToCalendarAction($val)
+    {
+        $this->_propDict["addToCalendarAction"] = $val;
         return $this;
     }
 

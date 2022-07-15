@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * EducationExternalResource File
 * PHP version 7
 *
@@ -36,7 +36,7 @@ class EducationExternalResource extends EducationResource
 
     /**
     * Gets the webUrl
-    * Location of the resource. Required
+    * Location of the resource. Required.
     *
     * @return string|null The webUrl
     */
@@ -51,7 +51,7 @@ class EducationExternalResource extends EducationResource
 
     /**
     * Sets the webUrl
-    * Location of the resource. Required
+    * Location of the resource. Required.
     *
     * @param string $val The value of the webUrl
     *

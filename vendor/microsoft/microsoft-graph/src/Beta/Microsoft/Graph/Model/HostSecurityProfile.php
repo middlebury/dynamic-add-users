@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * HostSecurityProfile File
 * PHP version 7
 *
@@ -266,7 +266,7 @@ class HostSecurityProfile extends Entity
     /**
     * Sets the logonUsers
     *
-    * @param LogonUser $val The logonUsers
+    * @param LogonUser[] $val The logonUsers
     *
     * @return HostSecurityProfile
     */
@@ -321,7 +321,7 @@ class HostSecurityProfile extends Entity
     /**
     * Sets the networkInterfaces
     *
-    * @param NetworkInterface $val The networkInterfaces
+    * @param NetworkInterface[] $val The networkInterfaces
     *
     * @return HostSecurityProfile
     */

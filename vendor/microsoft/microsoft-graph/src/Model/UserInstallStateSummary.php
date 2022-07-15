@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * UserInstallStateSummary File
 * PHP version 7
 *
@@ -160,7 +160,7 @@ class UserInstallStateSummary extends Entity
     * Sets the deviceStates
     * The install state of the eBook.
     *
-    * @param DeviceInstallState $val The deviceStates
+    * @param DeviceInstallState[] $val The deviceStates
     *
     * @return UserInstallStateSummary
     */

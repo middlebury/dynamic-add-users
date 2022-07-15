@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * VerifiedDomain File
 * PHP version 7
 *
@@ -25,7 +25,7 @@ class VerifiedDomain extends Entity
 {
     /**
     * Gets the capabilities
-    * For example, 'Email', 'OfficeCommunicationsOnline'.
+    * For example, Email, OfficeCommunicationsOnline.
     *
     * @return string|null The capabilities
     */
@@ -40,7 +40,7 @@ class VerifiedDomain extends Entity
 
     /**
     * Sets the capabilities
-    * For example, 'Email', 'OfficeCommunicationsOnline'.
+    * For example, Email, OfficeCommunicationsOnline.
     *
     * @param string $val The value of the capabilities
     *
@@ -81,7 +81,7 @@ class VerifiedDomain extends Entity
     }
     /**
     * Gets the isInitial
-    * true if this is the initial domain associated with the tenant; otherwise, false
+    * true if this is the initial domain associated with the tenant; otherwise, false.
     *
     * @return bool|null The isInitial
     */
@@ -96,7 +96,7 @@ class VerifiedDomain extends Entity
 
     /**
     * Sets the isInitial
-    * true if this is the initial domain associated with the tenant; otherwise, false
+    * true if this is the initial domain associated with the tenant; otherwise, false.
     *
     * @param bool $val The value of the isInitial
     *
@@ -109,7 +109,7 @@ class VerifiedDomain extends Entity
     }
     /**
     * Gets the name
-    * The domain name; for example, 'contoso.onmicrosoft.com'
+    * The domain name; for example, contoso.onmicrosoft.com.
     *
     * @return string|null The name
     */
@@ -124,7 +124,7 @@ class VerifiedDomain extends Entity
 
     /**
     * Sets the name
-    * The domain name; for example, 'contoso.onmicrosoft.com'
+    * The domain name; for example, contoso.onmicrosoft.com.
     *
     * @param string $val The value of the name
     *
@@ -137,7 +137,7 @@ class VerifiedDomain extends Entity
     }
     /**
     * Gets the type
-    * For example, 'Managed'.
+    * For example, Managed.
     *
     * @return string|null The type
     */
@@ -152,7 +152,7 @@ class VerifiedDomain extends Entity
 
     /**
     * Sets the type
-    * For example, 'Managed'.
+    * For example, Managed.
     *
     * @param string $val The value of the type
     *

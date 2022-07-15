@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AndroidForWorkMobileAppConfiguration File
 * PHP version 7
 *
@@ -131,7 +131,7 @@ class AndroidForWorkMobileAppConfiguration extends ManagedDeviceMobileAppConfigu
     * Sets the permissionActions
     * List of Android app permissions and corresponding permission actions.
     *
-    * @param AndroidPermissionAction $val The permissionActions
+    * @param AndroidPermissionAction[] $val The permissionActions
     *
     * @return AndroidForWorkMobileAppConfiguration
     */

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * SynchronizationJob File
 * PHP version 7
 *
@@ -110,7 +110,7 @@ class SynchronizationJob extends Entity
     * Sets the synchronizationJobSettings
     * Settings associated with the job. Some settings are inherited from the template.
     *
-    * @param KeyValuePair $val The synchronizationJobSettings
+    * @param KeyValuePair[] $val The synchronizationJobSettings
     *
     * @return SynchronizationJob
     */

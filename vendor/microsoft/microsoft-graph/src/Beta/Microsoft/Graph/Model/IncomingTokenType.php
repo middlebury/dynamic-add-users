@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * IncomingTokenType File
 * PHP version 7
 *
@@ -34,4 +34,5 @@ class IncomingTokenType extends Enum
     const SAML11 = "saml11";
     const SAML20 = "saml20";
     const UNKNOWN_FUTURE_VALUE = "unknownFutureValue";
+    const REMOTE_DESKTOP_TOKEN = "remoteDesktopToken";
 }

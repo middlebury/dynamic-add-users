@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * WorkbookWorksheet File
 * PHP version 7
 *
@@ -131,7 +131,7 @@ class WorkbookWorksheet extends Entity
     * Sets the charts
     * Returns collection of charts that are part of the worksheet. Read-only.
     *
-    * @param WorkbookChart $val The charts
+    * @param WorkbookChart[] $val The charts
     *
     * @return WorkbookWorksheet
     */
@@ -161,7 +161,7 @@ class WorkbookWorksheet extends Entity
     * Sets the names
     * Returns collection of names that are associated with the worksheet. Read-only.
     *
-    * @param WorkbookNamedItem $val The names
+    * @param WorkbookNamedItem[] $val The names
     *
     * @return WorkbookWorksheet
     */
@@ -191,7 +191,7 @@ class WorkbookWorksheet extends Entity
     * Sets the pivotTables
     * Collection of PivotTables that are part of the worksheet.
     *
-    * @param WorkbookPivotTable $val The pivotTables
+    * @param WorkbookPivotTable[] $val The pivotTables
     *
     * @return WorkbookWorksheet
     */
@@ -254,7 +254,7 @@ class WorkbookWorksheet extends Entity
     * Sets the tables
     * Collection of tables that are part of the worksheet. Read-only.
     *
-    * @param WorkbookTable $val The tables
+    * @param WorkbookTable[] $val The tables
     *
     * @return WorkbookWorksheet
     */

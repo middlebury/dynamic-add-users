@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * LicenseDetails File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class LicenseDetails extends Entity
     * Sets the servicePlans
     * Information about the service plans assigned with the license. Read-only, Not nullable
     *
-    * @param ServicePlanInfo $val The servicePlans
+    * @param ServicePlanInfo[] $val The servicePlans
     *
     * @return LicenseDetails
     */

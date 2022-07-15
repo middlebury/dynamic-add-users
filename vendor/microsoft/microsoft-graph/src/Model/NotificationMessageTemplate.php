@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * NotificationMessageTemplate File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class NotificationMessageTemplate extends Entity
 {
     /**
     * Gets the brandingOptions
-    * The Message Template Branding Options. Branding is defined in the Intune Admin Console. Possible values are: none, includeCompanyLogo, includeCompanyName, includeContactInformation.
+    * The Message Template Branding Options. Branding is defined in the Intune Admin Console. Possible values are: none, includeCompanyLogo, includeCompanyName, includeContactInformation, includeCompanyPortalLink, includeDeviceDetails.
     *
     * @return NotificationTemplateBrandingOptions|null The brandingOptions
     */
@@ -45,7 +45,7 @@ class NotificationMessageTemplate extends Entity
 
     /**
     * Sets the brandingOptions
-    * The Message Template Branding Options. Branding is defined in the Intune Admin Console. Possible values are: none, includeCompanyLogo, includeCompanyName, includeContactInformation.
+    * The Message Template Branding Options. Branding is defined in the Intune Admin Console. Possible values are: none, includeCompanyLogo, includeCompanyName, includeContactInformation, includeCompanyPortalLink, includeDeviceDetails.
     *
     * @param NotificationTemplateBrandingOptions $val The brandingOptions
     *
@@ -168,7 +168,7 @@ class NotificationMessageTemplate extends Entity
     * Sets the localizedNotificationMessages
     * The list of localized messages for this Notification Message Template.
     *
-    * @param LocalizedNotificationMessage $val The localizedNotificationMessages
+    * @param LocalizedNotificationMessage[] $val The localizedNotificationMessages
     *
     * @return NotificationMessageTemplate
     */

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * UserExperienceAnalyticsDeviceScores File
 * PHP version 7
 *
@@ -50,6 +50,35 @@ class UserExperienceAnalyticsDeviceScores extends Entity
     public function setAppReliabilityScore($val)
     {
         $this->_propDict["appReliabilityScore"] = floatval($val);
+        return $this;
+    }
+
+    /**
+    * Gets the batteryHealthScore
+    * The user experience analytics device battery health score. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
+    *
+    * @return float|null The batteryHealthScore
+    */
+    public function getBatteryHealthScore()
+    {
+        if (array_key_exists("batteryHealthScore", $this->_propDict)) {
+            return $this->_propDict["batteryHealthScore"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the batteryHealthScore
+    * The user experience analytics device battery health score. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
+    *
+    * @param float $val The batteryHealthScore
+    *
+    * @return UserExperienceAnalyticsDeviceScores
+    */
+    public function setBatteryHealthScore($val)
+    {
+        $this->_propDict["batteryHealthScore"] = floatval($val);
         return $this;
     }
 

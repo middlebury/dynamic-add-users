@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * MobileAppTroubleshootingEvent File
 * PHP version 7
 *
@@ -73,7 +73,7 @@ class MobileAppTroubleshootingEvent extends DeviceManagementTroubleshootingEvent
     * Sets the history
     * Intune Mobile Application Troubleshooting History Item
     *
-    * @param MobileAppTroubleshootingHistoryItem $val The history
+    * @param MobileAppTroubleshootingHistoryItem[] $val The history
     *
     * @return MobileAppTroubleshootingEvent
     */
@@ -161,7 +161,7 @@ class MobileAppTroubleshootingEvent extends DeviceManagementTroubleshootingEvent
     * Sets the appLogCollectionRequests
     * The collection property of AppLogUploadRequest.
     *
-    * @param AppLogCollectionRequest $val The appLogCollectionRequests
+    * @param AppLogCollectionRequest[] $val The appLogCollectionRequests
     *
     * @return MobileAppTroubleshootingEvent
     */

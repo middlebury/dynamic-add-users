@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * WorkPosition File
 * PHP version 7
 *
@@ -73,7 +73,7 @@ class WorkPosition extends ItemFacet
     * Sets the colleagues
     * Colleagues that are associated with this position.
     *
-    * @param RelatedPerson $val The colleagues
+    * @param RelatedPerson[] $val The colleagues
     *
     * @return WorkPosition
     */

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Phone File
 * PHP version 7
 *
@@ -106,7 +106,7 @@ class Phone extends Entity
 
     /**
     * Gets the type
-    * The type of phone number. The possible values are: home, business, mobile, other, assistant, homeFax, businessFax, otherFax, pager, radio.
+    * The type of phone number. Possible values are: home, business, mobile, other, assistant, homeFax, businessFax, otherFax, pager, radio.
     *
     * @return PhoneType|null The type
     */
@@ -125,7 +125,7 @@ class Phone extends Entity
 
     /**
     * Sets the type
-    * The type of phone number. The possible values are: home, business, mobile, other, assistant, homeFax, businessFax, otherFax, pager, radio.
+    * The type of phone number. Possible values are: home, business, mobile, other, assistant, homeFax, businessFax, otherFax, pager, radio.
     *
     * @param PhoneType $val The value to assign to the type
     *

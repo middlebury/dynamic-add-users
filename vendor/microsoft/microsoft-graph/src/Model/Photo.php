@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Photo File
 * PHP version 7
 *
@@ -250,7 +250,7 @@ class Photo extends Entity
 
     /**
     * Gets the takenDateTime
-    * Represents the date and time the photo was taken. Read-only.
+    * The date and time the photo was taken in UTC time. Read-only.
     *
     * @return \DateTime|null The takenDateTime
     */
@@ -269,7 +269,7 @@ class Photo extends Entity
 
     /**
     * Sets the takenDateTime
-    * Represents the date and time the photo was taken. Read-only.
+    * The date and time the photo was taken in UTC time. Read-only.
     *
     * @param \DateTime $val The value to assign to the takenDateTime
     *

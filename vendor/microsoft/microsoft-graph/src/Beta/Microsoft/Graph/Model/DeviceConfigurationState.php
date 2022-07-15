@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceConfigurationState File
 * PHP version 7
 *
@@ -133,7 +133,7 @@ class DeviceConfigurationState extends Entity
     /**
     * Sets the settingStates
     *
-    * @param DeviceConfigurationSettingState $val The settingStates
+    * @param DeviceConfigurationSettingState[] $val The settingStates
     *
     * @return DeviceConfigurationState
     */

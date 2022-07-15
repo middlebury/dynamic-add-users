@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * TeamworkUserIdentityType File
 * PHP version 7
 *
@@ -37,4 +37,5 @@ class TeamworkUserIdentityType extends Enum
     const SKYPE_USER = "skypeUser";
     const PHONE_USER = "phoneUser";
     const UNKNOWN_FUTURE_VALUE = "unknownFutureValue";
+    const EMAIL_USER = "emailUser";
 }

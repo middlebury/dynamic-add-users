@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * SubjectRightsRequest File
 * PHP version 7
 *
@@ -87,6 +87,35 @@ class SubjectRightsRequest extends Entity
     public function setClosedDateTime($val)
     {
         $this->_propDict["closedDateTime"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the contentQuery
+    * KQL based content query that should be used for search. This property is defined only for APIs accessed using the /security query path and not the /privacy query path.
+    *
+    * @return string|null The contentQuery
+    */
+    public function getContentQuery()
+    {
+        if (array_key_exists("contentQuery", $this->_propDict)) {
+            return $this->_propDict["contentQuery"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the contentQuery
+    * KQL based content query that should be used for search. This property is defined only for APIs accessed using the /security query path and not the /privacy query path.
+    *
+    * @param string $val The contentQuery
+    *
+    * @return SubjectRightsRequest
+    */
+    public function setContentQuery($val)
+    {
+        $this->_propDict["contentQuery"] = $val;
         return $this;
     }
 
@@ -280,6 +309,35 @@ class SubjectRightsRequest extends Entity
         return $this;
     }
 
+    /**
+    * Gets the externalId
+    * The external ID for the request that is immutable after creation and is used for tracking the request for the external system. This property is defined only for APIs accessed using the /security query path and not the /privacy query path.
+    *
+    * @return string|null The externalId
+    */
+    public function getExternalId()
+    {
+        if (array_key_exists("externalId", $this->_propDict)) {
+            return $this->_propDict["externalId"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the externalId
+    * The external ID for the request that is immutable after creation and is used for tracking the request for the external system. This property is defined only for APIs accessed using the /security query path and not the /privacy query path.
+    *
+    * @param string $val The externalId
+    *
+    * @return SubjectRightsRequest
+    */
+    public function setExternalId($val)
+    {
+        $this->_propDict["externalId"] = $val;
+        return $this;
+    }
+
 
      /**
      * Gets the history
@@ -300,13 +358,71 @@ class SubjectRightsRequest extends Entity
     * Sets the history
     * Collection of history change events.
     *
-    * @param SubjectRightsRequestHistory $val The history
+    * @param SubjectRightsRequestHistory[] $val The history
     *
     * @return SubjectRightsRequest
     */
     public function setHistory($val)
     {
         $this->_propDict["history"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the includeAllVersions
+    * Include all versions of the documents. By default, the current copies of the documents will be returned. If SharePoint sites have versioning enabled, including all versions will include the historical copies of the documents. This property is defined only for APIs accessed using the /security query path and not the /privacy query path.
+    *
+    * @return bool|null The includeAllVersions
+    */
+    public function getIncludeAllVersions()
+    {
+        if (array_key_exists("includeAllVersions", $this->_propDict)) {
+            return $this->_propDict["includeAllVersions"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the includeAllVersions
+    * Include all versions of the documents. By default, the current copies of the documents will be returned. If SharePoint sites have versioning enabled, including all versions will include the historical copies of the documents. This property is defined only for APIs accessed using the /security query path and not the /privacy query path.
+    *
+    * @param bool $val The includeAllVersions
+    *
+    * @return SubjectRightsRequest
+    */
+    public function setIncludeAllVersions($val)
+    {
+        $this->_propDict["includeAllVersions"] = boolval($val);
+        return $this;
+    }
+
+    /**
+    * Gets the includeAuthoredContent
+    * Include content authored by the data subject. This property is defined only for APIs accessed using the /security query path and not the /privacy query path.
+    *
+    * @return bool|null The includeAuthoredContent
+    */
+    public function getIncludeAuthoredContent()
+    {
+        if (array_key_exists("includeAuthoredContent", $this->_propDict)) {
+            return $this->_propDict["includeAuthoredContent"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the includeAuthoredContent
+    * Include content authored by the data subject. This property is defined only for APIs accessed using the /security query path and not the /privacy query path.
+    *
+    * @param bool $val The includeAuthoredContent
+    *
+    * @return SubjectRightsRequest
+    */
+    public function setIncludeAuthoredContent($val)
+    {
+        $this->_propDict["includeAuthoredContent"] = boolval($val);
         return $this;
     }
 
@@ -443,6 +559,66 @@ class SubjectRightsRequest extends Entity
     }
 
     /**
+    * Gets the mailboxlocations
+    *
+    * @return SubjectRightsRequestMailboxLocation|null The mailboxlocations
+    */
+    public function getMailboxlocations()
+    {
+        if (array_key_exists("mailboxlocations", $this->_propDict)) {
+            if (is_a($this->_propDict["mailboxlocations"], "\Beta\Microsoft\Graph\Model\SubjectRightsRequestMailboxLocation") || is_null($this->_propDict["mailboxlocations"])) {
+                return $this->_propDict["mailboxlocations"];
+            } else {
+                $this->_propDict["mailboxlocations"] = new SubjectRightsRequestMailboxLocation($this->_propDict["mailboxlocations"]);
+                return $this->_propDict["mailboxlocations"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the mailboxlocations
+    *
+    * @param SubjectRightsRequestMailboxLocation $val The mailboxlocations
+    *
+    * @return SubjectRightsRequest
+    */
+    public function setMailboxlocations($val)
+    {
+        $this->_propDict["mailboxlocations"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the pauseAfterEstimate
+    * Pause the request after estimate has finished. By default, the data estimate will run and then pause, allowing you to preview results and then select the option to retrieve data in the UI. You can set this property to false if you want it to perform the estimate and then automatically begin with the retrieval of the content. This property is defined only for APIs accessed using the /security query path and not the /privacy query path.
+    *
+    * @return bool|null The pauseAfterEstimate
+    */
+    public function getPauseAfterEstimate()
+    {
+        if (array_key_exists("pauseAfterEstimate", $this->_propDict)) {
+            return $this->_propDict["pauseAfterEstimate"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the pauseAfterEstimate
+    * Pause the request after estimate has finished. By default, the data estimate will run and then pause, allowing you to preview results and then select the option to retrieve data in the UI. You can set this property to false if you want it to perform the estimate and then automatically begin with the retrieval of the content. This property is defined only for APIs accessed using the /security query path and not the /privacy query path.
+    *
+    * @param bool $val The pauseAfterEstimate
+    *
+    * @return SubjectRightsRequest
+    */
+    public function setPauseAfterEstimate($val)
+    {
+        $this->_propDict["pauseAfterEstimate"] = boolval($val);
+        return $this;
+    }
+
+    /**
     * Gets the regulations
     * List of regulations that this request will fulfill.
     *
@@ -471,6 +647,37 @@ class SubjectRightsRequest extends Entity
         return $this;
     }
 
+    /**
+    * Gets the sitelocations
+    *
+    * @return SubjectRightsRequestSiteLocation|null The sitelocations
+    */
+    public function getSitelocations()
+    {
+        if (array_key_exists("sitelocations", $this->_propDict)) {
+            if (is_a($this->_propDict["sitelocations"], "\Beta\Microsoft\Graph\Model\SubjectRightsRequestSiteLocation") || is_null($this->_propDict["sitelocations"])) {
+                return $this->_propDict["sitelocations"];
+            } else {
+                $this->_propDict["sitelocations"] = new SubjectRightsRequestSiteLocation($this->_propDict["sitelocations"]);
+                return $this->_propDict["sitelocations"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the sitelocations
+    *
+    * @param SubjectRightsRequestSiteLocation $val The sitelocations
+    *
+    * @return SubjectRightsRequest
+    */
+    public function setSitelocations($val)
+    {
+        $this->_propDict["sitelocations"] = $val;
+        return $this;
+    }
+
 
      /**
      * Gets the stages
@@ -491,7 +698,7 @@ class SubjectRightsRequest extends Entity
     * Sets the stages
     * Information about the different stages for the request.
     *
-    * @param SubjectRightsRequestStageDetail $val The stages
+    * @param SubjectRightsRequestStageDetail[] $val The stages
     *
     * @return SubjectRightsRequest
     */
@@ -503,7 +710,7 @@ class SubjectRightsRequest extends Entity
 
     /**
     * Gets the status
-    * The status of the request.. Possible values are: active, closed, unknownFutureValue.
+    * The status of the request. Possible values are: active, closed, unknownFutureValue.
     *
     * @return SubjectRightsRequestStatus|null The status
     */
@@ -522,7 +729,7 @@ class SubjectRightsRequest extends Entity
 
     /**
     * Sets the status
-    * The status of the request.. Possible values are: active, closed, unknownFutureValue.
+    * The status of the request. Possible values are: active, closed, unknownFutureValue.
     *
     * @param SubjectRightsRequestStatus $val The status
     *
@@ -570,7 +777,7 @@ class SubjectRightsRequest extends Entity
 
      /**
      * Gets the notes
-    * List of notes associcated with the request.
+    * List of notes associated with the request.
      *
      * @return array|null The notes
      */
@@ -585,9 +792,9 @@ class SubjectRightsRequest extends Entity
 
     /**
     * Sets the notes
-    * List of notes associcated with the request.
+    * List of notes associated with the request.
     *
-    * @param AuthoredNote $val The notes
+    * @param AuthoredNote[] $val The notes
     *
     * @return SubjectRightsRequest
     */

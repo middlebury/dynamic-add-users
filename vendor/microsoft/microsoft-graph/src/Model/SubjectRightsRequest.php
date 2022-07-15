@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * SubjectRightsRequest File
 * PHP version 7
 *
@@ -300,7 +300,7 @@ class SubjectRightsRequest extends Entity
     * Sets the history
     * Collection of history change events.
     *
-    * @param SubjectRightsRequestHistory $val The history
+    * @param SubjectRightsRequestHistory[] $val The history
     *
     * @return SubjectRightsRequest
     */
@@ -491,7 +491,7 @@ class SubjectRightsRequest extends Entity
     * Sets the stages
     * Information about the different stages for the request.
     *
-    * @param SubjectRightsRequestStageDetail $val The stages
+    * @param SubjectRightsRequestStageDetail[] $val The stages
     *
     * @return SubjectRightsRequest
     */
@@ -503,7 +503,7 @@ class SubjectRightsRequest extends Entity
 
     /**
     * Gets the status
-    * The status of the request.. Possible values are: active, closed, unknownFutureValue.
+    * The status of the request. Possible values are: active, closed, unknownFutureValue.
     *
     * @return SubjectRightsRequestStatus|null The status
     */
@@ -522,7 +522,7 @@ class SubjectRightsRequest extends Entity
 
     /**
     * Sets the status
-    * The status of the request.. Possible values are: active, closed, unknownFutureValue.
+    * The status of the request. Possible values are: active, closed, unknownFutureValue.
     *
     * @param SubjectRightsRequestStatus $val The status
     *
@@ -570,7 +570,7 @@ class SubjectRightsRequest extends Entity
 
      /**
      * Gets the notes
-    * List of notes associcated with the request.
+    * List of notes associated with the request.
      *
      * @return array|null The notes
      */
@@ -585,9 +585,9 @@ class SubjectRightsRequest extends Entity
 
     /**
     * Sets the notes
-    * List of notes associcated with the request.
+    * List of notes associated with the request.
     *
-    * @param AuthoredNote $val The notes
+    * @param AuthoredNote[] $val The notes
     *
     * @return SubjectRightsRequest
     */

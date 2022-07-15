@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * SearchEntity File
 * PHP version 7
 *
@@ -27,6 +27,7 @@ class SearchEntity extends Entity
 
      /**
      * Gets the acronyms
+    * Administrative answer in Microsoft Search results to define common acronyms in a organization.
      *
      * @return array|null The acronyms
      */
@@ -41,8 +42,9 @@ class SearchEntity extends Entity
 
     /**
     * Sets the acronyms
+    * Administrative answer in Microsoft Search results to define common acronyms in a organization.
     *
-    * @param \Beta\Microsoft\Graph\Search\Model\Acronym $val The acronyms
+    * @param \Beta\Microsoft\Graph\Search\Model\Acronym[] $val The acronyms
     *
     * @return SearchEntity
     */
@@ -55,6 +57,7 @@ class SearchEntity extends Entity
 
      /**
      * Gets the bookmarks
+    * Administrative answer in Microsoft Search results for common search queries in an organization.
      *
      * @return array|null The bookmarks
      */
@@ -69,8 +72,9 @@ class SearchEntity extends Entity
 
     /**
     * Sets the bookmarks
+    * Administrative answer in Microsoft Search results for common search queries in an organization.
     *
-    * @param \Beta\Microsoft\Graph\Search\Model\Bookmark $val The bookmarks
+    * @param \Beta\Microsoft\Graph\Search\Model\Bookmark[] $val The bookmarks
     *
     * @return SearchEntity
     */
@@ -83,6 +87,7 @@ class SearchEntity extends Entity
 
      /**
      * Gets the qnas
+    * Administrative answer in Microsoft Search results which provide answers for specific search keywords in an organization.
      *
      * @return array|null The qnas
      */
@@ -97,8 +102,9 @@ class SearchEntity extends Entity
 
     /**
     * Sets the qnas
+    * Administrative answer in Microsoft Search results which provide answers for specific search keywords in an organization.
     *
-    * @param \Beta\Microsoft\Graph\Search\Model\Qna $val The qnas
+    * @param \Beta\Microsoft\Graph\Search\Model\Qna[] $val The qnas
     *
     * @return SearchEntity
     */

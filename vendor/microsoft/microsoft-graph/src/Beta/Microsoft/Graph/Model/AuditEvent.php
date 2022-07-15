@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AuditEvent File
 * PHP version 7
 *
@@ -342,7 +342,7 @@ class AuditEvent extends Entity
     * Sets the resources
     * Resources being modified.
     *
-    * @param AuditResource $val The resources
+    * @param AuditResource[] $val The resources
     *
     * @return AuditEvent
     */

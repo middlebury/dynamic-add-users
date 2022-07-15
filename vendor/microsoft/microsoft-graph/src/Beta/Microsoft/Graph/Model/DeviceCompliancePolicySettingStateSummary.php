@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceCompliancePolicySettingStateSummary File
 * PHP version 7
 *
@@ -171,7 +171,7 @@ class DeviceCompliancePolicySettingStateSummary extends Entity
 
     /**
     * Gets the platformType
-    * Setting platform. Possible values are: android, iOS, macOS, windowsPhone81, windows81AndLater, windows10AndLater, androidWorkProfile, all.
+    * Setting platform. Possible values are: android, androidForWork, iOS, macOS, windowsPhone81, windows81AndLater, windows10AndLater, androidWorkProfile, windows10XProfile, androidAOSP, all.
     *
     * @return PolicyPlatformType|null The platformType
     */
@@ -190,7 +190,7 @@ class DeviceCompliancePolicySettingStateSummary extends Entity
 
     /**
     * Sets the platformType
-    * Setting platform. Possible values are: android, iOS, macOS, windowsPhone81, windows81AndLater, windows10AndLater, androidWorkProfile, all.
+    * Setting platform. Possible values are: android, androidForWork, iOS, macOS, windowsPhone81, windows81AndLater, windows10AndLater, androidWorkProfile, windows10XProfile, androidAOSP, all.
     *
     * @param PolicyPlatformType $val The platformType
     *
@@ -338,7 +338,7 @@ class DeviceCompliancePolicySettingStateSummary extends Entity
     * Sets the deviceComplianceSettingStates
     * Not yet documented
     *
-    * @param DeviceComplianceSettingState $val The deviceComplianceSettingStates
+    * @param DeviceComplianceSettingState[] $val The deviceComplianceSettingStates
     *
     * @return DeviceCompliancePolicySettingStateSummary
     */

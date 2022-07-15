@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * CustomerPaymentJournal File
 * PHP version 7
 *
@@ -212,7 +212,7 @@ class CustomerPaymentJournal extends Entity
     /**
     * Sets the customerPayments
     *
-    * @param CustomerPayment $val The customerPayments
+    * @param CustomerPayment[] $val The customerPayments
     *
     * @return CustomerPaymentJournal
     */

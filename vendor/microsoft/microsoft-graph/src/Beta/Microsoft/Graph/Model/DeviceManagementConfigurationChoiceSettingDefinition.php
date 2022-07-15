@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceManagementConfigurationChoiceSettingDefinition File
 * PHP version 7
 *
@@ -73,7 +73,7 @@ class DeviceManagementConfigurationChoiceSettingDefinition extends DeviceManagem
     * Sets the options
     * Options for the setting that can be selected
     *
-    * @param DeviceManagementConfigurationOptionDefinition $val The options
+    * @param DeviceManagementConfigurationOptionDefinition[] $val The options
     *
     * @return DeviceManagementConfigurationChoiceSettingDefinition
     */

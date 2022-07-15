@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AgreementFile File
 * PHP version 7
 *
@@ -27,6 +27,7 @@ class AgreementFile extends AgreementFileProperties
 
      /**
      * Gets the localizations
+    * The localized version of the terms of use agreement files attached to the agreement.
      *
      * @return array|null The localizations
      */
@@ -41,8 +42,9 @@ class AgreementFile extends AgreementFileProperties
 
     /**
     * Sets the localizations
+    * The localized version of the terms of use agreement files attached to the agreement.
     *
-    * @param AgreementFileLocalization $val The localizations
+    * @param AgreementFileLocalization[] $val The localizations
     *
     * @return AgreementFile
     */

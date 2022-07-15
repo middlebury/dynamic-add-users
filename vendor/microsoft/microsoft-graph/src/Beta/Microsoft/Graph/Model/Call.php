@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Call File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class Call extends Entity
     * Sets the activeModalities
     * The list of active modalities. Possible values are: unknown, audio, video, videoBasedScreenSharing, data. Read-only.
     *
-    * @param Modality $val The activeModalities
+    * @param Modality[] $val The activeModalities
     *
     * @return Call
     */
@@ -147,6 +147,7 @@ class Call extends Entity
 
     /**
     * Gets the callOptions
+    * Contains the optional features for the call.
     *
     * @return CallOptions|null The callOptions
     */
@@ -165,6 +166,7 @@ class Call extends Entity
 
     /**
     * Sets the callOptions
+    * Contains the optional features for the call.
     *
     * @param CallOptions $val The callOptions
     *
@@ -196,7 +198,7 @@ class Call extends Entity
     * Sets the callRoutes
     * The routing information on how the call was retargeted. Read-only.
     *
-    * @param CallRoute $val The callRoutes
+    * @param CallRoute[] $val The callRoutes
     *
     * @return Call
     */
@@ -208,7 +210,7 @@ class Call extends Entity
 
     /**
     * Gets the chatInfo
-    * The chat information. Required information for joining a meeting.
+    * The chat information. Required information for meeting scenarios.
     *
     * @return ChatInfo|null The chatInfo
     */
@@ -227,7 +229,7 @@ class Call extends Entity
 
     /**
     * Sets the chatInfo
-    * The chat information. Required information for joining a meeting.
+    * The chat information. Required information for meeting scenarios.
     *
     * @param ChatInfo $val The chatInfo
     *
@@ -307,7 +309,7 @@ class Call extends Entity
 
     /**
     * Gets the mediaConfig
-    * The media configuration. Required.
+    * The media configuration. Required information for creating peer to peer calls or joining meetings.
     *
     * @return MediaConfig|null The mediaConfig
     */
@@ -326,7 +328,7 @@ class Call extends Entity
 
     /**
     * Sets the mediaConfig
-    * The media configuration. Required.
+    * The media configuration. Required information for creating peer to peer calls or joining meetings.
     *
     * @param MediaConfig $val The mediaConfig
     *
@@ -406,7 +408,7 @@ class Call extends Entity
 
     /**
     * Gets the meetingInfo
-    * The meeting information that's required for joining a meeting.
+    * The meeting information. Required information for meeting scenarios.
     *
     * @return MeetingInfo|null The meetingInfo
     */
@@ -425,7 +427,7 @@ class Call extends Entity
 
     /**
     * Sets the meetingInfo
-    * The meeting information that's required for joining a meeting.
+    * The meeting information. Required information for meeting scenarios.
     *
     * @param MeetingInfo $val The meetingInfo
     *
@@ -482,7 +484,7 @@ class Call extends Entity
     /**
     * Sets the requestedModalities
     *
-    * @param Modality $val The requestedModalities
+    * @param Modality[] $val The requestedModalities
     *
     * @return Call
     */
@@ -568,7 +570,7 @@ class Call extends Entity
     /**
     * Sets the routingPolicies
     *
-    * @param RoutingPolicy $val The routingPolicies
+    * @param RoutingPolicy[] $val The routingPolicies
     *
     * @return Call
     */
@@ -685,7 +687,7 @@ class Call extends Entity
     /**
     * Sets the targets
     *
-    * @param InvitationParticipantInfo $val The targets
+    * @param InvitationParticipantInfo[] $val The targets
     *
     * @return Call
     */
@@ -816,7 +818,6 @@ class Call extends Entity
 
      /**
      * Gets the audioRoutingGroups
-    * Read-only. Nullable.
      *
      * @return array|null The audioRoutingGroups
      */
@@ -831,9 +832,8 @@ class Call extends Entity
 
     /**
     * Sets the audioRoutingGroups
-    * Read-only. Nullable.
     *
-    * @param AudioRoutingGroup $val The audioRoutingGroups
+    * @param AudioRoutingGroup[] $val The audioRoutingGroups
     *
     * @return Call
     */
@@ -845,8 +845,35 @@ class Call extends Entity
 
 
      /**
+     * Gets the contentSharingSessions
+     *
+     * @return array|null The contentSharingSessions
+     */
+    public function getContentSharingSessions()
+    {
+        if (array_key_exists("contentSharingSessions", $this->_propDict)) {
+           return $this->_propDict["contentSharingSessions"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the contentSharingSessions
+    *
+    * @param ContentSharingSession[] $val The contentSharingSessions
+    *
+    * @return Call
+    */
+    public function setContentSharingSessions($val)
+    {
+        $this->_propDict["contentSharingSessions"] = $val;
+        return $this;
+    }
+
+
+     /**
      * Gets the operations
-    * Read-only. Nullable.
      *
      * @return array|null The operations
      */
@@ -861,9 +888,8 @@ class Call extends Entity
 
     /**
     * Sets the operations
-    * Read-only. Nullable.
     *
-    * @param CommsOperation $val The operations
+    * @param CommsOperation[] $val The operations
     *
     * @return Call
     */
@@ -876,7 +902,6 @@ class Call extends Entity
 
      /**
      * Gets the participants
-    * Read-only. Nullable.
      *
      * @return array|null The participants
      */
@@ -891,9 +916,8 @@ class Call extends Entity
 
     /**
     * Sets the participants
-    * Read-only. Nullable.
     *
-    * @param Participant $val The participants
+    * @param Participant[] $val The participants
     *
     * @return Call
     */

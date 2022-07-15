@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Conversation File
 * PHP version 7
 *
@@ -55,7 +55,7 @@ class Conversation extends Entity
 
     /**
     * Gets the lastDeliveredDateTime
-    * The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+    * The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Supports $filter (eq, ne, le, ge).
     *
     * @return \DateTime|null The lastDeliveredDateTime
     */
@@ -74,7 +74,7 @@ class Conversation extends Entity
 
     /**
     * Sets the lastDeliveredDateTime
-    * The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+    * The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Supports $filter (eq, ne, le, ge).
     *
     * @param \DateTime $val The lastDeliveredDateTime
     *
@@ -88,7 +88,7 @@ class Conversation extends Entity
 
     /**
     * Gets the preview
-    * A short summary from the body of the latest post in this conversation. Supports $filter (eq, ne, le, ge).
+    * A short summary from the body of the latest post in this conversation.
     *
     * @return string|null The preview
     */
@@ -103,7 +103,7 @@ class Conversation extends Entity
 
     /**
     * Sets the preview
-    * A short summary from the body of the latest post in this conversation. Supports $filter (eq, ne, le, ge).
+    * A short summary from the body of the latest post in this conversation.
     *
     * @param string $val The preview
     *
@@ -193,7 +193,7 @@ class Conversation extends Entity
     * Sets the threads
     * A collection of all the conversation threads in the conversation. A navigation property. Read-only. Nullable.
     *
-    * @param ConversationThread $val The threads
+    * @param ConversationThread[] $val The threads
     *
     * @return Conversation
     */

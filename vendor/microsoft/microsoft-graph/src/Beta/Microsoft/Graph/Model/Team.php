@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Team File
 * PHP version 7
 *
@@ -430,6 +430,68 @@ class Team extends Entity
     }
 
     /**
+    * Gets the summary
+    * Contains summary information about the team, including number of owners, members, and guests.
+    *
+    * @return TeamSummary|null The summary
+    */
+    public function getSummary()
+    {
+        if (array_key_exists("summary", $this->_propDict)) {
+            if (is_a($this->_propDict["summary"], "\Beta\Microsoft\Graph\Model\TeamSummary") || is_null($this->_propDict["summary"])) {
+                return $this->_propDict["summary"];
+            } else {
+                $this->_propDict["summary"] = new TeamSummary($this->_propDict["summary"]);
+                return $this->_propDict["summary"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the summary
+    * Contains summary information about the team, including number of owners, members, and guests.
+    *
+    * @param TeamSummary $val The summary
+    *
+    * @return Team
+    */
+    public function setSummary($val)
+    {
+        $this->_propDict["summary"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the tenantId
+    * The ID of the Azure Active Directory tenant.
+    *
+    * @return string|null The tenantId
+    */
+    public function getTenantId()
+    {
+        if (array_key_exists("tenantId", $this->_propDict)) {
+            return $this->_propDict["tenantId"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the tenantId
+    * The ID of the Azure Active Directory tenant.
+    *
+    * @param string $val The tenantId
+    *
+    * @return Team
+    */
+    public function setTenantId($val)
+    {
+        $this->_propDict["tenantId"] = $val;
+        return $this;
+    }
+
+    /**
     * Gets the visibility
     * The visibility of the group and team. Defaults to Public.
     *
@@ -493,8 +555,38 @@ class Team extends Entity
 
 
      /**
+     * Gets the allChannels
+    * List of channels either hosted in or shared with the team (incoming channels).
+     *
+     * @return array|null The allChannels
+     */
+    public function getAllChannels()
+    {
+        if (array_key_exists("allChannels", $this->_propDict)) {
+           return $this->_propDict["allChannels"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the allChannels
+    * List of channels either hosted in or shared with the team (incoming channels).
+    *
+    * @param Channel[] $val The allChannels
+    *
+    * @return Team
+    */
+    public function setAllChannels($val)
+    {
+        $this->_propDict["allChannels"] = $val;
+        return $this;
+    }
+
+
+     /**
      * Gets the channels
-    * The collection of channels &amp; messages associated with the team.
+    * The collection of channels and messages associated with the team.
      *
      * @return array|null The channels
      */
@@ -509,9 +601,9 @@ class Team extends Entity
 
     /**
     * Sets the channels
-    * The collection of channels &amp; messages associated with the team.
+    * The collection of channels and messages associated with the team.
     *
-    * @param Channel $val The channels
+    * @param Channel[] $val The channels
     *
     * @return Team
     */
@@ -554,6 +646,36 @@ class Team extends Entity
 
 
      /**
+     * Gets the incomingChannels
+    * List of channels shared with the team.
+     *
+     * @return array|null The incomingChannels
+     */
+    public function getIncomingChannels()
+    {
+        if (array_key_exists("incomingChannels", $this->_propDict)) {
+           return $this->_propDict["incomingChannels"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the incomingChannels
+    * List of channels shared with the team.
+    *
+    * @param Channel[] $val The incomingChannels
+    *
+    * @return Team
+    */
+    public function setIncomingChannels($val)
+    {
+        $this->_propDict["incomingChannels"] = $val;
+        return $this;
+    }
+
+
+     /**
      * Gets the installedApps
     * The apps installed in this team.
      *
@@ -572,7 +694,7 @@ class Team extends Entity
     * Sets the installedApps
     * The apps installed in this team.
     *
-    * @param TeamsAppInstallation $val The installedApps
+    * @param TeamsAppInstallation[] $val The installedApps
     *
     * @return Team
     */
@@ -602,7 +724,7 @@ class Team extends Entity
     * Sets the members
     * Members and owners of the team.
     *
-    * @param ConversationMember $val The members
+    * @param ConversationMember[] $val The members
     *
     * @return Team
     */
@@ -632,7 +754,7 @@ class Team extends Entity
     * Sets the operations
     * The async operations that ran or are running on this team.
     *
-    * @param TeamsAsyncOperation $val The operations
+    * @param TeamsAsyncOperation[] $val The operations
     *
     * @return Team
     */
@@ -662,7 +784,7 @@ class Team extends Entity
     * Sets the owners
     * The list of this team's owners. Currently, when creating a team using application permissions, exactly one owner must be specified. When using user delegated permissions, no owner can be specified (the current user is the owner). Owner must be specified as an object ID (GUID), not a UPN.
     *
-    * @param User $val The owners
+    * @param User[] $val The owners
     *
     * @return Team
     */
@@ -692,7 +814,7 @@ class Team extends Entity
     * Sets the permissionGrants
     * A collection of permissions granted to apps to access the team.
     *
-    * @param ResourceSpecificPermissionGrant $val The permissionGrants
+    * @param ResourceSpecificPermissionGrant[] $val The permissionGrants
     *
     * @return Team
     */
@@ -788,7 +910,7 @@ class Team extends Entity
     * Sets the tags
     * The tags associated with the team.
     *
-    * @param TeamworkTag $val The tags
+    * @param TeamworkTag[] $val The tags
     *
     * @return Team
     */

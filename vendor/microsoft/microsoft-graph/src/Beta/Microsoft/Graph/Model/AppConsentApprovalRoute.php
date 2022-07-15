@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AppConsentApprovalRoute File
 * PHP version 7
 *
@@ -27,6 +27,7 @@ class AppConsentApprovalRoute extends Entity
 
      /**
      * Gets the appConsentRequests
+    * A collection of userConsentRequest objects for a specific application.
      *
      * @return array|null The appConsentRequests
      */
@@ -41,8 +42,9 @@ class AppConsentApprovalRoute extends Entity
 
     /**
     * Sets the appConsentRequests
+    * A collection of userConsentRequest objects for a specific application.
     *
-    * @param AppConsentRequest $val The appConsentRequests
+    * @param AppConsentRequest[] $val The appConsentRequests
     *
     * @return AppConsentApprovalRoute
     */

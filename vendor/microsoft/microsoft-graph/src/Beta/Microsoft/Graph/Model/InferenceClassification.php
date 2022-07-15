@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * InferenceClassification File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class InferenceClassification extends Entity
     * Sets the overrides
     * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
     *
-    * @param InferenceClassificationOverride $val The overrides
+    * @param InferenceClassificationOverride[] $val The overrides
     *
     * @return InferenceClassification
     */

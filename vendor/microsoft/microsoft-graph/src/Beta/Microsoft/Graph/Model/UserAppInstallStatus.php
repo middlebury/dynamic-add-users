@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * UserAppInstallStatus File
 * PHP version 7
 *
@@ -222,7 +222,7 @@ class UserAppInstallStatus extends Entity
     * Sets the deviceStatuses
     * The install state of the app on devices.
     *
-    * @param MobileAppInstallStatus $val The deviceStatuses
+    * @param MobileAppInstallStatus[] $val The deviceStatuses
     *
     * @return UserAppInstallStatus
     */

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceHealthScript File
 * PHP version 7
 *
@@ -139,7 +139,7 @@ class DeviceHealthScript extends Entity
     * Sets the detectionScriptParameters
     * List of ComplexType DetectionScriptParameters objects.
     *
-    * @param DeviceHealthScriptParameter $val The detectionScriptParameters
+    * @param DeviceHealthScriptParameter[] $val The detectionScriptParameters
     *
     * @return DeviceHealthScript
     */
@@ -380,7 +380,7 @@ class DeviceHealthScript extends Entity
     * Sets the remediationScriptParameters
     * List of ComplexType RemediationScriptParameters objects.
     *
-    * @param DeviceHealthScriptParameter $val The remediationScriptParameters
+    * @param DeviceHealthScriptParameter[] $val The remediationScriptParameters
     *
     * @return DeviceHealthScript
     */
@@ -530,7 +530,7 @@ class DeviceHealthScript extends Entity
     * Sets the assignments
     * The list of group assignments for the device health script
     *
-    * @param DeviceHealthScriptAssignment $val The assignments
+    * @param DeviceHealthScriptAssignment[] $val The assignments
     *
     * @return DeviceHealthScript
     */
@@ -560,7 +560,7 @@ class DeviceHealthScript extends Entity
     * Sets the deviceRunStates
     * List of run states for the device health script across all devices
     *
-    * @param DeviceHealthScriptDeviceState $val The deviceRunStates
+    * @param DeviceHealthScriptDeviceState[] $val The deviceRunStates
     *
     * @return DeviceHealthScript
     */

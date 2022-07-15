@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceManagementConfigurationSimpleSettingDefinition File
 * PHP version 7
 *
@@ -77,7 +77,7 @@ class DeviceManagementConfigurationSimpleSettingDefinition extends DeviceManagem
     * Sets the dependedOnBy
     * list of child settings that depend on this setting
     *
-    * @param DeviceManagementConfigurationSettingDependedOnBy $val The dependedOnBy
+    * @param DeviceManagementConfigurationSettingDependedOnBy[] $val The dependedOnBy
     *
     * @return DeviceManagementConfigurationSimpleSettingDefinition
     */
@@ -107,7 +107,7 @@ class DeviceManagementConfigurationSimpleSettingDefinition extends DeviceManagem
     * Sets the dependentOn
     * list of parent settings this setting is dependent on
     *
-    * @param DeviceManagementConfigurationDependentOn $val The dependentOn
+    * @param DeviceManagementConfigurationDependentOn[] $val The dependentOn
     *
     * @return DeviceManagementConfigurationSimpleSettingDefinition
     */

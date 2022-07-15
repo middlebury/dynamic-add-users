@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AppConsentRequest File
 * PHP version 7
 *
@@ -114,7 +114,7 @@ class AppConsentRequest extends Entity
 
      /**
      * Gets the pendingScopes
-    * A list of pending scopes waiting for approval. Required.
+    * A list of pending scopes waiting for approval. This is empty if the consentType is Static. Required.
      *
      * @return array|null The pendingScopes
      */
@@ -129,9 +129,9 @@ class AppConsentRequest extends Entity
 
     /**
     * Sets the pendingScopes
-    * A list of pending scopes waiting for approval. Required.
+    * A list of pending scopes waiting for approval. This is empty if the consentType is Static. Required.
     *
-    * @param AppConsentRequestScope $val The pendingScopes
+    * @param AppConsentRequestScope[] $val The pendingScopes
     *
     * @return AppConsentRequest
     */
@@ -161,7 +161,7 @@ class AppConsentRequest extends Entity
     * Sets the userConsentRequests
     * A list of pending user consent requests.
     *
-    * @param UserConsentRequest $val The userConsentRequests
+    * @param UserConsentRequest[] $val The userConsentRequests
     *
     * @return AppConsentRequest
     */

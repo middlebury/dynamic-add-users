@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * EducationRoot File
 * PHP version 7
 *
@@ -73,7 +73,7 @@ class EducationRoot implements \JsonSerializable
     /**
     * Sets the classes
     *
-    * @param EducationClass $val The classes
+    * @param EducationClass[] $val The classes
     *
     * @return EducationRoot
     */
@@ -132,7 +132,7 @@ class EducationRoot implements \JsonSerializable
     /**
     * Sets the schools
     *
-    * @param EducationSchool $val The schools
+    * @param EducationSchool[] $val The schools
     *
     * @return EducationRoot
     */
@@ -160,7 +160,7 @@ class EducationRoot implements \JsonSerializable
     /**
     * Sets the users
     *
-    * @param EducationUser $val The users
+    * @param EducationUser[] $val The users
     *
     * @return EducationRoot
     */
@@ -202,6 +202,7 @@ class EducationRoot implements \JsonSerializable
     *
     * @return array The list of properties
     */
+    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         $serializableProperties = $this->getProperties();

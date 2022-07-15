@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ExactMatchLookupJob File
 * PHP version 7
 *
@@ -69,7 +69,7 @@ class ExactMatchLookupJob extends ExactMatchJobBase
     /**
     * Sets the matchingRows
     *
-    * @param LookupResultRow $val The matchingRows
+    * @param LookupResultRow[] $val The matchingRows
     *
     * @return ExactMatchLookupJob
     */

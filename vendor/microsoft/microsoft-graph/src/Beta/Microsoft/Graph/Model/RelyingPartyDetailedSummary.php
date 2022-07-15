@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * RelyingPartyDetailedSummary File
 * PHP version 7
 *
@@ -106,7 +106,7 @@ class RelyingPartyDetailedSummary extends Entity
     * Sets the migrationValidationDetails
     * Specifies all the validations check done on applications configuration details to evaluate if the application is ready to be moved to Azure AD.
     *
-    * @param KeyValuePair $val The migrationValidationDetails
+    * @param KeyValuePair[] $val The migrationValidationDetails
     *
     * @return RelyingPartyDetailedSummary
     */

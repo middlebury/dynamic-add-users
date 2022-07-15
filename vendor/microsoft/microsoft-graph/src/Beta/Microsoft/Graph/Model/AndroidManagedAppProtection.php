@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AndroidManagedAppProtection File
 * PHP version 7
 *
@@ -247,6 +247,105 @@ class AndroidManagedAppProtection extends TargetedManagedAppProtection
         return $this;
     }
 
+    /**
+    * Gets the appActionIfDevicePasscodeComplexityLessThanHigh
+    * If the device does not have a passcode of high complexity or higher, trigger the stored action.
+    *
+    * @return ManagedAppRemediationAction|null The appActionIfDevicePasscodeComplexityLessThanHigh
+    */
+    public function getAppActionIfDevicePasscodeComplexityLessThanHigh()
+    {
+        if (array_key_exists("appActionIfDevicePasscodeComplexityLessThanHigh", $this->_propDict)) {
+            if (is_a($this->_propDict["appActionIfDevicePasscodeComplexityLessThanHigh"], "\Beta\Microsoft\Graph\Model\ManagedAppRemediationAction") || is_null($this->_propDict["appActionIfDevicePasscodeComplexityLessThanHigh"])) {
+                return $this->_propDict["appActionIfDevicePasscodeComplexityLessThanHigh"];
+            } else {
+                $this->_propDict["appActionIfDevicePasscodeComplexityLessThanHigh"] = new ManagedAppRemediationAction($this->_propDict["appActionIfDevicePasscodeComplexityLessThanHigh"]);
+                return $this->_propDict["appActionIfDevicePasscodeComplexityLessThanHigh"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the appActionIfDevicePasscodeComplexityLessThanHigh
+    * If the device does not have a passcode of high complexity or higher, trigger the stored action.
+    *
+    * @param ManagedAppRemediationAction $val The appActionIfDevicePasscodeComplexityLessThanHigh
+    *
+    * @return AndroidManagedAppProtection
+    */
+    public function setAppActionIfDevicePasscodeComplexityLessThanHigh($val)
+    {
+        $this->_propDict["appActionIfDevicePasscodeComplexityLessThanHigh"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the appActionIfDevicePasscodeComplexityLessThanLow
+    * If the device does not have a passcode of low complexity or higher, trigger the stored action.
+    *
+    * @return ManagedAppRemediationAction|null The appActionIfDevicePasscodeComplexityLessThanLow
+    */
+    public function getAppActionIfDevicePasscodeComplexityLessThanLow()
+    {
+        if (array_key_exists("appActionIfDevicePasscodeComplexityLessThanLow", $this->_propDict)) {
+            if (is_a($this->_propDict["appActionIfDevicePasscodeComplexityLessThanLow"], "\Beta\Microsoft\Graph\Model\ManagedAppRemediationAction") || is_null($this->_propDict["appActionIfDevicePasscodeComplexityLessThanLow"])) {
+                return $this->_propDict["appActionIfDevicePasscodeComplexityLessThanLow"];
+            } else {
+                $this->_propDict["appActionIfDevicePasscodeComplexityLessThanLow"] = new ManagedAppRemediationAction($this->_propDict["appActionIfDevicePasscodeComplexityLessThanLow"]);
+                return $this->_propDict["appActionIfDevicePasscodeComplexityLessThanLow"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the appActionIfDevicePasscodeComplexityLessThanLow
+    * If the device does not have a passcode of low complexity or higher, trigger the stored action.
+    *
+    * @param ManagedAppRemediationAction $val The appActionIfDevicePasscodeComplexityLessThanLow
+    *
+    * @return AndroidManagedAppProtection
+    */
+    public function setAppActionIfDevicePasscodeComplexityLessThanLow($val)
+    {
+        $this->_propDict["appActionIfDevicePasscodeComplexityLessThanLow"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the appActionIfDevicePasscodeComplexityLessThanMedium
+    * If the device does not have a passcode of medium complexity or higher, trigger the stored action.
+    *
+    * @return ManagedAppRemediationAction|null The appActionIfDevicePasscodeComplexityLessThanMedium
+    */
+    public function getAppActionIfDevicePasscodeComplexityLessThanMedium()
+    {
+        if (array_key_exists("appActionIfDevicePasscodeComplexityLessThanMedium", $this->_propDict)) {
+            if (is_a($this->_propDict["appActionIfDevicePasscodeComplexityLessThanMedium"], "\Beta\Microsoft\Graph\Model\ManagedAppRemediationAction") || is_null($this->_propDict["appActionIfDevicePasscodeComplexityLessThanMedium"])) {
+                return $this->_propDict["appActionIfDevicePasscodeComplexityLessThanMedium"];
+            } else {
+                $this->_propDict["appActionIfDevicePasscodeComplexityLessThanMedium"] = new ManagedAppRemediationAction($this->_propDict["appActionIfDevicePasscodeComplexityLessThanMedium"]);
+                return $this->_propDict["appActionIfDevicePasscodeComplexityLessThanMedium"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the appActionIfDevicePasscodeComplexityLessThanMedium
+    * If the device does not have a passcode of medium complexity or higher, trigger the stored action.
+    *
+    * @param ManagedAppRemediationAction $val The appActionIfDevicePasscodeComplexityLessThanMedium
+    *
+    * @return AndroidManagedAppProtection
+    */
+    public function setAppActionIfDevicePasscodeComplexityLessThanMedium($val)
+    {
+        $this->_propDict["appActionIfDevicePasscodeComplexityLessThanMedium"] = $val;
+        return $this;
+    }
+
 
      /**
      * Gets the approvedKeyboards
@@ -267,7 +366,7 @@ class AndroidManagedAppProtection extends TargetedManagedAppProtection
     * Sets the approvedKeyboards
     * If Keyboard Restriction is enabled, only keyboards in this approved list will be allowed. A key should be Android package id for a keyboard and value should be a friendly name
     *
-    * @param KeyValuePair $val The approvedKeyboards
+    * @param KeyValuePair[] $val The approvedKeyboards
     *
     * @return AndroidManagedAppProtection
     */
@@ -366,7 +465,7 @@ class AndroidManagedAppProtection extends TargetedManagedAppProtection
 
     /**
     * Gets the customBrowserDisplayName
-    * Friendly name of the preferred custom browser to open weblink on Android. When this property is configured, ManagedBrowserToOpenLinksRequired should be true.
+    * Friendly name of the preferred custom browser to open weblink on Android.
     *
     * @return string|null The customBrowserDisplayName
     */
@@ -381,7 +480,7 @@ class AndroidManagedAppProtection extends TargetedManagedAppProtection
 
     /**
     * Sets the customBrowserDisplayName
-    * Friendly name of the preferred custom browser to open weblink on Android. When this property is configured, ManagedBrowserToOpenLinksRequired should be true.
+    * Friendly name of the preferred custom browser to open weblink on Android.
     *
     * @param string $val The customBrowserDisplayName
     *
@@ -395,7 +494,7 @@ class AndroidManagedAppProtection extends TargetedManagedAppProtection
 
     /**
     * Gets the customBrowserPackageId
-    * Unique identifier of the preferred custom browser to open weblink on Android. When this property is configured, ManagedBrowserToOpenLinksRequired should be true.
+    * Unique identifier of a custom browser to open weblink on Android.
     *
     * @return string|null The customBrowserPackageId
     */
@@ -410,7 +509,7 @@ class AndroidManagedAppProtection extends TargetedManagedAppProtection
 
     /**
     * Sets the customBrowserPackageId
-    * Unique identifier of the preferred custom browser to open weblink on Android. When this property is configured, ManagedBrowserToOpenLinksRequired should be true.
+    * Unique identifier of a custom browser to open weblink on Android.
     *
     * @param string $val The customBrowserPackageId
     *
@@ -616,13 +715,42 @@ class AndroidManagedAppProtection extends TargetedManagedAppProtection
     * Sets the exemptedAppPackages
     * App packages in this list will be exempt from the policy and will be able to receive data from managed apps.
     *
-    * @param KeyValuePair $val The exemptedAppPackages
+    * @param KeyValuePair[] $val The exemptedAppPackages
     *
     * @return AndroidManagedAppProtection
     */
     public function setExemptedAppPackages($val)
     {
         $this->_propDict["exemptedAppPackages"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the fingerprintAndBiometricEnabled
+    * If null, this setting will be ignored. If false both fingerprints and biometrics will not be enabled. If true, both fingerprints and biometrics will be enabled.
+    *
+    * @return bool|null The fingerprintAndBiometricEnabled
+    */
+    public function getFingerprintAndBiometricEnabled()
+    {
+        if (array_key_exists("fingerprintAndBiometricEnabled", $this->_propDict)) {
+            return $this->_propDict["fingerprintAndBiometricEnabled"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the fingerprintAndBiometricEnabled
+    * If null, this setting will be ignored. If false both fingerprints and biometrics will not be enabled. If true, both fingerprints and biometrics will be enabled.
+    *
+    * @param bool $val The fingerprintAndBiometricEnabled
+    *
+    * @return AndroidManagedAppProtection
+    */
+    public function setFingerprintAndBiometricEnabled($val)
+    {
+        $this->_propDict["fingerprintAndBiometricEnabled"] = boolval($val);
         return $this;
     }
 
@@ -830,6 +958,35 @@ class AndroidManagedAppProtection extends TargetedManagedAppProtection
     }
 
     /**
+    * Gets the requireClass3Biometrics
+    * Require user to apply Class 3 Biometrics on their Android device.
+    *
+    * @return bool|null The requireClass3Biometrics
+    */
+    public function getRequireClass3Biometrics()
+    {
+        if (array_key_exists("requireClass3Biometrics", $this->_propDict)) {
+            return $this->_propDict["requireClass3Biometrics"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the requireClass3Biometrics
+    * Require user to apply Class 3 Biometrics on their Android device.
+    *
+    * @param bool $val The requireClass3Biometrics
+    *
+    * @return AndroidManagedAppProtection
+    */
+    public function setRequireClass3Biometrics($val)
+    {
+        $this->_propDict["requireClass3Biometrics"] = boolval($val);
+        return $this;
+    }
+
+    /**
     * Gets the requiredAndroidSafetyNetAppsVerificationType
     * Defines the Android SafetyNet Apps Verification requirement for a managed app to work. Possible values are: none, enabled.
     *
@@ -925,6 +1082,35 @@ class AndroidManagedAppProtection extends TargetedManagedAppProtection
     public function setRequiredAndroidSafetyNetEvaluationType($val)
     {
         $this->_propDict["requiredAndroidSafetyNetEvaluationType"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the requirePinAfterBiometricChange
+    * A PIN prompt will override biometric prompts if class 3 biometrics are updated on the device.
+    *
+    * @return bool|null The requirePinAfterBiometricChange
+    */
+    public function getRequirePinAfterBiometricChange()
+    {
+        if (array_key_exists("requirePinAfterBiometricChange", $this->_propDict)) {
+            return $this->_propDict["requirePinAfterBiometricChange"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the requirePinAfterBiometricChange
+    * A PIN prompt will override biometric prompts if class 3 biometrics are updated on the device.
+    *
+    * @param bool $val The requirePinAfterBiometricChange
+    *
+    * @return AndroidManagedAppProtection
+    */
+    public function setRequirePinAfterBiometricChange($val)
+    {
+        $this->_propDict["requirePinAfterBiometricChange"] = boolval($val);
         return $this;
     }
 
@@ -1035,7 +1221,7 @@ class AndroidManagedAppProtection extends TargetedManagedAppProtection
     * Sets the apps
     * List of apps to which the policy is deployed.
     *
-    * @param ManagedMobileApp $val The apps
+    * @param ManagedMobileApp[] $val The apps
     *
     * @return AndroidManagedAppProtection
     */

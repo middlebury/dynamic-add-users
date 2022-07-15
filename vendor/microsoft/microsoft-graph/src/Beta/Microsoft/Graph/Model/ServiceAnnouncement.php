@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ServiceAnnouncement File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class ServiceAnnouncement extends Entity
     * Sets the healthOverviews
     * A collection of service health information for tenant. This property is a contained navigation property, it is nullable and readonly.
     *
-    * @param ServiceHealth $val The healthOverviews
+    * @param ServiceHealth[] $val The healthOverviews
     *
     * @return ServiceAnnouncement
     */
@@ -74,7 +74,7 @@ class ServiceAnnouncement extends Entity
     * Sets the issues
     * A collection of service issues for tenant. This property is a contained navigation property, it is nullable and readonly.
     *
-    * @param ServiceHealthIssue $val The issues
+    * @param ServiceHealthIssue[] $val The issues
     *
     * @return ServiceAnnouncement
     */
@@ -104,7 +104,7 @@ class ServiceAnnouncement extends Entity
     * Sets the messages
     * A collection of service messages for tenant. This property is a contained navigation property, it is nullable and readonly.
     *
-    * @param ServiceUpdateMessage $val The messages
+    * @param ServiceUpdateMessage[] $val The messages
     *
     * @return ServiceAnnouncement
     */

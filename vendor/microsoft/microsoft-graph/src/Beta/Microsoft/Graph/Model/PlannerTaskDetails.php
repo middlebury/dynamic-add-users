@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * PlannerTaskDetails File
 * PHP version 7
 *
@@ -59,7 +59,7 @@ class PlannerTaskDetails extends PlannerDelta
 
     /**
     * Gets the description
-    * Description of the task
+    * Description of the task.
     *
     * @return string|null The description
     */
@@ -74,7 +74,7 @@ class PlannerTaskDetails extends PlannerDelta
 
     /**
     * Sets the description
-    * Description of the task
+    * Description of the task.
     *
     * @param string $val The description
     *
@@ -88,7 +88,7 @@ class PlannerTaskDetails extends PlannerDelta
 
     /**
     * Gets the previewType
-    * This sets the type of preview that shows up on the task. The possible values are: automatic, noPreview, checklist, description, reference. When set to automatic the displayed preview is chosen by the app viewing the task.
+    * This sets the type of preview that shows up on the task. Possible values are: automatic, noPreview, checklist, description, reference. When set to automatic the displayed preview is chosen by the app viewing the task.
     *
     * @return PlannerPreviewType|null The previewType
     */
@@ -107,7 +107,7 @@ class PlannerTaskDetails extends PlannerDelta
 
     /**
     * Sets the previewType
-    * This sets the type of preview that shows up on the task. The possible values are: automatic, noPreview, checklist, description, reference. When set to automatic the displayed preview is chosen by the app viewing the task.
+    * This sets the type of preview that shows up on the task. Possible values are: automatic, noPreview, checklist, description, reference. When set to automatic the displayed preview is chosen by the app viewing the task.
     *
     * @param PlannerPreviewType $val The previewType
     *

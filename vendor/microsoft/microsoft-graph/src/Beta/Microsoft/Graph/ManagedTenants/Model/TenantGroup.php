@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * TenantGroup File
 * PHP version 7
 *
@@ -102,7 +102,7 @@ class TenantGroup extends \Beta\Microsoft\Graph\Model\Entity
     * Sets the managementActions
     * The collection of management action associated with the tenant group. Optional. Read-only.
     *
-    * @param ManagementActionInfo $val The managementActions
+    * @param ManagementActionInfo[] $val The managementActions
     *
     * @return TenantGroup
     */
@@ -132,7 +132,7 @@ class TenantGroup extends \Beta\Microsoft\Graph\Model\Entity
     * Sets the managementIntents
     * The collection of management intents associated with the tenant group. Optional. Read-only.
     *
-    * @param ManagementIntentInfo $val The managementIntents
+    * @param ManagementIntentInfo[] $val The managementIntents
     *
     * @return TenantGroup
     */

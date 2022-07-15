@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * OnPremisesAgentGroup File
 * PHP version 7
 *
@@ -135,7 +135,7 @@ class OnPremisesAgentGroup extends Entity
     * Sets the agents
     * List of onPremisesAgent that are assigned to an onPremisesAgentGroup. Read-only. Nullable.
     *
-    * @param OnPremisesAgent $val The agents
+    * @param OnPremisesAgent[] $val The agents
     *
     * @return OnPremisesAgentGroup
     */
@@ -165,7 +165,7 @@ class OnPremisesAgentGroup extends Entity
     * Sets the publishedResources
     * List of publishedResource that are assigned to an onPremisesAgentGroup. Read-only. Nullable.
     *
-    * @param PublishedResource $val The publishedResources
+    * @param PublishedResource[] $val The publishedResources
     *
     * @return OnPremisesAgentGroup
     */

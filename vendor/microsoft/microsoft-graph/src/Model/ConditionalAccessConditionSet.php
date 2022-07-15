@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ConditionalAccessConditionSet File
 * PHP version 7
 *
@@ -54,6 +54,39 @@ class ConditionalAccessConditionSet extends Entity
     public function setApplications($val)
     {
         $this->_propDict["applications"] = $val;
+         return $this;
+    }
+
+    /**
+    * Gets the clientApplications
+    * Client applications (service principals and workload identities) included in and excluded from the policy. Either users or clientApplications is required.
+    *
+    * @return ConditionalAccessClientApplications|null The clientApplications
+    */
+    public function getClientApplications()
+    {
+        if (array_key_exists("clientApplications", $this->_propDict)) {
+            if (is_a($this->_propDict["clientApplications"], "\Microsoft\Graph\Model\ConditionalAccessClientApplications") || is_null($this->_propDict["clientApplications"])) {
+                return $this->_propDict["clientApplications"];
+            } else {
+                $this->_propDict["clientApplications"] = new ConditionalAccessClientApplications($this->_propDict["clientApplications"]);
+                return $this->_propDict["clientApplications"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the clientApplications
+    * Client applications (service principals and workload identities) included in and excluded from the policy. Either users or clientApplications is required.
+    *
+    * @param ConditionalAccessClientApplications $val The value to assign to the clientApplications
+    *
+    * @return ConditionalAccessConditionSet The ConditionalAccessConditionSet
+    */
+    public function setClientApplications($val)
+    {
+        $this->_propDict["clientApplications"] = $val;
          return $this;
     }
 
@@ -257,7 +290,7 @@ class ConditionalAccessConditionSet extends Entity
 
     /**
     * Gets the users
-    * Users, groups, and roles included in and excluded from the policy. Required.
+    * Users, groups, and roles included in and excluded from the policy. Either users or clientApplications is required.
     *
     * @return ConditionalAccessUsers|null The users
     */
@@ -276,7 +309,7 @@ class ConditionalAccessConditionSet extends Entity
 
     /**
     * Sets the users
-    * Users, groups, and roles included in and excluded from the policy. Required.
+    * Users, groups, and roles included in and excluded from the policy. Either users or clientApplications is required.
     *
     * @param ConditionalAccessUsers $val The value to assign to the users
     *

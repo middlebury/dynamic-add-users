@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DelegatedPermissionClassification File
 * PHP version 7
 *
@@ -59,7 +59,7 @@ class DelegatedPermissionClassification extends Entity
 
     /**
     * Gets the permissionId
-    * The unique identifier (id) for the delegated permission listed in the oauth2PermissionScopes collection of the servicePrincipal. Required on create. Does not support $filter.
+    * The unique identifier (id) for the delegated permission listed in the publishedPermissionScopes collection of the servicePrincipal. Required on create. Does not support $filter.
     *
     * @return string|null The permissionId
     */
@@ -74,7 +74,7 @@ class DelegatedPermissionClassification extends Entity
 
     /**
     * Sets the permissionId
-    * The unique identifier (id) for the delegated permission listed in the oauth2PermissionScopes collection of the servicePrincipal. Required on create. Does not support $filter.
+    * The unique identifier (id) for the delegated permission listed in the publishedPermissionScopes collection of the servicePrincipal. Required on create. Does not support $filter.
     *
     * @param string $val The permissionId
     *
@@ -88,7 +88,7 @@ class DelegatedPermissionClassification extends Entity
 
     /**
     * Gets the permissionName
-    * The claim value (value) for the delegated permission listed in the oauth2PermissionScopes collection of the servicePrincipal. Does not support $filter.
+    * The claim value (value) for the delegated permission listed in the publishedPermissionScopes collection of the servicePrincipal. Does not support $filter.
     *
     * @return string|null The permissionName
     */
@@ -103,7 +103,7 @@ class DelegatedPermissionClassification extends Entity
 
     /**
     * Sets the permissionName
-    * The claim value (value) for the delegated permission listed in the oauth2PermissionScopes collection of the servicePrincipal. Does not support $filter.
+    * The claim value (value) for the delegated permission listed in the publishedPermissionScopes collection of the servicePrincipal. Does not support $filter.
     *
     * @param string $val The permissionName
     *

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * IpNamedLocation File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class IpNamedLocation extends NamedLocation
     * Sets the ipRanges
     * List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596. Required.
     *
-    * @param IpRange $val The ipRanges
+    * @param IpRange[] $val The ipRanges
     *
     * @return IpNamedLocation
     */

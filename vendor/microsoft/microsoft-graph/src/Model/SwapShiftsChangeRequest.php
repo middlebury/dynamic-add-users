@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * SwapShiftsChangeRequest File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class SwapShiftsChangeRequest extends OfferShiftRequest
 {
     /**
     * Gets the recipientShiftId
-    * ShiftId for the recipient user with whom the request is to swap.
+    * Shift ID for the recipient user with whom the request is to swap.
     *
     * @return string|null The recipientShiftId
     */
@@ -41,7 +41,7 @@ class SwapShiftsChangeRequest extends OfferShiftRequest
 
     /**
     * Sets the recipientShiftId
-    * ShiftId for the recipient user with whom the request is to swap.
+    * Shift ID for the recipient user with whom the request is to swap.
     *
     * @param string $val The recipientShiftId
     *

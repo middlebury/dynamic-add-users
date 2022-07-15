@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Connector File
 * PHP version 7
 *
@@ -135,7 +135,7 @@ class Connector extends Entity
     * Sets the memberOf
     * The connectorGroup that the connector is a member of. Read-only.
     *
-    * @param ConnectorGroup $val The memberOf
+    * @param ConnectorGroup[] $val The memberOf
     *
     * @return Connector
     */

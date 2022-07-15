@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DirectoryAudit File
 * PHP version 7
 *
@@ -59,7 +59,7 @@ class DirectoryAudit extends Entity
 
     /**
     * Gets the activityDisplayName
-    * Indicates the activity name or the operation name (examples: 'Create User' and 'Add member to group'). For full list, see Azure AD activity list.
+    * Indicates the activity name or the operation name (E.g. 'Create User', 'Add member to group'). For a list of activities logged, refer to Azure Ad activity list.
     *
     * @return string|null The activityDisplayName
     */
@@ -74,7 +74,7 @@ class DirectoryAudit extends Entity
 
     /**
     * Sets the activityDisplayName
-    * Indicates the activity name or the operation name (examples: 'Create User' and 'Add member to group'). For full list, see Azure AD activity list.
+    * Indicates the activity name or the operation name (E.g. 'Create User', 'Add member to group'). For a list of activities logged, refer to Azure Ad activity list.
     *
     * @param string $val The activityDisplayName
     *
@@ -106,7 +106,7 @@ class DirectoryAudit extends Entity
     * Sets the additionalDetails
     * Indicates additional details on the activity.
     *
-    * @param KeyValue $val The additionalDetails
+    * @param KeyValue[] $val The additionalDetails
     *
     * @return DirectoryAudit
     */
@@ -238,6 +238,7 @@ class DirectoryAudit extends Entity
 
     /**
     * Gets the operationType
+    * Indicates the type of operation that was performed. The possible values include but are not limited to the following: Add, Assign, Update, Unassign, and Delete.
     *
     * @return string|null The operationType
     */
@@ -252,6 +253,7 @@ class DirectoryAudit extends Entity
 
     /**
     * Sets the operationType
+    * Indicates the type of operation that was performed. The possible values include but are not limited to the following: Add, Assign, Update, Unassign, and Delete.
     *
     * @param string $val The operationType
     *
@@ -328,7 +330,7 @@ class DirectoryAudit extends Entity
 
      /**
      * Gets the targetResources
-    * Indicates information on which resource was changed due to the activity. Target Resource Type can be User, Device, Directory, App, Role, Group, Policy or Other.
+    * Information about the resource that changed due to the activity.
      *
      * @return array|null The targetResources
      */
@@ -343,9 +345,9 @@ class DirectoryAudit extends Entity
 
     /**
     * Sets the targetResources
-    * Indicates information on which resource was changed due to the activity. Target Resource Type can be User, Device, Directory, App, Role, Group, Policy or Other.
+    * Information about the resource that changed due to the activity.
     *
-    * @param TargetResource $val The targetResources
+    * @param TargetResource[] $val The targetResources
     *
     * @return DirectoryAudit
     */

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * EducationOrganization File
 * PHP version 7
 *
@@ -84,7 +84,7 @@ class EducationOrganization extends Entity
 
     /**
     * Gets the externalSource
-    * Source where this organization was created from. Possible values are: sis, manual.
+    * Where this user was created from. Possible values are: sis, lms, or manual.
     *
     * @return EducationExternalSource|null The externalSource
     */
@@ -103,7 +103,7 @@ class EducationOrganization extends Entity
 
     /**
     * Sets the externalSource
-    * Source where this organization was created from. Possible values are: sis, manual.
+    * Where this user was created from. Possible values are: sis, lms, or manual.
     *
     * @param EducationExternalSource $val The externalSource
     *

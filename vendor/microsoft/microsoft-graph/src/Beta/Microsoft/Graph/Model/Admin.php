@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Admin File
 * PHP version 7
 *
@@ -56,6 +56,39 @@ class Admin implements \JsonSerializable
     }
 
     /**
+    * Gets the sharepoint
+    * A container for administrative resources to manage tenant-level settings for SharePoint and OneDrive.
+    *
+    * @return \Beta\Microsoft\Graph\TenantAdmin\Model\Sharepoint|null The sharepoint
+    */
+    public function getSharepoint()
+    {
+        if (array_key_exists("sharepoint", $this->_propDict)) {
+            if (is_a($this->_propDict["sharepoint"], "\Beta\Microsoft\Graph\TenantAdmin\Model\Sharepoint") || is_null($this->_propDict["sharepoint"])) {
+                return $this->_propDict["sharepoint"];
+            } else {
+                $this->_propDict["sharepoint"] = new \Beta\Microsoft\Graph\TenantAdmin\Model\Sharepoint($this->_propDict["sharepoint"]);
+                return $this->_propDict["sharepoint"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the sharepoint
+    * A container for administrative resources to manage tenant-level settings for SharePoint and OneDrive.
+    *
+    * @param \Beta\Microsoft\Graph\TenantAdmin\Model\Sharepoint $val The sharepoint
+    *
+    * @return Admin
+    */
+    public function setSharepoint($val)
+    {
+        $this->_propDict["sharepoint"] = $val;
+        return $this;
+    }
+
+    /**
     * Gets the serviceAnnouncement
     * A container for service communications resources. Read-only.
     *
@@ -85,6 +118,37 @@ class Admin implements \JsonSerializable
     public function setServiceAnnouncement($val)
     {
         $this->_propDict["serviceAnnouncement"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the reportSettings
+    *
+    * @return AdminReportSettings|null The reportSettings
+    */
+    public function getReportSettings()
+    {
+        if (array_key_exists("reportSettings", $this->_propDict)) {
+            if (is_a($this->_propDict["reportSettings"], "\Beta\Microsoft\Graph\Model\AdminReportSettings") || is_null($this->_propDict["reportSettings"])) {
+                return $this->_propDict["reportSettings"];
+            } else {
+                $this->_propDict["reportSettings"] = new AdminReportSettings($this->_propDict["reportSettings"]);
+                return $this->_propDict["reportSettings"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the reportSettings
+    *
+    * @param AdminReportSettings $val The reportSettings
+    *
+    * @return Admin
+    */
+    public function setReportSettings($val)
+    {
+        $this->_propDict["reportSettings"] = $val;
         return $this;
     }
 
@@ -153,6 +217,7 @@ class Admin implements \JsonSerializable
     *
     * @return array The list of properties
     */
+    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         $serializableProperties = $this->getProperties();

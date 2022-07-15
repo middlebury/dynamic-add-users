@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceManagementComplianceScheduledActionForRule File
 * PHP version 7
 *
@@ -73,7 +73,7 @@ class DeviceManagementComplianceScheduledActionForRule extends Entity
     * Sets the scheduledActionConfigurations
     * The list of scheduled action configurations for this compliance policy. This collection can contain a maximum of 100 elements.
     *
-    * @param DeviceManagementComplianceActionItem $val The scheduledActionConfigurations
+    * @param DeviceManagementComplianceActionItem[] $val The scheduledActionConfigurations
     *
     * @return DeviceManagementComplianceScheduledActionForRule
     */

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * OfficeConfiguration File
 * PHP version 7
 *
@@ -75,7 +75,7 @@ class OfficeConfiguration implements \JsonSerializable
     * Sets the tenantCheckinStatuses
     * List of office Client check-in status.
     *
-    * @param OfficeClientCheckinStatus $val The tenantCheckinStatuses
+    * @param OfficeClientCheckinStatus[] $val The tenantCheckinStatuses
     *
     * @return OfficeConfiguration
     */
@@ -138,7 +138,7 @@ class OfficeConfiguration implements \JsonSerializable
     * Sets the clientConfigurations
     * List of office Client configuration.
     *
-    * @param OfficeClientConfiguration $val The clientConfigurations
+    * @param OfficeClientConfiguration[] $val The clientConfigurations
     *
     * @return OfficeConfiguration
     */
@@ -180,6 +180,7 @@ class OfficeConfiguration implements \JsonSerializable
     *
     * @return array The list of properties
     */
+    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         $serializableProperties = $this->getProperties();

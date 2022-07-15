@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * WindowsQualityUpdateProfile File
 * PHP version 7
 *
@@ -288,7 +288,7 @@ class WindowsQualityUpdateProfile extends Entity
     * Sets the assignments
     * The list of group assignments of the profile.
     *
-    * @param WindowsQualityUpdateProfileAssignment $val The assignments
+    * @param WindowsQualityUpdateProfileAssignment[] $val The assignments
     *
     * @return WindowsQualityUpdateProfile
     */

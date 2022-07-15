@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceManagementPartner File
 * PHP version 7
 *
@@ -73,7 +73,7 @@ class DeviceManagementPartner extends Entity
     * Sets the groupsRequiringPartnerEnrollment
     * User groups that specifies whether enrollment is through partner.
     *
-    * @param DeviceManagementPartnerAssignment $val The groupsRequiringPartnerEnrollment
+    * @param DeviceManagementPartnerAssignment[] $val The groupsRequiringPartnerEnrollment
     *
     * @return DeviceManagementPartner
     */

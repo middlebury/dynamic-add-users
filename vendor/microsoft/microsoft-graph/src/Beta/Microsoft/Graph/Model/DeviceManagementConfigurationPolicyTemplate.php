@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceManagementConfigurationPolicyTemplate File
 * PHP version 7
 *
@@ -204,7 +204,7 @@ class DeviceManagementConfigurationPolicyTemplate extends Entity
 
     /**
     * Gets the platforms
-    * Platforms for this template. Possible values are: none, android, iOS, macOS, windows10X, windows10.
+    * Platforms for this template. Possible values are: none, android, iOS, macOS, windows10X, windows10, linux, unknownFutureValue.
     *
     * @return DeviceManagementConfigurationPlatforms|null The platforms
     */
@@ -223,7 +223,7 @@ class DeviceManagementConfigurationPolicyTemplate extends Entity
 
     /**
     * Sets the platforms
-    * Platforms for this template. Possible values are: none, android, iOS, macOS, windows10X, windows10.
+    * Platforms for this template. Possible values are: none, android, iOS, macOS, windows10X, windows10, linux, unknownFutureValue.
     *
     * @param DeviceManagementConfigurationPlatforms $val The platforms
     *
@@ -266,7 +266,7 @@ class DeviceManagementConfigurationPolicyTemplate extends Entity
 
     /**
     * Gets the technologies
-    * Technologies for this template. Possible values are: none, mdm, windows10XManagement, configManager, microsoftSense, exchangeOnline, linuxMdm, unknownFutureValue.
+    * Technologies for this template. Possible values are: none, mdm, windows10XManagement, configManager, appleRemoteManagement, microsoftSense, exchangeOnline, linuxMdm, enrollment, unknownFutureValue.
     *
     * @return DeviceManagementConfigurationTechnologies|null The technologies
     */
@@ -285,7 +285,7 @@ class DeviceManagementConfigurationPolicyTemplate extends Entity
 
     /**
     * Sets the technologies
-    * Technologies for this template. Possible values are: none, mdm, windows10XManagement, configManager, microsoftSense, exchangeOnline, linuxMdm, unknownFutureValue.
+    * Technologies for this template. Possible values are: none, mdm, windows10XManagement, configManager, appleRemoteManagement, microsoftSense, exchangeOnline, linuxMdm, enrollment, unknownFutureValue.
     *
     * @param DeviceManagementConfigurationTechnologies $val The technologies
     *
@@ -379,7 +379,7 @@ class DeviceManagementConfigurationPolicyTemplate extends Entity
     * Sets the settingTemplates
     * Setting templates
     *
-    * @param DeviceManagementConfigurationSettingTemplate $val The settingTemplates
+    * @param DeviceManagementConfigurationSettingTemplate[] $val The settingTemplates
     *
     * @return DeviceManagementConfigurationPolicyTemplate
     */

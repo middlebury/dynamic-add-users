@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Term File
 * PHP version 7
 *
@@ -77,7 +77,7 @@ class Term extends \Microsoft\Graph\Model\Entity
     * Sets the descriptions
     * Description about term that is dependent on the languageTag.
     *
-    * @param LocalizedDescription $val The descriptions
+    * @param LocalizedDescription[] $val The descriptions
     *
     * @return Term
     */
@@ -107,7 +107,7 @@ class Term extends \Microsoft\Graph\Model\Entity
     * Sets the labels
     * Label metadata for a term.
     *
-    * @param LocalizedLabel $val The labels
+    * @param LocalizedLabel[] $val The labels
     *
     * @return Term
     */
@@ -170,7 +170,7 @@ class Term extends \Microsoft\Graph\Model\Entity
     * Sets the termProperties
     * Collection of properties on the term.
     *
-    * @param \Microsoft\Graph\Model\KeyValue $val The termProperties
+    * @param \Microsoft\Graph\Model\KeyValue[] $val The termProperties
     *
     * @return Term
     */
@@ -200,7 +200,7 @@ class Term extends \Microsoft\Graph\Model\Entity
     * Sets the children
     * Children of current term.
     *
-    * @param Term $val The children
+    * @param Term[] $val The children
     *
     * @return Term
     */
@@ -230,7 +230,7 @@ class Term extends \Microsoft\Graph\Model\Entity
     * Sets the relations
     * To indicate which terms are related to the current term as either pinned or reused.
     *
-    * @param Relation $val The relations
+    * @param Relation[] $val The relations
     *
     * @return Term
     */

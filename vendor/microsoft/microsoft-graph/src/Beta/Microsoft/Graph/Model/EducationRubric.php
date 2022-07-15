@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * EducationRubric File
 * PHP version 7
 *
@@ -271,7 +271,7 @@ class EducationRubric extends Entity
     * Sets the levels
     * The collection of levels making up this rubric.
     *
-    * @param RubricLevel $val The levels
+    * @param RubricLevel[] $val The levels
     *
     * @return EducationRubric
     */
@@ -301,7 +301,7 @@ class EducationRubric extends Entity
     * Sets the qualities
     * The collection of qualities making up this rubric.
     *
-    * @param RubricQuality $val The qualities
+    * @param RubricQuality[] $val The qualities
     *
     * @return EducationRubric
     */

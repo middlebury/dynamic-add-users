@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Windows81CertificateProfileBase File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class Windows81CertificateProfileBase extends WindowsCertificateProfileBase
     * Sets the customSubjectAlternativeNames
     * Custom Subject Alternative Name Settings. This collection can contain a maximum of 500 elements.
     *
-    * @param CustomSubjectAlternativeName $val The customSubjectAlternativeNames
+    * @param CustomSubjectAlternativeName[] $val The customSubjectAlternativeNames
     *
     * @return Windows81CertificateProfileBase
     */
@@ -74,7 +74,7 @@ class Windows81CertificateProfileBase extends WindowsCertificateProfileBase
     * Sets the extendedKeyUsages
     * Extended Key Usage (EKU) settings. This collection can contain a maximum of 500 elements.
     *
-    * @param ExtendedKeyUsage $val The extendedKeyUsages
+    * @param ExtendedKeyUsage[] $val The extendedKeyUsages
     *
     * @return Windows81CertificateProfileBase
     */

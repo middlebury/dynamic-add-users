@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * RestrictedAppsViolation File
 * PHP version 7
 *
@@ -193,7 +193,7 @@ class RestrictedAppsViolation extends Entity
     * Sets the restrictedApps
     * List of violated restricted apps
     *
-    * @param ManagedDeviceReportedApp $val The restrictedApps
+    * @param ManagedDeviceReportedApp[] $val The restrictedApps
     *
     * @return RestrictedAppsViolation
     */

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Chat File
 * PHP version 7
 *
@@ -124,6 +124,68 @@ class Chat extends Entity
     }
 
     /**
+    * Gets the onlineMeetingInfo
+    * Represents details about an online meeting. If the chat isn't associated with an online meeting, the property is empty. Read-only.
+    *
+    * @return TeamworkOnlineMeetingInfo|null The onlineMeetingInfo
+    */
+    public function getOnlineMeetingInfo()
+    {
+        if (array_key_exists("onlineMeetingInfo", $this->_propDict)) {
+            if (is_a($this->_propDict["onlineMeetingInfo"], "\Microsoft\Graph\Model\TeamworkOnlineMeetingInfo") || is_null($this->_propDict["onlineMeetingInfo"])) {
+                return $this->_propDict["onlineMeetingInfo"];
+            } else {
+                $this->_propDict["onlineMeetingInfo"] = new TeamworkOnlineMeetingInfo($this->_propDict["onlineMeetingInfo"]);
+                return $this->_propDict["onlineMeetingInfo"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the onlineMeetingInfo
+    * Represents details about an online meeting. If the chat isn't associated with an online meeting, the property is empty. Read-only.
+    *
+    * @param TeamworkOnlineMeetingInfo $val The onlineMeetingInfo
+    *
+    * @return Chat
+    */
+    public function setOnlineMeetingInfo($val)
+    {
+        $this->_propDict["onlineMeetingInfo"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the tenantId
+    * The identifier of the tenant in which the chat was created. Read-only.
+    *
+    * @return string|null The tenantId
+    */
+    public function getTenantId()
+    {
+        if (array_key_exists("tenantId", $this->_propDict)) {
+            return $this->_propDict["tenantId"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the tenantId
+    * The identifier of the tenant in which the chat was created. Read-only.
+    *
+    * @param string $val The tenantId
+    *
+    * @return Chat
+    */
+    public function setTenantId($val)
+    {
+        $this->_propDict["tenantId"] = $val;
+        return $this;
+    }
+
+    /**
     * Gets the topic
     * (Optional) Subject or topic for the chat. Only available for group chats.
     *
@@ -152,6 +214,35 @@ class Chat extends Entity
         return $this;
     }
 
+    /**
+    * Gets the webUrl
+    * The URL for the chat in Microsoft Teams. The URL should be treated as an opaque blob, and not parsed. Read-only.
+    *
+    * @return string|null The webUrl
+    */
+    public function getWebUrl()
+    {
+        if (array_key_exists("webUrl", $this->_propDict)) {
+            return $this->_propDict["webUrl"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the webUrl
+    * The URL for the chat in Microsoft Teams. The URL should be treated as an opaque blob, and not parsed. Read-only.
+    *
+    * @param string $val The webUrl
+    *
+    * @return Chat
+    */
+    public function setWebUrl($val)
+    {
+        $this->_propDict["webUrl"] = $val;
+        return $this;
+    }
+
 
      /**
      * Gets the installedApps
@@ -172,7 +263,7 @@ class Chat extends Entity
     * Sets the installedApps
     * A collection of all the apps in the chat. Nullable.
     *
-    * @param TeamsAppInstallation $val The installedApps
+    * @param TeamsAppInstallation[] $val The installedApps
     *
     * @return Chat
     */
@@ -202,7 +293,7 @@ class Chat extends Entity
     * Sets the members
     * A collection of all the members in the chat. Nullable.
     *
-    * @param ConversationMember $val The members
+    * @param ConversationMember[] $val The members
     *
     * @return Chat
     */
@@ -232,7 +323,7 @@ class Chat extends Entity
     * Sets the messages
     * A collection of all the messages in the chat. Nullable.
     *
-    * @param ChatMessage $val The messages
+    * @param ChatMessage[] $val The messages
     *
     * @return Chat
     */
@@ -245,6 +336,7 @@ class Chat extends Entity
 
      /**
      * Gets the tabs
+    * A collection of all the tabs in the chat. Nullable.
      *
      * @return array|null The tabs
      */
@@ -259,8 +351,9 @@ class Chat extends Entity
 
     /**
     * Sets the tabs
+    * A collection of all the tabs in the chat. Nullable.
     *
-    * @param TeamsTab $val The tabs
+    * @param TeamsTab[] $val The tabs
     *
     * @return Chat
     */

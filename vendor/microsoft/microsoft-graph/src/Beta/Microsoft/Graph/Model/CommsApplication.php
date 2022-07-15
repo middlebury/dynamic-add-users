@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * CommsApplication File
 * PHP version 7
 *
@@ -73,7 +73,7 @@ class CommsApplication implements \JsonSerializable
     /**
     * Sets the calls
     *
-    * @param Call $val The calls
+    * @param Call[] $val The calls
     *
     * @return CommsApplication
     */
@@ -101,7 +101,7 @@ class CommsApplication implements \JsonSerializable
     /**
     * Sets the onlineMeetings
     *
-    * @param OnlineMeeting $val The onlineMeetings
+    * @param OnlineMeeting[] $val The onlineMeetings
     *
     * @return CommsApplication
     */
@@ -143,6 +143,7 @@ class CommsApplication implements \JsonSerializable
     *
     * @return array The list of properties
     */
+    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         $serializableProperties = $this->getProperties();

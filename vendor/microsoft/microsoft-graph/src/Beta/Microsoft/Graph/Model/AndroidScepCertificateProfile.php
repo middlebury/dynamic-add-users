@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AndroidScepCertificateProfile File
 * PHP version 7
 *
@@ -230,7 +230,7 @@ class AndroidScepCertificateProfile extends AndroidCertificateProfileBase
     * Sets the managedDeviceCertificateStates
     * Certificate state for devices. This collection can contain a maximum of 2147483647 elements.
     *
-    * @param ManagedDeviceCertificateState $val The managedDeviceCertificateStates
+    * @param ManagedDeviceCertificateState[] $val The managedDeviceCertificateStates
     *
     * @return AndroidScepCertificateProfile
     */

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ManagedDeviceEncryptionState File
 * PHP version 7
 *
@@ -300,7 +300,7 @@ class ManagedDeviceEncryptionState extends Entity
     * Sets the policyDetails
     * Policy Details
     *
-    * @param EncryptionReportPolicyDetails $val The policyDetails
+    * @param EncryptionReportPolicyDetails[] $val The policyDetails
     *
     * @return ManagedDeviceEncryptionState
     */

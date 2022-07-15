@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * FeatureRolloutPolicy File
 * PHP version 7
 *
@@ -193,7 +193,7 @@ class FeatureRolloutPolicy extends Entity
     * Sets the appliesTo
     * Nullable. Specifies a list of directoryObjects that feature is enabled for.
     *
-    * @param DirectoryObject $val The appliesTo
+    * @param DirectoryObject[] $val The appliesTo
     *
     * @return FeatureRolloutPolicy
     */

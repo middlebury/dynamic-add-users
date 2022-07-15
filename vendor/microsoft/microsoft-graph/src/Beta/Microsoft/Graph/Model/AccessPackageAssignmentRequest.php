@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AccessPackageAssignmentRequest File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class AccessPackageAssignmentRequest extends Entity
     * Sets the answers
     * Answers provided by the requestor to accessPackageQuestions asked of them at the time of request.
     *
-    * @param AccessPackageAnswer $val The answers
+    * @param AccessPackageAnswer[] $val The answers
     *
     * @return AccessPackageAssignmentRequest
     */
@@ -117,6 +117,36 @@ class AccessPackageAssignmentRequest extends Entity
     public function setCreatedDateTime($val)
     {
         $this->_propDict["createdDateTime"] = $val;
+        return $this;
+    }
+
+
+     /**
+     * Gets the customExtensionHandlerInstances
+    * A collection of custom workflow extension instances being run on an assignment request. Read-only.
+     *
+     * @return array|null The customExtensionHandlerInstances
+     */
+    public function getCustomExtensionHandlerInstances()
+    {
+        if (array_key_exists("customExtensionHandlerInstances", $this->_propDict)) {
+           return $this->_propDict["customExtensionHandlerInstances"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the customExtensionHandlerInstances
+    * A collection of custom workflow extension instances being run on an assignment request. Read-only.
+    *
+    * @param CustomExtensionHandlerInstance[] $val The customExtensionHandlerInstances
+    *
+    * @return AccessPackageAssignmentRequest
+    */
+    public function setCustomExtensionHandlerInstances($val)
+    {
+        $this->_propDict["customExtensionHandlerInstances"] = $val;
         return $this;
     }
 
@@ -331,7 +361,7 @@ class AccessPackageAssignmentRequest extends Entity
 
     /**
     * Gets the accessPackage
-    * The access package associated with the accessPackageAssignmentRequest. An access package defines the collections of resource roles and the policies for how one or more users can get access to those resources. Read-only. Nullable.  Supports $expand.
+    * The access package associated with the accessPackageAssignmentRequest. An access package defines the collections of resource roles and the policies for how one or more users can get access to those resources. Read-only. Nullable. Supports $expand.
     *
     * @return AccessPackage|null The accessPackage
     */
@@ -350,7 +380,7 @@ class AccessPackageAssignmentRequest extends Entity
 
     /**
     * Sets the accessPackage
-    * The access package associated with the accessPackageAssignmentRequest. An access package defines the collections of resource roles and the policies for how one or more users can get access to those resources. Read-only. Nullable.  Supports $expand.
+    * The access package associated with the accessPackageAssignmentRequest. An access package defines the collections of resource roles and the policies for how one or more users can get access to those resources. Read-only. Nullable. Supports $expand.
     *
     * @param AccessPackage $val The accessPackage
     *
@@ -364,7 +394,7 @@ class AccessPackageAssignmentRequest extends Entity
 
     /**
     * Gets the accessPackageAssignment
-    * For a requestType of UserAdd or AdminAdd, this is an access package assignment requested to be created.  For a requestType of UserRemove, AdminRemove or SystemRemove, this has the id property of an existing assignment to be removed.   Supports $expand.
+    * For a requestType of UserAdd or AdminAdd, this is an access package assignment requested to be created.  For a requestType of UserRemove, AdminRemove or SystemRemove, this has the id property of an existing assignment to be removed.  Supports $expand.
     *
     * @return AccessPackageAssignment|null The accessPackageAssignment
     */
@@ -383,7 +413,7 @@ class AccessPackageAssignmentRequest extends Entity
 
     /**
     * Sets the accessPackageAssignment
-    * For a requestType of UserAdd or AdminAdd, this is an access package assignment requested to be created.  For a requestType of UserRemove, AdminRemove or SystemRemove, this has the id property of an existing assignment to be removed.   Supports $expand.
+    * For a requestType of UserAdd or AdminAdd, this is an access package assignment requested to be created.  For a requestType of UserRemove, AdminRemove or SystemRemove, this has the id property of an existing assignment to be removed.  Supports $expand.
     *
     * @param AccessPackageAssignment $val The accessPackageAssignment
     *

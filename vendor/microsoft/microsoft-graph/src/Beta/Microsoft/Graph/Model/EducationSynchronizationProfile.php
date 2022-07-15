@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * EducationSynchronizationProfile File
 * PHP version 7
 *
@@ -88,7 +88,7 @@ class EducationSynchronizationProfile extends Entity
 
     /**
     * Gets the expirationDate
-    * The date the profile should be considered expired and cease syncing. When null. the profile will never expire. (optional)
+    * The date the profile should be considered expired and cease syncing. Provide the date in YYYY-MM-DD format, following ISO 8601. Maximum value is 18 months from profile creation.  (optional)
     *
     * @return \DateTime|null The expirationDate
     */
@@ -107,7 +107,7 @@ class EducationSynchronizationProfile extends Entity
 
     /**
     * Sets the expirationDate
-    * The date the profile should be considered expired and cease syncing. When null. the profile will never expire. (optional)
+    * The date the profile should be considered expired and cease syncing. Provide the date in YYYY-MM-DD format, following ISO 8601. Maximum value is 18 months from profile creation.  (optional)
     *
     * @param \DateTime $val The expirationDate
     *
@@ -201,7 +201,7 @@ class EducationSynchronizationProfile extends Entity
     * Sets the licensesToAssign
     * License setup configuration.
     *
-    * @param EducationSynchronizationLicenseAssignment $val The licensesToAssign
+    * @param EducationSynchronizationLicenseAssignment[] $val The licensesToAssign
     *
     * @return EducationSynchronizationProfile
     */
@@ -264,7 +264,7 @@ class EducationSynchronizationProfile extends Entity
     * Sets the errors
     * All errors associated with this synchronization profile.
     *
-    * @param EducationSynchronizationError $val The errors
+    * @param EducationSynchronizationError[] $val The errors
     *
     * @return EducationSynchronizationProfile
     */

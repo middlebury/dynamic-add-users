@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * UnifiedRoleManagementPolicyApprovalRule File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class UnifiedRoleManagementPolicyApprovalRule extends UnifiedRoleManagementPolic
 {
     /**
     * Gets the setting
-    * The approval setting for the rule.
+    * The settings for approval of the role assignment.
     *
     * @return ApprovalSettings|null The setting
     */
@@ -45,7 +45,7 @@ class UnifiedRoleManagementPolicyApprovalRule extends UnifiedRoleManagementPolic
 
     /**
     * Sets the setting
-    * The approval setting for the rule.
+    * The settings for approval of the role assignment.
     *
     * @param ApprovalSettings $val The setting
     *

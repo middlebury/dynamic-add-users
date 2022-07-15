@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ManagedAppProtection File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class ManagedAppProtection extends ManagedAppPolicy
     * Sets the allowedDataStorageLocations
     * Data storage locations where a user may store managed data.
     *
-    * @param ManagedAppDataStorageLocation $val The allowedDataStorageLocations
+    * @param ManagedAppDataStorageLocation[] $val The allowedDataStorageLocations
     *
     * @return ManagedAppProtection
     */

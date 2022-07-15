@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * EducationSchool File
 * PHP version 7
 *
@@ -402,7 +402,7 @@ class EducationSchool extends EducationOrganization
     * Sets the classes
     * Classes taught at the school. Nullable.
     *
-    * @param EducationClass $val The classes
+    * @param EducationClass[] $val The classes
     *
     * @return EducationSchool
     */
@@ -432,7 +432,7 @@ class EducationSchool extends EducationOrganization
     * Sets the users
     * Users in the school. Nullable.
     *
-    * @param EducationUser $val The users
+    * @param EducationUser[] $val The users
     *
     * @return EducationSchool
     */

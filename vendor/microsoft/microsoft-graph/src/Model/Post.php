@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Post File
 * PHP version 7
 *
@@ -197,7 +197,7 @@ class Post extends OutlookItem
     * Sets the newParticipants
     * Conversation participants that were added to the thread as part of this post.
     *
-    * @param Recipient $val The newParticipants
+    * @param Recipient[] $val The newParticipants
     *
     * @return Post
     */
@@ -276,7 +276,7 @@ class Post extends OutlookItem
 
      /**
      * Gets the attachments
-    * Read-only. Nullable. Supports $expand.
+    * The collection of fileAttachment, itemAttachment, and referenceAttachment attachments for the post. Read-only. Nullable. Supports $expand.
      *
      * @return array|null The attachments
      */
@@ -291,9 +291,9 @@ class Post extends OutlookItem
 
     /**
     * Sets the attachments
-    * Read-only. Nullable. Supports $expand.
+    * The collection of fileAttachment, itemAttachment, and referenceAttachment attachments for the post. Read-only. Nullable. Supports $expand.
     *
-    * @param Attachment $val The attachments
+    * @param Attachment[] $val The attachments
     *
     * @return Post
     */
@@ -323,7 +323,7 @@ class Post extends OutlookItem
     * Sets the extensions
     * The collection of open extensions defined for the post. Read-only. Nullable. Supports $expand.
     *
-    * @param Extension $val The extensions
+    * @param Extension[] $val The extensions
     *
     * @return Post
     */
@@ -335,7 +335,7 @@ class Post extends OutlookItem
 
     /**
     * Gets the inReplyTo
-    * Read-only. Supports $expand.
+    * The earlier post that this post is replying to in the conversationThread. Read-only. Supports $expand.
     *
     * @return Post|null The inReplyTo
     */
@@ -354,7 +354,7 @@ class Post extends OutlookItem
 
     /**
     * Sets the inReplyTo
-    * Read-only. Supports $expand.
+    * The earlier post that this post is replying to in the conversationThread. Read-only. Supports $expand.
     *
     * @param Post $val The inReplyTo
     *
@@ -386,7 +386,7 @@ class Post extends OutlookItem
     * Sets the multiValueExtendedProperties
     * The collection of multi-value extended properties defined for the post. Read-only. Nullable.
     *
-    * @param MultiValueLegacyExtendedProperty $val The multiValueExtendedProperties
+    * @param MultiValueLegacyExtendedProperty[] $val The multiValueExtendedProperties
     *
     * @return Post
     */
@@ -416,7 +416,7 @@ class Post extends OutlookItem
     * Sets the singleValueExtendedProperties
     * The collection of single-value extended properties defined for the post. Read-only. Nullable.
     *
-    * @param SingleValueLegacyExtendedProperty $val The singleValueExtendedProperties
+    * @param SingleValueLegacyExtendedProperty[] $val The singleValueExtendedProperties
     *
     * @return Post
     */

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * OnlineMeeting File
 * PHP version 7
 *
@@ -24,37 +24,6 @@ namespace Beta\Microsoft\Graph\Model;
 */
 class OnlineMeeting extends Entity
 {
-    /**
-    * Gets the accessLevel
-    *
-    * @return AccessLevel|null The accessLevel
-    */
-    public function getAccessLevel()
-    {
-        if (array_key_exists("accessLevel", $this->_propDict)) {
-            if (is_a($this->_propDict["accessLevel"], "\Beta\Microsoft\Graph\Model\AccessLevel") || is_null($this->_propDict["accessLevel"])) {
-                return $this->_propDict["accessLevel"];
-            } else {
-                $this->_propDict["accessLevel"] = new AccessLevel($this->_propDict["accessLevel"]);
-                return $this->_propDict["accessLevel"];
-            }
-        }
-        return null;
-    }
-
-    /**
-    * Sets the accessLevel
-    *
-    * @param AccessLevel $val The accessLevel
-    *
-    * @return OnlineMeeting
-    */
-    public function setAccessLevel($val)
-    {
-        $this->_propDict["accessLevel"] = $val;
-        return $this;
-    }
-
     /**
     * Gets the allowAttendeeToEnableCamera
     * Indicates whether attendees can turn on their camera.
@@ -115,7 +84,7 @@ class OnlineMeeting extends Entity
 
     /**
     * Gets the allowedPresenters
-    * Specifies who can be a presenter in a meeting. Possible values are listed in the following table.
+    * Specifies who can be a presenter in a meeting.
     *
     * @return OnlineMeetingPresenters|null The allowedPresenters
     */
@@ -134,7 +103,7 @@ class OnlineMeeting extends Entity
 
     /**
     * Sets the allowedPresenters
-    * Specifies who can be a presenter in a meeting. Possible values are listed in the following table.
+    * Specifies who can be a presenter in a meeting.
     *
     * @param OnlineMeetingPresenters $val The allowedPresenters
     *
@@ -181,7 +150,7 @@ class OnlineMeeting extends Entity
 
     /**
     * Gets the allowTeamworkReactions
-    * Indicates whether Teams reactions are enabled for the meeting.
+    * Indicates if Teams reactions are enabled for the meeting.
     *
     * @return bool|null The allowTeamworkReactions
     */
@@ -196,7 +165,7 @@ class OnlineMeeting extends Entity
 
     /**
     * Sets the allowTeamworkReactions
-    * Indicates whether Teams reactions are enabled for the meeting.
+    * Indicates if Teams reactions are enabled for the meeting.
     *
     * @param bool $val The allowTeamworkReactions
     *
@@ -241,9 +210,37 @@ class OnlineMeeting extends Entity
         return $this;
     }
 
+
+     /**
+     * Gets the anonymizeIdentityForRoles
+     *
+     * @return array|null The anonymizeIdentityForRoles
+     */
+    public function getAnonymizeIdentityForRoles()
+    {
+        if (array_key_exists("anonymizeIdentityForRoles", $this->_propDict)) {
+           return $this->_propDict["anonymizeIdentityForRoles"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the anonymizeIdentityForRoles
+    *
+    * @param OnlineMeetingRole[] $val The anonymizeIdentityForRoles
+    *
+    * @return OnlineMeeting
+    */
+    public function setAnonymizeIdentityForRoles($val)
+    {
+        $this->_propDict["anonymizeIdentityForRoles"] = $val;
+        return $this;
+    }
+
     /**
     * Gets the attendeeReport
-    * The content stream of the attendee report of a Microsoft Teams live event. Read-only.
+    * The content stream of the attendee report of a Teams live event. Read-only.
     *
     * @return \GuzzleHttp\Psr7\Stream|null The attendeeReport
     */
@@ -262,7 +259,7 @@ class OnlineMeeting extends Entity
 
     /**
     * Sets the attendeeReport
-    * The content stream of the attendee report of a Microsoft Teams live event. Read-only.
+    * The content stream of the attendee report of a Teams live event. Read-only.
     *
     * @param \GuzzleHttp\Psr7\Stream $val The attendeeReport
     *
@@ -340,37 +337,6 @@ class OnlineMeeting extends Entity
         return $this;
     }
 
-    /**
-    * Gets the canceledDateTime
-    *
-    * @return \DateTime|null The canceledDateTime
-    */
-    public function getCanceledDateTime()
-    {
-        if (array_key_exists("canceledDateTime", $this->_propDict)) {
-            if (is_a($this->_propDict["canceledDateTime"], "\DateTime") || is_null($this->_propDict["canceledDateTime"])) {
-                return $this->_propDict["canceledDateTime"];
-            } else {
-                $this->_propDict["canceledDateTime"] = new \DateTime($this->_propDict["canceledDateTime"]);
-                return $this->_propDict["canceledDateTime"];
-            }
-        }
-        return null;
-    }
-
-    /**
-    * Sets the canceledDateTime
-    *
-    * @param \DateTime $val The canceledDateTime
-    *
-    * @return OnlineMeeting
-    */
-    public function setCanceledDateTime($val)
-    {
-        $this->_propDict["canceledDateTime"] = $val;
-        return $this;
-    }
-
 
      /**
      * Gets the capabilities
@@ -389,7 +355,7 @@ class OnlineMeeting extends Entity
     /**
     * Sets the capabilities
     *
-    * @param MeetingCapabilities $val The capabilities
+    * @param MeetingCapabilities[] $val The capabilities
     *
     * @return OnlineMeeting
     */
@@ -499,64 +465,6 @@ class OnlineMeeting extends Entity
     }
 
     /**
-    * Gets the entryExitAnnouncement
-    *
-    * @return bool|null The entryExitAnnouncement
-    */
-    public function getEntryExitAnnouncement()
-    {
-        if (array_key_exists("entryExitAnnouncement", $this->_propDict)) {
-            return $this->_propDict["entryExitAnnouncement"];
-        } else {
-            return null;
-        }
-    }
-
-    /**
-    * Sets the entryExitAnnouncement
-    *
-    * @param bool $val The entryExitAnnouncement
-    *
-    * @return OnlineMeeting
-    */
-    public function setEntryExitAnnouncement($val)
-    {
-        $this->_propDict["entryExitAnnouncement"] = boolval($val);
-        return $this;
-    }
-
-    /**
-    * Gets the expirationDateTime
-    *
-    * @return \DateTime|null The expirationDateTime
-    */
-    public function getExpirationDateTime()
-    {
-        if (array_key_exists("expirationDateTime", $this->_propDict)) {
-            if (is_a($this->_propDict["expirationDateTime"], "\DateTime") || is_null($this->_propDict["expirationDateTime"])) {
-                return $this->_propDict["expirationDateTime"];
-            } else {
-                $this->_propDict["expirationDateTime"] = new \DateTime($this->_propDict["expirationDateTime"]);
-                return $this->_propDict["expirationDateTime"];
-            }
-        }
-        return null;
-    }
-
-    /**
-    * Sets the expirationDateTime
-    *
-    * @param \DateTime $val The expirationDateTime
-    *
-    * @return OnlineMeeting
-    */
-    public function setExpirationDateTime($val)
-    {
-        $this->_propDict["expirationDateTime"] = $val;
-        return $this;
-    }
-
-    /**
     * Gets the externalId
     * The external ID. A custom ID. Optional.
     *
@@ -587,7 +495,7 @@ class OnlineMeeting extends Entity
 
     /**
     * Gets the isBroadcast
-    * Indicates if this is a Teams live event.
+    * Indicates whether this is a Teams live event.
     *
     * @return bool|null The isBroadcast
     */
@@ -602,7 +510,7 @@ class OnlineMeeting extends Entity
 
     /**
     * Sets the isBroadcast
-    * Indicates if this is a Teams live event.
+    * Indicates whether this is a Teams live event.
     *
     * @param bool $val The isBroadcast
     *
@@ -611,33 +519,6 @@ class OnlineMeeting extends Entity
     public function setIsBroadcast($val)
     {
         $this->_propDict["isBroadcast"] = boolval($val);
-        return $this;
-    }
-
-    /**
-    * Gets the isCancelled
-    *
-    * @return bool|null The isCancelled
-    */
-    public function getIsCancelled()
-    {
-        if (array_key_exists("isCancelled", $this->_propDict)) {
-            return $this->_propDict["isCancelled"];
-        } else {
-            return null;
-        }
-    }
-
-    /**
-    * Sets the isCancelled
-    *
-    * @param bool $val The isCancelled
-    *
-    * @return OnlineMeeting
-    */
-    public function setIsCancelled($val)
-    {
-        $this->_propDict["isCancelled"] = boolval($val);
         return $this;
     }
 
@@ -672,7 +553,7 @@ class OnlineMeeting extends Entity
 
     /**
     * Gets the joinInformation
-    * The join information in the language and locale variant specified in the Accept-Language request HTTP header. Read-only.
+    * The join information in the language and locale variant specified in 'Accept-Language' request HTTP header. Read-only.
     *
     * @return ItemBody|null The joinInformation
     */
@@ -691,7 +572,7 @@ class OnlineMeeting extends Entity
 
     /**
     * Sets the joinInformation
-    * The join information in the language and locale variant specified in the Accept-Language request HTTP header. Read-only.
+    * The join information in the language and locale variant specified in 'Accept-Language' request HTTP header. Read-only.
     *
     * @param ItemBody $val The joinInformation
     *
@@ -700,6 +581,39 @@ class OnlineMeeting extends Entity
     public function setJoinInformation($val)
     {
         $this->_propDict["joinInformation"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the joinMeetingIdSettings
+    * Specifies the joinMeetingId, the meeting passcode, and the requirement for the passcode.
+    *
+    * @return JoinMeetingIdSettings|null The joinMeetingIdSettings
+    */
+    public function getJoinMeetingIdSettings()
+    {
+        if (array_key_exists("joinMeetingIdSettings", $this->_propDict)) {
+            if (is_a($this->_propDict["joinMeetingIdSettings"], "\Beta\Microsoft\Graph\Model\JoinMeetingIdSettings") || is_null($this->_propDict["joinMeetingIdSettings"])) {
+                return $this->_propDict["joinMeetingIdSettings"];
+            } else {
+                $this->_propDict["joinMeetingIdSettings"] = new JoinMeetingIdSettings($this->_propDict["joinMeetingIdSettings"]);
+                return $this->_propDict["joinMeetingIdSettings"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the joinMeetingIdSettings
+    * Specifies the joinMeetingId, the meeting passcode, and the requirement for the passcode.
+    *
+    * @param JoinMeetingIdSettings $val The joinMeetingIdSettings
+    *
+    * @return OnlineMeeting
+    */
+    public function setJoinMeetingIdSettings($val)
+    {
+        $this->_propDict["joinMeetingIdSettings"] = $val;
         return $this;
     }
 
@@ -731,8 +645,37 @@ class OnlineMeeting extends Entity
     }
 
     /**
+    * Gets the joinWebUrl
+    * The join URL of the online meeting. Read-only.
+    *
+    * @return string|null The joinWebUrl
+    */
+    public function getJoinWebUrl()
+    {
+        if (array_key_exists("joinWebUrl", $this->_propDict)) {
+            return $this->_propDict["joinWebUrl"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the joinWebUrl
+    * The join URL of the online meeting. Read-only.
+    *
+    * @param string $val The joinWebUrl
+    *
+    * @return OnlineMeeting
+    */
+    public function setJoinWebUrl($val)
+    {
+        $this->_propDict["joinWebUrl"] = $val;
+        return $this;
+    }
+
+    /**
     * Gets the lobbyBypassSettings
-    * Specifies which participants can bypass the meeting   lobby.
+    * Specifies which participants can bypass the meeting lobby.
     *
     * @return LobbyBypassSettings|null The lobbyBypassSettings
     */
@@ -751,7 +694,7 @@ class OnlineMeeting extends Entity
 
     /**
     * Sets the lobbyBypassSettings
-    * Specifies which participants can bypass the meeting   lobby.
+    * Specifies which participants can bypass the meeting lobby.
     *
     * @param LobbyBypassSettings $val The lobbyBypassSettings
     *
@@ -765,7 +708,7 @@ class OnlineMeeting extends Entity
 
     /**
     * Gets the participants
-    * The participants associated with the online meeting.  This includes the organizer and the attendees.
+    * The participants associated with the online meeting. This includes the organizer and the attendees.
     *
     * @return MeetingParticipants|null The participants
     */
@@ -784,7 +727,7 @@ class OnlineMeeting extends Entity
 
     /**
     * Sets the participants
-    * The participants associated with the online meeting.  This includes the organizer and the attendees.
+    * The participants associated with the online meeting. This includes the organizer and the attendees.
     *
     * @param MeetingParticipants $val The participants
     *
@@ -949,9 +892,38 @@ class OnlineMeeting extends Entity
         return $this;
     }
 
+
+     /**
+     * Gets the attendanceReports
+    * The attendance reports of an online meeting. Read-only.
+     *
+     * @return array|null The attendanceReports
+     */
+    public function getAttendanceReports()
+    {
+        if (array_key_exists("attendanceReports", $this->_propDict)) {
+           return $this->_propDict["attendanceReports"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the attendanceReports
+    * The attendance reports of an online meeting. Read-only.
+    *
+    * @param MeetingAttendanceReport[] $val The attendanceReports
+    *
+    * @return OnlineMeeting
+    */
+    public function setAttendanceReports($val)
+    {
+        $this->_propDict["attendanceReports"] = $val;
+        return $this;
+    }
+
     /**
     * Gets the meetingAttendanceReport
-    * The attendance report of an online meeting. Read-only.
     *
     * @return MeetingAttendanceReport|null The meetingAttendanceReport
     */
@@ -970,7 +942,6 @@ class OnlineMeeting extends Entity
 
     /**
     * Sets the meetingAttendanceReport
-    * The attendance report of an online meeting. Read-only.
     *
     * @param MeetingAttendanceReport $val The meetingAttendanceReport
     *

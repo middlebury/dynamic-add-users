@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AppleUserInitiatedEnrollmentProfile File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class AppleUserInitiatedEnrollmentProfile extends Entity
     * Sets the availableEnrollmentTypeOptions
     * List of available enrollment type options
     *
-    * @param AppleOwnerTypeEnrollmentType $val The availableEnrollmentTypeOptions
+    * @param AppleOwnerTypeEnrollmentType[] $val The availableEnrollmentTypeOptions
     *
     * @return AppleUserInitiatedEnrollmentProfile
     */
@@ -293,7 +293,7 @@ class AppleUserInitiatedEnrollmentProfile extends Entity
     * Sets the assignments
     * The list of assignments for this profile.
     *
-    * @param AppleEnrollmentProfileAssignment $val The assignments
+    * @param AppleEnrollmentProfileAssignment[] $val The assignments
     *
     * @return AppleUserInitiatedEnrollmentProfile
     */

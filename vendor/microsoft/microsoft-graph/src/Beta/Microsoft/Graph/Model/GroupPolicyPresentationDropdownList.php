@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * GroupPolicyPresentationDropdownList File
 * PHP version 7
 *
@@ -77,7 +77,7 @@ class GroupPolicyPresentationDropdownList extends GroupPolicyPresentation
     * Sets the items
     * Represents a set of localized display names and their associated values.
     *
-    * @param GroupPolicyPresentationDropdownListItem $val The items
+    * @param GroupPolicyPresentationDropdownListItem[] $val The items
     *
     * @return GroupPolicyPresentationDropdownList
     */

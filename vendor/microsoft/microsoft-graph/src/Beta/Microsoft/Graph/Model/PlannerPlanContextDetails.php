@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * PlannerPlanContextDetails File
 * PHP version 7
 *
@@ -82,6 +82,39 @@ class PlannerPlanContextDetails extends Entity
     public function setDisplayLinkType($val)
     {
         $this->_propDict["displayLinkType"] = $val;
+         return $this;
+    }
+
+    /**
+    * Gets the state
+    * Indicates the state of the associated plannerPlanContext.
+    *
+    * @return PlannerContextState|null The state
+    */
+    public function getState()
+    {
+        if (array_key_exists("state", $this->_propDict)) {
+            if (is_a($this->_propDict["state"], "\Beta\Microsoft\Graph\Model\PlannerContextState") || is_null($this->_propDict["state"])) {
+                return $this->_propDict["state"];
+            } else {
+                $this->_propDict["state"] = new PlannerContextState($this->_propDict["state"]);
+                return $this->_propDict["state"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the state
+    * Indicates the state of the associated plannerPlanContext.
+    *
+    * @param PlannerContextState $val The value to assign to the state
+    *
+    * @return PlannerPlanContextDetails The PlannerPlanContextDetails
+    */
+    public function setState($val)
+    {
+        $this->_propDict["state"] = $val;
          return $this;
     }
     /**

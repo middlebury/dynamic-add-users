@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Windows10EndpointProtectionConfiguration File
 * PHP version 7
 *
@@ -4332,7 +4332,7 @@ class Windows10EndpointProtectionConfiguration extends DeviceConfiguration
     * Sets the firewallRules
     * Configures the firewall rule settings. This collection can contain a maximum of 150 elements.
     *
-    * @param WindowsFirewallRule $val The firewallRules
+    * @param WindowsFirewallRule[] $val The firewallRules
     *
     * @return Windows10EndpointProtectionConfiguration
     */
@@ -5590,7 +5590,7 @@ class Windows10EndpointProtectionConfiguration extends DeviceConfiguration
 
     /**
     * Gets the localSecurityOptionsSmartCardRemovalBehavior
-    * This security setting determines what happens when the smart card for a logged-on user is removed from the smart card reader. Possible values are: lockWorkstation, noAction, forceLogoff, disconnectRemoteDesktopSession.
+    * This security setting determines what happens when the smart card for a logged-on user is removed from the smart card reader. Possible values are: noAction, lockWorkstation, forceLogoff, disconnectRemoteDesktopSession.
     *
     * @return LocalSecurityOptionsSmartCardRemovalBehaviorType|null The localSecurityOptionsSmartCardRemovalBehavior
     */
@@ -5609,7 +5609,7 @@ class Windows10EndpointProtectionConfiguration extends DeviceConfiguration
 
     /**
     * Sets the localSecurityOptionsSmartCardRemovalBehavior
-    * This security setting determines what happens when the smart card for a logged-on user is removed from the smart card reader. Possible values are: lockWorkstation, noAction, forceLogoff, disconnectRemoteDesktopSession.
+    * This security setting determines what happens when the smart card for a logged-on user is removed from the smart card reader. Possible values are: noAction, lockWorkstation, forceLogoff, disconnectRemoteDesktopSession.
     *
     * @param LocalSecurityOptionsSmartCardRemovalBehaviorType $val The localSecurityOptionsSmartCardRemovalBehavior
     *

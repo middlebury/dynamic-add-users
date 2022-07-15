@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Note File
 * PHP version 7
 *
@@ -154,7 +154,7 @@ class Note extends OutlookItem
     /**
     * Sets the attachments
     *
-    * @param Attachment $val The attachments
+    * @param Attachment[] $val The attachments
     *
     * @return Note
     */
@@ -182,7 +182,7 @@ class Note extends OutlookItem
     /**
     * Sets the extensions
     *
-    * @param Extension $val The extensions
+    * @param Extension[] $val The extensions
     *
     * @return Note
     */
@@ -210,7 +210,7 @@ class Note extends OutlookItem
     /**
     * Sets the multiValueExtendedProperties
     *
-    * @param MultiValueLegacyExtendedProperty $val The multiValueExtendedProperties
+    * @param MultiValueLegacyExtendedProperty[] $val The multiValueExtendedProperties
     *
     * @return Note
     */
@@ -238,7 +238,7 @@ class Note extends OutlookItem
     /**
     * Sets the singleValueExtendedProperties
     *
-    * @param SingleValueLegacyExtendedProperty $val The singleValueExtendedProperties
+    * @param SingleValueLegacyExtendedProperty[] $val The singleValueExtendedProperties
     *
     * @return Note
     */

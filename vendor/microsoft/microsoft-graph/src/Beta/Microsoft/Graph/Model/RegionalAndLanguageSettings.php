@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * RegionalAndLanguageSettings File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class RegionalAndLanguageSettings extends Entity
     * Sets the authoringLanguages
     * Prioritized list of languages the user reads and authors in.Returned by default. Not nullable.
     *
-    * @param LocaleInfo $val The authoringLanguages
+    * @param LocaleInfo[] $val The authoringLanguages
     *
     * @return RegionalAndLanguageSettings
     */

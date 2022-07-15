@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ListItem File
 * PHP version 7
 *
@@ -209,7 +209,7 @@ class ListItem extends BaseItem
     * Sets the versions
     * The list of previous versions of the list item.
     *
-    * @param ListItemVersion $val The versions
+    * @param ListItemVersion[] $val The versions
     *
     * @return ListItem
     */

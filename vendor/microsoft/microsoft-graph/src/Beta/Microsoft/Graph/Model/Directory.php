@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Directory File
 * PHP version 7
 *
@@ -26,6 +26,62 @@ class Directory extends Entity
 {
 
      /**
+     * Gets the impactedResources
+     *
+     * @return array|null The impactedResources
+     */
+    public function getImpactedResources()
+    {
+        if (array_key_exists("impactedResources", $this->_propDict)) {
+           return $this->_propDict["impactedResources"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the impactedResources
+    *
+    * @param RecommendationResource[] $val The impactedResources
+    *
+    * @return Directory
+    */
+    public function setImpactedResources($val)
+    {
+        $this->_propDict["impactedResources"] = $val;
+        return $this;
+    }
+
+
+     /**
+     * Gets the recommendations
+     *
+     * @return array|null The recommendations
+     */
+    public function getRecommendations()
+    {
+        if (array_key_exists("recommendations", $this->_propDict)) {
+           return $this->_propDict["recommendations"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the recommendations
+    *
+    * @param Recommendation[] $val The recommendations
+    *
+    * @return Directory
+    */
+    public function setRecommendations($val)
+    {
+        $this->_propDict["recommendations"] = $val;
+        return $this;
+    }
+
+
+     /**
      * Gets the administrativeUnits
     * Conceptual container for user and group directory objects.
      *
@@ -44,7 +100,7 @@ class Directory extends Entity
     * Sets the administrativeUnits
     * Conceptual container for user and group directory objects.
     *
-    * @param AdministrativeUnit $val The administrativeUnits
+    * @param AdministrativeUnit[] $val The administrativeUnits
     *
     * @return Directory
     */
@@ -57,6 +113,7 @@ class Directory extends Entity
 
      /**
      * Gets the attributeSets
+    * Group of related custom security attribute definitions.
      *
      * @return array|null The attributeSets
      */
@@ -71,8 +128,9 @@ class Directory extends Entity
 
     /**
     * Sets the attributeSets
+    * Group of related custom security attribute definitions.
     *
-    * @param AttributeSet $val The attributeSets
+    * @param AttributeSet[] $val The attributeSets
     *
     * @return Directory
     */
@@ -85,6 +143,7 @@ class Directory extends Entity
 
      /**
      * Gets the customSecurityAttributeDefinitions
+    * Schema of a custom security attributes (key-value pairs).
      *
      * @return array|null The customSecurityAttributeDefinitions
      */
@@ -99,8 +158,9 @@ class Directory extends Entity
 
     /**
     * Sets the customSecurityAttributeDefinitions
+    * Schema of a custom security attributes (key-value pairs).
     *
-    * @param CustomSecurityAttributeDefinition $val The customSecurityAttributeDefinitions
+    * @param CustomSecurityAttributeDefinition[] $val The customSecurityAttributeDefinitions
     *
     * @return Directory
     */
@@ -130,7 +190,7 @@ class Directory extends Entity
     * Sets the deletedItems
     * Recently deleted items. Read-only. Nullable.
     *
-    * @param DirectoryObject $val The deletedItems
+    * @param DirectoryObject[] $val The deletedItems
     *
     * @return Directory
     */
@@ -160,7 +220,7 @@ class Directory extends Entity
     * Sets the federationConfigurations
     * Configure domain federation with organizations whose identity provider (IdP) supports either the SAML or WS-Fed protocol.
     *
-    * @param IdentityProviderBase $val The federationConfigurations
+    * @param IdentityProviderBase[] $val The federationConfigurations
     *
     * @return Directory
     */
@@ -188,7 +248,7 @@ class Directory extends Entity
     /**
     * Sets the inboundSharedUserProfiles
     *
-    * @param InboundSharedUserProfile $val The inboundSharedUserProfiles
+    * @param InboundSharedUserProfile[] $val The inboundSharedUserProfiles
     *
     * @return Directory
     */
@@ -216,7 +276,7 @@ class Directory extends Entity
     /**
     * Sets the outboundSharedUserProfiles
     *
-    * @param OutboundSharedUserProfile $val The outboundSharedUserProfiles
+    * @param OutboundSharedUserProfile[] $val The outboundSharedUserProfiles
     *
     * @return Directory
     */
@@ -244,7 +304,7 @@ class Directory extends Entity
     /**
     * Sets the sharedEmailDomains
     *
-    * @param SharedEmailDomain $val The sharedEmailDomains
+    * @param SharedEmailDomain[] $val The sharedEmailDomains
     *
     * @return Directory
     */
@@ -257,7 +317,6 @@ class Directory extends Entity
 
      /**
      * Gets the featureRolloutPolicies
-    * Nullable.
      *
      * @return array|null The featureRolloutPolicies
      */
@@ -272,9 +331,8 @@ class Directory extends Entity
 
     /**
     * Sets the featureRolloutPolicies
-    * Nullable.
     *
-    * @param FeatureRolloutPolicy $val The featureRolloutPolicies
+    * @param FeatureRolloutPolicy[] $val The featureRolloutPolicies
     *
     * @return Directory
     */

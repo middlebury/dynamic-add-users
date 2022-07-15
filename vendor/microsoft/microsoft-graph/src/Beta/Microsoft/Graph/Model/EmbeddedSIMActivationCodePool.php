@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * EmbeddedSIMActivationCodePool File
 * PHP version 7
 *
@@ -73,7 +73,7 @@ class EmbeddedSIMActivationCodePool extends Entity
     * Sets the activationCodes
     * The activation codes which belong to this pool. This navigation property is used to post activation codes to Intune but cannot be used to read activation codes from Intune.
     *
-    * @param EmbeddedSIMActivationCode $val The activationCodes
+    * @param EmbeddedSIMActivationCode[] $val The activationCodes
     *
     * @return EmbeddedSIMActivationCodePool
     */
@@ -198,7 +198,7 @@ class EmbeddedSIMActivationCodePool extends Entity
     * Sets the assignments
     * Navigational property to a list of targets to which this pool is assigned.
     *
-    * @param EmbeddedSIMActivationCodePoolAssignment $val The assignments
+    * @param EmbeddedSIMActivationCodePoolAssignment[] $val The assignments
     *
     * @return EmbeddedSIMActivationCodePool
     */
@@ -228,7 +228,7 @@ class EmbeddedSIMActivationCodePool extends Entity
     * Sets the deviceStates
     * Navigational property to a list of device states for this pool.
     *
-    * @param EmbeddedSIMDeviceState $val The deviceStates
+    * @param EmbeddedSIMDeviceState[] $val The deviceStates
     *
     * @return EmbeddedSIMActivationCodePool
     */

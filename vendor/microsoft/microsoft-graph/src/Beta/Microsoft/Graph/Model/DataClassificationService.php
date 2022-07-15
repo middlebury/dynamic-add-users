@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DataClassificationService File
 * PHP version 7
 *
@@ -42,7 +42,7 @@ class DataClassificationService extends Entity
     /**
     * Sets the exactMatchDataStores
     *
-    * @param ExactMatchDataStore $val The exactMatchDataStores
+    * @param ExactMatchDataStore[] $val The exactMatchDataStores
     *
     * @return DataClassificationService
     */
@@ -70,7 +70,7 @@ class DataClassificationService extends Entity
     /**
     * Sets the classifyFileJobs
     *
-    * @param JobResponseBase $val The classifyFileJobs
+    * @param JobResponseBase[] $val The classifyFileJobs
     *
     * @return DataClassificationService
     */
@@ -98,7 +98,7 @@ class DataClassificationService extends Entity
     /**
     * Sets the classifyTextJobs
     *
-    * @param JobResponseBase $val The classifyTextJobs
+    * @param JobResponseBase[] $val The classifyTextJobs
     *
     * @return DataClassificationService
     */
@@ -126,7 +126,7 @@ class DataClassificationService extends Entity
     /**
     * Sets the evaluateDlpPoliciesJobs
     *
-    * @param JobResponseBase $val The evaluateDlpPoliciesJobs
+    * @param JobResponseBase[] $val The evaluateDlpPoliciesJobs
     *
     * @return DataClassificationService
     */
@@ -154,7 +154,7 @@ class DataClassificationService extends Entity
     /**
     * Sets the evaluateLabelJobs
     *
-    * @param JobResponseBase $val The evaluateLabelJobs
+    * @param JobResponseBase[] $val The evaluateLabelJobs
     *
     * @return DataClassificationService
     */
@@ -182,7 +182,7 @@ class DataClassificationService extends Entity
     /**
     * Sets the jobs
     *
-    * @param JobResponseBase $val The jobs
+    * @param JobResponseBase[] $val The jobs
     *
     * @return DataClassificationService
     */
@@ -210,7 +210,7 @@ class DataClassificationService extends Entity
     /**
     * Sets the sensitiveTypes
     *
-    * @param SensitiveType $val The sensitiveTypes
+    * @param SensitiveType[] $val The sensitiveTypes
     *
     * @return DataClassificationService
     */
@@ -238,7 +238,7 @@ class DataClassificationService extends Entity
     /**
     * Sets the sensitivityLabels
     *
-    * @param SensitivityLabel $val The sensitivityLabels
+    * @param SensitivityLabel[] $val The sensitivityLabels
     *
     * @return DataClassificationService
     */
@@ -266,7 +266,7 @@ class DataClassificationService extends Entity
     /**
     * Sets the exactMatchUploadAgents
     *
-    * @param ExactMatchUploadAgent $val The exactMatchUploadAgents
+    * @param ExactMatchUploadAgent[] $val The exactMatchUploadAgents
     *
     * @return DataClassificationService
     */

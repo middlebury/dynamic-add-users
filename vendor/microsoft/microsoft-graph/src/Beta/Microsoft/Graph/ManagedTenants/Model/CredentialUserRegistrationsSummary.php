@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * CredentialUserRegistrationsSummary File
 * PHP version 7
 *
@@ -112,6 +112,35 @@ class CredentialUserRegistrationsSummary extends \Beta\Microsoft\Graph\Model\Ent
     public function setMfaConditionalAccessPolicyState($val)
     {
         $this->_propDict["mfaConditionalAccessPolicyState"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the mfaExcludedUserCount
+    * The number of users in the multi-factor authentication exclusion security group (Microsoft 365 Lighthouse - MFA exclusions). Optional. Read-only.
+    *
+    * @return int|null The mfaExcludedUserCount
+    */
+    public function getMfaExcludedUserCount()
+    {
+        if (array_key_exists("mfaExcludedUserCount", $this->_propDict)) {
+            return $this->_propDict["mfaExcludedUserCount"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the mfaExcludedUserCount
+    * The number of users in the multi-factor authentication exclusion security group (Microsoft 365 Lighthouse - MFA exclusions). Optional. Read-only.
+    *
+    * @param int $val The mfaExcludedUserCount
+    *
+    * @return CredentialUserRegistrationsSummary
+    */
+    public function setMfaExcludedUserCount($val)
+    {
+        $this->_propDict["mfaExcludedUserCount"] = intval($val);
         return $this;
     }
 

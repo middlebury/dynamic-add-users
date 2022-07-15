@@ -11,17 +11,17 @@ class EventTest extends TestCase
 	public function testGetCalendarView()
 	{
 		$graphTestBase = new GraphTestBase();
-	$client = $graphTestBase->graphClient;
+    	$client = $graphTestBase->graphClient;
+    	
+    	$startTime = new DateTime('today midnight');
+    	$startTime = $startTime->format('Y-m-d H:i:s');
+    	$endTime = new DateTime('tomorrow midnight');
+    	$endTime = $endTime->format('Y-m-d H:i:s');
 
-	$startTime = new DateTime('today midnight');
-	$startTime = $startTime->format('Y-m-d H:i:s');
-	$endTime = new DateTime('tomorrow midnight');
-	$endTime = $endTime->format('Y-m-d H:i:s');
+    	$todaysEvents = $client->createRequest("GET", "/me/calendarView?startDateTime=$startTime&endDateTime=$endTime")
+    						   ->setReturnType(Model\Event::class)
+    						   ->execute();
 
-	$todaysEvents = $client->createRequest("GET", "/me/calendarView?startDateTime=$startTime&endDateTime=$endTime")
-						   ->setReturnType(Model\Event::class)
-						   ->execute();
-
-	$this->assertNotNull($todaysEvents);
+    	$this->assertNotNull($todaysEvents);
 	}
 }

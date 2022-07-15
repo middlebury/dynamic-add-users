@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * WorkbookOperation File
 * PHP version 7
 *
@@ -88,7 +88,7 @@ class WorkbookOperation extends Entity
 
     /**
     * Gets the status
-    * The current status of the operation. Possible values are: NotStarted, Running, Completed, Failed.
+    * The current status of the operation. Possible values are: notStarted, running, succeeded, failed.
     *
     * @return WorkbookOperationStatus|null The status
     */
@@ -107,7 +107,7 @@ class WorkbookOperation extends Entity
 
     /**
     * Sets the status
-    * The current status of the operation. Possible values are: NotStarted, Running, Completed, Failed.
+    * The current status of the operation. Possible values are: notStarted, running, succeeded, failed.
     *
     * @param WorkbookOperationStatus $val The status
     *

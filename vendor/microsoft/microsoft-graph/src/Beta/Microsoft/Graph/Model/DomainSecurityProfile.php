@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DomainSecurityProfile File
 * PHP version 7
 *
@@ -177,7 +177,7 @@ class DomainSecurityProfile extends Entity
     /**
     * Sets the domainCategories
     *
-    * @param ReputationCategory $val The domainCategories
+    * @param ReputationCategory[] $val The domainCategories
     *
     * @return DomainSecurityProfile
     */

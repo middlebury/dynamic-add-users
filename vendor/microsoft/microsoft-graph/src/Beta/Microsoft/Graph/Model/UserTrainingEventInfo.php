@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * UserTrainingEventInfo File
 * PHP version 7
 *
@@ -54,7 +54,7 @@ class UserTrainingEventInfo extends Entity
 
     /**
     * Gets the latestTrainingStatus
-    * Latest status of the training assigned to the user. Possible values are: unknown, assigned, inProgress, completed, overdue, notCompleted, unknownFutureValue.
+    * Latest status of the training assigned to the user. Possible values are: unknown, assigned, inProgress, completed, overdue, unknownFutureValue.
     *
     * @return TrainingStatus|null The latestTrainingStatus
     */
@@ -73,7 +73,7 @@ class UserTrainingEventInfo extends Entity
 
     /**
     * Sets the latestTrainingStatus
-    * Latest status of the training assigned to the user. Possible values are: unknown, assigned, inProgress, completed, overdue, notCompleted, unknownFutureValue.
+    * Latest status of the training assigned to the user. Possible values are: unknown, assigned, inProgress, completed, overdue, unknownFutureValue.
     *
     * @param TrainingStatus $val The value to assign to the latestTrainingStatus
     *

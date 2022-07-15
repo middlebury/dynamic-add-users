@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceManagementResourceAccessProfileBase File
 * PHP version 7
 *
@@ -226,7 +226,7 @@ class DeviceManagementResourceAccessProfileBase extends Entity
     * Sets the assignments
     * The list of assignments for the device configuration profile.
     *
-    * @param DeviceManagementResourceAccessProfileAssignment $val The assignments
+    * @param DeviceManagementResourceAccessProfileAssignment[] $val The assignments
     *
     * @return DeviceManagementResourceAccessProfileBase
     */

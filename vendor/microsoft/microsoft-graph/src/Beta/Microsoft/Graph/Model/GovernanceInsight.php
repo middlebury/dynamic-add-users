@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * GovernanceInsight File
 * PHP version 7
 *
@@ -26,6 +26,7 @@ class GovernanceInsight extends Entity
 {
     /**
     * Gets the insightCreatedDateTime
+    * Indicates when the insight was created.
     *
     * @return \DateTime|null The insightCreatedDateTime
     */
@@ -44,6 +45,7 @@ class GovernanceInsight extends Entity
 
     /**
     * Sets the insightCreatedDateTime
+    * Indicates when the insight was created.
     *
     * @param \DateTime $val The insightCreatedDateTime
     *

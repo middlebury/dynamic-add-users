@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * RoleDefinition File
 * PHP version 7
 *
@@ -160,7 +160,7 @@ class RoleDefinition extends Entity
     * Sets the permissions
     * List of Role Permissions this role is allowed to perform. These must match the actionName that is defined as part of the rolePermission.
     *
-    * @param RolePermission $val The permissions
+    * @param RolePermission[] $val The permissions
     *
     * @return RoleDefinition
     */
@@ -190,7 +190,7 @@ class RoleDefinition extends Entity
     * Sets the rolePermissions
     * List of Role Permissions this role is allowed to perform. These must match the actionName that is defined as part of the rolePermission.
     *
-    * @param RolePermission $val The rolePermissions
+    * @param RolePermission[] $val The rolePermissions
     *
     * @return RoleDefinition
     */
@@ -249,7 +249,7 @@ class RoleDefinition extends Entity
     * Sets the roleAssignments
     * List of Role assignments for this role definition.
     *
-    * @param RoleAssignment $val The roleAssignments
+    * @param RoleAssignment[] $val The roleAssignments
     *
     * @return RoleDefinition
     */

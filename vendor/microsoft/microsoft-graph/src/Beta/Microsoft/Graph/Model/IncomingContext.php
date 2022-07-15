@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * IncomingContext File
 * PHP version 7
 *
@@ -25,7 +25,7 @@ class IncomingContext extends Entity
 {
     /**
     * Gets the observedParticipantId
-    * The ID of the participant that is under observation. Read-only.
+    * The id of the participant that is under observation. Read-only.
     *
     * @return string|null The observedParticipantId
     */
@@ -40,7 +40,7 @@ class IncomingContext extends Entity
 
     /**
     * Sets the observedParticipantId
-    * The ID of the participant that is under observation. Read-only.
+    * The id of the participant that is under observation. Read-only.
     *
     * @param string $val The value of the observedParticipantId
     *
@@ -86,7 +86,7 @@ class IncomingContext extends Entity
     }
     /**
     * Gets the sourceParticipantId
-    * The ID of the participant that triggered the incoming call. Read-only.
+    * The id of the participant that triggered the incoming call. Read-only.
     *
     * @return string|null The sourceParticipantId
     */
@@ -101,7 +101,7 @@ class IncomingContext extends Entity
 
     /**
     * Sets the sourceParticipantId
-    * The ID of the participant that triggered the incoming call. Read-only.
+    * The id of the participant that triggered the incoming call. Read-only.
     *
     * @param string $val The value of the sourceParticipantId
     *

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Synchronization File
 * PHP version 7
 *
@@ -27,6 +27,7 @@ class Synchronization extends Entity
 
      /**
      * Gets the secrets
+    * Represents a collection of credentials to access provisioned cloud applications.
      *
      * @return array|null The secrets
      */
@@ -41,8 +42,9 @@ class Synchronization extends Entity
 
     /**
     * Sets the secrets
+    * Represents a collection of credentials to access provisioned cloud applications.
     *
-    * @param SynchronizationSecretKeyStringValuePair $val The secrets
+    * @param SynchronizationSecretKeyStringValuePair[] $val The secrets
     *
     * @return Synchronization
     */
@@ -55,6 +57,7 @@ class Synchronization extends Entity
 
      /**
      * Gets the jobs
+    * Performs synchronization by periodically running in the background, polling for changes in one directory, and pushing them to another directory.
      *
      * @return array|null The jobs
      */
@@ -69,8 +72,9 @@ class Synchronization extends Entity
 
     /**
     * Sets the jobs
+    * Performs synchronization by periodically running in the background, polling for changes in one directory, and pushing them to another directory.
     *
-    * @param SynchronizationJob $val The jobs
+    * @param SynchronizationJob[] $val The jobs
     *
     * @return Synchronization
     */
@@ -83,6 +87,7 @@ class Synchronization extends Entity
 
      /**
      * Gets the templates
+    * Pre-configured synchronization settings for a particular application.
      *
      * @return array|null The templates
      */
@@ -97,8 +102,9 @@ class Synchronization extends Entity
 
     /**
     * Sets the templates
+    * Pre-configured synchronization settings for a particular application.
     *
-    * @param SynchronizationTemplate $val The templates
+    * @param SynchronizationTemplate[] $val The templates
     *
     * @return Synchronization
     */

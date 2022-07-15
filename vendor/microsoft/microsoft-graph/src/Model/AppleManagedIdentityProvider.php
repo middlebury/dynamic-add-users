@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AppleManagedIdentityProvider File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class AppleManagedIdentityProvider extends IdentityProviderBase
 {
     /**
     * Gets the certificateData
-    * The certificate data, which is a long string of text from the certificate. Can be null.
+    * The certificate data which is a long string of text from the certificate, can be null.
     *
     * @return string|null The certificateData
     */
@@ -41,7 +41,7 @@ class AppleManagedIdentityProvider extends IdentityProviderBase
 
     /**
     * Sets the certificateData
-    * The certificate data, which is a long string of text from the certificate. Can be null.
+    * The certificate data which is a long string of text from the certificate, can be null.
     *
     * @param string $val The certificateData
     *

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ItemAttachment File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class ItemAttachment extends Attachment
 {
     /**
     * Gets the item
-    * The attached message or event. Navigation property.
+    * The attached contact, message or event. Navigation property.
     *
     * @return OutlookItem|null The item
     */
@@ -45,7 +45,7 @@ class ItemAttachment extends Attachment
 
     /**
     * Sets the item
-    * The attached message or event. Navigation property.
+    * The attached contact, message or event. Navigation property.
     *
     * @param OutlookItem $val The item
     *

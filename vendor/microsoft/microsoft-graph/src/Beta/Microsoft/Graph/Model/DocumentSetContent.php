@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DocumentSetContent File
 * PHP version 7
 *
@@ -58,7 +58,7 @@ class DocumentSetContent extends Entity
     }
     /**
     * Gets the fileName
-    * Name of the file in resource folder that should be added as a default content or a template in the document set.
+    * Name of the file in resource folder that should be added as a default content or a template in the document set
     *
     * @return string|null The fileName
     */
@@ -73,7 +73,7 @@ class DocumentSetContent extends Entity
 
     /**
     * Sets the fileName
-    * Name of the file in resource folder that should be added as a default content or a template in the document set.
+    * Name of the file in resource folder that should be added as a default content or a template in the document set
     *
     * @param string $val The value of the fileName
     *

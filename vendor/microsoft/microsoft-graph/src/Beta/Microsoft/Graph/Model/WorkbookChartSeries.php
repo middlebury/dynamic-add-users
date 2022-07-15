@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * WorkbookChartSeries File
 * PHP version 7
 *
@@ -106,7 +106,7 @@ class WorkbookChartSeries extends Entity
     * Sets the points
     * Represents a collection of all points in the series. Read-only.
     *
-    * @param WorkbookChartPoint $val The points
+    * @param WorkbookChartPoint[] $val The points
     *
     * @return WorkbookChartSeries
     */

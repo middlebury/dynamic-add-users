@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ManagedAppPolicyDeploymentSummary File
 * PHP version 7
 *
@@ -73,7 +73,7 @@ class ManagedAppPolicyDeploymentSummary extends Entity
     * Sets the configurationDeploymentSummaryPerApp
     * Not yet documented
     *
-    * @param ManagedAppPolicyDeploymentSummaryPerApp $val The configurationDeploymentSummaryPerApp
+    * @param ManagedAppPolicyDeploymentSummaryPerApp[] $val The configurationDeploymentSummaryPerApp
     *
     * @return ManagedAppPolicyDeploymentSummary
     */

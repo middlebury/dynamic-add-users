@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * CloudPcProvisioningPolicy File
 * PHP version 7
 *
@@ -24,6 +24,64 @@ namespace Beta\Microsoft\Graph\Model;
 */
 class CloudPcProvisioningPolicy extends Entity
 {
+    /**
+    * Gets the alternateResourceUrl
+    * The URL of the alternate resource that links to this provisioning policy. Read-only.
+    *
+    * @return string|null The alternateResourceUrl
+    */
+    public function getAlternateResourceUrl()
+    {
+        if (array_key_exists("alternateResourceUrl", $this->_propDict)) {
+            return $this->_propDict["alternateResourceUrl"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the alternateResourceUrl
+    * The URL of the alternate resource that links to this provisioning policy. Read-only.
+    *
+    * @param string $val The alternateResourceUrl
+    *
+    * @return CloudPcProvisioningPolicy
+    */
+    public function setAlternateResourceUrl($val)
+    {
+        $this->_propDict["alternateResourceUrl"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the cloudPcGroupDisplayName
+    * The display name of the Cloud PC group that the Cloud PCs reside in. Read-only.
+    *
+    * @return string|null The cloudPcGroupDisplayName
+    */
+    public function getCloudPcGroupDisplayName()
+    {
+        if (array_key_exists("cloudPcGroupDisplayName", $this->_propDict)) {
+            return $this->_propDict["cloudPcGroupDisplayName"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the cloudPcGroupDisplayName
+    * The display name of the Cloud PC group that the Cloud PCs reside in. Read-only.
+    *
+    * @param string $val The cloudPcGroupDisplayName
+    *
+    * @return CloudPcProvisioningPolicy
+    */
+    public function setCloudPcGroupDisplayName($val)
+    {
+        $this->_propDict["cloudPcGroupDisplayName"] = $val;
+        return $this;
+    }
+
     /**
     * Gets the description
     * The provisioning policy description.
@@ -112,6 +170,35 @@ class CloudPcProvisioningPolicy extends Entity
     public function setDomainJoinConfiguration($val)
     {
         $this->_propDict["domainJoinConfiguration"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the gracePeriodInHours
+    * The number of hours to wait before reprovisioning/deprovisioning happens. Read-only.
+    *
+    * @return int|null The gracePeriodInHours
+    */
+    public function getGracePeriodInHours()
+    {
+        if (array_key_exists("gracePeriodInHours", $this->_propDict)) {
+            return $this->_propDict["gracePeriodInHours"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the gracePeriodInHours
+    * The number of hours to wait before reprovisioning/deprovisioning happens. Read-only.
+    *
+    * @param int $val The gracePeriodInHours
+    *
+    * @return CloudPcProvisioningPolicy
+    */
+    public function setGracePeriodInHours($val)
+    {
+        $this->_propDict["gracePeriodInHours"] = intval($val);
         return $this;
     }
 
@@ -207,7 +294,70 @@ class CloudPcProvisioningPolicy extends Entity
     }
 
     /**
+    * Gets the localAdminEnabled
+    * Indicates whether the local admin option is enabled. If the local admin option is enabled, the end user can be an admin of the Cloud PC device. Read-only.
+    *
+    * @return bool|null The localAdminEnabled
+    */
+    public function getLocalAdminEnabled()
+    {
+        if (array_key_exists("localAdminEnabled", $this->_propDict)) {
+            return $this->_propDict["localAdminEnabled"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the localAdminEnabled
+    * Indicates whether the local admin option is enabled. If the local admin option is enabled, the end user can be an admin of the Cloud PC device. Read-only.
+    *
+    * @param bool $val The localAdminEnabled
+    *
+    * @return CloudPcProvisioningPolicy
+    */
+    public function setLocalAdminEnabled($val)
+    {
+        $this->_propDict["localAdminEnabled"] = boolval($val);
+        return $this;
+    }
+
+    /**
+    * Gets the managedBy
+    * Specifies which services manage the Azure network connection. Possible values are: windows365, devBox, unknownFutureValue. Read-only.
+    *
+    * @return CloudPcManagementService|null The managedBy
+    */
+    public function getManagedBy()
+    {
+        if (array_key_exists("managedBy", $this->_propDict)) {
+            if (is_a($this->_propDict["managedBy"], "\Beta\Microsoft\Graph\Model\CloudPcManagementService") || is_null($this->_propDict["managedBy"])) {
+                return $this->_propDict["managedBy"];
+            } else {
+                $this->_propDict["managedBy"] = new CloudPcManagementService($this->_propDict["managedBy"]);
+                return $this->_propDict["managedBy"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the managedBy
+    * Specifies which services manage the Azure network connection. Possible values are: windows365, devBox, unknownFutureValue. Read-only.
+    *
+    * @param CloudPcManagementService $val The managedBy
+    *
+    * @return CloudPcProvisioningPolicy
+    */
+    public function setManagedBy($val)
+    {
+        $this->_propDict["managedBy"] = $val;
+        return $this;
+    }
+
+    /**
     * Gets the microsoftManagedDesktop
+    * The specific settings for the Microsoft Managed Desktop, which enables customers to get a managed device experience for the Cloud PC. Before you can enable Microsoft Managed Desktop, an admin must configure it.
     *
     * @return MicrosoftManagedDesktop|null The microsoftManagedDesktop
     */
@@ -226,6 +376,7 @@ class CloudPcProvisioningPolicy extends Entity
 
     /**
     * Sets the microsoftManagedDesktop
+    * The specific settings for the Microsoft Managed Desktop, which enables customers to get a managed device experience for the Cloud PC. Before you can enable Microsoft Managed Desktop, an admin must configure it.
     *
     * @param MicrosoftManagedDesktop $val The microsoftManagedDesktop
     *
@@ -266,6 +417,39 @@ class CloudPcProvisioningPolicy extends Entity
         return $this;
     }
 
+    /**
+    * Gets the windowsSettings
+    * Specific Windows settings to configure while creating Cloud PCs for this provisioning policy.
+    *
+    * @return CloudPcWindowsSettings|null The windowsSettings
+    */
+    public function getWindowsSettings()
+    {
+        if (array_key_exists("windowsSettings", $this->_propDict)) {
+            if (is_a($this->_propDict["windowsSettings"], "\Beta\Microsoft\Graph\Model\CloudPcWindowsSettings") || is_null($this->_propDict["windowsSettings"])) {
+                return $this->_propDict["windowsSettings"];
+            } else {
+                $this->_propDict["windowsSettings"] = new CloudPcWindowsSettings($this->_propDict["windowsSettings"]);
+                return $this->_propDict["windowsSettings"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the windowsSettings
+    * Specific Windows settings to configure while creating Cloud PCs for this provisioning policy.
+    *
+    * @param CloudPcWindowsSettings $val The windowsSettings
+    *
+    * @return CloudPcProvisioningPolicy
+    */
+    public function setWindowsSettings($val)
+    {
+        $this->_propDict["windowsSettings"] = $val;
+        return $this;
+    }
+
 
      /**
      * Gets the assignments
@@ -286,7 +470,7 @@ class CloudPcProvisioningPolicy extends Entity
     * Sets the assignments
     * A defined collection of provisioning policy assignments. Represents the set of Microsoft 365 groups and security groups in Azure AD that have provisioning policy assigned. Returned only on $expand. See an example of getting the assignments relationship.
     *
-    * @param CloudPcProvisioningPolicyAssignment $val The assignments
+    * @param CloudPcProvisioningPolicyAssignment[] $val The assignments
     *
     * @return CloudPcProvisioningPolicy
     */

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Ediscoveryroot File
 * PHP version 7
 *
@@ -42,7 +42,7 @@ class Ediscoveryroot extends \Beta\Microsoft\Graph\Model\Entity
     /**
     * Sets the cases
     *
-    * @param GraphCase $val The cases
+    * @param GraphCase[] $val The cases
     *
     * @return Ediscoveryroot
     */

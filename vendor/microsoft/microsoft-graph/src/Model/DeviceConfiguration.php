@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceConfiguration File
 * PHP version 7
 *
@@ -197,7 +197,7 @@ class DeviceConfiguration extends Entity
     * Sets the assignments
     * The list of assignments for the device configuration profile.
     *
-    * @param DeviceConfigurationAssignment $val The assignments
+    * @param DeviceConfigurationAssignment[] $val The assignments
     *
     * @return DeviceConfiguration
     */
@@ -227,7 +227,7 @@ class DeviceConfiguration extends Entity
     * Sets the deviceSettingStateSummaries
     * Device Configuration Setting State Device Summary
     *
-    * @param SettingStateDeviceSummary $val The deviceSettingStateSummaries
+    * @param SettingStateDeviceSummary[] $val The deviceSettingStateSummaries
     *
     * @return DeviceConfiguration
     */
@@ -257,7 +257,7 @@ class DeviceConfiguration extends Entity
     * Sets the deviceStatuses
     * Device configuration installation status by device.
     *
-    * @param DeviceConfigurationDeviceStatus $val The deviceStatuses
+    * @param DeviceConfigurationDeviceStatus[] $val The deviceStatuses
     *
     * @return DeviceConfiguration
     */
@@ -320,7 +320,7 @@ class DeviceConfiguration extends Entity
     * Sets the userStatuses
     * Device configuration installation status by user.
     *
-    * @param DeviceConfigurationUserStatus $val The userStatuses
+    * @param DeviceConfigurationUserStatus[] $val The userStatuses
     *
     * @return DeviceConfiguration
     */

@@ -6,46 +6,46 @@
     'aliases' => 
     array (
     ),
-    'reference' => '12fcd086d878f864f7bfe89f59fe2e0ece97eab4',
+    'reference' => 'da0021298bf68fd89ff7559a5cc6bc3983c5e95f',
     'name' => 'middlebury/dynamic-add-users',
   ),
   'versions' => 
   array (
-    'guzzlehttp/guzzle' =>
+    'guzzlehttp/guzzle' => 
     array (
-      'pretty_version' => '7.4.0',
-      'version' => '7.4.0.0',
-      'aliases' =>
+      'pretty_version' => '7.4.5',
+      'version' => '7.4.5.0',
+      'aliases' => 
       array (
       ),
-      'reference' => '868b3571a039f0ebc11ac8f344f4080babe2cb94',
+      'reference' => '1dd98b0564cb3f6bd16ce683cb755f94c10fbd82',
     ),
-    'guzzlehttp/promises' =>
+    'guzzlehttp/promises' => 
     array (
       'pretty_version' => '1.5.1',
       'version' => '1.5.1.0',
-      'aliases' =>
+      'aliases' => 
       array (
       ),
       'reference' => 'fe752aedc9fd8fcca3fe7ad05d419d32998a06da',
     ),
-    'guzzlehttp/psr7' =>
+    'guzzlehttp/psr7' => 
     array (
-      'pretty_version' => '2.1.0',
-      'version' => '2.1.0.0',
-      'aliases' =>
+      'pretty_version' => '2.4.0',
+      'version' => '2.4.0.0',
+      'aliases' => 
       array (
       ),
-      'reference' => '089edd38f5b8abba6cb01567c2a8aaa47cec4c72',
+      'reference' => '13388f00956b1503577598873fffb5ae994b5737',
     ),
-    'microsoft/microsoft-graph' =>
+    'microsoft/microsoft-graph' => 
     array (
-      'pretty_version' => '1.45.0',
-      'version' => '1.45.0.0',
-      'aliases' =>
+      'pretty_version' => '1.72.0',
+      'version' => '1.72.0.0',
+      'aliases' => 
       array (
       ),
-      'reference' => 'cdd46a752adf59bdcc400b2a1ccf999f4a44b348',
+      'reference' => '2cf18e6f3e4519a2a749ce4656b6d3bcae1e1ac4',
     ),
     'middlebury/dynamic-add-users' => 
     array (
@@ -54,73 +54,73 @@
       'aliases' => 
       array (
       ),
-      'reference' => '12fcd086d878f864f7bfe89f59fe2e0ece97eab4',
+      'reference' => 'da0021298bf68fd89ff7559a5cc6bc3983c5e95f',
     ),
-    'psr/http-client' =>
+    'psr/http-client' => 
     array (
       'pretty_version' => '1.0.1',
       'version' => '1.0.1.0',
-      'aliases' =>
+      'aliases' => 
       array (
       ),
       'reference' => '2dfb5f6c5eff0e91e20e913f8c5452ed95b86621',
     ),
-    'psr/http-client-implementation' =>
+    'psr/http-client-implementation' => 
     array (
-      'provided' =>
+      'provided' => 
       array (
         0 => '1.0',
       ),
     ),
-    'psr/http-factory' =>
+    'psr/http-factory' => 
     array (
       'pretty_version' => '1.0.1',
       'version' => '1.0.1.0',
-      'aliases' =>
+      'aliases' => 
       array (
       ),
       'reference' => '12ac7fcd07e5b077433f5f2bee95b3a771bf61be',
     ),
-    'psr/http-factory-implementation' =>
+    'psr/http-factory-implementation' => 
     array (
-      'provided' =>
+      'provided' => 
       array (
         0 => '1.0',
       ),
     ),
-    'psr/http-message' =>
+    'psr/http-message' => 
     array (
       'pretty_version' => '1.0.1',
       'version' => '1.0.1.0',
-      'aliases' =>
+      'aliases' => 
       array (
       ),
       'reference' => 'f6561bf28d520154e4b0ec72be95418abe6d9363',
     ),
-    'psr/http-message-implementation' =>
+    'psr/http-message-implementation' => 
     array (
-      'provided' =>
+      'provided' => 
       array (
         0 => '1.0',
       ),
     ),
-    'ralouphie/getallheaders' =>
+    'ralouphie/getallheaders' => 
     array (
       'pretty_version' => '3.0.3',
       'version' => '3.0.3.0',
-      'aliases' =>
+      'aliases' => 
       array (
       ),
       'reference' => '120b605dfeb996808c31b6477290a714d356e822',
     ),
-    'symfony/deprecation-contracts' =>
+    'symfony/deprecation-contracts' => 
     array (
-      'pretty_version' => 'v2.4.0',
-      'version' => '2.4.0.0',
-      'aliases' =>
+      'pretty_version' => 'v2.5.2',
+      'version' => '2.5.2.0',
+      'aliases' => 
       array (
       ),
-      'reference' => '5f38c8804a9e97d23e0c8d63341088cd8a22d627',
+      'reference' => 'e8b495ea28c1d97b5e0c121748d6f9b53d075c66',
     ),
   ),
 );

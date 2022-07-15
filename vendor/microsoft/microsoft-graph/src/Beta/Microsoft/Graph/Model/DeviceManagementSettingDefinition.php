@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceManagementSettingDefinition File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class DeviceManagementSettingDefinition extends Entity
     * Sets the constraints
     * Collection of constraints for the setting value
     *
-    * @param DeviceManagementConstraint $val The constraints
+    * @param DeviceManagementConstraint[] $val The constraints
     *
     * @return DeviceManagementSettingDefinition
     */
@@ -74,7 +74,7 @@ class DeviceManagementSettingDefinition extends Entity
     * Sets the dependencies
     * Collection of dependencies on other settings
     *
-    * @param DeviceManagementSettingDependency $val The dependencies
+    * @param DeviceManagementSettingDependency[] $val The dependencies
     *
     * @return DeviceManagementSettingDefinition
     */

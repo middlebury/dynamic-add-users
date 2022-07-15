@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * PrintTask File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class PrintTask extends Entity
 {
     /**
     * Gets the parentUrl
-    * The URL for the print entity that triggered this task. For example, https://graph.microsoft.com/v1.0/print/printers/{printerId}/jobs/{jobId}. Read-only.
+    * The URL for the print entity that triggered this task. For example, https://graph.microsoft.com/beta/print/printers/{printerId}/jobs/{jobId}. Read-only.
     *
     * @return string|null The parentUrl
     */
@@ -41,7 +41,7 @@ class PrintTask extends Entity
 
     /**
     * Sets the parentUrl
-    * The URL for the print entity that triggered this task. For example, https://graph.microsoft.com/v1.0/print/printers/{printerId}/jobs/{jobId}. Read-only.
+    * The URL for the print entity that triggered this task. For example, https://graph.microsoft.com/beta/print/printers/{printerId}/jobs/{jobId}. Read-only.
     *
     * @param string $val The parentUrl
     *

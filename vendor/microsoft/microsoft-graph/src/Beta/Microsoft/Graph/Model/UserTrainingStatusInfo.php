@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * UserTrainingStatusInfo File
 * PHP version 7
 *
@@ -120,7 +120,7 @@ class UserTrainingStatusInfo extends Entity
 
     /**
     * Gets the trainingStatus
-    * Status of the training assigned to the user. Possible values are: unknown, assigned, inProgress, completed, overdue, notCompleted, unknownFutureValue.
+    * Status of the training assigned to the user. Possible values are: unknown, assigned, inProgress, completed, overdue, unknownFutureValue.
     *
     * @return TrainingStatus|null The trainingStatus
     */
@@ -139,7 +139,7 @@ class UserTrainingStatusInfo extends Entity
 
     /**
     * Sets the trainingStatus
-    * Status of the training assigned to the user. Possible values are: unknown, assigned, inProgress, completed, overdue, notCompleted, unknownFutureValue.
+    * Status of the training assigned to the user. Possible values are: unknown, assigned, inProgress, completed, overdue, unknownFutureValue.
     *
     * @param TrainingStatus $val The value to assign to the trainingStatus
     *

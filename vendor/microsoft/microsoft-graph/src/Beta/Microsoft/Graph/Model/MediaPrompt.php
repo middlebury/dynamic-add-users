@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * MediaPrompt File
 * PHP version 7
 *
@@ -52,7 +52,7 @@ class MediaPrompt extends Prompt
 
     /**
     * Gets the mediaInfo
-    * The media information
+    * The media information.
     *
     * @return MediaInfo|null The mediaInfo
     */
@@ -71,7 +71,7 @@ class MediaPrompt extends Prompt
 
     /**
     * Sets the mediaInfo
-    * The media information
+    * The media information.
     *
     * @param MediaInfo $val The value to assign to the mediaInfo
     *

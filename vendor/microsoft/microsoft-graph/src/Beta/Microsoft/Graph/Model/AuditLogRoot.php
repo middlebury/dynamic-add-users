@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AuditLogRoot File
 * PHP version 7
 *
@@ -27,7 +27,6 @@ class AuditLogRoot extends Entity
 
      /**
      * Gets the directoryAudits
-    * Read-only. Nullable.
      *
      * @return array|null The directoryAudits
      */
@@ -42,9 +41,8 @@ class AuditLogRoot extends Entity
 
     /**
     * Sets the directoryAudits
-    * Read-only. Nullable.
     *
-    * @param DirectoryAudit $val The directoryAudits
+    * @param DirectoryAudit[] $val The directoryAudits
     *
     * @return AuditLogRoot
     */
@@ -72,7 +70,7 @@ class AuditLogRoot extends Entity
     /**
     * Sets the directoryProvisioning
     *
-    * @param ProvisioningObjectSummary $val The directoryProvisioning
+    * @param ProvisioningObjectSummary[] $val The directoryProvisioning
     *
     * @return AuditLogRoot
     */
@@ -100,7 +98,7 @@ class AuditLogRoot extends Entity
     /**
     * Sets the provisioning
     *
-    * @param ProvisioningObjectSummary $val The provisioning
+    * @param ProvisioningObjectSummary[] $val The provisioning
     *
     * @return AuditLogRoot
     */
@@ -128,7 +126,7 @@ class AuditLogRoot extends Entity
     /**
     * Sets the restrictedSignIns
     *
-    * @param RestrictedSignIn $val The restrictedSignIns
+    * @param RestrictedSignIn[] $val The restrictedSignIns
     *
     * @return AuditLogRoot
     */
@@ -141,7 +139,6 @@ class AuditLogRoot extends Entity
 
      /**
      * Gets the signIns
-    * Read-only. Nullable.
      *
      * @return array|null The signIns
      */
@@ -156,9 +153,8 @@ class AuditLogRoot extends Entity
 
     /**
     * Sets the signIns
-    * Read-only. Nullable.
     *
-    * @param SignIn $val The signIns
+    * @param SignIn[] $val The signIns
     *
     * @return AuditLogRoot
     */

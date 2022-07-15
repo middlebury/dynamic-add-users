@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * EntitlementManagement File
 * PHP version 7
 *
@@ -27,6 +27,7 @@ class EntitlementManagement extends Entity
 
      /**
      * Gets the accessPackageAssignmentApprovals
+    * Approval stages for decisions associated with access package assignment requests.
      *
      * @return array|null The accessPackageAssignmentApprovals
      */
@@ -41,8 +42,9 @@ class EntitlementManagement extends Entity
 
     /**
     * Sets the accessPackageAssignmentApprovals
+    * Approval stages for decisions associated with access package assignment requests.
     *
-    * @param Approval $val The accessPackageAssignmentApprovals
+    * @param Approval[] $val The accessPackageAssignmentApprovals
     *
     * @return EntitlementManagement
     */
@@ -55,6 +57,7 @@ class EntitlementManagement extends Entity
 
      /**
      * Gets the accessPackageAssignmentPolicies
+    * Represents the policy that governs which subjects can request or be assigned an access package via an access package assignment.
      *
      * @return array|null The accessPackageAssignmentPolicies
      */
@@ -69,8 +72,9 @@ class EntitlementManagement extends Entity
 
     /**
     * Sets the accessPackageAssignmentPolicies
+    * Represents the policy that governs which subjects can request or be assigned an access package via an access package assignment.
     *
-    * @param AccessPackageAssignmentPolicy $val The accessPackageAssignmentPolicies
+    * @param AccessPackageAssignmentPolicy[] $val The accessPackageAssignmentPolicies
     *
     * @return EntitlementManagement
     */
@@ -83,6 +87,7 @@ class EntitlementManagement extends Entity
 
      /**
      * Gets the accessPackageAssignmentRequests
+    * Represents access package assignment requests created by or on behalf of a user.
      *
      * @return array|null The accessPackageAssignmentRequests
      */
@@ -97,8 +102,9 @@ class EntitlementManagement extends Entity
 
     /**
     * Sets the accessPackageAssignmentRequests
+    * Represents access package assignment requests created by or on behalf of a user.
     *
-    * @param AccessPackageAssignmentRequest $val The accessPackageAssignmentRequests
+    * @param AccessPackageAssignmentRequest[] $val The accessPackageAssignmentRequests
     *
     * @return EntitlementManagement
     */
@@ -111,6 +117,7 @@ class EntitlementManagement extends Entity
 
      /**
      * Gets the accessPackageAssignmentResourceRoles
+    * Represents the resource-specific role which a subject has been assigned through an access package assignment.
      *
      * @return array|null The accessPackageAssignmentResourceRoles
      */
@@ -125,8 +132,9 @@ class EntitlementManagement extends Entity
 
     /**
     * Sets the accessPackageAssignmentResourceRoles
+    * Represents the resource-specific role which a subject has been assigned through an access package assignment.
     *
-    * @param AccessPackageAssignmentResourceRole $val The accessPackageAssignmentResourceRoles
+    * @param AccessPackageAssignmentResourceRole[] $val The accessPackageAssignmentResourceRoles
     *
     * @return EntitlementManagement
     */
@@ -139,6 +147,7 @@ class EntitlementManagement extends Entity
 
      /**
      * Gets the accessPackageAssignments
+    * The assignment of an access package to a subject for a period of time.
      *
      * @return array|null The accessPackageAssignments
      */
@@ -153,8 +162,9 @@ class EntitlementManagement extends Entity
 
     /**
     * Sets the accessPackageAssignments
+    * The assignment of an access package to a subject for a period of time.
     *
-    * @param AccessPackageAssignment $val The accessPackageAssignments
+    * @param AccessPackageAssignment[] $val The accessPackageAssignments
     *
     * @return EntitlementManagement
     */
@@ -167,6 +177,7 @@ class EntitlementManagement extends Entity
 
      /**
      * Gets the accessPackageCatalogs
+    * A container of access packages.
      *
      * @return array|null The accessPackageCatalogs
      */
@@ -181,8 +192,9 @@ class EntitlementManagement extends Entity
 
     /**
     * Sets the accessPackageCatalogs
+    * A container of access packages.
     *
-    * @param AccessPackageCatalog $val The accessPackageCatalogs
+    * @param AccessPackageCatalog[] $val The accessPackageCatalogs
     *
     * @return EntitlementManagement
     */
@@ -195,6 +207,7 @@ class EntitlementManagement extends Entity
 
      /**
      * Gets the accessPackageResourceEnvironments
+    * A reference to the geolocation environment in which a resource is located.
      *
      * @return array|null The accessPackageResourceEnvironments
      */
@@ -209,8 +222,9 @@ class EntitlementManagement extends Entity
 
     /**
     * Sets the accessPackageResourceEnvironments
+    * A reference to the geolocation environment in which a resource is located.
     *
-    * @param AccessPackageResourceEnvironment $val The accessPackageResourceEnvironments
+    * @param AccessPackageResourceEnvironment[] $val The accessPackageResourceEnvironments
     *
     * @return EntitlementManagement
     */
@@ -223,6 +237,7 @@ class EntitlementManagement extends Entity
 
      /**
      * Gets the accessPackageResourceRequests
+    * Represents a request to add or remove a resource to or from a catalog respectively.
      *
      * @return array|null The accessPackageResourceRequests
      */
@@ -237,8 +252,9 @@ class EntitlementManagement extends Entity
 
     /**
     * Sets the accessPackageResourceRequests
+    * Represents a request to add or remove a resource to or from a catalog respectively.
     *
-    * @param AccessPackageResourceRequest $val The accessPackageResourceRequests
+    * @param AccessPackageResourceRequest[] $val The accessPackageResourceRequests
     *
     * @return EntitlementManagement
     */
@@ -251,6 +267,7 @@ class EntitlementManagement extends Entity
 
      /**
      * Gets the accessPackageResourceRoleScopes
+    * A reference to both a scope within a resource, and a role in that resource for that scope.
      *
      * @return array|null The accessPackageResourceRoleScopes
      */
@@ -265,8 +282,9 @@ class EntitlementManagement extends Entity
 
     /**
     * Sets the accessPackageResourceRoleScopes
+    * A reference to both a scope within a resource, and a role in that resource for that scope.
     *
-    * @param AccessPackageResourceRoleScope $val The accessPackageResourceRoleScopes
+    * @param AccessPackageResourceRoleScope[] $val The accessPackageResourceRoleScopes
     *
     * @return EntitlementManagement
     */
@@ -279,6 +297,7 @@ class EntitlementManagement extends Entity
 
      /**
      * Gets the accessPackageResources
+    * A reference to a resource associated with an access package catalog.
      *
      * @return array|null The accessPackageResources
      */
@@ -293,8 +312,9 @@ class EntitlementManagement extends Entity
 
     /**
     * Sets the accessPackageResources
+    * A reference to a resource associated with an access package catalog.
     *
-    * @param AccessPackageResource $val The accessPackageResources
+    * @param AccessPackageResource[] $val The accessPackageResources
     *
     * @return EntitlementManagement
     */
@@ -307,6 +327,7 @@ class EntitlementManagement extends Entity
 
      /**
      * Gets the accessPackages
+    * Represents access package objects.
      *
      * @return array|null The accessPackages
      */
@@ -321,8 +342,9 @@ class EntitlementManagement extends Entity
 
     /**
     * Sets the accessPackages
+    * Represents access package objects.
     *
-    * @param AccessPackage $val The accessPackages
+    * @param AccessPackage[] $val The accessPackages
     *
     * @return EntitlementManagement
     */
@@ -335,6 +357,7 @@ class EntitlementManagement extends Entity
 
      /**
      * Gets the connectedOrganizations
+    * Represents references to a directory or domain of another organization whose users can request access.
      *
      * @return array|null The connectedOrganizations
      */
@@ -349,8 +372,9 @@ class EntitlementManagement extends Entity
 
     /**
     * Sets the connectedOrganizations
+    * Represents references to a directory or domain of another organization whose users can request access.
     *
-    * @param ConnectedOrganization $val The connectedOrganizations
+    * @param ConnectedOrganization[] $val The connectedOrganizations
     *
     * @return EntitlementManagement
     */
@@ -362,6 +386,7 @@ class EntitlementManagement extends Entity
 
     /**
     * Gets the settings
+    * Represents the settings that control the behavior of Azure AD entitlement management.
     *
     * @return EntitlementManagementSettings|null The settings
     */
@@ -380,6 +405,7 @@ class EntitlementManagement extends Entity
 
     /**
     * Sets the settings
+    * Represents the settings that control the behavior of Azure AD entitlement management.
     *
     * @param EntitlementManagementSettings $val The settings
     *

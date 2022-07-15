@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * TargetedManagedAppProtection File
 * PHP version 7
 *
@@ -88,7 +88,7 @@ class TargetedManagedAppProtection extends ManagedAppProtection
 
     /**
     * Gets the targetedAppManagementLevels
-    * The intended app management levels for this policy. Possible values are: unspecified, unmanaged, mdm, androidEnterprise.
+    * The intended app management levels for this policy. Possible values are: unspecified, unmanaged, mdm, androidEnterprise, androidEnterpriseDedicatedDevicesWithAzureAdSharedMode, androidOpenSourceProjectUserAssociated, androidOpenSourceProjectUserless.
     *
     * @return AppManagementLevel|null The targetedAppManagementLevels
     */
@@ -107,7 +107,7 @@ class TargetedManagedAppProtection extends ManagedAppProtection
 
     /**
     * Sets the targetedAppManagementLevels
-    * The intended app management levels for this policy. Possible values are: unspecified, unmanaged, mdm, androidEnterprise.
+    * The intended app management levels for this policy. Possible values are: unspecified, unmanaged, mdm, androidEnterprise, androidEnterpriseDedicatedDevicesWithAzureAdSharedMode, androidOpenSourceProjectUserAssociated, androidOpenSourceProjectUserless.
     *
     * @param AppManagementLevel $val The targetedAppManagementLevels
     *
@@ -139,7 +139,7 @@ class TargetedManagedAppProtection extends ManagedAppProtection
     * Sets the assignments
     * Navigation property to list of inclusion and exclusion groups to which the policy is deployed.
     *
-    * @param TargetedManagedAppPolicyAssignment $val The assignments
+    * @param TargetedManagedAppPolicyAssignment[] $val The assignments
     *
     * @return TargetedManagedAppProtection
     */

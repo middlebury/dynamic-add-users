@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * TeamworkUserIdentity File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class TeamworkUserIdentity extends Identity
 
     /**
     * Gets the userIdentityType
-    * Type of user. Possible values are: aadUser, onPremiseAadUser, anonymousGuest, federatedUser, personalMicrosoftAccountUser, skypeUser, phoneUser, and unknownFutureValue.
+    * Type of user. Possible values are: aadUser, onPremiseAadUser, anonymousGuest, federatedUser, personalMicrosoftAccountUser, skypeUser, phoneUser, and emailUser.
     *
     * @return TeamworkUserIdentityType|null The userIdentityType
     */
@@ -45,7 +45,7 @@ class TeamworkUserIdentity extends Identity
 
     /**
     * Sets the userIdentityType
-    * Type of user. Possible values are: aadUser, onPremiseAadUser, anonymousGuest, federatedUser, personalMicrosoftAccountUser, skypeUser, phoneUser, and unknownFutureValue.
+    * Type of user. Possible values are: aadUser, onPremiseAadUser, anonymousGuest, federatedUser, personalMicrosoftAccountUser, skypeUser, phoneUser, and emailUser.
     *
     * @param TeamworkUserIdentityType $val The value to assign to the userIdentityType
     *

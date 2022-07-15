@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AzureADDevice File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class AzureADDevice extends UpdatableAsset
     * Sets the enrollments
     * Specifies areas of the service in which the device is enrolled. Read-only. Returned by default.
     *
-    * @param UpdatableAssetEnrollment $val The enrollments
+    * @param UpdatableAssetEnrollment[] $val The enrollments
     *
     * @return AzureADDevice
     */
@@ -74,7 +74,7 @@ class AzureADDevice extends UpdatableAsset
     * Sets the errors
     * Specifies any errors that prevent the device from being enrolled in update management or receving deployed content. Read-only. Returned by default.
     *
-    * @param UpdatableAssetError $val The errors
+    * @param UpdatableAssetError[] $val The errors
     *
     * @return AzureADDevice
     */

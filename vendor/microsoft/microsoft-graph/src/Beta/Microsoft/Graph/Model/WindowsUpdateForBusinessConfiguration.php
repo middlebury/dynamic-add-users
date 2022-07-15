@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * WindowsUpdateForBusinessConfiguration File
 * PHP version 7
 *
@@ -55,7 +55,7 @@ class WindowsUpdateForBusinessConfiguration extends DeviceConfiguration
 
     /**
     * Gets the automaticUpdateMode
-    * Automatic update mode. Possible values are: userDefined, notifyDownload, autoInstallAtMaintenanceTime, autoInstallAndRebootAtMaintenanceTime, autoInstallAndRebootAtScheduledTime, autoInstallAndRebootWithoutEndUserControl.
+    * Automatic update mode. Possible values are: userDefined, notifyDownload, autoInstallAtMaintenanceTime, autoInstallAndRebootAtMaintenanceTime, autoInstallAndRebootAtScheduledTime, autoInstallAndRebootWithoutEndUserControl, windowsDefault.
     *
     * @return AutomaticUpdateMode|null The automaticUpdateMode
     */
@@ -74,7 +74,7 @@ class WindowsUpdateForBusinessConfiguration extends DeviceConfiguration
 
     /**
     * Sets the automaticUpdateMode
-    * Automatic update mode. Possible values are: userDefined, notifyDownload, autoInstallAtMaintenanceTime, autoInstallAndRebootAtMaintenanceTime, autoInstallAndRebootAtScheduledTime, autoInstallAndRebootWithoutEndUserControl.
+    * Automatic update mode. Possible values are: userDefined, notifyDownload, autoInstallAtMaintenanceTime, autoInstallAndRebootAtMaintenanceTime, autoInstallAndRebootAtScheduledTime, autoInstallAndRebootWithoutEndUserControl, windowsDefault.
     *
     * @param AutomaticUpdateMode $val The automaticUpdateMode
     *
@@ -154,7 +154,7 @@ class WindowsUpdateForBusinessConfiguration extends DeviceConfiguration
 
     /**
     * Gets the deadlineForFeatureUpdatesInDays
-    * Number of days before feature updates are installed automatically with valid range from 2 to 30 days
+    * Number of days before feature updates are installed automatically with valid range from 0 to 30 days
     *
     * @return int|null The deadlineForFeatureUpdatesInDays
     */
@@ -169,7 +169,7 @@ class WindowsUpdateForBusinessConfiguration extends DeviceConfiguration
 
     /**
     * Sets the deadlineForFeatureUpdatesInDays
-    * Number of days before feature updates are installed automatically with valid range from 2 to 30 days
+    * Number of days before feature updates are installed automatically with valid range from 0 to 30 days
     *
     * @param int $val The deadlineForFeatureUpdatesInDays
     *
@@ -183,7 +183,7 @@ class WindowsUpdateForBusinessConfiguration extends DeviceConfiguration
 
     /**
     * Gets the deadlineForQualityUpdatesInDays
-    * Number of days before quality updates are installed automatically with valid range from 2 to 30 days
+    * Number of days before quality updates are installed automatically with valid range from 0 to 30 days
     *
     * @return int|null The deadlineForQualityUpdatesInDays
     */
@@ -198,7 +198,7 @@ class WindowsUpdateForBusinessConfiguration extends DeviceConfiguration
 
     /**
     * Sets the deadlineForQualityUpdatesInDays
-    * Number of days before quality updates are installed automatically with valid range from 2 to 30 days
+    * Number of days before quality updates are installed automatically with valid range from 0 to 30 days
     *
     * @param int $val The deadlineForQualityUpdatesInDays
     *
@@ -1152,7 +1152,7 @@ class WindowsUpdateForBusinessConfiguration extends DeviceConfiguration
     * Sets the deviceUpdateStates
     * Windows update for business configuration device states. This collection can contain a maximum of 500 elements.
     *
-    * @param WindowsUpdateState $val The deviceUpdateStates
+    * @param WindowsUpdateState[] $val The deviceUpdateStates
     *
     * @return WindowsUpdateForBusinessConfiguration
     */

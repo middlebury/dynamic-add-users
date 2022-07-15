@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * PolicyRoot File
 * PHP version 7
 *
@@ -154,6 +154,37 @@ class PolicyRoot implements \JsonSerializable
         return $this;
     }
 
+    /**
+    * Gets the deviceRegistrationPolicy
+    *
+    * @return DeviceRegistrationPolicy|null The deviceRegistrationPolicy
+    */
+    public function getDeviceRegistrationPolicy()
+    {
+        if (array_key_exists("deviceRegistrationPolicy", $this->_propDict)) {
+            if (is_a($this->_propDict["deviceRegistrationPolicy"], "\Beta\Microsoft\Graph\Model\DeviceRegistrationPolicy") || is_null($this->_propDict["deviceRegistrationPolicy"])) {
+                return $this->_propDict["deviceRegistrationPolicy"];
+            } else {
+                $this->_propDict["deviceRegistrationPolicy"] = new DeviceRegistrationPolicy($this->_propDict["deviceRegistrationPolicy"]);
+                return $this->_propDict["deviceRegistrationPolicy"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the deviceRegistrationPolicy
+    *
+    * @param DeviceRegistrationPolicy $val The deviceRegistrationPolicy
+    *
+    * @return PolicyRoot
+    */
+    public function setDeviceRegistrationPolicy($val)
+    {
+        $this->_propDict["deviceRegistrationPolicy"] = $val;
+        return $this;
+    }
+
 
      /**
      * Gets the activityBasedTimeoutPolicies
@@ -174,7 +205,7 @@ class PolicyRoot implements \JsonSerializable
     * Sets the activityBasedTimeoutPolicies
     * The policy that controls the idle time out for web sessions for applications.
     *
-    * @param ActivityBasedTimeoutPolicy $val The activityBasedTimeoutPolicies
+    * @param ActivityBasedTimeoutPolicy[] $val The activityBasedTimeoutPolicies
     *
     * @return PolicyRoot
     */
@@ -204,7 +235,7 @@ class PolicyRoot implements \JsonSerializable
     * Sets the appManagementPolicies
     * The policies that enforce app management restrictions for specific applications and service principals, overriding the defaultAppManagementPolicy.
     *
-    * @param AppManagementPolicy $val The appManagementPolicies
+    * @param AppManagementPolicy[] $val The appManagementPolicies
     *
     * @return PolicyRoot
     */
@@ -234,7 +265,7 @@ class PolicyRoot implements \JsonSerializable
     * Sets the authorizationPolicy
     * The policy that controls Azure AD authorization settings.
     *
-    * @param AuthorizationPolicy $val The authorizationPolicy
+    * @param AuthorizationPolicy[] $val The authorizationPolicy
     *
     * @return PolicyRoot
     */
@@ -264,13 +295,46 @@ class PolicyRoot implements \JsonSerializable
     * Sets the claimsMappingPolicies
     * The claim-mapping policies for WS-Fed, SAML, OAuth 2.0, and OpenID Connect protocols, for tokens issued to a specific application.
     *
-    * @param ClaimsMappingPolicy $val The claimsMappingPolicies
+    * @param ClaimsMappingPolicy[] $val The claimsMappingPolicies
     *
     * @return PolicyRoot
     */
     public function setClaimsMappingPolicies($val)
     {
         $this->_propDict["claimsMappingPolicies"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the crossTenantAccessPolicy
+    * The custom rules that define an access scenario when interacting with external Azure AD tenants.
+    *
+    * @return CrossTenantAccessPolicy|null The crossTenantAccessPolicy
+    */
+    public function getCrossTenantAccessPolicy()
+    {
+        if (array_key_exists("crossTenantAccessPolicy", $this->_propDict)) {
+            if (is_a($this->_propDict["crossTenantAccessPolicy"], "\Beta\Microsoft\Graph\Model\CrossTenantAccessPolicy") || is_null($this->_propDict["crossTenantAccessPolicy"])) {
+                return $this->_propDict["crossTenantAccessPolicy"];
+            } else {
+                $this->_propDict["crossTenantAccessPolicy"] = new CrossTenantAccessPolicy($this->_propDict["crossTenantAccessPolicy"]);
+                return $this->_propDict["crossTenantAccessPolicy"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the crossTenantAccessPolicy
+    * The custom rules that define an access scenario when interacting with external Azure AD tenants.
+    *
+    * @param CrossTenantAccessPolicy $val The crossTenantAccessPolicy
+    *
+    * @return PolicyRoot
+    */
+    public function setCrossTenantAccessPolicy($val)
+    {
+        $this->_propDict["crossTenantAccessPolicy"] = $val;
         return $this;
     }
 
@@ -307,6 +371,37 @@ class PolicyRoot implements \JsonSerializable
         return $this;
     }
 
+    /**
+    * Gets the externalIdentitiesPolicy
+    *
+    * @return ExternalIdentitiesPolicy|null The externalIdentitiesPolicy
+    */
+    public function getExternalIdentitiesPolicy()
+    {
+        if (array_key_exists("externalIdentitiesPolicy", $this->_propDict)) {
+            if (is_a($this->_propDict["externalIdentitiesPolicy"], "\Beta\Microsoft\Graph\Model\ExternalIdentitiesPolicy") || is_null($this->_propDict["externalIdentitiesPolicy"])) {
+                return $this->_propDict["externalIdentitiesPolicy"];
+            } else {
+                $this->_propDict["externalIdentitiesPolicy"] = new ExternalIdentitiesPolicy($this->_propDict["externalIdentitiesPolicy"]);
+                return $this->_propDict["externalIdentitiesPolicy"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the externalIdentitiesPolicy
+    *
+    * @param ExternalIdentitiesPolicy $val The externalIdentitiesPolicy
+    *
+    * @return PolicyRoot
+    */
+    public function setExternalIdentitiesPolicy($val)
+    {
+        $this->_propDict["externalIdentitiesPolicy"] = $val;
+        return $this;
+    }
+
 
      /**
      * Gets the homeRealmDiscoveryPolicies
@@ -327,7 +422,7 @@ class PolicyRoot implements \JsonSerializable
     * Sets the homeRealmDiscoveryPolicies
     * The policy to control Azure AD authentication behavior for federated users.
     *
-    * @param HomeRealmDiscoveryPolicy $val The homeRealmDiscoveryPolicies
+    * @param HomeRealmDiscoveryPolicy[] $val The homeRealmDiscoveryPolicies
     *
     * @return PolicyRoot
     */
@@ -357,7 +452,7 @@ class PolicyRoot implements \JsonSerializable
     * Sets the permissionGrantPolicies
     * The policy that specifies the conditions under which consent can be granted.
     *
-    * @param PermissionGrantPolicy $val The permissionGrantPolicies
+    * @param PermissionGrantPolicy[] $val The permissionGrantPolicies
     *
     * @return PolicyRoot
     */
@@ -385,7 +480,7 @@ class PolicyRoot implements \JsonSerializable
     /**
     * Sets the servicePrincipalCreationPolicies
     *
-    * @param ServicePrincipalCreationPolicy $val The servicePrincipalCreationPolicies
+    * @param ServicePrincipalCreationPolicy[] $val The servicePrincipalCreationPolicies
     *
     * @return PolicyRoot
     */
@@ -415,7 +510,7 @@ class PolicyRoot implements \JsonSerializable
     * Sets the tokenIssuancePolicies
     * The policy that specifies the characteristics of SAML tokens issued by Azure AD.
     *
-    * @param TokenIssuancePolicy $val The tokenIssuancePolicies
+    * @param TokenIssuancePolicy[] $val The tokenIssuancePolicies
     *
     * @return PolicyRoot
     */
@@ -445,7 +540,7 @@ class PolicyRoot implements \JsonSerializable
     * Sets the tokenLifetimePolicies
     * The policy that controls the lifetime of a JWT access token, an ID token, or a SAML 1.1/2.0 token issued by Azure AD.
     *
-    * @param TokenLifetimePolicy $val The tokenLifetimePolicies
+    * @param TokenLifetimePolicy[] $val The tokenLifetimePolicies
     *
     * @return PolicyRoot
     */
@@ -475,7 +570,7 @@ class PolicyRoot implements \JsonSerializable
     * Sets the featureRolloutPolicies
     * The feature rollout policy associated with a directory object.
     *
-    * @param FeatureRolloutPolicy $val The featureRolloutPolicies
+    * @param FeatureRolloutPolicy[] $val The featureRolloutPolicies
     *
     * @return PolicyRoot
     */
@@ -602,7 +697,7 @@ class PolicyRoot implements \JsonSerializable
     * Sets the conditionalAccessPolicies
     * The custom rules that define an access scenario.
     *
-    * @param ConditionalAccessPolicy $val The conditionalAccessPolicies
+    * @param ConditionalAccessPolicy[] $val The conditionalAccessPolicies
     *
     * @return PolicyRoot
     */
@@ -665,7 +760,7 @@ class PolicyRoot implements \JsonSerializable
     * Sets the mobileAppManagementPolicies
     * The policy that defines auto-enrollment configuration for a mobility management (MDM or MAM) application.
     *
-    * @param MobilityManagementPolicy $val The mobileAppManagementPolicies
+    * @param MobilityManagementPolicy[] $val The mobileAppManagementPolicies
     *
     * @return PolicyRoot
     */
@@ -693,7 +788,7 @@ class PolicyRoot implements \JsonSerializable
     /**
     * Sets the mobileDeviceManagementPolicies
     *
-    * @param MobilityManagementPolicy $val The mobileDeviceManagementPolicies
+    * @param MobilityManagementPolicy[] $val The mobileDeviceManagementPolicies
     *
     * @return PolicyRoot
     */
@@ -723,7 +818,7 @@ class PolicyRoot implements \JsonSerializable
     * Sets the roleManagementPolicies
     * Represents the role management policies.
     *
-    * @param UnifiedRoleManagementPolicy $val The roleManagementPolicies
+    * @param UnifiedRoleManagementPolicy[] $val The roleManagementPolicies
     *
     * @return PolicyRoot
     */
@@ -753,7 +848,7 @@ class PolicyRoot implements \JsonSerializable
     * Sets the roleManagementPolicyAssignments
     * Represents the role management policy assignments.
     *
-    * @param UnifiedRoleManagementPolicyAssignment $val The roleManagementPolicyAssignments
+    * @param UnifiedRoleManagementPolicyAssignment[] $val The roleManagementPolicyAssignments
     *
     * @return PolicyRoot
     */
@@ -795,6 +890,7 @@ class PolicyRoot implements \JsonSerializable
     *
     * @return array The list of properties
     */
+    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         $serializableProperties = $this->getProperties();

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * UserSource File
 * PHP version 7
 *
@@ -83,6 +83,35 @@ class UserSource extends DataSource
     public function setIncludedSources($val)
     {
         $this->_propDict["includedSources"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the siteWebUrl
+    * The URL of the user's OneDrive for Business site. Read-only.
+    *
+    * @return string|null The siteWebUrl
+    */
+    public function getSiteWebUrl()
+    {
+        if (array_key_exists("siteWebUrl", $this->_propDict)) {
+            return $this->_propDict["siteWebUrl"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the siteWebUrl
+    * The URL of the user's OneDrive for Business site. Read-only.
+    *
+    * @param string $val The siteWebUrl
+    *
+    * @return UserSource
+    */
+    public function setSiteWebUrl($val)
+    {
+        $this->_propDict["siteWebUrl"] = $val;
         return $this;
     }
 

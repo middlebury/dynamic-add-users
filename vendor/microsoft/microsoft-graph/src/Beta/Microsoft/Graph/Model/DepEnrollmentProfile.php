@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DepEnrollmentProfile File
 * PHP version 7
 *
@@ -367,7 +367,7 @@ class DepEnrollmentProfile extends EnrollmentProfile
     * Sets the managementCertificates
     * Management certificates for Apple Configurator
     *
-    * @param ManagementCertificateWithThumbprint $val The managementCertificates
+    * @param ManagementCertificateWithThumbprint[] $val The managementCertificates
     *
     * @return DepEnrollmentProfile
     */

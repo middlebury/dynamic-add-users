@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * MacOSGeneralDeviceConfiguration File
 * PHP version 7
 *
@@ -77,7 +77,7 @@ class MacOSGeneralDeviceConfiguration extends DeviceConfiguration
     * Sets the compliantAppsList
     * List of apps in the compliance (either allow list or block list, controlled by CompliantAppListType). This collection can contain a maximum of 10000 elements.
     *
-    * @param AppListItem $val The compliantAppsList
+    * @param AppListItem[] $val The compliantAppsList
     *
     * @return MacOSGeneralDeviceConfiguration
     */

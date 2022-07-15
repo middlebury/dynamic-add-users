@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ManagementActionTenantDeploymentStatus File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class ManagementActionTenantDeploymentStatus extends \Beta\Microsoft\Graph\Model
     * Sets the statuses
     * The collection of deployment status for each instance of a management action. Optional.
     *
-    * @param ManagementActionDeploymentStatus $val The statuses
+    * @param ManagementActionDeploymentStatus[] $val The statuses
     *
     * @return ManagementActionTenantDeploymentStatus
     */

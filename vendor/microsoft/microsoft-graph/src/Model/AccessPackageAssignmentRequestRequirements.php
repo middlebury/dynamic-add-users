@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AccessPackageAssignmentRequestRequirements File
 * PHP version 7
 *
@@ -25,6 +25,7 @@ class AccessPackageAssignmentRequestRequirements extends Entity
 {
     /**
     * Gets the allowCustomAssignmentSchedule
+    * Indicates whether the requestor is allowed to set a custom schedule.
     *
     * @return bool|null The allowCustomAssignmentSchedule
     */
@@ -39,6 +40,7 @@ class AccessPackageAssignmentRequestRequirements extends Entity
 
     /**
     * Sets the allowCustomAssignmentSchedule
+    * Indicates whether the requestor is allowed to set a custom schedule.
     *
     * @param bool $val The value of the allowCustomAssignmentSchedule
     *
@@ -51,6 +53,7 @@ class AccessPackageAssignmentRequestRequirements extends Entity
     }
     /**
     * Gets the isApprovalRequiredForAdd
+    * Indicates whether a request to add must be approved by an approver.
     *
     * @return bool|null The isApprovalRequiredForAdd
     */
@@ -65,6 +68,7 @@ class AccessPackageAssignmentRequestRequirements extends Entity
 
     /**
     * Sets the isApprovalRequiredForAdd
+    * Indicates whether a request to add must be approved by an approver.
     *
     * @param bool $val The value of the isApprovalRequiredForAdd
     *
@@ -77,6 +81,7 @@ class AccessPackageAssignmentRequestRequirements extends Entity
     }
     /**
     * Gets the isApprovalRequiredForUpdate
+    * Indicates whether a request to update must be approved by an approver.
     *
     * @return bool|null The isApprovalRequiredForUpdate
     */
@@ -91,6 +96,7 @@ class AccessPackageAssignmentRequestRequirements extends Entity
 
     /**
     * Sets the isApprovalRequiredForUpdate
+    * Indicates whether a request to update must be approved by an approver.
     *
     * @param bool $val The value of the isApprovalRequiredForUpdate
     *

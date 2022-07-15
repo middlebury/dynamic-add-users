@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * OnPremisesPublishingProfile File
 * PHP version 7
 *
@@ -106,7 +106,7 @@ class OnPremisesPublishingProfile extends Entity
     * Sets the agentGroups
     * List of existing onPremisesAgentGroup objects. Read-only. Nullable.
     *
-    * @param OnPremisesAgentGroup $val The agentGroups
+    * @param OnPremisesAgentGroup[] $val The agentGroups
     *
     * @return OnPremisesPublishingProfile
     */
@@ -136,7 +136,7 @@ class OnPremisesPublishingProfile extends Entity
     * Sets the agents
     * List of existing onPremisesAgent objects. Read-only. Nullable.
     *
-    * @param OnPremisesAgent $val The agents
+    * @param OnPremisesAgent[] $val The agents
     *
     * @return OnPremisesPublishingProfile
     */
@@ -166,7 +166,7 @@ class OnPremisesPublishingProfile extends Entity
     * Sets the connectorGroups
     * List of existing connectorGroup objects for applications published through Application Proxy. Read-only. Nullable.
     *
-    * @param ConnectorGroup $val The connectorGroups
+    * @param ConnectorGroup[] $val The connectorGroups
     *
     * @return OnPremisesPublishingProfile
     */
@@ -196,7 +196,7 @@ class OnPremisesPublishingProfile extends Entity
     * Sets the connectors
     * List of existing connector objects for applications published through Application Proxy. Read-only. Nullable.
     *
-    * @param Connector $val The connectors
+    * @param Connector[] $val The connectors
     *
     * @return OnPremisesPublishingProfile
     */
@@ -226,7 +226,7 @@ class OnPremisesPublishingProfile extends Entity
     * Sets the publishedResources
     * List of existing publishedResource objects. Read-only. Nullable.
     *
-    * @param PublishedResource $val The publishedResources
+    * @param PublishedResource[] $val The publishedResources
     *
     * @return OnPremisesPublishingProfile
     */

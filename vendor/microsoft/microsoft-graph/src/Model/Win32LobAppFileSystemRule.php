@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Win32LobAppFileSystemRule File
 * PHP version 7
 *
@@ -121,7 +121,7 @@ class Win32LobAppFileSystemRule extends Win32LobAppRule
 
     /**
     * Gets the operationType
-    * The file system operation type. Possible values are: notConfigured, exists, modifiedDate, createdDate, version, sizeInMB.
+    * The file system operation type. Possible values are: notConfigured, exists, modifiedDate, createdDate, version, sizeInMB, doesNotExist.
     *
     * @return Win32LobAppFileSystemOperationType|null The operationType
     */
@@ -140,7 +140,7 @@ class Win32LobAppFileSystemRule extends Win32LobAppRule
 
     /**
     * Sets the operationType
-    * The file system operation type. Possible values are: notConfigured, exists, modifiedDate, createdDate, version, sizeInMB.
+    * The file system operation type. Possible values are: notConfigured, exists, modifiedDate, createdDate, version, sizeInMB, doesNotExist.
     *
     * @param Win32LobAppFileSystemOperationType $val The value to assign to the operationType
     *

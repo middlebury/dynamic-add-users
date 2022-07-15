@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AccessReviewInstanceDecisionItem File
 * PHP version 7
 *
@@ -241,7 +241,7 @@ class AccessReviewInstanceDecisionItem extends Entity
 
     /**
     * Gets the principalLink
-    * A link to the principal object. For example, https://graph.microsoft.com/v1.0/users/a6c7aecb-cbfd-4763-87ef-e91b4bd509d9. Read-only.
+    * Link to the principal object. For example: https://graph.microsoft.com/v1.0/users/a6c7aecb-cbfd-4763-87ef-e91b4bd509d9. Read-only.
     *
     * @return string|null The principalLink
     */
@@ -256,7 +256,7 @@ class AccessReviewInstanceDecisionItem extends Entity
 
     /**
     * Sets the principalLink
-    * A link to the principal object. For example, https://graph.microsoft.com/v1.0/users/a6c7aecb-cbfd-4763-87ef-e91b4bd509d9. Read-only.
+    * Link to the principal object. For example: https://graph.microsoft.com/v1.0/users/a6c7aecb-cbfd-4763-87ef-e91b4bd509d9. Read-only.
     *
     * @param string $val The principalLink
     *

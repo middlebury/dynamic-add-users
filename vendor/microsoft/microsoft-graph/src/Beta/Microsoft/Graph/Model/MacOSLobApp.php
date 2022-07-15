@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * MacOSLobApp File
 * PHP version 7
 *
@@ -102,7 +102,7 @@ class MacOSLobApp extends MobileLobApp
     * Sets the childApps
     * The app list in this bundle package
     *
-    * @param MacOSLobChildApp $val The childApps
+    * @param MacOSLobChildApp[] $val The childApps
     *
     * @return MacOSLobApp
     */

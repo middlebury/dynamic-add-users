@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AccessPackageAssignmentPolicy File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class AccessPackageAssignmentPolicy extends Entity
 {
     /**
     * Gets the accessPackageId
-    * ID of the access package.
+    * Identifier of the access package.
     *
     * @return string|null The accessPackageId
     */
@@ -41,7 +41,7 @@ class AccessPackageAssignmentPolicy extends Entity
 
     /**
     * Sets the accessPackageId
-    * ID of the access package.
+    * Identifier of the access package.
     *
     * @param string $val The accessPackageId
     *
@@ -117,7 +117,6 @@ class AccessPackageAssignmentPolicy extends Entity
 
     /**
     * Gets the createdBy
-    * Read-only.
     *
     * @return string|null The createdBy
     */
@@ -132,7 +131,6 @@ class AccessPackageAssignmentPolicy extends Entity
 
     /**
     * Sets the createdBy
-    * Read-only.
     *
     * @param string $val The createdBy
     *
@@ -208,7 +206,7 @@ class AccessPackageAssignmentPolicy extends Entity
 
     /**
     * Gets the displayName
-    * The display name of the policy.
+    * The display name of the policy. Supports $filter (eq).
     *
     * @return string|null The displayName
     */
@@ -223,7 +221,7 @@ class AccessPackageAssignmentPolicy extends Entity
 
     /**
     * Sets the displayName
-    * The display name of the policy.
+    * The display name of the policy. Supports $filter (eq).
     *
     * @param string $val The displayName
     *
@@ -299,7 +297,6 @@ class AccessPackageAssignmentPolicy extends Entity
 
     /**
     * Gets the modifiedBy
-    * Read-only.
     *
     * @return string|null The modifiedBy
     */
@@ -314,7 +311,6 @@ class AccessPackageAssignmentPolicy extends Entity
 
     /**
     * Sets the modifiedBy
-    * Read-only.
     *
     * @param string $val The modifiedBy
     *
@@ -379,7 +375,7 @@ class AccessPackageAssignmentPolicy extends Entity
     * Sets the questions
     * Questions that are posed to the  requestor.
     *
-    * @param AccessPackageQuestion $val The questions
+    * @param AccessPackageQuestion[] $val The questions
     *
     * @return AccessPackageAssignmentPolicy
     */
@@ -457,7 +453,7 @@ class AccessPackageAssignmentPolicy extends Entity
 
     /**
     * Gets the accessPackage
-    * The access package with this policy. Read-only. Nullable.
+    * The access package with this policy. Read-only. Nullable. Supports $expand.
     *
     * @return AccessPackage|null The accessPackage
     */
@@ -476,7 +472,7 @@ class AccessPackageAssignmentPolicy extends Entity
 
     /**
     * Sets the accessPackage
-    * The access package with this policy. Read-only. Nullable.
+    * The access package with this policy. Read-only. Nullable. Supports $expand.
     *
     * @param AccessPackage $val The accessPackage
     *
@@ -516,6 +512,36 @@ class AccessPackageAssignmentPolicy extends Entity
     public function setAccessPackageCatalog($val)
     {
         $this->_propDict["accessPackageCatalog"] = $val;
+        return $this;
+    }
+
+
+     /**
+     * Gets the customExtensionHandlers
+    * The collection of stages when to execute one or more custom access package workflow extensions. Supports $expand.
+     *
+     * @return array|null The customExtensionHandlers
+     */
+    public function getCustomExtensionHandlers()
+    {
+        if (array_key_exists("customExtensionHandlers", $this->_propDict)) {
+           return $this->_propDict["customExtensionHandlers"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the customExtensionHandlers
+    * The collection of stages when to execute one or more custom access package workflow extensions. Supports $expand.
+    *
+    * @param CustomExtensionHandler[] $val The customExtensionHandlers
+    *
+    * @return AccessPackageAssignmentPolicy
+    */
+    public function setCustomExtensionHandlers($val)
+    {
+        $this->_propDict["customExtensionHandlers"] = $val;
         return $this;
     }
 

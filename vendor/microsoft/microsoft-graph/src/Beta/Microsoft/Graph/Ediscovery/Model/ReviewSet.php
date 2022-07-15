@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ReviewSet File
 * PHP version 7
 *
@@ -122,7 +122,6 @@ class ReviewSet extends \Beta\Microsoft\Graph\Model\Entity
 
      /**
      * Gets the queries
-    * Read-only. Nullable.
      *
      * @return array|null The queries
      */
@@ -137,9 +136,8 @@ class ReviewSet extends \Beta\Microsoft\Graph\Model\Entity
 
     /**
     * Sets the queries
-    * Read-only. Nullable.
     *
-    * @param ReviewSetQuery $val The queries
+    * @param ReviewSetQuery[] $val The queries
     *
     * @return ReviewSet
     */

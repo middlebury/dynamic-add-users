@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Workbook File
 * PHP version 7
 *
@@ -73,7 +73,7 @@ class Workbook extends Entity
     /**
     * Sets the comments
     *
-    * @param WorkbookComment $val The comments
+    * @param WorkbookComment[] $val The comments
     *
     * @return Workbook
     */
@@ -134,7 +134,7 @@ class Workbook extends Entity
     * Sets the names
     * Represents a collection of workbooks scoped named items (named ranges and constants). Read-only.
     *
-    * @param WorkbookNamedItem $val The names
+    * @param WorkbookNamedItem[] $val The names
     *
     * @return Workbook
     */
@@ -147,7 +147,7 @@ class Workbook extends Entity
 
      /**
      * Gets the operations
-    * The status of workbook operations. Getting an operation collection is not supported, but you can get the status of a long-running operation if the Location header is returned in the response. Read-only.
+    * The status of Workbook operations. Getting an operation collection is not supported, but you can get the status of a long-running operation if the Location header is returned in the response. Read-only. Nullable.
      *
      * @return array|null The operations
      */
@@ -162,9 +162,9 @@ class Workbook extends Entity
 
     /**
     * Sets the operations
-    * The status of workbook operations. Getting an operation collection is not supported, but you can get the status of a long-running operation if the Location header is returned in the response. Read-only.
+    * The status of Workbook operations. Getting an operation collection is not supported, but you can get the status of a long-running operation if the Location header is returned in the response. Read-only. Nullable.
     *
-    * @param WorkbookOperation $val The operations
+    * @param WorkbookOperation[] $val The operations
     *
     * @return Workbook
     */
@@ -194,7 +194,7 @@ class Workbook extends Entity
     * Sets the tables
     * Represents a collection of tables associated with the workbook. Read-only.
     *
-    * @param WorkbookTable $val The tables
+    * @param WorkbookTable[] $val The tables
     *
     * @return Workbook
     */
@@ -224,7 +224,7 @@ class Workbook extends Entity
     * Sets the worksheets
     * Represents a collection of worksheets associated with the workbook. Read-only.
     *
-    * @param WorkbookWorksheet $val The worksheets
+    * @param WorkbookWorksheet[] $val The worksheets
     *
     * @return Workbook
     */

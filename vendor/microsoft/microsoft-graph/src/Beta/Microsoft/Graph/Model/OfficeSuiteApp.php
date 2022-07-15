@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * OfficeSuiteApp File
 * PHP version 7
 *
@@ -121,7 +121,7 @@ class OfficeSuiteApp extends MobileApp
 
     /**
     * Gets the localesToInstall
-    * The property to represent the locales which are installed when the apps from Office365 is installed. It uses standard RFC 6033. Ref: https://technet.microsoft.com/en-us/library/cc179219(v=office.16).aspx
+    * The property to represent the locales which are installed when the apps from Office365 is installed. It uses standard RFC 6033. Ref: https://technet.microsoft.com/library/cc179219(v=office.16).aspx
     *
     * @return string|null The localesToInstall
     */
@@ -136,7 +136,7 @@ class OfficeSuiteApp extends MobileApp
 
     /**
     * Sets the localesToInstall
-    * The property to represent the locales which are installed when the apps from Office365 is installed. It uses standard RFC 6033. Ref: https://technet.microsoft.com/en-us/library/cc179219(v=office.16).aspx
+    * The property to represent the locales which are installed when the apps from Office365 is installed. It uses standard RFC 6033. Ref: https://technet.microsoft.com/library/cc179219(v=office.16).aspx
     *
     * @param string $val The localesToInstall
     *
@@ -234,7 +234,7 @@ class OfficeSuiteApp extends MobileApp
     * Sets the productIds
     * The Product Ids that represent the Office365 Suite SKU.
     *
-    * @param OfficeProductId $val The productIds
+    * @param OfficeProductId[] $val The productIds
     *
     * @return OfficeSuiteApp
     */

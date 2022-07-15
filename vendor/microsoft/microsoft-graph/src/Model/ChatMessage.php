@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ChatMessage File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class ChatMessage extends Entity
     * Sets the attachments
     * References to attached objects like files, tabs, meetings etc.
     *
-    * @param ChatMessageAttachment $val The attachments
+    * @param ChatMessageAttachment[] $val The attachments
     *
     * @return ChatMessage
     */
@@ -246,7 +246,7 @@ class ChatMessage extends Entity
 
     /**
     * Gets the eventDetail
-    * Read-only.  If present, represents details of an event that happened in a chat, a channel, or a team, for example, members were added, and so on. For event messages, the messageType property will be set to systemEventMessage.
+    * Read-only.  If present, represents details of an event that happened in a chat, a channel, or a team, for example, adding new members. For event messages, the messageType property will be set to systemEventMessage.
     *
     * @return EventMessageDetail|null The eventDetail
     */
@@ -265,7 +265,7 @@ class ChatMessage extends Entity
 
     /**
     * Sets the eventDetail
-    * Read-only.  If present, represents details of an event that happened in a chat, a channel, or a team, for example, members were added, and so on. For event messages, the messageType property will be set to systemEventMessage.
+    * Read-only.  If present, represents details of an event that happened in a chat, a channel, or a team, for example, adding new members. For event messages, the messageType property will be set to systemEventMessage.
     *
     * @param EventMessageDetail $val The eventDetail
     *
@@ -441,7 +441,7 @@ class ChatMessage extends Entity
 
      /**
      * Gets the mentions
-    * List of entities mentioned in the chat message. Supported entities are: user, bot, team, and channel.
+    * List of entities mentioned in the chat message. Supported entities are: user, bot, team, channel, and tag.
      *
      * @return array|null The mentions
      */
@@ -456,9 +456,9 @@ class ChatMessage extends Entity
 
     /**
     * Sets the mentions
-    * List of entities mentioned in the chat message. Supported entities are: user, bot, team, and channel.
+    * List of entities mentioned in the chat message. Supported entities are: user, bot, team, channel, and tag.
     *
-    * @param ChatMessageMention $val The mentions
+    * @param ChatMessageMention[] $val The mentions
     *
     * @return ChatMessage
     */
@@ -554,7 +554,7 @@ class ChatMessage extends Entity
     * Sets the reactions
     * Reactions for this chat message (for example, Like).
     *
-    * @param ChatMessageReaction $val The reactions
+    * @param ChatMessageReaction[] $val The reactions
     *
     * @return ChatMessage
     */
@@ -700,7 +700,7 @@ class ChatMessage extends Entity
     * Sets the hostedContents
     * Content in a message hosted by Microsoft Teams - for example, images or code snippets.
     *
-    * @param ChatMessageHostedContent $val The hostedContents
+    * @param ChatMessageHostedContent[] $val The hostedContents
     *
     * @return ChatMessage
     */
@@ -713,7 +713,7 @@ class ChatMessage extends Entity
 
      /**
      * Gets the replies
-    * Replies for a specified message.
+    * Replies for a specified message. Supports $expand for channel messages.
      *
      * @return array|null The replies
      */
@@ -728,9 +728,9 @@ class ChatMessage extends Entity
 
     /**
     * Sets the replies
-    * Replies for a specified message.
+    * Replies for a specified message. Supports $expand for channel messages.
     *
-    * @param ChatMessage $val The replies
+    * @param ChatMessage[] $val The replies
     *
     * @return ChatMessage
     */

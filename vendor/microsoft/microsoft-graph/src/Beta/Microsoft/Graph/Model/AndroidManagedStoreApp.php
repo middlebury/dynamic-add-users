@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AndroidManagedStoreApp File
 * PHP version 7
 *
@@ -102,7 +102,7 @@ class AndroidManagedStoreApp extends MobileApp
     * Sets the appTracks
     * The tracks that are visible to this enterprise.
     *
-    * @param AndroidManagedStoreAppTrack $val The appTracks
+    * @param AndroidManagedStoreAppTrack[] $val The appTracks
     *
     * @return AndroidManagedStoreApp
     */

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * WindowsFeatureUpdateProfile File
 * PHP version 7
 *
@@ -321,7 +321,7 @@ class WindowsFeatureUpdateProfile extends Entity
     * Sets the assignments
     * The list of group assignments of the profile.
     *
-    * @param WindowsFeatureUpdateProfileAssignment $val The assignments
+    * @param WindowsFeatureUpdateProfileAssignment[] $val The assignments
     *
     * @return WindowsFeatureUpdateProfile
     */

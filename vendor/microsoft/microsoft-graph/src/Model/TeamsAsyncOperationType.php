@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * TeamsAsyncOperationType File
 * PHP version 7
 *
@@ -35,4 +35,6 @@ class TeamsAsyncOperationType extends Enum
     const UNARCHIVE_TEAM = "unarchiveTeam";
     const CREATE_TEAM = "createTeam";
     const UNKNOWN_FUTURE_VALUE = "unknownFutureValue";
+    const TEAMIFY_GROUP = "teamifyGroup";
+    const CREATE_CHANNEL = "createChannel";
 }

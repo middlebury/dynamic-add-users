@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Windows10XSCEPCertificateProfile File
 * PHP version 7
 *
@@ -139,7 +139,7 @@ class Windows10XSCEPCertificateProfile extends Windows10XCertificateProfile
     * Sets the extendedKeyUsages
     * Extended Key Usage (EKU) settings.
     *
-    * @param ExtendedKeyUsage $val The extendedKeyUsages
+    * @param ExtendedKeyUsage[] $val The extendedKeyUsages
     *
     * @return Windows10XSCEPCertificateProfile
     */
@@ -169,7 +169,7 @@ class Windows10XSCEPCertificateProfile extends Windows10XCertificateProfile
     * Sets the hashAlgorithm
     * SCEP Hash Algorithm.
     *
-    * @param HashAlgorithms $val The hashAlgorithm
+    * @param HashAlgorithms[] $val The hashAlgorithm
     *
     * @return Windows10XSCEPCertificateProfile
     */
@@ -385,7 +385,7 @@ class Windows10XSCEPCertificateProfile extends Windows10XCertificateProfile
     * Sets the subjectAlternativeNameFormats
     * Custom AAD Attributes.
     *
-    * @param Windows10XCustomSubjectAlternativeName $val The subjectAlternativeNameFormats
+    * @param Windows10XCustomSubjectAlternativeName[] $val The subjectAlternativeNameFormats
     *
     * @return Windows10XSCEPCertificateProfile
     */

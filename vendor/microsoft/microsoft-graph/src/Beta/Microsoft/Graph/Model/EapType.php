@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * EapType File
 * PHP version 7
 *
@@ -35,4 +35,5 @@ class EapType extends Enum
     const EAP_TTLS = "eapTtls";
     const PEAP = "peap";
     const EAP_FAST = "eapFast";
+    const TEAP = "teap";
 }

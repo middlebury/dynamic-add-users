@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * WindowsInformationProtection File
 * PHP version 7
 *
@@ -168,7 +168,7 @@ class WindowsInformationProtection extends ManagedAppPolicy
     * Sets the enterpriseInternalProxyServers
     * This is the comma-separated list of internal proxy servers. For example, '157.54.14.28, 157.54.11.118, 10.202.14.167, 157.53.14.163, 157.69.210.59'. These proxies have been configured by the admin to connect to specific resources on the Internet. They are considered to be enterprise network locations. The proxies are only leveraged in configuring the EnterpriseProxiedDomains policy to force traffic to the matched domains through these proxies
     *
-    * @param WindowsInformationProtectionResourceCollection $val The enterpriseInternalProxyServers
+    * @param WindowsInformationProtectionResourceCollection[] $val The enterpriseInternalProxyServers
     *
     * @return WindowsInformationProtection
     */
@@ -198,7 +198,7 @@ class WindowsInformationProtection extends ManagedAppPolicy
     * Sets the enterpriseIPRanges
     * Sets the enterprise IP ranges that define the computers in the enterprise network. Data that comes from those computers will be considered part of the enterprise and protected. These locations will be considered a safe destination for enterprise data to be shared to
     *
-    * @param WindowsInformationProtectionIPRangeCollection $val The enterpriseIPRanges
+    * @param WindowsInformationProtectionIPRangeCollection[] $val The enterpriseIPRanges
     *
     * @return WindowsInformationProtection
     */
@@ -257,7 +257,7 @@ class WindowsInformationProtection extends ManagedAppPolicy
     * Sets the enterpriseNetworkDomainNames
     * This is the list of domains that comprise the boundaries of the enterprise. Data from one of these domains that is sent to a device will be considered enterprise data and protected These locations will be considered a safe destination for enterprise data to be shared to
     *
-    * @param WindowsInformationProtectionResourceCollection $val The enterpriseNetworkDomainNames
+    * @param WindowsInformationProtectionResourceCollection[] $val The enterpriseNetworkDomainNames
     *
     * @return WindowsInformationProtection
     */
@@ -287,7 +287,7 @@ class WindowsInformationProtection extends ManagedAppPolicy
     * Sets the enterpriseProtectedDomainNames
     * List of enterprise domains to be protected
     *
-    * @param WindowsInformationProtectionResourceCollection $val The enterpriseProtectedDomainNames
+    * @param WindowsInformationProtectionResourceCollection[] $val The enterpriseProtectedDomainNames
     *
     * @return WindowsInformationProtection
     */
@@ -317,7 +317,7 @@ class WindowsInformationProtection extends ManagedAppPolicy
     * Sets the enterpriseProxiedDomains
     * Contains a list of Enterprise resource domains hosted in the cloud that need to be protected. Connections to these resources are considered enterprise data. If a proxy is paired with a cloud resource, traffic to the cloud resource will be routed through the enterprise network via the denoted proxy server (on Port 80). A proxy server used for this purpose must also be configured using the EnterpriseInternalProxyServers policy
     *
-    * @param WindowsInformationProtectionProxiedDomainCollection $val The enterpriseProxiedDomains
+    * @param WindowsInformationProtectionProxiedDomainCollection[] $val The enterpriseProxiedDomains
     *
     * @return WindowsInformationProtection
     */
@@ -347,7 +347,7 @@ class WindowsInformationProtection extends ManagedAppPolicy
     * Sets the enterpriseProxyServers
     * This is a list of proxy servers. Any server not on this list is considered non-enterprise
     *
-    * @param WindowsInformationProtectionResourceCollection $val The enterpriseProxyServers
+    * @param WindowsInformationProtectionResourceCollection[] $val The enterpriseProxyServers
     *
     * @return WindowsInformationProtection
     */
@@ -406,7 +406,7 @@ class WindowsInformationProtection extends ManagedAppPolicy
     * Sets the exemptApps
     * Exempt applications can also access enterprise data, but the data handled by those applications are not protected. This is because some critical enterprise applications may have compatibility problems with encrypted data.
     *
-    * @param WindowsInformationProtectionApp $val The exemptApps
+    * @param WindowsInformationProtectionApp[] $val The exemptApps
     *
     * @return WindowsInformationProtection
     */
@@ -523,7 +523,7 @@ class WindowsInformationProtection extends ManagedAppPolicy
     * Sets the neutralDomainResources
     * List of domain names that can used for work or personal resource
     *
-    * @param WindowsInformationProtectionResourceCollection $val The neutralDomainResources
+    * @param WindowsInformationProtectionResourceCollection[] $val The neutralDomainResources
     *
     * @return WindowsInformationProtection
     */
@@ -553,7 +553,7 @@ class WindowsInformationProtection extends ManagedAppPolicy
     * Sets the protectedApps
     * Protected applications can access enterprise data and the data handled by those applications are protected with encryption
     *
-    * @param WindowsInformationProtectionApp $val The protectedApps
+    * @param WindowsInformationProtectionApp[] $val The protectedApps
     *
     * @return WindowsInformationProtection
     */
@@ -670,7 +670,7 @@ class WindowsInformationProtection extends ManagedAppPolicy
     * Sets the smbAutoEncryptedFileExtensions
     * Specifies a list of file extensions, so that files with these extensions are encrypted when copying from an SMB share within the corporate boundary
     *
-    * @param WindowsInformationProtectionResourceCollection $val The smbAutoEncryptedFileExtensions
+    * @param WindowsInformationProtectionResourceCollection[] $val The smbAutoEncryptedFileExtensions
     *
     * @return WindowsInformationProtection
     */
@@ -700,7 +700,7 @@ class WindowsInformationProtection extends ManagedAppPolicy
     * Sets the assignments
     * Navigation property to list of security groups targeted for policy.
     *
-    * @param TargetedManagedAppPolicyAssignment $val The assignments
+    * @param TargetedManagedAppPolicyAssignment[] $val The assignments
     *
     * @return WindowsInformationProtection
     */
@@ -730,7 +730,7 @@ class WindowsInformationProtection extends ManagedAppPolicy
     * Sets the exemptAppLockerFiles
     * Another way to input exempt apps through xml files
     *
-    * @param WindowsInformationProtectionAppLockerFile $val The exemptAppLockerFiles
+    * @param WindowsInformationProtectionAppLockerFile[] $val The exemptAppLockerFiles
     *
     * @return WindowsInformationProtection
     */
@@ -760,7 +760,7 @@ class WindowsInformationProtection extends ManagedAppPolicy
     * Sets the protectedAppLockerFiles
     * Another way to input protected apps through xml files
     *
-    * @param WindowsInformationProtectionAppLockerFile $val The protectedAppLockerFiles
+    * @param WindowsInformationProtectionAppLockerFile[] $val The protectedAppLockerFiles
     *
     * @return WindowsInformationProtection
     */

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Custodian File
 * PHP version 7
 *
@@ -135,7 +135,7 @@ class Custodian extends DataSourceContainer
     * Sets the siteSources
     * Data source entity for SharePoint sites associated with the custodian.
     *
-    * @param SiteSource $val The siteSources
+    * @param SiteSource[] $val The siteSources
     *
     * @return Custodian
     */
@@ -165,7 +165,7 @@ class Custodian extends DataSourceContainer
     * Sets the unifiedGroupSources
     * Data source entity for groups associated with the custodian.
     *
-    * @param UnifiedGroupSource $val The unifiedGroupSources
+    * @param UnifiedGroupSource[] $val The unifiedGroupSources
     *
     * @return Custodian
     */
@@ -195,7 +195,7 @@ class Custodian extends DataSourceContainer
     * Sets the userSources
     * Data source entity for a the custodian. This is the container for a custodian's mailbox and OneDrive for Business site.
     *
-    * @param UserSource $val The userSources
+    * @param UserSource[] $val The userSources
     *
     * @return Custodian
     */

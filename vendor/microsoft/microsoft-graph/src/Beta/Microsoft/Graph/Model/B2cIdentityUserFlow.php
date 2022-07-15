@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * B2cIdentityUserFlow File
 * PHP version 7
 *
@@ -133,7 +133,7 @@ class B2cIdentityUserFlow extends IdentityUserFlow
     /**
     * Sets the identityProviders
     *
-    * @param IdentityProvider $val The identityProviders
+    * @param IdentityProvider[] $val The identityProviders
     *
     * @return B2cIdentityUserFlow
     */
@@ -163,7 +163,7 @@ class B2cIdentityUserFlow extends IdentityUserFlow
     * Sets the languages
     * The languages supported for customization within the user flow. Language customization is not enabled by default in B2C user flows.
     *
-    * @param UserFlowLanguageConfiguration $val The languages
+    * @param UserFlowLanguageConfiguration[] $val The languages
     *
     * @return B2cIdentityUserFlow
     */
@@ -193,7 +193,7 @@ class B2cIdentityUserFlow extends IdentityUserFlow
     * Sets the userAttributeAssignments
     * The user attribute assignments included in the user flow.
     *
-    * @param IdentityUserFlowAttributeAssignment $val The userAttributeAssignments
+    * @param IdentityUserFlowAttributeAssignment[] $val The userAttributeAssignments
     *
     * @return B2cIdentityUserFlow
     */
@@ -221,7 +221,7 @@ class B2cIdentityUserFlow extends IdentityUserFlow
     /**
     * Sets the userFlowIdentityProviders
     *
-    * @param IdentityProviderBase $val The userFlowIdentityProviders
+    * @param IdentityProviderBase[] $val The userFlowIdentityProviders
     *
     * @return B2cIdentityUserFlow
     */

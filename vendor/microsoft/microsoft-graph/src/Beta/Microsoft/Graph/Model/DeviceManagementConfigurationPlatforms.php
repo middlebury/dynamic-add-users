@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceManagementConfigurationPlatforms File
 * PHP version 7
 *
@@ -35,4 +35,6 @@ class DeviceManagementConfigurationPlatforms extends Enum
     const MAC_OS = "macOS";
     const WINDOWS10_X = "windows10X";
     const WINDOWS10 = "windows10";
+    const LINUX = "linux";
+    const UNKNOWN_FUTURE_VALUE = "unknownFutureValue";
 }

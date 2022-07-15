@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Calendar File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class Calendar extends Entity
     * Sets the allowedOnlineMeetingProviders
     * Represent the online meeting service providers that can be used to create online meetings in this calendar. Possible values are: unknown, skypeForBusiness, skypeForConsumer, teamsForBusiness.
     *
-    * @param OnlineMeetingProviderType $val The allowedOnlineMeetingProviders
+    * @param OnlineMeetingProviderType[] $val The allowedOnlineMeetingProviders
     *
     * @return Calendar
     */
@@ -56,7 +56,7 @@ class Calendar extends Entity
 
     /**
     * Gets the canEdit
-    * true if the user can write to the calendar, false otherwise. This property is true for the user who created the calendar. This property is also true for a user who has been shared a calendar and granted write access.
+    * true if the user can write to the calendar, false otherwise. This property is true for the user who created the calendar. This property is also true for a user who has been shared a calendar and granted write access, through an Outlook client or the corresponding calendarPermission resource. Read-only.
     *
     * @return bool|null The canEdit
     */
@@ -71,7 +71,7 @@ class Calendar extends Entity
 
     /**
     * Sets the canEdit
-    * true if the user can write to the calendar, false otherwise. This property is true for the user who created the calendar. This property is also true for a user who has been shared a calendar and granted write access.
+    * true if the user can write to the calendar, false otherwise. This property is true for the user who created the calendar. This property is also true for a user who has been shared a calendar and granted write access, through an Outlook client or the corresponding calendarPermission resource. Read-only.
     *
     * @param bool $val The canEdit
     *
@@ -85,7 +85,7 @@ class Calendar extends Entity
 
     /**
     * Gets the canShare
-    * true if the user has the permission to share the calendar, false otherwise. Only the user who created the calendar can share it.
+    * true if the user has the permission to share the calendar, false otherwise. Only the user who created the calendar can share it. Read-only.
     *
     * @return bool|null The canShare
     */
@@ -100,7 +100,7 @@ class Calendar extends Entity
 
     /**
     * Sets the canShare
-    * true if the user has the permission to share the calendar, false otherwise. Only the user who created the calendar can share it.
+    * true if the user has the permission to share the calendar, false otherwise. Only the user who created the calendar can share it. Read-only.
     *
     * @param bool $val The canShare
     *
@@ -114,7 +114,7 @@ class Calendar extends Entity
 
     /**
     * Gets the canViewPrivateItems
-    * true if the user can read calendar items that have been marked private, false otherwise.
+    * true if the user can read calendar items that have been marked private, false otherwise. This property is set through an Outlook client or the corresponding calendarPermission resource. Read-only.
     *
     * @return bool|null The canViewPrivateItems
     */
@@ -129,7 +129,7 @@ class Calendar extends Entity
 
     /**
     * Sets the canViewPrivateItems
-    * true if the user can read calendar items that have been marked private, false otherwise.
+    * true if the user can read calendar items that have been marked private, false otherwise. This property is set through an Outlook client or the corresponding calendarPermission resource. Read-only.
     *
     * @param bool $val The canViewPrivateItems
     *
@@ -238,7 +238,7 @@ class Calendar extends Entity
 
     /**
     * Gets the hexColor
-    * The calendar color, expressed in a hex color code of three hexadecimal values, each ranging from 00 to FF and representing the red, green, or blue components of the color in the RGB color space. If the user has never explicitly set a color for the calendar, this property is empty. Read-only.
+    * The calendar color, expressed in a hex color code of three hexadecimal values, each ranging from 00 to FF and representing the red, green, or blue components of the color in the RGB color space. If the user has never explicitly set a color for the calendar, this property is  empty.
     *
     * @return string|null The hexColor
     */
@@ -253,7 +253,7 @@ class Calendar extends Entity
 
     /**
     * Sets the hexColor
-    * The calendar color, expressed in a hex color code of three hexadecimal values, each ranging from 00 to FF and representing the red, green, or blue components of the color in the RGB color space. If the user has never explicitly set a color for the calendar, this property is empty. Read-only.
+    * The calendar color, expressed in a hex color code of three hexadecimal values, each ranging from 00 to FF and representing the red, green, or blue components of the color in the RGB color space. If the user has never explicitly set a color for the calendar, this property is  empty.
     *
     * @param string $val The hexColor
     *
@@ -383,7 +383,7 @@ class Calendar extends Entity
 
     /**
     * Gets the owner
-    * If set, this represents the user who created or added the calendar. For a calendar that the user created or added, the owner property is set to the user. For a calendar shared with the user, the owner property is set to the person who shared that calendar with the user.
+    * If set, this represents the user who created or added the calendar. For a calendar that the user created or added, the owner property is set to the user. For a calendar shared with the user, the owner property is set to the person who shared that calendar with the user. Read-only.
     *
     * @return EmailAddress|null The owner
     */
@@ -402,7 +402,7 @@ class Calendar extends Entity
 
     /**
     * Sets the owner
-    * If set, this represents the user who created or added the calendar. For a calendar that the user created or added, the owner property is set to the user. For a calendar shared with the user, the owner property is set to the person who shared that calendar with the user.
+    * If set, this represents the user who created or added the calendar. For a calendar that the user created or added, the owner property is set to the user. For a calendar shared with the user, the owner property is set to the person who shared that calendar with the user. Read-only.
     *
     * @param EmailAddress $val The owner
     *
@@ -434,7 +434,7 @@ class Calendar extends Entity
     * Sets the calendarPermissions
     * The permissions of the users with whom the calendar is shared.
     *
-    * @param CalendarPermission $val The calendarPermissions
+    * @param CalendarPermission[] $val The calendarPermissions
     *
     * @return Calendar
     */
@@ -464,7 +464,7 @@ class Calendar extends Entity
     * Sets the calendarView
     * The calendar view for the calendar. Navigation property. Read-only.
     *
-    * @param Event $val The calendarView
+    * @param Event[] $val The calendarView
     *
     * @return Calendar
     */
@@ -494,7 +494,7 @@ class Calendar extends Entity
     * Sets the events
     * The events in the calendar. Navigation property. Read-only.
     *
-    * @param Event $val The events
+    * @param Event[] $val The events
     *
     * @return Calendar
     */
@@ -524,7 +524,7 @@ class Calendar extends Entity
     * Sets the multiValueExtendedProperties
     * The collection of multi-value extended properties defined for the calendar. Read-only. Nullable.
     *
-    * @param MultiValueLegacyExtendedProperty $val The multiValueExtendedProperties
+    * @param MultiValueLegacyExtendedProperty[] $val The multiValueExtendedProperties
     *
     * @return Calendar
     */
@@ -554,7 +554,7 @@ class Calendar extends Entity
     * Sets the singleValueExtendedProperties
     * The collection of single-value extended properties defined for the calendar. Read-only. Nullable.
     *
-    * @param SingleValueLegacyExtendedProperty $val The singleValueExtendedProperties
+    * @param SingleValueLegacyExtendedProperty[] $val The singleValueExtendedProperties
     *
     * @return Calendar
     */

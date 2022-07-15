@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AttackSimulationRoot File
 * PHP version 7
 *
@@ -26,8 +26,38 @@ class AttackSimulationRoot extends Entity
 {
 
      /**
+     * Gets the simulationAutomations
+    * Represents simulation automations created to run on a tenant.
+     *
+     * @return array|null The simulationAutomations
+     */
+    public function getSimulationAutomations()
+    {
+        if (array_key_exists("simulationAutomations", $this->_propDict)) {
+           return $this->_propDict["simulationAutomations"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the simulationAutomations
+    * Represents simulation automations created to run on a tenant.
+    *
+    * @param SimulationAutomation[] $val The simulationAutomations
+    *
+    * @return AttackSimulationRoot
+    */
+    public function setSimulationAutomations($val)
+    {
+        $this->_propDict["simulationAutomations"] = $val;
+        return $this;
+    }
+
+
+     /**
      * Gets the simulations
-    * Represent attack simulation and training campaign of a tenant.
+    * Represents an attack simulation training campaign in a tenant.
      *
      * @return array|null The simulations
      */
@@ -42,9 +72,9 @@ class AttackSimulationRoot extends Entity
 
     /**
     * Sets the simulations
-    * Represent attack simulation and training campaign of a tenant.
+    * Represents an attack simulation training campaign in a tenant.
     *
-    * @param Simulation $val The simulations
+    * @param Simulation[] $val The simulations
     *
     * @return AttackSimulationRoot
     */

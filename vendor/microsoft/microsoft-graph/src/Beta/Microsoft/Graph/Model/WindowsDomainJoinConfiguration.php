@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * WindowsDomainJoinConfiguration File
 * PHP version 7
 *
@@ -160,7 +160,7 @@ class WindowsDomainJoinConfiguration extends DeviceConfiguration
     * Sets the networkAccessConfigurations
     * Reference to device configurations required for network connectivity
     *
-    * @param DeviceConfiguration $val The networkAccessConfigurations
+    * @param DeviceConfiguration[] $val The networkAccessConfigurations
     *
     * @return WindowsDomainJoinConfiguration
     */

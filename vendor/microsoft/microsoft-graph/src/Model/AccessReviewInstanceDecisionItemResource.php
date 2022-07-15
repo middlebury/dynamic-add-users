@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AccessReviewInstanceDecisionItemResource File
 * PHP version 7
 *
@@ -53,7 +53,7 @@ class AccessReviewInstanceDecisionItemResource extends Entity
     }
     /**
     * Gets the id
-    * Identifier of the resource
+    * Resource ID
     *
     * @return string|null The id
     */
@@ -68,7 +68,7 @@ class AccessReviewInstanceDecisionItemResource extends Entity
 
     /**
     * Sets the id
-    * Identifier of the resource
+    * Resource ID
     *
     * @param string $val The value of the id
     *

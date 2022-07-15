@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * GroupPolicyPresentationValueList File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class GroupPolicyPresentationValueList extends GroupPolicyPresentationValue
     * Sets the values
     * A list of pairs for the associated presentation.
     *
-    * @param KeyValuePair $val The values
+    * @param KeyValuePair[] $val The values
     *
     * @return GroupPolicyPresentationValueList
     */

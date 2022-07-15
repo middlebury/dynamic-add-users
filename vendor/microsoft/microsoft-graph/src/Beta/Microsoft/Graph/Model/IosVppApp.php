@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * IosVppApp File
 * PHP version 7
 *
@@ -201,7 +201,7 @@ class IosVppApp extends MobileApp
     * Sets the revokeLicenseActionResults
     * Results of revoke license actions on this app.
     *
-    * @param IosVppAppRevokeLicensesActionResult $val The revokeLicenseActionResults
+    * @param IosVppAppRevokeLicensesActionResult[] $val The revokeLicenseActionResults
     *
     * @return IosVppApp
     */
@@ -409,7 +409,7 @@ class IosVppApp extends MobileApp
     * Sets the assignedLicenses
     * The licenses assigned to this app.
     *
-    * @param IosVppAppAssignedLicense $val The assignedLicenses
+    * @param IosVppAppAssignedLicense[] $val The assignedLicenses
     *
     * @return IosVppApp
     */

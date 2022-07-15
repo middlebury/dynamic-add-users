@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * VirtualEndpoint File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class VirtualEndpoint extends Entity
     * Sets the auditEvents
     * Cloud PC audit event.
     *
-    * @param CloudPcAuditEvent $val The auditEvents
+    * @param CloudPcAuditEvent[] $val The auditEvents
     *
     * @return VirtualEndpoint
     */
@@ -74,7 +74,7 @@ class VirtualEndpoint extends Entity
     * Sets the cloudPCs
     * Cloud managed virtual desktops.
     *
-    * @param CloudPC $val The cloudPCs
+    * @param CloudPC[] $val The cloudPCs
     *
     * @return VirtualEndpoint
     */
@@ -104,13 +104,41 @@ class VirtualEndpoint extends Entity
     * Sets the deviceImages
     * The image resource on Cloud PC.
     *
-    * @param CloudPcDeviceImage $val The deviceImages
+    * @param CloudPcDeviceImage[] $val The deviceImages
     *
     * @return VirtualEndpoint
     */
     public function setDeviceImages($val)
     {
         $this->_propDict["deviceImages"] = $val;
+        return $this;
+    }
+
+
+     /**
+     * Gets the externalPartnerSettings
+     *
+     * @return array|null The externalPartnerSettings
+     */
+    public function getExternalPartnerSettings()
+    {
+        if (array_key_exists("externalPartnerSettings", $this->_propDict)) {
+           return $this->_propDict["externalPartnerSettings"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the externalPartnerSettings
+    *
+    * @param CloudPcExternalPartnerSetting[] $val The externalPartnerSettings
+    *
+    * @return VirtualEndpoint
+    */
+    public function setExternalPartnerSettings($val)
+    {
+        $this->_propDict["externalPartnerSettings"] = $val;
         return $this;
     }
 
@@ -134,7 +162,7 @@ class VirtualEndpoint extends Entity
     * Sets the galleryImages
     * The gallery image resource on Cloud PC.
     *
-    * @param CloudPcGalleryImage $val The galleryImages
+    * @param CloudPcGalleryImage[] $val The galleryImages
     *
     * @return VirtualEndpoint
     */
@@ -164,13 +192,46 @@ class VirtualEndpoint extends Entity
     * Sets the onPremisesConnections
     * A defined collection of Azure resource information that can be used to establish on-premises network connectivity for Cloud PCs.
     *
-    * @param CloudPcOnPremisesConnection $val The onPremisesConnections
+    * @param CloudPcOnPremisesConnection[] $val The onPremisesConnections
     *
     * @return VirtualEndpoint
     */
     public function setOnPremisesConnections($val)
     {
         $this->_propDict["onPremisesConnections"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the organizationSettings
+    * The Cloud PC organization settings for a tenant.
+    *
+    * @return CloudPcOrganizationSettings|null The organizationSettings
+    */
+    public function getOrganizationSettings()
+    {
+        if (array_key_exists("organizationSettings", $this->_propDict)) {
+            if (is_a($this->_propDict["organizationSettings"], "\Beta\Microsoft\Graph\Model\CloudPcOrganizationSettings") || is_null($this->_propDict["organizationSettings"])) {
+                return $this->_propDict["organizationSettings"];
+            } else {
+                $this->_propDict["organizationSettings"] = new CloudPcOrganizationSettings($this->_propDict["organizationSettings"]);
+                return $this->_propDict["organizationSettings"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the organizationSettings
+    * The Cloud PC organization settings for a tenant.
+    *
+    * @param CloudPcOrganizationSettings $val The organizationSettings
+    *
+    * @return VirtualEndpoint
+    */
+    public function setOrganizationSettings($val)
+    {
+        $this->_propDict["organizationSettings"] = $val;
         return $this;
     }
 
@@ -194,7 +255,7 @@ class VirtualEndpoint extends Entity
     * Sets the provisioningPolicies
     * Cloud PC provisioning policy.
     *
-    * @param CloudPcProvisioningPolicy $val The provisioningPolicies
+    * @param CloudPcProvisioningPolicy[] $val The provisioningPolicies
     *
     * @return VirtualEndpoint
     */
@@ -224,13 +285,43 @@ class VirtualEndpoint extends Entity
     * Sets the servicePlans
     * Cloud PC service plans.
     *
-    * @param CloudPcServicePlan $val The servicePlans
+    * @param CloudPcServicePlan[] $val The servicePlans
     *
     * @return VirtualEndpoint
     */
     public function setServicePlans($val)
     {
         $this->_propDict["servicePlans"] = $val;
+        return $this;
+    }
+
+
+     /**
+     * Gets the snapshots
+    * Cloud PC snapshots.
+     *
+     * @return array|null The snapshots
+     */
+    public function getSnapshots()
+    {
+        if (array_key_exists("snapshots", $this->_propDict)) {
+           return $this->_propDict["snapshots"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the snapshots
+    * Cloud PC snapshots.
+    *
+    * @param CloudPcSnapshot[] $val The snapshots
+    *
+    * @return VirtualEndpoint
+    */
+    public function setSnapshots($val)
+    {
+        $this->_propDict["snapshots"] = $val;
         return $this;
     }
 
@@ -254,7 +345,7 @@ class VirtualEndpoint extends Entity
     * Sets the supportedRegions
     * Cloud PC supported regions.
     *
-    * @param CloudPcSupportedRegion $val The supportedRegions
+    * @param CloudPcSupportedRegion[] $val The supportedRegions
     *
     * @return VirtualEndpoint
     */
@@ -284,7 +375,7 @@ class VirtualEndpoint extends Entity
     * Sets the userSettings
     * Cloud PC user settings.
     *
-    * @param CloudPcUserSetting $val The userSettings
+    * @param CloudPcUserSetting[] $val The userSettings
     *
     * @return VirtualEndpoint
     */

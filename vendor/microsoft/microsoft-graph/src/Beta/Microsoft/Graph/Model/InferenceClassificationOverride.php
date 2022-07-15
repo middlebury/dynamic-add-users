@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * InferenceClassificationOverride File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class InferenceClassificationOverride extends Entity
 {
     /**
     * Gets the classifyAs
-    * Specifies how incoming messages from a specific sender should always be classified as. The possible values are: focused, other.
+    * Specifies how incoming messages from a specific sender should always be classified as. Possible values are: focused, other.
     *
     * @return InferenceClassificationType|null The classifyAs
     */
@@ -45,7 +45,7 @@ class InferenceClassificationOverride extends Entity
 
     /**
     * Sets the classifyAs
-    * Specifies how incoming messages from a specific sender should always be classified as. The possible values are: focused, other.
+    * Specifies how incoming messages from a specific sender should always be classified as. Possible values are: focused, other.
     *
     * @param InferenceClassificationType $val The classifyAs
     *

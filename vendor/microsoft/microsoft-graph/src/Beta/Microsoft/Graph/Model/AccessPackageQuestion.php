@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AccessPackageQuestion File
 * PHP version 7
 *
@@ -53,6 +53,7 @@ class AccessPackageQuestion extends Entity
     }
     /**
     * Gets the isAnswerEditable
+    * Specifies whether the requestor is allowed to edit answers to questions.
     *
     * @return bool|null The isAnswerEditable
     */
@@ -67,6 +68,7 @@ class AccessPackageQuestion extends Entity
 
     /**
     * Sets the isAnswerEditable
+    * Specifies whether the requestor is allowed to edit answers to questions.
     *
     * @param bool $val The value of the isAnswerEditable
     *

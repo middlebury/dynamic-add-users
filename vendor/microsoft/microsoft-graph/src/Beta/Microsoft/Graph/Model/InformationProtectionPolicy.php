@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * InformationProtectionPolicy File
 * PHP version 7
 *
@@ -42,7 +42,7 @@ class InformationProtectionPolicy extends Entity
     /**
     * Sets the labels
     *
-    * @param InformationProtectionLabel $val The labels
+    * @param InformationProtectionLabel[] $val The labels
     *
     * @return InformationProtectionPolicy
     */

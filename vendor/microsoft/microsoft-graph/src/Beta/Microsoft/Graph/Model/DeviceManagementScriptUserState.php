@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceManagementScriptUserState File
 * PHP version 7
 *
@@ -131,7 +131,7 @@ class DeviceManagementScriptUserState extends Entity
     * Sets the deviceRunStates
     * List of run states for this script across all devices of specific user.
     *
-    * @param DeviceManagementScriptDeviceState $val The deviceRunStates
+    * @param DeviceManagementScriptDeviceState[] $val The deviceRunStates
     *
     * @return DeviceManagementScriptUserState
     */

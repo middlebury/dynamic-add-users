@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * OutlookTaskGroup File
 * PHP version 7
 *
@@ -160,7 +160,7 @@ class OutlookTaskGroup extends Entity
     * Sets the taskFolders
     * The collection of task folders in the task group. Read-only. Nullable.
     *
-    * @param OutlookTaskFolder $val The taskFolders
+    * @param OutlookTaskFolder[] $val The taskFolders
     *
     * @return OutlookTaskGroup
     */

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * TodoTask File
 * PHP version 7
 *
@@ -87,6 +87,35 @@ class TodoTask extends Entity
     public function setBodyLastModifiedDateTime($val)
     {
         $this->_propDict["bodyLastModifiedDateTime"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the categories
+    * The categories associated with the task. Each category corresponds to the displayName property of an outlookCategory that the user has defined.
+    *
+    * @return string|null The categories
+    */
+    public function getCategories()
+    {
+        if (array_key_exists("categories", $this->_propDict)) {
+            return $this->_propDict["categories"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the categories
+    * The categories associated with the task. Each category corresponds to the displayName property of an outlookCategory that the user has defined.
+    *
+    * @param string $val The categories
+    *
+    * @return TodoTask
+    */
+    public function setCategories($val)
+    {
+        $this->_propDict["categories"] = $val;
         return $this;
     }
 
@@ -186,6 +215,35 @@ class TodoTask extends Entity
     public function setDueDateTime($val)
     {
         $this->_propDict["dueDateTime"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the hasAttachments
+    * Indicates whether the task has attachments.
+    *
+    * @return bool|null The hasAttachments
+    */
+    public function getHasAttachments()
+    {
+        if (array_key_exists("hasAttachments", $this->_propDict)) {
+            return $this->_propDict["hasAttachments"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the hasAttachments
+    * Indicates whether the task has attachments.
+    *
+    * @param bool $val The hasAttachments
+    *
+    * @return TodoTask
+    */
+    public function setHasAttachments($val)
+    {
+        $this->_propDict["hasAttachments"] = boolval($val);
         return $this;
     }
 
@@ -351,6 +409,37 @@ class TodoTask extends Entity
     }
 
     /**
+    * Gets the startDateTime
+    *
+    * @return DateTimeTimeZone|null The startDateTime
+    */
+    public function getStartDateTime()
+    {
+        if (array_key_exists("startDateTime", $this->_propDict)) {
+            if (is_a($this->_propDict["startDateTime"], "\Beta\Microsoft\Graph\Model\DateTimeTimeZone") || is_null($this->_propDict["startDateTime"])) {
+                return $this->_propDict["startDateTime"];
+            } else {
+                $this->_propDict["startDateTime"] = new DateTimeTimeZone($this->_propDict["startDateTime"]);
+                return $this->_propDict["startDateTime"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the startDateTime
+    *
+    * @param DateTimeTimeZone $val The startDateTime
+    *
+    * @return TodoTask
+    */
+    public function setStartDateTime($val)
+    {
+        $this->_propDict["startDateTime"] = $val;
+        return $this;
+    }
+
+    /**
     * Gets the status
     * Indicates the state or progress of the task. Possible values are: notStarted, inProgress, completed, waitingOnOthers, deferred.
     *
@@ -414,6 +503,94 @@ class TodoTask extends Entity
 
 
      /**
+     * Gets the attachments
+    * A collection of file attachments for the task.
+     *
+     * @return array|null The attachments
+     */
+    public function getAttachments()
+    {
+        if (array_key_exists("attachments", $this->_propDict)) {
+           return $this->_propDict["attachments"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the attachments
+    * A collection of file attachments for the task.
+    *
+    * @param AttachmentBase[] $val The attachments
+    *
+    * @return TodoTask
+    */
+    public function setAttachments($val)
+    {
+        $this->_propDict["attachments"] = $val;
+        return $this;
+    }
+
+
+     /**
+     * Gets the attachmentSessions
+     *
+     * @return array|null The attachmentSessions
+     */
+    public function getAttachmentSessions()
+    {
+        if (array_key_exists("attachmentSessions", $this->_propDict)) {
+           return $this->_propDict["attachmentSessions"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the attachmentSessions
+    *
+    * @param AttachmentSession[] $val The attachmentSessions
+    *
+    * @return TodoTask
+    */
+    public function setAttachmentSessions($val)
+    {
+        $this->_propDict["attachmentSessions"] = $val;
+        return $this;
+    }
+
+
+     /**
+     * Gets the checklistItems
+    * A collection of smaller subtasks linked to the more complex parent task.
+     *
+     * @return array|null The checklistItems
+     */
+    public function getChecklistItems()
+    {
+        if (array_key_exists("checklistItems", $this->_propDict)) {
+           return $this->_propDict["checklistItems"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the checklistItems
+    * A collection of smaller subtasks linked to the more complex parent task.
+    *
+    * @param ChecklistItem[] $val The checklistItems
+    *
+    * @return TodoTask
+    */
+    public function setChecklistItems($val)
+    {
+        $this->_propDict["checklistItems"] = $val;
+        return $this;
+    }
+
+
+     /**
      * Gets the extensions
     * The collection of open extensions defined for the task. Nullable.
      *
@@ -432,7 +609,7 @@ class TodoTask extends Entity
     * Sets the extensions
     * The collection of open extensions defined for the task. Nullable.
     *
-    * @param Extension $val The extensions
+    * @param Extension[] $val The extensions
     *
     * @return TodoTask
     */
@@ -462,7 +639,7 @@ class TodoTask extends Entity
     * Sets the linkedResources
     * A collection of resources linked to the task.
     *
-    * @param LinkedResource $val The linkedResources
+    * @param LinkedResource[] $val The linkedResources
     *
     * @return TodoTask
     */

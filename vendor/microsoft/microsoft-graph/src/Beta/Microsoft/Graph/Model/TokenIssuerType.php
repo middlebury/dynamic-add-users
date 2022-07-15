@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * TokenIssuerType File
 * PHP version 7
 *
@@ -33,4 +33,6 @@ class TokenIssuerType extends Enum
     const AD_FEDERATION_SERVICES = "aDFederationServices";
     const UNKNOWN_FUTURE_VALUE = "unknownFutureValue";
     const AZURE_AD_BACKUP_AUTH = "azureADBackupAuth";
+    const AD_FEDERATION_SERVICES_MFA_ADAPTER = "aDFederationServicesMFAAdapter";
+    const NPS_EXTENSION = "nPSExtension";
 }

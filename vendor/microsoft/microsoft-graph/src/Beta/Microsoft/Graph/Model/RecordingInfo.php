@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * RecordingInfo File
 * PHP version 7
 *
@@ -59,7 +59,7 @@ class RecordingInfo extends Entity
 
     /**
     * Gets the initiator
-    * The identities of the recording initiator.
+    * The identities of recording initiator.
     *
     * @return IdentitySet|null The initiator
     */
@@ -78,7 +78,7 @@ class RecordingInfo extends Entity
 
     /**
     * Sets the initiator
-    * The identities of the recording initiator.
+    * The identities of recording initiator.
     *
     * @param IdentitySet $val The value to assign to the initiator
     *

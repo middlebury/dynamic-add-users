@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * IosDeviceFeaturesConfiguration File
 * PHP version 7
 *
@@ -106,7 +106,7 @@ class IosDeviceFeaturesConfiguration extends AppleDeviceFeaturesConfigurationBas
     * Sets the homeScreenDockIcons
     * A list of app and folders to appear on the Home Screen Dock. This collection can contain a maximum of 500 elements.
     *
-    * @param IosHomeScreenItem $val The homeScreenDockIcons
+    * @param IosHomeScreenItem[] $val The homeScreenDockIcons
     *
     * @return IosDeviceFeaturesConfiguration
     */
@@ -194,7 +194,7 @@ class IosDeviceFeaturesConfiguration extends AppleDeviceFeaturesConfigurationBas
     * Sets the homeScreenPages
     * A list of pages on the Home Screen. This collection can contain a maximum of 500 elements.
     *
-    * @param IosHomeScreenPage $val The homeScreenPages
+    * @param IosHomeScreenPage[] $val The homeScreenPages
     *
     * @return IosDeviceFeaturesConfiguration
     */
@@ -286,7 +286,7 @@ class IosDeviceFeaturesConfiguration extends AppleDeviceFeaturesConfigurationBas
     * Sets the notificationSettings
     * Notification settings for each bundle id. Applicable to devices in supervised mode only (iOS 9.3 and later). This collection can contain a maximum of 500 elements.
     *
-    * @param IosNotificationSettings $val The notificationSettings
+    * @param IosNotificationSettings[] $val The notificationSettings
     *
     * @return IosDeviceFeaturesConfiguration
     */

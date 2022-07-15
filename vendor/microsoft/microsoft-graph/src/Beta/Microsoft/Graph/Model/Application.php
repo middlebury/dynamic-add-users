@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Application File
 * PHP version 7
 *
@@ -59,7 +59,7 @@ class Application extends DirectoryObject
 
     /**
     * Gets the appId
-    * The unique identifier for the application that is assigned to an application by Azure AD. Not nullable. Read-only.
+    * The unique identifier for the application that is assigned by Azure AD. Not nullable. Read-only.
     *
     * @return string|null The appId
     */
@@ -74,7 +74,7 @@ class Application extends DirectoryObject
 
     /**
     * Sets the appId
-    * The unique identifier for the application that is assigned to an application by Azure AD. Not nullable. Read-only.
+    * The unique identifier for the application that is assigned by Azure AD. Not nullable. Read-only.
     *
     * @param string $val The appId
     *
@@ -106,7 +106,7 @@ class Application extends DirectoryObject
     * Sets the appRoles
     * The collection of roles assigned to the application. With app role assignments, these roles can be assigned to users, groups, or service principals associated with other applications. Not nullable.
     *
-    * @param AppRole $val The appRoles
+    * @param AppRole[] $val The appRoles
     *
     * @return Application
     */
@@ -117,8 +117,41 @@ class Application extends DirectoryObject
     }
 
     /**
+    * Gets the certification
+    * Specifies the certification status of the application.
+    *
+    * @return Certification|null The certification
+    */
+    public function getCertification()
+    {
+        if (array_key_exists("certification", $this->_propDict)) {
+            if (is_a($this->_propDict["certification"], "\Beta\Microsoft\Graph\Model\Certification") || is_null($this->_propDict["certification"])) {
+                return $this->_propDict["certification"];
+            } else {
+                $this->_propDict["certification"] = new Certification($this->_propDict["certification"]);
+                return $this->_propDict["certification"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the certification
+    * Specifies the certification status of the application.
+    *
+    * @param Certification $val The certification
+    *
+    * @return Application
+    */
+    public function setCertification($val)
+    {
+        $this->_propDict["certification"] = $val;
+        return $this;
+    }
+
+    /**
     * Gets the createdDateTime
-    * The date and time the application was registered. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.  Supports $filter (eq, ne, NOT, ge, le, in, and eq on null values) and $orderBy.
+    * The date and time the application was registered. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.  Supports $filter (eq, ne, not, ge, le, in, and eq on null values) and $orderBy.
     *
     * @return \DateTime|null The createdDateTime
     */
@@ -137,7 +170,7 @@ class Application extends DirectoryObject
 
     /**
     * Sets the createdDateTime
-    * The date and time the application was registered. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.  Supports $filter (eq, ne, NOT, ge, le, in, and eq on null values) and $orderBy.
+    * The date and time the application was registered. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.  Supports $filter (eq, ne, not, ge, le, in, and eq on null values) and $orderBy.
     *
     * @param \DateTime $val The createdDateTime
     *
@@ -180,7 +213,7 @@ class Application extends DirectoryObject
 
     /**
     * Gets the description
-    * An optional description of the application. Supports $filter (eq, ne, NOT, ge, le, startsWith) and $search.
+    * Free text field to provide a description of the application object to end users. The maximum allowed size is 1024 characters. Returned by default. Supports $filter (eq, ne, not, ge, le, startsWith) and $search.
     *
     * @return string|null The description
     */
@@ -195,7 +228,7 @@ class Application extends DirectoryObject
 
     /**
     * Sets the description
-    * An optional description of the application. Supports $filter (eq, ne, NOT, ge, le, startsWith) and $search.
+    * Free text field to provide a description of the application object to end users. The maximum allowed size is 1024 characters. Returned by default. Supports $filter (eq, ne, not, ge, le, startsWith) and $search.
     *
     * @param string $val The description
     *
@@ -209,7 +242,7 @@ class Application extends DirectoryObject
 
     /**
     * Gets the disabledByMicrosoftStatus
-    * Specifies whether Microsoft has disabled the registered application. Possible values are: null (default value), NotDisabled, and DisabledDueToViolationOfServicesAgreement (reasons may include suspicious, abusive, or malicious activity, or a violation of the Microsoft Services Agreement).  Supports $filter (eq, ne, NOT).
+    * Specifies whether Microsoft has disabled the registered application. Possible values are: null (default value), NotDisabled, and DisabledDueToViolationOfServicesAgreement (reasons may include suspicious, abusive, or malicious activity, or a violation of the Microsoft Services Agreement).  Supports $filter (eq, ne, not).
     *
     * @return string|null The disabledByMicrosoftStatus
     */
@@ -224,7 +257,7 @@ class Application extends DirectoryObject
 
     /**
     * Sets the disabledByMicrosoftStatus
-    * Specifies whether Microsoft has disabled the registered application. Possible values are: null (default value), NotDisabled, and DisabledDueToViolationOfServicesAgreement (reasons may include suspicious, abusive, or malicious activity, or a violation of the Microsoft Services Agreement).  Supports $filter (eq, ne, NOT).
+    * Specifies whether Microsoft has disabled the registered application. Possible values are: null (default value), NotDisabled, and DisabledDueToViolationOfServicesAgreement (reasons may include suspicious, abusive, or malicious activity, or a violation of the Microsoft Services Agreement).  Supports $filter (eq, ne, not).
     *
     * @param string $val The disabledByMicrosoftStatus
     *
@@ -238,7 +271,7 @@ class Application extends DirectoryObject
 
     /**
     * Gets the displayName
-    * The display name for the application. Supports $filter (eq, ne, NOT, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
+    * The display name for the application. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
     *
     * @return string|null The displayName
     */
@@ -253,7 +286,7 @@ class Application extends DirectoryObject
 
     /**
     * Sets the displayName
-    * The display name for the application. Supports $filter (eq, ne, NOT, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
+    * The display name for the application. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
     *
     * @param string $val The displayName
     *
@@ -267,7 +300,7 @@ class Application extends DirectoryObject
 
     /**
     * Gets the groupMembershipClaims
-    * Configures the groups claim issued in a user or OAuth 2.0 access token that the application expects. To set this attribute, use one of the following valid string values: None, SecurityGroup (for security groups and Azure AD roles), All (this gets all of the security groups, distribution groups, and Azure AD directory roles that the signed-in user is a member of).
+    * Configures the groups claim issued in a user or OAuth 2.0 access token that the application expects. To set this attribute, use one of the following string values: None, SecurityGroup (for security groups and Azure AD roles), All (this gets all security groups, distribution groups, and Azure AD directory roles that the signed-in user is a member of).
     *
     * @return string|null The groupMembershipClaims
     */
@@ -282,7 +315,7 @@ class Application extends DirectoryObject
 
     /**
     * Sets the groupMembershipClaims
-    * Configures the groups claim issued in a user or OAuth 2.0 access token that the application expects. To set this attribute, use one of the following valid string values: None, SecurityGroup (for security groups and Azure AD roles), All (this gets all of the security groups, distribution groups, and Azure AD directory roles that the signed-in user is a member of).
+    * Configures the groups claim issued in a user or OAuth 2.0 access token that the application expects. To set this attribute, use one of the following string values: None, SecurityGroup (for security groups and Azure AD roles), All (this gets all security groups, distribution groups, and Azure AD directory roles that the signed-in user is a member of).
     *
     * @param string $val The groupMembershipClaims
     *
@@ -325,7 +358,7 @@ class Application extends DirectoryObject
 
     /**
     * Gets the info
-    * Basic profile information of the application such as  app's marketing, support, terms of service and privacy statement URLs. The terms of service and privacy statement are surfaced to users through the user consent experience. For more info, see How to: Add Terms of service and privacy statement for registered Azure AD apps. Supports $filter (eq, ne, NOT, ge, le, and eq on null values).
+    * Basic profile information of the application, such as it's marketing, support, terms of service, and privacy statement URLs. The terms of service and privacy statement are surfaced to users through the user consent experience. For more information, see How to: Add Terms of service and privacy statement for registered Azure AD apps. Supports $filter (eq, ne, not, ge, le, and eq on null values).
     *
     * @return InformationalUrl|null The info
     */
@@ -344,7 +377,7 @@ class Application extends DirectoryObject
 
     /**
     * Sets the info
-    * Basic profile information of the application such as  app's marketing, support, terms of service and privacy statement URLs. The terms of service and privacy statement are surfaced to users through the user consent experience. For more info, see How to: Add Terms of service and privacy statement for registered Azure AD apps. Supports $filter (eq, ne, NOT, ge, le, and eq on null values).
+    * Basic profile information of the application, such as it's marketing, support, terms of service, and privacy statement URLs. The terms of service and privacy statement are surfaced to users through the user consent experience. For more information, see How to: Add Terms of service and privacy statement for registered Azure AD apps. Supports $filter (eq, ne, not, ge, le, and eq on null values).
     *
     * @param InformationalUrl $val The info
     *
@@ -387,7 +420,7 @@ class Application extends DirectoryObject
 
     /**
     * Gets the isFallbackPublicClient
-    * Specifies the fallback application type as public client, such as an installed application running on a mobile device. The default value is false which means the fallback application type is confidential client such as a web app. There are certain scenarios where Azure AD cannot determine the client application type. For example, the ROPC flow where it is configured without specifying a redirect URI. In those cases Azure AD interprets the application type based on the value of this property.
+    * Specifies the fallback application type as public client, such as an installed application running on a mobile device. The default value is false which means the fallback application type is confidential client such as a web app. There are certain scenarios where Azure AD cannot determine the client application type. For example, the ROPC flow where the application is configured without specifying a redirect URI. In those cases Azure AD interprets the application type based on the value of this property.
     *
     * @return bool|null The isFallbackPublicClient
     */
@@ -402,7 +435,7 @@ class Application extends DirectoryObject
 
     /**
     * Sets the isFallbackPublicClient
-    * Specifies the fallback application type as public client, such as an installed application running on a mobile device. The default value is false which means the fallback application type is confidential client such as a web app. There are certain scenarios where Azure AD cannot determine the client application type. For example, the ROPC flow where it is configured without specifying a redirect URI. In those cases Azure AD interprets the application type based on the value of this property.
+    * Specifies the fallback application type as public client, such as an installed application running on a mobile device. The default value is false which means the fallback application type is confidential client such as a web app. There are certain scenarios where Azure AD cannot determine the client application type. For example, the ROPC flow where the application is configured without specifying a redirect URI. In those cases Azure AD interprets the application type based on the value of this property.
     *
     * @param bool $val The isFallbackPublicClient
     *
@@ -417,7 +450,7 @@ class Application extends DirectoryObject
 
      /**
      * Gets the keyCredentials
-    * The collection of key credentials associated with the application. Not nullable. Supports $filter (eq, NOT, ge, le).
+    * The collection of key credentials associated with the application. Not nullable. Supports $filter (eq, not, ge, le).
      *
      * @return array|null The keyCredentials
      */
@@ -432,9 +465,9 @@ class Application extends DirectoryObject
 
     /**
     * Sets the keyCredentials
-    * The collection of key credentials associated with the application. Not nullable. Supports $filter (eq, NOT, ge, le).
+    * The collection of key credentials associated with the application. Not nullable. Supports $filter (eq, not, ge, le).
     *
-    * @param KeyCredential $val The keyCredentials
+    * @param KeyCredential[] $val The keyCredentials
     *
     * @return Application
     */
@@ -592,7 +625,7 @@ class Application extends DirectoryObject
     * Sets the passwordCredentials
     * The collection of password credentials associated with the application. Not nullable.
     *
-    * @param PasswordCredential $val The passwordCredentials
+    * @param PasswordCredential[] $val The passwordCredentials
     *
     * @return Application
     */
@@ -637,7 +670,7 @@ class Application extends DirectoryObject
 
     /**
     * Gets the publisherDomain
-    * The verified publisher domain for the application. Read-only. For more information, see How to: Configure an application's publisher domain. Supports $filter (eq, ne, ge, le, startsWith).
+    * The verified publisher domain for the application. Read-only. Supports $filter (eq, ne, ge, le, startsWith).
     *
     * @return string|null The publisherDomain
     */
@@ -652,7 +685,7 @@ class Application extends DirectoryObject
 
     /**
     * Sets the publisherDomain
-    * The verified publisher domain for the application. Read-only. For more information, see How to: Configure an application's publisher domain. Supports $filter (eq, ne, ge, le, startsWith).
+    * The verified publisher domain for the application. Read-only. Supports $filter (eq, ne, ge, le, startsWith).
     *
     * @param string $val The publisherDomain
     *
@@ -667,7 +700,7 @@ class Application extends DirectoryObject
 
      /**
      * Gets the requiredResourceAccess
-    * Specifies the resources that the application needs to access. This property also specifies the set of delegated permissions and application roles that it needs for each of those resources. This configuration of access to the required resources drives the consent experience. No more than 50 resource services (APIs) can be configured. Beginning mid-October 2021, the total number of required permissions must not exceed 400. Not nullable. Supports $filter (eq, NOT, ge, le).
+    * Specifies the resources that the application needs to access. This property also specifies the set of delegated permissions and application roles that it needs for each of those resources. This configuration of access to the required resources drives the consent experience. No more than 50 resource services (APIs) can be configured. Beginning mid-October 2021, the total number of required permissions must not exceed 400. Not nullable. Supports $filter (eq, not, ge, le).
      *
      * @return array|null The requiredResourceAccess
      */
@@ -682,9 +715,9 @@ class Application extends DirectoryObject
 
     /**
     * Sets the requiredResourceAccess
-    * Specifies the resources that the application needs to access. This property also specifies the set of delegated permissions and application roles that it needs for each of those resources. This configuration of access to the required resources drives the consent experience. No more than 50 resource services (APIs) can be configured. Beginning mid-October 2021, the total number of required permissions must not exceed 400. Not nullable. Supports $filter (eq, NOT, ge, le).
+    * Specifies the resources that the application needs to access. This property also specifies the set of delegated permissions and application roles that it needs for each of those resources. This configuration of access to the required resources drives the consent experience. No more than 50 resource services (APIs) can be configured. Beginning mid-October 2021, the total number of required permissions must not exceed 400. Not nullable. Supports $filter (eq, not, ge, le).
     *
-    * @param RequiredResourceAccess $val The requiredResourceAccess
+    * @param RequiredResourceAccess[] $val The requiredResourceAccess
     *
     * @return Application
     */
@@ -695,8 +728,66 @@ class Application extends DirectoryObject
     }
 
     /**
+    * Gets the samlMetadataUrl
+    * The URL where the service exposes SAML metadata for federation. This property is valid only for single-tenant applications. Nullable.
+    *
+    * @return string|null The samlMetadataUrl
+    */
+    public function getSamlMetadataUrl()
+    {
+        if (array_key_exists("samlMetadataUrl", $this->_propDict)) {
+            return $this->_propDict["samlMetadataUrl"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the samlMetadataUrl
+    * The URL where the service exposes SAML metadata for federation. This property is valid only for single-tenant applications. Nullable.
+    *
+    * @param string $val The samlMetadataUrl
+    *
+    * @return Application
+    */
+    public function setSamlMetadataUrl($val)
+    {
+        $this->_propDict["samlMetadataUrl"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the serviceManagementReference
+    * References application or service contact information from a Service or Asset Management database. Nullable.
+    *
+    * @return string|null The serviceManagementReference
+    */
+    public function getServiceManagementReference()
+    {
+        if (array_key_exists("serviceManagementReference", $this->_propDict)) {
+            return $this->_propDict["serviceManagementReference"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the serviceManagementReference
+    * References application or service contact information from a Service or Asset Management database. Nullable.
+    *
+    * @param string $val The serviceManagementReference
+    *
+    * @return Application
+    */
+    public function setServiceManagementReference($val)
+    {
+        $this->_propDict["serviceManagementReference"] = $val;
+        return $this;
+    }
+
+    /**
     * Gets the signInAudience
-    * Specifies the Microsoft accounts that are supported for the current application. The possible values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount (default), and PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
+    * Specifies the Microsoft accounts that are supported for the current application. The possible values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount (default), and PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, not).
     *
     * @return string|null The signInAudience
     */
@@ -711,7 +802,7 @@ class Application extends DirectoryObject
 
     /**
     * Sets the signInAudience
-    * Specifies the Microsoft accounts that are supported for the current application. The possible values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount (default), and PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
+    * Specifies the Microsoft accounts that are supported for the current application. The possible values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount (default), and PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, not).
     *
     * @param string $val The signInAudience
     *
@@ -758,7 +849,7 @@ class Application extends DirectoryObject
 
     /**
     * Gets the tags
-    * Custom strings that can be used to categorize and identify the application. Not nullable. Supports $filter (eq, NOT, ge, le, startsWith).
+    * Custom strings that can be used to categorize and identify the application. Not nullable.Supports $filter (eq, not, ge, le, startsWith).
     *
     * @return string|null The tags
     */
@@ -773,7 +864,7 @@ class Application extends DirectoryObject
 
     /**
     * Sets the tags
-    * Custom strings that can be used to categorize and identify the application. Not nullable. Supports $filter (eq, NOT, ge, le, startsWith).
+    * Custom strings that can be used to categorize and identify the application. Not nullable.Supports $filter (eq, not, ge, le, startsWith).
     *
     * @param string $val The tags
     *
@@ -845,7 +936,7 @@ class Application extends DirectoryObject
 
     /**
     * Gets the verifiedPublisher
-    * Specifies the verified publisher of the application.
+    * Specifies the verified publisher of the application. For more information about how publisher verification helps support application security, trustworthiness, and compliance, see Publisher verification.
     *
     * @return VerifiedPublisher|null The verifiedPublisher
     */
@@ -864,7 +955,7 @@ class Application extends DirectoryObject
 
     /**
     * Sets the verifiedPublisher
-    * Specifies the verified publisher of the application.
+    * Specifies the verified publisher of the application. For more information about how publisher verification helps support application security, trustworthiness, and compliance, see Publisher verification.
     *
     * @param VerifiedPublisher $val The verifiedPublisher
     *
@@ -906,6 +997,39 @@ class Application extends DirectoryObject
     public function setWeb($val)
     {
         $this->_propDict["web"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the windows
+    * Specifies settings for apps running Microsoft Windows and published in the Microsoft Store or Xbox games store.
+    *
+    * @return WindowsApplication|null The windows
+    */
+    public function getWindows()
+    {
+        if (array_key_exists("windows", $this->_propDict)) {
+            if (is_a($this->_propDict["windows"], "\Beta\Microsoft\Graph\Model\WindowsApplication") || is_null($this->_propDict["windows"])) {
+                return $this->_propDict["windows"];
+            } else {
+                $this->_propDict["windows"] = new WindowsApplication($this->_propDict["windows"]);
+                return $this->_propDict["windows"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the windows
+    * Specifies settings for apps running Microsoft Windows and published in the Microsoft Store or Xbox games store.
+    *
+    * @param WindowsApplication $val The windows
+    *
+    * @return Application
+    */
+    public function setWindows($val)
+    {
+        $this->_propDict["windows"] = $val;
         return $this;
     }
 
@@ -962,7 +1086,7 @@ class Application extends DirectoryObject
     * Sets the appManagementPolicies
     * The appManagementPolicy applied to this application.
     *
-    * @param AppManagementPolicy $val The appManagementPolicies
+    * @param AppManagementPolicy[] $val The appManagementPolicies
     *
     * @return Application
     */
@@ -974,7 +1098,6 @@ class Application extends DirectoryObject
 
     /**
     * Gets the createdOnBehalfOf
-    * Read-only.
     *
     * @return DirectoryObject|null The createdOnBehalfOf
     */
@@ -993,7 +1116,6 @@ class Application extends DirectoryObject
 
     /**
     * Sets the createdOnBehalfOf
-    * Read-only.
     *
     * @param DirectoryObject $val The createdOnBehalfOf
     *
@@ -1008,7 +1130,7 @@ class Application extends DirectoryObject
 
      /**
      * Gets the extensionProperties
-    * Read-only. Nullable.
+    * Read-only. Nullable. Supports $expand and $filter (eq when counting empty collections).
      *
      * @return array|null The extensionProperties
      */
@@ -1023,9 +1145,9 @@ class Application extends DirectoryObject
 
     /**
     * Sets the extensionProperties
-    * Read-only. Nullable.
+    * Read-only. Nullable. Supports $expand and $filter (eq when counting empty collections).
     *
-    * @param ExtensionProperty $val The extensionProperties
+    * @param ExtensionProperty[] $val The extensionProperties
     *
     * @return Application
     */
@@ -1038,7 +1160,7 @@ class Application extends DirectoryObject
 
      /**
      * Gets the federatedIdentityCredentials
-    * Federated identities for applications. This object can only be retrieved on a single GET request (GET /applications/{id}/federatedIdentityCredentials).
+    * Federated identities for applications. Supports $expand and $filter (eq when counting empty collections).
      *
      * @return array|null The federatedIdentityCredentials
      */
@@ -1053,9 +1175,9 @@ class Application extends DirectoryObject
 
     /**
     * Sets the federatedIdentityCredentials
-    * Federated identities for applications. This object can only be retrieved on a single GET request (GET /applications/{id}/federatedIdentityCredentials).
+    * Federated identities for applications. Supports $expand and $filter (eq when counting empty collections).
     *
-    * @param FederatedIdentityCredential $val The federatedIdentityCredentials
+    * @param FederatedIdentityCredential[] $val The federatedIdentityCredentials
     *
     * @return Application
     */
@@ -1083,7 +1205,7 @@ class Application extends DirectoryObject
     /**
     * Sets the homeRealmDiscoveryPolicies
     *
-    * @param HomeRealmDiscoveryPolicy $val The homeRealmDiscoveryPolicies
+    * @param HomeRealmDiscoveryPolicy[] $val The homeRealmDiscoveryPolicies
     *
     * @return Application
     */
@@ -1113,7 +1235,7 @@ class Application extends DirectoryObject
     * Sets the owners
     * Directory objects that are owners of the application. Read-only. Nullable. Supports $expand.
     *
-    * @param DirectoryObject $val The owners
+    * @param DirectoryObject[] $val The owners
     *
     * @return Application
     */
@@ -1141,7 +1263,7 @@ class Application extends DirectoryObject
     /**
     * Sets the tokenIssuancePolicies
     *
-    * @param TokenIssuancePolicy $val The tokenIssuancePolicies
+    * @param TokenIssuancePolicy[] $val The tokenIssuancePolicies
     *
     * @return Application
     */
@@ -1171,7 +1293,7 @@ class Application extends DirectoryObject
     * Sets the tokenLifetimePolicies
     * The tokenLifetimePolicies assigned to this application. Supports $expand.
     *
-    * @param TokenLifetimePolicy $val The tokenLifetimePolicies
+    * @param TokenLifetimePolicy[] $val The tokenLifetimePolicies
     *
     * @return Application
     */

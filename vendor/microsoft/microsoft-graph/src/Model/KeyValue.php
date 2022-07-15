@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * KeyValue File
 * PHP version 7
 *
@@ -25,7 +25,7 @@ class KeyValue extends Entity
 {
     /**
     * Gets the key
-    * Key for the key-value pair.
+    * Contains the name of the field that a value is associated with. When a sign in or domain hint is included in the sign-in request, corresponding fields are included as key-value pairs. Possible keys: Login hint present, Domain hint present.
     *
     * @return string|null The key
     */
@@ -40,7 +40,7 @@ class KeyValue extends Entity
 
     /**
     * Sets the key
-    * Key for the key-value pair.
+    * Contains the name of the field that a value is associated with. When a sign in or domain hint is included in the sign-in request, corresponding fields are included as key-value pairs. Possible keys: Login hint present, Domain hint present.
     *
     * @param string $val The value of the key
     *
@@ -53,7 +53,7 @@ class KeyValue extends Entity
     }
     /**
     * Gets the value
-    * Value for the key-value pair.
+    * Contains the corresponding value for the specified key. The value is true if a sign in hint was included in the sign-in request; otherwise false. The value is true if a domain hint was included in the sign-in request; otherwise false.
     *
     * @return string|null The value
     */
@@ -68,7 +68,7 @@ class KeyValue extends Entity
 
     /**
     * Sets the value
-    * Value for the key-value pair.
+    * Contains the corresponding value for the specified key. The value is true if a sign in hint was included in the sign-in request; otherwise false. The value is true if a domain hint was included in the sign-in request; otherwise false.
     *
     * @param string $val The value of the value
     *

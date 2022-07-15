@@ -18,18 +18,18 @@ class OpenTypeTest extends TestCase
 	*/
 	public function testOpenExtensions()
     {
-	$extension = new Model\Extension(array("theme" => "dark", "extensionName" => "Extension 1"));
+    	$extension = new Model\Extension(array("theme" => "dark", "extensionName" => "Extension 1"));
 
-	$this->_client->setApiVersion("beta");
-	$eResult = $this->_client->createRequest("POST", "/me/extensions")
-		->attachBody($extension)
-		->setReturnType(Model\Extension::class)
-		->execute();
+    	$this->_client->setApiVersion("beta");
+    	$eResult = $this->_client->createRequest("POST", "/me/extensions")
+    		->attachBody($extension)
+    		->setReturnType(Model\Extension::class)
+    		->execute();
 
-	$this->assertEquals("Extension 1", $eResult->getProperties()["extensionName"]);
+    	$this->assertEquals("Extension 1", $eResult->getProperties()["extensionName"]);
 
-	$this->_client->createRequest("DELETE", "/me/extensions/" . $eResult->getId())
-		->execute();
+    	$this->_client->createRequest("DELETE", "/me/extensions/" . $eResult->getId())
+    		->execute();
     }
 
     /**

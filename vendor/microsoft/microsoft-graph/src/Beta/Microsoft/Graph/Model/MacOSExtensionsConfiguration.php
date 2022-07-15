@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * MacOSExtensionsConfiguration File
 * PHP version 7
 *
@@ -102,7 +102,7 @@ class MacOSExtensionsConfiguration extends DeviceConfiguration
     * Sets the kernelExtensionsAllowed
     * A list of kernel extensions that will be allowed to load. . This collection can contain a maximum of 500 elements.
     *
-    * @param MacOSKernelExtension $val The kernelExtensionsAllowed
+    * @param MacOSKernelExtension[] $val The kernelExtensionsAllowed
     *
     * @return MacOSExtensionsConfiguration
     */
@@ -132,7 +132,7 @@ class MacOSExtensionsConfiguration extends DeviceConfiguration
     * Sets the systemExtensionsAllowed
     * Gets or sets a list of allowed macOS system extensions. This collection can contain a maximum of 500 elements.
     *
-    * @param MacOSSystemExtension $val The systemExtensionsAllowed
+    * @param MacOSSystemExtension[] $val The systemExtensionsAllowed
     *
     * @return MacOSExtensionsConfiguration
     */
@@ -191,7 +191,7 @@ class MacOSExtensionsConfiguration extends DeviceConfiguration
     * Sets the systemExtensionsAllowedTypes
     * Gets or sets a list of allowed macOS system extension types. This collection can contain a maximum of 500 elements.
     *
-    * @param MacOSSystemExtensionTypeMapping $val The systemExtensionsAllowedTypes
+    * @param MacOSSystemExtensionTypeMapping[] $val The systemExtensionsAllowedTypes
     *
     * @return MacOSExtensionsConfiguration
     */

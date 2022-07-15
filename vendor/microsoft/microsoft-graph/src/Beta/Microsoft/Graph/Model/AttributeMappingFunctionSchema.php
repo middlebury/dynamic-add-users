@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AttributeMappingFunctionSchema File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class AttributeMappingFunctionSchema extends Entity
     * Sets the parameters
     * Collection of function parameters.
     *
-    * @param AttributeMappingParameterSchema $val The parameters
+    * @param AttributeMappingParameterSchema[] $val The parameters
     *
     * @return AttributeMappingFunctionSchema
     */

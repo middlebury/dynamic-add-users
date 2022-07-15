@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AndroidManagedStoreAppConfigurationSchema File
 * PHP version 7
 *
@@ -77,7 +77,7 @@ class AndroidManagedStoreAppConfigurationSchema extends Entity
     * Sets the nestedSchemaItems
     * Collection of items each representing a named configuration option in the schema. It contains a flat list of all configuration.
     *
-    * @param AndroidManagedStoreAppConfigurationSchemaItem $val The nestedSchemaItems
+    * @param AndroidManagedStoreAppConfigurationSchemaItem[] $val The nestedSchemaItems
     *
     * @return AndroidManagedStoreAppConfigurationSchema
     */
@@ -107,7 +107,7 @@ class AndroidManagedStoreAppConfigurationSchema extends Entity
     * Sets the schemaItems
     * Collection of items each representing a named configuration option in the schema. It only contains the root-level configuration.
     *
-    * @param AndroidManagedStoreAppConfigurationSchemaItem $val The schemaItems
+    * @param AndroidManagedStoreAppConfigurationSchemaItem[] $val The schemaItems
     *
     * @return AndroidManagedStoreAppConfigurationSchema
     */

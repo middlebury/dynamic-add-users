@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * SearchHit File
 * PHP version 7
 *
@@ -105,6 +105,34 @@ class SearchHit extends Entity
     public function setRank($val)
     {
         $this->_propDict["rank"] = $val;
+        return $this;
+    }
+    /**
+    * Gets the resultTemplateId
+    * ID of the result template for rendering the search result. This ID must map to a display layout in the resultTemplates dictionary, included in the searchresponse as well.
+    *
+    * @return string|null The resultTemplateId
+    */
+    public function getResultTemplateId()
+    {
+        if (array_key_exists("resultTemplateId", $this->_propDict)) {
+            return $this->_propDict["resultTemplateId"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the resultTemplateId
+    * ID of the result template for rendering the search result. This ID must map to a display layout in the resultTemplates dictionary, included in the searchresponse as well.
+    *
+    * @param string $val The value of the resultTemplateId
+    *
+    * @return SearchHit
+    */
+    public function setResultTemplateId($val)
+    {
+        $this->_propDict["resultTemplateId"] = $val;
         return $this;
     }
     /**

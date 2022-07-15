@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Updates File
 * PHP version 7
 *
@@ -77,13 +77,41 @@ class Updates extends \Beta\Microsoft\Graph\Model\Entity
     * Sets the deployments
     * Deployments created using the deployment service. Read-only.
     *
-    * @param Deployment $val The deployments
+    * @param Deployment[] $val The deployments
     *
     * @return Updates
     */
     public function setDeployments($val)
     {
         $this->_propDict["deployments"] = $val;
+        return $this;
+    }
+
+
+     /**
+     * Gets the resourceConnections
+     *
+     * @return array|null The resourceConnections
+     */
+    public function getResourceConnections()
+    {
+        if (array_key_exists("resourceConnections", $this->_propDict)) {
+           return $this->_propDict["resourceConnections"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the resourceConnections
+    *
+    * @param ResourceConnection[] $val The resourceConnections
+    *
+    * @return Updates
+    */
+    public function setResourceConnections($val)
+    {
+        $this->_propDict["resourceConnections"] = $val;
         return $this;
     }
 
@@ -107,7 +135,7 @@ class Updates extends \Beta\Microsoft\Graph\Model\Entity
     * Sets the updatableAssets
     * Assets registered with the deployment service that can receive updates. Read-only.
     *
-    * @param UpdatableAsset $val The updatableAssets
+    * @param UpdatableAsset[] $val The updatableAssets
     *
     * @return Updates
     */

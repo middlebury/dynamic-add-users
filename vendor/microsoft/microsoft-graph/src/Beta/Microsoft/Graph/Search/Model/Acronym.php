@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Acronym File
 * PHP version 7
 *
@@ -26,6 +26,7 @@ class Acronym extends SearchAnswer
 {
     /**
     * Gets the standsFor
+    * What the acronym stands for.
     *
     * @return string|null The standsFor
     */
@@ -40,6 +41,7 @@ class Acronym extends SearchAnswer
 
     /**
     * Sets the standsFor
+    * What the acronym stands for.
     *
     * @param string $val The standsFor
     *
@@ -53,6 +55,7 @@ class Acronym extends SearchAnswer
 
     /**
     * Gets the state
+    * State of the acronym. Possible values are: published, draft, excluded, or unknownFutureValue.
     *
     * @return AnswerState|null The state
     */
@@ -71,6 +74,7 @@ class Acronym extends SearchAnswer
 
     /**
     * Sets the state
+    * State of the acronym. Possible values are: published, draft, excluded, or unknownFutureValue.
     *
     * @param AnswerState $val The state
     *

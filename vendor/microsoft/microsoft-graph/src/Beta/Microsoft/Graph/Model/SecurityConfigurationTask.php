@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * SecurityConfigurationTask File
 * PHP version 7
 *
@@ -172,7 +172,7 @@ class SecurityConfigurationTask extends DeviceAppManagementTask
     * Sets the intendedSettings
     * The intended settings and their values.
     *
-    * @param KeyValuePair $val The intendedSettings
+    * @param KeyValuePair[] $val The intendedSettings
     *
     * @return SecurityConfigurationTask
     */
@@ -231,7 +231,7 @@ class SecurityConfigurationTask extends DeviceAppManagementTask
     * Sets the managedDevices
     * The vulnerable managed devices.
     *
-    * @param VulnerableManagedDevice $val The managedDevices
+    * @param VulnerableManagedDevice[] $val The managedDevices
     *
     * @return SecurityConfigurationTask
     */

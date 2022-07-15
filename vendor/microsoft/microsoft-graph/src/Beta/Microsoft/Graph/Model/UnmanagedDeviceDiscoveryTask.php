@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * UnmanagedDeviceDiscoveryTask File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class UnmanagedDeviceDiscoveryTask extends DeviceAppManagementTask
     * Sets the unmanagedDevices
     * Unmanaged devices discovered in the network.
     *
-    * @param UnmanagedDevice $val The unmanagedDevices
+    * @param UnmanagedDevice[] $val The unmanagedDevices
     *
     * @return UnmanagedDeviceDiscoveryTask
     */

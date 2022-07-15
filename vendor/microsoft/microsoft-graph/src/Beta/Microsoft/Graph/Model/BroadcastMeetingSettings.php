@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * BroadcastMeetingSettings File
 * PHP version 7
 *
@@ -54,6 +54,39 @@ class BroadcastMeetingSettings extends Entity
     public function setAllowedAudience($val)
     {
         $this->_propDict["allowedAudience"] = $val;
+         return $this;
+    }
+
+    /**
+    * Gets the captions
+    * Caption settings of a Teams live event.
+    *
+    * @return BroadcastMeetingCaptionSettings|null The captions
+    */
+    public function getCaptions()
+    {
+        if (array_key_exists("captions", $this->_propDict)) {
+            if (is_a($this->_propDict["captions"], "\Beta\Microsoft\Graph\Model\BroadcastMeetingCaptionSettings") || is_null($this->_propDict["captions"])) {
+                return $this->_propDict["captions"];
+            } else {
+                $this->_propDict["captions"] = new BroadcastMeetingCaptionSettings($this->_propDict["captions"]);
+                return $this->_propDict["captions"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the captions
+    * Caption settings of a Teams live event.
+    *
+    * @param BroadcastMeetingCaptionSettings $val The value to assign to the captions
+    *
+    * @return BroadcastMeetingSettings The BroadcastMeetingSettings
+    */
+    public function setCaptions($val)
+    {
+        $this->_propDict["captions"] = $val;
          return $this;
     }
     /**

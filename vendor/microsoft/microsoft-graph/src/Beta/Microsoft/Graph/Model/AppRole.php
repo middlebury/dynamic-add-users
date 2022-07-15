@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AppRole File
 * PHP version 7
 *
@@ -109,7 +109,7 @@ class AppRole extends Entity
     }
     /**
     * Gets the id
-    * Unique role identifier inside the appRoles collection. When creating a new app role, a new Guid identifier must be provided.
+    * Unique role identifier inside the appRoles collection. When creating a new app role, a new GUID identifier must be provided.
     *
     * @return string|null The id
     */
@@ -124,7 +124,7 @@ class AppRole extends Entity
 
     /**
     * Sets the id
-    * Unique role identifier inside the appRoles collection. When creating a new app role, a new Guid identifier must be provided.
+    * Unique role identifier inside the appRoles collection. When creating a new app role, a new GUID identifier must be provided.
     *
     * @param string $val The value of the id
     *

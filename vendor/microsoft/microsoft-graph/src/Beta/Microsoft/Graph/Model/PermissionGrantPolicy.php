@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * PermissionGrantPolicy File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class PermissionGrantPolicy extends PolicyBase
     * Sets the excludes
     * Condition sets which are excluded in this permission grant policy. Automatically expanded on GET.
     *
-    * @param PermissionGrantConditionSet $val The excludes
+    * @param PermissionGrantConditionSet[] $val The excludes
     *
     * @return PermissionGrantPolicy
     */
@@ -74,7 +74,7 @@ class PermissionGrantPolicy extends PolicyBase
     * Sets the includes
     * Condition sets which are included in this permission grant policy. Automatically expanded on GET.
     *
-    * @param PermissionGrantConditionSet $val The includes
+    * @param PermissionGrantConditionSet[] $val The includes
     *
     * @return PermissionGrantPolicy
     */

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ManagedDeviceMobileAppConfigurationState File
 * PHP version 7
 *
@@ -133,7 +133,7 @@ class ManagedDeviceMobileAppConfigurationState extends Entity
     /**
     * Sets the settingStates
     *
-    * @param ManagedDeviceMobileAppConfigurationSettingState $val The settingStates
+    * @param ManagedDeviceMobileAppConfigurationSettingState[] $val The settingStates
     *
     * @return ManagedDeviceMobileAppConfigurationState
     */

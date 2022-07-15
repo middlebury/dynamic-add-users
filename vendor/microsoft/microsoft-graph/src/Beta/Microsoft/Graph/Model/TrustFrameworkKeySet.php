@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * TrustFrameworkKeySet File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class TrustFrameworkKeySet extends Entity
     * Sets the keys
     * A collection of the keys.
     *
-    * @param TrustFrameworkKey $val The keys
+    * @param TrustFrameworkKey[] $val The keys
     *
     * @return TrustFrameworkKeySet
     */

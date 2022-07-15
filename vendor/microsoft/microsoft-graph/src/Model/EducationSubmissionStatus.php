@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * EducationSubmissionStatus File
 * PHP version 7
 *
@@ -34,4 +34,5 @@ class EducationSubmissionStatus extends Enum
     const RELEASED = "released";
     const RETURNED = "returned";
     const UNKNOWN_FUTURE_VALUE = "unknownFutureValue";
+    const REASSIGNED = "reassigned";
 }

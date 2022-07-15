@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * OfficeGraphInsights File
 * PHP version 7
 *
@@ -27,7 +27,7 @@ class OfficeGraphInsights extends Entity
 
      /**
      * Gets the shared
-    * Calculated relationship identifying documents shared with or by the user. This includes URLs, file attachments, and reference attachments to OneDrive for Business and SharePoint files found in Outlook messages and meetings. This also includes URLs and reference attachments to Teams conversations. Ordered by recency of share.
+    * Access this property from the derived type itemInsights.
      *
      * @return array|null The shared
      */
@@ -42,9 +42,9 @@ class OfficeGraphInsights extends Entity
 
     /**
     * Sets the shared
-    * Calculated relationship identifying documents shared with or by the user. This includes URLs, file attachments, and reference attachments to OneDrive for Business and SharePoint files found in Outlook messages and meetings. This also includes URLs and reference attachments to Teams conversations. Ordered by recency of share.
+    * Access this property from the derived type itemInsights.
     *
-    * @param SharedInsight $val The shared
+    * @param SharedInsight[] $val The shared
     *
     * @return OfficeGraphInsights
     */
@@ -57,7 +57,7 @@ class OfficeGraphInsights extends Entity
 
      /**
      * Gets the trending
-    * Calculated relationship identifying documents trending around a user. Trending documents are calculated based on activity of the user's closest network of people and include files stored in OneDrive for Business and SharePoint. Trending insights help the user to discover potentially useful content that the user has access to, but has never viewed before.
+    * Access this property from the derived type itemInsights.
      *
      * @return array|null The trending
      */
@@ -72,9 +72,9 @@ class OfficeGraphInsights extends Entity
 
     /**
     * Sets the trending
-    * Calculated relationship identifying documents trending around a user. Trending documents are calculated based on activity of the user's closest network of people and include files stored in OneDrive for Business and SharePoint. Trending insights help the user to discover potentially useful content that the user has access to, but has never viewed before.
+    * Access this property from the derived type itemInsights.
     *
-    * @param Trending $val The trending
+    * @param Trending[] $val The trending
     *
     * @return OfficeGraphInsights
     */
@@ -87,7 +87,7 @@ class OfficeGraphInsights extends Entity
 
      /**
      * Gets the used
-    * Calculated relationship identifying the latest documents viewed or modified by a user, including OneDrive for Business and SharePoint documents, ranked by recency of use.
+    * Access this property from the derived type itemInsights.
      *
      * @return array|null The used
      */
@@ -102,9 +102,9 @@ class OfficeGraphInsights extends Entity
 
     /**
     * Sets the used
-    * Calculated relationship identifying the latest documents viewed or modified by a user, including OneDrive for Business and SharePoint documents, ranked by recency of use.
+    * Access this property from the derived type itemInsights.
     *
-    * @param UsedInsight $val The used
+    * @param UsedInsight[] $val The used
     *
     * @return OfficeGraphInsights
     */

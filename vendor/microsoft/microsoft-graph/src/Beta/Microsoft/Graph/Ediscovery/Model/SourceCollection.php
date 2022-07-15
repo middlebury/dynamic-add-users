@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * SourceCollection File
 * PHP version 7
 *
@@ -296,7 +296,7 @@ class SourceCollection extends \Beta\Microsoft\Graph\Model\Entity
     * Sets the additionalSources
     * Adds an additional source to the sourceCollection.
     *
-    * @param DataSource $val The additionalSources
+    * @param DataSource[] $val The additionalSources
     *
     * @return SourceCollection
     */
@@ -359,7 +359,7 @@ class SourceCollection extends \Beta\Microsoft\Graph\Model\Entity
     * Sets the custodianSources
     * Custodian sources that are included in the sourceCollection.
     *
-    * @param DataSource $val The custodianSources
+    * @param DataSource[] $val The custodianSources
     *
     * @return SourceCollection
     */
@@ -422,7 +422,7 @@ class SourceCollection extends \Beta\Microsoft\Graph\Model\Entity
     * Sets the noncustodialSources
     * noncustodialDataSource sources that are included in the sourceCollection
     *
-    * @param NoncustodialDataSource $val The noncustodialSources
+    * @param NoncustodialDataSource[] $val The noncustodialSources
     *
     * @return SourceCollection
     */

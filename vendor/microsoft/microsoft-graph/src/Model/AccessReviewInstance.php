@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AccessReviewInstance File
 * PHP version 7
 *
@@ -77,7 +77,7 @@ class AccessReviewInstance extends Entity
     * Sets the fallbackReviewers
     * This collection of reviewer scopes is used to define the list of fallback reviewers. These fallback reviewers will be notified to take action if no users are found from the list of reviewers specified. This could occur when either the group owner is specified as the reviewer but the group owner does not exist, or manager is specified as reviewer but a user's manager does not exist. Supports $select.
     *
-    * @param AccessReviewReviewerScope $val The fallbackReviewers
+    * @param AccessReviewReviewerScope[] $val The fallbackReviewers
     *
     * @return AccessReviewInstance
     */
@@ -107,7 +107,7 @@ class AccessReviewInstance extends Entity
     * Sets the reviewers
     * This collection of access review scopes is used to define who the reviewers are. Supports $select. For examples of options for assigning reviewers, see Assign reviewers to your access review definition using the Microsoft Graph API.
     *
-    * @param AccessReviewReviewerScope $val The reviewers
+    * @param AccessReviewReviewerScope[] $val The reviewers
     *
     * @return AccessReviewInstance
     */
@@ -214,8 +214,38 @@ class AccessReviewInstance extends Entity
 
 
      /**
+     * Gets the contactedReviewers
+    * Returns the collection of reviewers who were contacted to complete this review. While the reviewers and fallbackReviewers properties of the accessReviewScheduleDefinition might specify group owners or managers as reviewers, contactedReviewers returns their individual identities. Supports $select. Read-only.
+     *
+     * @return array|null The contactedReviewers
+     */
+    public function getContactedReviewers()
+    {
+        if (array_key_exists("contactedReviewers", $this->_propDict)) {
+           return $this->_propDict["contactedReviewers"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the contactedReviewers
+    * Returns the collection of reviewers who were contacted to complete this review. While the reviewers and fallbackReviewers properties of the accessReviewScheduleDefinition might specify group owners or managers as reviewers, contactedReviewers returns their individual identities. Supports $select. Read-only.
+    *
+    * @param AccessReviewReviewer[] $val The contactedReviewers
+    *
+    * @return AccessReviewInstance
+    */
+    public function setContactedReviewers($val)
+    {
+        $this->_propDict["contactedReviewers"] = $val;
+        return $this;
+    }
+
+
+     /**
      * Gets the decisions
-    * Each principal reviewed in an accessReviewInstance has a decision item representing if they were approved, denied, or not yet reviewed.
+    * Each user reviewed in an accessReviewInstance has a decision item representing if they were approved, denied, or not yet reviewed.
      *
      * @return array|null The decisions
      */
@@ -230,15 +260,45 @@ class AccessReviewInstance extends Entity
 
     /**
     * Sets the decisions
-    * Each principal reviewed in an accessReviewInstance has a decision item representing if they were approved, denied, or not yet reviewed.
+    * Each user reviewed in an accessReviewInstance has a decision item representing if they were approved, denied, or not yet reviewed.
     *
-    * @param AccessReviewInstanceDecisionItem $val The decisions
+    * @param AccessReviewInstanceDecisionItem[] $val The decisions
     *
     * @return AccessReviewInstance
     */
     public function setDecisions($val)
     {
         $this->_propDict["decisions"] = $val;
+        return $this;
+    }
+
+
+     /**
+     * Gets the stages
+    * If the instance has multiple stages, this returns the collection of stages. A new stage will only be created when the previous stage ends. The existence, number, and settings of stages on a review instance are created based on the accessReviewStageSettings on the parent accessReviewScheduleDefinition.
+     *
+     * @return array|null The stages
+     */
+    public function getStages()
+    {
+        if (array_key_exists("stages", $this->_propDict)) {
+           return $this->_propDict["stages"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the stages
+    * If the instance has multiple stages, this returns the collection of stages. A new stage will only be created when the previous stage ends. The existence, number, and settings of stages on a review instance are created based on the accessReviewStageSettings on the parent accessReviewScheduleDefinition.
+    *
+    * @param AccessReviewStage[] $val The stages
+    *
+    * @return AccessReviewInstance
+    */
+    public function setStages($val)
+    {
+        $this->_propDict["stages"] = $val;
         return $this;
     }
 

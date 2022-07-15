@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DefaultManagedAppProtection File
 * PHP version 7
 *
@@ -273,6 +273,105 @@ class DefaultManagedAppProtection extends ManagedAppProtection
     public function setAppActionIfDeviceLockNotSet($val)
     {
         $this->_propDict["appActionIfDeviceLockNotSet"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the appActionIfDevicePasscodeComplexityLessThanHigh
+    * If the device does not have a passcode of high complexity or higher, trigger the stored action. Possible values are: block, wipe, warn.
+    *
+    * @return ManagedAppRemediationAction|null The appActionIfDevicePasscodeComplexityLessThanHigh
+    */
+    public function getAppActionIfDevicePasscodeComplexityLessThanHigh()
+    {
+        if (array_key_exists("appActionIfDevicePasscodeComplexityLessThanHigh", $this->_propDict)) {
+            if (is_a($this->_propDict["appActionIfDevicePasscodeComplexityLessThanHigh"], "\Beta\Microsoft\Graph\Model\ManagedAppRemediationAction") || is_null($this->_propDict["appActionIfDevicePasscodeComplexityLessThanHigh"])) {
+                return $this->_propDict["appActionIfDevicePasscodeComplexityLessThanHigh"];
+            } else {
+                $this->_propDict["appActionIfDevicePasscodeComplexityLessThanHigh"] = new ManagedAppRemediationAction($this->_propDict["appActionIfDevicePasscodeComplexityLessThanHigh"]);
+                return $this->_propDict["appActionIfDevicePasscodeComplexityLessThanHigh"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the appActionIfDevicePasscodeComplexityLessThanHigh
+    * If the device does not have a passcode of high complexity or higher, trigger the stored action. Possible values are: block, wipe, warn.
+    *
+    * @param ManagedAppRemediationAction $val The appActionIfDevicePasscodeComplexityLessThanHigh
+    *
+    * @return DefaultManagedAppProtection
+    */
+    public function setAppActionIfDevicePasscodeComplexityLessThanHigh($val)
+    {
+        $this->_propDict["appActionIfDevicePasscodeComplexityLessThanHigh"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the appActionIfDevicePasscodeComplexityLessThanLow
+    * If the device does not have a passcode of low complexity or higher, trigger the stored action. Possible values are: block, wipe, warn.
+    *
+    * @return ManagedAppRemediationAction|null The appActionIfDevicePasscodeComplexityLessThanLow
+    */
+    public function getAppActionIfDevicePasscodeComplexityLessThanLow()
+    {
+        if (array_key_exists("appActionIfDevicePasscodeComplexityLessThanLow", $this->_propDict)) {
+            if (is_a($this->_propDict["appActionIfDevicePasscodeComplexityLessThanLow"], "\Beta\Microsoft\Graph\Model\ManagedAppRemediationAction") || is_null($this->_propDict["appActionIfDevicePasscodeComplexityLessThanLow"])) {
+                return $this->_propDict["appActionIfDevicePasscodeComplexityLessThanLow"];
+            } else {
+                $this->_propDict["appActionIfDevicePasscodeComplexityLessThanLow"] = new ManagedAppRemediationAction($this->_propDict["appActionIfDevicePasscodeComplexityLessThanLow"]);
+                return $this->_propDict["appActionIfDevicePasscodeComplexityLessThanLow"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the appActionIfDevicePasscodeComplexityLessThanLow
+    * If the device does not have a passcode of low complexity or higher, trigger the stored action. Possible values are: block, wipe, warn.
+    *
+    * @param ManagedAppRemediationAction $val The appActionIfDevicePasscodeComplexityLessThanLow
+    *
+    * @return DefaultManagedAppProtection
+    */
+    public function setAppActionIfDevicePasscodeComplexityLessThanLow($val)
+    {
+        $this->_propDict["appActionIfDevicePasscodeComplexityLessThanLow"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the appActionIfDevicePasscodeComplexityLessThanMedium
+    * If the device does not have a passcode of medium complexity or higher, trigger the stored action. Possible values are: block, wipe, warn.
+    *
+    * @return ManagedAppRemediationAction|null The appActionIfDevicePasscodeComplexityLessThanMedium
+    */
+    public function getAppActionIfDevicePasscodeComplexityLessThanMedium()
+    {
+        if (array_key_exists("appActionIfDevicePasscodeComplexityLessThanMedium", $this->_propDict)) {
+            if (is_a($this->_propDict["appActionIfDevicePasscodeComplexityLessThanMedium"], "\Beta\Microsoft\Graph\Model\ManagedAppRemediationAction") || is_null($this->_propDict["appActionIfDevicePasscodeComplexityLessThanMedium"])) {
+                return $this->_propDict["appActionIfDevicePasscodeComplexityLessThanMedium"];
+            } else {
+                $this->_propDict["appActionIfDevicePasscodeComplexityLessThanMedium"] = new ManagedAppRemediationAction($this->_propDict["appActionIfDevicePasscodeComplexityLessThanMedium"]);
+                return $this->_propDict["appActionIfDevicePasscodeComplexityLessThanMedium"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the appActionIfDevicePasscodeComplexityLessThanMedium
+    * If the device does not have a passcode of medium complexity or higher, trigger the stored action. Possible values are: block, wipe, warn.
+    *
+    * @param ManagedAppRemediationAction $val The appActionIfDevicePasscodeComplexityLessThanMedium
+    *
+    * @return DefaultManagedAppProtection
+    */
+    public function setAppActionIfDevicePasscodeComplexityLessThanMedium($val)
+    {
+        $this->_propDict["appActionIfDevicePasscodeComplexityLessThanMedium"] = $val;
         return $this;
     }
 
@@ -623,7 +722,7 @@ class DefaultManagedAppProtection extends ManagedAppProtection
     * Sets the customSettings
     * A set of string key and string value pairs to be sent to the affected users, unalterned by this service
     *
-    * @param KeyValuePair $val The customSettings
+    * @param KeyValuePair[] $val The customSettings
     *
     * @return DefaultManagedAppProtection
     */
@@ -798,7 +897,7 @@ class DefaultManagedAppProtection extends ManagedAppProtection
     * Sets the exemptedAppPackages
     * Android App packages in this list will be exempt from the policy and will be able to receive data from managed apps. (Android only)
     *
-    * @param KeyValuePair $val The exemptedAppPackages
+    * @param KeyValuePair[] $val The exemptedAppPackages
     *
     * @return DefaultManagedAppProtection
     */
@@ -828,7 +927,7 @@ class DefaultManagedAppProtection extends ManagedAppProtection
     * Sets the exemptedAppProtocols
     * iOS Apps in this list will be exempt from the policy and will be able to receive data from managed apps. (iOS Only)
     *
-    * @param KeyValuePair $val The exemptedAppProtocols
+    * @param KeyValuePair[] $val The exemptedAppProtocols
     *
     * @return DefaultManagedAppProtection
     */
@@ -893,6 +992,35 @@ class DefaultManagedAppProtection extends ManagedAppProtection
     public function setFilterOpenInToOnlyManagedApps($val)
     {
         $this->_propDict["filterOpenInToOnlyManagedApps"] = boolval($val);
+        return $this;
+    }
+
+    /**
+    * Gets the fingerprintAndBiometricEnabled
+    * Indicate to the client to enable both biometrics and fingerprints for the app.
+    *
+    * @return bool|null The fingerprintAndBiometricEnabled
+    */
+    public function getFingerprintAndBiometricEnabled()
+    {
+        if (array_key_exists("fingerprintAndBiometricEnabled", $this->_propDict)) {
+            return $this->_propDict["fingerprintAndBiometricEnabled"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the fingerprintAndBiometricEnabled
+    * Indicate to the client to enable both biometrics and fingerprints for the app.
+    *
+    * @param bool $val The fingerprintAndBiometricEnabled
+    *
+    * @return DefaultManagedAppProtection
+    */
+    public function setFingerprintAndBiometricEnabled($val)
+    {
+        $this->_propDict["fingerprintAndBiometricEnabled"] = boolval($val);
         return $this;
     }
 
@@ -1158,6 +1286,35 @@ class DefaultManagedAppProtection extends ManagedAppProtection
     }
 
     /**
+    * Gets the requireClass3Biometrics
+    * Require user to apply Class 3 Biometrics on their Android device.
+    *
+    * @return bool|null The requireClass3Biometrics
+    */
+    public function getRequireClass3Biometrics()
+    {
+        if (array_key_exists("requireClass3Biometrics", $this->_propDict)) {
+            return $this->_propDict["requireClass3Biometrics"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the requireClass3Biometrics
+    * Require user to apply Class 3 Biometrics on their Android device.
+    *
+    * @param bool $val The requireClass3Biometrics
+    *
+    * @return DefaultManagedAppProtection
+    */
+    public function setRequireClass3Biometrics($val)
+    {
+        $this->_propDict["requireClass3Biometrics"] = boolval($val);
+        return $this;
+    }
+
+    /**
     * Gets the requiredAndroidSafetyNetAppsVerificationType
     * Defines the Android SafetyNet Apps Verification requirement for a managed app to work. Possible values are: none, enabled.
     *
@@ -1253,6 +1410,35 @@ class DefaultManagedAppProtection extends ManagedAppProtection
     public function setRequiredAndroidSafetyNetEvaluationType($val)
     {
         $this->_propDict["requiredAndroidSafetyNetEvaluationType"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the requirePinAfterBiometricChange
+    * A PIN prompt will override biometric prompts if class 3 biometrics are updated on the device.
+    *
+    * @return bool|null The requirePinAfterBiometricChange
+    */
+    public function getRequirePinAfterBiometricChange()
+    {
+        if (array_key_exists("requirePinAfterBiometricChange", $this->_propDict)) {
+            return $this->_propDict["requirePinAfterBiometricChange"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the requirePinAfterBiometricChange
+    * A PIN prompt will override biometric prompts if class 3 biometrics are updated on the device.
+    *
+    * @param bool $val The requirePinAfterBiometricChange
+    *
+    * @return DefaultManagedAppProtection
+    */
+    public function setRequirePinAfterBiometricChange($val)
+    {
+        $this->_propDict["requirePinAfterBiometricChange"] = boolval($val);
         return $this;
     }
 
@@ -1392,7 +1578,7 @@ class DefaultManagedAppProtection extends ManagedAppProtection
     * Sets the apps
     * List of apps to which the policy is deployed.
     *
-    * @param ManagedMobileApp $val The apps
+    * @param ManagedMobileApp[] $val The apps
     *
     * @return DefaultManagedAppProtection
     */

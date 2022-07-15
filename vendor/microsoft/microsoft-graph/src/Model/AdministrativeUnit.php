@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AdministrativeUnit File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class AdministrativeUnit extends DirectoryObject
 {
     /**
     * Gets the description
-    * An optional description for the administrative unit.
+    * An optional description for the administrative unit. Supports $filter (eq, ne, in, startsWith), $search.
     *
     * @return string|null The description
     */
@@ -41,7 +41,7 @@ class AdministrativeUnit extends DirectoryObject
 
     /**
     * Sets the description
-    * An optional description for the administrative unit.
+    * An optional description for the administrative unit. Supports $filter (eq, ne, in, startsWith), $search.
     *
     * @param string $val The description
     *
@@ -55,7 +55,7 @@ class AdministrativeUnit extends DirectoryObject
 
     /**
     * Gets the displayName
-    * Display name for the administrative unit.
+    * Display name for the administrative unit. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
     *
     * @return string|null The displayName
     */
@@ -70,7 +70,7 @@ class AdministrativeUnit extends DirectoryObject
 
     /**
     * Sets the displayName
-    * Display name for the administrative unit.
+    * Display name for the administrative unit. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
     *
     * @param string $val The displayName
     *
@@ -84,7 +84,7 @@ class AdministrativeUnit extends DirectoryObject
 
     /**
     * Gets the visibility
-    * Controls whether the administrative unit and its members are hidden or public. Can be set to HiddenMembership or Public. If not set, default behavior is Public. When set to HiddenMembership, only members of the administrative unit can list other members of the administrative unit.
+    * Controls whether the administrative unit and its members are hidden or public. Can be set to HiddenMembership or Public. If not set, the default behavior is Public. When set to HiddenMembership, only members of the administrative unit can list other members of the administrative unit.
     *
     * @return string|null The visibility
     */
@@ -99,7 +99,7 @@ class AdministrativeUnit extends DirectoryObject
 
     /**
     * Sets the visibility
-    * Controls whether the administrative unit and its members are hidden or public. Can be set to HiddenMembership or Public. If not set, default behavior is Public. When set to HiddenMembership, only members of the administrative unit can list other members of the administrative unit.
+    * Controls whether the administrative unit and its members are hidden or public. Can be set to HiddenMembership or Public. If not set, the default behavior is Public. When set to HiddenMembership, only members of the administrative unit can list other members of the administrative unit.
     *
     * @param string $val The visibility
     *
@@ -114,7 +114,7 @@ class AdministrativeUnit extends DirectoryObject
 
      /**
      * Gets the members
-    * Users and groups that are members of this Adminsitrative Unit. HTTP Methods: GET (list members), POST (add members), DELETE (remove members).
+    * Users and groups that are members of this administrative unit. Supports $expand.
      *
      * @return array|null The members
      */
@@ -129,9 +129,9 @@ class AdministrativeUnit extends DirectoryObject
 
     /**
     * Sets the members
-    * Users and groups that are members of this Adminsitrative Unit. HTTP Methods: GET (list members), POST (add members), DELETE (remove members).
+    * Users and groups that are members of this administrative unit. Supports $expand.
     *
-    * @param DirectoryObject $val The members
+    * @param DirectoryObject[] $val The members
     *
     * @return AdministrativeUnit
     */
@@ -144,7 +144,7 @@ class AdministrativeUnit extends DirectoryObject
 
      /**
      * Gets the scopedRoleMembers
-    * Scoped-role members of this Administrative Unit.  HTTP Methods: GET (list scopedRoleMemberships), POST (add scopedRoleMembership), DELETE (remove scopedRoleMembership).
+    * Scoped-role members of this administrative unit.
      *
      * @return array|null The scopedRoleMembers
      */
@@ -159,9 +159,9 @@ class AdministrativeUnit extends DirectoryObject
 
     /**
     * Sets the scopedRoleMembers
-    * Scoped-role members of this Administrative Unit.  HTTP Methods: GET (list scopedRoleMemberships), POST (add scopedRoleMembership), DELETE (remove scopedRoleMembership).
+    * Scoped-role members of this administrative unit.
     *
-    * @param ScopedRoleMembership $val The scopedRoleMembers
+    * @param ScopedRoleMembership[] $val The scopedRoleMembers
     *
     * @return AdministrativeUnit
     */
@@ -174,7 +174,7 @@ class AdministrativeUnit extends DirectoryObject
 
      /**
      * Gets the extensions
-    * The collection of open extensions defined for this Administrative Unit. Nullable.
+    * The collection of open extensions defined for this administrative unit. Nullable.
      *
      * @return array|null The extensions
      */
@@ -189,9 +189,9 @@ class AdministrativeUnit extends DirectoryObject
 
     /**
     * Sets the extensions
-    * The collection of open extensions defined for this Administrative Unit. Nullable.
+    * The collection of open extensions defined for this administrative unit. Nullable.
     *
-    * @param Extension $val The extensions
+    * @param Extension[] $val The extensions
     *
     * @return AdministrativeUnit
     */

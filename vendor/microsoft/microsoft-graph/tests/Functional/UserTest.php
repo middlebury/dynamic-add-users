@@ -20,13 +20,13 @@ class UserTest extends TestCase
 	*/
 	public function testFilterByStartsWith()
 	{
-	$users = $this->_client->createRequest("GET", "/users?\$filter=startswith(displayName, 'A')")
-					       ->setReturnType(Model\User::class)
-					       ->execute();
-	foreach ($users as $user)
-	{
-		$this->assertEquals("A", substr($user->getDisplayName(), 0,1));
-	}
+    	$users = $this->_client->createRequest("GET", "/users?\$filter=startswith(displayName, 'A')")
+    					       ->setReturnType(Model\User::class)
+    					       ->execute();
+    	foreach ($users as $user)
+    	{
+    		$this->assertEquals("A", substr($user->getDisplayName(), 0,1));
+    	}
     }
 
     /**
@@ -34,9 +34,9 @@ class UserTest extends TestCase
     */
     public function testGetPhoto()
     {
-	$photo = $this->_client->createRequest("GET", "/me/photo/\$value")
-					       ->execute();
-	$this->assertNotNull($photo->getRawBody());
+    	$photo = $this->_client->createRequest("GET", "/me/photo/\$value")
+    					       ->execute();
+    	$this->assertNotNull($photo->getRawBody());
     }
 
     /**
@@ -44,12 +44,12 @@ class UserTest extends TestCase
     */
     public function testGetUser()
     {
-	$user = $this->_client->createRequest("GET", "/me")
-				          ->setReturnType(Model\User::class)
-				          ->execute();
-	$this->assertNotNull($user->getUserPrincipalName());
+    	$user = $this->_client->createRequest("GET", "/me")
+    				          ->setReturnType(Model\User::class)
+    				          ->execute();
+    	$this->assertNotNull($user->getUserPrincipalName());
 	}
-
+	
 	/**
     * @group functional
     */
@@ -57,9 +57,9 @@ class UserTest extends TestCase
     {
 		$user = $this->_client->setApiVersion("beta")
 							  ->createRequest("GET", "/me")
-				          ->setReturnType(BetaUser::class)
-				          ->execute();
-	$this->assertNotNull($user->getUserPrincipalName());
+    				          ->setReturnType(BetaUser::class)
+    				          ->execute();
+    	$this->assertNotNull($user->getUserPrincipalName());
     }
 
     /**
@@ -67,12 +67,12 @@ class UserTest extends TestCase
     */
     public function testGetManager()
     {
-	$manager = $this->_client->createRequest("GET", "/me/manager")
-				             ->setReturnType(Model\User::class)
-				             ->execute();
-	$this->assertNotNull($manager->getDisplayName());
+    	$manager = $this->_client->createRequest("GET", "/me/manager")
+    				             ->setReturnType(Model\User::class)
+    				             ->execute();
+    	$this->assertNotNull($manager->getDisplayName());
 	}
-
+	
 	/**
     * @group functional
     */
@@ -80,9 +80,9 @@ class UserTest extends TestCase
     {
 		$manager = $this->_client->setApiVersion("beta")
 								 ->createRequest("GET", "/me/manager")
-				             ->setReturnType(BetaModel\User::class)
-				             ->execute();
-	$this->assertNotNull($manager->getDisplayName());
+    				             ->setReturnType(BetaModel\User::class)
+    				             ->execute();
+    	$this->assertNotNull($manager->getDisplayName());
     }
 
     /**
@@ -90,17 +90,17 @@ class UserTest extends TestCase
     */
     public function testUpdateManager()
     {
-	$manager = $this->_client->createRequest("GET", "/me/manager")
-				             ->setReturnType(Model\User::class)
-				             ->execute();
+    	$manager = $this->_client->createRequest("GET", "/me/manager")
+    				             ->setReturnType(Model\User::class)
+    				             ->execute();
 
-	$this->_client->createRequest("PUT", "/me/manager/\$ref")
-		          ->attachBody('{"@odata.id": "https://graph.microsoft.com/v1.0/users/'.$manager->getId().'"}')
-		          ->execute();
-	$newManager = $this->_client->createRequest("GET", "/me/manager")
-				                ->setReturnType(Model\User::class)
-				                ->execute();
-	$this->assertEquals($manager, $newManager);
+    	$this->_client->createRequest("PUT", "/me/manager/\$ref")
+    		          ->attachBody('{"@odata.id": "https://graph.microsoft.com/v1.0/users/'.$manager->getId().'"}')
+    		          ->execute();
+    	$newManager = $this->_client->createRequest("GET", "/me/manager")
+    				                ->setReturnType(Model\User::class)
+    				                ->execute();
+    	$this->assertEquals($manager, $newManager);
     }
 
     /**
@@ -108,11 +108,11 @@ class UserTest extends TestCase
     */
     public function testGetMemberGroupsWithSecurityEnabled()
     {
-	$groups = $this->_client->createRequest("POST", "/me/getMemberGroups")
-					        ->attachBody("{securityEnabledOnly: true}")
-				            ->setReturnType(Model\Group::class)
-				            ->execute();
-	$this->assertNotNull($groups);
+    	$groups = $this->_client->createRequest("POST", "/me/getMemberGroups")
+    					        ->attachBody("{securityEnabledOnly: true}")
+    				            ->setReturnType(Model\Group::class)
+    				            ->execute();
+    	$this->assertNotNull($groups);
     }
 
     /**
@@ -120,31 +120,31 @@ class UserTest extends TestCase
     */
     public function testUpdateUser()
     {
-	$user = $this->getCurrentUser();
+    	$user = $this->getCurrentUser();
 
-	$newUser = new Model\User();
-	$newUser->setGivenName("Katherine");
+    	$newUser = new Model\User();
+    	$newUser->setGivenName("Katherine");
 
-	$this->_client->createRequest("PATCH", "/me")
-				  ->attachBody($newUser)
-				  ->execute();
-	$updatedUser = $this->getCurrentUser();
+    	$this->_client->createRequest("PATCH", "/me")
+    				  ->attachBody($newUser)
+    				  ->execute();
+    	$updatedUser = $this->getCurrentUser();
 
-	$this->assertEquals("Katherine", $updatedUser->getGivenName());
-	$this->assertEquals($user->getMail(), $updatedUser->getMail());
+    	$this->assertEquals("Katherine", $updatedUser->getGivenName());
+    	$this->assertEquals($user->getMail(), $updatedUser->getMail());
 
-	$this->_client->createRequest("PATCH", "/me")
-		          ->attachBody($user)
-		          ->setReturnType(Model\User::class)
-		          ->execute();
-	$restoredUser = $this->getCurrentUser();
-	$this->assertEquals($user->getGivenName(), $restoredUser->getGivenName());
+    	$this->_client->createRequest("PATCH", "/me")
+    		          ->attachBody($user)
+    		          ->setReturnType(Model\User::class)
+    		          ->execute();
+    	$restoredUser = $this->getCurrentUser();
+    	$this->assertEquals($user->getGivenName(), $restoredUser->getGivenName());
     }
 
     private function getCurrentUser()
     {
-	return $this->_client->createRequest("GET", "/me")
-				      ->setReturnType(Model\User::class)
-				      ->execute();
+    	return $this->_client->createRequest("GET", "/me")
+    				      ->setReturnType(Model\User::class)
+    				      ->execute();
     }
 }

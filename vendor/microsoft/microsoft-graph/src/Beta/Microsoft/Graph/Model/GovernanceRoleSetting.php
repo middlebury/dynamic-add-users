@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * GovernanceRoleSetting File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class GovernanceRoleSetting extends Entity
     * Sets the adminEligibleSettings
     * The rule settings that are evaluated when an administrator tries to add an eligible role assignment.
     *
-    * @param GovernanceRuleSetting $val The adminEligibleSettings
+    * @param GovernanceRuleSetting[] $val The adminEligibleSettings
     *
     * @return GovernanceRoleSetting
     */
@@ -74,7 +74,7 @@ class GovernanceRoleSetting extends Entity
     * Sets the adminMemberSettings
     * The rule settings that are evaluated when an administrator tries to add a direct member role assignment.
     *
-    * @param GovernanceRuleSetting $val The adminMemberSettings
+    * @param GovernanceRuleSetting[] $val The adminMemberSettings
     *
     * @return GovernanceRoleSetting
     */
@@ -253,7 +253,7 @@ class GovernanceRoleSetting extends Entity
     * Sets the userEligibleSettings
     * The rule settings that are evaluated when a user tries to add an eligible role assignment. The setting is not supported for now.
     *
-    * @param GovernanceRuleSetting $val The userEligibleSettings
+    * @param GovernanceRuleSetting[] $val The userEligibleSettings
     *
     * @return GovernanceRoleSetting
     */
@@ -283,7 +283,7 @@ class GovernanceRoleSetting extends Entity
     * Sets the userMemberSettings
     * The rule settings that are evaluated when a user tries to activate his role assignment.
     *
-    * @param GovernanceRuleSetting $val The userMemberSettings
+    * @param GovernanceRuleSetting[] $val The userMemberSettings
     *
     * @return GovernanceRoleSetting
     */

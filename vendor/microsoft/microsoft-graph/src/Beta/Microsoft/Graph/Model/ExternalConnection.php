@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ExternalConnection File
 * PHP version 7
 *
@@ -158,7 +158,7 @@ class ExternalConnection extends Entity
     /**
     * Sets the groups
     *
-    * @param ExternalGroup $val The groups
+    * @param ExternalGroup[] $val The groups
     *
     * @return ExternalConnection
     */
@@ -186,7 +186,7 @@ class ExternalConnection extends Entity
     /**
     * Sets the items
     *
-    * @param ExternalItem $val The items
+    * @param ExternalItem[] $val The items
     *
     * @return ExternalConnection
     */
@@ -214,7 +214,7 @@ class ExternalConnection extends Entity
     /**
     * Sets the operations
     *
-    * @param ConnectionOperation $val The operations
+    * @param ConnectionOperation[] $val The operations
     *
     * @return ExternalConnection
     */

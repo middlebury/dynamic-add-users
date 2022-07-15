@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * MediaStream File
 * PHP version 7
 *
@@ -119,7 +119,7 @@ class MediaStream extends Entity
     }
     /**
     * Gets the serverMuted
-    * If the media is muted by the server.
+    * Indicates whether the media is muted by the server.
     *
     * @return bool|null The serverMuted
     */
@@ -134,7 +134,7 @@ class MediaStream extends Entity
 
     /**
     * Sets the serverMuted
-    * If the media is muted by the server.
+    * Indicates whether the media is muted by the server.
     *
     * @param bool $val The value of the serverMuted
     *

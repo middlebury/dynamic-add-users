@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * UserExperienceAnalyticsModelScores File
 * PHP version 7
 *
@@ -50,6 +50,35 @@ class UserExperienceAnalyticsModelScores extends Entity
     public function setAppReliabilityScore($val)
     {
         $this->_propDict["appReliabilityScore"] = floatval($val);
+        return $this;
+    }
+
+    /**
+    * Gets the batteryHealthScore
+    * The user experience analytics model battery health score. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
+    *
+    * @return float|null The batteryHealthScore
+    */
+    public function getBatteryHealthScore()
+    {
+        if (array_key_exists("batteryHealthScore", $this->_propDict)) {
+            return $this->_propDict["batteryHealthScore"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the batteryHealthScore
+    * The user experience analytics model battery health score. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
+    *
+    * @param float $val The batteryHealthScore
+    *
+    * @return UserExperienceAnalyticsModelScores
+    */
+    public function setBatteryHealthScore($val)
+    {
+        $this->_propDict["batteryHealthScore"] = floatval($val);
         return $this;
     }
 
@@ -228,6 +257,35 @@ class UserExperienceAnalyticsModelScores extends Entity
     public function setStartupPerformanceScore($val)
     {
         $this->_propDict["startupPerformanceScore"] = floatval($val);
+        return $this;
+    }
+
+    /**
+    * Gets the workFromAnywhereScore
+    * The user experience analytics model work from anywhere score. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
+    *
+    * @return float|null The workFromAnywhereScore
+    */
+    public function getWorkFromAnywhereScore()
+    {
+        if (array_key_exists("workFromAnywhereScore", $this->_propDict)) {
+            return $this->_propDict["workFromAnywhereScore"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the workFromAnywhereScore
+    * The user experience analytics model work from anywhere score. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
+    *
+    * @param float $val The workFromAnywhereScore
+    *
+    * @return UserExperienceAnalyticsModelScores
+    */
+    public function setWorkFromAnywhereScore($val)
+    {
+        $this->_propDict["workFromAnywhereScore"] = floatval($val);
         return $this;
     }
 

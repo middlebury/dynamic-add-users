@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Windows10MobileCompliancePolicy File
 * PHP version 7
 *
@@ -541,7 +541,7 @@ class Windows10MobileCompliancePolicy extends DeviceCompliancePolicy
     * Sets the validOperatingSystemBuildRanges
     * The valid operating system build ranges on Windows devices. This collection can contain a maximum of 10000 elements.
     *
-    * @param OperatingSystemVersionRange $val The validOperatingSystemBuildRanges
+    * @param OperatingSystemVersionRange[] $val The validOperatingSystemBuildRanges
     *
     * @return Windows10MobileCompliancePolicy
     */

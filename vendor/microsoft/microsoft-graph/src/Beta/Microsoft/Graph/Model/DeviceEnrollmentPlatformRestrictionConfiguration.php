@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceEnrollmentPlatformRestrictionConfiguration File
 * PHP version 7
 *
@@ -59,7 +59,7 @@ class DeviceEnrollmentPlatformRestrictionConfiguration extends DeviceEnrollmentC
 
     /**
     * Gets the platformType
-    * Type of platform for which this restriction applies. Possible values are: allPlatforms, ios, windows, windowsPhone, android, androidForWork, androidAosp, mac.
+    * Type of platform for which this restriction applies. Possible values are: allPlatforms, ios, windows, windowsPhone, android, androidForWork, mac.
     *
     * @return EnrollmentRestrictionPlatformType|null The platformType
     */
@@ -78,7 +78,7 @@ class DeviceEnrollmentPlatformRestrictionConfiguration extends DeviceEnrollmentC
 
     /**
     * Sets the platformType
-    * Type of platform for which this restriction applies. Possible values are: allPlatforms, ios, windows, windowsPhone, android, androidForWork, androidAosp, mac.
+    * Type of platform for which this restriction applies. Possible values are: allPlatforms, ios, windows, windowsPhone, android, androidForWork, mac.
     *
     * @param EnrollmentRestrictionPlatformType $val The platformType
     *

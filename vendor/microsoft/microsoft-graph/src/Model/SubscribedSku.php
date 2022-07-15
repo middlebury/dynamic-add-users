@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * SubscribedSku File
 * PHP version 7
 *
@@ -164,7 +164,7 @@ class SubscribedSku extends Entity
     * Sets the servicePlans
     * Information about the service plans that are available with the SKU. Not nullable
     *
-    * @param ServicePlanInfo $val The servicePlans
+    * @param ServicePlanInfo[] $val The servicePlans
     *
     * @return SubscribedSku
     */

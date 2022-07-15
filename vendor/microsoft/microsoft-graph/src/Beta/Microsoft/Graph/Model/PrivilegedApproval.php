@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * PrivilegedApproval File
 * PHP version 7
 *
@@ -324,7 +324,6 @@ class PrivilegedApproval extends Entity
 
     /**
     * Gets the roleInfo
-    * Read-only. Nullable.
     *
     * @return PrivilegedRole|null The roleInfo
     */
@@ -343,7 +342,6 @@ class PrivilegedApproval extends Entity
 
     /**
     * Sets the roleInfo
-    * Read-only. Nullable.
     *
     * @param PrivilegedRole $val The roleInfo
     *

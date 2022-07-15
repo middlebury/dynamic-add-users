@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ServicePrincipalCreationPolicy File
 * PHP version 7
 *
@@ -69,7 +69,7 @@ class ServicePrincipalCreationPolicy extends PolicyBase
     /**
     * Sets the excludes
     *
-    * @param ServicePrincipalCreationConditionSet $val The excludes
+    * @param ServicePrincipalCreationConditionSet[] $val The excludes
     *
     * @return ServicePrincipalCreationPolicy
     */
@@ -97,7 +97,7 @@ class ServicePrincipalCreationPolicy extends PolicyBase
     /**
     * Sets the includes
     *
-    * @param ServicePrincipalCreationConditionSet $val The includes
+    * @param ServicePrincipalCreationConditionSet[] $val The includes
     *
     * @return ServicePrincipalCreationPolicy
     */

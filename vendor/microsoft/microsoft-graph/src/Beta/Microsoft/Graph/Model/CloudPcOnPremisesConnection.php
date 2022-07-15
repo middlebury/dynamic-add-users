@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * CloudPcOnPremisesConnection File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class CloudPcOnPremisesConnection extends Entity
 {
     /**
     * Gets the adDomainName
-    * The fully qualified domain name (FQDN) of the Active Directory domain you want to join.
+    * The fully qualified domain name (FQDN) of the Active Directory domain you want to join. Optional.
     *
     * @return string|null The adDomainName
     */
@@ -41,7 +41,7 @@ class CloudPcOnPremisesConnection extends Entity
 
     /**
     * Sets the adDomainName
-    * The fully qualified domain name (FQDN) of the Active Directory domain you want to join.
+    * The fully qualified domain name (FQDN) of the Active Directory domain you want to join. Optional.
     *
     * @param string $val The adDomainName
     *
@@ -84,7 +84,7 @@ class CloudPcOnPremisesConnection extends Entity
 
     /**
     * Gets the adDomainUsername
-    * The username of an Active Directory account (user or service account) that has permissions to create computer objects in Active Directory. Required format: admin@contoso.com.
+    * The username of an Active Directory account (user or service account) that has permissions to create computer objects in Active Directory. Required format: admin@contoso.com. Optional.
     *
     * @return string|null The adDomainUsername
     */
@@ -99,7 +99,7 @@ class CloudPcOnPremisesConnection extends Entity
 
     /**
     * Sets the adDomainUsername
-    * The username of an Active Directory account (user or service account) that has permissions to create computer objects in Active Directory. Required format: admin@contoso.com.
+    * The username of an Active Directory account (user or service account) that has permissions to create computer objects in Active Directory. Required format: admin@contoso.com. Optional.
     *
     * @param string $val The adDomainUsername
     *
@@ -112,8 +112,37 @@ class CloudPcOnPremisesConnection extends Entity
     }
 
     /**
+    * Gets the alternateResourceUrl
+    * The interface URL of the partner service's resource that links to this Azure network connection. Returned only on $select.
+    *
+    * @return string|null The alternateResourceUrl
+    */
+    public function getAlternateResourceUrl()
+    {
+        if (array_key_exists("alternateResourceUrl", $this->_propDict)) {
+            return $this->_propDict["alternateResourceUrl"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the alternateResourceUrl
+    * The interface URL of the partner service's resource that links to this Azure network connection. Returned only on $select.
+    *
+    * @param string $val The alternateResourceUrl
+    *
+    * @return CloudPcOnPremisesConnection
+    */
+    public function setAlternateResourceUrl($val)
+    {
+        $this->_propDict["alternateResourceUrl"] = $val;
+        return $this;
+    }
+
+    /**
     * Gets the displayName
-    * The display name for the on-premises connection.
+    * The display name for the Azure network connection.
     *
     * @return string|null The displayName
     */
@@ -128,7 +157,7 @@ class CloudPcOnPremisesConnection extends Entity
 
     /**
     * Sets the displayName
-    * The display name for the on-premises connection.
+    * The display name for the Azure network connection.
     *
     * @param string $val The displayName
     *
@@ -142,7 +171,7 @@ class CloudPcOnPremisesConnection extends Entity
 
     /**
     * Gets the healthCheckStatus
-    * The status of the most recent health check done on the on-premises connection. For example, if status is 'passed', the on-premises connection has passed all checks run by the service. Possible values are: pending, running, passed, failed, unknownFutureValue. Read-only.
+    * The status of the most recent health check done on the Azure network connection. For example, if status is passed, the Azure network connection has passed all checks run by the service. Possible values are: pending, running, passed, failed, unknownFutureValue. Read-only.
     *
     * @return CloudPcOnPremisesConnectionStatus|null The healthCheckStatus
     */
@@ -161,7 +190,7 @@ class CloudPcOnPremisesConnection extends Entity
 
     /**
     * Sets the healthCheckStatus
-    * The status of the most recent health check done on the on-premises connection. For example, if status is 'passed', the on-premises connection has passed all checks run by the service. Possible values are: pending, running, passed, failed, unknownFutureValue. Read-only.
+    * The status of the most recent health check done on the Azure network connection. For example, if status is passed, the Azure network connection has passed all checks run by the service. Possible values are: pending, running, passed, failed, unknownFutureValue. Read-only.
     *
     * @param CloudPcOnPremisesConnectionStatus $val The healthCheckStatus
     *
@@ -175,7 +204,7 @@ class CloudPcOnPremisesConnection extends Entity
 
     /**
     * Gets the healthCheckStatusDetails
-    * The details of the connection's health checks and the corresponding results. Returned only on $select.For an example that shows how to get the inUse property, see Example 2: Get the selected properties of an on-premises connection, including healthCheckStatusDetails. Read-only.
+    * The details of the connection's health checks and the corresponding results. Returned only on $select. For an example that shows how to get the inUse property, see Example 2: Get the selected properties of an Azure network connection, including healthCheckStatusDetails. Read-only.
     *
     * @return CloudPcOnPremisesConnectionStatusDetails|null The healthCheckStatusDetails
     */
@@ -194,7 +223,7 @@ class CloudPcOnPremisesConnection extends Entity
 
     /**
     * Sets the healthCheckStatusDetails
-    * The details of the connection's health checks and the corresponding results. Returned only on $select.For an example that shows how to get the inUse property, see Example 2: Get the selected properties of an on-premises connection, including healthCheckStatusDetails. Read-only.
+    * The details of the connection's health checks and the corresponding results. Returned only on $select. For an example that shows how to get the inUse property, see Example 2: Get the selected properties of an Azure network connection, including healthCheckStatusDetails. Read-only.
     *
     * @param CloudPcOnPremisesConnectionStatusDetails $val The healthCheckStatusDetails
     *
@@ -208,7 +237,7 @@ class CloudPcOnPremisesConnection extends Entity
 
     /**
     * Gets the inUse
-    * When true, the on-premises connection is in use. When false, the connection is not in use. You cannot delete a connection that’s in use. Returned only on $select. For an example that shows how to get the inUse property, see Example 2: Get the selected properties of an on-premises connection, including healthCheckStatusDetails. Read-only.
+    * When true, the Azure network connection is in use. When false, the connection is not in use. You cannot delete a connection that’s in use. Returned only on $select. For an example that shows how to get the inUse property, see Example 2: Get the selected properties of an Azure network connection, including healthCheckStatusDetails. Read-only.
     *
     * @return bool|null The inUse
     */
@@ -223,7 +252,7 @@ class CloudPcOnPremisesConnection extends Entity
 
     /**
     * Sets the inUse
-    * When true, the on-premises connection is in use. When false, the connection is not in use. You cannot delete a connection that’s in use. Returned only on $select. For an example that shows how to get the inUse property, see Example 2: Get the selected properties of an on-premises connection, including healthCheckStatusDetails. Read-only.
+    * When true, the Azure network connection is in use. When false, the connection is not in use. You cannot delete a connection that’s in use. Returned only on $select. For an example that shows how to get the inUse property, see Example 2: Get the selected properties of an Azure network connection, including healthCheckStatusDetails. Read-only.
     *
     * @param bool $val The inUse
     *
@@ -232,6 +261,39 @@ class CloudPcOnPremisesConnection extends Entity
     public function setInUse($val)
     {
         $this->_propDict["inUse"] = boolval($val);
+        return $this;
+    }
+
+    /**
+    * Gets the managedBy
+    * Specifies which services manage the Azure network connection. Possible values are: windows365, devBox, unknownFutureValue. Read-only.
+    *
+    * @return CloudPcManagementService|null The managedBy
+    */
+    public function getManagedBy()
+    {
+        if (array_key_exists("managedBy", $this->_propDict)) {
+            if (is_a($this->_propDict["managedBy"], "\Beta\Microsoft\Graph\Model\CloudPcManagementService") || is_null($this->_propDict["managedBy"])) {
+                return $this->_propDict["managedBy"];
+            } else {
+                $this->_propDict["managedBy"] = new CloudPcManagementService($this->_propDict["managedBy"]);
+                return $this->_propDict["managedBy"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the managedBy
+    * Specifies which services manage the Azure network connection. Possible values are: windows365, devBox, unknownFutureValue. Read-only.
+    *
+    * @param CloudPcManagementService $val The managedBy
+    *
+    * @return CloudPcOnPremisesConnection
+    */
+    public function setManagedBy($val)
+    {
+        $this->_propDict["managedBy"] = $val;
         return $this;
     }
 
@@ -266,7 +328,7 @@ class CloudPcOnPremisesConnection extends Entity
 
     /**
     * Gets the resourceGroupId
-    * The ID of the target resource group. Required format: '/subscriptions/{subscription-id}/resourceGroups/{resourceGroupName}'.
+    * The ID of the target resource group. Required format: /subscriptions/{subscription-id}/resourceGroups/{resourceGroupName}.
     *
     * @return string|null The resourceGroupId
     */
@@ -281,7 +343,7 @@ class CloudPcOnPremisesConnection extends Entity
 
     /**
     * Sets the resourceGroupId
-    * The ID of the target resource group. Required format: '/subscriptions/{subscription-id}/resourceGroups/{resourceGroupName}'.
+    * The ID of the target resource group. Required format: /subscriptions/{subscription-id}/resourceGroups/{resourceGroupName}.
     *
     * @param string $val The resourceGroupId
     *
@@ -295,7 +357,7 @@ class CloudPcOnPremisesConnection extends Entity
 
     /**
     * Gets the subnetId
-    * The ID of the target subnet. Required format: '/subscriptions/{subscription-id}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkId}/subnets/{subnetName}'.
+    * The ID of the target subnet. Required format: /subscriptions/{subscription-id}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkId}/subnets/{subnetName}.
     *
     * @return string|null The subnetId
     */
@@ -310,7 +372,7 @@ class CloudPcOnPremisesConnection extends Entity
 
     /**
     * Sets the subnetId
-    * The ID of the target subnet. Required format: '/subscriptions/{subscription-id}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkId}/subnets/{subnetName}'.
+    * The ID of the target subnet. Required format: /subscriptions/{subscription-id}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkId}/subnets/{subnetName}.
     *
     * @param string $val The subnetId
     *
@@ -382,6 +444,7 @@ class CloudPcOnPremisesConnection extends Entity
 
     /**
     * Gets the type
+    * Specifies how the provisioned Cloud PC will be joined to Azure Active Directory. Default value is hybridAzureADJoin. Possible values are: azureADJoin, hybridAzureADJoin, unknownFutureValue.
     *
     * @return CloudPcOnPremisesConnectionType|null The type
     */
@@ -400,6 +463,7 @@ class CloudPcOnPremisesConnection extends Entity
 
     /**
     * Sets the type
+    * Specifies how the provisioned Cloud PC will be joined to Azure Active Directory. Default value is hybridAzureADJoin. Possible values are: azureADJoin, hybridAzureADJoin, unknownFutureValue.
     *
     * @param CloudPcOnPremisesConnectionType $val The type
     *
@@ -413,7 +477,7 @@ class CloudPcOnPremisesConnection extends Entity
 
     /**
     * Gets the virtualNetworkId
-    * The ID of the target virtual network. Required format: '/subscriptions/{subscription-id}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}'.
+    * The ID of the target virtual network. Required format: /subscriptions/{subscription-id}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}.
     *
     * @return string|null The virtualNetworkId
     */
@@ -428,7 +492,7 @@ class CloudPcOnPremisesConnection extends Entity
 
     /**
     * Sets the virtualNetworkId
-    * The ID of the target virtual network. Required format: '/subscriptions/{subscription-id}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}'.
+    * The ID of the target virtual network. Required format: /subscriptions/{subscription-id}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}.
     *
     * @param string $val The virtualNetworkId
     *

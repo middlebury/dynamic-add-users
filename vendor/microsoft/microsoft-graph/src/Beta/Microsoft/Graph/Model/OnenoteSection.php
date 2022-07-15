@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * OnenoteSection File
 * PHP version 7
 *
@@ -135,7 +135,7 @@ class OnenoteSection extends OnenoteEntityHierarchyModel
     * Sets the pages
     * The collection of pages in the section.  Read-only. Nullable.
     *
-    * @param OnenotePage $val The pages
+    * @param OnenotePage[] $val The pages
     *
     * @return OnenoteSection
     */

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ExternalGroup File
 * PHP version 7
 *
@@ -85,7 +85,7 @@ class ExternalGroup extends \Microsoft\Graph\Model\Entity
 
      /**
      * Gets the members
-    * A member added to an externalGroup. You can add Azure Active Directory users, Azure Active Directory groups, or an externalGroup as members.
+    * A member added to an externalGroup. You can add Azure Active Directory users, Azure Active Directory groups, or other externalGroups as members.
      *
      * @return array|null The members
      */
@@ -100,9 +100,9 @@ class ExternalGroup extends \Microsoft\Graph\Model\Entity
 
     /**
     * Sets the members
-    * A member added to an externalGroup. You can add Azure Active Directory users, Azure Active Directory groups, or an externalGroup as members.
+    * A member added to an externalGroup. You can add Azure Active Directory users, Azure Active Directory groups, or other externalGroups as members.
     *
-    * @param Identity $val The members
+    * @param Identity[] $val The members
     *
     * @return ExternalGroup
     */

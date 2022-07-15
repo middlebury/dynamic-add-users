@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * IosMinimumOperatingSystem File
 * PHP version 7
 *
@@ -161,6 +161,34 @@ class IosMinimumOperatingSystem extends Entity
     public function setV14_0($val)
     {
         $this->_propDict["v140"] = $val;
+        return $this;
+    }
+    /**
+    * Gets the v15_0
+    * Version 15.0 or later.
+    *
+    * @return bool|null The v15_0
+    */
+    public function getV15_0()
+    {
+        if (array_key_exists("v150", $this->_propDict)) {
+            return $this->_propDict["v150"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the v15_0
+    * Version 15.0 or later.
+    *
+    * @param bool $val The value of the v15_0
+    *
+    * @return IosMinimumOperatingSystem
+    */
+    public function setV15_0($val)
+    {
+        $this->_propDict["v150"] = $val;
         return $this;
     }
     /**

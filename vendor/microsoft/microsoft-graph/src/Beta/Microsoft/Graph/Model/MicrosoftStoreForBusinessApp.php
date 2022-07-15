@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * MicrosoftStoreForBusinessApp File
 * PHP version 7
 *
@@ -226,7 +226,7 @@ class MicrosoftStoreForBusinessApp extends MobileApp
     * Sets the containedApps
     * The collection of contained apps in a mobileApp acting as a package.
     *
-    * @param MobileContainedApp $val The containedApps
+    * @param MobileContainedApp[] $val The containedApps
     *
     * @return MicrosoftStoreForBusinessApp
     */

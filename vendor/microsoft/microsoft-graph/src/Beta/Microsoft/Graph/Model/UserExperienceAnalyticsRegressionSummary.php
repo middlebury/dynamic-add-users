@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * UserExperienceAnalyticsRegressionSummary File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class UserExperienceAnalyticsRegressionSummary extends Entity
     * Sets the manufacturerRegression
     * The metric values for the user experience analytics Manufacturer regression.
     *
-    * @param UserExperienceAnalyticsMetric $val The manufacturerRegression
+    * @param UserExperienceAnalyticsMetric[] $val The manufacturerRegression
     *
     * @return UserExperienceAnalyticsRegressionSummary
     */
@@ -74,7 +74,7 @@ class UserExperienceAnalyticsRegressionSummary extends Entity
     * Sets the modelRegression
     * The metric values for the user experience analytics model regression.
     *
-    * @param UserExperienceAnalyticsMetric $val The modelRegression
+    * @param UserExperienceAnalyticsMetric[] $val The modelRegression
     *
     * @return UserExperienceAnalyticsRegressionSummary
     */
@@ -104,7 +104,7 @@ class UserExperienceAnalyticsRegressionSummary extends Entity
     * Sets the operatingSystemRegression
     * The metric values for the user experience analytics operating system regression.
     *
-    * @param UserExperienceAnalyticsMetric $val The operatingSystemRegression
+    * @param UserExperienceAnalyticsMetric[] $val The operatingSystemRegression
     *
     * @return UserExperienceAnalyticsRegressionSummary
     */

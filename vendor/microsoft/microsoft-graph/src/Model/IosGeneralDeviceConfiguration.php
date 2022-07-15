@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * IosGeneralDeviceConfiguration File
 * PHP version 7
 *
@@ -276,7 +276,7 @@ class IosGeneralDeviceConfiguration extends DeviceConfiguration
     * Sets the appsSingleAppModeList
     * Gets or sets the list of iOS apps allowed to autonomously enter Single App Mode. Supervised only. iOS 7.0 and later. This collection can contain a maximum of 500 elements.
     *
-    * @param AppListItem $val The appsSingleAppModeList
+    * @param AppListItem[] $val The appsSingleAppModeList
     *
     * @return IosGeneralDeviceConfiguration
     */
@@ -451,7 +451,7 @@ class IosGeneralDeviceConfiguration extends DeviceConfiguration
     * Sets the appsVisibilityList
     * List of apps in the visibility list (either visible/launchable apps list or hidden/unlaunchable apps list, controlled by AppsVisibilityListType) (iOS 9.3 and later). This collection can contain a maximum of 10000 elements.
     *
-    * @param AppListItem $val The appsVisibilityList
+    * @param AppListItem[] $val The appsVisibilityList
     *
     * @return IosGeneralDeviceConfiguration
     */
@@ -837,7 +837,7 @@ class IosGeneralDeviceConfiguration extends DeviceConfiguration
     * Sets the compliantAppsList
     * List of apps in the compliance (either allow list or block list, controlled by CompliantAppListType). This collection can contain a maximum of 10000 elements.
     *
-    * @param AppListItem $val The compliantAppsList
+    * @param AppListItem[] $val The compliantAppsList
     *
     * @return IosGeneralDeviceConfiguration
     */
@@ -2937,7 +2937,7 @@ class IosGeneralDeviceConfiguration extends DeviceConfiguration
     * Sets the networkUsageRules
     * List of managed apps and the network rules that applies to them. This collection can contain a maximum of 1000 elements.
     *
-    * @param IosNetworkUsageRule $val The networkUsageRules
+    * @param IosNetworkUsageRule[] $val The networkUsageRules
     *
     * @return IosGeneralDeviceConfiguration
     */

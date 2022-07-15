@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * BookingService File
 * PHP version 7
 *
@@ -26,6 +26,7 @@ class BookingService extends BookingNamedEntity
 {
     /**
     * Gets the additionalInformation
+    * Additional information that is sent to the customer when an appointment is confirmed.
     *
     * @return string|null The additionalInformation
     */
@@ -40,6 +41,7 @@ class BookingService extends BookingNamedEntity
 
     /**
     * Sets the additionalInformation
+    * Additional information that is sent to the customer when an appointment is confirmed.
     *
     * @param string $val The additionalInformation
     *
@@ -48,6 +50,36 @@ class BookingService extends BookingNamedEntity
     public function setAdditionalInformation($val)
     {
         $this->_propDict["additionalInformation"] = $val;
+        return $this;
+    }
+
+
+     /**
+     * Gets the customQuestions
+    * Contains the set of custom questions associated with a particular service.
+     *
+     * @return array|null The customQuestions
+     */
+    public function getCustomQuestions()
+    {
+        if (array_key_exists("customQuestions", $this->_propDict)) {
+           return $this->_propDict["customQuestions"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the customQuestions
+    * Contains the set of custom questions associated with a particular service.
+    *
+    * @param BookingQuestionAssignment[] $val The customQuestions
+    *
+    * @return BookingService
+    */
+    public function setCustomQuestions($val)
+    {
+        $this->_propDict["customQuestions"] = $val;
         return $this;
     }
 
@@ -148,7 +180,7 @@ class BookingService extends BookingNamedEntity
 
     /**
     * Gets the defaultPriceType
-    * The default way the service is charged. Possible values are: undefined, fixedPrice, startingAt, hourly, free, priceVaries, callUs, notSet.
+    * The default way the service is charged. Possible values are: undefined, fixedPrice, startingAt, hourly, free, priceVaries, callUs, notSet, unknownFutureValue.
     *
     * @return BookingPriceType|null The defaultPriceType
     */
@@ -167,7 +199,7 @@ class BookingService extends BookingNamedEntity
 
     /**
     * Sets the defaultPriceType
-    * The default way the service is charged. Possible values are: undefined, fixedPrice, startingAt, hourly, free, priceVaries, callUs, notSet.
+    * The default way the service is charged. Possible values are: undefined, fixedPrice, startingAt, hourly, free, priceVaries, callUs, notSet, unknownFutureValue.
     *
     * @param BookingPriceType $val The defaultPriceType
     *
@@ -199,7 +231,7 @@ class BookingService extends BookingNamedEntity
     * Sets the defaultReminders
     * The value of this property is only available when reading an individual booking service by id.
     *
-    * @param BookingReminder $val The defaultReminders
+    * @param BookingReminder[] $val The defaultReminders
     *
     * @return BookingService
     */
@@ -235,6 +267,35 @@ class BookingService extends BookingNamedEntity
     public function setDescription($val)
     {
         $this->_propDict["description"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the isAnonymousJoinEnabled
+    * True if an anonymousJoinWebUrl(webrtcUrl) will be generated for the appointment booked for this service.
+    *
+    * @return bool|null The isAnonymousJoinEnabled
+    */
+    public function getIsAnonymousJoinEnabled()
+    {
+        if (array_key_exists("isAnonymousJoinEnabled", $this->_propDict)) {
+            return $this->_propDict["isAnonymousJoinEnabled"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the isAnonymousJoinEnabled
+    * True if an anonymousJoinWebUrl(webrtcUrl) will be generated for the appointment booked for this service.
+    *
+    * @param bool $val The isAnonymousJoinEnabled
+    *
+    * @return BookingService
+    */
+    public function setIsAnonymousJoinEnabled($val)
+    {
+        $this->_propDict["isAnonymousJoinEnabled"] = boolval($val);
         return $this;
     }
 
@@ -293,6 +354,64 @@ class BookingService extends BookingNamedEntity
     public function setIsLocationOnline($val)
     {
         $this->_propDict["isLocationOnline"] = boolval($val);
+        return $this;
+    }
+
+    /**
+    * Gets the languageTag
+    * The language of the self service booking page.
+    *
+    * @return string|null The languageTag
+    */
+    public function getLanguageTag()
+    {
+        if (array_key_exists("languageTag", $this->_propDict)) {
+            return $this->_propDict["languageTag"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the languageTag
+    * The language of the self service booking page.
+    *
+    * @param string $val The languageTag
+    *
+    * @return BookingService
+    */
+    public function setLanguageTag($val)
+    {
+        $this->_propDict["languageTag"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the maximumAttendeesCount
+    * The maximum number of customers allowed in a service. If maximumAttendeesCount of the service is greater than 1, pass valid customer IDs while creating or updating an appointment.  To create a customer, use the Create bookingCustomer operation.
+    *
+    * @return int|null The maximumAttendeesCount
+    */
+    public function getMaximumAttendeesCount()
+    {
+        if (array_key_exists("maximumAttendeesCount", $this->_propDict)) {
+            return $this->_propDict["maximumAttendeesCount"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the maximumAttendeesCount
+    * The maximum number of customers allowed in a service. If maximumAttendeesCount of the service is greater than 1, pass valid customer IDs while creating or updating an appointment.  To create a customer, use the Create bookingCustomer operation.
+    *
+    * @param int $val The maximumAttendeesCount
+    *
+    * @return BookingService
+    */
+    public function setMaximumAttendeesCount($val)
+    {
+        $this->_propDict["maximumAttendeesCount"] = intval($val);
         return $this;
     }
 

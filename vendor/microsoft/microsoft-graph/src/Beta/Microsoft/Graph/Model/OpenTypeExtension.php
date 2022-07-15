@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * OpenTypeExtension File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class OpenTypeExtension extends Extension
 {
     /**
     * Gets the extensionName
-    * A unique text identifier for an open type open extension. Required.
+    * A unique text identifier for an open type data extension. Required.
     *
     * @return string|null The extensionName
     */
@@ -41,7 +41,7 @@ class OpenTypeExtension extends Extension
 
     /**
     * Sets the extensionName
-    * A unique text identifier for an open type open extension. Required.
+    * A unique text identifier for an open type data extension. Required.
     *
     * @param string $val The extensionName
     *

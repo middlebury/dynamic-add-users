@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ListItem File
 * PHP version 7
 *
@@ -58,6 +58,37 @@ class ListItem extends BaseItem
     }
 
     /**
+    * Gets the deleted
+    *
+    * @return Deleted|null The deleted
+    */
+    public function getDeleted()
+    {
+        if (array_key_exists("deleted", $this->_propDict)) {
+            if (is_a($this->_propDict["deleted"], "\Beta\Microsoft\Graph\Model\Deleted") || is_null($this->_propDict["deleted"])) {
+                return $this->_propDict["deleted"];
+            } else {
+                $this->_propDict["deleted"] = new Deleted($this->_propDict["deleted"]);
+                return $this->_propDict["deleted"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the deleted
+    *
+    * @param Deleted $val The deleted
+    *
+    * @return ListItem
+    */
+    public function setDeleted($val)
+    {
+        $this->_propDict["deleted"] = $val;
+        return $this;
+    }
+
+    /**
     * Gets the sharepointIds
     * Returns identifiers useful for SharePoint REST compatibility. Read-only.
     *
@@ -110,7 +141,7 @@ class ListItem extends BaseItem
     * Sets the activities
     * The list of recent activities that took place on this item.
     *
-    * @param ItemActivityOLD $val The activities
+    * @param ItemActivityOLD[] $val The activities
     *
     * @return ListItem
     */
@@ -150,6 +181,36 @@ class ListItem extends BaseItem
     public function setAnalytics($val)
     {
         $this->_propDict["analytics"] = $val;
+        return $this;
+    }
+
+
+     /**
+     * Gets the documentSetVersions
+    * Version information for a document set version created by a user.
+     *
+     * @return array|null The documentSetVersions
+     */
+    public function getDocumentSetVersions()
+    {
+        if (array_key_exists("documentSetVersions", $this->_propDict)) {
+           return $this->_propDict["documentSetVersions"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the documentSetVersions
+    * Version information for a document set version created by a user.
+    *
+    * @param DocumentSetVersion[] $val The documentSetVersions
+    *
+    * @return ListItem
+    */
+    public function setDocumentSetVersions($val)
+    {
+        $this->_propDict["documentSetVersions"] = $val;
         return $this;
     }
 
@@ -239,7 +300,7 @@ class ListItem extends BaseItem
     * Sets the versions
     * The list of previous versions of the list item.
     *
-    * @param ListItemVersion $val The versions
+    * @param ListItemVersion[] $val The versions
     *
     * @return ListItem
     */

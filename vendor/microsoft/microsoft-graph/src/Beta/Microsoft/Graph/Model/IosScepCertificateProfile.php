@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * IosScepCertificateProfile File
 * PHP version 7
 *
@@ -77,7 +77,7 @@ class IosScepCertificateProfile extends IosCertificateProfileBase
     * Sets the customSubjectAlternativeNames
     * Custom Subject Alternative Name Settings. The OnPremisesUserPrincipalName variable is support as well as others documented here: https://go.microsoft.com/fwlink/?LinkId=2027630. This collection can contain a maximum of 500 elements.
     *
-    * @param CustomSubjectAlternativeName $val The customSubjectAlternativeNames
+    * @param CustomSubjectAlternativeName[] $val The customSubjectAlternativeNames
     *
     * @return IosScepCertificateProfile
     */
@@ -107,7 +107,7 @@ class IosScepCertificateProfile extends IosCertificateProfileBase
     * Sets the extendedKeyUsages
     * Extended Key Usage (EKU) settings. This collection can contain a maximum of 500 elements.
     *
-    * @param ExtendedKeyUsage $val The extendedKeyUsages
+    * @param ExtendedKeyUsage[] $val The extendedKeyUsages
     *
     * @return IosScepCertificateProfile
     */
@@ -290,7 +290,7 @@ class IosScepCertificateProfile extends IosCertificateProfileBase
     * Sets the managedDeviceCertificateStates
     * Certificate state for devices. This collection can contain a maximum of 2147483647 elements.
     *
-    * @param ManagedDeviceCertificateState $val The managedDeviceCertificateStates
+    * @param ManagedDeviceCertificateState[] $val The managedDeviceCertificateStates
     *
     * @return IosScepCertificateProfile
     */

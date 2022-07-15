@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * BookingStaffMember File
 * PHP version 7
 *
@@ -83,8 +83,35 @@ class BookingStaffMember extends BookingPerson
     }
 
     /**
+    * Gets the isEmailNotificationEnabled
+    *
+    * @return bool|null The isEmailNotificationEnabled
+    */
+    public function getIsEmailNotificationEnabled()
+    {
+        if (array_key_exists("isEmailNotificationEnabled", $this->_propDict)) {
+            return $this->_propDict["isEmailNotificationEnabled"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the isEmailNotificationEnabled
+    *
+    * @param bool $val The isEmailNotificationEnabled
+    *
+    * @return BookingStaffMember
+    */
+    public function setIsEmailNotificationEnabled($val)
+    {
+        $this->_propDict["isEmailNotificationEnabled"] = boolval($val);
+        return $this;
+    }
+
+    /**
     * Gets the role
-    * The role of the staff member in the business. Possible values are: guest, administrator, viewer, externalGuest. Required.
+    * The role of the staff member in the business. Possible values are: guest, administrator, viewer, externalGuest, unknownFutureValue, scheduler and member. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: scheduler, member. Required.
     *
     * @return BookingStaffRole|null The role
     */
@@ -103,7 +130,7 @@ class BookingStaffMember extends BookingPerson
 
     /**
     * Sets the role
-    * The role of the staff member in the business. Possible values are: guest, administrator, viewer, externalGuest. Required.
+    * The role of the staff member in the business. Possible values are: guest, administrator, viewer, externalGuest, unknownFutureValue, scheduler and member. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: scheduler, member. Required.
     *
     * @param BookingStaffRole $val The role
     *
@@ -193,7 +220,7 @@ class BookingStaffMember extends BookingPerson
     * Sets the workingHours
     * The range of hours each day of the week that the staff member is available for booking. By default, they are initialized to be the same as the businessHours property of the business.
     *
-    * @param BookingWorkHours $val The workingHours
+    * @param BookingWorkHours[] $val The workingHours
     *
     * @return BookingStaffMember
     */

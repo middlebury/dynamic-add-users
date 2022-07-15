@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DocumentComment File
 * PHP version 7
 *
@@ -69,7 +69,7 @@ class DocumentComment extends Entity
     /**
     * Sets the replies
     *
-    * @param DocumentCommentReply $val The replies
+    * @param DocumentCommentReply[] $val The replies
     *
     * @return DocumentComment
     */

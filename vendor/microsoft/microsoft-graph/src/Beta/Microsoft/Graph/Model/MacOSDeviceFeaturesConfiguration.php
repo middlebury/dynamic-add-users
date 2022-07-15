@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * MacOSDeviceFeaturesConfiguration File
 * PHP version 7
 *
@@ -73,7 +73,7 @@ class MacOSDeviceFeaturesConfiguration extends AppleDeviceFeaturesConfigurationB
     * Sets the appAssociatedDomains
     * Gets or sets a list that maps apps to their associated domains. Application identifiers must be unique. This collection can contain a maximum of 500 elements.
     *
-    * @param MacOSAssociatedDomainsItem $val The appAssociatedDomains
+    * @param MacOSAssociatedDomainsItem[] $val The appAssociatedDomains
     *
     * @return MacOSDeviceFeaturesConfiguration
     */
@@ -103,7 +103,7 @@ class MacOSDeviceFeaturesConfiguration extends AppleDeviceFeaturesConfigurationB
     * Sets the associatedDomains
     * DEPRECATED: use appAssociatedDomains instead. Gets or sets a list that maps apps to their associated domains. The key should match the app's ID, and the value should be a string in the form of 'service:domain' where domain is a fully qualified hostname (e.g. webcredentials:example.com). This collection can contain a maximum of 500 elements.
     *
-    * @param KeyValuePair $val The associatedDomains
+    * @param KeyValuePair[] $val The associatedDomains
     *
     * @return MacOSDeviceFeaturesConfiguration
     */
@@ -307,7 +307,7 @@ class MacOSDeviceFeaturesConfiguration extends AppleDeviceFeaturesConfigurationB
     * Sets the autoLaunchItems
     * List of applications, files, folders, and other items to launch when the user logs in. This collection can contain a maximum of 500 elements.
     *
-    * @param MacOSLaunchItem $val The autoLaunchItems
+    * @param MacOSLaunchItem[] $val The autoLaunchItems
     *
     * @return MacOSDeviceFeaturesConfiguration
     */
@@ -395,7 +395,7 @@ class MacOSDeviceFeaturesConfiguration extends AppleDeviceFeaturesConfigurationB
     * Sets the contentCachingClientListenRanges
     * A list of custom IP ranges content caches will use to listen for clients. This collection can contain a maximum of 500 elements.
     *
-    * @param IpRange $val The contentCachingClientListenRanges
+    * @param IpRange[] $val The contentCachingClientListenRanges
     *
     * @return MacOSDeviceFeaturesConfiguration
     */
@@ -723,7 +723,7 @@ class MacOSDeviceFeaturesConfiguration extends AppleDeviceFeaturesConfigurationB
     * Sets the contentCachingPeerFilterRanges
     * A list of custom IP ranges content caches will use to query for content from peers caches. This collection can contain a maximum of 500 elements.
     *
-    * @param IpRange $val The contentCachingPeerFilterRanges
+    * @param IpRange[] $val The contentCachingPeerFilterRanges
     *
     * @return MacOSDeviceFeaturesConfiguration
     */
@@ -753,7 +753,7 @@ class MacOSDeviceFeaturesConfiguration extends AppleDeviceFeaturesConfigurationB
     * Sets the contentCachingPeerListenRanges
     * A list of custom IP ranges content caches will use to listen for peer caches. This collection can contain a maximum of 500 elements.
     *
-    * @param IpRange $val The contentCachingPeerListenRanges
+    * @param IpRange[] $val The contentCachingPeerListenRanges
     *
     * @return MacOSDeviceFeaturesConfiguration
     */
@@ -845,7 +845,7 @@ class MacOSDeviceFeaturesConfiguration extends AppleDeviceFeaturesConfigurationB
     * Sets the contentCachingPublicRanges
     * A list of custom IP ranges that Apple's content caching service should use to match clients to content caches. This collection can contain a maximum of 500 elements.
     *
-    * @param IpRange $val The contentCachingPublicRanges
+    * @param IpRange[] $val The contentCachingPublicRanges
     *
     * @return MacOSDeviceFeaturesConfiguration
     */

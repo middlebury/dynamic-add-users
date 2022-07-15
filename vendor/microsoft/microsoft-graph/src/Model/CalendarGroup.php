@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * CalendarGroup File
 * PHP version 7
 *
@@ -131,7 +131,7 @@ class CalendarGroup extends Entity
     * Sets the calendars
     * The calendars in the calendar group. Navigation property. Read-only. Nullable.
     *
-    * @param Calendar $val The calendars
+    * @param Calendar[] $val The calendars
     *
     * @return CalendarGroup
     */

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ManagementAction File
 * PHP version 7
 *
@@ -191,7 +191,7 @@ class ManagementAction extends \Beta\Microsoft\Graph\Model\Entity
     * Sets the workloadActions
     * The collection of workload actions associated with the management action. Required. Read-only.
     *
-    * @param WorkloadAction $val The workloadActions
+    * @param WorkloadAction[] $val The workloadActions
     *
     * @return ManagementAction
     */

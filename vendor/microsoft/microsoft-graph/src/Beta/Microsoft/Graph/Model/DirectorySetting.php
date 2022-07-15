@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DirectorySetting File
 * PHP version 7
 *
@@ -85,7 +85,7 @@ class DirectorySetting extends Entity
 
      /**
      * Gets the values
-    * Collection of name value pairs. Must contain and set all the settings defined in the template.
+    * Collection of name-value pairs corresponding to the name and defaultValue properties in the referenced directorySettingTemplates object.
      *
      * @return array|null The values
      */
@@ -100,9 +100,9 @@ class DirectorySetting extends Entity
 
     /**
     * Sets the values
-    * Collection of name value pairs. Must contain and set all the settings defined in the template.
+    * Collection of name-value pairs corresponding to the name and defaultValue properties in the referenced directorySettingTemplates object.
     *
-    * @param SettingValue $val The values
+    * @param SettingValue[] $val The values
     *
     * @return DirectorySetting
     */

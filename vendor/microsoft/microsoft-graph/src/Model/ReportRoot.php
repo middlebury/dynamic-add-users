@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ReportRoot File
 * PHP version 7
 *
@@ -42,7 +42,7 @@ class ReportRoot extends Entity
     /**
     * Sets the dailyPrintUsageByPrinter
     *
-    * @param PrintUsageByPrinter $val The dailyPrintUsageByPrinter
+    * @param PrintUsageByPrinter[] $val The dailyPrintUsageByPrinter
     *
     * @return ReportRoot
     */
@@ -70,7 +70,7 @@ class ReportRoot extends Entity
     /**
     * Sets the dailyPrintUsageByUser
     *
-    * @param PrintUsageByUser $val The dailyPrintUsageByUser
+    * @param PrintUsageByUser[] $val The dailyPrintUsageByUser
     *
     * @return ReportRoot
     */
@@ -98,7 +98,7 @@ class ReportRoot extends Entity
     /**
     * Sets the monthlyPrintUsageByPrinter
     *
-    * @param PrintUsageByPrinter $val The monthlyPrintUsageByPrinter
+    * @param PrintUsageByPrinter[] $val The monthlyPrintUsageByPrinter
     *
     * @return ReportRoot
     */
@@ -126,7 +126,7 @@ class ReportRoot extends Entity
     /**
     * Sets the monthlyPrintUsageByUser
     *
-    * @param PrintUsageByUser $val The monthlyPrintUsageByUser
+    * @param PrintUsageByUser[] $val The monthlyPrintUsageByUser
     *
     * @return ReportRoot
     */

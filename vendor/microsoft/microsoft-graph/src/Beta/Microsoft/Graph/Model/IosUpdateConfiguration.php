@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * IosUpdateConfiguration File
 * PHP version 7
 *
@@ -110,7 +110,7 @@ class IosUpdateConfiguration extends DeviceConfiguration
     * Sets the customUpdateTimeWindows
     * If update schedule type is set to use time window scheduling, custom time windows when updates will be scheduled. This collection can contain a maximum of 20 elements.
     *
-    * @param CustomUpdateTimeWindow $val The customUpdateTimeWindows
+    * @param CustomUpdateTimeWindow[] $val The customUpdateTimeWindows
     *
     * @return IosUpdateConfiguration
     */
@@ -227,7 +227,7 @@ class IosUpdateConfiguration extends DeviceConfiguration
     * Sets the scheduledInstallDays
     * Days in week for which active hours are configured. This collection can contain a maximum of 7 elements.
     *
-    * @param DayOfWeek $val The scheduledInstallDays
+    * @param DayOfWeek[] $val The scheduledInstallDays
     *
     * @return IosUpdateConfiguration
     */

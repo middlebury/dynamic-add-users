@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AndroidForWorkVpnConfiguration File
 * PHP version 7
 *
@@ -139,7 +139,7 @@ class AndroidForWorkVpnConfiguration extends DeviceConfiguration
     * Sets the customData
     * Custom data when connection type is set to Citrix. This collection can contain a maximum of 25 elements.
     *
-    * @param KeyValue $val The customData
+    * @param KeyValue[] $val The customData
     *
     * @return AndroidForWorkVpnConfiguration
     */
@@ -169,7 +169,7 @@ class AndroidForWorkVpnConfiguration extends DeviceConfiguration
     * Sets the customKeyValueData
     * Custom data when connection type is set to Citrix. This collection can contain a maximum of 25 elements.
     *
-    * @param KeyValuePair $val The customKeyValueData
+    * @param KeyValuePair[] $val The customKeyValueData
     *
     * @return AndroidForWorkVpnConfiguration
     */
@@ -286,7 +286,7 @@ class AndroidForWorkVpnConfiguration extends DeviceConfiguration
     * Sets the servers
     * List of VPN Servers on the network. Make sure end users can access these network locations. This collection can contain a maximum of 500 elements.
     *
-    * @param VpnServer $val The servers
+    * @param VpnServer[] $val The servers
     *
     * @return AndroidForWorkVpnConfiguration
     */

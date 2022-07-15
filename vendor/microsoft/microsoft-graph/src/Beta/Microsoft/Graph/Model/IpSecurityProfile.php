@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * IpSecurityProfile File
 * PHP version 7
 *
@@ -235,7 +235,7 @@ class IpSecurityProfile extends Entity
     /**
     * Sets the ipCategories
     *
-    * @param IpCategory $val The ipCategories
+    * @param IpCategory[] $val The ipCategories
     *
     * @return IpSecurityProfile
     */
@@ -263,7 +263,7 @@ class IpSecurityProfile extends Entity
     /**
     * Sets the ipReferenceData
     *
-    * @param IpReferenceData $val The ipReferenceData
+    * @param IpReferenceData[] $val The ipReferenceData
     *
     * @return IpSecurityProfile
     */

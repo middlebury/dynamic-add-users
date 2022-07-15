@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ManagedEBook File
 * PHP version 7
 *
@@ -321,7 +321,7 @@ class ManagedEBook extends Entity
     * Sets the assignments
     * The list of assignments for this eBook.
     *
-    * @param ManagedEBookAssignment $val The assignments
+    * @param ManagedEBookAssignment[] $val The assignments
     *
     * @return ManagedEBook
     */
@@ -351,7 +351,7 @@ class ManagedEBook extends Entity
     * Sets the categories
     * The list of categories for this eBook.
     *
-    * @param ManagedEBookCategory $val The categories
+    * @param ManagedEBookCategory[] $val The categories
     *
     * @return ManagedEBook
     */
@@ -381,7 +381,7 @@ class ManagedEBook extends Entity
     * Sets the deviceStates
     * The list of installation states for this eBook.
     *
-    * @param DeviceInstallState $val The deviceStates
+    * @param DeviceInstallState[] $val The deviceStates
     *
     * @return ManagedEBook
     */
@@ -444,7 +444,7 @@ class ManagedEBook extends Entity
     * Sets the userStateSummary
     * The list of installation states for this eBook.
     *
-    * @param UserInstallStateSummary $val The userStateSummary
+    * @param UserInstallStateSummary[] $val The userStateSummary
     *
     * @return ManagedEBook
     */

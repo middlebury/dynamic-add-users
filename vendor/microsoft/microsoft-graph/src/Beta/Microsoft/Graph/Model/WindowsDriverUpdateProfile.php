@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * WindowsDriverUpdateProfile File
 * PHP version 7
 *
@@ -207,6 +207,39 @@ class WindowsDriverUpdateProfile extends Entity
     }
 
     /**
+    * Gets the inventorySyncStatus
+    * Driver inventory sync status for this profile.
+    *
+    * @return WindowsDriverUpdateProfileInventorySyncStatus|null The inventorySyncStatus
+    */
+    public function getInventorySyncStatus()
+    {
+        if (array_key_exists("inventorySyncStatus", $this->_propDict)) {
+            if (is_a($this->_propDict["inventorySyncStatus"], "\Beta\Microsoft\Graph\Model\WindowsDriverUpdateProfileInventorySyncStatus") || is_null($this->_propDict["inventorySyncStatus"])) {
+                return $this->_propDict["inventorySyncStatus"];
+            } else {
+                $this->_propDict["inventorySyncStatus"] = new WindowsDriverUpdateProfileInventorySyncStatus($this->_propDict["inventorySyncStatus"]);
+                return $this->_propDict["inventorySyncStatus"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the inventorySyncStatus
+    * Driver inventory sync status for this profile.
+    *
+    * @param WindowsDriverUpdateProfileInventorySyncStatus $val The inventorySyncStatus
+    *
+    * @return WindowsDriverUpdateProfile
+    */
+    public function setInventorySyncStatus($val)
+    {
+        $this->_propDict["inventorySyncStatus"] = $val;
+        return $this;
+    }
+
+    /**
     * Gets the lastModifiedDateTime
     * The date time that the profile was last modified.
     *
@@ -317,7 +350,7 @@ class WindowsDriverUpdateProfile extends Entity
     * Sets the assignments
     * The list of group assignments of the profile.
     *
-    * @param WindowsDriverUpdateProfileAssignment $val The assignments
+    * @param WindowsDriverUpdateProfileAssignment[] $val The assignments
     *
     * @return WindowsDriverUpdateProfile
     */
@@ -347,7 +380,7 @@ class WindowsDriverUpdateProfile extends Entity
     * Sets the driverInventories
     * Driver inventories for this profile.
     *
-    * @param WindowsDriverUpdateInventory $val The driverInventories
+    * @param WindowsDriverUpdateInventory[] $val The driverInventories
     *
     * @return WindowsDriverUpdateProfile
     */

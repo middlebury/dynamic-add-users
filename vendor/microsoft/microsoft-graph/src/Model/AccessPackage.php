@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AccessPackage File
 * PHP version 7
 *
@@ -88,7 +88,7 @@ class AccessPackage extends Entity
 
     /**
     * Gets the displayName
-    * The display name of the access package.
+    * The display name of the access package. Supports $filter (eq, contains).
     *
     * @return string|null The displayName
     */
@@ -103,7 +103,7 @@ class AccessPackage extends Entity
 
     /**
     * Sets the displayName
-    * The display name of the access package.
+    * The display name of the access package. Supports $filter (eq, contains).
     *
     * @param string $val The displayName
     *
@@ -174,6 +174,34 @@ class AccessPackage extends Entity
     public function setModifiedDateTime($val)
     {
         $this->_propDict["modifiedDateTime"] = $val;
+        return $this;
+    }
+
+
+     /**
+     * Gets the assignmentPolicies
+     *
+     * @return array|null The assignmentPolicies
+     */
+    public function getAssignmentPolicies()
+    {
+        if (array_key_exists("assignmentPolicies", $this->_propDict)) {
+           return $this->_propDict["assignmentPolicies"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the assignmentPolicies
+    *
+    * @param AccessPackageAssignmentPolicy[] $val The assignmentPolicies
+    *
+    * @return AccessPackage
+    */
+    public function setAssignmentPolicies($val)
+    {
+        $this->_propDict["assignmentPolicies"] = $val;
         return $this;
     }
 

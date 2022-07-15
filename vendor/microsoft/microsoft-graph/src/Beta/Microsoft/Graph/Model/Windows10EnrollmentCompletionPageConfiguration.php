@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Windows10EnrollmentCompletionPageConfiguration File
 * PHP version 7
 *
@@ -108,6 +108,35 @@ class Windows10EnrollmentCompletionPageConfiguration extends DeviceEnrollmentCon
     public function setAllowLogCollectionOnInstallFailure($val)
     {
         $this->_propDict["allowLogCollectionOnInstallFailure"] = boolval($val);
+        return $this;
+    }
+
+    /**
+    * Gets the allowNonBlockingAppInstallation
+    * Install all required apps as non blocking apps during white glove
+    *
+    * @return bool|null The allowNonBlockingAppInstallation
+    */
+    public function getAllowNonBlockingAppInstallation()
+    {
+        if (array_key_exists("allowNonBlockingAppInstallation", $this->_propDict)) {
+            return $this->_propDict["allowNonBlockingAppInstallation"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the allowNonBlockingAppInstallation
+    * Install all required apps as non blocking apps during white glove
+    *
+    * @param bool $val The allowNonBlockingAppInstallation
+    *
+    * @return Windows10EnrollmentCompletionPageConfiguration
+    */
+    public function setAllowNonBlockingAppInstallation($val)
+    {
+        $this->_propDict["allowNonBlockingAppInstallation"] = boolval($val);
         return $this;
     }
 

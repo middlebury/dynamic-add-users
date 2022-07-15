@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * CloudPcRemoteActionResult File
 * PHP version 7
 *
@@ -25,7 +25,7 @@ class CloudPcRemoteActionResult extends Entity
 {
     /**
     * Gets the actionName
-    * The specified action. Supported values: Reprovision, Resize.
+    * The specified action. Supported values in the Microsoft Endpoint Manager portal are: Reprovision, Resize, Restore. Supported values in enterprise Cloud PC devices are: Reboot, Rename, Reprovision, Troubleshoot.
     *
     * @return string|null The actionName
     */
@@ -40,7 +40,7 @@ class CloudPcRemoteActionResult extends Entity
 
     /**
     * Sets the actionName
-    * The specified action. Supported values: Reprovision, Resize.
+    * The specified action. Supported values in the Microsoft Endpoint Manager portal are: Reprovision, Resize, Restore. Supported values in enterprise Cloud PC devices are: Reboot, Rename, Reprovision, Troubleshoot.
     *
     * @param string $val The value of the actionName
     *

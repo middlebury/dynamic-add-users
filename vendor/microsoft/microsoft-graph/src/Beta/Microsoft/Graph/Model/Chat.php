@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Chat File
 * PHP version 7
 *
@@ -249,7 +249,7 @@ class Chat extends Entity
 
     /**
     * Gets the webUrl
-    * A hyperlink that will go to the chat in Microsoft Teams. This URL should be treated as an opaque blob, and not parsed. Read-only.
+    * The URL for the chat in Microsoft Teams. The URL should be treated as an opaque blob, and not parsed. Read-only.
     *
     * @return string|null The webUrl
     */
@@ -264,7 +264,7 @@ class Chat extends Entity
 
     /**
     * Sets the webUrl
-    * A hyperlink that will go to the chat in Microsoft Teams. This URL should be treated as an opaque blob, and not parsed. Read-only.
+    * The URL for the chat in Microsoft Teams. The URL should be treated as an opaque blob, and not parsed. Read-only.
     *
     * @param string $val The webUrl
     *
@@ -296,7 +296,7 @@ class Chat extends Entity
     * Sets the installedApps
     * A collection of all the apps in the chat. Nullable.
     *
-    * @param TeamsAppInstallation $val The installedApps
+    * @param TeamsAppInstallation[] $val The installedApps
     *
     * @return Chat
     */
@@ -359,7 +359,7 @@ class Chat extends Entity
     * Sets the members
     * A collection of all the members in the chat. Nullable.
     *
-    * @param ConversationMember $val The members
+    * @param ConversationMember[] $val The members
     *
     * @return Chat
     */
@@ -389,7 +389,7 @@ class Chat extends Entity
     * Sets the messages
     * A collection of all the messages in the chat. Nullable.
     *
-    * @param ChatMessage $val The messages
+    * @param ChatMessage[] $val The messages
     *
     * @return Chat
     */
@@ -419,7 +419,7 @@ class Chat extends Entity
     * Sets the operations
     * A collection of all the Teams async operations that ran or are running on the chat. Nullable.
     *
-    * @param TeamsAsyncOperation $val The operations
+    * @param TeamsAsyncOperation[] $val The operations
     *
     * @return Chat
     */
@@ -449,7 +449,7 @@ class Chat extends Entity
     * Sets the permissionGrants
     * A collection of permissions granted to apps for the chat.
     *
-    * @param ResourceSpecificPermissionGrant $val The permissionGrants
+    * @param ResourceSpecificPermissionGrant[] $val The permissionGrants
     *
     * @return Chat
     */
@@ -461,7 +461,38 @@ class Chat extends Entity
 
 
      /**
+     * Gets the pinnedMessages
+    * A collection of all the pinned messages in the chat. Nullable.
+     *
+     * @return array|null The pinnedMessages
+     */
+    public function getPinnedMessages()
+    {
+        if (array_key_exists("pinnedMessages", $this->_propDict)) {
+           return $this->_propDict["pinnedMessages"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the pinnedMessages
+    * A collection of all the pinned messages in the chat. Nullable.
+    *
+    * @param PinnedChatMessageInfo[] $val The pinnedMessages
+    *
+    * @return Chat
+    */
+    public function setPinnedMessages($val)
+    {
+        $this->_propDict["pinnedMessages"] = $val;
+        return $this;
+    }
+
+
+     /**
      * Gets the tabs
+    * A collection of all the tabs in the chat. Nullable.
      *
      * @return array|null The tabs
      */
@@ -476,8 +507,9 @@ class Chat extends Entity
 
     /**
     * Sets the tabs
+    * A collection of all the tabs in the chat. Nullable.
     *
-    * @param TeamsTab $val The tabs
+    * @param TeamsTab[] $val The tabs
     *
     * @return Chat
     */

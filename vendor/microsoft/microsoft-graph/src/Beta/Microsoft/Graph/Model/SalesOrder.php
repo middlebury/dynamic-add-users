@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * SalesOrder File
 * PHP version 7
 *
@@ -1012,7 +1012,7 @@ class SalesOrder extends Entity
     /**
     * Sets the salesOrderLines
     *
-    * @param SalesOrderLine $val The salesOrderLines
+    * @param SalesOrderLine[] $val The salesOrderLines
     *
     * @return SalesOrder
     */

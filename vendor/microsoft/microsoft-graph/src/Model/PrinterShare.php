@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * PrinterShare File
 * PHP version 7
 *
@@ -106,7 +106,7 @@ class PrinterShare extends PrinterBase
     * Sets the allowedGroups
     * The groups whose users have access to print using the printer.
     *
-    * @param Group $val The allowedGroups
+    * @param Group[] $val The allowedGroups
     *
     * @return PrinterShare
     */
@@ -136,7 +136,7 @@ class PrinterShare extends PrinterBase
     * Sets the allowedUsers
     * The users who have access to print using the printer.
     *
-    * @param User $val The allowedUsers
+    * @param User[] $val The allowedUsers
     *
     * @return PrinterShare
     */

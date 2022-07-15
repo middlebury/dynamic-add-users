@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * PrintService File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class PrintService extends Entity
     * Sets the endpoints
     * Endpoints that can be used to access the service. Read-only. Nullable.
     *
-    * @param PrintServiceEndpoint $val The endpoints
+    * @param PrintServiceEndpoint[] $val The endpoints
     *
     * @return PrintService
     */

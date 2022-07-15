@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DepMacOSEnrollmentProfile File
 * PHP version 7
 *
@@ -50,6 +50,35 @@ class DepMacOSEnrollmentProfile extends DepEnrollmentBaseProfile
     public function setAccessibilityScreenDisabled($val)
     {
         $this->_propDict["accessibilityScreenDisabled"] = boolval($val);
+        return $this;
+    }
+
+    /**
+    * Gets the autoUnlockWithWatchDisabled
+    * Indicates if UnlockWithWatch screen is disabled
+    *
+    * @return bool|null The autoUnlockWithWatchDisabled
+    */
+    public function getAutoUnlockWithWatchDisabled()
+    {
+        if (array_key_exists("autoUnlockWithWatchDisabled", $this->_propDict)) {
+            return $this->_propDict["autoUnlockWithWatchDisabled"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the autoUnlockWithWatchDisabled
+    * Indicates if UnlockWithWatch screen is disabled
+    *
+    * @param bool $val The autoUnlockWithWatchDisabled
+    *
+    * @return DepMacOSEnrollmentProfile
+    */
+    public function setAutoUnlockWithWatchDisabled($val)
+    {
+        $this->_propDict["autoUnlockWithWatchDisabled"] = boolval($val);
         return $this;
     }
 

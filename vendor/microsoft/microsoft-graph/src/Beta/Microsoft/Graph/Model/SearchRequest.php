@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * SearchRequest File
 * PHP version 7
 *
@@ -264,6 +264,65 @@ class SearchRequest extends Entity
     }
 
     /**
+    * Gets the queryAlterationOptions
+    * Provides query alteration options formatted as a JSON blob that contains two optional flags related to spelling correction. Optional.
+    *
+    * @return SearchAlterationOptions|null The queryAlterationOptions
+    */
+    public function getQueryAlterationOptions()
+    {
+        if (array_key_exists("queryAlterationOptions", $this->_propDict)) {
+            if (is_a($this->_propDict["queryAlterationOptions"], "\Beta\Microsoft\Graph\Model\SearchAlterationOptions") || is_null($this->_propDict["queryAlterationOptions"])) {
+                return $this->_propDict["queryAlterationOptions"];
+            } else {
+                $this->_propDict["queryAlterationOptions"] = new SearchAlterationOptions($this->_propDict["queryAlterationOptions"]);
+                return $this->_propDict["queryAlterationOptions"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the queryAlterationOptions
+    * Provides query alteration options formatted as a JSON blob that contains two optional flags related to spelling correction. Optional.
+    *
+    * @param SearchAlterationOptions $val The value to assign to the queryAlterationOptions
+    *
+    * @return SearchRequest The SearchRequest
+    */
+    public function setQueryAlterationOptions($val)
+    {
+        $this->_propDict["queryAlterationOptions"] = $val;
+         return $this;
+    }
+    /**
+    * Gets the region
+    *
+    * @return string|null The region
+    */
+    public function getRegion()
+    {
+        if (array_key_exists("region", $this->_propDict)) {
+            return $this->_propDict["region"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the region
+    *
+    * @param string $val The value of the region
+    *
+    * @return SearchRequest
+    */
+    public function setRegion($val)
+    {
+        $this->_propDict["region"] = $val;
+        return $this;
+    }
+
+    /**
     * Gets the resultTemplateOptions
     * Provides the search result templates options for rendering connectors search results.
     *
@@ -380,6 +439,34 @@ class SearchRequest extends Entity
     public function setStored_fields($val)
     {
         $this->_propDict["storedFields"] = $val;
+        return $this;
+    }
+    /**
+    * Gets the trimDuplicates
+    * Indicates whether to trim away the duplicate SharePoint files from search results. Default value is false. Optional.
+    *
+    * @return bool|null The trimDuplicates
+    */
+    public function getTrimDuplicates()
+    {
+        if (array_key_exists("trimDuplicates", $this->_propDict)) {
+            return $this->_propDict["trimDuplicates"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the trimDuplicates
+    * Indicates whether to trim away the duplicate SharePoint files from search results. Default value is false. Optional.
+    *
+    * @param bool $val The value of the trimDuplicates
+    *
+    * @return SearchRequest
+    */
+    public function setTrimDuplicates($val)
+    {
+        $this->_propDict["trimDuplicates"] = $val;
         return $this;
     }
 }

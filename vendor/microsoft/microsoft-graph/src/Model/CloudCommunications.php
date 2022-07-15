@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * CloudCommunications File
 * PHP version 7
 *
@@ -42,7 +42,7 @@ class CloudCommunications extends Entity
     /**
     * Sets the calls
     *
-    * @param Call $val The calls
+    * @param Call[] $val The calls
     *
     * @return CloudCommunications
     */
@@ -70,7 +70,7 @@ class CloudCommunications extends Entity
     /**
     * Sets the callRecords
     *
-    * @param \Microsoft\Graph\CallRecords\Model\CallRecord $val The callRecords
+    * @param \Microsoft\Graph\CallRecords\Model\CallRecord[] $val The callRecords
     *
     * @return CloudCommunications
     */
@@ -98,7 +98,7 @@ class CloudCommunications extends Entity
     /**
     * Sets the onlineMeetings
     *
-    * @param OnlineMeeting $val The onlineMeetings
+    * @param OnlineMeeting[] $val The onlineMeetings
     *
     * @return CloudCommunications
     */
@@ -126,7 +126,7 @@ class CloudCommunications extends Entity
     /**
     * Sets the presences
     *
-    * @param Presence $val The presences
+    * @param Presence[] $val The presences
     *
     * @return CloudCommunications
     */

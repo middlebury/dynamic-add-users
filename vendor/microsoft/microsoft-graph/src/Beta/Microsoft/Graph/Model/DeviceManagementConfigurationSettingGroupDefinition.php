@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceManagementConfigurationSettingGroupDefinition File
 * PHP version 7
 *
@@ -73,7 +73,7 @@ class DeviceManagementConfigurationSettingGroupDefinition extends DeviceManageme
     * Sets the dependedOnBy
     * List of child settings that depend on this setting
     *
-    * @param DeviceManagementConfigurationSettingDependedOnBy $val The dependedOnBy
+    * @param DeviceManagementConfigurationSettingDependedOnBy[] $val The dependedOnBy
     *
     * @return DeviceManagementConfigurationSettingGroupDefinition
     */
@@ -103,7 +103,7 @@ class DeviceManagementConfigurationSettingGroupDefinition extends DeviceManageme
     * Sets the dependentOn
     * List of Dependencies for the setting group
     *
-    * @param DeviceManagementConfigurationDependentOn $val The dependentOn
+    * @param DeviceManagementConfigurationDependentOn[] $val The dependentOn
     *
     * @return DeviceManagementConfigurationSettingGroupDefinition
     */

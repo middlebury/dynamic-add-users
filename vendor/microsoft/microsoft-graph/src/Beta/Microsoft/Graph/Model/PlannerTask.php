@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * PlannerTask File
 * PHP version 7
 *
@@ -551,7 +551,7 @@ class PlannerTask extends PlannerDelta
 
     /**
     * Gets the previewType
-    * This sets the type of preview that shows up on the task. The possible values are: automatic, noPreview, checklist, description, reference.
+    * This sets the type of preview that shows up on the task. Possible values are: automatic, noPreview, checklist, description, reference.
     *
     * @return PlannerPreviewType|null The previewType
     */
@@ -570,7 +570,7 @@ class PlannerTask extends PlannerDelta
 
     /**
     * Sets the previewType
-    * This sets the type of preview that shows up on the task. The possible values are: automatic, noPreview, checklist, description, reference.
+    * This sets the type of preview that shows up on the task. Possible values are: automatic, noPreview, checklist, description, reference.
     *
     * @param PlannerPreviewType $val The previewType
     *

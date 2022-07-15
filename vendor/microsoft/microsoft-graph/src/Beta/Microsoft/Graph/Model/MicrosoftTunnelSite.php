@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * MicrosoftTunnelSite File
 * PHP version 7
 *
@@ -375,7 +375,7 @@ class MicrosoftTunnelSite extends Entity
     * Sets the microsoftTunnelServers
     * A list of MicrosoftTunnelServers that are registered to this MicrosoftTunnelSite
     *
-    * @param MicrosoftTunnelServer $val The microsoftTunnelServers
+    * @param MicrosoftTunnelServer[] $val The microsoftTunnelServers
     *
     * @return MicrosoftTunnelSite
     */

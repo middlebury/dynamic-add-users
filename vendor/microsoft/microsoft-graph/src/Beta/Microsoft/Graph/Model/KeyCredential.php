@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * KeyCredential File
 * PHP version 7
 *
@@ -87,7 +87,7 @@ class KeyCredential extends Entity
 
     /**
     * Gets the endDateTime
-    * The date and time at which the credential expires.The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+    * The date and time at which the credential expires. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     *
     * @return \DateTime|null The endDateTime
     */
@@ -106,7 +106,7 @@ class KeyCredential extends Entity
 
     /**
     * Sets the endDateTime
-    * The date and time at which the credential expires.The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+    * The date and time at which the credential expires. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     *
     * @param \DateTime $val The value to assign to the endDateTime
     *
@@ -120,7 +120,7 @@ class KeyCredential extends Entity
 
     /**
     * Gets the key
-    * The certificate's raw data in byte array converted to Base64 string; for example, [System.Convert]::ToBase64String($Cert.GetRawCertData()).
+    * Value for the key credential. Should be a Base64 encoded value. Returned only on $select for a single object, that is, GET applications/{applicationId}?$select=keyCredentials or GET servicePrincipals/{servicePrincipalId}?$select=keyCredentials; otherwise, it is always null.
     *
     * @return \GuzzleHttp\Psr7\Stream|null The key
     */
@@ -139,7 +139,7 @@ class KeyCredential extends Entity
 
     /**
     * Sets the key
-    * The certificate's raw data in byte array converted to Base64 string; for example, [System.Convert]::ToBase64String($Cert.GetRawCertData()).
+    * Value for the key credential. Should be a Base64 encoded value. Returned only on $select for a single object, that is, GET applications/{applicationId}?$select=keyCredentials or GET servicePrincipals/{servicePrincipalId}?$select=keyCredentials; otherwise, it is always null.
     *
     * @param \GuzzleHttp\Psr7\Stream $val The value to assign to the key
     *
@@ -152,7 +152,7 @@ class KeyCredential extends Entity
     }
     /**
     * Gets the keyId
-    * The unique identifier (GUID) for the key.
+    * The unique identifier for the key.
     *
     * @return string|null The keyId
     */
@@ -167,7 +167,7 @@ class KeyCredential extends Entity
 
     /**
     * Sets the keyId
-    * The unique identifier (GUID) for the key.
+    * The unique identifier for the key.
     *
     * @param string $val The value of the keyId
     *
@@ -213,7 +213,7 @@ class KeyCredential extends Entity
     }
     /**
     * Gets the type
-    * The type of key credential; for example, Symmetric.
+    * The type of key credential; for example, Symmetric, AsymmetricX509Cert.
     *
     * @return string|null The type
     */
@@ -228,7 +228,7 @@ class KeyCredential extends Entity
 
     /**
     * Sets the type
-    * The type of key credential; for example, Symmetric.
+    * The type of key credential; for example, Symmetric, AsymmetricX509Cert.
     *
     * @param string $val The value of the type
     *

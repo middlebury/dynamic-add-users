@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AccessPackageResourceRole File
 * PHP version 7
 *
@@ -142,7 +142,6 @@ class AccessPackageResourceRole extends Entity
 
     /**
     * Gets the accessPackageResource
-    * Read-only. Nullable.
     *
     * @return AccessPackageResource|null The accessPackageResource
     */
@@ -161,7 +160,6 @@ class AccessPackageResourceRole extends Entity
 
     /**
     * Sets the accessPackageResource
-    * Read-only. Nullable.
     *
     * @param AccessPackageResource $val The accessPackageResource
     *

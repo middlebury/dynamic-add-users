@@ -12,7 +12,7 @@ class TermStoreTest extends TestCase
         $graphTestBase = new GraphTestBase();
         $this->_client = $graphTestBase->graphClient;
     }
-
+	
 	/**
     * @group functional
     */
@@ -20,8 +20,8 @@ class TermStoreTest extends TestCase
     {
 		$store = $this->_client->setApiVersion("beta")
 							  ->createRequest("GET", "/termstore")
-				          ->setReturnType(BetaStore::class)
-				          ->execute();
-	$this->assertNotNull($store->getDefaultLanguageTag());
+    				          ->setReturnType(BetaStore::class)
+    				          ->execute();
+    	$this->assertNotNull($store->getDefaultLanguageTag());
     }
 }

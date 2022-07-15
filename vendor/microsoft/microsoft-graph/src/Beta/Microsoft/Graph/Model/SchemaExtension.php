@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * SchemaExtension File
 * PHP version 7
 *
@@ -102,7 +102,7 @@ class SchemaExtension extends Entity
     * Sets the schemaExtensionProperties
     * The collection of property names and types that make up the schema extension definition.
     *
-    * @param ExtensionSchemaProperty $val The schemaExtensionProperties
+    * @param ExtensionSchemaProperty[] $val The schemaExtensionProperties
     *
     * @return SchemaExtension
     */
@@ -114,7 +114,7 @@ class SchemaExtension extends Entity
 
     /**
     * Gets the status
-    * The lifecycle state of the schema extension. Possible states are InDevelopment, Available, and Deprecated. Automatically set to InDevelopment on creation. Schema extensions provides more information on the possible state transitions and behaviors. Supports $filter (eq).
+    * The lifecycle state of the schema extension. Possible states are InDevelopment, Available, and Deprecated. Automatically set to InDevelopment on creation. For more information about the possible state transitions and behaviors, see Schema extensions lifecycle. Supports $filter (eq).
     *
     * @return string|null The status
     */
@@ -129,7 +129,7 @@ class SchemaExtension extends Entity
 
     /**
     * Sets the status
-    * The lifecycle state of the schema extension. Possible states are InDevelopment, Available, and Deprecated. Automatically set to InDevelopment on creation. Schema extensions provides more information on the possible state transitions and behaviors. Supports $filter (eq).
+    * The lifecycle state of the schema extension. Possible states are InDevelopment, Available, and Deprecated. Automatically set to InDevelopment on creation. For more information about the possible state transitions and behaviors, see Schema extensions lifecycle. Supports $filter (eq).
     *
     * @param string $val The status
     *
@@ -143,7 +143,7 @@ class SchemaExtension extends Entity
 
     /**
     * Gets the targetTypes
-    * Set of Microsoft Graph types (that can support extensions) that the schema extension can be applied to. Select from contact, device, event, group, message, organization, post, or user.
+    * Set of Microsoft Graph types (that can support extensions) that the schema extension can be applied to. Select from administrativeUnit, contact, device, event, group, message, organization, post, todoTask, todoTaskList, or user.
     *
     * @return string|null The targetTypes
     */
@@ -158,7 +158,7 @@ class SchemaExtension extends Entity
 
     /**
     * Sets the targetTypes
-    * Set of Microsoft Graph types (that can support extensions) that the schema extension can be applied to. Select from contact, device, event, group, message, organization, post, or user.
+    * Set of Microsoft Graph types (that can support extensions) that the schema extension can be applied to. Select from administrativeUnit, contact, device, event, group, message, organization, post, todoTask, todoTaskList, or user.
     *
     * @param string $val The targetTypes
     *

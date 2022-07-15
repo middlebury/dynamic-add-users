@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * EducationRubricOutcome File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class EducationRubricOutcome extends EducationOutcome
     * Sets the publishedRubricQualityFeedback
     * A copy of the rubricQualityFeedback property that is made when the grade is released to the student.
     *
-    * @param RubricQualityFeedbackModel $val The publishedRubricQualityFeedback
+    * @param RubricQualityFeedbackModel[] $val The publishedRubricQualityFeedback
     *
     * @return EducationRubricOutcome
     */
@@ -74,7 +74,7 @@ class EducationRubricOutcome extends EducationOutcome
     * Sets the publishedRubricQualitySelectedLevels
     * A copy of the rubricQualitySelectedLevels property that is made when the grade is released to the student.
     *
-    * @param RubricQualitySelectedColumnModel $val The publishedRubricQualitySelectedLevels
+    * @param RubricQualitySelectedColumnModel[] $val The publishedRubricQualitySelectedLevels
     *
     * @return EducationRubricOutcome
     */
@@ -104,7 +104,7 @@ class EducationRubricOutcome extends EducationOutcome
     * Sets the rubricQualityFeedback
     * A collection of specific feedback for each quality of this rubric.
     *
-    * @param RubricQualityFeedbackModel $val The rubricQualityFeedback
+    * @param RubricQualityFeedbackModel[] $val The rubricQualityFeedback
     *
     * @return EducationRubricOutcome
     */
@@ -134,7 +134,7 @@ class EducationRubricOutcome extends EducationOutcome
     * Sets the rubricQualitySelectedLevels
     * The level that the teacher has selected for each quality while grading this assignment.
     *
-    * @param RubricQualitySelectedColumnModel $val The rubricQualitySelectedLevels
+    * @param RubricQualitySelectedColumnModel[] $val The rubricQualitySelectedLevels
     *
     * @return EducationRubricOutcome
     */

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Win32LobApp File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class Win32LobApp extends MobileLobApp
 {
     /**
     * Gets the applicableArchitectures
-    * The Windows architecture(s) for which this app can run on. Possible values are: none, x86, x64, arm, neutral.
+    * The Windows architecture(s) for which this app can run on. Possible values are: none, x86, x64, arm, neutral, arm64.
     *
     * @return WindowsArchitecture|null The applicableArchitectures
     */
@@ -45,7 +45,7 @@ class Win32LobApp extends MobileLobApp
 
     /**
     * Sets the applicableArchitectures
-    * The Windows architecture(s) for which this app can run on. Possible values are: none, x86, x64, arm, neutral.
+    * The Windows architecture(s) for which this app can run on. Possible values are: none, x86, x64, arm, neutral, arm64.
     *
     * @param WindowsArchitecture $val The applicableArchitectures
     *
@@ -317,7 +317,7 @@ class Win32LobApp extends MobileLobApp
     * Sets the returnCodes
     * The return codes for post installation behavior.
     *
-    * @param Win32LobAppReturnCode $val The returnCodes
+    * @param Win32LobAppReturnCode[] $val The returnCodes
     *
     * @return Win32LobApp
     */
@@ -347,7 +347,7 @@ class Win32LobApp extends MobileLobApp
     * Sets the rules
     * The detection and requirement rules for this app.
     *
-    * @param Win32LobAppRule $val The rules
+    * @param Win32LobAppRule[] $val The rules
     *
     * @return Win32LobApp
     */

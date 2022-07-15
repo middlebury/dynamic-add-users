@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AccessPackageResourceRoleScope File
 * PHP version 7
 *
@@ -26,7 +26,6 @@ class AccessPackageResourceRoleScope extends Entity
 {
     /**
     * Gets the createdBy
-    * Read-only.
     *
     * @return string|null The createdBy
     */
@@ -41,7 +40,6 @@ class AccessPackageResourceRoleScope extends Entity
 
     /**
     * Sets the createdBy
-    * Read-only.
     *
     * @param string $val The createdBy
     *
@@ -88,7 +86,6 @@ class AccessPackageResourceRoleScope extends Entity
 
     /**
     * Gets the modifiedBy
-    * Read-only.
     *
     * @return string|null The modifiedBy
     */
@@ -103,7 +100,6 @@ class AccessPackageResourceRoleScope extends Entity
 
     /**
     * Sets the modifiedBy
-    * Read-only.
     *
     * @param string $val The modifiedBy
     *
@@ -150,7 +146,7 @@ class AccessPackageResourceRoleScope extends Entity
 
     /**
     * Gets the accessPackageResourceRole
-    * Read-only. Nullable.
+    * Read-only. Nullable. Supports $expand.
     *
     * @return AccessPackageResourceRole|null The accessPackageResourceRole
     */
@@ -169,7 +165,7 @@ class AccessPackageResourceRoleScope extends Entity
 
     /**
     * Sets the accessPackageResourceRole
-    * Read-only. Nullable.
+    * Read-only. Nullable. Supports $expand.
     *
     * @param AccessPackageResourceRole $val The accessPackageResourceRole
     *
@@ -183,7 +179,6 @@ class AccessPackageResourceRoleScope extends Entity
 
     /**
     * Gets the accessPackageResourceScope
-    * Read-only. Nullable.
     *
     * @return AccessPackageResourceScope|null The accessPackageResourceScope
     */
@@ -202,7 +197,6 @@ class AccessPackageResourceRoleScope extends Entity
 
     /**
     * Sets the accessPackageResourceScope
-    * Read-only. Nullable.
     *
     * @param AccessPackageResourceScope $val The accessPackageResourceScope
     *

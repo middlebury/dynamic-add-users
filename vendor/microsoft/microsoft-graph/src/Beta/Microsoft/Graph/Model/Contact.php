@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Contact File
 * PHP version 7
 *
@@ -222,7 +222,7 @@ class Contact extends OutlookItem
     * Sets the emailAddresses
     * The contact's email addresses.
     *
-    * @param TypedEmailAddress $val The emailAddresses
+    * @param TypedEmailAddress[] $val The emailAddresses
     *
     * @return Contact
     */
@@ -669,7 +669,7 @@ class Contact extends OutlookItem
     /**
     * Sets the phones
     *
-    * @param Phone $val The phones
+    * @param Phone[] $val The phones
     *
     * @return Contact
     */
@@ -697,7 +697,7 @@ class Contact extends OutlookItem
     /**
     * Sets the postalAddresses
     *
-    * @param PhysicalAddress $val The postalAddresses
+    * @param PhysicalAddress[] $val The postalAddresses
     *
     * @return Contact
     */
@@ -833,7 +833,7 @@ class Contact extends OutlookItem
     /**
     * Sets the websites
     *
-    * @param Website $val The websites
+    * @param Website[] $val The websites
     *
     * @return Contact
     */
@@ -958,7 +958,7 @@ class Contact extends OutlookItem
 
      /**
      * Gets the extensions
-    * The collection of open extensions defined for the contact. Read-only. Nullable.
+    * The collection of open extensions defined for the contact. Nullable.
      *
      * @return array|null The extensions
      */
@@ -973,9 +973,9 @@ class Contact extends OutlookItem
 
     /**
     * Sets the extensions
-    * The collection of open extensions defined for the contact. Read-only. Nullable.
+    * The collection of open extensions defined for the contact. Nullable.
     *
-    * @param Extension $val The extensions
+    * @param Extension[] $val The extensions
     *
     * @return Contact
     */
@@ -1005,7 +1005,7 @@ class Contact extends OutlookItem
     * Sets the multiValueExtendedProperties
     * The collection of multi-value extended properties defined for the contact. Read-only. Nullable.
     *
-    * @param MultiValueLegacyExtendedProperty $val The multiValueExtendedProperties
+    * @param MultiValueLegacyExtendedProperty[] $val The multiValueExtendedProperties
     *
     * @return Contact
     */
@@ -1068,7 +1068,7 @@ class Contact extends OutlookItem
     * Sets the singleValueExtendedProperties
     * The collection of single-value extended properties defined for the contact. Read-only. Nullable.
     *
-    * @param SingleValueLegacyExtendedProperty $val The singleValueExtendedProperties
+    * @param SingleValueLegacyExtendedProperty[] $val The singleValueExtendedProperties
     *
     * @return Contact
     */

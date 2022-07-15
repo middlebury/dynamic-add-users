@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ThreatAssessmentResult File
 * PHP version 7
 *
@@ -88,7 +88,7 @@ class ThreatAssessmentResult extends Entity
 
     /**
     * Gets the resultType
-    * The threat assessment result type. Possible values are: checkPolicy, rescan.
+    * The threat assessment result type. Possible values are: checkPolicy (only for mail assessment), rescan.
     *
     * @return ThreatAssessmentResultType|null The resultType
     */
@@ -107,7 +107,7 @@ class ThreatAssessmentResult extends Entity
 
     /**
     * Sets the resultType
-    * The threat assessment result type. Possible values are: checkPolicy, rescan.
+    * The threat assessment result type. Possible values are: checkPolicy (only for mail assessment), rescan.
     *
     * @param ThreatAssessmentResultType $val The resultType
     *

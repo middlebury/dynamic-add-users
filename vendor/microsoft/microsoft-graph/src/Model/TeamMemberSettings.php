@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * TeamMemberSettings File
 * PHP version 7
 *
@@ -81,7 +81,7 @@ class TeamMemberSettings extends Entity
     }
     /**
     * Gets the allowCreateUpdateChannels
-    * If set to true, members can add and update channels.
+    * If set to true, members can add and update any channels.
     *
     * @return bool|null The allowCreateUpdateChannels
     */
@@ -96,7 +96,7 @@ class TeamMemberSettings extends Entity
 
     /**
     * Sets the allowCreateUpdateChannels
-    * If set to true, members can add and update channels.
+    * If set to true, members can add and update any channels.
     *
     * @param bool $val The value of the allowCreateUpdateChannels
     *

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Device File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class Device extends DirectoryObject
 {
     /**
     * Gets the accountEnabled
-    * true if the account is enabled; otherwise, false. Required. Default is true.  Supports $filter (eq, ne, NOT, in). Only callers in Global Administrator and Cloud Device Administrator roles can set this property.
+    * true if the account is enabled; otherwise, false. Default is true.  Supports $filter (eq, ne, not, in). Only callers in Global Administrator and Cloud Device Administrator roles can set this property.
     *
     * @return bool|null The accountEnabled
     */
@@ -41,7 +41,7 @@ class Device extends DirectoryObject
 
     /**
     * Sets the accountEnabled
-    * true if the account is enabled; otherwise, false. Required. Default is true.  Supports $filter (eq, ne, NOT, in). Only callers in Global Administrator and Cloud Device Administrator roles can set this property.
+    * true if the account is enabled; otherwise, false. Default is true.  Supports $filter (eq, ne, not, in). Only callers in Global Administrator and Cloud Device Administrator roles can set this property.
     *
     * @param bool $val The accountEnabled
     *
@@ -56,7 +56,7 @@ class Device extends DirectoryObject
 
      /**
      * Gets the alternativeSecurityIds
-    * For internal use only. Not nullable. Supports $filter (eq, NOT, ge, le).
+    * For internal use only. Not nullable. Supports $filter (eq, not, ge, le).
      *
      * @return array|null The alternativeSecurityIds
      */
@@ -71,9 +71,9 @@ class Device extends DirectoryObject
 
     /**
     * Sets the alternativeSecurityIds
-    * For internal use only. Not nullable. Supports $filter (eq, NOT, ge, le).
+    * For internal use only. Not nullable. Supports $filter (eq, not, ge, le).
     *
-    * @param AlternativeSecurityId $val The alternativeSecurityIds
+    * @param AlternativeSecurityId[] $val The alternativeSecurityIds
     *
     * @return Device
     */
@@ -85,7 +85,7 @@ class Device extends DirectoryObject
 
     /**
     * Gets the approximateLastSignInDateTime
-    * The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Supports $filter (eq, ne, NOT, ge, le, and eq on null values) and $orderBy.
+    * The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Supports $filter (eq, ne, not, ge, le, and eq on null values) and $orderBy.
     *
     * @return \DateTime|null The approximateLastSignInDateTime
     */
@@ -104,7 +104,7 @@ class Device extends DirectoryObject
 
     /**
     * Sets the approximateLastSignInDateTime
-    * The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Supports $filter (eq, ne, NOT, ge, le, and eq on null values) and $orderBy.
+    * The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Supports $filter (eq, ne, not, ge, le, and eq on null values) and $orderBy.
     *
     * @param \DateTime $val The approximateLastSignInDateTime
     *
@@ -151,7 +151,7 @@ class Device extends DirectoryObject
 
     /**
     * Gets the deviceId
-    * Unique identifier set by Azure Device Registration Service at the time of registration. Supports $filter (eq, ne, NOT, startsWith).
+    * Identifier set by Azure Device Registration Service at the time of registration. Supports $filter (eq, ne, not, startsWith).
     *
     * @return string|null The deviceId
     */
@@ -166,7 +166,7 @@ class Device extends DirectoryObject
 
     /**
     * Sets the deviceId
-    * Unique identifier set by Azure Device Registration Service at the time of registration. Supports $filter (eq, ne, NOT, startsWith).
+    * Identifier set by Azure Device Registration Service at the time of registration. Supports $filter (eq, ne, not, startsWith).
     *
     * @param string $val The deviceId
     *
@@ -238,7 +238,7 @@ class Device extends DirectoryObject
 
     /**
     * Gets the displayName
-    * The display name for the device. Required. Supports $filter (eq, ne, NOT, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
+    * The display name for the device. Required. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
     *
     * @return string|null The displayName
     */
@@ -253,7 +253,7 @@ class Device extends DirectoryObject
 
     /**
     * Sets the displayName
-    * The display name for the device. Required. Supports $filter (eq, ne, NOT, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
+    * The display name for the device. Required. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
     *
     * @param string $val The displayName
     *
@@ -267,7 +267,7 @@ class Device extends DirectoryObject
 
     /**
     * Gets the isCompliant
-    * true if the device complies with Mobile Device Management (MDM) policies; otherwise, false. Read-only. This can only be updated by Intune for any device OS type or by an approved MDM app for Windows OS devices. Supports $filter (eq, ne, NOT).
+    * true if the device complies with Mobile Device Management (MDM) policies; otherwise, false. Read-only. This can only be updated by Intune for any device OS type or by an approved MDM app for Windows OS devices. Supports $filter (eq, ne, not).
     *
     * @return bool|null The isCompliant
     */
@@ -282,7 +282,7 @@ class Device extends DirectoryObject
 
     /**
     * Sets the isCompliant
-    * true if the device complies with Mobile Device Management (MDM) policies; otherwise, false. Read-only. This can only be updated by Intune for any device OS type or by an approved MDM app for Windows OS devices. Supports $filter (eq, ne, NOT).
+    * true if the device complies with Mobile Device Management (MDM) policies; otherwise, false. Read-only. This can only be updated by Intune for any device OS type or by an approved MDM app for Windows OS devices. Supports $filter (eq, ne, not).
     *
     * @param bool $val The isCompliant
     *
@@ -296,7 +296,7 @@ class Device extends DirectoryObject
 
     /**
     * Gets the isManaged
-    * true if the device is managed by a Mobile Device Management (MDM) app; otherwise, false. This can only be updated by Intune for any device OS type or by an approved MDM app for Windows OS devices. Supports $filter (eq, ne, NOT).
+    * true if the device is managed by a Mobile Device Management (MDM) app; otherwise, false. This can only be updated by Intune for any device OS type or by an approved MDM app for Windows OS devices. Supports $filter (eq, ne, not).
     *
     * @return bool|null The isManaged
     */
@@ -311,7 +311,7 @@ class Device extends DirectoryObject
 
     /**
     * Sets the isManaged
-    * true if the device is managed by a Mobile Device Management (MDM) app; otherwise, false. This can only be updated by Intune for any device OS type or by an approved MDM app for Windows OS devices. Supports $filter (eq, ne, NOT).
+    * true if the device is managed by a Mobile Device Management (MDM) app; otherwise, false. This can only be updated by Intune for any device OS type or by an approved MDM app for Windows OS devices. Supports $filter (eq, ne, not).
     *
     * @param bool $val The isManaged
     *
@@ -325,7 +325,7 @@ class Device extends DirectoryObject
 
     /**
     * Gets the mdmAppId
-    * Application identifier used to register device into MDM. Read-only. Supports $filter (eq, ne, NOT, startsWith).
+    * Application identifier used to register device into MDM. Read-only. Supports $filter (eq, ne, not, startsWith).
     *
     * @return string|null The mdmAppId
     */
@@ -340,7 +340,7 @@ class Device extends DirectoryObject
 
     /**
     * Sets the mdmAppId
-    * Application identifier used to register device into MDM. Read-only. Supports $filter (eq, ne, NOT, startsWith).
+    * Application identifier used to register device into MDM. Read-only. Supports $filter (eq, ne, not, startsWith).
     *
     * @param string $val The mdmAppId
     *
@@ -354,7 +354,7 @@ class Device extends DirectoryObject
 
     /**
     * Gets the onPremisesLastSyncDateTime
-    * The last time at which the object was synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z Read-only. Supports $filter (eq, ne, NOT, ge, le, in).
+    * The last time at which the object was synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z Read-only. Supports $filter (eq, ne, not, ge, le, in).
     *
     * @return \DateTime|null The onPremisesLastSyncDateTime
     */
@@ -373,7 +373,7 @@ class Device extends DirectoryObject
 
     /**
     * Sets the onPremisesLastSyncDateTime
-    * The last time at which the object was synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z Read-only. Supports $filter (eq, ne, NOT, ge, le, in).
+    * The last time at which the object was synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z Read-only. Supports $filter (eq, ne, not, ge, le, in).
     *
     * @param \DateTime $val The onPremisesLastSyncDateTime
     *
@@ -387,7 +387,7 @@ class Device extends DirectoryObject
 
     /**
     * Gets the onPremisesSyncEnabled
-    * true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced; null if this object has never been synced from an on-premises directory (default). Read-only. Supports $filter (eq, ne, NOT, in, and eq on null values).
+    * true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced; null if this object has never been synced from an on-premises directory (default). Read-only. Supports $filter (eq, ne, not, in, and eq on null values).
     *
     * @return bool|null The onPremisesSyncEnabled
     */
@@ -402,7 +402,7 @@ class Device extends DirectoryObject
 
     /**
     * Sets the onPremisesSyncEnabled
-    * true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced; null if this object has never been synced from an on-premises directory (default). Read-only. Supports $filter (eq, ne, NOT, in, and eq on null values).
+    * true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced; null if this object has never been synced from an on-premises directory (default). Read-only. Supports $filter (eq, ne, not, in, and eq on null values).
     *
     * @param bool $val The onPremisesSyncEnabled
     *
@@ -416,7 +416,7 @@ class Device extends DirectoryObject
 
     /**
     * Gets the operatingSystem
-    * The type of operating system on the device. Required. Supports $filter (eq, ne, NOT, ge, le, startsWith, and eq on null values).
+    * The type of operating system on the device. Required. Supports $filter (eq, ne, not, ge, le, startsWith, and eq on null values).
     *
     * @return string|null The operatingSystem
     */
@@ -431,7 +431,7 @@ class Device extends DirectoryObject
 
     /**
     * Sets the operatingSystem
-    * The type of operating system on the device. Required. Supports $filter (eq, ne, NOT, ge, le, startsWith, and eq on null values).
+    * The type of operating system on the device. Required. Supports $filter (eq, ne, not, ge, le, startsWith, and eq on null values).
     *
     * @param string $val The operatingSystem
     *
@@ -445,7 +445,7 @@ class Device extends DirectoryObject
 
     /**
     * Gets the operatingSystemVersion
-    * The version of the operating system on the device. Required. Supports $filter (eq, ne, NOT, ge, le, startsWith, and eq on null values).
+    * Operating system version of the device. Required. Supports $filter (eq, ne, not, ge, le, startsWith, and eq on null values).
     *
     * @return string|null The operatingSystemVersion
     */
@@ -460,7 +460,7 @@ class Device extends DirectoryObject
 
     /**
     * Sets the operatingSystemVersion
-    * The version of the operating system on the device. Required. Supports $filter (eq, ne, NOT, ge, le, startsWith, and eq on null values).
+    * Operating system version of the device. Required. Supports $filter (eq, ne, not, ge, le, startsWith, and eq on null values).
     *
     * @param string $val The operatingSystemVersion
     *
@@ -474,7 +474,7 @@ class Device extends DirectoryObject
 
     /**
     * Gets the physicalIds
-    * For internal use only. Not nullable. Supports $filter (eq, NOT, ge, le, startsWith).
+    * For internal use only. Not nullable. Supports $filter (eq, not, ge, le, startsWith, and counting empty collections).
     *
     * @return string|null The physicalIds
     */
@@ -489,7 +489,7 @@ class Device extends DirectoryObject
 
     /**
     * Sets the physicalIds
-    * For internal use only. Not nullable. Supports $filter (eq, NOT, ge, le, startsWith).
+    * For internal use only. Not nullable. Supports $filter (eq, not, ge, le, startsWith, and counting empty collections).
     *
     * @param string $val The physicalIds
     *
@@ -532,7 +532,7 @@ class Device extends DirectoryObject
 
     /**
     * Gets the systemLabels
-    * List of labels applied to the device by the system.
+    * List of labels applied to the device by the system. Supports $filter (eq when counting empty collections).
     *
     * @return string|null The systemLabels
     */
@@ -547,7 +547,7 @@ class Device extends DirectoryObject
 
     /**
     * Sets the systemLabels
-    * List of labels applied to the device by the system.
+    * List of labels applied to the device by the system. Supports $filter (eq when counting empty collections).
     *
     * @param string $val The systemLabels
     *
@@ -561,7 +561,7 @@ class Device extends DirectoryObject
 
     /**
     * Gets the trustType
-    * Type of trust for the joined device. Read-only. Possible values:  Workplace (indicates bring your own personal devices), AzureAd (Cloud only joined devices), ServerAd (on-premises domain joined devices joined to Azure AD). For more details, see Introduction to device management in Azure Active Directory
+    * Type of trust for the joined device. Read-only. Possible values: Workplace (indicates bring your own personal devices), AzureAd (Cloud only joined devices), ServerAd (on-premises domain joined devices joined to Azure AD). For more details, see Introduction to device management in Azure Active Directory
     *
     * @return string|null The trustType
     */
@@ -576,7 +576,7 @@ class Device extends DirectoryObject
 
     /**
     * Sets the trustType
-    * Type of trust for the joined device. Read-only. Possible values:  Workplace (indicates bring your own personal devices), AzureAd (Cloud only joined devices), ServerAd (on-premises domain joined devices joined to Azure AD). For more details, see Introduction to device management in Azure Active Directory
+    * Type of trust for the joined device. Read-only. Possible values: Workplace (indicates bring your own personal devices), AzureAd (Cloud only joined devices), ServerAd (on-premises domain joined devices joined to Azure AD). For more details, see Introduction to device management in Azure Active Directory
     *
     * @param string $val The trustType
     *
@@ -591,7 +591,7 @@ class Device extends DirectoryObject
 
      /**
      * Gets the memberOf
-    * Groups that this device is a member of. Read-only. Nullable. Supports $expand.
+    * Groups and administrative units that this device is a member of. Read-only. Nullable. Supports $expand.
      *
      * @return array|null The memberOf
      */
@@ -606,9 +606,9 @@ class Device extends DirectoryObject
 
     /**
     * Sets the memberOf
-    * Groups that this device is a member of. Read-only. Nullable. Supports $expand.
+    * Groups and administrative units that this device is a member of. Read-only. Nullable. Supports $expand.
     *
-    * @param DirectoryObject $val The memberOf
+    * @param DirectoryObject[] $val The memberOf
     *
     * @return Device
     */
@@ -638,7 +638,7 @@ class Device extends DirectoryObject
     * Sets the registeredOwners
     * The user that cloud joined the device or registered their personal device. The registered owner is set at the time of registration. Currently, there can be only one owner. Read-only. Nullable. Supports $expand.
     *
-    * @param DirectoryObject $val The registeredOwners
+    * @param DirectoryObject[] $val The registeredOwners
     *
     * @return Device
     */
@@ -668,7 +668,7 @@ class Device extends DirectoryObject
     * Sets the registeredUsers
     * Collection of registered users of the device. For cloud joined devices and registered personal devices, registered users are set to the same value as registered owners at the time of registration. Read-only. Nullable. Supports $expand.
     *
-    * @param DirectoryObject $val The registeredUsers
+    * @param DirectoryObject[] $val The registeredUsers
     *
     * @return Device
     */
@@ -681,7 +681,7 @@ class Device extends DirectoryObject
 
      /**
      * Gets the transitiveMemberOf
-    * Groups that the device is a member of. This operation is transitive. Supports $expand.
+    * Groups and administrative units that this device is a member of. This operation is transitive. Supports $expand.
      *
      * @return array|null The transitiveMemberOf
      */
@@ -696,9 +696,9 @@ class Device extends DirectoryObject
 
     /**
     * Sets the transitiveMemberOf
-    * Groups that the device is a member of. This operation is transitive. Supports $expand.
+    * Groups and administrative units that this device is a member of. This operation is transitive. Supports $expand.
     *
-    * @param DirectoryObject $val The transitiveMemberOf
+    * @param DirectoryObject[] $val The transitiveMemberOf
     *
     * @return Device
     */
@@ -728,7 +728,7 @@ class Device extends DirectoryObject
     * Sets the extensions
     * The collection of open extensions defined for the device. Read-only. Nullable.
     *
-    * @param Extension $val The extensions
+    * @param Extension[] $val The extensions
     *
     * @return Device
     */

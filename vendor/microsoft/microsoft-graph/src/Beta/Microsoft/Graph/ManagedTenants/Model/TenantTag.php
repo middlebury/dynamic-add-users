@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * TenantTag File
 * PHP version 7
 *
@@ -259,7 +259,7 @@ class TenantTag extends \Beta\Microsoft\Graph\Model\Entity
     * Sets the tenants
     * The collection of managed tenants associated with the tenant tag. Optional.
     *
-    * @param TenantInfo $val The tenants
+    * @param TenantInfo[] $val The tenants
     *
     * @return TenantTag
     */

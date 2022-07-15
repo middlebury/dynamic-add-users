@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * CloudPcOverview File
 * PHP version 7
 *
@@ -491,6 +491,33 @@ class CloudPcOverview extends \Beta\Microsoft\Graph\Model\Entity
     }
 
     /**
+    * Gets the totalBusinessLicenses
+    *
+    * @return int|null The totalBusinessLicenses
+    */
+    public function getTotalBusinessLicenses()
+    {
+        if (array_key_exists("totalBusinessLicenses", $this->_propDict)) {
+            return $this->_propDict["totalBusinessLicenses"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the totalBusinessLicenses
+    *
+    * @param int $val The totalBusinessLicenses
+    *
+    * @return CloudPcOverview
+    */
+    public function setTotalBusinessLicenses($val)
+    {
+        $this->_propDict["totalBusinessLicenses"] = intval($val);
+        return $this;
+    }
+
+    /**
     * Gets the totalCloudPcConnectionStatus
     * The total number of cloud PC connection statuses for the given managed tenant. Optional. Read-only.
     *
@@ -545,6 +572,33 @@ class CloudPcOverview extends \Beta\Microsoft\Graph\Model\Entity
     public function setTotalCloudPcStatus($val)
     {
         $this->_propDict["totalCloudPcStatus"] = intval($val);
+        return $this;
+    }
+
+    /**
+    * Gets the totalEnterpriseLicenses
+    *
+    * @return int|null The totalEnterpriseLicenses
+    */
+    public function getTotalEnterpriseLicenses()
+    {
+        if (array_key_exists("totalEnterpriseLicenses", $this->_propDict)) {
+            return $this->_propDict["totalEnterpriseLicenses"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the totalEnterpriseLicenses
+    *
+    * @param int $val The totalEnterpriseLicenses
+    *
+    * @return CloudPcOverview
+    */
+    public function setTotalEnterpriseLicenses($val)
+    {
+        $this->_propDict["totalEnterpriseLicenses"] = intval($val);
         return $this;
     }
 

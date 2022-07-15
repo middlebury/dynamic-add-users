@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AndroidManagedAppProtection File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class AndroidManagedAppProtection extends TargetedManagedAppProtection
 {
     /**
     * Gets the customBrowserDisplayName
-    * Friendly name of the preferred custom browser to open weblink on Android. When this property is configured, ManagedBrowserToOpenLinksRequired should be true.
+    * Friendly name of the preferred custom browser to open weblink on Android.
     *
     * @return string|null The customBrowserDisplayName
     */
@@ -41,7 +41,7 @@ class AndroidManagedAppProtection extends TargetedManagedAppProtection
 
     /**
     * Sets the customBrowserDisplayName
-    * Friendly name of the preferred custom browser to open weblink on Android. When this property is configured, ManagedBrowserToOpenLinksRequired should be true.
+    * Friendly name of the preferred custom browser to open weblink on Android.
     *
     * @param string $val The customBrowserDisplayName
     *
@@ -55,7 +55,7 @@ class AndroidManagedAppProtection extends TargetedManagedAppProtection
 
     /**
     * Gets the customBrowserPackageId
-    * Unique identifier of the preferred custom browser to open weblink on Android. When this property is configured, ManagedBrowserToOpenLinksRequired should be true.
+    * Unique identifier of a custom browser to open weblink on Android.
     *
     * @return string|null The customBrowserPackageId
     */
@@ -70,7 +70,7 @@ class AndroidManagedAppProtection extends TargetedManagedAppProtection
 
     /**
     * Sets the customBrowserPackageId
-    * Unique identifier of the preferred custom browser to open weblink on Android. When this property is configured, ManagedBrowserToOpenLinksRequired should be true.
+    * Unique identifier of a custom browser to open weblink on Android.
     *
     * @param string $val The customBrowserPackageId
     *
@@ -276,7 +276,7 @@ class AndroidManagedAppProtection extends TargetedManagedAppProtection
     * Sets the apps
     * List of apps to which the policy is deployed.
     *
-    * @param ManagedMobileApp $val The apps
+    * @param ManagedMobileApp[] $val The apps
     *
     * @return AndroidManagedAppProtection
     */

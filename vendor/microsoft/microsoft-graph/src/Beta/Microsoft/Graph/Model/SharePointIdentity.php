@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * SharePointIdentity File
 * PHP version 7
 *
@@ -25,6 +25,7 @@ class SharePointIdentity extends Identity
 {
     /**
     * Gets the loginName
+    * The sign in name of the SharePoint identity.
     *
     * @return string|null The loginName
     */
@@ -39,6 +40,7 @@ class SharePointIdentity extends Identity
 
     /**
     * Sets the loginName
+    * The sign in name of the SharePoint identity.
     *
     * @param string $val The value of the loginName
     *

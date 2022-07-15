@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AccessPackage File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class AccessPackage extends Entity
 {
     /**
     * Gets the catalogId
-    * ID of the access package catalog referencing this access package. Read-only.
+    * Identifier of the access package catalog referencing this access package. Read-only.
     *
     * @return string|null The catalogId
     */
@@ -41,7 +41,7 @@ class AccessPackage extends Entity
 
     /**
     * Sets the catalogId
-    * ID of the access package catalog referencing this access package. Read-only.
+    * Identifier of the access package catalog referencing this access package. Read-only.
     *
     * @param string $val The catalogId
     *
@@ -55,7 +55,7 @@ class AccessPackage extends Entity
 
     /**
     * Gets the createdBy
-    * UPN of the user or identity of the subject who created this resource. Read-only.
+    * The userPrincipalName of the user or identity of the subject who created this resource. Read-only.
     *
     * @return string|null The createdBy
     */
@@ -70,7 +70,7 @@ class AccessPackage extends Entity
 
     /**
     * Sets the createdBy
-    * UPN of the user or identity of the subject who created this resource. Read-only.
+    * The userPrincipalName of the user or identity of the subject who created this resource. Read-only.
     *
     * @param string $val The createdBy
     *
@@ -146,7 +146,7 @@ class AccessPackage extends Entity
 
     /**
     * Gets the displayName
-    * The display name of the access package.
+    * The display name of the access package. Supports $filter (eq, contains).
     *
     * @return string|null The displayName
     */
@@ -161,7 +161,7 @@ class AccessPackage extends Entity
 
     /**
     * Sets the displayName
-    * The display name of the access package.
+    * The display name of the access package. Supports $filter (eq, contains).
     *
     * @param string $val The displayName
     *
@@ -233,7 +233,7 @@ class AccessPackage extends Entity
 
     /**
     * Gets the modifiedBy
-    * The UPN of the user who last modified this resource. Read-only.
+    * The userPrincipalName of the user who last modified this resource. Read-only.
     *
     * @return string|null The modifiedBy
     */
@@ -248,7 +248,7 @@ class AccessPackage extends Entity
 
     /**
     * Sets the modifiedBy
-    * The UPN of the user who last modified this resource. Read-only.
+    * The userPrincipalName of the user who last modified this resource. Read-only.
     *
     * @param string $val The modifiedBy
     *
@@ -296,7 +296,7 @@ class AccessPackage extends Entity
 
      /**
      * Gets the accessPackageAssignmentPolicies
-    * Read-only. Nullable.
+    * Read-only. Nullable. Supports $expand.
      *
      * @return array|null The accessPackageAssignmentPolicies
      */
@@ -311,9 +311,9 @@ class AccessPackage extends Entity
 
     /**
     * Sets the accessPackageAssignmentPolicies
-    * Read-only. Nullable.
+    * Read-only. Nullable. Supports $expand.
     *
-    * @param AccessPackageAssignmentPolicy $val The accessPackageAssignmentPolicies
+    * @param AccessPackageAssignmentPolicy[] $val The accessPackageAssignmentPolicies
     *
     * @return AccessPackage
     */
@@ -325,7 +325,6 @@ class AccessPackage extends Entity
 
     /**
     * Gets the accessPackageCatalog
-    * Read-only. Nullable.
     *
     * @return AccessPackageCatalog|null The accessPackageCatalog
     */
@@ -344,7 +343,6 @@ class AccessPackage extends Entity
 
     /**
     * Sets the accessPackageCatalog
-    * Read-only. Nullable.
     *
     * @param AccessPackageCatalog $val The accessPackageCatalog
     *
@@ -359,7 +357,6 @@ class AccessPackage extends Entity
 
      /**
      * Gets the accessPackageResourceRoleScopes
-    * Nullable.
      *
      * @return array|null The accessPackageResourceRoleScopes
      */
@@ -374,9 +371,8 @@ class AccessPackage extends Entity
 
     /**
     * Sets the accessPackageResourceRoleScopes
-    * Nullable.
     *
-    * @param AccessPackageResourceRoleScope $val The accessPackageResourceRoleScopes
+    * @param AccessPackageResourceRoleScope[] $val The accessPackageResourceRoleScopes
     *
     * @return AccessPackage
     */
@@ -406,7 +402,7 @@ class AccessPackage extends Entity
     * Sets the accessPackagesIncompatibleWith
     * The access packages that are incompatible with this package. Read-only.
     *
-    * @param AccessPackage $val The accessPackagesIncompatibleWith
+    * @param AccessPackage[] $val The accessPackagesIncompatibleWith
     *
     * @return AccessPackage
     */
@@ -436,7 +432,7 @@ class AccessPackage extends Entity
     * Sets the incompatibleAccessPackages
     * The  access packages whose assigned users are ineligible to be assigned this access package.
     *
-    * @param AccessPackage $val The incompatibleAccessPackages
+    * @param AccessPackage[] $val The incompatibleAccessPackages
     *
     * @return AccessPackage
     */
@@ -466,7 +462,7 @@ class AccessPackage extends Entity
     * Sets the incompatibleGroups
     * The groups whose members are ineligible to be assigned this access package.
     *
-    * @param Group $val The incompatibleGroups
+    * @param Group[] $val The incompatibleGroups
     *
     * @return AccessPackage
     */

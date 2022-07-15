@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * MacOSScepCertificateProfile File
 * PHP version 7
 *
@@ -106,7 +106,7 @@ class MacOSScepCertificateProfile extends MacOSCertificateProfileBase
     * Sets the customSubjectAlternativeNames
     * Custom Subject Alternative Name Settings. This collection can contain a maximum of 500 elements.
     *
-    * @param CustomSubjectAlternativeName $val The customSubjectAlternativeNames
+    * @param CustomSubjectAlternativeName[] $val The customSubjectAlternativeNames
     *
     * @return MacOSScepCertificateProfile
     */
@@ -136,7 +136,7 @@ class MacOSScepCertificateProfile extends MacOSCertificateProfileBase
     * Sets the extendedKeyUsages
     * Extended Key Usage (EKU) settings. This collection can contain a maximum of 500 elements.
     *
-    * @param ExtendedKeyUsage $val The extendedKeyUsages
+    * @param ExtendedKeyUsage[] $val The extendedKeyUsages
     *
     * @return MacOSScepCertificateProfile
     */
@@ -352,7 +352,7 @@ class MacOSScepCertificateProfile extends MacOSCertificateProfileBase
     * Sets the managedDeviceCertificateStates
     * Certificate state for devices. This collection can contain a maximum of 2147483647 elements.
     *
-    * @param ManagedDeviceCertificateState $val The managedDeviceCertificateStates
+    * @param ManagedDeviceCertificateState[] $val The managedDeviceCertificateStates
     *
     * @return MacOSScepCertificateProfile
     */

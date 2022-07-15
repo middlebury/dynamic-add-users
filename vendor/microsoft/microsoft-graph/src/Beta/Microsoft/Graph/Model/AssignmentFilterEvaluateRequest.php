@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AssignmentFilterEvaluateRequest File
 * PHP version 7
 *
@@ -23,6 +23,34 @@ namespace Beta\Microsoft\Graph\Model;
 */
 class AssignmentFilterEvaluateRequest extends Entity
 {
+    /**
+    * Gets the orderBy
+    * Order the devices should be sorted in. Default is ascending on device name.
+    *
+    * @return string|null The orderBy
+    */
+    public function getOrderBy()
+    {
+        if (array_key_exists("orderBy", $this->_propDict)) {
+            return $this->_propDict["orderBy"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the orderBy
+    * Order the devices should be sorted in. Default is ascending on device name.
+    *
+    * @param string $val The value of the orderBy
+    *
+    * @return AssignmentFilterEvaluateRequest
+    */
+    public function setOrderBy($val)
+    {
+        $this->_propDict["orderBy"] = $val;
+        return $this;
+    }
 
     /**
     * Gets the platform
@@ -82,6 +110,34 @@ class AssignmentFilterEvaluateRequest extends Entity
     public function setRule($val)
     {
         $this->_propDict["rule"] = $val;
+        return $this;
+    }
+    /**
+    * Gets the search
+    * Search keyword applied to scope found devices.
+    *
+    * @return string|null The search
+    */
+    public function getSearch()
+    {
+        if (array_key_exists("search", $this->_propDict)) {
+            return $this->_propDict["search"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the search
+    * Search keyword applied to scope found devices.
+    *
+    * @param string $val The value of the search
+    *
+    * @return AssignmentFilterEvaluateRequest
+    */
+    public function setSearch($val)
+    {
+        $this->_propDict["search"] = $val;
         return $this;
     }
     /**

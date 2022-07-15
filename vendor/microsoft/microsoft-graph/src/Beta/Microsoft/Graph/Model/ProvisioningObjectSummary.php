@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ProvisioningObjectSummary File
 * PHP version 7
 *
@@ -253,7 +253,7 @@ class ProvisioningObjectSummary extends Entity
     * Sets the modifiedProperties
     * Details of each property that was modified in this provisioning action on this object.
     *
-    * @param ModifiedProperty $val The modifiedProperties
+    * @param ModifiedProperty[] $val The modifiedProperties
     *
     * @return ProvisioningObjectSummary
     */
@@ -349,7 +349,7 @@ class ProvisioningObjectSummary extends Entity
     * Sets the provisioningSteps
     * Details of each step in provisioning.
     *
-    * @param ProvisioningStep $val The provisioningSteps
+    * @param ProvisioningStep[] $val The provisioningSteps
     *
     * @return ProvisioningObjectSummary
     */

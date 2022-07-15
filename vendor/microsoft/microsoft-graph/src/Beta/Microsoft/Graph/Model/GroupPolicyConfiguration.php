@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * GroupPolicyConfiguration File
 * PHP version 7
 *
@@ -197,7 +197,7 @@ class GroupPolicyConfiguration extends Entity
     * Sets the assignments
     * The list of group assignments for the configuration.
     *
-    * @param GroupPolicyConfigurationAssignment $val The assignments
+    * @param GroupPolicyConfigurationAssignment[] $val The assignments
     *
     * @return GroupPolicyConfiguration
     */
@@ -227,7 +227,7 @@ class GroupPolicyConfiguration extends Entity
     * Sets the definitionValues
     * The list of enabled or disabled group policy definition values for the configuration.
     *
-    * @param GroupPolicyDefinitionValue $val The definitionValues
+    * @param GroupPolicyDefinitionValue[] $val The definitionValues
     *
     * @return GroupPolicyConfiguration
     */

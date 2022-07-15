@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Entity File
 * PHP version 7
 *
@@ -57,7 +57,6 @@ class Entity implements \JsonSerializable
 
     /**
     * Gets the id
-    * Read-only.
     *
     * @return string|null The id
     */
@@ -72,7 +71,6 @@ class Entity implements \JsonSerializable
 
     /**
     * Sets the id
-    * Read-only.
     *
     * @param string $val The id
     *
@@ -116,6 +114,7 @@ class Entity implements \JsonSerializable
     *
     * @return array The list of properties
     */
+    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         $serializableProperties = $this->getProperties();

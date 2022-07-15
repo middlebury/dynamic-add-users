@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * UnsupportedDeviceConfiguration File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class UnsupportedDeviceConfiguration extends DeviceConfiguration
     * Sets the details
     * Details describing why the entity is unsupported. This collection can contain a maximum of 1000 elements.
     *
-    * @param UnsupportedDeviceConfigurationDetail $val The details
+    * @param UnsupportedDeviceConfigurationDetail[] $val The details
     *
     * @return UnsupportedDeviceConfiguration
     */

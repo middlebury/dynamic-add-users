@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * RiskDetail File
 * PHP version 7
 *
@@ -41,4 +41,6 @@ class RiskDetail extends Enum
     const HIDDEN = "hidden";
     const ADMIN_CONFIRMED_USER_COMPROMISED = "adminConfirmedUserCompromised";
     const UNKNOWN_FUTURE_VALUE = "unknownFutureValue";
+    const ADMIN_CONFIRMED_SERVICE_PRINCIPAL_COMPROMISED = "adminConfirmedServicePrincipalCompromised";
+    const ADMIN_DISMISSED_ALL_RISK_FOR_SERVICE_PRINCIPAL = "adminDismissedAllRiskForServicePrincipal";
 }

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ServiceHealthIssue File
 * PHP version 7
 *
@@ -226,7 +226,7 @@ class ServiceHealthIssue extends ServiceAnnouncementBase
     * Sets the posts
     * Collection of historical posts for the service issue.
     *
-    * @param ServiceHealthIssuePost $val The posts
+    * @param ServiceHealthIssuePost[] $val The posts
     *
     * @return ServiceHealthIssue
     */
@@ -267,7 +267,7 @@ class ServiceHealthIssue extends ServiceAnnouncementBase
 
     /**
     * Gets the status
-    * The status of the service issue. Possible values are: serviceOperational, investigating, restoringService, verifyingService, serviceRestored, postIncidentReviewPublished, serviceDegradation, serviceInterruption, extendedRecovery, falsePositive, investigationSuspended, resolved, mitigatedExternal, mitigated, resolvedExternal, confirmed, reported, unknownFutureValue.
+    * The status of the service issue. Possible values are: serviceOperational, investigating, restoringService, verifyingService, serviceRestored, postIncidentReviewPublished, serviceDegradation, serviceInterruption, extendedRecovery, falsePositive, investigationSuspended, resolved, mitigatedExternal, mitigated, resolvedExternal, confirmed, reported, unknownFutureValue. For more details, see serviceHealthStatus values.
     *
     * @return ServiceHealthStatus|null The status
     */
@@ -286,7 +286,7 @@ class ServiceHealthIssue extends ServiceAnnouncementBase
 
     /**
     * Sets the status
-    * The status of the service issue. Possible values are: serviceOperational, investigating, restoringService, verifyingService, serviceRestored, postIncidentReviewPublished, serviceDegradation, serviceInterruption, extendedRecovery, falsePositive, investigationSuspended, resolved, mitigatedExternal, mitigated, resolvedExternal, confirmed, reported, unknownFutureValue.
+    * The status of the service issue. Possible values are: serviceOperational, investigating, restoringService, verifyingService, serviceRestored, postIncidentReviewPublished, serviceDegradation, serviceInterruption, extendedRecovery, falsePositive, investigationSuspended, resolved, mitigatedExternal, mitigated, resolvedExternal, confirmed, reported, unknownFutureValue. For more details, see serviceHealthStatus values.
     *
     * @param ServiceHealthStatus $val The status
     *

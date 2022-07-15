@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * UserExperienceAnalyticsAppHealthDevicePerformance File
 * PHP version 7
 *
@@ -282,6 +282,39 @@ class UserExperienceAnalyticsAppHealthDevicePerformance extends Entity
     public function setDeviceModel($val)
     {
         $this->_propDict["deviceModel"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the healthStatus
+    * The health state of the user experience analytics device. Possible values are: unknown, insufficientData, needsAttention, meetingGoals.
+    *
+    * @return UserExperienceAnalyticsHealthState|null The healthStatus
+    */
+    public function getHealthStatus()
+    {
+        if (array_key_exists("healthStatus", $this->_propDict)) {
+            if (is_a($this->_propDict["healthStatus"], "\Beta\Microsoft\Graph\Model\UserExperienceAnalyticsHealthState") || is_null($this->_propDict["healthStatus"])) {
+                return $this->_propDict["healthStatus"];
+            } else {
+                $this->_propDict["healthStatus"] = new UserExperienceAnalyticsHealthState($this->_propDict["healthStatus"]);
+                return $this->_propDict["healthStatus"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the healthStatus
+    * The health state of the user experience analytics device. Possible values are: unknown, insufficientData, needsAttention, meetingGoals.
+    *
+    * @param UserExperienceAnalyticsHealthState $val The healthStatus
+    *
+    * @return UserExperienceAnalyticsAppHealthDevicePerformance
+    */
+    public function setHealthStatus($val)
+    {
+        $this->_propDict["healthStatus"] = $val;
         return $this;
     }
 

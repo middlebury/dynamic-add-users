@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ConnectionOperation File
 * PHP version 7
 *
@@ -59,7 +59,7 @@ class ConnectionOperation extends \Beta\Microsoft\Graph\Model\Entity
 
     /**
     * Gets the status
-    * Indicates the status of the asynchronous operation. Possible values are: unspecified, inprogress, completed, failed, unknownFutureValue.
+    * Indicates the status of the asynchronous operation. Possible values are: unspecified, inprogress, completed, failed.
     *
     * @return ConnectionOperationStatus|null The status
     */
@@ -78,7 +78,7 @@ class ConnectionOperation extends \Beta\Microsoft\Graph\Model\Entity
 
     /**
     * Sets the status
-    * Indicates the status of the asynchronous operation. Possible values are: unspecified, inprogress, completed, failed, unknownFutureValue.
+    * Indicates the status of the asynchronous operation. Possible values are: unspecified, inprogress, completed, failed.
     *
     * @param ConnectionOperationStatus $val The status
     *

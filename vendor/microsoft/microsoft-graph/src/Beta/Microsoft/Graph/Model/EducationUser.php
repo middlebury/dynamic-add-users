@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * EducationUser File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class EducationUser extends Entity
     * Sets the relatedContacts
     * Related records related to the user. Possible relationships are parent, relative, aide, doctor, guardian, child, other, unknownFutureValue
     *
-    * @param RelatedContact $val The relatedContacts
+    * @param RelatedContact[] $val The relatedContacts
     *
     * @return EducationUser
     */
@@ -56,7 +56,7 @@ class EducationUser extends Entity
 
     /**
     * Gets the accountEnabled
-    * True if the account is enabled; otherwise, false. This property is required when a user is created. Supports $filter.
+    * True if the account is enabled; otherwise, false. This property is required when a user is created. Supports /$filter.
     *
     * @return bool|null The accountEnabled
     */
@@ -71,7 +71,7 @@ class EducationUser extends Entity
 
     /**
     * Sets the accountEnabled
-    * True if the account is enabled; otherwise, false. This property is required when a user is created. Supports $filter.
+    * True if the account is enabled; otherwise, false. This property is required when a user is created. Supports /$filter.
     *
     * @param bool $val The accountEnabled
     *
@@ -103,7 +103,7 @@ class EducationUser extends Entity
     * Sets the assignedLicenses
     * The licenses that are assigned to the user. Not nullable.
     *
-    * @param AssignedLicense $val The assignedLicenses
+    * @param AssignedLicense[] $val The assignedLicenses
     *
     * @return EducationUser
     */
@@ -133,7 +133,7 @@ class EducationUser extends Entity
     * Sets the assignedPlans
     * The plans that are assigned to the user. Read-only. Not nullable.
     *
-    * @param AssignedPlan $val The assignedPlans
+    * @param AssignedPlan[] $val The assignedPlans
     *
     * @return EducationUser
     */
@@ -207,7 +207,7 @@ class EducationUser extends Entity
 
     /**
     * Gets the department
-    * The name for the department in which the user works. Supports $filter.
+    * The name for the department in which the user works. Supports /$filter.
     *
     * @return string|null The department
     */
@@ -222,7 +222,7 @@ class EducationUser extends Entity
 
     /**
     * Sets the department
-    * The name for the department in which the user works. Supports $filter.
+    * The name for the department in which the user works. Supports /$filter.
     *
     * @param string $val The department
     *
@@ -236,7 +236,7 @@ class EducationUser extends Entity
 
     /**
     * Gets the displayName
-    * The name displayed in the address book for the user. This is usually the combination of the user's first name, middle initial, and last name. This property is required when a user is created and it cannot be cleared during updates. Supports $filter and $orderby.
+    * The name displayed in the address book for the user. Supports $filter and $orderby.
     *
     * @return string|null The displayName
     */
@@ -251,7 +251,7 @@ class EducationUser extends Entity
 
     /**
     * Sets the displayName
-    * The name displayed in the address book for the user. This is usually the combination of the user's first name, middle initial, and last name. This property is required when a user is created and it cannot be cleared during updates. Supports $filter and $orderby.
+    * The name displayed in the address book for the user. Supports $filter and $orderby.
     *
     * @param string $val The displayName
     *
@@ -265,7 +265,7 @@ class EducationUser extends Entity
 
     /**
     * Gets the externalSource
-    * Where this user was created from. Possible values are: sis, manual.
+    * The type of external source this resource was generated from (automatically determined from externalSourceDetail). Possible values are: sis, lms, or manual.
     *
     * @return EducationExternalSource|null The externalSource
     */
@@ -284,7 +284,7 @@ class EducationUser extends Entity
 
     /**
     * Sets the externalSource
-    * Where this user was created from. Possible values are: sis, manual.
+    * The type of external source this resource was generated from (automatically determined from externalSourceDetail). Possible values are: sis, lms, or manual.
     *
     * @param EducationExternalSource $val The externalSource
     *
@@ -327,7 +327,7 @@ class EducationUser extends Entity
 
     /**
     * Gets the givenName
-    * The given name (first name) of the user. Supports $filter.
+    * The given name (first name) of the user. Supports /$filter.
     *
     * @return string|null The givenName
     */
@@ -342,7 +342,7 @@ class EducationUser extends Entity
 
     /**
     * Sets the givenName
-    * The given name (first name) of the user. Supports $filter.
+    * The given name (first name) of the user. Supports /$filter.
     *
     * @param string $val The givenName
     *
@@ -356,7 +356,7 @@ class EducationUser extends Entity
 
     /**
     * Gets the mail
-    * The SMTP address for the user; for example, jeff@contoso.onmicrosoft.com. Read-Only. Supports $filter.
+    * The SMTP address for the user; for example, 'jeff@contoso.onmicrosoft.com'. Read-Only. Supports /$filter.
     *
     * @return string|null The mail
     */
@@ -371,7 +371,7 @@ class EducationUser extends Entity
 
     /**
     * Sets the mail
-    * The SMTP address for the user; for example, jeff@contoso.onmicrosoft.com. Read-Only. Supports $filter.
+    * The SMTP address for the user; for example, 'jeff@contoso.onmicrosoft.com'. Read-Only. Supports /$filter.
     *
     * @param string $val The mail
     *
@@ -385,7 +385,7 @@ class EducationUser extends Entity
 
     /**
     * Gets the mailingAddress
-    * Mail address of user.
+    * Mail address of user. Note: type and postOfficeBox are not supported for educationUser resources.
     *
     * @return PhysicalAddress|null The mailingAddress
     */
@@ -404,7 +404,7 @@ class EducationUser extends Entity
 
     /**
     * Sets the mailingAddress
-    * Mail address of user.
+    * Mail address of user. Note: type and postOfficeBox are not supported for educationUser resources.
     *
     * @param PhysicalAddress $val The mailingAddress
     *
@@ -418,7 +418,7 @@ class EducationUser extends Entity
 
     /**
     * Gets the mailNickname
-    * The mail alias for the user. This property must be specified when a user is created. Supports $filter.
+    * The mail alias for the user. This property must be specified when a user is created. Supports /$filter.
     *
     * @return string|null The mailNickname
     */
@@ -433,7 +433,7 @@ class EducationUser extends Entity
 
     /**
     * Sets the mailNickname
-    * The mail alias for the user. This property must be specified when a user is created. Supports $filter.
+    * The mail alias for the user. This property must be specified when a user is created. Supports /$filter.
     *
     * @param string $val The mailNickname
     *
@@ -532,7 +532,7 @@ class EducationUser extends Entity
 
     /**
     * Gets the onPremisesInfo
-    * Additional information used to associate the Azure AD user with its Active Directory counterpart.
+    * Additional information used to associate the AAD user with it's Active Directory counterpart.
     *
     * @return EducationOnPremisesInfo|null The onPremisesInfo
     */
@@ -551,7 +551,7 @@ class EducationUser extends Entity
 
     /**
     * Sets the onPremisesInfo
-    * Additional information used to associate the Azure AD user with its Active Directory counterpart.
+    * Additional information used to associate the AAD user with it's Active Directory counterpart.
     *
     * @param EducationOnPremisesInfo $val The onPremisesInfo
     *
@@ -565,7 +565,7 @@ class EducationUser extends Entity
 
     /**
     * Gets the passwordPolicies
-    * Specifies password policies for the user. This value is an enumeration with one possible value being DisableStrongPassword, which allows weaker passwords than the default policy to be specified. DisablePasswordExpiration can also be specified. The two can be specified together; for example: DisablePasswordExpiration, DisableStrongPassword.
+    * Specifies password policies for the user. See standard [user] resource for additional details.
     *
     * @return string|null The passwordPolicies
     */
@@ -580,7 +580,7 @@ class EducationUser extends Entity
 
     /**
     * Sets the passwordPolicies
-    * Specifies password policies for the user. This value is an enumeration with one possible value being DisableStrongPassword, which allows weaker passwords than the default policy to be specified. DisablePasswordExpiration can also be specified. The two can be specified together; for example: DisablePasswordExpiration, DisableStrongPassword.
+    * Specifies password policies for the user. See standard [user] resource for additional details.
     *
     * @param string $val The passwordPolicies
     *
@@ -594,7 +594,7 @@ class EducationUser extends Entity
 
     /**
     * Gets the passwordProfile
-    * Specifies the password profile for the user. The profile contains the user's password. This property is required when a user is created. The password in the profile must satisfy minimum requirements as specified by the passwordPolicies property. By default, a strong password is required.
+    * Specifies the password profile for the user. The profile contains the user's password. This property is required when a user is created. See standard [user] resource for additional details.
     *
     * @return PasswordProfile|null The passwordProfile
     */
@@ -613,7 +613,7 @@ class EducationUser extends Entity
 
     /**
     * Sets the passwordProfile
-    * Specifies the password profile for the user. The profile contains the user's password. This property is required when a user is created. The password in the profile must satisfy minimum requirements as specified by the passwordPolicies property. By default, a strong password is required.
+    * Specifies the password profile for the user. The profile contains the user's password. This property is required when a user is created. See standard [user] resource for additional details.
     *
     * @param PasswordProfile $val The passwordProfile
     *
@@ -656,7 +656,7 @@ class EducationUser extends Entity
 
     /**
     * Gets the primaryRole
-    * Default role for a user. The user's role might be different in an individual class. Possible values are: student, teacher, none, unknownFutureValue.
+    * Default role for a user. The user's role might be different in an individual class. Possible values are: student, teacher, faculty. Supports /$filter.
     *
     * @return EducationUserRole|null The primaryRole
     */
@@ -675,7 +675,7 @@ class EducationUser extends Entity
 
     /**
     * Sets the primaryRole
-    * Default role for a user. The user's role might be different in an individual class. Possible values are: student, teacher, none, unknownFutureValue.
+    * Default role for a user. The user's role might be different in an individual class. Possible values are: student, teacher, faculty. Supports /$filter.
     *
     * @param EducationUserRole $val The primaryRole
     *
@@ -707,7 +707,7 @@ class EducationUser extends Entity
     * Sets the provisionedPlans
     * The plans that are provisioned for the user. Read-only. Not nullable.
     *
-    * @param ProvisionedPlan $val The provisionedPlans
+    * @param ProvisionedPlan[] $val The provisionedPlans
     *
     * @return EducationUser
     */
@@ -750,7 +750,7 @@ class EducationUser extends Entity
 
     /**
     * Gets the residenceAddress
-    * Address where user lives.
+    * Address where user lives. Note: type and postOfficeBox are not supported for educationUser resources.
     *
     * @return PhysicalAddress|null The residenceAddress
     */
@@ -769,7 +769,7 @@ class EducationUser extends Entity
 
     /**
     * Sets the residenceAddress
-    * Address where user lives.
+    * Address where user lives. Note: type and postOfficeBox are not supported for educationUser resources.
     *
     * @param PhysicalAddress $val The residenceAddress
     *
@@ -783,7 +783,7 @@ class EducationUser extends Entity
 
     /**
     * Gets the showInAddressList
-    * true if the Outlook global address list should contain this user, otherwise false. If not set, this will be treated as true. For users invited through the invitation manager, this property will be set to false.
+    * True if the Outlook Global Address List should contain this user; otherwise, false. If not set, this will be treated as true. For users invited through the invitation manager, this property will be set to false.
     *
     * @return bool|null The showInAddressList
     */
@@ -798,7 +798,7 @@ class EducationUser extends Entity
 
     /**
     * Sets the showInAddressList
-    * true if the Outlook global address list should contain this user, otherwise false. If not set, this will be treated as true. For users invited through the invitation manager, this property will be set to false.
+    * True if the Outlook Global Address List should contain this user; otherwise, false. If not set, this will be treated as true. For users invited through the invitation manager, this property will be set to false.
     *
     * @param bool $val The showInAddressList
     *
@@ -845,7 +845,7 @@ class EducationUser extends Entity
 
     /**
     * Gets the surname
-    * The user's surname (family name or last name). Supports $filter.
+    * The user's surname (family name or last name). Supports /$filter.
     *
     * @return string|null The surname
     */
@@ -860,7 +860,7 @@ class EducationUser extends Entity
 
     /**
     * Sets the surname
-    * The user's surname (family name or last name). Supports $filter.
+    * The user's surname (family name or last name). Supports /$filter.
     *
     * @param string $val The surname
     *
@@ -907,7 +907,7 @@ class EducationUser extends Entity
 
     /**
     * Gets the usageLocation
-    * A two-letter country code (ISO standard 3166). Required for users who will be assigned licenses due to a legal requirement to check for availability of services in countries or regions. Examples include: 'US', 'JP', and 'GB'. Not nullable. Supports $filter.
+    * A two-letter country code ([ISO 3166 Alpha-2]). Required for users who will be assigned licenses. Not nullable. Supports /$filter.
     *
     * @return string|null The usageLocation
     */
@@ -922,7 +922,7 @@ class EducationUser extends Entity
 
     /**
     * Sets the usageLocation
-    * A two-letter country code (ISO standard 3166). Required for users who will be assigned licenses due to a legal requirement to check for availability of services in countries or regions. Examples include: 'US', 'JP', and 'GB'. Not nullable. Supports $filter.
+    * A two-letter country code ([ISO 3166 Alpha-2]). Required for users who will be assigned licenses. Not nullable. Supports /$filter.
     *
     * @param string $val The usageLocation
     *
@@ -936,7 +936,7 @@ class EducationUser extends Entity
 
     /**
     * Gets the userPrincipalName
-    * The user principal name (UPN) of the user. The UPN is an Internet-style login name for the user based on the Internet standard RFC 822. By convention, this should map to the user's email name. The general format is alias@domain, where domain must be present in the tenant's collection of verified domains. This property is required when a user is created. The verified domains for the tenant can be accessed from the verifiedDomains property of organization. Supports $filter and $orderby.
+    * The user principal name (UPN) for the user. Supports $filter and $orderby. See standard [user] resource for additional details.
     *
     * @return string|null The userPrincipalName
     */
@@ -951,7 +951,7 @@ class EducationUser extends Entity
 
     /**
     * Sets the userPrincipalName
-    * The user principal name (UPN) of the user. The UPN is an Internet-style login name for the user based on the Internet standard RFC 822. By convention, this should map to the user's email name. The general format is alias@domain, where domain must be present in the tenant's collection of verified domains. This property is required when a user is created. The verified domains for the tenant can be accessed from the verifiedDomains property of organization. Supports $filter and $orderby.
+    * The user principal name (UPN) for the user. Supports $filter and $orderby. See standard [user] resource for additional details.
     *
     * @param string $val The userPrincipalName
     *
@@ -965,7 +965,7 @@ class EducationUser extends Entity
 
     /**
     * Gets the userType
-    * A string value that can be used to classify user types in your directory, such as 'Member' and 'Guest'. Supports $filter.
+    * A string value that can be used to classify user types in your directory, such as 'Member' and 'Guest'. Supports /$filter.
     *
     * @return string|null The userType
     */
@@ -980,7 +980,7 @@ class EducationUser extends Entity
 
     /**
     * Sets the userType
-    * A string value that can be used to classify user types in your directory, such as 'Member' and 'Guest'. Supports $filter.
+    * A string value that can be used to classify user types in your directory, such as 'Member' and 'Guest'. Supports /$filter.
     *
     * @param string $val The userType
     *
@@ -1012,7 +1012,7 @@ class EducationUser extends Entity
     * Sets the assignments
     * List of assignments for the user. Nullable.
     *
-    * @param EducationAssignment $val The assignments
+    * @param EducationAssignment[] $val The assignments
     *
     * @return EducationUser
     */
@@ -1025,6 +1025,7 @@ class EducationUser extends Entity
 
      /**
      * Gets the rubrics
+    * When set, the grading rubric attached to the assignment.
      *
      * @return array|null The rubrics
      */
@@ -1039,8 +1040,9 @@ class EducationUser extends Entity
 
     /**
     * Sets the rubrics
+    * When set, the grading rubric attached to the assignment.
     *
-    * @param EducationRubric $val The rubrics
+    * @param EducationRubric[] $val The rubrics
     *
     * @return EducationUser
     */
@@ -1070,7 +1072,7 @@ class EducationUser extends Entity
     * Sets the classes
     * Classes to which the user belongs. Nullable.
     *
-    * @param EducationClass $val The classes
+    * @param EducationClass[] $val The classes
     *
     * @return EducationUser
     */
@@ -1100,7 +1102,7 @@ class EducationUser extends Entity
     * Sets the schools
     * Schools to which the user belongs. Nullable.
     *
-    * @param EducationSchool $val The schools
+    * @param EducationSchool[] $val The schools
     *
     * @return EducationUser
     */
@@ -1130,7 +1132,7 @@ class EducationUser extends Entity
     * Sets the taughtClasses
     * Classes for which the user is a teacher.
     *
-    * @param EducationClass $val The taughtClasses
+    * @param EducationClass[] $val The taughtClasses
     *
     * @return EducationUser
     */
@@ -1142,7 +1144,7 @@ class EducationUser extends Entity
 
     /**
     * Gets the user
-    * The directory user corresponding to this user.
+    * The directory user that corresponds to this user.
     *
     * @return User|null The user
     */
@@ -1161,7 +1163,7 @@ class EducationUser extends Entity
 
     /**
     * Sets the user
-    * The directory user corresponding to this user.
+    * The directory user that corresponds to this user.
     *
     * @param User $val The user
     *

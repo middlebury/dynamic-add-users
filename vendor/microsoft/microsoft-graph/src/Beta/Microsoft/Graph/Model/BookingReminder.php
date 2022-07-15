@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * BookingReminder File
 * PHP version 7
 *
@@ -87,7 +87,7 @@ class BookingReminder extends Entity
 
     /**
     * Gets the recipients
-    * The persons who shouold receive the reminder. Possible values are: allAttendees, staff, customer.
+    * The persons who should receive the reminder. Possible values are: allAttendees, staff, customer and unknownFutureValue.
     *
     * @return BookingReminderRecipients|null The recipients
     */
@@ -106,7 +106,7 @@ class BookingReminder extends Entity
 
     /**
     * Sets the recipients
-    * The persons who shouold receive the reminder. Possible values are: allAttendees, staff, customer.
+    * The persons who should receive the reminder. Possible values are: allAttendees, staff, customer and unknownFutureValue.
     *
     * @param BookingReminderRecipients $val The value to assign to the recipients
     *

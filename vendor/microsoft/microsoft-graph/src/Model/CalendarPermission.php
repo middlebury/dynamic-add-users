@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * CalendarPermission File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class CalendarPermission extends Entity
     * Sets the allowedRoles
     * List of allowed sharing or delegating permission levels for the calendar. Possible values are: none, freeBusyRead, limitedRead, read, write, delegateWithoutPrivateEventAccess, delegateWithPrivateEventAccess, custom.
     *
-    * @param CalendarRoleType $val The allowedRoles
+    * @param CalendarRoleType[] $val The allowedRoles
     *
     * @return CalendarPermission
     */

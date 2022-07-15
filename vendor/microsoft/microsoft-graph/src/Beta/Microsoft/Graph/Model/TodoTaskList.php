@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * TodoTaskList File
 * PHP version 7
 *
@@ -164,7 +164,7 @@ class TodoTaskList extends Entity
     * Sets the extensions
     * The collection of open extensions defined for the task list. Nullable.
     *
-    * @param Extension $val The extensions
+    * @param Extension[] $val The extensions
     *
     * @return TodoTaskList
     */
@@ -194,7 +194,7 @@ class TodoTaskList extends Entity
     * Sets the tasks
     * The tasks in this task list. Read-only. Nullable.
     *
-    * @param TodoTask $val The tasks
+    * @param TodoTask[] $val The tasks
     *
     * @return TodoTaskList
     */

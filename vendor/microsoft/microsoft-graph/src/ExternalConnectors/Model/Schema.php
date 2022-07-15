@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Schema File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class Schema extends \Microsoft\Graph\Model\Entity
 {
     /**
     * Gets the baseType
-    * Must be set to microsoft.graph.externalConnector.externalItem. Required.
+    * Must be set to microsoft.graph.externalItem. Required.
     *
     * @return string|null The baseType
     */
@@ -41,7 +41,7 @@ class Schema extends \Microsoft\Graph\Model\Entity
 
     /**
     * Sets the baseType
-    * Must be set to microsoft.graph.externalConnector.externalItem. Required.
+    * Must be set to microsoft.graph.externalItem. Required.
     *
     * @param string $val The baseType
     *
@@ -73,7 +73,7 @@ class Schema extends \Microsoft\Graph\Model\Entity
     * Sets the schemaProperties
     * The properties defined for the items in the connection. The minimum number of properties is one, the maximum is 128.
     *
-    * @param Property $val The schemaProperties
+    * @param Property[] $val The schemaProperties
     *
     * @return Schema
     */

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ManagementTemplateDeploymentStatus File
 * PHP version 7
 *
@@ -29,14 +29,10 @@ class ManagementTemplateDeploymentStatus extends Enum
     /**
     * The Enum ManagementTemplateDeploymentStatus
     */
-    const TO_ADDRESS = "toAddress";
-    const COMPLETED = "completed";
-    const ERROR = "error";
-    const TIME_OUT = "timeOut";
+    const UNKNOWN = "unknown";
     const IN_PROGRESS = "inProgress";
-    const PLANNED = "planned";
-    const RESOLVED_BY3RD_PARTY = "resolvedBy3rdParty";
-    const RESOLVED_THROUGH_ALTERNATE_MITIGATION = "resolvedThroughAlternateMitigation";
-    const RISK_ACCEPTED = "riskAccepted";
+    const COMPLETED = "completed";
+    const FAILED = "failed";
+    const INELIGIBLE = "ineligible";
     const UNKNOWN_FUTURE_VALUE = "unknownFutureValue";
 }

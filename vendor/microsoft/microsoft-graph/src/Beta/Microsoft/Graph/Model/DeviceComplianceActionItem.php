@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceComplianceActionItem File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class DeviceComplianceActionItem extends Entity
 {
     /**
     * Gets the actionType
-    * What action to take. Possible values are: noAction, notification, block, retire, wipe, removeResourceAccessProfiles, pushNotification.
+    * What action to take. Possible values are: noAction, notification, block, retire, wipe, removeResourceAccessProfiles, pushNotification, remoteLock.
     *
     * @return DeviceComplianceActionType|null The actionType
     */
@@ -45,7 +45,7 @@ class DeviceComplianceActionItem extends Entity
 
     /**
     * Sets the actionType
-    * What action to take. Possible values are: noAction, notification, block, retire, wipe, removeResourceAccessProfiles, pushNotification.
+    * What action to take. Possible values are: noAction, notification, block, retire, wipe, removeResourceAccessProfiles, pushNotification, remoteLock.
     *
     * @param DeviceComplianceActionType $val The actionType
     *

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceManagementTemplate File
 * PHP version 7
 *
@@ -321,7 +321,7 @@ class DeviceManagementTemplate extends Entity
     * Sets the categories
     * Collection of setting categories within the template
     *
-    * @param DeviceManagementTemplateSettingCategory $val The categories
+    * @param DeviceManagementTemplateSettingCategory[] $val The categories
     *
     * @return DeviceManagementTemplate
     */
@@ -351,7 +351,7 @@ class DeviceManagementTemplate extends Entity
     * Sets the migratableTo
     * Collection of templates this template can migrate to
     *
-    * @param DeviceManagementTemplate $val The migratableTo
+    * @param DeviceManagementTemplate[] $val The migratableTo
     *
     * @return DeviceManagementTemplate
     */
@@ -381,7 +381,7 @@ class DeviceManagementTemplate extends Entity
     * Sets the settings
     * Collection of all settings this template has
     *
-    * @param DeviceManagementSettingInstance $val The settings
+    * @param DeviceManagementSettingInstance[] $val The settings
     *
     * @return DeviceManagementTemplate
     */

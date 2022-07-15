@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * B2xIdentityUserFlow File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class B2xIdentityUserFlow extends IdentityUserFlow
 {
     /**
     * Gets the apiConnectorConfiguration
-    * Configuration for enabling an API connector for use as part of the self-service sign-up user flow. You can only obtain the value of this object using Get userFlowApiConnectorConfiguration.
+    * Configuration for enabling an API connector for use as part of the self-service sign up user flow. You can only obtain the value of this object using Get userFlowApiConnectorConfiguration.
     *
     * @return UserFlowApiConnectorConfiguration|null The apiConnectorConfiguration
     */
@@ -45,7 +45,7 @@ class B2xIdentityUserFlow extends IdentityUserFlow
 
     /**
     * Sets the apiConnectorConfiguration
-    * Configuration for enabling an API connector for use as part of the self-service sign-up user flow. You can only obtain the value of this object using Get userFlowApiConnectorConfiguration.
+    * Configuration for enabling an API connector for use as part of the self-service sign up user flow. You can only obtain the value of this object using Get userFlowApiConnectorConfiguration.
     *
     * @param UserFlowApiConnectorConfiguration $val The apiConnectorConfiguration
     *
@@ -77,7 +77,7 @@ class B2xIdentityUserFlow extends IdentityUserFlow
     * Sets the identityProviders
     * The identity providers included in the user flow.
     *
-    * @param IdentityProvider $val The identityProviders
+    * @param IdentityProvider[] $val The identityProviders
     *
     * @return B2xIdentityUserFlow
     */
@@ -90,7 +90,7 @@ class B2xIdentityUserFlow extends IdentityUserFlow
 
      /**
      * Gets the languages
-    * The languages supported for customization within the user flow. Language customization is enabled by default in self-service sign-up user flow. You cannot create custom languages in self-service sign-up user flows.
+    * The languages supported for customization within the user flow. Language customization is enabled by default in self-service sign up user flow. You cannot create custom languages in self-service sign up user flows.
      *
      * @return array|null The languages
      */
@@ -105,9 +105,9 @@ class B2xIdentityUserFlow extends IdentityUserFlow
 
     /**
     * Sets the languages
-    * The languages supported for customization within the user flow. Language customization is enabled by default in self-service sign-up user flow. You cannot create custom languages in self-service sign-up user flows.
+    * The languages supported for customization within the user flow. Language customization is enabled by default in self-service sign up user flow. You cannot create custom languages in self-service sign up user flows.
     *
-    * @param UserFlowLanguageConfiguration $val The languages
+    * @param UserFlowLanguageConfiguration[] $val The languages
     *
     * @return B2xIdentityUserFlow
     */
@@ -137,7 +137,7 @@ class B2xIdentityUserFlow extends IdentityUserFlow
     * Sets the userAttributeAssignments
     * The user attribute assignments included in the user flow.
     *
-    * @param IdentityUserFlowAttributeAssignment $val The userAttributeAssignments
+    * @param IdentityUserFlowAttributeAssignment[] $val The userAttributeAssignments
     *
     * @return B2xIdentityUserFlow
     */
@@ -165,7 +165,7 @@ class B2xIdentityUserFlow extends IdentityUserFlow
     /**
     * Sets the userFlowIdentityProviders
     *
-    * @param IdentityProviderBase $val The userFlowIdentityProviders
+    * @param IdentityProviderBase[] $val The userFlowIdentityProviders
     *
     * @return B2xIdentityUserFlow
     */

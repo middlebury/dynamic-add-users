@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * GraphList File
 * PHP version 7
 *
@@ -172,7 +172,7 @@ class GraphList extends BaseItem
     * Sets the columns
     * The collection of field definitions for this list.
     *
-    * @param ColumnDefinition $val The columns
+    * @param ColumnDefinition[] $val The columns
     *
     * @return GraphList
     */
@@ -202,7 +202,7 @@ class GraphList extends BaseItem
     * Sets the contentTypes
     * The collection of content types present in this list.
     *
-    * @param ContentType $val The contentTypes
+    * @param ContentType[] $val The contentTypes
     *
     * @return GraphList
     */
@@ -265,13 +265,43 @@ class GraphList extends BaseItem
     * Sets the items
     * All items contained in the list.
     *
-    * @param ListItem $val The items
+    * @param ListItem[] $val The items
     *
     * @return GraphList
     */
     public function setItems($val)
     {
         $this->_propDict["items"] = $val;
+        return $this;
+    }
+
+
+     /**
+     * Gets the operations
+    * The collection of long running operations for the list.
+     *
+     * @return array|null The operations
+     */
+    public function getOperations()
+    {
+        if (array_key_exists("operations", $this->_propDict)) {
+           return $this->_propDict["operations"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the operations
+    * The collection of long running operations for the list.
+    *
+    * @param RichLongRunningOperation[] $val The operations
+    *
+    * @return GraphList
+    */
+    public function setOperations($val)
+    {
+        $this->_propDict["operations"] = $val;
         return $this;
     }
 
@@ -295,7 +325,7 @@ class GraphList extends BaseItem
     * Sets the subscriptions
     * The set of subscriptions on the list.
     *
-    * @param Subscription $val The subscriptions
+    * @param Subscription[] $val The subscriptions
     *
     * @return GraphList
     */

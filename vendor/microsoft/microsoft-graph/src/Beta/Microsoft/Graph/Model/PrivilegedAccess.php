@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * PrivilegedAccess File
 * PHP version 7
 *
@@ -73,7 +73,7 @@ class PrivilegedAccess extends Entity
     * Sets the resources
     * A collection of resources for the provider.
     *
-    * @param GovernanceResource $val The resources
+    * @param GovernanceResource[] $val The resources
     *
     * @return PrivilegedAccess
     */
@@ -103,7 +103,7 @@ class PrivilegedAccess extends Entity
     * Sets the roleAssignmentRequests
     * A collection of role assignment requests for the provider.
     *
-    * @param GovernanceRoleAssignmentRequest $val The roleAssignmentRequests
+    * @param GovernanceRoleAssignmentRequest[] $val The roleAssignmentRequests
     *
     * @return PrivilegedAccess
     */
@@ -133,7 +133,7 @@ class PrivilegedAccess extends Entity
     * Sets the roleAssignments
     * A collection of role assignments for the provider.
     *
-    * @param GovernanceRoleAssignment $val The roleAssignments
+    * @param GovernanceRoleAssignment[] $val The roleAssignments
     *
     * @return PrivilegedAccess
     */
@@ -163,7 +163,7 @@ class PrivilegedAccess extends Entity
     * Sets the roleDefinitions
     * A collection of role defintions for the provider.
     *
-    * @param GovernanceRoleDefinition $val The roleDefinitions
+    * @param GovernanceRoleDefinition[] $val The roleDefinitions
     *
     * @return PrivilegedAccess
     */
@@ -193,7 +193,7 @@ class PrivilegedAccess extends Entity
     * Sets the roleSettings
     * A collection of role settings for the provider.
     *
-    * @param GovernanceRoleSetting $val The roleSettings
+    * @param GovernanceRoleSetting[] $val The roleSettings
     *
     * @return PrivilegedAccess
     */

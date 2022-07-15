@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Fido2AuthenticationMethod File
 * PHP version 7
 *
@@ -84,7 +84,7 @@ class Fido2AuthenticationMethod extends AuthenticationMethod
 
     /**
     * Gets the attestationLevel
-    * The attestation level of this FIDO2 security key. Possible values are: attested, or notAttested.
+    * The attestation level of this FIDO2 security key. Possible values are: attested, notAttested, unknownFutureValue.
     *
     * @return AttestationLevel|null The attestationLevel
     */
@@ -103,7 +103,7 @@ class Fido2AuthenticationMethod extends AuthenticationMethod
 
     /**
     * Sets the attestationLevel
-    * The attestation level of this FIDO2 security key. Possible values are: attested, or notAttested.
+    * The attestation level of this FIDO2 security key. Possible values are: attested, notAttested, unknownFutureValue.
     *
     * @param AttestationLevel $val The attestationLevel
     *

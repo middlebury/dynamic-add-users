@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Site File
 * PHP version 7
 *
@@ -236,7 +236,7 @@ class Site extends BaseItem
     * Sets the columns
     * The collection of column definitions reusable across lists under this site.
     *
-    * @param ColumnDefinition $val The columns
+    * @param ColumnDefinition[] $val The columns
     *
     * @return Site
     */
@@ -266,7 +266,7 @@ class Site extends BaseItem
     * Sets the contentTypes
     * The collection of content types defined for this site.
     *
-    * @param ContentType $val The contentTypes
+    * @param ContentType[] $val The contentTypes
     *
     * @return Site
     */
@@ -329,7 +329,7 @@ class Site extends BaseItem
     * Sets the drives
     * The collection of drives (document libraries) under this site.
     *
-    * @param Drive $val The drives
+    * @param Drive[] $val The drives
     *
     * @return Site
     */
@@ -359,7 +359,7 @@ class Site extends BaseItem
     * Sets the externalColumns
     * The collection of column definitions available in the site that are referenced from the sites in the parent hierarchy of the current site.
     *
-    * @param ColumnDefinition $val The externalColumns
+    * @param ColumnDefinition[] $val The externalColumns
     *
     * @return Site
     */
@@ -372,7 +372,7 @@ class Site extends BaseItem
 
      /**
      * Gets the items
-    * Used to address any item contained in this site. This collection can't be enumerated.
+    * Used to address any item contained in this site. This collection cannot be enumerated.
      *
      * @return array|null The items
      */
@@ -387,9 +387,9 @@ class Site extends BaseItem
 
     /**
     * Sets the items
-    * Used to address any item contained in this site. This collection can't be enumerated.
+    * Used to address any item contained in this site. This collection cannot be enumerated.
     *
-    * @param BaseItem $val The items
+    * @param BaseItem[] $val The items
     *
     * @return Site
     */
@@ -419,13 +419,43 @@ class Site extends BaseItem
     * Sets the lists
     * The collection of lists under this site.
     *
-    * @param GraphList $val The lists
+    * @param GraphList[] $val The lists
     *
     * @return Site
     */
     public function setLists($val)
     {
         $this->_propDict["lists"] = $val;
+        return $this;
+    }
+
+
+     /**
+     * Gets the operations
+    * The collection of long running operations for the site.
+     *
+     * @return array|null The operations
+     */
+    public function getOperations()
+    {
+        if (array_key_exists("operations", $this->_propDict)) {
+           return $this->_propDict["operations"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the operations
+    * The collection of long running operations for the site.
+    *
+    * @param RichLongRunningOperation[] $val The operations
+    *
+    * @return Site
+    */
+    public function setOperations($val)
+    {
+        $this->_propDict["operations"] = $val;
         return $this;
     }
 
@@ -449,7 +479,7 @@ class Site extends BaseItem
     * Sets the permissions
     * The permissions associated with the site. Nullable.
     *
-    * @param Permission $val The permissions
+    * @param Permission[] $val The permissions
     *
     * @return Site
     */
@@ -479,7 +509,7 @@ class Site extends BaseItem
     * Sets the sites
     * The collection of the sub-sites under this site.
     *
-    * @param Site $val The sites
+    * @param Site[] $val The sites
     *
     * @return Site
     */
@@ -491,7 +521,7 @@ class Site extends BaseItem
 
     /**
     * Gets the termStore
-    * The default termStore under this site.
+    * The termStore under this site.
     *
     * @return \Microsoft\Graph\TermStore\Model\Store|null The termStore
     */
@@ -510,7 +540,7 @@ class Site extends BaseItem
 
     /**
     * Sets the termStore
-    * The default termStore under this site.
+    * The termStore under this site.
     *
     * @param \Microsoft\Graph\TermStore\Model\Store $val The termStore
     *
@@ -542,7 +572,7 @@ class Site extends BaseItem
     * Sets the termStores
     * The collection of termStores under this site.
     *
-    * @param \Microsoft\Graph\TermStore\Model\Store $val The termStores
+    * @param \Microsoft\Graph\TermStore\Model\Store[] $val The termStores
     *
     * @return Site
     */

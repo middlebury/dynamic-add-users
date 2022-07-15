@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * PlannerUser File
 * PHP version 7
 *
@@ -108,7 +108,7 @@ class PlannerUser extends PlannerDelta
     /**
     * Sets the all
     *
-    * @param PlannerDelta $val The all
+    * @param PlannerDelta[] $val The all
     *
     * @return PlannerUser
     */
@@ -138,7 +138,7 @@ class PlannerUser extends PlannerDelta
     * Sets the favoritePlans
     * Read-only. Nullable. Returns the plannerPlans that the user marked as favorites.
     *
-    * @param PlannerPlan $val The favoritePlans
+    * @param PlannerPlan[] $val The favoritePlans
     *
     * @return PlannerUser
     */
@@ -168,7 +168,7 @@ class PlannerUser extends PlannerDelta
     * Sets the plans
     * Read-only. Nullable. Returns the plannerTasks assigned to the user.
     *
-    * @param PlannerPlan $val The plans
+    * @param PlannerPlan[] $val The plans
     *
     * @return PlannerUser
     */
@@ -198,7 +198,7 @@ class PlannerUser extends PlannerDelta
     * Sets the recentPlans
     * Read-only. Nullable. Returns the plannerPlans that have been recently viewed by the user in apps that support recent plans.
     *
-    * @param PlannerPlan $val The recentPlans
+    * @param PlannerPlan[] $val The recentPlans
     *
     * @return PlannerUser
     */
@@ -228,7 +228,7 @@ class PlannerUser extends PlannerDelta
     * Sets the rosterPlans
     * Read-only. Nullable. Returns the plannerPlans contained by the plannerRosters the user is a member.
     *
-    * @param PlannerPlan $val The rosterPlans
+    * @param PlannerPlan[] $val The rosterPlans
     *
     * @return PlannerUser
     */
@@ -241,7 +241,7 @@ class PlannerUser extends PlannerDelta
 
      /**
      * Gets the tasks
-    * Read-only. Nullable. Returns the plannerPlans shared with the user.
+    * Read-only. Nullable. Returns the plannerTasks assigned to the user.
      *
      * @return array|null The tasks
      */
@@ -256,9 +256,9 @@ class PlannerUser extends PlannerDelta
 
     /**
     * Sets the tasks
-    * Read-only. Nullable. Returns the plannerPlans shared with the user.
+    * Read-only. Nullable. Returns the plannerTasks assigned to the user.
     *
-    * @param PlannerTask $val The tasks
+    * @param PlannerTask[] $val The tasks
     *
     * @return PlannerUser
     */

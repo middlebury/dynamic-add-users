@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * RecurrenceRange File
 * PHP version 7
 *
@@ -148,7 +148,7 @@ class RecurrenceRange extends Entity
 
     /**
     * Gets the type
-    * The recurrence range. The possible values are: endDate, noEnd, numbered. Required.
+    * The recurrence range. Possible values are: endDate, noEnd, numbered. Required.
     *
     * @return RecurrenceRangeType|null The type
     */
@@ -167,7 +167,7 @@ class RecurrenceRange extends Entity
 
     /**
     * Sets the type
-    * The recurrence range. The possible values are: endDate, noEnd, numbered. Required.
+    * The recurrence range. Possible values are: endDate, noEnd, numbered. Required.
     *
     * @param RecurrenceRangeType $val The value to assign to the type
     *

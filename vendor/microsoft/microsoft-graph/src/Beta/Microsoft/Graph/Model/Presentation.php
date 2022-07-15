@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Presentation File
 * PHP version 7
 *
@@ -42,7 +42,7 @@ class Presentation extends Entity
     /**
     * Sets the comments
     *
-    * @param DocumentComment $val The comments
+    * @param DocumentComment[] $val The comments
     *
     * @return Presentation
     */

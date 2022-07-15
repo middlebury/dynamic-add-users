@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceAndAppManagementRoleAssignment File
 * PHP version 7
 *
@@ -73,7 +73,7 @@ class DeviceAndAppManagementRoleAssignment extends RoleAssignment
     * Sets the roleScopeTags
     * The set of Role Scope Tags defined on the Role Assignment.
     *
-    * @param RoleScopeTag $val The roleScopeTags
+    * @param RoleScopeTag[] $val The roleScopeTags
     *
     * @return DeviceAndAppManagementRoleAssignment
     */

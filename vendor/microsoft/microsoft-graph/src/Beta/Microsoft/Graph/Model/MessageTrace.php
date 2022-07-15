@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * MessageTrace File
 * PHP version 7
 *
@@ -235,7 +235,7 @@ class MessageTrace extends Entity
     /**
     * Sets the recipients
     *
-    * @param MessageRecipient $val The recipients
+    * @param MessageRecipient[] $val The recipients
     *
     * @return MessageTrace
     */

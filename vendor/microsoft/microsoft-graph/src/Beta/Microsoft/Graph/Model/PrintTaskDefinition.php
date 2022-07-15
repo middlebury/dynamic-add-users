@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * PrintTaskDefinition File
 * PHP version 7
 *
@@ -106,7 +106,7 @@ class PrintTaskDefinition extends Entity
     * Sets the tasks
     * A list of tasks that have been created based on this definition. The list includes currently running tasks and recently completed tasks. Read-only.
     *
-    * @param PrintTask $val The tasks
+    * @param PrintTask[] $val The tasks
     *
     * @return PrintTaskDefinition
     */

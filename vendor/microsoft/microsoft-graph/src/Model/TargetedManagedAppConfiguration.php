@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * TargetedManagedAppConfiguration File
 * PHP version 7
 *
@@ -102,7 +102,7 @@ class TargetedManagedAppConfiguration extends ManagedAppConfiguration
     * Sets the apps
     * List of apps to which the policy is deployed.
     *
-    * @param ManagedMobileApp $val The apps
+    * @param ManagedMobileApp[] $val The apps
     *
     * @return TargetedManagedAppConfiguration
     */
@@ -132,7 +132,7 @@ class TargetedManagedAppConfiguration extends ManagedAppConfiguration
     * Sets the assignments
     * Navigation property to list of inclusion and exclusion groups to which the policy is deployed.
     *
-    * @param TargetedManagedAppPolicyAssignment $val The assignments
+    * @param TargetedManagedAppPolicyAssignment[] $val The assignments
     *
     * @return TargetedManagedAppConfiguration
     */

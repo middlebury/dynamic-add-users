@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ExternalConnection File
 * PHP version 7
 *
@@ -117,7 +117,7 @@ class ExternalConnection extends \Microsoft\Graph\Model\Entity
 
     /**
     * Gets the state
-    * Indicates the current state of the connection. Possible values are: draft, ready, obsolete, limitExceeded, unknownFutureValue.
+    * Indicates the current state of the connection. Possible values are draft, ready, obsolete, and limitExceeded. Required.
     *
     * @return ConnectionState|null The state
     */
@@ -136,7 +136,7 @@ class ExternalConnection extends \Microsoft\Graph\Model\Entity
 
     /**
     * Sets the state
-    * Indicates the current state of the connection. Possible values are: draft, ready, obsolete, limitExceeded, unknownFutureValue.
+    * Indicates the current state of the connection. Possible values are draft, ready, obsolete, and limitExceeded. Required.
     *
     * @param ConnectionState $val The state
     *
@@ -151,7 +151,6 @@ class ExternalConnection extends \Microsoft\Graph\Model\Entity
 
      /**
      * Gets the groups
-    * Read-only. Nullable.
      *
      * @return array|null The groups
      */
@@ -166,9 +165,8 @@ class ExternalConnection extends \Microsoft\Graph\Model\Entity
 
     /**
     * Sets the groups
-    * Read-only. Nullable.
     *
-    * @param ExternalGroup $val The groups
+    * @param ExternalGroup[] $val The groups
     *
     * @return ExternalConnection
     */
@@ -181,7 +179,6 @@ class ExternalConnection extends \Microsoft\Graph\Model\Entity
 
      /**
      * Gets the items
-    * Read-only. Nullable.
      *
      * @return array|null The items
      */
@@ -196,9 +193,8 @@ class ExternalConnection extends \Microsoft\Graph\Model\Entity
 
     /**
     * Sets the items
-    * Read-only. Nullable.
     *
-    * @param ExternalItem $val The items
+    * @param ExternalItem[] $val The items
     *
     * @return ExternalConnection
     */
@@ -211,7 +207,6 @@ class ExternalConnection extends \Microsoft\Graph\Model\Entity
 
      /**
      * Gets the operations
-    * Read-only. Nullable.
      *
      * @return array|null The operations
      */
@@ -226,9 +221,8 @@ class ExternalConnection extends \Microsoft\Graph\Model\Entity
 
     /**
     * Sets the operations
-    * Read-only. Nullable.
     *
-    * @param ConnectionOperation $val The operations
+    * @param ConnectionOperation[] $val The operations
     *
     * @return ExternalConnection
     */
@@ -240,7 +234,6 @@ class ExternalConnection extends \Microsoft\Graph\Model\Entity
 
     /**
     * Gets the schema
-    * Read-only. Nullable.
     *
     * @return Schema|null The schema
     */
@@ -259,7 +252,6 @@ class ExternalConnection extends \Microsoft\Graph\Model\Entity
 
     /**
     * Sets the schema
-    * Read-only. Nullable.
     *
     * @param Schema $val The schema
     *

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ServiceAnnouncementBase File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class ServiceAnnouncementBase extends Entity
     * Sets the details
     * Additional details about service event. This property doesn't support filters.
     *
-    * @param KeyValuePair $val The details
+    * @param KeyValuePair[] $val The details
     *
     * @return ServiceAnnouncementBase
     */

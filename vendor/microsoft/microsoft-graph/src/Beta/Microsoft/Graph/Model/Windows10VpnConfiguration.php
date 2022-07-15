@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Windows10VpnConfiguration File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class Windows10VpnConfiguration extends WindowsVpnConfiguration
     * Sets the associatedApps
     * Associated Apps. This collection can contain a maximum of 10000 elements.
     *
-    * @param Windows10AssociatedApps $val The associatedApps
+    * @param Windows10AssociatedApps[] $val The associatedApps
     *
     * @return Windows10VpnConfiguration
     */
@@ -173,7 +173,7 @@ class Windows10VpnConfiguration extends WindowsVpnConfiguration
     * Sets the dnsRules
     * DNS rules. This collection can contain a maximum of 1000 elements.
     *
-    * @param VpnDnsRule $val The dnsRules
+    * @param VpnDnsRule[] $val The dnsRules
     *
     * @return Windows10VpnConfiguration
     */
@@ -592,7 +592,7 @@ class Windows10VpnConfiguration extends WindowsVpnConfiguration
     * Sets the routes
     * Routes (optional for third-party providers). This collection can contain a maximum of 1000 elements.
     *
-    * @param VpnRoute $val The routes
+    * @param VpnRoute[] $val The routes
     *
     * @return Windows10VpnConfiguration
     */
@@ -684,7 +684,7 @@ class Windows10VpnConfiguration extends WindowsVpnConfiguration
     * Sets the trafficRules
     * Traffic rules. This collection can contain a maximum of 1000 elements.
     *
-    * @param VpnTrafficRule $val The trafficRules
+    * @param VpnTrafficRule[] $val The trafficRules
     *
     * @return Windows10VpnConfiguration
     */

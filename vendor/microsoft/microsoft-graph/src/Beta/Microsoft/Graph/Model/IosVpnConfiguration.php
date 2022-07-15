@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * IosVpnConfiguration File
 * PHP version 7
 *
@@ -160,7 +160,7 @@ class IosVpnConfiguration extends AppleVpnConfiguration
     * Sets the targetedMobileApps
     * Targeted mobile apps. This collection can contain a maximum of 500 elements.
     *
-    * @param AppListItem $val The targetedMobileApps
+    * @param AppListItem[] $val The targetedMobileApps
     *
     * @return IosVpnConfiguration
     */

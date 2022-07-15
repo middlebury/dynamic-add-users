@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Directory File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class Directory extends Entity
     * Sets the administrativeUnits
     * Conceptual container for user and group directory objects.
     *
-    * @param AdministrativeUnit $val The administrativeUnits
+    * @param AdministrativeUnit[] $val The administrativeUnits
     *
     * @return Directory
     */
@@ -74,13 +74,43 @@ class Directory extends Entity
     * Sets the deletedItems
     * Recently deleted items. Read-only. Nullable.
     *
-    * @param DirectoryObject $val The deletedItems
+    * @param DirectoryObject[] $val The deletedItems
     *
     * @return Directory
     */
     public function setDeletedItems($val)
     {
         $this->_propDict["deletedItems"] = $val;
+        return $this;
+    }
+
+
+     /**
+     * Gets the federationConfigurations
+    * Configure domain federation with organizations whose identity provider (IdP) supports either the SAML or WS-Fed protocol.
+     *
+     * @return array|null The federationConfigurations
+     */
+    public function getFederationConfigurations()
+    {
+        if (array_key_exists("federationConfigurations", $this->_propDict)) {
+           return $this->_propDict["federationConfigurations"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the federationConfigurations
+    * Configure domain federation with organizations whose identity provider (IdP) supports either the SAML or WS-Fed protocol.
+    *
+    * @param IdentityProviderBase[] $val The federationConfigurations
+    *
+    * @return Directory
+    */
+    public function setFederationConfigurations($val)
+    {
+        $this->_propDict["federationConfigurations"] = $val;
         return $this;
     }
 

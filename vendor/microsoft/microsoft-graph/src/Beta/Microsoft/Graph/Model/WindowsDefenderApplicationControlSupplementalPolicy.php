@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * WindowsDefenderApplicationControlSupplementalPolicy File
 * PHP version 7
 *
@@ -288,7 +288,7 @@ class WindowsDefenderApplicationControlSupplementalPolicy extends Entity
     * Sets the assignments
     * The associated group assignments for this WindowsDefenderApplicationControl supplemental policy.
     *
-    * @param WindowsDefenderApplicationControlSupplementalPolicyAssignment $val The assignments
+    * @param WindowsDefenderApplicationControlSupplementalPolicyAssignment[] $val The assignments
     *
     * @return WindowsDefenderApplicationControlSupplementalPolicy
     */
@@ -351,7 +351,7 @@ class WindowsDefenderApplicationControlSupplementalPolicy extends Entity
     * Sets the deviceStatuses
     * The list of device deployment states for this WindowsDefenderApplicationControl supplemental policy.
     *
-    * @param WindowsDefenderApplicationControlSupplementalPolicyDeploymentStatus $val The deviceStatuses
+    * @param WindowsDefenderApplicationControlSupplementalPolicyDeploymentStatus[] $val The deviceStatuses
     *
     * @return WindowsDefenderApplicationControlSupplementalPolicy
     */

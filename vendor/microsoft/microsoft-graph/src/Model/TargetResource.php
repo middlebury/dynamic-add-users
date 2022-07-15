@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * TargetResource File
 * PHP version 7
 *
@@ -54,7 +54,7 @@ class TargetResource extends Entity
 
     /**
     * Gets the groupType
-    * When type is set to Group, this indicates the group type. Possible values are: unifiedGroups, azureAD, and unknownFutureValue
+    * When type is set to Group, this indicates the group type.  Possible values are: unifiedGroups, azureAD, and unknownFutureValue
     *
     * @return GroupType|null The groupType
     */
@@ -73,7 +73,7 @@ class TargetResource extends Entity
 
     /**
     * Sets the groupType
-    * When type is set to Group, this indicates the group type. Possible values are: unifiedGroups, azureAD, and unknownFutureValue
+    * When type is set to Group, this indicates the group type.  Possible values are: unifiedGroups, azureAD, and unknownFutureValue
     *
     * @param GroupType $val The value to assign to the groupType
     *

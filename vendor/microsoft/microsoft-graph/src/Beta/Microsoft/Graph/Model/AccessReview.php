@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AccessReview File
 * PHP version 7
 *
@@ -354,7 +354,7 @@ class AccessReview extends Entity
     * Sets the decisions
     * The collection of decisions for this access review.
     *
-    * @param AccessReviewDecision $val The decisions
+    * @param AccessReviewDecision[] $val The decisions
     *
     * @return AccessReview
     */
@@ -384,7 +384,7 @@ class AccessReview extends Entity
     * Sets the instances
     * The collection of access reviews instances past, present and future, if this object is a recurring access review.
     *
-    * @param AccessReview $val The instances
+    * @param AccessReview[] $val The instances
     *
     * @return AccessReview
     */
@@ -414,7 +414,7 @@ class AccessReview extends Entity
     * Sets the myDecisions
     * The collection of decisions for the caller, if the caller is a reviewer.
     *
-    * @param AccessReviewDecision $val The myDecisions
+    * @param AccessReviewDecision[] $val The myDecisions
     *
     * @return AccessReview
     */
@@ -444,7 +444,7 @@ class AccessReview extends Entity
     * Sets the reviewers
     * The collection of reviewers for an access review, if access review reviewerType is of type delegated.
     *
-    * @param AccessReviewReviewer $val The reviewers
+    * @param AccessReviewReviewer[] $val The reviewers
     *
     * @return AccessReview
     */

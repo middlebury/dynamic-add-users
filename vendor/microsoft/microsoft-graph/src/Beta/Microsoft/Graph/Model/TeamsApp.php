@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * TeamsApp File
 * PHP version 7
 *
@@ -135,7 +135,7 @@ class TeamsApp extends Entity
     * Sets the appDefinitions
     * The details for each version of the app.
     *
-    * @param TeamsAppDefinition $val The appDefinitions
+    * @param TeamsAppDefinition[] $val The appDefinitions
     *
     * @return TeamsApp
     */

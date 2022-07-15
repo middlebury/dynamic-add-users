@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DefaultManagedAppProtection File
 * PHP version 7
 *
@@ -77,7 +77,7 @@ class DefaultManagedAppProtection extends ManagedAppProtection
     * Sets the customSettings
     * A set of string key and string value pairs to be sent to the affected users, unalterned by this service
     *
-    * @param KeyValuePair $val The customSettings
+    * @param KeyValuePair[] $val The customSettings
     *
     * @return DefaultManagedAppProtection
     */
@@ -339,7 +339,7 @@ class DefaultManagedAppProtection extends ManagedAppProtection
     * Sets the apps
     * List of apps to which the policy is deployed.
     *
-    * @param ManagedMobileApp $val The apps
+    * @param ManagedMobileApp[] $val The apps
     *
     * @return DefaultManagedAppProtection
     */

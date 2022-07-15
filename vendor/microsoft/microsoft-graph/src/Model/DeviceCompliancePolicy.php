@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceCompliancePolicy File
 * PHP version 7
 *
@@ -197,7 +197,7 @@ class DeviceCompliancePolicy extends Entity
     * Sets the assignments
     * The collection of assignments for this compliance policy.
     *
-    * @param DeviceCompliancePolicyAssignment $val The assignments
+    * @param DeviceCompliancePolicyAssignment[] $val The assignments
     *
     * @return DeviceCompliancePolicy
     */
@@ -227,7 +227,7 @@ class DeviceCompliancePolicy extends Entity
     * Sets the deviceSettingStateSummaries
     * Compliance Setting State Device Summary
     *
-    * @param SettingStateDeviceSummary $val The deviceSettingStateSummaries
+    * @param SettingStateDeviceSummary[] $val The deviceSettingStateSummaries
     *
     * @return DeviceCompliancePolicy
     */
@@ -257,7 +257,7 @@ class DeviceCompliancePolicy extends Entity
     * Sets the deviceStatuses
     * List of DeviceComplianceDeviceStatus.
     *
-    * @param DeviceComplianceDeviceStatus $val The deviceStatuses
+    * @param DeviceComplianceDeviceStatus[] $val The deviceStatuses
     *
     * @return DeviceCompliancePolicy
     */
@@ -303,7 +303,7 @@ class DeviceCompliancePolicy extends Entity
 
      /**
      * Gets the scheduledActionsForRule
-    * The list of scheduled action per rule for this compliance policy. This is a required property when creating any individual per-platform compliance policies.
+    * The list of scheduled action for this rule
      *
      * @return array|null The scheduledActionsForRule
      */
@@ -318,9 +318,9 @@ class DeviceCompliancePolicy extends Entity
 
     /**
     * Sets the scheduledActionsForRule
-    * The list of scheduled action per rule for this compliance policy. This is a required property when creating any individual per-platform compliance policies.
+    * The list of scheduled action for this rule
     *
-    * @param DeviceComplianceScheduledActionForRule $val The scheduledActionsForRule
+    * @param DeviceComplianceScheduledActionForRule[] $val The scheduledActionsForRule
     *
     * @return DeviceCompliancePolicy
     */
@@ -350,7 +350,7 @@ class DeviceCompliancePolicy extends Entity
     * Sets the userStatuses
     * List of DeviceComplianceUserStatus.
     *
-    * @param DeviceComplianceUserStatus $val The userStatuses
+    * @param DeviceComplianceUserStatus[] $val The userStatuses
     *
     * @return DeviceCompliancePolicy
     */

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AttendeeAvailability File
 * PHP version 7
 *
@@ -59,7 +59,7 @@ class AttendeeAvailability extends Entity
 
     /**
     * Gets the availability
-    * The availability status of the attendee. The possible values are: free, tentative, busy, oof, workingElsewhere, unknown.
+    * The availability status of the attendee. Possible values are: free, tentative, busy, oof, workingElsewhere, unknown.
     *
     * @return FreeBusyStatus|null The availability
     */
@@ -78,7 +78,7 @@ class AttendeeAvailability extends Entity
 
     /**
     * Sets the availability
-    * The availability status of the attendee. The possible values are: free, tentative, busy, oof, workingElsewhere, unknown.
+    * The availability status of the attendee. Possible values are: free, tentative, busy, oof, workingElsewhere, unknown.
     *
     * @param FreeBusyStatus $val The value to assign to the availability
     *

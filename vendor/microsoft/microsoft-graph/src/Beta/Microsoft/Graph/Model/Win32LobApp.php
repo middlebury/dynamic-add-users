@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Win32LobApp File
 * PHP version 7
 *
@@ -25,8 +25,37 @@ namespace Beta\Microsoft\Graph\Model;
 class Win32LobApp extends MobileLobApp
 {
     /**
+    * Gets the allowAvailableUninstall
+    * When TRUE, indicates that uninstall is supported from the company portal for the Windows app (Win32) with an Available assignment. When FALSE, indicates that uninstall is not supported for the Windows app (Win32) with an Available assignment. Default value is FALSE.
+    *
+    * @return bool|null The allowAvailableUninstall
+    */
+    public function getAllowAvailableUninstall()
+    {
+        if (array_key_exists("allowAvailableUninstall", $this->_propDict)) {
+            return $this->_propDict["allowAvailableUninstall"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the allowAvailableUninstall
+    * When TRUE, indicates that uninstall is supported from the company portal for the Windows app (Win32) with an Available assignment. When FALSE, indicates that uninstall is not supported for the Windows app (Win32) with an Available assignment. Default value is FALSE.
+    *
+    * @param bool $val The allowAvailableUninstall
+    *
+    * @return Win32LobApp
+    */
+    public function setAllowAvailableUninstall($val)
+    {
+        $this->_propDict["allowAvailableUninstall"] = boolval($val);
+        return $this;
+    }
+
+    /**
     * Gets the applicableArchitectures
-    * The Windows architecture(s) for which this app can run on. Possible values are: none, x86, x64, arm, neutral.
+    * The Windows architecture(s) for which this app can run on. Possible values are: none, x86, x64, arm, neutral, arm64.
     *
     * @return WindowsArchitecture|null The applicableArchitectures
     */
@@ -45,7 +74,7 @@ class Win32LobApp extends MobileLobApp
 
     /**
     * Sets the applicableArchitectures
-    * The Windows architecture(s) for which this app can run on. Possible values are: none, x86, x64, arm, neutral.
+    * The Windows architecture(s) for which this app can run on. Possible values are: none, x86, x64, arm, neutral, arm64.
     *
     * @param WindowsArchitecture $val The applicableArchitectures
     *
@@ -77,7 +106,7 @@ class Win32LobApp extends MobileLobApp
     * Sets the detectionRules
     * The detection rules to detect Win32 Line of Business (LoB) app.
     *
-    * @param Win32LobAppDetection $val The detectionRules
+    * @param Win32LobAppDetection[] $val The detectionRules
     *
     * @return Win32LobApp
     */
@@ -409,7 +438,7 @@ class Win32LobApp extends MobileLobApp
     * Sets the requirementRules
     * The requirement rules to detect Win32 Line of Business (LoB) app.
     *
-    * @param Win32LobAppRequirement $val The requirementRules
+    * @param Win32LobAppRequirement[] $val The requirementRules
     *
     * @return Win32LobApp
     */
@@ -439,7 +468,7 @@ class Win32LobApp extends MobileLobApp
     * Sets the returnCodes
     * The return codes for post installation behavior.
     *
-    * @param Win32LobAppReturnCode $val The returnCodes
+    * @param Win32LobAppReturnCode[] $val The returnCodes
     *
     * @return Win32LobApp
     */
@@ -469,7 +498,7 @@ class Win32LobApp extends MobileLobApp
     * Sets the rules
     * The detection and requirement rules for this app.
     *
-    * @param Win32LobAppRule $val The rules
+    * @param Win32LobAppRule[] $val The rules
     *
     * @return Win32LobApp
     */

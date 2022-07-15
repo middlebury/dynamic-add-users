@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * PlannerUser File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class PlannerUser extends Entity
     * Sets the plans
     * Read-only. Nullable. Returns the plannerTasks assigned to the user.
     *
-    * @param PlannerPlan $val The plans
+    * @param PlannerPlan[] $val The plans
     *
     * @return PlannerUser
     */
@@ -57,7 +57,7 @@ class PlannerUser extends Entity
 
      /**
      * Gets the tasks
-    * Read-only. Nullable. Returns the plannerPlans shared with the user.
+    * Read-only. Nullable. Returns the plannerTasks assigned to the user.
      *
      * @return array|null The tasks
      */
@@ -72,9 +72,9 @@ class PlannerUser extends Entity
 
     /**
     * Sets the tasks
-    * Read-only. Nullable. Returns the plannerPlans shared with the user.
+    * Read-only. Nullable. Returns the plannerTasks assigned to the user.
     *
-    * @param PlannerTask $val The tasks
+    * @param PlannerTask[] $val The tasks
     *
     * @return PlannerUser
     */

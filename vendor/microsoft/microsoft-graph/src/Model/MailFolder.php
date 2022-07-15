@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * MailFolder File
 * PHP version 7
 *
@@ -218,7 +218,7 @@ class MailFolder extends Entity
     * Sets the childFolders
     * The collection of child folders in the mailFolder.
     *
-    * @param MailFolder $val The childFolders
+    * @param MailFolder[] $val The childFolders
     *
     * @return MailFolder
     */
@@ -248,7 +248,7 @@ class MailFolder extends Entity
     * Sets the messageRules
     * The collection of rules that apply to the user's Inbox folder.
     *
-    * @param MessageRule $val The messageRules
+    * @param MessageRule[] $val The messageRules
     *
     * @return MailFolder
     */
@@ -278,7 +278,7 @@ class MailFolder extends Entity
     * Sets the messages
     * The collection of messages in the mailFolder.
     *
-    * @param Message $val The messages
+    * @param Message[] $val The messages
     *
     * @return MailFolder
     */
@@ -308,7 +308,7 @@ class MailFolder extends Entity
     * Sets the multiValueExtendedProperties
     * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
     *
-    * @param MultiValueLegacyExtendedProperty $val The multiValueExtendedProperties
+    * @param MultiValueLegacyExtendedProperty[] $val The multiValueExtendedProperties
     *
     * @return MailFolder
     */
@@ -338,7 +338,7 @@ class MailFolder extends Entity
     * Sets the singleValueExtendedProperties
     * The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
     *
-    * @param SingleValueLegacyExtendedProperty $val The singleValueExtendedProperties
+    * @param SingleValueLegacyExtendedProperty[] $val The singleValueExtendedProperties
     *
     * @return MailFolder
     */

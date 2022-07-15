@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * WorkbookNamedItem File
 * PHP version 7
 *
@@ -113,7 +113,7 @@ class WorkbookNamedItem extends Entity
 
     /**
     * Gets the type
-    * Indicates what type of reference is associated with the name. The possible values are: String, Integer, Double, Boolean, Range. Read-only.
+    * Indicates what type of reference is associated with the name. Possible values are: String, Integer, Double, Boolean, Range. Read-only.
     *
     * @return string|null The type
     */
@@ -128,7 +128,7 @@ class WorkbookNamedItem extends Entity
 
     /**
     * Sets the type
-    * Indicates what type of reference is associated with the name. The possible values are: String, Integer, Double, Boolean, Range. Read-only.
+    * Indicates what type of reference is associated with the name. Possible values are: String, Integer, Double, Boolean, Range. Read-only.
     *
     * @param string $val The type
     *

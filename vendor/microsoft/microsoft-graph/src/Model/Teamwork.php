@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Teamwork File
 * PHP version 7
 *
@@ -27,6 +27,7 @@ class Teamwork extends Entity
 
      /**
      * Gets the workforceIntegrations
+    * A workforce integration with shifts.
      *
      * @return array|null The workforceIntegrations
      */
@@ -41,8 +42,9 @@ class Teamwork extends Entity
 
     /**
     * Sets the workforceIntegrations
+    * A workforce integration with shifts.
     *
-    * @param WorkforceIntegration $val The workforceIntegrations
+    * @param WorkforceIntegration[] $val The workforceIntegrations
     *
     * @return Teamwork
     */

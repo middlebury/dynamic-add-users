@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * BookingStaffRole File
 * PHP version 7
 *
@@ -33,4 +33,7 @@ class BookingStaffRole extends Enum
     const ADMINISTRATOR = "administrator";
     const VIEWER = "viewer";
     const EXTERNAL_GUEST = "externalGuest";
+    const UNKNOWN_FUTURE_VALUE = "unknownFutureValue";
+    const SCHEDULER = "scheduler";
+    const TEAM_MEMBER = "teamMember";
 }

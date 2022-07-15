@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * PatternedRecurrence File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class PatternedRecurrence extends Entity
 
     /**
     * Gets the pattern
-    * The frequency of an event. Do not specify for a one-time access review.
+    * The frequency of an event. Do not specify for a one-time access review.  For access reviews: Do not specify this property for a one-time access review.   Only interval, dayOfMonth, and type (weekly, absoluteMonthly) properties of recurrencePattern are supported.
     *
     * @return RecurrencePattern|null The pattern
     */
@@ -45,7 +45,7 @@ class PatternedRecurrence extends Entity
 
     /**
     * Sets the pattern
-    * The frequency of an event. Do not specify for a one-time access review.
+    * The frequency of an event. Do not specify for a one-time access review.  For access reviews: Do not specify this property for a one-time access review.   Only interval, dayOfMonth, and type (weekly, absoluteMonthly) properties of recurrencePattern are supported.
     *
     * @param RecurrencePattern $val The value to assign to the pattern
     *

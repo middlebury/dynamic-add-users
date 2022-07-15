@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * SynchronizationJobApplicationParameters File
 * PHP version 7
 *
@@ -25,7 +25,7 @@ class SynchronizationJobApplicationParameters extends Entity
 {
     /**
     * Gets the ruleId
-    * The identifier of a the synchronizationRule to be applied.
+    * The identifier of the synchronizationRule to be applied. This rule ID is defined in the schema for a given synchronization job or template.
     *
     * @return string|null The ruleId
     */
@@ -40,7 +40,7 @@ class SynchronizationJobApplicationParameters extends Entity
 
     /**
     * Sets the ruleId
-    * The identifier of a the synchronizationRule to be applied.
+    * The identifier of the synchronizationRule to be applied. This rule ID is defined in the schema for a given synchronization job or template.
     *
     * @param string $val The value of the ruleId
     *

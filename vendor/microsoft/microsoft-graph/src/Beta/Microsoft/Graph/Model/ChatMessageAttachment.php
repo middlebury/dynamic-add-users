@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ChatMessageAttachment File
 * PHP version 7
 *
@@ -161,6 +161,34 @@ class ChatMessageAttachment extends Entity
     public function setName($val)
     {
         $this->_propDict["name"] = $val;
+        return $this;
+    }
+    /**
+    * Gets the teamsAppId
+    * The ID of the Teams app that is associated with the attachment. The property is specifically used to attribute a Teams message card to the specified app.
+    *
+    * @return string|null The teamsAppId
+    */
+    public function getTeamsAppId()
+    {
+        if (array_key_exists("teamsAppId", $this->_propDict)) {
+            return $this->_propDict["teamsAppId"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the teamsAppId
+    * The ID of the Teams app that is associated with the attachment. The property is specifically used to attribute a Teams message card to the specified app.
+    *
+    * @param string $val The value of the teamsAppId
+    *
+    * @return ChatMessageAttachment
+    */
+    public function setTeamsAppId($val)
+    {
+        $this->_propDict["teamsAppId"] = $val;
         return $this;
     }
     /**

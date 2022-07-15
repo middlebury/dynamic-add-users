@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Person File
 * PHP version 7
 *
@@ -316,7 +316,7 @@ class Person extends Entity
 
     /**
     * Gets the personType
-    * The type of person.
+    * The type of person, for example distribution list.
     *
     * @return PersonType|null The personType
     */
@@ -335,7 +335,7 @@ class Person extends Entity
 
     /**
     * Sets the personType
-    * The type of person.
+    * The type of person, for example distribution list.
     *
     * @param PersonType $val The personType
     *
@@ -367,7 +367,7 @@ class Person extends Entity
     * Sets the phones
     * The person's phone numbers.
     *
-    * @param Phone $val The phones
+    * @param Phone[] $val The phones
     *
     * @return Person
     */
@@ -397,7 +397,7 @@ class Person extends Entity
     * Sets the postalAddresses
     * The person's addresses.
     *
-    * @param Location $val The postalAddresses
+    * @param Location[] $val The postalAddresses
     *
     * @return Person
     */
@@ -456,7 +456,7 @@ class Person extends Entity
     * Sets the scoredEmailAddresses
     * The person's email addresses.
     *
-    * @param ScoredEmailAddress $val The scoredEmailAddresses
+    * @param ScoredEmailAddress[] $val The scoredEmailAddresses
     *
     * @return Person
     */
@@ -544,7 +544,7 @@ class Person extends Entity
     * Sets the websites
     * The person's websites.
     *
-    * @param Website $val The websites
+    * @param Website[] $val The websites
     *
     * @return Person
     */

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AccessPackageCatalog File
 * PHP version 7
 *
@@ -175,7 +175,7 @@ class AccessPackageCatalog extends Entity
 
     /**
     * Gets the displayName
-    * The display name of the access package catalog.
+    * The display name of the access package catalog. Supports $filter (eq, contains).
     *
     * @return string|null The displayName
     */
@@ -190,7 +190,7 @@ class AccessPackageCatalog extends Entity
 
     /**
     * Sets the displayName
-    * The display name of the access package catalog.
+    * The display name of the access package catalog. Supports $filter (eq, contains).
     *
     * @param string $val The displayName
     *
@@ -296,6 +296,7 @@ class AccessPackageCatalog extends Entity
 
      /**
      * Gets the accessPackageResourceRoles
+    * The roles in each resource in a catalog. Read-only.
      *
      * @return array|null The accessPackageResourceRoles
      */
@@ -310,8 +311,9 @@ class AccessPackageCatalog extends Entity
 
     /**
     * Sets the accessPackageResourceRoles
+    * The roles in each resource in a catalog. Read-only.
     *
-    * @param AccessPackageResourceRole $val The accessPackageResourceRoles
+    * @param AccessPackageResourceRole[] $val The accessPackageResourceRoles
     *
     * @return AccessPackageCatalog
     */
@@ -324,7 +326,6 @@ class AccessPackageCatalog extends Entity
 
      /**
      * Gets the accessPackageResources
-    * Read-only. Nullable.
      *
      * @return array|null The accessPackageResources
      */
@@ -339,9 +340,8 @@ class AccessPackageCatalog extends Entity
 
     /**
     * Sets the accessPackageResources
-    * Read-only. Nullable.
     *
-    * @param AccessPackageResource $val The accessPackageResources
+    * @param AccessPackageResource[] $val The accessPackageResources
     *
     * @return AccessPackageCatalog
     */
@@ -369,7 +369,7 @@ class AccessPackageCatalog extends Entity
     /**
     * Sets the accessPackageResourceScopes
     *
-    * @param AccessPackageResourceScope $val The accessPackageResourceScopes
+    * @param AccessPackageResourceScope[] $val The accessPackageResourceScopes
     *
     * @return AccessPackageCatalog
     */
@@ -382,7 +382,7 @@ class AccessPackageCatalog extends Entity
 
      /**
      * Gets the accessPackages
-    * The access packages in this catalog. Read-only. Nullable.
+    * The access packages in this catalog. Read-only. Nullable. Supports $expand.
      *
      * @return array|null The accessPackages
      */
@@ -397,15 +397,43 @@ class AccessPackageCatalog extends Entity
 
     /**
     * Sets the accessPackages
-    * The access packages in this catalog. Read-only. Nullable.
+    * The access packages in this catalog. Read-only. Nullable. Supports $expand.
     *
-    * @param AccessPackage $val The accessPackages
+    * @param AccessPackage[] $val The accessPackages
     *
     * @return AccessPackageCatalog
     */
     public function setAccessPackages($val)
     {
         $this->_propDict["accessPackages"] = $val;
+        return $this;
+    }
+
+
+     /**
+     * Gets the customAccessPackageWorkflowExtensions
+     *
+     * @return array|null The customAccessPackageWorkflowExtensions
+     */
+    public function getCustomAccessPackageWorkflowExtensions()
+    {
+        if (array_key_exists("customAccessPackageWorkflowExtensions", $this->_propDict)) {
+           return $this->_propDict["customAccessPackageWorkflowExtensions"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the customAccessPackageWorkflowExtensions
+    *
+    * @param CustomAccessPackageWorkflowExtension[] $val The customAccessPackageWorkflowExtensions
+    *
+    * @return AccessPackageCatalog
+    */
+    public function setCustomAccessPackageWorkflowExtensions($val)
+    {
+        $this->_propDict["customAccessPackageWorkflowExtensions"] = $val;
         return $this;
     }
 

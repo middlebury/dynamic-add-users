@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * LoginPageTextVisibilitySettings File
 * PHP version 7
 *
@@ -24,7 +24,36 @@ namespace Beta\Microsoft\Graph\Model;
 class LoginPageTextVisibilitySettings extends Entity
 {
     /**
+    * Gets the hideAccountResetCredentials
+    * Option to hide the self-service password reset (SSPR) hyperlinks such as 'Can't access your account?', 'Forgot my password' and 'Reset it now' on the sign-in form.
+    *
+    * @return bool|null The hideAccountResetCredentials
+    */
+    public function getHideAccountResetCredentials()
+    {
+        if (array_key_exists("hideAccountResetCredentials", $this->_propDict)) {
+            return $this->_propDict["hideAccountResetCredentials"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the hideAccountResetCredentials
+    * Option to hide the self-service password reset (SSPR) hyperlinks such as 'Can't access your account?', 'Forgot my password' and 'Reset it now' on the sign-in form.
+    *
+    * @param bool $val The value of the hideAccountResetCredentials
+    *
+    * @return LoginPageTextVisibilitySettings
+    */
+    public function setHideAccountResetCredentials($val)
+    {
+        $this->_propDict["hideAccountResetCredentials"] = $val;
+        return $this;
+    }
+    /**
     * Gets the hideCannotAccessYourAccount
+    * Option to hide the self-service password reset (SSPR) 'Can't access your account?' hyperlink on the sign-in form.
     *
     * @return bool|null The hideCannotAccessYourAccount
     */
@@ -39,6 +68,7 @@ class LoginPageTextVisibilitySettings extends Entity
 
     /**
     * Sets the hideCannotAccessYourAccount
+    * Option to hide the self-service password reset (SSPR) 'Can't access your account?' hyperlink on the sign-in form.
     *
     * @param bool $val The value of the hideCannotAccessYourAccount
     *
@@ -51,6 +81,7 @@ class LoginPageTextVisibilitySettings extends Entity
     }
     /**
     * Gets the hideForgotMyPassword
+    * Option to hide the self-service password reset (SSPR) 'Forgot my password' hyperlink on the sign-in form.
     *
     * @return bool|null The hideForgotMyPassword
     */
@@ -65,6 +96,7 @@ class LoginPageTextVisibilitySettings extends Entity
 
     /**
     * Sets the hideForgotMyPassword
+    * Option to hide the self-service password reset (SSPR) 'Forgot my password' hyperlink on the sign-in form.
     *
     * @param bool $val The value of the hideForgotMyPassword
     *
@@ -77,6 +109,7 @@ class LoginPageTextVisibilitySettings extends Entity
     }
     /**
     * Gets the hidePrivacyAndCookies
+    * Option to hide the 'Privacy &amp; Cookies' hyperlink in the footer.
     *
     * @return bool|null The hidePrivacyAndCookies
     */
@@ -91,6 +124,7 @@ class LoginPageTextVisibilitySettings extends Entity
 
     /**
     * Sets the hidePrivacyAndCookies
+    * Option to hide the 'Privacy &amp; Cookies' hyperlink in the footer.
     *
     * @param bool $val The value of the hidePrivacyAndCookies
     *
@@ -103,6 +137,7 @@ class LoginPageTextVisibilitySettings extends Entity
     }
     /**
     * Gets the hideResetItNow
+    * Option to hide the self-service password reset (SSPR) 'reset it now' hyperlink on the sign-in form.
     *
     * @return bool|null The hideResetItNow
     */
@@ -117,6 +152,7 @@ class LoginPageTextVisibilitySettings extends Entity
 
     /**
     * Sets the hideResetItNow
+    * Option to hide the self-service password reset (SSPR) 'reset it now' hyperlink on the sign-in form.
     *
     * @param bool $val The value of the hideResetItNow
     *
@@ -129,6 +165,7 @@ class LoginPageTextVisibilitySettings extends Entity
     }
     /**
     * Gets the hideTermsOfUse
+    * Option to hide the 'Terms of Use' hyperlink in the footer.
     *
     * @return bool|null The hideTermsOfUse
     */
@@ -143,6 +180,7 @@ class LoginPageTextVisibilitySettings extends Entity
 
     /**
     * Sets the hideTermsOfUse
+    * Option to hide the 'Terms of Use' hyperlink in the footer.
     *
     * @param bool $val The value of the hideTermsOfUse
     *

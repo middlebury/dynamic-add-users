@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * CloudPcUserSetting File
 * PHP version 7
 *
@@ -149,6 +149,39 @@ class CloudPcUserSetting extends Entity
     }
 
     /**
+    * Gets the restorePointSetting
+    * Defines how frequently a restore point is created that is, a snapshot is taken) for users' provisioned Cloud PCs (default is 12 hours), and whether the user is allowed to restore their own Cloud PCs to a backup made at a specific point in time.
+    *
+    * @return CloudPcRestorePointSetting|null The restorePointSetting
+    */
+    public function getRestorePointSetting()
+    {
+        if (array_key_exists("restorePointSetting", $this->_propDict)) {
+            if (is_a($this->_propDict["restorePointSetting"], "\Beta\Microsoft\Graph\Model\CloudPcRestorePointSetting") || is_null($this->_propDict["restorePointSetting"])) {
+                return $this->_propDict["restorePointSetting"];
+            } else {
+                $this->_propDict["restorePointSetting"] = new CloudPcRestorePointSetting($this->_propDict["restorePointSetting"]);
+                return $this->_propDict["restorePointSetting"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the restorePointSetting
+    * Defines how frequently a restore point is created that is, a snapshot is taken) for users' provisioned Cloud PCs (default is 12 hours), and whether the user is allowed to restore their own Cloud PCs to a backup made at a specific point in time.
+    *
+    * @param CloudPcRestorePointSetting $val The restorePointSetting
+    *
+    * @return CloudPcUserSetting
+    */
+    public function setRestorePointSetting($val)
+    {
+        $this->_propDict["restorePointSetting"] = $val;
+        return $this;
+    }
+
+    /**
     * Gets the selfServiceEnabled
     * Indicates whether the self-service option is enabled. Default value is false. To enable the self-service option, change the setting to true. If the self-service option is enabled, the end user is allowed to perform some self-service operations, such as upgrading the Cloud PC through the end user portal.
     *
@@ -197,7 +230,7 @@ class CloudPcUserSetting extends Entity
     * Sets the assignments
     * Represents the set of Microsoft 365 groups and security groups in Azure AD that have cloudPCUserSetting assigned. Returned only on $expand. For an example, see Get cloudPcUserSettingample.
     *
-    * @param CloudPcUserSettingAssignment $val The assignments
+    * @param CloudPcUserSettingAssignment[] $val The assignments
     *
     * @return CloudPcUserSetting
     */

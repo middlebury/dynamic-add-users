@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * GroupPolicyDefinitionFile File
 * PHP version 7
 *
@@ -79,6 +79,35 @@ class GroupPolicyDefinitionFile extends Entity
     public function setDisplayName($val)
     {
         $this->_propDict["displayName"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the fileName
+    * The file name of the ADMX file without the path. For example: edge.admx
+    *
+    * @return string|null The fileName
+    */
+    public function getFileName()
+    {
+        if (array_key_exists("fileName", $this->_propDict)) {
+            return $this->_propDict["fileName"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the fileName
+    * The file name of the ADMX file without the path. For example: edge.admx
+    *
+    * @param string $val The fileName
+    *
+    * @return GroupPolicyDefinitionFile
+    */
+    public function setFileName($val)
+    {
+        $this->_propDict["fileName"] = $val;
         return $this;
     }
 
@@ -284,7 +313,7 @@ class GroupPolicyDefinitionFile extends Entity
     * Sets the definitions
     * The group policy definitions associated with the file.
     *
-    * @param GroupPolicyDefinition $val The definitions
+    * @param GroupPolicyDefinition[] $val The definitions
     *
     * @return GroupPolicyDefinitionFile
     */

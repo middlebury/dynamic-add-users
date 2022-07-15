@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * GraphPrint File
 * PHP version 7
 *
@@ -108,7 +108,7 @@ class GraphPrint implements \JsonSerializable
     * Sets the connectors
     * The list of available print connectors.
     *
-    * @param PrintConnector $val The connectors
+    * @param PrintConnector[] $val The connectors
     *
     * @return GraphPrint
     */
@@ -138,7 +138,7 @@ class GraphPrint implements \JsonSerializable
     * Sets the operations
     * The list of print long running operations.
     *
-    * @param PrintOperation $val The operations
+    * @param PrintOperation[] $val The operations
     *
     * @return GraphPrint
     */
@@ -168,7 +168,7 @@ class GraphPrint implements \JsonSerializable
     * Sets the printers
     * The list of printers registered in the tenant.
     *
-    * @param Printer $val The printers
+    * @param Printer[] $val The printers
     *
     * @return GraphPrint
     */
@@ -196,7 +196,7 @@ class GraphPrint implements \JsonSerializable
     /**
     * Sets the printerShares
     *
-    * @param PrinterShare $val The printerShares
+    * @param PrinterShare[] $val The printerShares
     *
     * @return GraphPrint
     */
@@ -257,7 +257,7 @@ class GraphPrint implements \JsonSerializable
     * Sets the services
     * The list of available Universal Print service endpoints.
     *
-    * @param PrintService $val The services
+    * @param PrintService[] $val The services
     *
     * @return GraphPrint
     */
@@ -287,7 +287,7 @@ class GraphPrint implements \JsonSerializable
     * Sets the shares
     * The list of printer shares registered in the tenant.
     *
-    * @param PrinterShare $val The shares
+    * @param PrinterShare[] $val The shares
     *
     * @return GraphPrint
     */
@@ -317,7 +317,7 @@ class GraphPrint implements \JsonSerializable
     * Sets the taskDefinitions
     * List of abstract definition for a task that can be triggered when various events occur within Universal Print.
     *
-    * @param PrintTaskDefinition $val The taskDefinitions
+    * @param PrintTaskDefinition[] $val The taskDefinitions
     *
     * @return GraphPrint
     */
@@ -359,6 +359,7 @@ class GraphPrint implements \JsonSerializable
     *
     * @return array The list of properties
     */
+    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         $serializableProperties = $this->getProperties();

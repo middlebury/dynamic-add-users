@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * PurchaseInvoice File
 * PHP version 7
 *
@@ -815,7 +815,7 @@ class PurchaseInvoice extends Entity
     /**
     * Sets the purchaseInvoiceLines
     *
-    * @param PurchaseInvoiceLine $val The purchaseInvoiceLines
+    * @param PurchaseInvoiceLine[] $val The purchaseInvoiceLines
     *
     * @return PurchaseInvoice
     */

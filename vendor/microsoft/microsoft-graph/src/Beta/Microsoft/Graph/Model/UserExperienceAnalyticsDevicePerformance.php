@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * UserExperienceAnalyticsDevicePerformance File
 * PHP version 7
 *
@@ -258,7 +258,7 @@ class UserExperienceAnalyticsDevicePerformance extends Entity
 
     /**
     * Gets the diskType
-    * The user experience analytics device disk type. Possible values are: unkown, hdd, ssd.
+    * The user experience analytics device disk type. Possible values are: unknown, hdd, ssd, unknownFutureValue.
     *
     * @return DiskType|null The diskType
     */
@@ -277,7 +277,7 @@ class UserExperienceAnalyticsDevicePerformance extends Entity
 
     /**
     * Sets the diskType
-    * The user experience analytics device disk type. Possible values are: unkown, hdd, ssd.
+    * The user experience analytics device disk type. Possible values are: unknown, hdd, ssd, unknownFutureValue.
     *
     * @param DiskType $val The diskType
     *

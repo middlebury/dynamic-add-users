@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ProfileCardProperty File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class ProfileCardProperty extends Entity
     * Sets the annotations
     * Allows an administrator to set a custom display label for the directory property and localize it for the users in their tenant.
     *
-    * @param ProfileCardAnnotation $val The annotations
+    * @param ProfileCardAnnotation[] $val The annotations
     *
     * @return ProfileCardProperty
     */

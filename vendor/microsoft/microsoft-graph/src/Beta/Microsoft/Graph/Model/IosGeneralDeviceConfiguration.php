@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * IosGeneralDeviceConfiguration File
 * PHP version 7
 *
@@ -479,7 +479,7 @@ class IosGeneralDeviceConfiguration extends DeviceConfiguration
     * Sets the appsSingleAppModeList
     * Gets or sets the list of iOS apps allowed to autonomously enter Single App Mode. Supervised only. iOS 7.0 and later. This collection can contain a maximum of 500 elements.
     *
-    * @param AppListItem $val The appsSingleAppModeList
+    * @param AppListItem[] $val The appsSingleAppModeList
     *
     * @return IosGeneralDeviceConfiguration
     */
@@ -654,7 +654,7 @@ class IosGeneralDeviceConfiguration extends DeviceConfiguration
     * Sets the appsVisibilityList
     * List of apps in the visibility list (either visible/launchable apps list or hidden/unlaunchable apps list, controlled by AppsVisibilityListType) (iOS 9.3 and later). This collection can contain a maximum of 10000 elements.
     *
-    * @param AppListItem $val The appsVisibilityList
+    * @param AppListItem[] $val The appsVisibilityList
     *
     * @return IosGeneralDeviceConfiguration
     */
@@ -1272,7 +1272,7 @@ class IosGeneralDeviceConfiguration extends DeviceConfiguration
     * Sets the compliantAppsList
     * List of apps in the compliance (either allow list or block list, controlled by CompliantAppListType). This collection can contain a maximum of 10000 elements.
     *
-    * @param AppListItem $val The compliantAppsList
+    * @param AppListItem[] $val The compliantAppsList
     *
     * @return IosGeneralDeviceConfiguration
     */
@@ -2381,6 +2381,35 @@ class IosGeneralDeviceConfiguration extends DeviceConfiguration
     public function setICloudBlockSharedPhotoStream($val)
     {
         $this->_propDict["iCloudBlockSharedPhotoStream"] = boolval($val);
+        return $this;
+    }
+
+    /**
+    * Gets the iCloudPrivateRelayBlocked
+    * iCloud private relay is an iCloud+ service that prevents networks and servers from monitoring a person's activity across the internet. By blocking iCloud private relay, Apple will not encrypt the traffic leaving the device. Available for devices running iOS 15 and later.
+    *
+    * @return bool|null The iCloudPrivateRelayBlocked
+    */
+    public function getICloudPrivateRelayBlocked()
+    {
+        if (array_key_exists("iCloudPrivateRelayBlocked", $this->_propDict)) {
+            return $this->_propDict["iCloudPrivateRelayBlocked"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the iCloudPrivateRelayBlocked
+    * iCloud private relay is an iCloud+ service that prevents networks and servers from monitoring a person's activity across the internet. By blocking iCloud private relay, Apple will not encrypt the traffic leaving the device. Available for devices running iOS 15 and later.
+    *
+    * @param bool $val The iCloudPrivateRelayBlocked
+    *
+    * @return IosGeneralDeviceConfiguration
+    */
+    public function setICloudPrivateRelayBlocked($val)
+    {
+        $this->_propDict["iCloudPrivateRelayBlocked"] = boolval($val);
         return $this;
     }
 
@@ -4043,7 +4072,7 @@ class IosGeneralDeviceConfiguration extends DeviceConfiguration
     * Sets the networkUsageRules
     * List of managed apps and the network rules that applies to them. This collection can contain a maximum of 1000 elements.
     *
-    * @param IosNetworkUsageRule $val The networkUsageRules
+    * @param IosNetworkUsageRule[] $val The networkUsageRules
     *
     * @return IosGeneralDeviceConfiguration
     */

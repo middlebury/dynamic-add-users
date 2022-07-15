@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * EducationTeacher File
 * PHP version 7
 *
@@ -25,7 +25,7 @@ class EducationTeacher extends Entity
 {
     /**
     * Gets the externalId
-    * ID of the teacher in the source system.
+    * Id of the Teacher in external source system.
     *
     * @return string|null The externalId
     */
@@ -40,7 +40,7 @@ class EducationTeacher extends Entity
 
     /**
     * Sets the externalId
-    * ID of the teacher in the source system.
+    * Id of the Teacher in external source system.
     *
     * @param string $val The value of the externalId
     *

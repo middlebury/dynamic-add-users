@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AndroidGeneralDeviceConfiguration File
 * PHP version 7
 *
@@ -131,7 +131,7 @@ class AndroidGeneralDeviceConfiguration extends DeviceConfiguration
     * Sets the appsHideList
     * List of apps to be hidden on the KNOX device. This collection can contain a maximum of 500 elements.
     *
-    * @param AppListItem $val The appsHideList
+    * @param AppListItem[] $val The appsHideList
     *
     * @return AndroidGeneralDeviceConfiguration
     */
@@ -161,7 +161,7 @@ class AndroidGeneralDeviceConfiguration extends DeviceConfiguration
     * Sets the appsInstallAllowList
     * List of apps which can be installed on the KNOX device. This collection can contain a maximum of 500 elements.
     *
-    * @param AppListItem $val The appsInstallAllowList
+    * @param AppListItem[] $val The appsInstallAllowList
     *
     * @return AndroidGeneralDeviceConfiguration
     */
@@ -191,7 +191,7 @@ class AndroidGeneralDeviceConfiguration extends DeviceConfiguration
     * Sets the appsLaunchBlockList
     * List of apps which are blocked from being launched on the KNOX device. This collection can contain a maximum of 500 elements.
     *
-    * @param AppListItem $val The appsLaunchBlockList
+    * @param AppListItem[] $val The appsLaunchBlockList
     *
     * @return AndroidGeneralDeviceConfiguration
     */
@@ -428,7 +428,7 @@ class AndroidGeneralDeviceConfiguration extends DeviceConfiguration
     * Sets the compliantAppsList
     * List of apps in the compliance (either allow list or block list, controlled by CompliantAppListType). This collection can contain a maximum of 10000 elements.
     *
-    * @param AppListItem $val The compliantAppsList
+    * @param AppListItem[] $val The compliantAppsList
     *
     * @return AndroidGeneralDeviceConfiguration
     */
@@ -632,7 +632,7 @@ class AndroidGeneralDeviceConfiguration extends DeviceConfiguration
     * Sets the kioskModeApps
     * A list of apps that will be allowed to run when the device is in Kiosk Mode. This collection can contain a maximum of 500 elements.
     *
-    * @param AppListItem $val The kioskModeApps
+    * @param AppListItem[] $val The kioskModeApps
     *
     * @return AndroidGeneralDeviceConfiguration
     */

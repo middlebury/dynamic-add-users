@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DriveItem File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class DriveItem extends BaseItem
 {
     /**
     * Gets the audio
-    * Audio metadata, if the item is an audio file. Read-only.
+    * Audio metadata, if the item is an audio file. Read-only. Only on OneDrive Personal.
     *
     * @return Audio|null The audio
     */
@@ -45,7 +45,7 @@ class DriveItem extends BaseItem
 
     /**
     * Sets the audio
-    * Audio metadata, if the item is an audio file. Read-only.
+    * Audio metadata, if the item is an audio file. Read-only. Only on OneDrive Personal.
     *
     * @param Audio $val The audio
     *
@@ -59,6 +59,7 @@ class DriveItem extends BaseItem
 
     /**
     * Gets the bundle
+    * Bundle metadata, if the item is a bundle. Read-only.
     *
     * @return Bundle|null The bundle
     */
@@ -77,6 +78,7 @@ class DriveItem extends BaseItem
 
     /**
     * Sets the bundle
+    * Bundle metadata, if the item is a bundle. Read-only.
     *
     * @param Bundle $val The bundle
     *
@@ -416,7 +418,7 @@ class DriveItem extends BaseItem
 
     /**
     * Gets the pendingOperations
-    * If present, indicates that one or more operations that might affect the state of the driveItem are pending completion. Read-only.
+    * If present, indicates that indicates that one or more operations that may affect the state of the driveItem are pending completion. Read-only.
     *
     * @return PendingOperations|null The pendingOperations
     */
@@ -435,7 +437,7 @@ class DriveItem extends BaseItem
 
     /**
     * Sets the pendingOperations
-    * If present, indicates that one or more operations that might affect the state of the driveItem are pending completion. Read-only.
+    * If present, indicates that indicates that one or more operations that may affect the state of the driveItem are pending completion. Read-only.
     *
     * @param PendingOperations $val The pendingOperations
     *
@@ -888,7 +890,7 @@ class DriveItem extends BaseItem
     * Sets the children
     * Collection containing Item objects for the immediate children of Item. Only items representing folders have children. Read-only. Nullable.
     *
-    * @param DriveItem $val The children
+    * @param DriveItem[] $val The children
     *
     * @return DriveItem
     */
@@ -951,7 +953,7 @@ class DriveItem extends BaseItem
     * Sets the permissions
     * The set of permissions for the item. Read-only. Nullable.
     *
-    * @param Permission $val The permissions
+    * @param Permission[] $val The permissions
     *
     * @return DriveItem
     */
@@ -981,7 +983,7 @@ class DriveItem extends BaseItem
     * Sets the subscriptions
     * The set of subscriptions on the item. Only supported on the root of a drive.
     *
-    * @param Subscription $val The subscriptions
+    * @param Subscription[] $val The subscriptions
     *
     * @return DriveItem
     */
@@ -1011,7 +1013,7 @@ class DriveItem extends BaseItem
     * Sets the thumbnails
     * Collection containing [ThumbnailSet][] objects associated with the item. For more info, see [getting thumbnails][]. Read-only. Nullable.
     *
-    * @param ThumbnailSet $val The thumbnails
+    * @param ThumbnailSet[] $val The thumbnails
     *
     * @return DriveItem
     */
@@ -1041,7 +1043,7 @@ class DriveItem extends BaseItem
     * Sets the versions
     * The list of previous versions of the item. For more info, see [getting previous versions][]. Read-only. Nullable.
     *
-    * @param DriveItemVersion $val The versions
+    * @param DriveItemVersion[] $val The versions
     *
     * @return DriveItem
     */

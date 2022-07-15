@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ClaimsMapping File
 * PHP version 7
 *
@@ -25,7 +25,7 @@ class ClaimsMapping extends Entity
 {
     /**
     * Gets the displayName
-    * The claim that provides the display name or full name for the user. Required.
+    * The claim that provides the display name or full name for the user. It is a required propoerty.
     *
     * @return string|null The displayName
     */
@@ -40,7 +40,7 @@ class ClaimsMapping extends Entity
 
     /**
     * Sets the displayName
-    * The claim that provides the display name or full name for the user. Required.
+    * The claim that provides the display name or full name for the user. It is a required propoerty.
     *
     * @param string $val The value of the displayName
     *
@@ -137,7 +137,7 @@ class ClaimsMapping extends Entity
     }
     /**
     * Gets the userId
-    * The claim that provides the unique identifier for the signed-in user. Required.
+    * The claim that provides the unique identifier for the signed-in user. It is a required propoerty.
     *
     * @return string|null The userId
     */
@@ -152,7 +152,7 @@ class ClaimsMapping extends Entity
 
     /**
     * Sets the userId
-    * The claim that provides the unique identifier for the signed-in user. Required.
+    * The claim that provides the unique identifier for the signed-in user. It is a required propoerty.
     *
     * @param string $val The value of the userId
     *

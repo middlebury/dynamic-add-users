@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ExternalGroup File
 * PHP version 7
 *
@@ -75,34 +75,6 @@ class ExternalGroup extends Entity
     public function setDisplayName($val)
     {
         $this->_propDict["displayName"] = $val;
-        return $this;
-    }
-
-
-     /**
-     * Gets the members
-     *
-     * @return array|null The members
-     */
-    public function getMembers()
-    {
-        if (array_key_exists("members", $this->_propDict)) {
-           return $this->_propDict["members"];
-        } else {
-            return null;
-        }
-    }
-
-    /**
-    * Sets the members
-    *
-    * @param ExternalGroupMember $val The members
-    *
-    * @return ExternalGroup
-    */
-    public function setMembers($val)
-    {
-        $this->_propDict["members"] = $val;
         return $this;
     }
 

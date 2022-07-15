@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ManagedDeviceMobileAppConfiguration File
 * PHP version 7
 *
@@ -255,7 +255,7 @@ class ManagedDeviceMobileAppConfiguration extends Entity
     * Sets the assignments
     * The list of group assignemenets for app configration.
     *
-    * @param ManagedDeviceMobileAppConfigurationAssignment $val The assignments
+    * @param ManagedDeviceMobileAppConfigurationAssignment[] $val The assignments
     *
     * @return ManagedDeviceMobileAppConfiguration
     */
@@ -285,7 +285,7 @@ class ManagedDeviceMobileAppConfiguration extends Entity
     * Sets the deviceStatuses
     * List of ManagedDeviceMobileAppConfigurationDeviceStatus.
     *
-    * @param ManagedDeviceMobileAppConfigurationDeviceStatus $val The deviceStatuses
+    * @param ManagedDeviceMobileAppConfigurationDeviceStatus[] $val The deviceStatuses
     *
     * @return ManagedDeviceMobileAppConfiguration
     */
@@ -348,7 +348,7 @@ class ManagedDeviceMobileAppConfiguration extends Entity
     * Sets the userStatuses
     * List of ManagedDeviceMobileAppConfigurationUserStatus.
     *
-    * @param ManagedDeviceMobileAppConfigurationUserStatus $val The userStatuses
+    * @param ManagedDeviceMobileAppConfigurationUserStatus[] $val The userStatuses
     *
     * @return ManagedDeviceMobileAppConfiguration
     */

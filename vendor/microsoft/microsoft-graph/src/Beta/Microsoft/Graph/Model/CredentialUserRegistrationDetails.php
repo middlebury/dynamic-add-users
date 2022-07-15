@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * CredentialUserRegistrationDetails File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class CredentialUserRegistrationDetails extends Entity
     * Sets the authMethods
     * Represents the authentication method that the user has registered. Possible values are: email, mobilePhone, officePhone,  securityQuestion (only used for self-service password reset), appNotification,  appCode, alternateMobilePhone (supported only in registration),  fido,  appPassword,  unknownFutureValue.
     *
-    * @param RegistrationAuthMethod $val The authMethods
+    * @param RegistrationAuthMethod[] $val The authMethods
     *
     * @return CredentialUserRegistrationDetails
     */

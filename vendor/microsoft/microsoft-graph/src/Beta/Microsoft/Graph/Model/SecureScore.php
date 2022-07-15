@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * SecureScore File
 * PHP version 7
 *
@@ -73,7 +73,7 @@ class SecureScore extends Entity
     * Sets the averageComparativeScores
     * Average score by different scopes (for example, average by industry, average by seating) and control category (Identity, Data, Device, Apps, Infrastructure) within the scope.
     *
-    * @param AverageComparativeScore $val The averageComparativeScores
+    * @param AverageComparativeScore[] $val The averageComparativeScores
     *
     * @return SecureScore
     */
@@ -132,7 +132,7 @@ class SecureScore extends Entity
     * Sets the controlScores
     * Contains tenant scores for a set of controls.
     *
-    * @param ControlScore $val The controlScores
+    * @param ControlScore[] $val The controlScores
     *
     * @return SecureScore
     */
@@ -206,7 +206,7 @@ class SecureScore extends Entity
 
     /**
     * Gets the enabledServices
-    * Microsoft-provided services for the tenant (for example, Exchange online, Skype, Sharepoint).
+    * Microsoft-provided services for the tenant (for example, Exchange online, Skype, SharePoint).
     *
     * @return string|null The enabledServices
     */
@@ -221,7 +221,7 @@ class SecureScore extends Entity
 
     /**
     * Sets the enabledServices
-    * Microsoft-provided services for the tenant (for example, Exchange online, Skype, Sharepoint).
+    * Microsoft-provided services for the tenant (for example, Exchange online, Skype, SharePoint).
     *
     * @param string $val The enabledServices
     *

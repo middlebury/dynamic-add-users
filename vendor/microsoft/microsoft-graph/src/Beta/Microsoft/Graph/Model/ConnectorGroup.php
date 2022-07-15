@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ConnectorGroup File
 * PHP version 7
 *
@@ -151,7 +151,6 @@ class ConnectorGroup extends Entity
 
      /**
      * Gets the applications
-    * Read-only. Nullable.
      *
      * @return array|null The applications
      */
@@ -166,9 +165,8 @@ class ConnectorGroup extends Entity
 
     /**
     * Sets the applications
-    * Read-only. Nullable.
     *
-    * @param Application $val The applications
+    * @param Application[] $val The applications
     *
     * @return ConnectorGroup
     */
@@ -181,7 +179,6 @@ class ConnectorGroup extends Entity
 
      /**
      * Gets the members
-    * Read-only. Nullable.
      *
      * @return array|null The members
      */
@@ -196,9 +193,8 @@ class ConnectorGroup extends Entity
 
     /**
     * Sets the members
-    * Read-only. Nullable.
     *
-    * @param Connector $val The members
+    * @param Connector[] $val The members
     *
     * @return ConnectorGroup
     */

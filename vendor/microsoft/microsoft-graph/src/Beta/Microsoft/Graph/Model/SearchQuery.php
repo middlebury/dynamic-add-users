@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * SearchQuery File
 * PHP version 7
 *
@@ -49,6 +49,34 @@ class SearchQuery extends Entity
     public function setQueryString($val)
     {
         $this->_propDict["queryString"] = $val;
+        return $this;
+    }
+    /**
+    * Gets the queryTemplate
+    * Provides a way to decorate the query string. Supports both KQL and query variables. Optional.
+    *
+    * @return string|null The queryTemplate
+    */
+    public function getQueryTemplate()
+    {
+        if (array_key_exists("queryTemplate", $this->_propDict)) {
+            return $this->_propDict["queryTemplate"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the queryTemplate
+    * Provides a way to decorate the query string. Supports both KQL and query variables. Optional.
+    *
+    * @param string $val The value of the queryTemplate
+    *
+    * @return SearchQuery
+    */
+    public function setQueryTemplate($val)
+    {
+        $this->_propDict["queryTemplate"] = $val;
         return $this;
     }
 

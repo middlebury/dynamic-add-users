@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * CertificateBasedAuthConfiguration File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class CertificateBasedAuthConfiguration extends Entity
     * Sets the certificateAuthorities
     * Collection of certificate authorities which creates a trusted certificate chain.
     *
-    * @param CertificateAuthority $val The certificateAuthorities
+    * @param CertificateAuthority[] $val The certificateAuthorities
     *
     * @return CertificateBasedAuthConfiguration
     */

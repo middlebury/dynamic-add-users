@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * StoragePlanInformation File
 * PHP version 7
 *
@@ -25,7 +25,7 @@ class StoragePlanInformation extends Entity
 {
     /**
     * Gets the upgradeAvailable
-    * Indicates whether there are higher storage quota plans available. Read-only.
+    * Indicates if there are higher storage quota plans available. Read-only.
     *
     * @return bool|null The upgradeAvailable
     */
@@ -40,7 +40,7 @@ class StoragePlanInformation extends Entity
 
     /**
     * Sets the upgradeAvailable
-    * Indicates whether there are higher storage quota plans available. Read-only.
+    * Indicates if there are higher storage quota plans available. Read-only.
     *
     * @param bool $val The value of the upgradeAvailable
     *

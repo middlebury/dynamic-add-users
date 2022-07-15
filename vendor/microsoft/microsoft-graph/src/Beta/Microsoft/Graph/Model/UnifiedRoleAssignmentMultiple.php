@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * UnifiedRoleAssignmentMultiple File
 * PHP version 7
 *
@@ -245,7 +245,7 @@ class UnifiedRoleAssignmentMultiple extends Entity
     * Sets the appScopes
     * Read-only collection with details of the app specific scopes when the assignment scopes are app specific. Containment entity. Read-only.
     *
-    * @param AppScope $val The appScopes
+    * @param AppScope[] $val The appScopes
     *
     * @return UnifiedRoleAssignmentMultiple
     */
@@ -275,7 +275,7 @@ class UnifiedRoleAssignmentMultiple extends Entity
     * Sets the directoryScopes
     * Read-only collection referencing the directory objects that are scope of the assignment. Provided so that callers can get the directory objects using $expand at the same time as getting the role assignment. Read-only.  Supports $expand.
     *
-    * @param DirectoryObject $val The directoryScopes
+    * @param DirectoryObject[] $val The directoryScopes
     *
     * @return UnifiedRoleAssignmentMultiple
     */
@@ -305,7 +305,7 @@ class UnifiedRoleAssignmentMultiple extends Entity
     * Sets the principals
     * Read-only collection referencing the assigned principals. Provided so that callers can get the principals using $expand at the same time as getting the role assignment. Read-only.  Supports $expand.
     *
-    * @param DirectoryObject $val The principals
+    * @param DirectoryObject[] $val The principals
     *
     * @return UnifiedRoleAssignmentMultiple
     */

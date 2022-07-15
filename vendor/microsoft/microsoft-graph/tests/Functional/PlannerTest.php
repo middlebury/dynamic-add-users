@@ -72,7 +72,7 @@ class PlannerTest extends TestCase
         $task = $this->_client->createRequest("GET", "/planner/tasks/" . $this->planTask->getId())
             ->setReturnType(Model\PlannerTask::class)
             ->execute();
-
+        
         try {
             $this->_client->createRequest("PATCH", "/planner/tasks/" . $this->planTask->getId())
                 ->attachBody(array("assignments" => array($me->getId() => $assignment)))
@@ -80,8 +80,8 @@ class PlannerTest extends TestCase
                 ->execute();
 
             $updatedTask = $this->_client->createRequest("GET", "/planner/tasks/" . $this->planTask->getId())
-		->setReturnType(Model\PlannerTask::class)
-		->execute();
+            	->setReturnType(Model\PlannerTask::class)
+            	->execute();
 
             $this->assertNotNull($updatedTask->getAssignments()->getProperties()[$me->getId()]);
         } catch (GuzzleHttp\Exception\ClientException $e) {

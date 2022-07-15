@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Printer File
 * PHP version 7
 *
@@ -195,7 +195,7 @@ class Printer extends PrinterBase
     * Sets the connectors
     * The connectors that are associated with the printer.
     *
-    * @param PrintConnector $val The connectors
+    * @param PrintConnector[] $val The connectors
     *
     * @return Printer
     */
@@ -256,7 +256,7 @@ class Printer extends PrinterBase
     * Sets the shares
     * The list of printerShares that are associated with the printer. Currently, only one printerShare can be associated with the printer. Read-only. Nullable.
     *
-    * @param PrinterShare $val The shares
+    * @param PrinterShare[] $val The shares
     *
     * @return Printer
     */
@@ -286,7 +286,7 @@ class Printer extends PrinterBase
     * Sets the taskTriggers
     * A list of task triggers that are associated with the printer.
     *
-    * @param PrintTaskTrigger $val The taskTriggers
+    * @param PrintTaskTrigger[] $val The taskTriggers
     *
     * @return Printer
     */

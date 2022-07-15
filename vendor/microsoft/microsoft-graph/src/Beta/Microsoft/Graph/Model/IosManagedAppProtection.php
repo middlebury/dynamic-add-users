@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * IosManagedAppProtection File
 * PHP version 7
 *
@@ -121,7 +121,7 @@ class IosManagedAppProtection extends TargetedManagedAppProtection
 
     /**
     * Gets the customBrowserProtocol
-    * A custom browser protocol to open weblink on iOS. When this property is configured, ManagedBrowserToOpenLinksRequired should be true.
+    * A custom browser protocol to open weblink on iOS.
     *
     * @return string|null The customBrowserProtocol
     */
@@ -136,7 +136,7 @@ class IosManagedAppProtection extends TargetedManagedAppProtection
 
     /**
     * Sets the customBrowserProtocol
-    * A custom browser protocol to open weblink on iOS. When this property is configured, ManagedBrowserToOpenLinksRequired should be true.
+    * A custom browser protocol to open weblink on iOS.
     *
     * @param string $val The customBrowserProtocol
     *
@@ -255,7 +255,7 @@ class IosManagedAppProtection extends TargetedManagedAppProtection
     * Sets the exemptedAppProtocols
     * Apps in this list will be exempt from the policy and will be able to receive data from managed apps.
     *
-    * @param KeyValuePair $val The exemptedAppProtocols
+    * @param KeyValuePair[] $val The exemptedAppProtocols
     *
     * @return IosManagedAppProtection
     */
@@ -517,7 +517,7 @@ class IosManagedAppProtection extends TargetedManagedAppProtection
     * Sets the apps
     * List of apps to which the policy is deployed.
     *
-    * @param ManagedMobileApp $val The apps
+    * @param ManagedMobileApp[] $val The apps
     *
     * @return IosManagedAppProtection
     */

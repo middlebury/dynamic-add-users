@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * CloudPcDevice File
 * PHP version 7
 *
@@ -50,6 +50,33 @@ class CloudPcDevice extends \Beta\Microsoft\Graph\Model\Entity
     public function setCloudPcStatus($val)
     {
         $this->_propDict["cloudPcStatus"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the deviceSpecification
+    *
+    * @return string|null The deviceSpecification
+    */
+    public function getDeviceSpecification()
+    {
+        if (array_key_exists("deviceSpecification", $this->_propDict)) {
+            return $this->_propDict["deviceSpecification"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the deviceSpecification
+    *
+    * @param string $val The deviceSpecification
+    *
+    * @return CloudPcDevice
+    */
+    public function setDeviceSpecification($val)
+    {
+        $this->_propDict["deviceSpecification"] = $val;
         return $this;
     }
 
@@ -228,6 +255,33 @@ class CloudPcDevice extends \Beta\Microsoft\Graph\Model\Entity
     public function setServicePlanName($val)
     {
         $this->_propDict["servicePlanName"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the servicePlanType
+    *
+    * @return string|null The servicePlanType
+    */
+    public function getServicePlanType()
+    {
+        if (array_key_exists("servicePlanType", $this->_propDict)) {
+            return $this->_propDict["servicePlanType"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the servicePlanType
+    *
+    * @param string $val The servicePlanType
+    *
+    * @return CloudPcDevice
+    */
+    public function setServicePlanType($val)
+    {
+        $this->_propDict["servicePlanType"] = $val;
         return $this;
     }
 

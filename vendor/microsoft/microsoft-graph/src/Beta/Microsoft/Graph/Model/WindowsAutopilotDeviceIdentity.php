@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * WindowsAutopilotDeviceIdentity File
 * PHP version 7
 *
@@ -211,6 +211,93 @@ class WindowsAutopilotDeviceIdentity extends Entity
     }
 
     /**
+    * Gets the deviceAccountPassword
+    * Surface Hub Device Account Password
+    *
+    * @return string|null The deviceAccountPassword
+    */
+    public function getDeviceAccountPassword()
+    {
+        if (array_key_exists("deviceAccountPassword", $this->_propDict)) {
+            return $this->_propDict["deviceAccountPassword"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the deviceAccountPassword
+    * Surface Hub Device Account Password
+    *
+    * @param string $val The deviceAccountPassword
+    *
+    * @return WindowsAutopilotDeviceIdentity
+    */
+    public function setDeviceAccountPassword($val)
+    {
+        $this->_propDict["deviceAccountPassword"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the deviceAccountUpn
+    * Surface Hub Device Account Upn
+    *
+    * @return string|null The deviceAccountUpn
+    */
+    public function getDeviceAccountUpn()
+    {
+        if (array_key_exists("deviceAccountUpn", $this->_propDict)) {
+            return $this->_propDict["deviceAccountUpn"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the deviceAccountUpn
+    * Surface Hub Device Account Upn
+    *
+    * @param string $val The deviceAccountUpn
+    *
+    * @return WindowsAutopilotDeviceIdentity
+    */
+    public function setDeviceAccountUpn($val)
+    {
+        $this->_propDict["deviceAccountUpn"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the deviceFriendlyName
+    * Surface Hub Device Friendly Name
+    *
+    * @return string|null The deviceFriendlyName
+    */
+    public function getDeviceFriendlyName()
+    {
+        if (array_key_exists("deviceFriendlyName", $this->_propDict)) {
+            return $this->_propDict["deviceFriendlyName"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the deviceFriendlyName
+    * Surface Hub Device Friendly Name
+    *
+    * @param string $val The deviceFriendlyName
+    *
+    * @return WindowsAutopilotDeviceIdentity
+    */
+    public function setDeviceFriendlyName($val)
+    {
+        $this->_propDict["deviceFriendlyName"] = $val;
+        return $this;
+    }
+
+    /**
     * Gets the displayName
     * Display Name
     *
@@ -241,7 +328,7 @@ class WindowsAutopilotDeviceIdentity extends Entity
 
     /**
     * Gets the enrollmentState
-    * Intune enrollment state of the Windows autopilot device. Possible values are: unknown, enrolled, pendingReset, failed, notContacted.
+    * Intune enrollment state of the Windows autopilot device. Possible values are: unknown, enrolled, pendingReset, failed, notContacted, blocked.
     *
     * @return EnrollmentState|null The enrollmentState
     */
@@ -260,7 +347,7 @@ class WindowsAutopilotDeviceIdentity extends Entity
 
     /**
     * Sets the enrollmentState
-    * Intune enrollment state of the Windows autopilot device. Possible values are: unknown, enrolled, pendingReset, failed, notContacted.
+    * Intune enrollment state of the Windows autopilot device. Possible values are: unknown, enrolled, pendingReset, failed, notContacted, blocked.
     *
     * @param EnrollmentState $val The enrollmentState
     *
@@ -476,6 +563,72 @@ class WindowsAutopilotDeviceIdentity extends Entity
     public function setPurchaseOrderIdentifier($val)
     {
         $this->_propDict["purchaseOrderIdentifier"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the remediationState
+    * Device Remediation State. Possible values are: unknown, noRemediationRequired, automaticRemediationRequired, manualRemediationRequired, unknownFutureValue.
+    *
+    * @return WindowsAutopilotDeviceRemediationState|null The remediationState
+    */
+    public function getRemediationState()
+    {
+        if (array_key_exists("remediationState", $this->_propDict)) {
+            if (is_a($this->_propDict["remediationState"], "\Beta\Microsoft\Graph\Model\WindowsAutopilotDeviceRemediationState") || is_null($this->_propDict["remediationState"])) {
+                return $this->_propDict["remediationState"];
+            } else {
+                $this->_propDict["remediationState"] = new WindowsAutopilotDeviceRemediationState($this->_propDict["remediationState"]);
+                return $this->_propDict["remediationState"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the remediationState
+    * Device Remediation State. Possible values are: unknown, noRemediationRequired, automaticRemediationRequired, manualRemediationRequired, unknownFutureValue.
+    *
+    * @param WindowsAutopilotDeviceRemediationState $val The remediationState
+    *
+    * @return WindowsAutopilotDeviceIdentity
+    */
+    public function setRemediationState($val)
+    {
+        $this->_propDict["remediationState"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the remediationStateLastModifiedDateTime
+    * RemediationState set time of Autopilot device.
+    *
+    * @return \DateTime|null The remediationStateLastModifiedDateTime
+    */
+    public function getRemediationStateLastModifiedDateTime()
+    {
+        if (array_key_exists("remediationStateLastModifiedDateTime", $this->_propDict)) {
+            if (is_a($this->_propDict["remediationStateLastModifiedDateTime"], "\DateTime") || is_null($this->_propDict["remediationStateLastModifiedDateTime"])) {
+                return $this->_propDict["remediationStateLastModifiedDateTime"];
+            } else {
+                $this->_propDict["remediationStateLastModifiedDateTime"] = new \DateTime($this->_propDict["remediationStateLastModifiedDateTime"]);
+                return $this->_propDict["remediationStateLastModifiedDateTime"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the remediationStateLastModifiedDateTime
+    * RemediationState set time of Autopilot device.
+    *
+    * @param \DateTime $val The remediationStateLastModifiedDateTime
+    *
+    * @return WindowsAutopilotDeviceIdentity
+    */
+    public function setRemediationStateLastModifiedDateTime($val)
+    {
+        $this->_propDict["remediationStateLastModifiedDateTime"] = $val;
         return $this;
     }
 

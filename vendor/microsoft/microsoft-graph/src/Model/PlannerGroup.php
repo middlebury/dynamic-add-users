@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * PlannerGroup File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class PlannerGroup extends Entity
     * Sets the plans
     * Read-only. Nullable. Returns the plannerPlans owned by the group.
     *
-    * @param PlannerPlan $val The plans
+    * @param PlannerPlan[] $val The plans
     *
     * @return PlannerGroup
     */

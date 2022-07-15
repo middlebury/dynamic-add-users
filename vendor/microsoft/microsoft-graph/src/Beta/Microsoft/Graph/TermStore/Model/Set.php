@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Set File
 * PHP version 7
 *
@@ -59,7 +59,7 @@ class Set extends \Beta\Microsoft\Graph\Model\Entity
 
     /**
     * Gets the description
-    * Description that gives details on the term usage.
+    * Description giving details on the term usage.
     *
     * @return string|null The description
     */
@@ -74,7 +74,7 @@ class Set extends \Beta\Microsoft\Graph\Model\Entity
 
     /**
     * Sets the description
-    * Description that gives details on the term usage.
+    * Description giving details on the term usage.
     *
     * @param string $val The description
     *
@@ -106,7 +106,7 @@ class Set extends \Beta\Microsoft\Graph\Model\Entity
     * Sets the localizedNames
     * Name of the set for each languageTag.
     *
-    * @param LocalizedName $val The localizedNames
+    * @param LocalizedName[] $val The localizedNames
     *
     * @return Set
     */
@@ -136,7 +136,7 @@ class Set extends \Beta\Microsoft\Graph\Model\Entity
     * Sets the setProperties
     * Custom properties for the set.
     *
-    * @param \Beta\Microsoft\Graph\Model\KeyValue $val The setProperties
+    * @param \Beta\Microsoft\Graph\Model\KeyValue[] $val The setProperties
     *
     * @return Set
     */
@@ -166,7 +166,7 @@ class Set extends \Beta\Microsoft\Graph\Model\Entity
     * Sets the children
     * Children terms of set in term [store].
     *
-    * @param Term $val The children
+    * @param Term[] $val The children
     *
     * @return Set
     */
@@ -229,7 +229,7 @@ class Set extends \Beta\Microsoft\Graph\Model\Entity
     * Sets the relations
     * Indicates which terms have been pinned or reused directly under the set.
     *
-    * @param Relation $val The relations
+    * @param Relation[] $val The relations
     *
     * @return Set
     */
@@ -259,7 +259,7 @@ class Set extends \Beta\Microsoft\Graph\Model\Entity
     * Sets the terms
     * All the terms under the set.
     *
-    * @param Term $val The terms
+    * @param Term[] $val The terms
     *
     * @return Set
     */

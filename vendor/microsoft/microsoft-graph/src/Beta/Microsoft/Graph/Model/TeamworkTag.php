@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * TeamworkTag File
 * PHP version 7
 *
@@ -193,7 +193,7 @@ class TeamworkTag extends Entity
     * Sets the members
     * Users assigned to the tag.
     *
-    * @param TeamworkTagMember $val The members
+    * @param TeamworkTagMember[] $val The members
     *
     * @return TeamworkTag
     */

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * TrainingStatus File
 * PHP version 7
 *
@@ -34,6 +34,5 @@ class TrainingStatus extends Enum
     const IN_PROGRESS = "inProgress";
     const COMPLETED = "completed";
     const OVERDUE = "overdue";
-    const NOT_COMPLETED = "notCompleted";
     const UNKNOWN_FUTURE_VALUE = "unknownFutureValue";
 }

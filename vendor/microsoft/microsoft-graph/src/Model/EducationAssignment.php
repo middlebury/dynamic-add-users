@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * EducationAssignment File
 * PHP version 7
 *
@@ -58,8 +58,41 @@ class EducationAssignment extends Entity
     }
 
     /**
+    * Gets the addToCalendarAction
+    * Optional field to control the assignment behavior  for adding assignments to students' and teachers' calendars when the assignment is published. The possible values are: none, studentsAndPublisher, studentsAndTeamOwners, unknownFutureValue, and studentsOnly. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: studentsOnly. The default value is none.
+    *
+    * @return EducationAddToCalendarOptions|null The addToCalendarAction
+    */
+    public function getAddToCalendarAction()
+    {
+        if (array_key_exists("addToCalendarAction", $this->_propDict)) {
+            if (is_a($this->_propDict["addToCalendarAction"], "\Microsoft\Graph\Model\EducationAddToCalendarOptions") || is_null($this->_propDict["addToCalendarAction"])) {
+                return $this->_propDict["addToCalendarAction"];
+            } else {
+                $this->_propDict["addToCalendarAction"] = new EducationAddToCalendarOptions($this->_propDict["addToCalendarAction"]);
+                return $this->_propDict["addToCalendarAction"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the addToCalendarAction
+    * Optional field to control the assignment behavior  for adding assignments to students' and teachers' calendars when the assignment is published. The possible values are: none, studentsAndPublisher, studentsAndTeamOwners, unknownFutureValue, and studentsOnly. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: studentsOnly. The default value is none.
+    *
+    * @param EducationAddToCalendarOptions $val The addToCalendarAction
+    *
+    * @return EducationAssignment
+    */
+    public function setAddToCalendarAction($val)
+    {
+        $this->_propDict["addToCalendarAction"] = $val;
+        return $this;
+    }
+
+    /**
     * Gets the allowLateSubmissions
-    * Identifies whether students can submit after the due date. If this property isn't specified during create, it defaults to true.
+    * Identifies whether students can submit after the due date. If this property is not specified during create, it defaults to true.
     *
     * @return bool|null The allowLateSubmissions
     */
@@ -74,7 +107,7 @@ class EducationAssignment extends Entity
 
     /**
     * Sets the allowLateSubmissions
-    * Identifies whether students can submit after the due date. If this property isn't specified during create, it defaults to true.
+    * Identifies whether students can submit after the due date. If this property is not specified during create, it defaults to true.
     *
     * @param bool $val The allowLateSubmissions
     *
@@ -117,7 +150,7 @@ class EducationAssignment extends Entity
 
     /**
     * Gets the assignDateTime
-    * The date when the assignment should become active.  If in the future, the assignment isn't shown to the student until this date.  The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+    * The date when the assignment should become active.  If in the future, the assignment is not shown to the student until this date.  The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
     *
     * @return \DateTime|null The assignDateTime
     */
@@ -136,7 +169,7 @@ class EducationAssignment extends Entity
 
     /**
     * Sets the assignDateTime
-    * The date when the assignment should become active.  If in the future, the assignment isn't shown to the student until this date.  The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+    * The date when the assignment should become active.  If in the future, the assignment is not shown to the student until this date.  The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
     *
     * @param \DateTime $val The assignDateTime
     *
@@ -538,7 +571,7 @@ class EducationAssignment extends Entity
 
     /**
     * Gets the notificationChannelUrl
-    * Optional field to specify the URL of the channel to post the assignment publish notification. If not specified or null, defaults to the General channel. This field only applies to assignments where the assignTo value is educationAssignmentClassRecipient. Updating the notificationChannelUrl isn't allowed after the assignment has been published.
+    * Optional field to specify the URL of the channel to post the assignment publish notification. If not specified or null, defaults to the General channel. This field only applies to assignments where the assignTo value is educationAssignmentClassRecipient. Updating the notificationChannelUrl is not allowed after the assignment has been published.
     *
     * @return string|null The notificationChannelUrl
     */
@@ -553,7 +586,7 @@ class EducationAssignment extends Entity
 
     /**
     * Sets the notificationChannelUrl
-    * Optional field to specify the URL of the channel to post the assignment publish notification. If not specified or null, defaults to the General channel. This field only applies to assignments where the assignTo value is educationAssignmentClassRecipient. Updating the notificationChannelUrl isn't allowed after the assignment has been published.
+    * Optional field to specify the URL of the channel to post the assignment publish notification. If not specified or null, defaults to the General channel. This field only applies to assignments where the assignTo value is educationAssignmentClassRecipient. Updating the notificationChannelUrl is not allowed after the assignment has been published.
     *
     * @param string $val The notificationChannelUrl
     *
@@ -596,7 +629,7 @@ class EducationAssignment extends Entity
 
     /**
     * Gets the status
-    * Status of the Assignment.  You can't PATCH this value.  Possible values are: draft, scheduled, published, assigned.
+    * Status of the Assignment.  You can not PATCH this value.  Possible values are: draft, scheduled, published, assigned.
     *
     * @return EducationAssignmentStatus|null The status
     */
@@ -615,7 +648,7 @@ class EducationAssignment extends Entity
 
     /**
     * Sets the status
-    * Status of the Assignment.  You can't PATCH this value.  Possible values are: draft, scheduled, published, assigned.
+    * Status of the Assignment.  You can not PATCH this value.  Possible values are: draft, scheduled, published, assigned.
     *
     * @param EducationAssignmentStatus $val The status
     *
@@ -676,7 +709,7 @@ class EducationAssignment extends Entity
     * Sets the categories
     * When set, enables users to easily find assignments of a given type.  Read-only. Nullable.
     *
-    * @param EducationCategory $val The categories
+    * @param EducationCategory[] $val The categories
     *
     * @return EducationAssignment
     */
@@ -706,7 +739,7 @@ class EducationAssignment extends Entity
     * Sets the resources
     * Learning objects that are associated with this assignment.  Only teachers can modify this list. Nullable.
     *
-    * @param EducationAssignmentResource $val The resources
+    * @param EducationAssignmentResource[] $val The resources
     *
     * @return EducationAssignment
     */
@@ -769,7 +802,7 @@ class EducationAssignment extends Entity
     * Sets the submissions
     * Once published, there is a submission object for each student representing their work and grade.  Read-only. Nullable.
     *
-    * @param EducationSubmission $val The submissions
+    * @param EducationSubmission[] $val The submissions
     *
     * @return EducationAssignment
     */

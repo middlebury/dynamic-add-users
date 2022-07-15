@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * PublishedResource File
 * PHP version 7
 *
@@ -135,7 +135,7 @@ class PublishedResource extends Entity
     * Sets the agentGroups
     * List of onPremisesAgentGroups that a publishedResource is assigned to. Read-only. Nullable.
     *
-    * @param OnPremisesAgentGroup $val The agentGroups
+    * @param OnPremisesAgentGroup[] $val The agentGroups
     *
     * @return PublishedResource
     */

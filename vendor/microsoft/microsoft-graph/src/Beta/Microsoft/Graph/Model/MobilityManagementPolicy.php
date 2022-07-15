@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * MobilityManagementPolicy File
 * PHP version 7
 *
@@ -251,7 +251,7 @@ class MobilityManagementPolicy extends Entity
     * Sets the includedGroups
     * Azure AD groups under the scope of the mobility management application if appliesTo is selected
     *
-    * @param Group $val The includedGroups
+    * @param Group[] $val The includedGroups
     *
     * @return MobilityManagementPolicy
     */

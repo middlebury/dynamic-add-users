@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AccessPackageAssignmentResourceRole File
 * PHP version 7
 *
@@ -131,7 +131,7 @@ class AccessPackageAssignmentResourceRole extends Entity
     * Sets the accessPackageAssignments
     * The access package assignments resulting in this role assignment. Read-only. Nullable.
     *
-    * @param AccessPackageAssignment $val The accessPackageAssignments
+    * @param AccessPackageAssignment[] $val The accessPackageAssignments
     *
     * @return AccessPackageAssignmentResourceRole
     */
@@ -143,7 +143,6 @@ class AccessPackageAssignmentResourceRole extends Entity
 
     /**
     * Gets the accessPackageResourceRole
-    * Read-only. Nullable.
     *
     * @return AccessPackageResourceRole|null The accessPackageResourceRole
     */
@@ -162,7 +161,6 @@ class AccessPackageAssignmentResourceRole extends Entity
 
     /**
     * Sets the accessPackageResourceRole
-    * Read-only. Nullable.
     *
     * @param AccessPackageResourceRole $val The accessPackageResourceRole
     *
@@ -176,7 +174,6 @@ class AccessPackageAssignmentResourceRole extends Entity
 
     /**
     * Gets the accessPackageResourceScope
-    * Read-only. Nullable.
     *
     * @return AccessPackageResourceScope|null The accessPackageResourceScope
     */
@@ -195,7 +192,6 @@ class AccessPackageAssignmentResourceRole extends Entity
 
     /**
     * Sets the accessPackageResourceScope
-    * Read-only. Nullable.
     *
     * @param AccessPackageResourceScope $val The accessPackageResourceScope
     *
@@ -209,7 +205,7 @@ class AccessPackageAssignmentResourceRole extends Entity
 
     /**
     * Gets the accessPackageSubject
-    * Read-only. Nullable.
+    * Read-only. Nullable. Supports $filter (eq) on objectId and $expand query parameters.
     *
     * @return AccessPackageSubject|null The accessPackageSubject
     */
@@ -228,7 +224,7 @@ class AccessPackageAssignmentResourceRole extends Entity
 
     /**
     * Sets the accessPackageSubject
-    * Read-only. Nullable.
+    * Read-only. Nullable. Supports $filter (eq) on objectId and $expand query parameters.
     *
     * @param AccessPackageSubject $val The accessPackageSubject
     *

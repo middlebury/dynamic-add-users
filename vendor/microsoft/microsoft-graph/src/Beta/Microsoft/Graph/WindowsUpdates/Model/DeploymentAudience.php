@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeploymentAudience File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class DeploymentAudience extends \Beta\Microsoft\Graph\Model\Entity
     * Sets the exclusions
     * Specifies the assets to exclude from the audience.
     *
-    * @param UpdatableAsset $val The exclusions
+    * @param UpdatableAsset[] $val The exclusions
     *
     * @return DeploymentAudience
     */
@@ -74,7 +74,7 @@ class DeploymentAudience extends \Beta\Microsoft\Graph\Model\Entity
     * Sets the members
     * Specifies the assets to include in the audience.
     *
-    * @param UpdatableAsset $val The members
+    * @param UpdatableAsset[] $val The members
     *
     * @return DeploymentAudience
     */

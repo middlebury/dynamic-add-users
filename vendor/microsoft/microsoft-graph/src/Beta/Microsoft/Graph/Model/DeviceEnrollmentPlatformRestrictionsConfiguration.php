@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceEnrollmentPlatformRestrictionsConfiguration File
 * PHP version 7
 *
@@ -87,39 +87,6 @@ class DeviceEnrollmentPlatformRestrictionsConfiguration extends DeviceEnrollment
     public function setAndroidRestriction($val)
     {
         $this->_propDict["androidRestriction"] = $val;
-        return $this;
-    }
-
-    /**
-    * Gets the aospRestriction
-    * AOSP restrictions based on platform, platform operating system version, and device ownership
-    *
-    * @return DeviceEnrollmentPlatformRestriction|null The aospRestriction
-    */
-    public function getAospRestriction()
-    {
-        if (array_key_exists("aospRestriction", $this->_propDict)) {
-            if (is_a($this->_propDict["aospRestriction"], "\Beta\Microsoft\Graph\Model\DeviceEnrollmentPlatformRestriction") || is_null($this->_propDict["aospRestriction"])) {
-                return $this->_propDict["aospRestriction"];
-            } else {
-                $this->_propDict["aospRestriction"] = new DeviceEnrollmentPlatformRestriction($this->_propDict["aospRestriction"]);
-                return $this->_propDict["aospRestriction"];
-            }
-        }
-        return null;
-    }
-
-    /**
-    * Sets the aospRestriction
-    * AOSP restrictions based on platform, platform operating system version, and device ownership
-    *
-    * @param DeviceEnrollmentPlatformRestriction $val The aospRestriction
-    *
-    * @return DeviceEnrollmentPlatformRestrictionsConfiguration
-    */
-    public function setAospRestriction($val)
-    {
-        $this->_propDict["aospRestriction"] = $val;
         return $this;
     }
 

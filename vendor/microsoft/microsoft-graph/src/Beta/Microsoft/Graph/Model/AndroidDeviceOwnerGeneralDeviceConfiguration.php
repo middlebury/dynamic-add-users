@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AndroidDeviceOwnerGeneralDeviceConfiguration File
 * PHP version 7
 *
@@ -177,6 +177,36 @@ class AndroidDeviceOwnerGeneralDeviceConfiguration extends DeviceConfiguration
         return $this;
     }
 
+
+     /**
+     * Gets the azureAdSharedDeviceDataClearApps
+    * A list of managed apps that will have their data cleared during a global sign-out in AAD shared device mode. This collection can contain a maximum of 500 elements.
+     *
+     * @return array|null The azureAdSharedDeviceDataClearApps
+     */
+    public function getAzureAdSharedDeviceDataClearApps()
+    {
+        if (array_key_exists("azureAdSharedDeviceDataClearApps", $this->_propDict)) {
+           return $this->_propDict["azureAdSharedDeviceDataClearApps"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the azureAdSharedDeviceDataClearApps
+    * A list of managed apps that will have their data cleared during a global sign-out in AAD shared device mode. This collection can contain a maximum of 500 elements.
+    *
+    * @param AppListItem[] $val The azureAdSharedDeviceDataClearApps
+    *
+    * @return AndroidDeviceOwnerGeneralDeviceConfiguration
+    */
+    public function setAzureAdSharedDeviceDataClearApps($val)
+    {
+        $this->_propDict["azureAdSharedDeviceDataClearApps"] = $val;
+        return $this;
+    }
+
     /**
     * Gets the bluetoothBlockConfiguration
     * Indicates whether or not to block a user from configuring bluetooth.
@@ -323,6 +353,97 @@ class AndroidDeviceOwnerGeneralDeviceConfiguration extends DeviceConfiguration
     }
 
     /**
+    * Gets the crossProfilePoliciesAllowCopyPaste
+    * Indicates whether or not text copied from one profile (personal or work) can be pasted in the other.
+    *
+    * @return bool|null The crossProfilePoliciesAllowCopyPaste
+    */
+    public function getCrossProfilePoliciesAllowCopyPaste()
+    {
+        if (array_key_exists("crossProfilePoliciesAllowCopyPaste", $this->_propDict)) {
+            return $this->_propDict["crossProfilePoliciesAllowCopyPaste"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the crossProfilePoliciesAllowCopyPaste
+    * Indicates whether or not text copied from one profile (personal or work) can be pasted in the other.
+    *
+    * @param bool $val The crossProfilePoliciesAllowCopyPaste
+    *
+    * @return AndroidDeviceOwnerGeneralDeviceConfiguration
+    */
+    public function setCrossProfilePoliciesAllowCopyPaste($val)
+    {
+        $this->_propDict["crossProfilePoliciesAllowCopyPaste"] = boolval($val);
+        return $this;
+    }
+
+    /**
+    * Gets the crossProfilePoliciesAllowDataSharing
+    * Indicates whether data from one profile (personal or work) can be shared with apps in the other profile. Possible values are: notConfigured, crossProfileDataSharingBlocked, dataSharingFromWorkToPersonalBlocked, crossProfileDataSharingAllowed, unkownFutureValue.
+    *
+    * @return AndroidDeviceOwnerCrossProfileDataSharing|null The crossProfilePoliciesAllowDataSharing
+    */
+    public function getCrossProfilePoliciesAllowDataSharing()
+    {
+        if (array_key_exists("crossProfilePoliciesAllowDataSharing", $this->_propDict)) {
+            if (is_a($this->_propDict["crossProfilePoliciesAllowDataSharing"], "\Beta\Microsoft\Graph\Model\AndroidDeviceOwnerCrossProfileDataSharing") || is_null($this->_propDict["crossProfilePoliciesAllowDataSharing"])) {
+                return $this->_propDict["crossProfilePoliciesAllowDataSharing"];
+            } else {
+                $this->_propDict["crossProfilePoliciesAllowDataSharing"] = new AndroidDeviceOwnerCrossProfileDataSharing($this->_propDict["crossProfilePoliciesAllowDataSharing"]);
+                return $this->_propDict["crossProfilePoliciesAllowDataSharing"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the crossProfilePoliciesAllowDataSharing
+    * Indicates whether data from one profile (personal or work) can be shared with apps in the other profile. Possible values are: notConfigured, crossProfileDataSharingBlocked, dataSharingFromWorkToPersonalBlocked, crossProfileDataSharingAllowed, unkownFutureValue.
+    *
+    * @param AndroidDeviceOwnerCrossProfileDataSharing $val The crossProfilePoliciesAllowDataSharing
+    *
+    * @return AndroidDeviceOwnerGeneralDeviceConfiguration
+    */
+    public function setCrossProfilePoliciesAllowDataSharing($val)
+    {
+        $this->_propDict["crossProfilePoliciesAllowDataSharing"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the crossProfilePoliciesShowWorkContactsInPersonalProfile
+    * Indicates whether or not contacts stored in work profile are shown in personal profile contact searches/incoming calls.
+    *
+    * @return bool|null The crossProfilePoliciesShowWorkContactsInPersonalProfile
+    */
+    public function getCrossProfilePoliciesShowWorkContactsInPersonalProfile()
+    {
+        if (array_key_exists("crossProfilePoliciesShowWorkContactsInPersonalProfile", $this->_propDict)) {
+            return $this->_propDict["crossProfilePoliciesShowWorkContactsInPersonalProfile"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the crossProfilePoliciesShowWorkContactsInPersonalProfile
+    * Indicates whether or not contacts stored in work profile are shown in personal profile contact searches/incoming calls.
+    *
+    * @param bool $val The crossProfilePoliciesShowWorkContactsInPersonalProfile
+    *
+    * @return AndroidDeviceOwnerGeneralDeviceConfiguration
+    */
+    public function setCrossProfilePoliciesShowWorkContactsInPersonalProfile($val)
+    {
+        $this->_propDict["crossProfilePoliciesShowWorkContactsInPersonalProfile"] = boolval($val);
+        return $this;
+    }
+
+    /**
     * Gets the dataRoamingBlocked
     * Indicates whether or not to block a user from data roaming.
     *
@@ -377,6 +498,72 @@ class AndroidDeviceOwnerGeneralDeviceConfiguration extends DeviceConfiguration
     public function setDateTimeConfigurationBlocked($val)
     {
         $this->_propDict["dateTimeConfigurationBlocked"] = boolval($val);
+        return $this;
+    }
+
+    /**
+    * Gets the detailedHelpText
+    * Represents the customized detailed help text provided to users when they attempt to modify managed settings on their device.
+    *
+    * @return AndroidDeviceOwnerUserFacingMessage|null The detailedHelpText
+    */
+    public function getDetailedHelpText()
+    {
+        if (array_key_exists("detailedHelpText", $this->_propDict)) {
+            if (is_a($this->_propDict["detailedHelpText"], "\Beta\Microsoft\Graph\Model\AndroidDeviceOwnerUserFacingMessage") || is_null($this->_propDict["detailedHelpText"])) {
+                return $this->_propDict["detailedHelpText"];
+            } else {
+                $this->_propDict["detailedHelpText"] = new AndroidDeviceOwnerUserFacingMessage($this->_propDict["detailedHelpText"]);
+                return $this->_propDict["detailedHelpText"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the detailedHelpText
+    * Represents the customized detailed help text provided to users when they attempt to modify managed settings on their device.
+    *
+    * @param AndroidDeviceOwnerUserFacingMessage $val The detailedHelpText
+    *
+    * @return AndroidDeviceOwnerGeneralDeviceConfiguration
+    */
+    public function setDetailedHelpText($val)
+    {
+        $this->_propDict["detailedHelpText"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the deviceOwnerLockScreenMessage
+    * Represents the customized lock screen message provided to users when they attempt to modify managed settings on their device.
+    *
+    * @return AndroidDeviceOwnerUserFacingMessage|null The deviceOwnerLockScreenMessage
+    */
+    public function getDeviceOwnerLockScreenMessage()
+    {
+        if (array_key_exists("deviceOwnerLockScreenMessage", $this->_propDict)) {
+            if (is_a($this->_propDict["deviceOwnerLockScreenMessage"], "\Beta\Microsoft\Graph\Model\AndroidDeviceOwnerUserFacingMessage") || is_null($this->_propDict["deviceOwnerLockScreenMessage"])) {
+                return $this->_propDict["deviceOwnerLockScreenMessage"];
+            } else {
+                $this->_propDict["deviceOwnerLockScreenMessage"] = new AndroidDeviceOwnerUserFacingMessage($this->_propDict["deviceOwnerLockScreenMessage"]);
+                return $this->_propDict["deviceOwnerLockScreenMessage"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the deviceOwnerLockScreenMessage
+    * Represents the customized lock screen message provided to users when they attempt to modify managed settings on their device.
+    *
+    * @param AndroidDeviceOwnerUserFacingMessage $val The deviceOwnerLockScreenMessage
+    *
+    * @return AndroidDeviceOwnerGeneralDeviceConfiguration
+    */
+    public function setDeviceOwnerLockScreenMessage($val)
+    {
+        $this->_propDict["deviceOwnerLockScreenMessage"] = $val;
         return $this;
     }
 
@@ -735,7 +922,7 @@ class AndroidDeviceOwnerGeneralDeviceConfiguration extends DeviceConfiguration
     * Sets the kioskModeAppPositions
     * The ordering of items on Kiosk Mode Managed Home Screen. This collection can contain a maximum of 500 elements.
     *
-    * @param AndroidDeviceOwnerKioskModeAppPositionItem $val The kioskModeAppPositions
+    * @param AndroidDeviceOwnerKioskModeAppPositionItem[] $val The kioskModeAppPositions
     *
     * @return AndroidDeviceOwnerGeneralDeviceConfiguration
     */
@@ -765,7 +952,7 @@ class AndroidDeviceOwnerGeneralDeviceConfiguration extends DeviceConfiguration
     * Sets the kioskModeApps
     * A list of managed apps that will be shown when the device is in Kiosk Mode. This collection can contain a maximum of 500 elements.
     *
-    * @param AppListItem $val The kioskModeApps
+    * @param AppListItem[] $val The kioskModeApps
     *
     * @return AndroidDeviceOwnerGeneralDeviceConfiguration
     */
@@ -1093,7 +1280,7 @@ class AndroidDeviceOwnerGeneralDeviceConfiguration extends DeviceConfiguration
     * Sets the kioskModeManagedFolders
     * A list of managed folders for a device in Kiosk Mode. This collection can contain a maximum of 500 elements.
     *
-    * @param AndroidDeviceOwnerKioskModeManagedFolder $val The kioskModeManagedFolders
+    * @param AndroidDeviceOwnerKioskModeManagedFolder[] $val The kioskModeManagedFolders
     *
     * @return AndroidDeviceOwnerGeneralDeviceConfiguration
     */
@@ -1663,6 +1850,39 @@ class AndroidDeviceOwnerGeneralDeviceConfiguration extends DeviceConfiguration
     }
 
     /**
+    * Gets the kioskModeUseManagedHomeScreenApp
+    * Whether or not to use single app kiosk mode or multi-app kiosk mode. Possible values are: notConfigured, singleAppMode, multiAppMode.
+    *
+    * @return KioskModeType|null The kioskModeUseManagedHomeScreenApp
+    */
+    public function getKioskModeUseManagedHomeScreenApp()
+    {
+        if (array_key_exists("kioskModeUseManagedHomeScreenApp", $this->_propDict)) {
+            if (is_a($this->_propDict["kioskModeUseManagedHomeScreenApp"], "\Beta\Microsoft\Graph\Model\KioskModeType") || is_null($this->_propDict["kioskModeUseManagedHomeScreenApp"])) {
+                return $this->_propDict["kioskModeUseManagedHomeScreenApp"];
+            } else {
+                $this->_propDict["kioskModeUseManagedHomeScreenApp"] = new KioskModeType($this->_propDict["kioskModeUseManagedHomeScreenApp"]);
+                return $this->_propDict["kioskModeUseManagedHomeScreenApp"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the kioskModeUseManagedHomeScreenApp
+    * Whether or not to use single app kiosk mode or multi-app kiosk mode. Possible values are: notConfigured, singleAppMode, multiAppMode.
+    *
+    * @param KioskModeType $val The kioskModeUseManagedHomeScreenApp
+    *
+    * @return AndroidDeviceOwnerGeneralDeviceConfiguration
+    */
+    public function setKioskModeUseManagedHomeScreenApp($val)
+    {
+        $this->_propDict["kioskModeUseManagedHomeScreenApp"] = $val;
+        return $this;
+    }
+
+    /**
     * Gets the kioskModeVirtualHomeButtonEnabled
     * Whether or not to display a virtual home button when the device is in Kiosk Mode.
     *
@@ -2216,7 +2436,7 @@ class AndroidDeviceOwnerGeneralDeviceConfiguration extends DeviceConfiguration
     * Sets the passwordBlockKeyguardFeatures
     * List of device keyguard features to block. This collection can contain a maximum of 7 elements.
     *
-    * @param AndroidKeyguardFeature $val The passwordBlockKeyguardFeatures
+    * @param AndroidKeyguardFeature[] $val The passwordBlockKeyguardFeatures
     *
     * @return AndroidDeviceOwnerGeneralDeviceConfiguration
     */
@@ -2550,6 +2770,39 @@ class AndroidDeviceOwnerGeneralDeviceConfiguration extends DeviceConfiguration
     }
 
     /**
+    * Gets the passwordRequireUnlock
+    * Indicates the timeout period after which a device must be unlocked using a form of strong authentication. Possible values are: deviceDefault, daily, unkownFutureValue.
+    *
+    * @return AndroidDeviceOwnerRequiredPasswordUnlock|null The passwordRequireUnlock
+    */
+    public function getPasswordRequireUnlock()
+    {
+        if (array_key_exists("passwordRequireUnlock", $this->_propDict)) {
+            if (is_a($this->_propDict["passwordRequireUnlock"], "\Beta\Microsoft\Graph\Model\AndroidDeviceOwnerRequiredPasswordUnlock") || is_null($this->_propDict["passwordRequireUnlock"])) {
+                return $this->_propDict["passwordRequireUnlock"];
+            } else {
+                $this->_propDict["passwordRequireUnlock"] = new AndroidDeviceOwnerRequiredPasswordUnlock($this->_propDict["passwordRequireUnlock"]);
+                return $this->_propDict["passwordRequireUnlock"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the passwordRequireUnlock
+    * Indicates the timeout period after which a device must be unlocked using a form of strong authentication. Possible values are: deviceDefault, daily, unkownFutureValue.
+    *
+    * @param AndroidDeviceOwnerRequiredPasswordUnlock $val The passwordRequireUnlock
+    *
+    * @return AndroidDeviceOwnerGeneralDeviceConfiguration
+    */
+    public function setPasswordRequireUnlock($val)
+    {
+        $this->_propDict["passwordRequireUnlock"] = $val;
+        return $this;
+    }
+
+    /**
     * Gets the passwordSignInFailureCountBeforeFactoryReset
     * Indicates the number of times a user can enter an incorrect password before the device is wiped. Valid values 4 to 11
     *
@@ -2636,6 +2889,69 @@ class AndroidDeviceOwnerGeneralDeviceConfiguration extends DeviceConfiguration
         return $this;
     }
 
+
+     /**
+     * Gets the personalProfilePersonalApplications
+    * Policy applied to applications in the personal profile. This collection can contain a maximum of 500 elements.
+     *
+     * @return array|null The personalProfilePersonalApplications
+     */
+    public function getPersonalProfilePersonalApplications()
+    {
+        if (array_key_exists("personalProfilePersonalApplications", $this->_propDict)) {
+           return $this->_propDict["personalProfilePersonalApplications"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the personalProfilePersonalApplications
+    * Policy applied to applications in the personal profile. This collection can contain a maximum of 500 elements.
+    *
+    * @param AppListItem[] $val The personalProfilePersonalApplications
+    *
+    * @return AndroidDeviceOwnerGeneralDeviceConfiguration
+    */
+    public function setPersonalProfilePersonalApplications($val)
+    {
+        $this->_propDict["personalProfilePersonalApplications"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the personalProfilePlayStoreMode
+    * Used together with PersonalProfilePersonalApplications to control how apps in the personal profile are allowed or blocked. Possible values are: notConfigured, blockedApps, allowedApps.
+    *
+    * @return PersonalProfilePersonalPlayStoreMode|null The personalProfilePlayStoreMode
+    */
+    public function getPersonalProfilePlayStoreMode()
+    {
+        if (array_key_exists("personalProfilePlayStoreMode", $this->_propDict)) {
+            if (is_a($this->_propDict["personalProfilePlayStoreMode"], "\Beta\Microsoft\Graph\Model\PersonalProfilePersonalPlayStoreMode") || is_null($this->_propDict["personalProfilePlayStoreMode"])) {
+                return $this->_propDict["personalProfilePlayStoreMode"];
+            } else {
+                $this->_propDict["personalProfilePlayStoreMode"] = new PersonalProfilePersonalPlayStoreMode($this->_propDict["personalProfilePlayStoreMode"]);
+                return $this->_propDict["personalProfilePlayStoreMode"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the personalProfilePlayStoreMode
+    * Used together with PersonalProfilePersonalApplications to control how apps in the personal profile are allowed or blocked. Possible values are: notConfigured, blockedApps, allowedApps.
+    *
+    * @param PersonalProfilePersonalPlayStoreMode $val The personalProfilePlayStoreMode
+    *
+    * @return AndroidDeviceOwnerGeneralDeviceConfiguration
+    */
+    public function setPersonalProfilePlayStoreMode($val)
+    {
+        $this->_propDict["personalProfilePlayStoreMode"] = $val;
+        return $this;
+    }
+
     /**
     * Gets the personalProfileScreenCaptureBlocked
     * Indicates whether to disable the capability to take screenshots on the personal profile.
@@ -2699,35 +3015,6 @@ class AndroidDeviceOwnerGeneralDeviceConfiguration extends DeviceConfiguration
     }
 
     /**
-    * Gets the safeBootBlocked
-    * Indicates whether or not rebooting the device into safe boot is disabled.
-    *
-    * @return bool|null The safeBootBlocked
-    */
-    public function getSafeBootBlocked()
-    {
-        if (array_key_exists("safeBootBlocked", $this->_propDict)) {
-            return $this->_propDict["safeBootBlocked"];
-        } else {
-            return null;
-        }
-    }
-
-    /**
-    * Sets the safeBootBlocked
-    * Indicates whether or not rebooting the device into safe boot is disabled.
-    *
-    * @param bool $val The safeBootBlocked
-    *
-    * @return AndroidDeviceOwnerGeneralDeviceConfiguration
-    */
-    public function setSafeBootBlocked($val)
-    {
-        $this->_propDict["safeBootBlocked"] = boolval($val);
-        return $this;
-    }
-
-    /**
     * Gets the screenCaptureBlocked
     * Indicates whether or not to disable the capability to take screenshots.
     *
@@ -2757,31 +3044,31 @@ class AndroidDeviceOwnerGeneralDeviceConfiguration extends DeviceConfiguration
     }
 
     /**
-    * Gets the securityAllowDebuggingFeatures
-    * Indicates whether or not to block the user from enabling debugging features on the device.
+    * Gets the securityCommonCriteriaModeEnabled
+    * Represents the security common criteria mode enabled provided to users when they attempt to modify managed settings on their device.
     *
-    * @return bool|null The securityAllowDebuggingFeatures
+    * @return bool|null The securityCommonCriteriaModeEnabled
     */
-    public function getSecurityAllowDebuggingFeatures()
+    public function getSecurityCommonCriteriaModeEnabled()
     {
-        if (array_key_exists("securityAllowDebuggingFeatures", $this->_propDict)) {
-            return $this->_propDict["securityAllowDebuggingFeatures"];
+        if (array_key_exists("securityCommonCriteriaModeEnabled", $this->_propDict)) {
+            return $this->_propDict["securityCommonCriteriaModeEnabled"];
         } else {
             return null;
         }
     }
 
     /**
-    * Sets the securityAllowDebuggingFeatures
-    * Indicates whether or not to block the user from enabling debugging features on the device.
+    * Sets the securityCommonCriteriaModeEnabled
+    * Represents the security common criteria mode enabled provided to users when they attempt to modify managed settings on their device.
     *
-    * @param bool $val The securityAllowDebuggingFeatures
+    * @param bool $val The securityCommonCriteriaModeEnabled
     *
     * @return AndroidDeviceOwnerGeneralDeviceConfiguration
     */
-    public function setSecurityAllowDebuggingFeatures($val)
+    public function setSecurityCommonCriteriaModeEnabled($val)
     {
-        $this->_propDict["securityAllowDebuggingFeatures"] = boolval($val);
+        $this->_propDict["securityCommonCriteriaModeEnabled"] = boolval($val);
         return $this;
     }
 
@@ -2844,6 +3131,39 @@ class AndroidDeviceOwnerGeneralDeviceConfiguration extends DeviceConfiguration
     }
 
     /**
+    * Gets the shortHelpText
+    * Represents the customized short help text provided to users when they attempt to modify managed settings on their device.
+    *
+    * @return AndroidDeviceOwnerUserFacingMessage|null The shortHelpText
+    */
+    public function getShortHelpText()
+    {
+        if (array_key_exists("shortHelpText", $this->_propDict)) {
+            if (is_a($this->_propDict["shortHelpText"], "\Beta\Microsoft\Graph\Model\AndroidDeviceOwnerUserFacingMessage") || is_null($this->_propDict["shortHelpText"])) {
+                return $this->_propDict["shortHelpText"];
+            } else {
+                $this->_propDict["shortHelpText"] = new AndroidDeviceOwnerUserFacingMessage($this->_propDict["shortHelpText"]);
+                return $this->_propDict["shortHelpText"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the shortHelpText
+    * Represents the customized short help text provided to users when they attempt to modify managed settings on their device.
+    *
+    * @param AndroidDeviceOwnerUserFacingMessage $val The shortHelpText
+    *
+    * @return AndroidDeviceOwnerGeneralDeviceConfiguration
+    */
+    public function setShortHelpText($val)
+    {
+        $this->_propDict["shortHelpText"] = $val;
+        return $this;
+    }
+
+    /**
     * Gets the statusBarBlocked
     * Indicates whether or the status bar is disabled, including notifications, quick settings and other screen overlays.
     *
@@ -2892,7 +3212,7 @@ class AndroidDeviceOwnerGeneralDeviceConfiguration extends DeviceConfiguration
     * Sets the stayOnModes
     * List of modes in which the device's display will stay powered-on. This collection can contain a maximum of 4 elements.
     *
-    * @param AndroidDeviceOwnerBatteryPluggedMode $val The stayOnModes
+    * @param AndroidDeviceOwnerBatteryPluggedMode[] $val The stayOnModes
     *
     * @return AndroidDeviceOwnerGeneralDeviceConfiguration
     */
@@ -2986,6 +3306,36 @@ class AndroidDeviceOwnerGeneralDeviceConfiguration extends DeviceConfiguration
     public function setStorageBlockUsbFileTransfer($val)
     {
         $this->_propDict["storageBlockUsbFileTransfer"] = boolval($val);
+        return $this;
+    }
+
+
+     /**
+     * Gets the systemUpdateFreezePeriods
+    * Indicates the annually repeating time periods during which system updates are postponed. This collection can contain a maximum of 500 elements.
+     *
+     * @return array|null The systemUpdateFreezePeriods
+     */
+    public function getSystemUpdateFreezePeriods()
+    {
+        if (array_key_exists("systemUpdateFreezePeriods", $this->_propDict)) {
+           return $this->_propDict["systemUpdateFreezePeriods"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the systemUpdateFreezePeriods
+    * Indicates the annually repeating time periods during which system updates are postponed. This collection can contain a maximum of 500 elements.
+    *
+    * @param AndroidDeviceOwnerSystemUpdateFreezePeriod[] $val The systemUpdateFreezePeriods
+    *
+    * @return AndroidDeviceOwnerGeneralDeviceConfiguration
+    */
+    public function setSystemUpdateFreezePeriods($val)
+    {
+        $this->_propDict["systemUpdateFreezePeriods"] = $val;
         return $this;
     }
 
@@ -3603,6 +3953,39 @@ class AndroidDeviceOwnerGeneralDeviceConfiguration extends DeviceConfiguration
     public function setWorkProfilePasswordRequiredType($val)
     {
         $this->_propDict["workProfilePasswordRequiredType"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the workProfilePasswordRequireUnlock
+    * Indicates the timeout period after which a work profile must be unlocked using a form of strong authentication. Possible values are: deviceDefault, daily, unkownFutureValue.
+    *
+    * @return AndroidDeviceOwnerRequiredPasswordUnlock|null The workProfilePasswordRequireUnlock
+    */
+    public function getWorkProfilePasswordRequireUnlock()
+    {
+        if (array_key_exists("workProfilePasswordRequireUnlock", $this->_propDict)) {
+            if (is_a($this->_propDict["workProfilePasswordRequireUnlock"], "\Beta\Microsoft\Graph\Model\AndroidDeviceOwnerRequiredPasswordUnlock") || is_null($this->_propDict["workProfilePasswordRequireUnlock"])) {
+                return $this->_propDict["workProfilePasswordRequireUnlock"];
+            } else {
+                $this->_propDict["workProfilePasswordRequireUnlock"] = new AndroidDeviceOwnerRequiredPasswordUnlock($this->_propDict["workProfilePasswordRequireUnlock"]);
+                return $this->_propDict["workProfilePasswordRequireUnlock"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the workProfilePasswordRequireUnlock
+    * Indicates the timeout period after which a work profile must be unlocked using a form of strong authentication. Possible values are: deviceDefault, daily, unkownFutureValue.
+    *
+    * @param AndroidDeviceOwnerRequiredPasswordUnlock $val The workProfilePasswordRequireUnlock
+    *
+    * @return AndroidDeviceOwnerGeneralDeviceConfiguration
+    */
+    public function setWorkProfilePasswordRequireUnlock($val)
+    {
+        $this->_propDict["workProfilePasswordRequireUnlock"] = $val;
         return $this;
     }
 

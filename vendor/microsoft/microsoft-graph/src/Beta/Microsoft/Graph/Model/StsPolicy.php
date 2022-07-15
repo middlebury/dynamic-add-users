@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * StsPolicy File
 * PHP version 7
 *
@@ -100,7 +100,7 @@ class StsPolicy extends PolicyBase
     /**
     * Sets the appliesTo
     *
-    * @param DirectoryObject $val The appliesTo
+    * @param DirectoryObject[] $val The appliesTo
     *
     * @return StsPolicy
     */

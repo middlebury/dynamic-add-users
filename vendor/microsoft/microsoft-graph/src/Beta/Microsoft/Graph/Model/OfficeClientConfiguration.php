@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * OfficeClientConfiguration File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class OfficeClientConfiguration extends Entity
     * Sets the checkinStatuses
     * List of office Client check-in status.
     *
-    * @param OfficeClientCheckinStatus $val The checkinStatuses
+    * @param OfficeClientCheckinStatus[] $val The checkinStatuses
     *
     * @return OfficeClientConfiguration
     */
@@ -260,7 +260,7 @@ class OfficeClientConfiguration extends Entity
     * Sets the assignments
     * The list of group assignments for the policy.
     *
-    * @param OfficeClientConfigurationAssignment $val The assignments
+    * @param OfficeClientConfigurationAssignment[] $val The assignments
     *
     * @return OfficeClientConfiguration
     */

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ApplicationTemplate File
 * PHP version 7
 *
@@ -137,6 +137,37 @@ class ApplicationTemplate extends Entity
     public function setHomePageUrl($val)
     {
         $this->_propDict["homePageUrl"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the informationalUrls
+    *
+    * @return InformationalUrls|null The informationalUrls
+    */
+    public function getInformationalUrls()
+    {
+        if (array_key_exists("informationalUrls", $this->_propDict)) {
+            if (is_a($this->_propDict["informationalUrls"], "\Beta\Microsoft\Graph\Model\InformationalUrls") || is_null($this->_propDict["informationalUrls"])) {
+                return $this->_propDict["informationalUrls"];
+            } else {
+                $this->_propDict["informationalUrls"] = new InformationalUrls($this->_propDict["informationalUrls"]);
+                return $this->_propDict["informationalUrls"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the informationalUrls
+    *
+    * @param InformationalUrls $val The informationalUrls
+    *
+    * @return ApplicationTemplate
+    */
+    public function setInformationalUrls($val)
+    {
+        $this->_propDict["informationalUrls"] = $val;
         return $this;
     }
 

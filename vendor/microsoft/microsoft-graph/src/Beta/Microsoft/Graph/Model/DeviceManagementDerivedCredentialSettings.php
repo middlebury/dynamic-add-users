@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceManagementDerivedCredentialSettings File
 * PHP version 7
 *
@@ -145,6 +145,35 @@ class DeviceManagementDerivedCredentialSettings extends Entity
     public function setNotificationType($val)
     {
         $this->_propDict["notificationType"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the renewalThresholdPercentage
+    * The nominal percentage of time before certificate renewal is initiated by the client.
+    *
+    * @return int|null The renewalThresholdPercentage
+    */
+    public function getRenewalThresholdPercentage()
+    {
+        if (array_key_exists("renewalThresholdPercentage", $this->_propDict)) {
+            return $this->_propDict["renewalThresholdPercentage"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the renewalThresholdPercentage
+    * The nominal percentage of time before certificate renewal is initiated by the client.
+    *
+    * @param int $val The renewalThresholdPercentage
+    *
+    * @return DeviceManagementDerivedCredentialSettings
+    */
+    public function setRenewalThresholdPercentage($val)
+    {
+        $this->_propDict["renewalThresholdPercentage"] = intval($val);
         return $this;
     }
 

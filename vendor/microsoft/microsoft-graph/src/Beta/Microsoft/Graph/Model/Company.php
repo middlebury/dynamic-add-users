@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Company File
 * PHP version 7
 *
@@ -150,7 +150,7 @@ class Company extends Entity
     /**
     * Sets the accounts
     *
-    * @param Account $val The accounts
+    * @param Account[] $val The accounts
     *
     * @return Company
     */
@@ -178,7 +178,7 @@ class Company extends Entity
     /**
     * Sets the agedAccountsPayable
     *
-    * @param AgedAccountsPayable $val The agedAccountsPayable
+    * @param AgedAccountsPayable[] $val The agedAccountsPayable
     *
     * @return Company
     */
@@ -206,7 +206,7 @@ class Company extends Entity
     /**
     * Sets the agedAccountsReceivable
     *
-    * @param AgedAccountsReceivable $val The agedAccountsReceivable
+    * @param AgedAccountsReceivable[] $val The agedAccountsReceivable
     *
     * @return Company
     */
@@ -234,7 +234,7 @@ class Company extends Entity
     /**
     * Sets the companyInformation
     *
-    * @param CompanyInformation $val The companyInformation
+    * @param CompanyInformation[] $val The companyInformation
     *
     * @return Company
     */
@@ -262,7 +262,7 @@ class Company extends Entity
     /**
     * Sets the countriesRegions
     *
-    * @param CountryRegion $val The countriesRegions
+    * @param CountryRegion[] $val The countriesRegions
     *
     * @return Company
     */
@@ -290,7 +290,7 @@ class Company extends Entity
     /**
     * Sets the currencies
     *
-    * @param Currency $val The currencies
+    * @param Currency[] $val The currencies
     *
     * @return Company
     */
@@ -318,7 +318,7 @@ class Company extends Entity
     /**
     * Sets the customerPaymentJournals
     *
-    * @param CustomerPaymentJournal $val The customerPaymentJournals
+    * @param CustomerPaymentJournal[] $val The customerPaymentJournals
     *
     * @return Company
     */
@@ -346,7 +346,7 @@ class Company extends Entity
     /**
     * Sets the customerPayments
     *
-    * @param CustomerPayment $val The customerPayments
+    * @param CustomerPayment[] $val The customerPayments
     *
     * @return Company
     */
@@ -374,7 +374,7 @@ class Company extends Entity
     /**
     * Sets the customers
     *
-    * @param Customer $val The customers
+    * @param Customer[] $val The customers
     *
     * @return Company
     */
@@ -402,7 +402,7 @@ class Company extends Entity
     /**
     * Sets the dimensions
     *
-    * @param Dimension $val The dimensions
+    * @param Dimension[] $val The dimensions
     *
     * @return Company
     */
@@ -430,7 +430,7 @@ class Company extends Entity
     /**
     * Sets the dimensionValues
     *
-    * @param DimensionValue $val The dimensionValues
+    * @param DimensionValue[] $val The dimensionValues
     *
     * @return Company
     */
@@ -458,7 +458,7 @@ class Company extends Entity
     /**
     * Sets the employees
     *
-    * @param Employee $val The employees
+    * @param Employee[] $val The employees
     *
     * @return Company
     */
@@ -486,7 +486,7 @@ class Company extends Entity
     /**
     * Sets the generalLedgerEntries
     *
-    * @param GeneralLedgerEntry $val The generalLedgerEntries
+    * @param GeneralLedgerEntry[] $val The generalLedgerEntries
     *
     * @return Company
     */
@@ -514,7 +514,7 @@ class Company extends Entity
     /**
     * Sets the itemCategories
     *
-    * @param ItemCategory $val The itemCategories
+    * @param ItemCategory[] $val The itemCategories
     *
     * @return Company
     */
@@ -542,7 +542,7 @@ class Company extends Entity
     /**
     * Sets the items
     *
-    * @param Item $val The items
+    * @param Item[] $val The items
     *
     * @return Company
     */
@@ -570,7 +570,7 @@ class Company extends Entity
     /**
     * Sets the journalLines
     *
-    * @param JournalLine $val The journalLines
+    * @param JournalLine[] $val The journalLines
     *
     * @return Company
     */
@@ -598,7 +598,7 @@ class Company extends Entity
     /**
     * Sets the journals
     *
-    * @param Journal $val The journals
+    * @param Journal[] $val The journals
     *
     * @return Company
     */
@@ -626,7 +626,7 @@ class Company extends Entity
     /**
     * Sets the paymentMethods
     *
-    * @param PaymentMethod $val The paymentMethods
+    * @param PaymentMethod[] $val The paymentMethods
     *
     * @return Company
     */
@@ -654,7 +654,7 @@ class Company extends Entity
     /**
     * Sets the paymentTerms
     *
-    * @param PaymentTerm $val The paymentTerms
+    * @param PaymentTerm[] $val The paymentTerms
     *
     * @return Company
     */
@@ -682,7 +682,7 @@ class Company extends Entity
     /**
     * Sets the picture
     *
-    * @param Picture $val The picture
+    * @param Picture[] $val The picture
     *
     * @return Company
     */
@@ -710,7 +710,7 @@ class Company extends Entity
     /**
     * Sets the purchaseInvoiceLines
     *
-    * @param PurchaseInvoiceLine $val The purchaseInvoiceLines
+    * @param PurchaseInvoiceLine[] $val The purchaseInvoiceLines
     *
     * @return Company
     */
@@ -738,7 +738,7 @@ class Company extends Entity
     /**
     * Sets the purchaseInvoices
     *
-    * @param PurchaseInvoice $val The purchaseInvoices
+    * @param PurchaseInvoice[] $val The purchaseInvoices
     *
     * @return Company
     */
@@ -766,7 +766,7 @@ class Company extends Entity
     /**
     * Sets the salesCreditMemoLines
     *
-    * @param SalesCreditMemoLine $val The salesCreditMemoLines
+    * @param SalesCreditMemoLine[] $val The salesCreditMemoLines
     *
     * @return Company
     */
@@ -794,7 +794,7 @@ class Company extends Entity
     /**
     * Sets the salesCreditMemos
     *
-    * @param SalesCreditMemo $val The salesCreditMemos
+    * @param SalesCreditMemo[] $val The salesCreditMemos
     *
     * @return Company
     */
@@ -822,7 +822,7 @@ class Company extends Entity
     /**
     * Sets the salesInvoiceLines
     *
-    * @param SalesInvoiceLine $val The salesInvoiceLines
+    * @param SalesInvoiceLine[] $val The salesInvoiceLines
     *
     * @return Company
     */
@@ -850,7 +850,7 @@ class Company extends Entity
     /**
     * Sets the salesInvoices
     *
-    * @param SalesInvoice $val The salesInvoices
+    * @param SalesInvoice[] $val The salesInvoices
     *
     * @return Company
     */
@@ -878,7 +878,7 @@ class Company extends Entity
     /**
     * Sets the salesOrderLines
     *
-    * @param SalesOrderLine $val The salesOrderLines
+    * @param SalesOrderLine[] $val The salesOrderLines
     *
     * @return Company
     */
@@ -906,7 +906,7 @@ class Company extends Entity
     /**
     * Sets the salesOrders
     *
-    * @param SalesOrder $val The salesOrders
+    * @param SalesOrder[] $val The salesOrders
     *
     * @return Company
     */
@@ -934,7 +934,7 @@ class Company extends Entity
     /**
     * Sets the salesQuoteLines
     *
-    * @param SalesQuoteLine $val The salesQuoteLines
+    * @param SalesQuoteLine[] $val The salesQuoteLines
     *
     * @return Company
     */
@@ -962,7 +962,7 @@ class Company extends Entity
     /**
     * Sets the salesQuotes
     *
-    * @param SalesQuote $val The salesQuotes
+    * @param SalesQuote[] $val The salesQuotes
     *
     * @return Company
     */
@@ -990,7 +990,7 @@ class Company extends Entity
     /**
     * Sets the shipmentMethods
     *
-    * @param ShipmentMethod $val The shipmentMethods
+    * @param ShipmentMethod[] $val The shipmentMethods
     *
     * @return Company
     */
@@ -1018,7 +1018,7 @@ class Company extends Entity
     /**
     * Sets the taxAreas
     *
-    * @param TaxArea $val The taxAreas
+    * @param TaxArea[] $val The taxAreas
     *
     * @return Company
     */
@@ -1046,7 +1046,7 @@ class Company extends Entity
     /**
     * Sets the taxGroups
     *
-    * @param TaxGroup $val The taxGroups
+    * @param TaxGroup[] $val The taxGroups
     *
     * @return Company
     */
@@ -1074,7 +1074,7 @@ class Company extends Entity
     /**
     * Sets the unitsOfMeasure
     *
-    * @param UnitOfMeasure $val The unitsOfMeasure
+    * @param UnitOfMeasure[] $val The unitsOfMeasure
     *
     * @return Company
     */
@@ -1102,7 +1102,7 @@ class Company extends Entity
     /**
     * Sets the vendors
     *
-    * @param Vendor $val The vendors
+    * @param Vendor[] $val The vendors
     *
     * @return Company
     */

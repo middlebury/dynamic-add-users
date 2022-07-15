@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceManagement File
 * PHP version 7
 *
@@ -59,7 +59,7 @@ class DeviceManagement extends Entity
 
     /**
     * Gets the intuneAccountId
-    * Intune Account Id for given tenant
+    * Intune Account ID for given tenant
     *
     * @return string|null The intuneAccountId
     */
@@ -74,7 +74,7 @@ class DeviceManagement extends Entity
 
     /**
     * Sets the intuneAccountId
-    * Intune Account Id for given tenant
+    * Intune Account ID for given tenant
     *
     * @param string $val The intuneAccountId
     *
@@ -536,36 +536,6 @@ class DeviceManagement extends Entity
         return $this;
     }
 
-
-     /**
-     * Gets the androidDeviceOwnerEnrollmentProfiles
-    * Android device owner enrollment profile entities.
-     *
-     * @return array|null The androidDeviceOwnerEnrollmentProfiles
-     */
-    public function getAndroidDeviceOwnerEnrollmentProfiles()
-    {
-        if (array_key_exists("androidDeviceOwnerEnrollmentProfiles", $this->_propDict)) {
-           return $this->_propDict["androidDeviceOwnerEnrollmentProfiles"];
-        } else {
-            return null;
-        }
-    }
-
-    /**
-    * Sets the androidDeviceOwnerEnrollmentProfiles
-    * Android device owner enrollment profile entities.
-    *
-    * @param AndroidDeviceOwnerEnrollmentProfile $val The androidDeviceOwnerEnrollmentProfiles
-    *
-    * @return DeviceManagement
-    */
-    public function setAndroidDeviceOwnerEnrollmentProfiles($val)
-    {
-        $this->_propDict["androidDeviceOwnerEnrollmentProfiles"] = $val;
-        return $this;
-    }
-
     /**
     * Gets the virtualEndpoint
     *
@@ -599,6 +569,36 @@ class DeviceManagement extends Entity
 
 
      /**
+     * Gets the androidDeviceOwnerEnrollmentProfiles
+    * Android device owner enrollment profile entities.
+     *
+     * @return array|null The androidDeviceOwnerEnrollmentProfiles
+     */
+    public function getAndroidDeviceOwnerEnrollmentProfiles()
+    {
+        if (array_key_exists("androidDeviceOwnerEnrollmentProfiles", $this->_propDict)) {
+           return $this->_propDict["androidDeviceOwnerEnrollmentProfiles"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the androidDeviceOwnerEnrollmentProfiles
+    * Android device owner enrollment profile entities.
+    *
+    * @param AndroidDeviceOwnerEnrollmentProfile[] $val The androidDeviceOwnerEnrollmentProfiles
+    *
+    * @return DeviceManagement
+    */
+    public function setAndroidDeviceOwnerEnrollmentProfiles($val)
+    {
+        $this->_propDict["androidDeviceOwnerEnrollmentProfiles"] = $val;
+        return $this;
+    }
+
+
+     /**
      * Gets the androidForWorkAppConfigurationSchemas
     * Android for Work app configuration schema entities.
      *
@@ -617,7 +617,7 @@ class DeviceManagement extends Entity
     * Sets the androidForWorkAppConfigurationSchemas
     * Android for Work app configuration schema entities.
     *
-    * @param AndroidForWorkAppConfigurationSchema $val The androidForWorkAppConfigurationSchemas
+    * @param AndroidForWorkAppConfigurationSchema[] $val The androidForWorkAppConfigurationSchemas
     *
     * @return DeviceManagement
     */
@@ -647,7 +647,7 @@ class DeviceManagement extends Entity
     * Sets the androidForWorkEnrollmentProfiles
     * Android for Work enrollment profile entities.
     *
-    * @param AndroidForWorkEnrollmentProfile $val The androidForWorkEnrollmentProfiles
+    * @param AndroidForWorkEnrollmentProfile[] $val The androidForWorkEnrollmentProfiles
     *
     * @return DeviceManagement
     */
@@ -743,7 +743,7 @@ class DeviceManagement extends Entity
     * Sets the androidManagedStoreAppConfigurationSchemas
     * Android Enterprise app configuration schema entities.
     *
-    * @param AndroidManagedStoreAppConfigurationSchema $val The androidManagedStoreAppConfigurationSchemas
+    * @param AndroidManagedStoreAppConfigurationSchema[] $val The androidManagedStoreAppConfigurationSchemas
     *
     * @return DeviceManagement
     */
@@ -773,7 +773,7 @@ class DeviceManagement extends Entity
     * Sets the auditEvents
     * The Audit Events
     *
-    * @param AuditEvent $val The auditEvents
+    * @param AuditEvent[] $val The auditEvents
     *
     * @return DeviceManagement
     */
@@ -803,7 +803,7 @@ class DeviceManagement extends Entity
     * Sets the assignmentFilters
     * The list of assignment filters
     *
-    * @param DeviceAndAppManagementAssignmentFilter $val The assignmentFilters
+    * @param DeviceAndAppManagementAssignmentFilter[] $val The assignmentFilters
     *
     * @return DeviceManagement
     */
@@ -833,7 +833,7 @@ class DeviceManagement extends Entity
     * Sets the chromeOSOnboardingSettings
     * Collection of ChromeOSOnboardingSettings settings associated with account.
     *
-    * @param ChromeOSOnboardingSettings $val The chromeOSOnboardingSettings
+    * @param ChromeOSOnboardingSettings[] $val The chromeOSOnboardingSettings
     *
     * @return DeviceManagement
     */
@@ -863,7 +863,7 @@ class DeviceManagement extends Entity
     * Sets the termsAndConditions
     * The terms and conditions associated with device management of the company.
     *
-    * @param TermsAndConditions $val The termsAndConditions
+    * @param TermsAndConditions[] $val The termsAndConditions
     *
     * @return DeviceManagement
     */
@@ -926,7 +926,7 @@ class DeviceManagement extends Entity
     * Sets the cartToClassAssociations
     * The Cart To Class Associations.
     *
-    * @param CartToClassAssociation $val The cartToClassAssociations
+    * @param CartToClassAssociation[] $val The cartToClassAssociations
     *
     * @return DeviceManagement
     */
@@ -956,7 +956,7 @@ class DeviceManagement extends Entity
     * Sets the deviceCompliancePolicies
     * The device compliance policies.
     *
-    * @param DeviceCompliancePolicy $val The deviceCompliancePolicies
+    * @param DeviceCompliancePolicy[] $val The deviceCompliancePolicies
     *
     * @return DeviceManagement
     */
@@ -1019,7 +1019,7 @@ class DeviceManagement extends Entity
     * Sets the deviceCompliancePolicySettingStateSummaries
     * The summary states of compliance policy settings for this account.
     *
-    * @param DeviceCompliancePolicySettingStateSummary $val The deviceCompliancePolicySettingStateSummaries
+    * @param DeviceCompliancePolicySettingStateSummary[] $val The deviceCompliancePolicySettingStateSummaries
     *
     * @return DeviceManagement
     */
@@ -1049,7 +1049,7 @@ class DeviceManagement extends Entity
     * Sets the deviceConfigurationConflictSummary
     * Summary of policies in conflict state for this account.
     *
-    * @param DeviceConfigurationConflictSummary $val The deviceConfigurationConflictSummary
+    * @param DeviceConfigurationConflictSummary[] $val The deviceConfigurationConflictSummary
     *
     * @return DeviceManagement
     */
@@ -1112,7 +1112,7 @@ class DeviceManagement extends Entity
     * Sets the deviceConfigurationRestrictedAppsViolations
     * Restricted apps violations for this account.
     *
-    * @param RestrictedAppsViolation $val The deviceConfigurationRestrictedAppsViolations
+    * @param RestrictedAppsViolation[] $val The deviceConfigurationRestrictedAppsViolations
     *
     * @return DeviceManagement
     */
@@ -1142,7 +1142,7 @@ class DeviceManagement extends Entity
     * Sets the deviceConfigurations
     * The device configurations.
     *
-    * @param DeviceConfiguration $val The deviceConfigurations
+    * @param DeviceConfiguration[] $val The deviceConfigurations
     *
     * @return DeviceManagement
     */
@@ -1172,7 +1172,7 @@ class DeviceManagement extends Entity
     * Sets the deviceConfigurationsAllManagedDeviceCertificateStates
     * Summary of all certificates for all devices.
     *
-    * @param ManagedAllDeviceCertificateState $val The deviceConfigurationsAllManagedDeviceCertificateStates
+    * @param ManagedAllDeviceCertificateState[] $val The deviceConfigurationsAllManagedDeviceCertificateStates
     *
     * @return DeviceManagement
     */
@@ -1235,7 +1235,7 @@ class DeviceManagement extends Entity
     * Sets the iosUpdateStatuses
     * The IOS software update installation statuses for this account.
     *
-    * @param IosUpdateDeviceStatus $val The iosUpdateStatuses
+    * @param IosUpdateDeviceStatus[] $val The iosUpdateStatuses
     *
     * @return DeviceManagement
     */
@@ -1265,7 +1265,7 @@ class DeviceManagement extends Entity
     * Sets the macOSSoftwareUpdateAccountSummaries
     * The MacOS software update account summaries for this account.
     *
-    * @param MacOSSoftwareUpdateAccountSummary $val The macOSSoftwareUpdateAccountSummaries
+    * @param MacOSSoftwareUpdateAccountSummary[] $val The macOSSoftwareUpdateAccountSummaries
     *
     * @return DeviceManagement
     */
@@ -1295,7 +1295,7 @@ class DeviceManagement extends Entity
     * Sets the managedDeviceEncryptionStates
     * Encryption report for devices in this account
     *
-    * @param ManagedDeviceEncryptionState $val The managedDeviceEncryptionStates
+    * @param ManagedDeviceEncryptionState[] $val The managedDeviceEncryptionStates
     *
     * @return DeviceManagement
     */
@@ -1325,7 +1325,7 @@ class DeviceManagement extends Entity
     * Sets the ndesConnectors
     * The collection of Ndes connectors for this account.
     *
-    * @param NdesConnector $val The ndesConnectors
+    * @param NdesConnector[] $val The ndesConnectors
     *
     * @return DeviceManagement
     */
@@ -1388,7 +1388,7 @@ class DeviceManagement extends Entity
     * Sets the complianceCategories
     * List of all compliance categories
     *
-    * @param DeviceManagementConfigurationCategory $val The complianceCategories
+    * @param DeviceManagementConfigurationCategory[] $val The complianceCategories
     *
     * @return DeviceManagement
     */
@@ -1418,7 +1418,7 @@ class DeviceManagement extends Entity
     * Sets the compliancePolicies
     * List of all compliance policies
     *
-    * @param DeviceManagementCompliancePolicy $val The compliancePolicies
+    * @param DeviceManagementCompliancePolicy[] $val The compliancePolicies
     *
     * @return DeviceManagement
     */
@@ -1448,7 +1448,7 @@ class DeviceManagement extends Entity
     * Sets the complianceSettings
     * List of all ComplianceSettings
     *
-    * @param DeviceManagementConfigurationSettingDefinition $val The complianceSettings
+    * @param DeviceManagementConfigurationSettingDefinition[] $val The complianceSettings
     *
     * @return DeviceManagement
     */
@@ -1478,7 +1478,7 @@ class DeviceManagement extends Entity
     * Sets the configurationCategories
     * List of all Configuration Categories
     *
-    * @param DeviceManagementConfigurationCategory $val The configurationCategories
+    * @param DeviceManagementConfigurationCategory[] $val The configurationCategories
     *
     * @return DeviceManagement
     */
@@ -1508,7 +1508,7 @@ class DeviceManagement extends Entity
     * Sets the configurationPolicies
     * List of all Configuration policies
     *
-    * @param DeviceManagementConfigurationPolicy $val The configurationPolicies
+    * @param DeviceManagementConfigurationPolicy[] $val The configurationPolicies
     *
     * @return DeviceManagement
     */
@@ -1538,7 +1538,7 @@ class DeviceManagement extends Entity
     * Sets the configurationPolicyTemplates
     * List of all templates
     *
-    * @param DeviceManagementConfigurationPolicyTemplate $val The configurationPolicyTemplates
+    * @param DeviceManagementConfigurationPolicyTemplate[] $val The configurationPolicyTemplates
     *
     * @return DeviceManagement
     */
@@ -1568,7 +1568,7 @@ class DeviceManagement extends Entity
     * Sets the configurationSettings
     * List of all ConfigurationSettings
     *
-    * @param DeviceManagementConfigurationSettingDefinition $val The configurationSettings
+    * @param DeviceManagementConfigurationSettingDefinition[] $val The configurationSettings
     *
     * @return DeviceManagement
     */
@@ -1598,7 +1598,7 @@ class DeviceManagement extends Entity
     * Sets the reusablePolicySettings
     * List of all reusable settings that can be referred in a policy
     *
-    * @param DeviceManagementReusablePolicySetting $val The reusablePolicySettings
+    * @param DeviceManagementReusablePolicySetting[] $val The reusablePolicySettings
     *
     * @return DeviceManagement
     */
@@ -1628,7 +1628,7 @@ class DeviceManagement extends Entity
     * Sets the reusableSettings
     * List of all reusable settings
     *
-    * @param DeviceManagementConfigurationSettingDefinition $val The reusableSettings
+    * @param DeviceManagementConfigurationSettingDefinition[] $val The reusableSettings
     *
     * @return DeviceManagement
     */
@@ -1658,7 +1658,7 @@ class DeviceManagement extends Entity
     * Sets the templateSettings
     * List of all TemplateSettings
     *
-    * @param DeviceManagementConfigurationSettingTemplate $val The templateSettings
+    * @param DeviceManagementConfigurationSettingTemplate[] $val The templateSettings
     *
     * @return DeviceManagement
     */
@@ -1688,7 +1688,7 @@ class DeviceManagement extends Entity
     * Sets the complianceManagementPartners
     * The list of Compliance Management Partners configured by the tenant.
     *
-    * @param ComplianceManagementPartner $val The complianceManagementPartners
+    * @param ComplianceManagementPartner[] $val The complianceManagementPartners
     *
     * @return DeviceManagement
     */
@@ -1751,7 +1751,7 @@ class DeviceManagement extends Entity
     * Sets the deviceCategories
     * The list of device categories with the tenant.
     *
-    * @param DeviceCategory $val The deviceCategories
+    * @param DeviceCategory[] $val The deviceCategories
     *
     * @return DeviceManagement
     */
@@ -1781,7 +1781,7 @@ class DeviceManagement extends Entity
     * Sets the deviceEnrollmentConfigurations
     * The list of device enrollment configurations
     *
-    * @param DeviceEnrollmentConfiguration $val The deviceEnrollmentConfigurations
+    * @param DeviceEnrollmentConfiguration[] $val The deviceEnrollmentConfigurations
     *
     * @return DeviceManagement
     */
@@ -1811,7 +1811,7 @@ class DeviceManagement extends Entity
     * Sets the deviceManagementPartners
     * The list of Device Management Partners configured by the tenant.
     *
-    * @param DeviceManagementPartner $val The deviceManagementPartners
+    * @param DeviceManagementPartner[] $val The deviceManagementPartners
     *
     * @return DeviceManagement
     */
@@ -1841,7 +1841,7 @@ class DeviceManagement extends Entity
     * Sets the exchangeConnectors
     * The list of Exchange Connectors configured by the tenant.
     *
-    * @param DeviceManagementExchangeConnector $val The exchangeConnectors
+    * @param DeviceManagementExchangeConnector[] $val The exchangeConnectors
     *
     * @return DeviceManagement
     */
@@ -1871,7 +1871,7 @@ class DeviceManagement extends Entity
     * Sets the exchangeOnPremisesPolicies
     * The list of Exchange On Premisis policies configured by the tenant.
     *
-    * @param DeviceManagementExchangeOnPremisesPolicy $val The exchangeOnPremisesPolicies
+    * @param DeviceManagementExchangeOnPremisesPolicy[] $val The exchangeOnPremisesPolicies
     *
     * @return DeviceManagement
     */
@@ -1934,7 +1934,7 @@ class DeviceManagement extends Entity
     * Sets the mobileThreatDefenseConnectors
     * The list of Mobile threat Defense connectors configured by the tenant.
     *
-    * @param MobileThreatDefenseConnector $val The mobileThreatDefenseConnectors
+    * @param MobileThreatDefenseConnector[] $val The mobileThreatDefenseConnectors
     *
     * @return DeviceManagement
     */
@@ -1964,7 +1964,7 @@ class DeviceManagement extends Entity
     * Sets the categories
     * The available categories
     *
-    * @param DeviceManagementSettingCategory $val The categories
+    * @param DeviceManagementSettingCategory[] $val The categories
     *
     * @return DeviceManagement
     */
@@ -1994,7 +1994,7 @@ class DeviceManagement extends Entity
     * Sets the intents
     * The device management intents
     *
-    * @param DeviceManagementIntent $val The intents
+    * @param DeviceManagementIntent[] $val The intents
     *
     * @return DeviceManagement
     */
@@ -2024,7 +2024,7 @@ class DeviceManagement extends Entity
     * Sets the settingDefinitions
     * The device management intent setting definitions
     *
-    * @param DeviceManagementSettingDefinition $val The settingDefinitions
+    * @param DeviceManagementSettingDefinition[] $val The settingDefinitions
     *
     * @return DeviceManagement
     */
@@ -2054,7 +2054,7 @@ class DeviceManagement extends Entity
     * Sets the templates
     * The available templates
     *
-    * @param DeviceManagementTemplate $val The templates
+    * @param DeviceManagementTemplate[] $val The templates
     *
     * @return DeviceManagement
     */
@@ -2117,7 +2117,7 @@ class DeviceManagement extends Entity
     * Sets the cloudPCConnectivityIssues
     * The list of CloudPC Connectivity Issue.
     *
-    * @param CloudPCConnectivityIssue $val The cloudPCConnectivityIssues
+    * @param CloudPCConnectivityIssue[] $val The cloudPCConnectivityIssues
     *
     * @return DeviceManagement
     */
@@ -2147,7 +2147,7 @@ class DeviceManagement extends Entity
     * Sets the comanagedDevices
     * The list of co-managed devices report
     *
-    * @param ManagedDevice $val The comanagedDevices
+    * @param ManagedDevice[] $val The comanagedDevices
     *
     * @return DeviceManagement
     */
@@ -2177,7 +2177,7 @@ class DeviceManagement extends Entity
     * Sets the comanagementEligibleDevices
     * The list of co-management eligible devices report
     *
-    * @param ComanagementEligibleDevice $val The comanagementEligibleDevices
+    * @param ComanagementEligibleDevice[] $val The comanagementEligibleDevices
     *
     * @return DeviceManagement
     */
@@ -2207,7 +2207,7 @@ class DeviceManagement extends Entity
     * Sets the dataSharingConsents
     * Data sharing consents.
     *
-    * @param DataSharingConsent $val The dataSharingConsents
+    * @param DataSharingConsent[] $val The dataSharingConsents
     *
     * @return DeviceManagement
     */
@@ -2237,7 +2237,7 @@ class DeviceManagement extends Entity
     * Sets the detectedApps
     * The list of detected apps associated with a device.
     *
-    * @param DetectedApp $val The detectedApps
+    * @param DetectedApp[] $val The detectedApps
     *
     * @return DeviceManagement
     */
@@ -2267,7 +2267,7 @@ class DeviceManagement extends Entity
     * Sets the deviceComplianceScripts
     * The list of device compliance scripts associated with the tenant.
     *
-    * @param DeviceComplianceScript $val The deviceComplianceScripts
+    * @param DeviceComplianceScript[] $val The deviceComplianceScripts
     *
     * @return DeviceManagement
     */
@@ -2297,7 +2297,7 @@ class DeviceManagement extends Entity
     * Sets the deviceCustomAttributeShellScripts
     * The list of device custom attribute shell scripts associated with the tenant.
     *
-    * @param DeviceCustomAttributeShellScript $val The deviceCustomAttributeShellScripts
+    * @param DeviceCustomAttributeShellScript[] $val The deviceCustomAttributeShellScripts
     *
     * @return DeviceManagement
     */
@@ -2327,7 +2327,7 @@ class DeviceManagement extends Entity
     * Sets the deviceHealthScripts
     * The list of device health scripts associated with the tenant.
     *
-    * @param DeviceHealthScript $val The deviceHealthScripts
+    * @param DeviceHealthScript[] $val The deviceHealthScripts
     *
     * @return DeviceManagement
     */
@@ -2357,7 +2357,7 @@ class DeviceManagement extends Entity
     * Sets the deviceManagementScripts
     * The list of device management scripts associated with the tenant.
     *
-    * @param DeviceManagementScript $val The deviceManagementScripts
+    * @param DeviceManagementScript[] $val The deviceManagementScripts
     *
     * @return DeviceManagement
     */
@@ -2387,7 +2387,7 @@ class DeviceManagement extends Entity
     * Sets the deviceShellScripts
     * The list of device shell scripts associated with the tenant.
     *
-    * @param DeviceShellScript $val The deviceShellScripts
+    * @param DeviceShellScript[] $val The deviceShellScripts
     *
     * @return DeviceManagement
     */
@@ -2450,7 +2450,7 @@ class DeviceManagement extends Entity
     * Sets the managedDevices
     * The list of managed devices.
     *
-    * @param ManagedDevice $val The managedDevices
+    * @param ManagedDevice[] $val The managedDevices
     *
     * @return DeviceManagement
     */
@@ -2480,13 +2480,43 @@ class DeviceManagement extends Entity
     * Sets the mobileAppTroubleshootingEvents
     * The collection property of MobileAppTroubleshootingEvent.
     *
-    * @param MobileAppTroubleshootingEvent $val The mobileAppTroubleshootingEvents
+    * @param MobileAppTroubleshootingEvent[] $val The mobileAppTroubleshootingEvents
     *
     * @return DeviceManagement
     */
     public function setMobileAppTroubleshootingEvents($val)
     {
         $this->_propDict["mobileAppTroubleshootingEvents"] = $val;
+        return $this;
+    }
+
+
+     /**
+     * Gets the oemWarrantyInformationOnboarding
+    * List of OEM Warranty Statuses
+     *
+     * @return array|null The oemWarrantyInformationOnboarding
+     */
+    public function getOemWarrantyInformationOnboarding()
+    {
+        if (array_key_exists("oemWarrantyInformationOnboarding", $this->_propDict)) {
+           return $this->_propDict["oemWarrantyInformationOnboarding"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the oemWarrantyInformationOnboarding
+    * List of OEM Warranty Statuses
+    *
+    * @param OemWarrantyInformationOnboarding[] $val The oemWarrantyInformationOnboarding
+    *
+    * @return DeviceManagement
+    */
+    public function setOemWarrantyInformationOnboarding($val)
+    {
+        $this->_propDict["oemWarrantyInformationOnboarding"] = $val;
         return $this;
     }
 
@@ -2510,13 +2540,46 @@ class DeviceManagement extends Entity
     * Sets the remoteActionAudits
     * The list of device remote action audits with the tenant.
     *
-    * @param RemoteActionAudit $val The remoteActionAudits
+    * @param RemoteActionAudit[] $val The remoteActionAudits
     *
     * @return DeviceManagement
     */
     public function setRemoteActionAudits($val)
     {
         $this->_propDict["remoteActionAudits"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the tenantAttachRBAC
+    * TenantAttach RBAC Enablement
+    *
+    * @return TenantAttachRBAC|null The tenantAttachRBAC
+    */
+    public function getTenantAttachRBAC()
+    {
+        if (array_key_exists("tenantAttachRBAC", $this->_propDict)) {
+            if (is_a($this->_propDict["tenantAttachRBAC"], "\Beta\Microsoft\Graph\Model\TenantAttachRBAC") || is_null($this->_propDict["tenantAttachRBAC"])) {
+                return $this->_propDict["tenantAttachRBAC"];
+            } else {
+                $this->_propDict["tenantAttachRBAC"] = new TenantAttachRBAC($this->_propDict["tenantAttachRBAC"]);
+                return $this->_propDict["tenantAttachRBAC"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the tenantAttachRBAC
+    * TenantAttach RBAC Enablement
+    *
+    * @param TenantAttachRBAC $val The tenantAttachRBAC
+    *
+    * @return DeviceManagement
+    */
+    public function setTenantAttachRBAC($val)
+    {
+        $this->_propDict["tenantAttachRBAC"] = $val;
         return $this;
     }
 
@@ -2540,7 +2603,7 @@ class DeviceManagement extends Entity
     * Sets the userExperienceAnalyticsAppHealthApplicationPerformance
     * User experience analytics appHealth Application Performance
     *
-    * @param UserExperienceAnalyticsAppHealthApplicationPerformance $val The userExperienceAnalyticsAppHealthApplicationPerformance
+    * @param UserExperienceAnalyticsAppHealthApplicationPerformance[] $val The userExperienceAnalyticsAppHealthApplicationPerformance
     *
     * @return DeviceManagement
     */
@@ -2570,7 +2633,7 @@ class DeviceManagement extends Entity
     * Sets the userExperienceAnalyticsAppHealthApplicationPerformanceByAppVersion
     * User experience analytics appHealth Application Performance by App Version
     *
-    * @param UserExperienceAnalyticsAppHealthAppPerformanceByAppVersion $val The userExperienceAnalyticsAppHealthApplicationPerformanceByAppVersion
+    * @param UserExperienceAnalyticsAppHealthAppPerformanceByAppVersion[] $val The userExperienceAnalyticsAppHealthApplicationPerformanceByAppVersion
     *
     * @return DeviceManagement
     */
@@ -2600,7 +2663,7 @@ class DeviceManagement extends Entity
     * Sets the userExperienceAnalyticsAppHealthApplicationPerformanceByAppVersionDetails
     * User experience analytics appHealth Application Performance by App Version details
     *
-    * @param UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDetails $val The userExperienceAnalyticsAppHealthApplicationPerformanceByAppVersionDetails
+    * @param UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDetails[] $val The userExperienceAnalyticsAppHealthApplicationPerformanceByAppVersionDetails
     *
     * @return DeviceManagement
     */
@@ -2630,7 +2693,7 @@ class DeviceManagement extends Entity
     * Sets the userExperienceAnalyticsAppHealthApplicationPerformanceByAppVersionDeviceId
     * User experience analytics appHealth Application Performance by App Version Device Id
     *
-    * @param UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDeviceId $val The userExperienceAnalyticsAppHealthApplicationPerformanceByAppVersionDeviceId
+    * @param UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDeviceId[] $val The userExperienceAnalyticsAppHealthApplicationPerformanceByAppVersionDeviceId
     *
     * @return DeviceManagement
     */
@@ -2660,7 +2723,7 @@ class DeviceManagement extends Entity
     * Sets the userExperienceAnalyticsAppHealthApplicationPerformanceByOSVersion
     * User experience analytics appHealth Application Performance by OS Version
     *
-    * @param UserExperienceAnalyticsAppHealthAppPerformanceByOSVersion $val The userExperienceAnalyticsAppHealthApplicationPerformanceByOSVersion
+    * @param UserExperienceAnalyticsAppHealthAppPerformanceByOSVersion[] $val The userExperienceAnalyticsAppHealthApplicationPerformanceByOSVersion
     *
     * @return DeviceManagement
     */
@@ -2690,7 +2753,7 @@ class DeviceManagement extends Entity
     * Sets the userExperienceAnalyticsAppHealthDeviceModelPerformance
     * User experience analytics appHealth Model Performance
     *
-    * @param UserExperienceAnalyticsAppHealthDeviceModelPerformance $val The userExperienceAnalyticsAppHealthDeviceModelPerformance
+    * @param UserExperienceAnalyticsAppHealthDeviceModelPerformance[] $val The userExperienceAnalyticsAppHealthDeviceModelPerformance
     *
     * @return DeviceManagement
     */
@@ -2720,7 +2783,7 @@ class DeviceManagement extends Entity
     * Sets the userExperienceAnalyticsAppHealthDevicePerformance
     * User experience analytics appHealth Device Performance
     *
-    * @param UserExperienceAnalyticsAppHealthDevicePerformance $val The userExperienceAnalyticsAppHealthDevicePerformance
+    * @param UserExperienceAnalyticsAppHealthDevicePerformance[] $val The userExperienceAnalyticsAppHealthDevicePerformance
     *
     * @return DeviceManagement
     */
@@ -2750,7 +2813,7 @@ class DeviceManagement extends Entity
     * Sets the userExperienceAnalyticsAppHealthDevicePerformanceDetails
     * User experience analytics device performance details
     *
-    * @param UserExperienceAnalyticsAppHealthDevicePerformanceDetails $val The userExperienceAnalyticsAppHealthDevicePerformanceDetails
+    * @param UserExperienceAnalyticsAppHealthDevicePerformanceDetails[] $val The userExperienceAnalyticsAppHealthDevicePerformanceDetails
     *
     * @return DeviceManagement
     */
@@ -2780,7 +2843,7 @@ class DeviceManagement extends Entity
     * Sets the userExperienceAnalyticsAppHealthOSVersionPerformance
     * User experience analytics appHealth OS version Performance
     *
-    * @param UserExperienceAnalyticsAppHealthOSVersionPerformance $val The userExperienceAnalyticsAppHealthOSVersionPerformance
+    * @param UserExperienceAnalyticsAppHealthOSVersionPerformance[] $val The userExperienceAnalyticsAppHealthOSVersionPerformance
     *
     * @return DeviceManagement
     */
@@ -2843,7 +2906,7 @@ class DeviceManagement extends Entity
     * Sets the userExperienceAnalyticsBaselines
     * User experience analytics baselines
     *
-    * @param UserExperienceAnalyticsBaseline $val The userExperienceAnalyticsBaselines
+    * @param UserExperienceAnalyticsBaseline[] $val The userExperienceAnalyticsBaselines
     *
     * @return DeviceManagement
     */
@@ -2873,7 +2936,7 @@ class DeviceManagement extends Entity
     * Sets the userExperienceAnalyticsBatteryHealthAppImpact
     * User Experience Analytics Battery Health App Impact
     *
-    * @param UserExperienceAnalyticsBatteryHealthAppImpact $val The userExperienceAnalyticsBatteryHealthAppImpact
+    * @param UserExperienceAnalyticsBatteryHealthAppImpact[] $val The userExperienceAnalyticsBatteryHealthAppImpact
     *
     * @return DeviceManagement
     */
@@ -2936,7 +2999,7 @@ class DeviceManagement extends Entity
     * Sets the userExperienceAnalyticsBatteryHealthDeviceAppImpact
     * User Experience Analytics Battery Health Device App Impact
     *
-    * @param UserExperienceAnalyticsBatteryHealthDeviceAppImpact $val The userExperienceAnalyticsBatteryHealthDeviceAppImpact
+    * @param UserExperienceAnalyticsBatteryHealthDeviceAppImpact[] $val The userExperienceAnalyticsBatteryHealthDeviceAppImpact
     *
     * @return DeviceManagement
     */
@@ -2966,7 +3029,7 @@ class DeviceManagement extends Entity
     * Sets the userExperienceAnalyticsBatteryHealthDevicePerformance
     * User Experience Analytics Battery Health Device Performance
     *
-    * @param UserExperienceAnalyticsBatteryHealthDevicePerformance $val The userExperienceAnalyticsBatteryHealthDevicePerformance
+    * @param UserExperienceAnalyticsBatteryHealthDevicePerformance[] $val The userExperienceAnalyticsBatteryHealthDevicePerformance
     *
     * @return DeviceManagement
     */
@@ -2996,7 +3059,7 @@ class DeviceManagement extends Entity
     * Sets the userExperienceAnalyticsBatteryHealthDeviceRuntimeHistory
     * User Experience Analytics Battery Health Device Runtime History
     *
-    * @param UserExperienceAnalyticsBatteryHealthDeviceRuntimeHistory $val The userExperienceAnalyticsBatteryHealthDeviceRuntimeHistory
+    * @param UserExperienceAnalyticsBatteryHealthDeviceRuntimeHistory[] $val The userExperienceAnalyticsBatteryHealthDeviceRuntimeHistory
     *
     * @return DeviceManagement
     */
@@ -3026,7 +3089,7 @@ class DeviceManagement extends Entity
     * Sets the userExperienceAnalyticsBatteryHealthModelPerformance
     * User Experience Analytics Battery Health Model Performance
     *
-    * @param UserExperienceAnalyticsBatteryHealthModelPerformance $val The userExperienceAnalyticsBatteryHealthModelPerformance
+    * @param UserExperienceAnalyticsBatteryHealthModelPerformance[] $val The userExperienceAnalyticsBatteryHealthModelPerformance
     *
     * @return DeviceManagement
     */
@@ -3056,7 +3119,7 @@ class DeviceManagement extends Entity
     * Sets the userExperienceAnalyticsBatteryHealthOsPerformance
     * User Experience Analytics Battery Health Os Performance
     *
-    * @param UserExperienceAnalyticsBatteryHealthOsPerformance $val The userExperienceAnalyticsBatteryHealthOsPerformance
+    * @param UserExperienceAnalyticsBatteryHealthOsPerformance[] $val The userExperienceAnalyticsBatteryHealthOsPerformance
     *
     * @return DeviceManagement
     */
@@ -3119,7 +3182,7 @@ class DeviceManagement extends Entity
     * Sets the userExperienceAnalyticsCategories
     * User experience analytics categories
     *
-    * @param UserExperienceAnalyticsCategory $val The userExperienceAnalyticsCategories
+    * @param UserExperienceAnalyticsCategory[] $val The userExperienceAnalyticsCategories
     *
     * @return DeviceManagement
     */
@@ -3149,7 +3212,7 @@ class DeviceManagement extends Entity
     * Sets the userExperienceAnalyticsDeviceMetricHistory
     * User experience analytics device metric history
     *
-    * @param UserExperienceAnalyticsMetricHistory $val The userExperienceAnalyticsDeviceMetricHistory
+    * @param UserExperienceAnalyticsMetricHistory[] $val The userExperienceAnalyticsDeviceMetricHistory
     *
     * @return DeviceManagement
     */
@@ -3179,13 +3242,76 @@ class DeviceManagement extends Entity
     * Sets the userExperienceAnalyticsDevicePerformance
     * User experience analytics device performance
     *
-    * @param UserExperienceAnalyticsDevicePerformance $val The userExperienceAnalyticsDevicePerformance
+    * @param UserExperienceAnalyticsDevicePerformance[] $val The userExperienceAnalyticsDevicePerformance
     *
     * @return DeviceManagement
     */
     public function setUserExperienceAnalyticsDevicePerformance($val)
     {
         $this->_propDict["userExperienceAnalyticsDevicePerformance"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the userExperienceAnalyticsDeviceScope
+    * The user experience analytics device scope entity endpoint to trigger on the service to either START or STOP computing metrics data based on a device scope configuration.
+    *
+    * @return UserExperienceAnalyticsDeviceScope|null The userExperienceAnalyticsDeviceScope
+    */
+    public function getUserExperienceAnalyticsDeviceScope()
+    {
+        if (array_key_exists("userExperienceAnalyticsDeviceScope", $this->_propDict)) {
+            if (is_a($this->_propDict["userExperienceAnalyticsDeviceScope"], "\Beta\Microsoft\Graph\Model\UserExperienceAnalyticsDeviceScope") || is_null($this->_propDict["userExperienceAnalyticsDeviceScope"])) {
+                return $this->_propDict["userExperienceAnalyticsDeviceScope"];
+            } else {
+                $this->_propDict["userExperienceAnalyticsDeviceScope"] = new UserExperienceAnalyticsDeviceScope($this->_propDict["userExperienceAnalyticsDeviceScope"]);
+                return $this->_propDict["userExperienceAnalyticsDeviceScope"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the userExperienceAnalyticsDeviceScope
+    * The user experience analytics device scope entity endpoint to trigger on the service to either START or STOP computing metrics data based on a device scope configuration.
+    *
+    * @param UserExperienceAnalyticsDeviceScope $val The userExperienceAnalyticsDeviceScope
+    *
+    * @return DeviceManagement
+    */
+    public function setUserExperienceAnalyticsDeviceScope($val)
+    {
+        $this->_propDict["userExperienceAnalyticsDeviceScope"] = $val;
+        return $this;
+    }
+
+
+     /**
+     * Gets the userExperienceAnalyticsDeviceScopes
+    * The user experience analytics device scope entity contains device scope configuration use to apply filtering on the endpoint analytics reports.
+     *
+     * @return array|null The userExperienceAnalyticsDeviceScopes
+     */
+    public function getUserExperienceAnalyticsDeviceScopes()
+    {
+        if (array_key_exists("userExperienceAnalyticsDeviceScopes", $this->_propDict)) {
+           return $this->_propDict["userExperienceAnalyticsDeviceScopes"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the userExperienceAnalyticsDeviceScopes
+    * The user experience analytics device scope entity contains device scope configuration use to apply filtering on the endpoint analytics reports.
+    *
+    * @param UserExperienceAnalyticsDeviceScope[] $val The userExperienceAnalyticsDeviceScopes
+    *
+    * @return DeviceManagement
+    */
+    public function setUserExperienceAnalyticsDeviceScopes($val)
+    {
+        $this->_propDict["userExperienceAnalyticsDeviceScopes"] = $val;
         return $this;
     }
 
@@ -3209,7 +3335,7 @@ class DeviceManagement extends Entity
     * Sets the userExperienceAnalyticsDeviceScores
     * User experience analytics device scores
     *
-    * @param UserExperienceAnalyticsDeviceScores $val The userExperienceAnalyticsDeviceScores
+    * @param UserExperienceAnalyticsDeviceScores[] $val The userExperienceAnalyticsDeviceScores
     *
     * @return DeviceManagement
     */
@@ -3239,7 +3365,7 @@ class DeviceManagement extends Entity
     * Sets the userExperienceAnalyticsDeviceStartupHistory
     * User experience analytics device Startup History
     *
-    * @param UserExperienceAnalyticsDeviceStartupHistory $val The userExperienceAnalyticsDeviceStartupHistory
+    * @param UserExperienceAnalyticsDeviceStartupHistory[] $val The userExperienceAnalyticsDeviceStartupHistory
     *
     * @return DeviceManagement
     */
@@ -3269,7 +3395,7 @@ class DeviceManagement extends Entity
     * Sets the userExperienceAnalyticsDeviceStartupProcesses
     * User experience analytics device Startup Processes
     *
-    * @param UserExperienceAnalyticsDeviceStartupProcess $val The userExperienceAnalyticsDeviceStartupProcesses
+    * @param UserExperienceAnalyticsDeviceStartupProcess[] $val The userExperienceAnalyticsDeviceStartupProcesses
     *
     * @return DeviceManagement
     */
@@ -3299,7 +3425,7 @@ class DeviceManagement extends Entity
     * Sets the userExperienceAnalyticsDeviceStartupProcessPerformance
     * User experience analytics device Startup Process Performance
     *
-    * @param UserExperienceAnalyticsDeviceStartupProcessPerformance $val The userExperienceAnalyticsDeviceStartupProcessPerformance
+    * @param UserExperienceAnalyticsDeviceStartupProcessPerformance[] $val The userExperienceAnalyticsDeviceStartupProcessPerformance
     *
     * @return DeviceManagement
     */
@@ -3329,7 +3455,7 @@ class DeviceManagement extends Entity
     * Sets the userExperienceAnalyticsDevicesWithoutCloudIdentity
     * User experience analytics devices without cloud identity.
     *
-    * @param UserExperienceAnalyticsDeviceWithoutCloudIdentity $val The userExperienceAnalyticsDevicesWithoutCloudIdentity
+    * @param UserExperienceAnalyticsDeviceWithoutCloudIdentity[] $val The userExperienceAnalyticsDevicesWithoutCloudIdentity
     *
     * @return DeviceManagement
     */
@@ -3359,7 +3485,7 @@ class DeviceManagement extends Entity
     * Sets the userExperienceAnalyticsImpactingProcess
     * User experience analytics impacting process
     *
-    * @param UserExperienceAnalyticsImpactingProcess $val The userExperienceAnalyticsImpactingProcess
+    * @param UserExperienceAnalyticsImpactingProcess[] $val The userExperienceAnalyticsImpactingProcess
     *
     * @return DeviceManagement
     */
@@ -3389,7 +3515,7 @@ class DeviceManagement extends Entity
     * Sets the userExperienceAnalyticsMetricHistory
     * User experience analytics metric history
     *
-    * @param UserExperienceAnalyticsMetricHistory $val The userExperienceAnalyticsMetricHistory
+    * @param UserExperienceAnalyticsMetricHistory[] $val The userExperienceAnalyticsMetricHistory
     *
     * @return DeviceManagement
     */
@@ -3419,7 +3545,7 @@ class DeviceManagement extends Entity
     * Sets the userExperienceAnalyticsModelScores
     * User experience analytics model scores
     *
-    * @param UserExperienceAnalyticsModelScores $val The userExperienceAnalyticsModelScores
+    * @param UserExperienceAnalyticsModelScores[] $val The userExperienceAnalyticsModelScores
     *
     * @return DeviceManagement
     */
@@ -3449,7 +3575,7 @@ class DeviceManagement extends Entity
     * Sets the userExperienceAnalyticsNotAutopilotReadyDevice
     * User experience analytics devices not Windows Autopilot ready.
     *
-    * @param UserExperienceAnalyticsNotAutopilotReadyDevice $val The userExperienceAnalyticsNotAutopilotReadyDevice
+    * @param UserExperienceAnalyticsNotAutopilotReadyDevice[] $val The userExperienceAnalyticsNotAutopilotReadyDevice
     *
     * @return DeviceManagement
     */
@@ -3545,7 +3671,7 @@ class DeviceManagement extends Entity
     * Sets the userExperienceAnalyticsRemoteConnection
     * User experience analytics remote connection
     *
-    * @param UserExperienceAnalyticsRemoteConnection $val The userExperienceAnalyticsRemoteConnection
+    * @param UserExperienceAnalyticsRemoteConnection[] $val The userExperienceAnalyticsRemoteConnection
     *
     * @return DeviceManagement
     */
@@ -3575,7 +3701,7 @@ class DeviceManagement extends Entity
     * Sets the userExperienceAnalyticsResourcePerformance
     * User experience analytics resource performance
     *
-    * @param UserExperienceAnalyticsResourcePerformance $val The userExperienceAnalyticsResourcePerformance
+    * @param UserExperienceAnalyticsResourcePerformance[] $val The userExperienceAnalyticsResourcePerformance
     *
     * @return DeviceManagement
     */
@@ -3605,7 +3731,7 @@ class DeviceManagement extends Entity
     * Sets the userExperienceAnalyticsScoreHistory
     * User experience analytics device Startup Score History
     *
-    * @param UserExperienceAnalyticsScoreHistory $val The userExperienceAnalyticsScoreHistory
+    * @param UserExperienceAnalyticsScoreHistory[] $val The userExperienceAnalyticsScoreHistory
     *
     * @return DeviceManagement
     */
@@ -3668,13 +3794,43 @@ class DeviceManagement extends Entity
     * Sets the userExperienceAnalyticsWorkFromAnywhereMetrics
     * User experience analytics work from anywhere metrics.
     *
-    * @param UserExperienceAnalyticsWorkFromAnywhereMetric $val The userExperienceAnalyticsWorkFromAnywhereMetrics
+    * @param UserExperienceAnalyticsWorkFromAnywhereMetric[] $val The userExperienceAnalyticsWorkFromAnywhereMetrics
     *
     * @return DeviceManagement
     */
     public function setUserExperienceAnalyticsWorkFromAnywhereMetrics($val)
     {
         $this->_propDict["userExperienceAnalyticsWorkFromAnywhereMetrics"] = $val;
+        return $this;
+    }
+
+
+     /**
+     * Gets the userExperienceAnalyticsWorkFromAnywhereModelPerformance
+    * The user experience analytics work from anywhere model performance
+     *
+     * @return array|null The userExperienceAnalyticsWorkFromAnywhereModelPerformance
+     */
+    public function getUserExperienceAnalyticsWorkFromAnywhereModelPerformance()
+    {
+        if (array_key_exists("userExperienceAnalyticsWorkFromAnywhereModelPerformance", $this->_propDict)) {
+           return $this->_propDict["userExperienceAnalyticsWorkFromAnywhereModelPerformance"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the userExperienceAnalyticsWorkFromAnywhereModelPerformance
+    * The user experience analytics work from anywhere model performance
+    *
+    * @param UserExperienceAnalyticsWorkFromAnywhereModelPerformance[] $val The userExperienceAnalyticsWorkFromAnywhereModelPerformance
+    *
+    * @return DeviceManagement
+    */
+    public function setUserExperienceAnalyticsWorkFromAnywhereModelPerformance($val)
+    {
+        $this->_propDict["userExperienceAnalyticsWorkFromAnywhereModelPerformance"] = $val;
         return $this;
     }
 
@@ -3698,7 +3854,7 @@ class DeviceManagement extends Entity
     * Sets the windowsMalwareInformation
     * The list of affected malware in the tenant.
     *
-    * @param WindowsMalwareInformation $val The windowsMalwareInformation
+    * @param WindowsMalwareInformation[] $val The windowsMalwareInformation
     *
     * @return DeviceManagement
     */
@@ -3728,7 +3884,7 @@ class DeviceManagement extends Entity
     * Sets the derivedCredentials
     * Collection of Derived credential settings associated with account.
     *
-    * @param DeviceManagementDerivedCredentialSettings $val The derivedCredentials
+    * @param DeviceManagementDerivedCredentialSettings[] $val The derivedCredentials
     *
     * @return DeviceManagement
     */
@@ -3758,7 +3914,7 @@ class DeviceManagement extends Entity
     * Sets the resourceAccessProfiles
     * Collection of resource access settings associated with account.
     *
-    * @param DeviceManagementResourceAccessProfileBase $val The resourceAccessProfiles
+    * @param DeviceManagementResourceAccessProfileBase[] $val The resourceAccessProfiles
     *
     * @return DeviceManagement
     */
@@ -3788,7 +3944,7 @@ class DeviceManagement extends Entity
     * Sets the appleUserInitiatedEnrollmentProfiles
     * Apple user initiated enrollment profiles
     *
-    * @param AppleUserInitiatedEnrollmentProfile $val The appleUserInitiatedEnrollmentProfiles
+    * @param AppleUserInitiatedEnrollmentProfile[] $val The appleUserInitiatedEnrollmentProfiles
     *
     * @return DeviceManagement
     */
@@ -3818,7 +3974,7 @@ class DeviceManagement extends Entity
     * Sets the depOnboardingSettings
     * This collections of multiple DEP tokens per-tenant.
     *
-    * @param DepOnboardingSetting $val The depOnboardingSettings
+    * @param DepOnboardingSetting[] $val The depOnboardingSettings
     *
     * @return DeviceManagement
     */
@@ -3848,7 +4004,7 @@ class DeviceManagement extends Entity
     * Sets the importedDeviceIdentities
     * The imported device identities.
     *
-    * @param ImportedDeviceIdentity $val The importedDeviceIdentities
+    * @param ImportedDeviceIdentity[] $val The importedDeviceIdentities
     *
     * @return DeviceManagement
     */
@@ -3878,7 +4034,7 @@ class DeviceManagement extends Entity
     * Sets the importedWindowsAutopilotDeviceIdentities
     * Collection of imported Windows autopilot devices.
     *
-    * @param ImportedWindowsAutopilotDeviceIdentity $val The importedWindowsAutopilotDeviceIdentities
+    * @param ImportedWindowsAutopilotDeviceIdentity[] $val The importedWindowsAutopilotDeviceIdentities
     *
     * @return DeviceManagement
     */
@@ -3908,7 +4064,7 @@ class DeviceManagement extends Entity
     * Sets the windowsAutopilotDeploymentProfiles
     * Windows auto pilot deployment profiles
     *
-    * @param WindowsAutopilotDeploymentProfile $val The windowsAutopilotDeploymentProfiles
+    * @param WindowsAutopilotDeploymentProfile[] $val The windowsAutopilotDeploymentProfiles
     *
     * @return DeviceManagement
     */
@@ -3938,7 +4094,7 @@ class DeviceManagement extends Entity
     * Sets the windowsAutopilotDeviceIdentities
     * The Windows autopilot device identities contained collection.
     *
-    * @param WindowsAutopilotDeviceIdentity $val The windowsAutopilotDeviceIdentities
+    * @param WindowsAutopilotDeviceIdentity[] $val The windowsAutopilotDeviceIdentities
     *
     * @return DeviceManagement
     */
@@ -3983,61 +4139,94 @@ class DeviceManagement extends Entity
 
 
      /**
-     * Gets the managementConditions
-    * The management conditions associated with device management of the company.
+     * Gets the zebraFotaArtifacts
+    * The Collection of ZebraFotaArtifacts.
      *
-     * @return array|null The managementConditions
+     * @return array|null The zebraFotaArtifacts
      */
-    public function getManagementConditions()
+    public function getZebraFotaArtifacts()
     {
-        if (array_key_exists("managementConditions", $this->_propDict)) {
-           return $this->_propDict["managementConditions"];
+        if (array_key_exists("zebraFotaArtifacts", $this->_propDict)) {
+           return $this->_propDict["zebraFotaArtifacts"];
         } else {
             return null;
         }
     }
 
     /**
-    * Sets the managementConditions
-    * The management conditions associated with device management of the company.
+    * Sets the zebraFotaArtifacts
+    * The Collection of ZebraFotaArtifacts.
     *
-    * @param ManagementCondition $val The managementConditions
+    * @param ZebraFotaArtifact[] $val The zebraFotaArtifacts
     *
     * @return DeviceManagement
     */
-    public function setManagementConditions($val)
+    public function setZebraFotaArtifacts($val)
     {
-        $this->_propDict["managementConditions"] = $val;
+        $this->_propDict["zebraFotaArtifacts"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the zebraFotaConnector
+    * The singleton ZebraFotaConnector associated with account.
+    *
+    * @return ZebraFotaConnector|null The zebraFotaConnector
+    */
+    public function getZebraFotaConnector()
+    {
+        if (array_key_exists("zebraFotaConnector", $this->_propDict)) {
+            if (is_a($this->_propDict["zebraFotaConnector"], "\Beta\Microsoft\Graph\Model\ZebraFotaConnector") || is_null($this->_propDict["zebraFotaConnector"])) {
+                return $this->_propDict["zebraFotaConnector"];
+            } else {
+                $this->_propDict["zebraFotaConnector"] = new ZebraFotaConnector($this->_propDict["zebraFotaConnector"]);
+                return $this->_propDict["zebraFotaConnector"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the zebraFotaConnector
+    * The singleton ZebraFotaConnector associated with account.
+    *
+    * @param ZebraFotaConnector $val The zebraFotaConnector
+    *
+    * @return DeviceManagement
+    */
+    public function setZebraFotaConnector($val)
+    {
+        $this->_propDict["zebraFotaConnector"] = $val;
         return $this;
     }
 
 
      /**
-     * Gets the managementConditionStatements
-    * The management condition statements associated with device management of the company.
+     * Gets the zebraFotaDeployments
+    * Collection of ZebraFotaDeployments associated with account.
      *
-     * @return array|null The managementConditionStatements
+     * @return array|null The zebraFotaDeployments
      */
-    public function getManagementConditionStatements()
+    public function getZebraFotaDeployments()
     {
-        if (array_key_exists("managementConditionStatements", $this->_propDict)) {
-           return $this->_propDict["managementConditionStatements"];
+        if (array_key_exists("zebraFotaDeployments", $this->_propDict)) {
+           return $this->_propDict["zebraFotaDeployments"];
         } else {
             return null;
         }
     }
 
     /**
-    * Sets the managementConditionStatements
-    * The management condition statements associated with device management of the company.
+    * Sets the zebraFotaDeployments
+    * Collection of ZebraFotaDeployments associated with account.
     *
-    * @param ManagementConditionStatement $val The managementConditionStatements
+    * @param ZebraFotaDeployment[] $val The zebraFotaDeployments
     *
     * @return DeviceManagement
     */
-    public function setManagementConditionStatements($val)
+    public function setZebraFotaDeployments($val)
     {
-        $this->_propDict["managementConditionStatements"] = $val;
+        $this->_propDict["zebraFotaDeployments"] = $val;
         return $this;
     }
 
@@ -4061,7 +4250,7 @@ class DeviceManagement extends Entity
     * Sets the groupPolicyMigrationReports
     * A list of Group Policy migration reports.
     *
-    * @param GroupPolicyMigrationReport $val The groupPolicyMigrationReports
+    * @param GroupPolicyMigrationReport[] $val The groupPolicyMigrationReports
     *
     * @return DeviceManagement
     */
@@ -4091,7 +4280,7 @@ class DeviceManagement extends Entity
     * Sets the groupPolicyObjectFiles
     * A list of Group Policy Object files uploaded.
     *
-    * @param GroupPolicyObjectFile $val The groupPolicyObjectFiles
+    * @param GroupPolicyObjectFile[] $val The groupPolicyObjectFiles
     *
     * @return DeviceManagement
     */
@@ -4121,7 +4310,7 @@ class DeviceManagement extends Entity
     * Sets the groupPolicyCategories
     * The available group policy categories for this account.
     *
-    * @param GroupPolicyCategory $val The groupPolicyCategories
+    * @param GroupPolicyCategory[] $val The groupPolicyCategories
     *
     * @return DeviceManagement
     */
@@ -4151,7 +4340,7 @@ class DeviceManagement extends Entity
     * Sets the groupPolicyConfigurations
     * The group policy configurations created by this account.
     *
-    * @param GroupPolicyConfiguration $val The groupPolicyConfigurations
+    * @param GroupPolicyConfiguration[] $val The groupPolicyConfigurations
     *
     * @return DeviceManagement
     */
@@ -4181,7 +4370,7 @@ class DeviceManagement extends Entity
     * Sets the groupPolicyDefinitionFiles
     * The available group policy definition files for this account.
     *
-    * @param GroupPolicyDefinitionFile $val The groupPolicyDefinitionFiles
+    * @param GroupPolicyDefinitionFile[] $val The groupPolicyDefinitionFiles
     *
     * @return DeviceManagement
     */
@@ -4211,7 +4400,7 @@ class DeviceManagement extends Entity
     * Sets the groupPolicyDefinitions
     * The available group policy definitions for this account.
     *
-    * @param GroupPolicyDefinition $val The groupPolicyDefinitions
+    * @param GroupPolicyDefinition[] $val The groupPolicyDefinitions
     *
     * @return DeviceManagement
     */
@@ -4241,7 +4430,7 @@ class DeviceManagement extends Entity
     * Sets the groupPolicyUploadedDefinitionFiles
     * The available group policy uploaded definition files for this account.
     *
-    * @param GroupPolicyUploadedDefinitionFile $val The groupPolicyUploadedDefinitionFiles
+    * @param GroupPolicyUploadedDefinitionFile[] $val The groupPolicyUploadedDefinitionFiles
     *
     * @return DeviceManagement
     */
@@ -4271,7 +4460,7 @@ class DeviceManagement extends Entity
     * Sets the microsoftTunnelConfigurations
     * Collection of MicrosoftTunnelConfiguration settings associated with account.
     *
-    * @param MicrosoftTunnelConfiguration $val The microsoftTunnelConfigurations
+    * @param MicrosoftTunnelConfiguration[] $val The microsoftTunnelConfigurations
     *
     * @return DeviceManagement
     */
@@ -4301,7 +4490,7 @@ class DeviceManagement extends Entity
     * Sets the microsoftTunnelHealthThresholds
     * Collection of MicrosoftTunnelHealthThreshold settings associated with account.
     *
-    * @param MicrosoftTunnelHealthThreshold $val The microsoftTunnelHealthThresholds
+    * @param MicrosoftTunnelHealthThreshold[] $val The microsoftTunnelHealthThresholds
     *
     * @return DeviceManagement
     */
@@ -4331,7 +4520,7 @@ class DeviceManagement extends Entity
     * Sets the microsoftTunnelServerLogCollectionResponses
     * Collection of MicrosoftTunnelServerLogCollectionResponse settings associated with account.
     *
-    * @param MicrosoftTunnelServerLogCollectionResponse $val The microsoftTunnelServerLogCollectionResponses
+    * @param MicrosoftTunnelServerLogCollectionResponse[] $val The microsoftTunnelServerLogCollectionResponses
     *
     * @return DeviceManagement
     */
@@ -4361,7 +4550,7 @@ class DeviceManagement extends Entity
     * Sets the microsoftTunnelSites
     * Collection of MicrosoftTunnelSite settings associated with account.
     *
-    * @param MicrosoftTunnelSite $val The microsoftTunnelSites
+    * @param MicrosoftTunnelSite[] $val The microsoftTunnelSites
     *
     * @return DeviceManagement
     */
@@ -4391,7 +4580,7 @@ class DeviceManagement extends Entity
     * Sets the notificationMessageTemplates
     * The Notification Message Templates.
     *
-    * @param NotificationMessageTemplate $val The notificationMessageTemplates
+    * @param NotificationMessageTemplate[] $val The notificationMessageTemplates
     *
     * @return DeviceManagement
     */
@@ -4421,7 +4610,7 @@ class DeviceManagement extends Entity
     * Sets the domainJoinConnectors
     * A list of connector objects.
     *
-    * @param DeviceManagementDomainJoinConnector $val The domainJoinConnectors
+    * @param DeviceManagementDomainJoinConnector[] $val The domainJoinConnectors
     *
     * @return DeviceManagement
     */
@@ -4451,7 +4640,7 @@ class DeviceManagement extends Entity
     * Sets the configManagerCollections
     * A list of ConfigManagerCollection
     *
-    * @param ConfigManagerCollection $val The configManagerCollections
+    * @param ConfigManagerCollection[] $val The configManagerCollections
     *
     * @return DeviceManagement
     */
@@ -4481,7 +4670,7 @@ class DeviceManagement extends Entity
     * Sets the resourceOperations
     * The Resource Operations.
     *
-    * @param ResourceOperation $val The resourceOperations
+    * @param ResourceOperation[] $val The resourceOperations
     *
     * @return DeviceManagement
     */
@@ -4511,7 +4700,7 @@ class DeviceManagement extends Entity
     * Sets the roleAssignments
     * The Role Assignments.
     *
-    * @param DeviceAndAppManagementRoleAssignment $val The roleAssignments
+    * @param DeviceAndAppManagementRoleAssignment[] $val The roleAssignments
     *
     * @return DeviceManagement
     */
@@ -4541,7 +4730,7 @@ class DeviceManagement extends Entity
     * Sets the roleDefinitions
     * The Role Definitions.
     *
-    * @param RoleDefinition $val The roleDefinitions
+    * @param RoleDefinition[] $val The roleDefinitions
     *
     * @return DeviceManagement
     */
@@ -4571,7 +4760,7 @@ class DeviceManagement extends Entity
     * Sets the roleScopeTags
     * The Role Scope Tags.
     *
-    * @param RoleScopeTag $val The roleScopeTags
+    * @param RoleScopeTag[] $val The roleScopeTags
     *
     * @return DeviceManagement
     */
@@ -4601,7 +4790,7 @@ class DeviceManagement extends Entity
     * Sets the remoteAssistancePartners
     * The remote assist partners.
     *
-    * @param RemoteAssistancePartner $val The remoteAssistancePartners
+    * @param RemoteAssistancePartner[] $val The remoteAssistancePartners
     *
     * @return DeviceManagement
     */
@@ -4697,7 +4886,7 @@ class DeviceManagement extends Entity
     * Sets the embeddedSIMActivationCodePools
     * The embedded SIM activation code pools created by this account.
     *
-    * @param EmbeddedSIMActivationCodePool $val The embeddedSIMActivationCodePools
+    * @param EmbeddedSIMActivationCodePool[] $val The embeddedSIMActivationCodePools
     *
     * @return DeviceManagement
     */
@@ -4727,7 +4916,7 @@ class DeviceManagement extends Entity
     * Sets the telecomExpenseManagementPartners
     * The telecom expense management partners.
     *
-    * @param TelecomExpenseManagementPartner $val The telecomExpenseManagementPartners
+    * @param TelecomExpenseManagementPartner[] $val The telecomExpenseManagementPartners
     *
     * @return DeviceManagement
     */
@@ -4757,7 +4946,7 @@ class DeviceManagement extends Entity
     * Sets the autopilotEvents
     * The list of autopilot events for the tenant.
     *
-    * @param DeviceManagementAutopilotEvent $val The autopilotEvents
+    * @param DeviceManagementAutopilotEvent[] $val The autopilotEvents
     *
     * @return DeviceManagement
     */
@@ -4787,7 +4976,7 @@ class DeviceManagement extends Entity
     * Sets the troubleshootingEvents
     * The list of troubleshooting events for the tenant.
     *
-    * @param DeviceManagementTroubleshootingEvent $val The troubleshootingEvents
+    * @param DeviceManagementTroubleshootingEvent[] $val The troubleshootingEvents
     *
     * @return DeviceManagement
     */
@@ -4817,7 +5006,7 @@ class DeviceManagement extends Entity
     * Sets the windowsDriverUpdateProfiles
     * A collection of windows driver update profiles
     *
-    * @param WindowsDriverUpdateProfile $val The windowsDriverUpdateProfiles
+    * @param WindowsDriverUpdateProfile[] $val The windowsDriverUpdateProfiles
     *
     * @return DeviceManagement
     */
@@ -4847,7 +5036,7 @@ class DeviceManagement extends Entity
     * Sets the windowsFeatureUpdateProfiles
     * A collection of windows feature update profiles
     *
-    * @param WindowsFeatureUpdateProfile $val The windowsFeatureUpdateProfiles
+    * @param WindowsFeatureUpdateProfile[] $val The windowsFeatureUpdateProfiles
     *
     * @return DeviceManagement
     */
@@ -4877,7 +5066,7 @@ class DeviceManagement extends Entity
     * Sets the windowsQualityUpdateProfiles
     * A collection of windows quality update profiles
     *
-    * @param WindowsQualityUpdateProfile $val The windowsQualityUpdateProfiles
+    * @param WindowsQualityUpdateProfile[] $val The windowsQualityUpdateProfiles
     *
     * @return DeviceManagement
     */
@@ -4907,7 +5096,7 @@ class DeviceManagement extends Entity
     * Sets the windowsUpdateCatalogItems
     * A collection of windows update catalog items (fetaure updates item , quality updates item)
     *
-    * @param WindowsUpdateCatalogItem $val The windowsUpdateCatalogItems
+    * @param WindowsUpdateCatalogItem[] $val The windowsUpdateCatalogItems
     *
     * @return DeviceManagement
     */
@@ -4937,7 +5126,7 @@ class DeviceManagement extends Entity
     * Sets the intuneBrandingProfiles
     * Intune branding profiles targeted to AAD groups
     *
-    * @param IntuneBrandingProfile $val The intuneBrandingProfiles
+    * @param IntuneBrandingProfile[] $val The intuneBrandingProfiles
     *
     * @return DeviceManagement
     */
@@ -4967,7 +5156,7 @@ class DeviceManagement extends Entity
     * Sets the windowsInformationProtectionAppLearningSummaries
     * The windows information protection app learning summaries.
     *
-    * @param WindowsInformationProtectionAppLearningSummary $val The windowsInformationProtectionAppLearningSummaries
+    * @param WindowsInformationProtectionAppLearningSummary[] $val The windowsInformationProtectionAppLearningSummaries
     *
     * @return DeviceManagement
     */
@@ -4997,7 +5186,7 @@ class DeviceManagement extends Entity
     * Sets the windowsInformationProtectionNetworkLearningSummaries
     * The windows information protection network learning summaries.
     *
-    * @param WindowsInformationProtectionNetworkLearningSummary $val The windowsInformationProtectionNetworkLearningSummaries
+    * @param WindowsInformationProtectionNetworkLearningSummary[] $val The windowsInformationProtectionNetworkLearningSummaries
     *
     * @return DeviceManagement
     */
@@ -5027,7 +5216,7 @@ class DeviceManagement extends Entity
     * Sets the certificateConnectorDetails
     * Collection of certificate connector details, each associated with a corresponding Intune Certificate Connector.
     *
-    * @param CertificateConnectorDetails $val The certificateConnectorDetails
+    * @param CertificateConnectorDetails[] $val The certificateConnectorDetails
     *
     * @return DeviceManagement
     */
@@ -5057,7 +5246,7 @@ class DeviceManagement extends Entity
     * Sets the userPfxCertificates
     * Collection of PFX certificates associated with a user.
     *
-    * @param UserPFXCertificate $val The userPfxCertificates
+    * @param UserPFXCertificate[] $val The userPfxCertificates
     *
     * @return DeviceManagement
     */

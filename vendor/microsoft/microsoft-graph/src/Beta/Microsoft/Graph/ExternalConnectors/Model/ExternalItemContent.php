@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ExternalItemContent File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class ExternalItemContent extends \Beta\Microsoft\Graph\Model\Entity
 
     /**
     * Gets the type
-    * The type of content in the value property. Possible values are: text, html, unknownFutureValue.
+    * The type of content in the value property. Possible values are text and html. These are the content types that the indexer supports, and not the file extension types allowed. Required.
     *
     * @return ExternalItemContentType|null The type
     */
@@ -45,7 +45,7 @@ class ExternalItemContent extends \Beta\Microsoft\Graph\Model\Entity
 
     /**
     * Sets the type
-    * The type of content in the value property. Possible values are: text, html, unknownFutureValue.
+    * The type of content in the value property. Possible values are text and html. These are the content types that the indexer supports, and not the file extension types allowed. Required.
     *
     * @param ExternalItemContentType $val The value to assign to the type
     *

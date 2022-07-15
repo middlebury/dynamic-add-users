@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Website File
 * PHP version 7
 *
@@ -82,7 +82,7 @@ class Website extends Entity
 
     /**
     * Gets the type
-    * The possible values are: other, home, work, blog, profile.
+    * Possible values are: other, home, work, blog, profile.
     *
     * @return WebsiteType|null The type
     */
@@ -101,7 +101,7 @@ class Website extends Entity
 
     /**
     * Sets the type
-    * The possible values are: other, home, work, blog, profile.
+    * Possible values are: other, home, work, blog, profile.
     *
     * @param WebsiteType $val The value to assign to the type
     *

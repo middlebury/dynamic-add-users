@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceManagementCollectionSettingInstance File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class DeviceManagementCollectionSettingInstance extends DeviceManagementSettingI
     * Sets the value
     * The collection of values
     *
-    * @param DeviceManagementSettingInstance $val The value
+    * @param DeviceManagementSettingInstance[] $val The value
     *
     * @return DeviceManagementCollectionSettingInstance
     */

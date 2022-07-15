@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * TermsAndConditions File
 * PHP version 7
 *
@@ -284,7 +284,7 @@ class TermsAndConditions extends Entity
     * Sets the acceptanceStatuses
     * The list of acceptance statuses for this T&amp;C policy.
     *
-    * @param TermsAndConditionsAcceptanceStatus $val The acceptanceStatuses
+    * @param TermsAndConditionsAcceptanceStatus[] $val The acceptanceStatuses
     *
     * @return TermsAndConditions
     */
@@ -314,7 +314,7 @@ class TermsAndConditions extends Entity
     * Sets the assignments
     * The list of assignments for this T&amp;C policy.
     *
-    * @param TermsAndConditionsAssignment $val The assignments
+    * @param TermsAndConditionsAssignment[] $val The assignments
     *
     * @return TermsAndConditions
     */

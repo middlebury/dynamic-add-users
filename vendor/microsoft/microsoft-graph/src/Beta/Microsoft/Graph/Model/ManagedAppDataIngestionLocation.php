@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ManagedAppDataIngestionLocation File
 * PHP version 7
 *
@@ -32,4 +32,5 @@ class ManagedAppDataIngestionLocation extends Enum
     const ONE_DRIVE_FOR_BUSINESS = "oneDriveForBusiness";
     const SHARE_POINT = "sharePoint";
     const CAMERA = "camera";
+    const PHOTO_LIBRARY = "photoLibrary";
 }

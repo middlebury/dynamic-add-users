@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * RoleScopeTag File
 * PHP version 7
 *
@@ -131,7 +131,7 @@ class RoleScopeTag extends Entity
     * Sets the assignments
     * The list of assignments for this Role Scope Tag.
     *
-    * @param RoleScopeTagAutoAssignment $val The assignments
+    * @param RoleScopeTagAutoAssignment[] $val The assignments
     *
     * @return RoleScopeTag
     */

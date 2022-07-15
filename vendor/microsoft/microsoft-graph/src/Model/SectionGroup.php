@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * SectionGroup File
 * PHP version 7
 *
@@ -168,7 +168,7 @@ class SectionGroup extends OnenoteEntityHierarchyModel
     * Sets the sectionGroups
     * The section groups in the section. Read-only. Nullable.
     *
-    * @param SectionGroup $val The sectionGroups
+    * @param SectionGroup[] $val The sectionGroups
     *
     * @return SectionGroup
     */
@@ -198,7 +198,7 @@ class SectionGroup extends OnenoteEntityHierarchyModel
     * Sets the sections
     * The sections in the section group. Read-only. Nullable.
     *
-    * @param OnenoteSection $val The sections
+    * @param OnenoteSection[] $val The sections
     *
     * @return SectionGroup
     */

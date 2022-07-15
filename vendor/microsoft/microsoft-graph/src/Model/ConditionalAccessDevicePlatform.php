@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ConditionalAccessDevicePlatform File
 * PHP version 7
 *
@@ -36,4 +36,5 @@ class ConditionalAccessDevicePlatform extends Enum
     const MAC_OS = "macOS";
     const ALL = "all";
     const UNKNOWN_FUTURE_VALUE = "unknownFutureValue";
+    const LINUX = "linux";
 }

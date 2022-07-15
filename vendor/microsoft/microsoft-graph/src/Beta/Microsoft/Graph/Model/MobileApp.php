@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * MobileApp File
 * PHP version 7
 *
@@ -611,7 +611,7 @@ class MobileApp extends Entity
     * Sets the assignments
     * The list of group assignments for this mobile app.
     *
-    * @param MobileAppAssignment $val The assignments
+    * @param MobileAppAssignment[] $val The assignments
     *
     * @return MobileApp
     */
@@ -641,7 +641,7 @@ class MobileApp extends Entity
     * Sets the categories
     * The list of categories for this app.
     *
-    * @param MobileAppCategory $val The categories
+    * @param MobileAppCategory[] $val The categories
     *
     * @return MobileApp
     */
@@ -671,7 +671,7 @@ class MobileApp extends Entity
     * Sets the deviceStatuses
     * The list of installation states for this mobile app.
     *
-    * @param MobileAppInstallStatus $val The deviceStatuses
+    * @param MobileAppInstallStatus[] $val The deviceStatuses
     *
     * @return MobileApp
     */
@@ -734,7 +734,7 @@ class MobileApp extends Entity
     * Sets the relationships
     * List of relationships for this mobile app.
     *
-    * @param MobileAppRelationship $val The relationships
+    * @param MobileAppRelationship[] $val The relationships
     *
     * @return MobileApp
     */
@@ -764,7 +764,7 @@ class MobileApp extends Entity
     * Sets the userStatuses
     * The list of installation states for this mobile app.
     *
-    * @param UserAppInstallStatus $val The userStatuses
+    * @param UserAppInstallStatus[] $val The userStatuses
     *
     * @return MobileApp
     */

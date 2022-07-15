@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AndroidForWorkCertificateProfileBase File
 * PHP version 7
 *
@@ -106,7 +106,7 @@ class AndroidForWorkCertificateProfileBase extends DeviceConfiguration
     * Sets the extendedKeyUsages
     * Extended Key Usage (EKU) settings. This collection can contain a maximum of 500 elements.
     *
-    * @param ExtendedKeyUsage $val The extendedKeyUsages
+    * @param ExtendedKeyUsage[] $val The extendedKeyUsages
     *
     * @return AndroidForWorkCertificateProfileBase
     */

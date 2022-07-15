@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AccessPackageResourceRequest File
 * PHP version 7
 *
@@ -202,7 +202,6 @@ class AccessPackageResourceRequest extends Entity
 
     /**
     * Gets the requestStatus
-    * Read-only.
     *
     * @return string|null The requestStatus
     */
@@ -217,7 +216,6 @@ class AccessPackageResourceRequest extends Entity
 
     /**
     * Sets the requestStatus
-    * Read-only.
     *
     * @param string $val The requestStatus
     *
@@ -260,7 +258,6 @@ class AccessPackageResourceRequest extends Entity
 
     /**
     * Gets the accessPackageResource
-    * Nullable.
     *
     * @return AccessPackageResource|null The accessPackageResource
     */
@@ -279,7 +276,6 @@ class AccessPackageResourceRequest extends Entity
 
     /**
     * Sets the accessPackageResource
-    * Nullable.
     *
     * @param AccessPackageResource $val The accessPackageResource
     *
@@ -293,7 +289,7 @@ class AccessPackageResourceRequest extends Entity
 
     /**
     * Gets the requestor
-    * Read-only. Nullable.
+    * Read-only. Nullable. Supports $expand.
     *
     * @return AccessPackageSubject|null The requestor
     */
@@ -312,7 +308,7 @@ class AccessPackageResourceRequest extends Entity
 
     /**
     * Sets the requestor
-    * Read-only. Nullable.
+    * Read-only. Nullable. Supports $expand.
     *
     * @param AccessPackageSubject $val The requestor
     *

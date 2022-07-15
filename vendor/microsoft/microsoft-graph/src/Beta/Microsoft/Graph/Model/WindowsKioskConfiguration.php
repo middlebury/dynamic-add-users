@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * WindowsKioskConfiguration File
 * PHP version 7
 *
@@ -276,7 +276,7 @@ class WindowsKioskConfiguration extends DeviceConfiguration
     * Sets the kioskProfiles
     * This policy setting allows to define a list of Kiosk profiles for a Kiosk configuration. This collection can contain a maximum of 3 elements.
     *
-    * @param WindowsKioskProfile $val The kioskProfiles
+    * @param WindowsKioskProfile[] $val The kioskProfiles
     *
     * @return WindowsKioskConfiguration
     */

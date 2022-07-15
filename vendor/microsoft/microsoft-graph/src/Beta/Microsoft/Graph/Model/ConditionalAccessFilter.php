@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ConditionalAccessFilter File
 * PHP version 7
 *
@@ -58,7 +58,7 @@ class ConditionalAccessFilter extends Entity
     }
     /**
     * Gets the rule
-    * Rule syntax is similar to that used for membership rules for groups in Azure Active Directory (Azure AD). For details, see rules with multiple expressions
+    * Rule syntax is similar to that used for membership rules for groups in Azure Active Directory. For details, see rules with multiple expressions
     *
     * @return string|null The rule
     */
@@ -73,7 +73,7 @@ class ConditionalAccessFilter extends Entity
 
     /**
     * Sets the rule
-    * Rule syntax is similar to that used for membership rules for groups in Azure Active Directory (Azure AD). For details, see rules with multiple expressions
+    * Rule syntax is similar to that used for membership rules for groups in Azure Active Directory. For details, see rules with multiple expressions
     *
     * @param string $val The value of the rule
     *

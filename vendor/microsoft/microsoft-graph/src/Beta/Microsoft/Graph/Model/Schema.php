@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Schema File
 * PHP version 7
 *
@@ -69,7 +69,7 @@ class Schema extends Entity
     /**
     * Sets the schemaProperties
     *
-    * @param Property $val The schemaProperties
+    * @param Property[] $val The schemaProperties
     *
     * @return Schema
     */

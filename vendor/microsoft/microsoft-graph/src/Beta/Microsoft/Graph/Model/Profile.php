@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Profile File
 * PHP version 7
 *
@@ -42,7 +42,7 @@ class Profile extends Entity
     /**
     * Sets the account
     *
-    * @param UserAccountInformation $val The account
+    * @param UserAccountInformation[] $val The account
     *
     * @return Profile
     */
@@ -72,7 +72,7 @@ class Profile extends Entity
     * Sets the addresses
     * Represents details of addresses associated with the user.
     *
-    * @param ItemAddress $val The addresses
+    * @param ItemAddress[] $val The addresses
     *
     * @return Profile
     */
@@ -102,7 +102,7 @@ class Profile extends Entity
     * Sets the anniversaries
     * Represents the details of meaningful dates associated with a person.
     *
-    * @param PersonAnnualEvent $val The anniversaries
+    * @param PersonAnnualEvent[] $val The anniversaries
     *
     * @return Profile
     */
@@ -132,7 +132,7 @@ class Profile extends Entity
     * Sets the awards
     * Represents the details of awards or honors associated with a person.
     *
-    * @param PersonAward $val The awards
+    * @param PersonAward[] $val The awards
     *
     * @return Profile
     */
@@ -162,7 +162,7 @@ class Profile extends Entity
     * Sets the certifications
     * Represents the details of certifications associated with a person.
     *
-    * @param PersonCertification $val The certifications
+    * @param PersonCertification[] $val The certifications
     *
     * @return Profile
     */
@@ -192,7 +192,7 @@ class Profile extends Entity
     * Sets the educationalActivities
     * Represents data that a user has supplied related to undergraduate, graduate, postgraduate or other educational activities.
     *
-    * @param EducationalActivity $val The educationalActivities
+    * @param EducationalActivity[] $val The educationalActivities
     *
     * @return Profile
     */
@@ -222,7 +222,7 @@ class Profile extends Entity
     * Sets the emails
     * Represents detailed information about email addresses associated with the user.
     *
-    * @param ItemEmail $val The emails
+    * @param ItemEmail[] $val The emails
     *
     * @return Profile
     */
@@ -252,7 +252,7 @@ class Profile extends Entity
     * Sets the interests
     * Provides detailed information about interests the user has associated with themselves in various services.
     *
-    * @param PersonInterest $val The interests
+    * @param PersonInterest[] $val The interests
     *
     * @return Profile
     */
@@ -282,7 +282,7 @@ class Profile extends Entity
     * Sets the languages
     * Represents detailed information about languages that a user has added to their profile.
     *
-    * @param LanguageProficiency $val The languages
+    * @param LanguageProficiency[] $val The languages
     *
     * @return Profile
     */
@@ -312,7 +312,7 @@ class Profile extends Entity
     * Sets the names
     * Represents the names a user has added to their profile.
     *
-    * @param PersonName $val The names
+    * @param PersonName[] $val The names
     *
     * @return Profile
     */
@@ -342,7 +342,7 @@ class Profile extends Entity
     * Sets the notes
     * Represents notes that a user has added to their profile.
     *
-    * @param PersonAnnotation $val The notes
+    * @param PersonAnnotation[] $val The notes
     *
     * @return Profile
     */
@@ -372,7 +372,7 @@ class Profile extends Entity
     * Sets the patents
     * Represents patents that a user has added to their profile.
     *
-    * @param ItemPatent $val The patents
+    * @param ItemPatent[] $val The patents
     *
     * @return Profile
     */
@@ -402,7 +402,7 @@ class Profile extends Entity
     * Sets the phones
     * Represents detailed information about phone numbers associated with a user in various services.
     *
-    * @param ItemPhone $val The phones
+    * @param ItemPhone[] $val The phones
     *
     * @return Profile
     */
@@ -432,7 +432,7 @@ class Profile extends Entity
     * Sets the positions
     * Represents detailed information about work positions associated with a user's profile.
     *
-    * @param WorkPosition $val The positions
+    * @param WorkPosition[] $val The positions
     *
     * @return Profile
     */
@@ -462,7 +462,7 @@ class Profile extends Entity
     * Sets the projects
     * Represents detailed information about projects associated with a user.
     *
-    * @param ProjectParticipation $val The projects
+    * @param ProjectParticipation[] $val The projects
     *
     * @return Profile
     */
@@ -492,7 +492,7 @@ class Profile extends Entity
     * Sets the publications
     * Represents details of any publications a user has added to their profile.
     *
-    * @param ItemPublication $val The publications
+    * @param ItemPublication[] $val The publications
     *
     * @return Profile
     */
@@ -522,7 +522,7 @@ class Profile extends Entity
     * Sets the skills
     * Represents detailed information about skills associated with a user in various services.
     *
-    * @param SkillProficiency $val The skills
+    * @param SkillProficiency[] $val The skills
     *
     * @return Profile
     */
@@ -552,7 +552,7 @@ class Profile extends Entity
     * Sets the webAccounts
     * Represents web accounts the user has indicated they use or has added to their user profile.
     *
-    * @param WebAccount $val The webAccounts
+    * @param WebAccount[] $val The webAccounts
     *
     * @return Profile
     */
@@ -582,7 +582,7 @@ class Profile extends Entity
     * Sets the websites
     * Represents detailed information about websites associated with a user in various services.
     *
-    * @param PersonWebsite $val The websites
+    * @param PersonWebsite[] $val The websites
     *
     * @return Profile
     */

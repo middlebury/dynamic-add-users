@@ -25,42 +25,42 @@ class ExcelTest extends TestCase
 
     private function createTestFile($filename)
     {
-	$excelWorkbook = new Model\DriveItem();
-	$excelWorkbook->setName($filename);
-	$file = new Model\File();
-	$file->setODataType("microsoft.graph.file");
-	$excelWorkbook->setFile($file);
+    	$excelWorkbook = new Model\DriveItem();
+    	$excelWorkbook->setName($filename);
+    	$file = new Model\File();
+    	$file->setODataType("microsoft.graph.file");
+    	$excelWorkbook->setFile($file);
 
-	$excelWorkbookDriveItem = $this->_client->createRequest("POST", "/me/drive/root/children")
-									        ->attachBody($excelWorkbook)
-									        ->setReturnType(Model\DriveItem::class)
-									        ->execute();
-	$this->assertNotNull($excelWorkbookDriveItem);
+    	$excelWorkbookDriveItem = $this->_client->createRequest("POST", "/me/drive/root/children")
+    									        ->attachBody($excelWorkbook)
+    									        ->setReturnType(Model\DriveItem::class)
+    									        ->execute();
+    	$this->assertNotNull($excelWorkbookDriveItem);
 
-	return $excelWorkbookDriveItem->getId();
+    	return $excelWorkbookDriveItem->getId();
     }
 
     private function deleteTestFile($fileId)
     {
-	//After updating the doc, the service cannot immediately process the delete
-	sleep(4);
+    	//After updating the doc, the service cannot immediately process the delete
+    	sleep(4);
 
-	$this->_client->createRequest("DELETE", "/me/drive/items/$fileId")
-		          ->addHeaders(array("if-match" => "*"))
-		          ->execute();
+    	$this->_client->createRequest("DELETE", "/me/drive/items/$fileId")
+    		          ->addHeaders(array("if-match" => "*"))
+    		          ->execute();
     }
 
     private function uploadTestFileContent($fileId)
     {
         $stream = GuzzleHttp\Psr7\stream_for(fopen("./tests/Functional/Resources/excelTestResource.xlsx", "r"));
-	$excelDriveItem = $this->_client->createRequest("PUT", "/me/drive/items/" . $this->_fileId . "/content")
-							        ->addHeaders(array(
-								         "Content-Type" => "application/octet-stream",
-								         "Content-Length" => filesize("./tests/Functional/Resources/excelTestResource.xlsx")
-							        ))
-							        ->attachBody($stream)
-							        ->execute();
-	$this->assertEquals(200, $excelDriveItem->getStatus());
+    	$excelDriveItem = $this->_client->createRequest("PUT", "/me/drive/items/" . $this->_fileId . "/content")
+    							        ->addHeaders(array(
+    							 	         "Content-Type" => "application/octet-stream", 
+    							 	         "Content-Length" => filesize("./tests/Functional/Resources/excelTestResource.xlsx")
+    							        ))
+    							        ->attachBody($stream)
+    							        ->execute();
+    	$this->assertEquals(200, $excelDriveItem->getStatus());
     }
 
     /**
@@ -70,13 +70,13 @@ class ExcelTest extends TestCase
     public function testGetUpdateRange()
     {
         $rangeToUpdate = $this->_client->createRequest(
-                                            "GET",
-                                            "/me/drive/items/" .
-                                            $this->_fileId .
+                                            "GET", 
+                                            "/me/drive/items/" . 
+                                            $this->_fileId . 
                                             "/workbook/worksheets/GetUpdateRange/Range(address='A1')"
                                         )
-							       ->setReturnType(Model\WorkbookRange::class)
-							       ->execute();
+        						       ->setReturnType(Model\WorkbookRange::class)
+        						       ->execute();
         $arr = $rangeToUpdate->getValues();
 
         $arr[0][0] = "TestValueB";
@@ -84,14 +84,14 @@ class ExcelTest extends TestCase
         $dummyWorkbookRange->setValues($arr);
 
         $workbookRange = $this->_client->createRequest(
-                                            "PATCH",
-                                            "/me/drive/items/" .
-                                            $this->_fileId .
+                                            "PATCH", 
+                                            "/me/drive/items/" . 
+                                            $this->_fileId . 
                                             "/workbook/worksheets/GetUpdateRange/Range(address='A1')"
                                         )
-							       ->attachBody($dummyWorkbookRange)
-							       ->setReturnType(Model\WorkbookRange::class)
-							       ->execute();
+        						       ->attachBody($dummyWorkbookRange)
+        						       ->setReturnType(Model\WorkbookRange::class)
+        						       ->execute();
         $this->assertNotNull($workbookRange);
         $this->assertEquals("TestValueB", $workbookRange->getValues()[0][0]);
     }
@@ -102,22 +102,22 @@ class ExcelTest extends TestCase
     */
     public function testChangeNumberFormat()
     {
-	$excelWorksheetName = "ChangeNumberFormat";
-	$rangeAddress = "E2";
+    	$excelWorksheetName = "ChangeNumberFormat";
+    	$rangeAddress = "E2";
 
-	$arr = [["$#,##0.00;[Red]$#,##0.00"]];
+    	$arr = [["$#,##0.00;[Red]$#,##0.00"]];
 
-	$workbookRange = $this->_client->createRequest(
-                                            "PATCH",
-                                            "/me/drive/items/" .
-                                            $this->_fileId .
+    	$workbookRange = $this->_client->createRequest(
+                                            "PATCH", 
+                                            "/me/drive/items/" . 
+                                            $this->_fileId . 
                                             "/workbook/worksheets/$excelWorksheetName/range(address='$rangeAddress')"
                                         )
-							        ->attachBody(array("numberFormat" => $arr))
-							        ->setReturnType(Model\WorkbookRange::class)
-							        ->execute();
-	$this->assertNotNull($workbookRange);
-	$this->assertEquals($arr, $workbookRange->getNumberFormat());
+    							        ->attachBody(array("numberFormat" => $arr))
+    							        ->setReturnType(Model\WorkbookRange::class)
+    							        ->execute();
+    	$this->assertNotNull($workbookRange);
+    	$this->assertEquals($arr, $workbookRange->getNumberFormat());
     }
 
     /**
@@ -126,19 +126,19 @@ class ExcelTest extends TestCase
     */
     public function testAbsFunc()
     {
-	$inputNumber = "-10";
+    	$inputNumber = "-10";
 
-	$workbookFunctionResult = $this->_client->createRequest(
-                                                    "POST",
-                                                    "/me/drive/items/" .
-                                                    $this->_fileId .
+    	$workbookFunctionResult = $this->_client->createRequest(
+                                                    "POST", 
+                                                    "/me/drive/items/" . 
+                                                    $this->_fileId . 
                                                     "/workbook/functions/abs"
                                                 )
-									        ->attachBody('{"number": '. $inputNumber . '}')
-									        ->setReturnType(Model\WorkbookFunctionResult::class)
-									        ->execute();
-	$this->assertNotNull($workbookFunctionResult);
-	$this->assertEquals("10", $workbookFunctionResult->getValue());
+    									        ->attachBody('{"number": '. $inputNumber . '}')
+    									        ->setReturnType(Model\WorkbookFunctionResult::class)
+    									        ->execute();
+    	$this->assertNotNull($workbookFunctionResult);
+    	$this->assertEquals("10", $workbookFunctionResult->getValue());
     }
 
     /**
@@ -147,19 +147,19 @@ class ExcelTest extends TestCase
     */
     public function testSetFormula()
     {
-	$arr = [['=A4*B4']];
+    	$arr = [['=A4*B4']];
 
-	$workbookRange = $this->_client->createRequest(
-                                            "PATCH",
-                                            "/me/drive/items/" .
-                                            $this->_fileId .
+    	$workbookRange = $this->_client->createRequest(
+                                            "PATCH", 
+                                            "/me/drive/items/" . 
+                                            $this->_fileId . 
                                             "/workbook/worksheets/SetFormula/range(address='C4')"
                                         )
-							        ->attachBody(array("formulas" => $arr))
-							        ->setReturnType(Model\WorkbookRange::class)
-							        ->execute();
-	$this->assertNotNull($workbookRange);
-	$this->assertEquals($arr, $workbookRange->getFormulas());
+    							        ->attachBody(array("formulas" => $arr))
+    							        ->setReturnType(Model\WorkbookRange::class)
+    							        ->execute();
+    	$this->assertNotNull($workbookRange);
+    	$this->assertEquals($arr, $workbookRange->getFormulas());
     }
 
     /**
@@ -168,22 +168,22 @@ class ExcelTest extends TestCase
     */
     public function testAddTableUsedRange()
     {
-	$workbookRange = $this->_client->createRequest(
-                                            "GET",
-                                            "/me/drive/items/" .
-                                            $this->_fileId .
+    	$workbookRange = $this->_client->createRequest(
+                                            "GET", 
+                                            "/me/drive/items/" . 
+                                            $this->_fileId . 
                                             "/workbook/worksheets/AddTableUsedRange/usedrange"
                                         )
-							       ->setReturnType(Model\WorkbookRange::class)
-							       ->execute();
+    							       ->setReturnType(Model\WorkbookRange::class)
+    							       ->execute();
 
-	$data = array("address" => $workbookRange->getAddress(), "hasHeaders" => false);
+    	$data = array("address" => $workbookRange->getAddress(), "hasHeaders" => false);
 
-	$workbookTable = $this->_client->createRequest("POST", "/me/drive/items/" . $this->_fileId . "/workbook/worksheets/AddTableUsedRange/tables")
-							->attachBody($data)
-							->setReturnType(Model\WorkbookTable::class);
+    	$workbookTable = $this->_client->createRequest("POST", "/me/drive/items/" . $this->_fileId . "/workbook/worksheets/AddTableUsedRange/tables")
+    							->attachBody($data)
+    							->setReturnType(Model\WorkbookTable::class);
 
-	$this->assertNotNull($workbookTable);
+    	$this->assertNotNull($workbookTable);
     }
 
     /**
@@ -192,22 +192,22 @@ class ExcelTest extends TestCase
     */
     public function testAddRowToTable()
     {
-	$newWorkbookTableRow = new Model\WorkbookTableRow();
-	$newWorkbookTableRow->setIndex(0);
-	$arr = [["ValueA2", "ValueA3"]];
-	$newWorkbookTableRow->setValues($arr);
+    	$newWorkbookTableRow = new Model\WorkbookTableRow();
+    	$newWorkbookTableRow->setIndex(0);
+    	$arr = [["ValueA2", "ValueA3"]];
+    	$newWorkbookTableRow->setValues($arr);
 
-	$workbookTableRow = $this->_client->createRequest(
-                                                "POST",
-                                                "/me/drive/items/" .
-                                                $this->_fileId .
+    	$workbookTableRow = $this->_client->createRequest(
+                                                "POST", 
+                                                "/me/drive/items/" . 
+                                                $this->_fileId . 
                                                 "/workbook/tables/Table1/Rows"
                                           )
-							          ->attachBody($newWorkbookTableRow)
-							          ->setReturnType(Model\WorkbookRange::class)
-							          ->execute();
+    							          ->attachBody($newWorkbookTableRow)
+    							          ->setReturnType(Model\WorkbookRange::class)
+    							          ->execute();
 
-	$this->assertNotNull($workbookTableRow);
+    	$this->assertNotNull($workbookTableRow);
     }
 
     /**
@@ -216,22 +216,22 @@ class ExcelTest extends TestCase
     */
     public function testSortTable()
     {
-	$sortField = new Model\WorkbookSortField();
-	$sortField->setAscending(true);
-	$sortField->setSortOn("Value");
-	$sortField->setKey(0);
+    	$sortField = new Model\WorkbookSortField();
+    	$sortField->setAscending(true);
+    	$sortField->setSortOn("Value");
+    	$sortField->setKey(0);
 
-	$workbookSortFields = $this->_client->createRequest(
-                                                "POST",
-                                                "/me/drive/items/" .
-                                                $this->_fileId .
+    	$workbookSortFields = $this->_client->createRequest(
+                                                "POST", 
+                                                "/me/drive/items/" . 
+                                                $this->_fileId . 
                                                 "/workbook/tables/Table2/sort/apply"
                                             )
-							            ->attachBody('{"fields":'. json_encode(array($sortField)) . '}')
-							            ->setReturnType(Model\WorkbookSortField::class)
-							            ->execute();
+    							            ->attachBody('{"fields":'. json_encode(array($sortField)) . '}')
+    							            ->setReturnType(Model\WorkbookSortField::class)
+    							            ->execute();
 
-	$this->assertNotNull($workbookSortFields);
+    	$this->assertNotNull($workbookSortFields);
     }
 
     /**
@@ -240,15 +240,15 @@ class ExcelTest extends TestCase
     */
     public function testFilterTableValues()
     {
-	$this->_client->createRequest(
-				      "POST",
-				      "/me/drive/items/" .
-                          $this->_fileId .
+    	$this->_client->createRequest(
+    				      "POST", 
+    				      "/me/drive/items/" . 
+                          $this->_fileId . 
                           "/workbook/tables/FilterTableValues/columns/1/filter/applyvaluesfilter"
-				    )
-				    ->attachBody('{"values":["2"]}')
-				    ->setReturnType(Model\WorkbookSortField::class)
-				    ->execute();
+        			    )
+        			    ->attachBody('{"values":["2"]}')
+        			    ->setReturnType(Model\WorkbookSortField::class)
+        			    ->execute();
     }
 
     /**
@@ -257,26 +257,26 @@ class ExcelTest extends TestCase
     */
     public function testCreateChartFromTable()
     {
-	$tableRange = $this->_client->createRequest(
-                                        "GET",
-                                        "/me/drive/items/" .
-                                        $this->_fileId .
+    	$tableRange = $this->_client->createRequest(
+                                        "GET", 
+                                        "/me/drive/items/" . 
+                                        $this->_fileId . 
                                         "/workbook/tables/CreateChartFromTable/range"
                                     )
-							    ->setReturnType(Model\WorkbookRange::class)
-							    ->execute();
-	$address = $tableRange->getAddress();
+    							    ->setReturnType(Model\WorkbookRange::class)
+    							    ->execute();
+    	$address = $tableRange->getAddress();
 
-	$workbookChart = $this->_client->createRequest(
-                                            "POST",
-                                            "/me/drive/items/" .
-                                            $this->_fileId .
+    	$workbookChart = $this->_client->createRequest(
+                                            "POST", 
+                                            "/me/drive/items/" . 
+                                            $this->_fileId . 
                                             "/workbook/worksheets/CreateChartFromTable/charts/add"
                                         )
-							       ->attachBody(array("type" => "ColumnStacked", "sourceData" => "$address", "seriesBy" => "Auto"))
-							       ->setReturnType(Model\WorkbookChart::class)
-							       ->execute();
-	$this->assertNotNull($workbookChart);
+    							       ->attachBody(array("type" => "ColumnStacked", "sourceData" => "$address", "seriesBy" => "Auto"))
+    							       ->setReturnType(Model\WorkbookChart::class)
+    							       ->execute();
+    	$this->assertNotNull($workbookChart);
     }
 
     /**
@@ -286,37 +286,37 @@ class ExcelTest extends TestCase
     public function testProtectWorksheet()
     {
         try{
-		$this->_client->createRequest(
-                                "POST",
-                                "/me/drive/items/" .
-                                $this->_fileId .
+        	$this->_client->createRequest(
+                                "POST", 
+                                "/me/drive/items/" . 
+                                $this->_fileId . 
                                 "/workbook/worksheets/ProtectWorksheet/protection/protect"
                             )
-			            ->execute();
+        		            ->execute();
 
-		$dummyWorkbookRange = new Model\WorkbookRange();
-		$dummyWorkbookRange->setValues('[["This should not work"]]');
+        	$dummyWorkbookRange = new Model\WorkbookRange();
+        	$dummyWorkbookRange->setValues('[["This should not work"]]');
 
-		$workbookRange = $this->_client->createRequest(
-                                                "PATCH",
-                                                "/me/drive/items/" .
-                                                $this->_fileId .
+        	$workbookRange = $this->_client->createRequest(
+                                                "PATCH", 
+                                                "/me/drive/items/" . 
+                                                $this->_fileId . 
                                                 "/workbook/worksheets('protectworksheet')/cell(row=1,column=1)"
                                             )
-								        ->attachBody($dummyWorkbookRange)
-								        ->execute();
+        							        ->attachBody($dummyWorkbookRange)
+        							        ->execute();
         } catch(Exception $e)
         {
-		//403: Forbidden - file is locked for editing
-		$this->assertEquals(403, $e->getResponse()->getStatusCode());
+        	//403: Forbidden - file is locked for editing
+        	$this->assertEquals(403, $e->getResponse()->getStatusCode());
 
-		$this->_client->createRequest(
-                                "POST",
-                                "/me/drive/items/" .
-                                $this->_fileId .
+        	$this->_client->createRequest(
+                                "POST", 
+                                "/me/drive/items/" . 
+                                $this->_fileId . 
                                 "/workbook/worksheets/ProtectWorksheet/protection/unprotect"
                             )
-			            ->execute();
-        }
+        		            ->execute();
+        } 
     }
 }

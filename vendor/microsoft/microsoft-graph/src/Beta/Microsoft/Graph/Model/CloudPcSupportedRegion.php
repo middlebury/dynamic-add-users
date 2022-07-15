@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * CloudPcSupportedRegion File
 * PHP version 7
 *
@@ -50,6 +50,37 @@ class CloudPcSupportedRegion extends Entity
     public function setDisplayName($val)
     {
         $this->_propDict["displayName"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the regionStatus
+    *
+    * @return CloudPcSupportedRegionStatus|null The regionStatus
+    */
+    public function getRegionStatus()
+    {
+        if (array_key_exists("regionStatus", $this->_propDict)) {
+            if (is_a($this->_propDict["regionStatus"], "\Beta\Microsoft\Graph\Model\CloudPcSupportedRegionStatus") || is_null($this->_propDict["regionStatus"])) {
+                return $this->_propDict["regionStatus"];
+            } else {
+                $this->_propDict["regionStatus"] = new CloudPcSupportedRegionStatus($this->_propDict["regionStatus"]);
+                return $this->_propDict["regionStatus"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the regionStatus
+    *
+    * @param CloudPcSupportedRegionStatus $val The regionStatus
+    *
+    * @return CloudPcSupportedRegion
+    */
+    public function setRegionStatus($val)
+    {
+        $this->_propDict["regionStatus"] = $val;
         return $this;
     }
 

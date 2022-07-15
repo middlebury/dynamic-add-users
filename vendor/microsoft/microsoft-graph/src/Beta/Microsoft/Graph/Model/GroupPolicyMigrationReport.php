@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * GroupPolicyMigrationReport File
 * PHP version 7
 *
@@ -412,7 +412,7 @@ class GroupPolicyMigrationReport extends Entity
     * Sets the groupPolicySettingMappings
     * A list of group policy settings to MDM/Intune mappings.
     *
-    * @param GroupPolicySettingMapping $val The groupPolicySettingMappings
+    * @param GroupPolicySettingMapping[] $val The groupPolicySettingMappings
     *
     * @return GroupPolicyMigrationReport
     */
@@ -442,7 +442,7 @@ class GroupPolicyMigrationReport extends Entity
     * Sets the unsupportedGroupPolicyExtensions
     * A list of unsupported group policy extensions inside the Group Policy Object.
     *
-    * @param UnsupportedGroupPolicyExtension $val The unsupportedGroupPolicyExtensions
+    * @param UnsupportedGroupPolicyExtension[] $val The unsupportedGroupPolicyExtensions
     *
     * @return GroupPolicyMigrationReport
     */

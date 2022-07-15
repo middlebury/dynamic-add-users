@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * EntityType File
 * PHP version 7
 *
@@ -38,4 +38,7 @@ class EntityType extends Enum
     const LIST_ITEM = "listItem";
     const DRIVE = "drive";
     const UNKNOWN_FUTURE_VALUE = "unknownFutureValue";
+    const ACRONYM = "acronym";
+    const BOOKMARK = "bookmark";
+    const CHAT_MESSAGE = "chatMessage";
 }

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceManagementConfigurationCategory File
 * PHP version 7
 *
@@ -229,7 +229,7 @@ class DeviceManagementConfigurationCategory extends Entity
 
     /**
     * Gets the platforms
-    * Platforms types, which settings in the category have. Possible values are: none, android, iOS, macOS, windows10X, windows10.
+    * Platforms types, which settings in the category have. Possible values are: none, android, iOS, macOS, windows10X, windows10, linux, unknownFutureValue.
     *
     * @return DeviceManagementConfigurationPlatforms|null The platforms
     */
@@ -248,7 +248,7 @@ class DeviceManagementConfigurationCategory extends Entity
 
     /**
     * Sets the platforms
-    * Platforms types, which settings in the category have. Possible values are: none, android, iOS, macOS, windows10X, windows10.
+    * Platforms types, which settings in the category have. Possible values are: none, android, iOS, macOS, windows10X, windows10, linux, unknownFutureValue.
     *
     * @param DeviceManagementConfigurationPlatforms $val The platforms
     *
@@ -324,7 +324,7 @@ class DeviceManagementConfigurationCategory extends Entity
 
     /**
     * Gets the technologies
-    * Technologies types, which settings in the category have. Possible values are: none, mdm, windows10XManagement, configManager, microsoftSense, exchangeOnline, linuxMdm, unknownFutureValue.
+    * Technologies types, which settings in the category have. Possible values are: none, mdm, windows10XManagement, configManager, appleRemoteManagement, microsoftSense, exchangeOnline, linuxMdm, enrollment, unknownFutureValue.
     *
     * @return DeviceManagementConfigurationTechnologies|null The technologies
     */
@@ -343,7 +343,7 @@ class DeviceManagementConfigurationCategory extends Entity
 
     /**
     * Sets the technologies
-    * Technologies types, which settings in the category have. Possible values are: none, mdm, windows10XManagement, configManager, microsoftSense, exchangeOnline, linuxMdm, unknownFutureValue.
+    * Technologies types, which settings in the category have. Possible values are: none, mdm, windows10XManagement, configManager, appleRemoteManagement, microsoftSense, exchangeOnline, linuxMdm, enrollment, unknownFutureValue.
     *
     * @param DeviceManagementConfigurationTechnologies $val The technologies
     *

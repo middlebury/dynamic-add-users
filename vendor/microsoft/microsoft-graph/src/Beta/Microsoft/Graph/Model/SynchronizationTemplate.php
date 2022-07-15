@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * SynchronizationTemplate File
 * PHP version 7
 *
@@ -189,7 +189,7 @@ class SynchronizationTemplate extends Entity
     * Sets the metadata
     * Additional extension properties. Unless mentioned explicitly, metadata values should not be changed.
     *
-    * @param MetadataEntry $val The metadata
+    * @param MetadataEntry[] $val The metadata
     *
     * @return SynchronizationTemplate
     */

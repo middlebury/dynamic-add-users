@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * UserSignInInsight File
 * PHP version 7
 *
@@ -26,6 +26,7 @@ class UserSignInInsight extends GovernanceInsight
 {
     /**
     * Gets the lastSignInDateTime
+    * Indicates when the user last signed in
     *
     * @return \DateTime|null The lastSignInDateTime
     */
@@ -44,6 +45,7 @@ class UserSignInInsight extends GovernanceInsight
 
     /**
     * Sets the lastSignInDateTime
+    * Indicates when the user last signed in
     *
     * @param \DateTime $val The lastSignInDateTime
     *

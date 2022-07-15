@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * WorkbookCommentReply File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class WorkbookCommentReply extends Entity
 {
     /**
     * Gets the content
-    * The content of a comment reply.
+    * The content of replied comment.
     *
     * @return string|null The content
     */
@@ -41,7 +41,7 @@ class WorkbookCommentReply extends Entity
 
     /**
     * Sets the content
-    * The content of a comment reply.
+    * The content of replied comment.
     *
     * @param string $val The content
     *
@@ -55,7 +55,7 @@ class WorkbookCommentReply extends Entity
 
     /**
     * Gets the contentType
-    * Indicates the type for the comment reply.
+    * Indicates the type for the replied comment.
     *
     * @return string|null The contentType
     */
@@ -70,7 +70,7 @@ class WorkbookCommentReply extends Entity
 
     /**
     * Sets the contentType
-    * Indicates the type for the comment reply.
+    * Indicates the type for the replied comment.
     *
     * @param string $val The contentType
     *

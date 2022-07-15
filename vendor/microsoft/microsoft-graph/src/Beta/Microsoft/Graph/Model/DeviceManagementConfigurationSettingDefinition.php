@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceManagementConfigurationSettingDefinition File
 * PHP version 7
 *
@@ -404,7 +404,7 @@ class DeviceManagementConfigurationSettingDefinition extends Entity
     * Sets the referredSettingInformationList
     * List of referred setting information.
     *
-    * @param DeviceManagementConfigurationReferredSettingInformation $val The referredSettingInformationList
+    * @param DeviceManagementConfigurationReferredSettingInformation[] $val The referredSettingInformationList
     *
     * @return DeviceManagementConfigurationSettingDefinition
     */

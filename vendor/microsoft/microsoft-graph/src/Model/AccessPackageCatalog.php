@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * AccessPackageCatalog File
 * PHP version 7
 *
@@ -121,7 +121,7 @@ class AccessPackageCatalog extends Entity
 
     /**
     * Gets the displayName
-    * The display name of the access package catalog.
+    * The display name of the access package catalog. Supports $filter (eq, contains).
     *
     * @return string|null The displayName
     */
@@ -136,7 +136,7 @@ class AccessPackageCatalog extends Entity
 
     /**
     * Sets the displayName
-    * The display name of the access package catalog.
+    * The display name of the access package catalog. Supports $filter (eq, contains).
     *
     * @param string $val The displayName
     *
@@ -212,6 +212,7 @@ class AccessPackageCatalog extends Entity
 
     /**
     * Gets the state
+    * Has the value published if the access packages are available for management. The possible values are: unpublished, published, unknownFutureValue.
     *
     * @return AccessPackageCatalogState|null The state
     */
@@ -230,6 +231,7 @@ class AccessPackageCatalog extends Entity
 
     /**
     * Sets the state
+    * Has the value published if the access packages are available for management. The possible values are: unpublished, published, unknownFutureValue.
     *
     * @param AccessPackageCatalogState $val The state
     *
@@ -244,7 +246,7 @@ class AccessPackageCatalog extends Entity
 
      /**
      * Gets the accessPackages
-    * The access packages in this catalog. Read-only. Nullable.
+    * The access packages in this catalog. Read-only. Nullable. Supports $expand.
      *
      * @return array|null The accessPackages
      */
@@ -259,9 +261,9 @@ class AccessPackageCatalog extends Entity
 
     /**
     * Sets the accessPackages
-    * The access packages in this catalog. Read-only. Nullable.
+    * The access packages in this catalog. Read-only. Nullable. Supports $expand.
     *
-    * @param AccessPackage $val The accessPackages
+    * @param AccessPackage[] $val The accessPackages
     *
     * @return AccessPackageCatalog
     */

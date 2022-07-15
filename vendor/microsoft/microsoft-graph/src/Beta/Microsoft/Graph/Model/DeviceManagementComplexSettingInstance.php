@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceManagementComplexSettingInstance File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class DeviceManagementComplexSettingInstance extends DeviceManagementSettingInst
     * Sets the value
     * The values that make up the complex setting
     *
-    * @param DeviceManagementSettingInstance $val The value
+    * @param DeviceManagementSettingInstance[] $val The value
     *
     * @return DeviceManagementComplexSettingInstance
     */

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * PlannerPlan File
 * PHP version 7
 *
@@ -24,6 +24,39 @@ namespace Microsoft\Graph\Model;
 */
 class PlannerPlan extends Entity
 {
+    /**
+    * Gets the container
+    * Identifies the container of the plan. After it is set, this property can’t be updated. Required.
+    *
+    * @return PlannerPlanContainer|null The container
+    */
+    public function getContainer()
+    {
+        if (array_key_exists("container", $this->_propDict)) {
+            if (is_a($this->_propDict["container"], "\Microsoft\Graph\Model\PlannerPlanContainer") || is_null($this->_propDict["container"])) {
+                return $this->_propDict["container"];
+            } else {
+                $this->_propDict["container"] = new PlannerPlanContainer($this->_propDict["container"]);
+                return $this->_propDict["container"];
+            }
+        }
+        return null;
+    }
+
+    /**
+    * Sets the container
+    * Identifies the container of the plan. After it is set, this property can’t be updated. Required.
+    *
+    * @param PlannerPlanContainer $val The container
+    *
+    * @return PlannerPlan
+    */
+    public function setContainer($val)
+    {
+        $this->_propDict["container"] = $val;
+        return $this;
+    }
+
     /**
     * Gets the createdBy
     * Read-only. The user who created the plan.
@@ -92,7 +125,6 @@ class PlannerPlan extends Entity
 
     /**
     * Gets the owner
-    * ID of the Group that owns the plan. A valid group must exist before this field can be set. After it is set, this property can’t be updated.
     *
     * @return string|null The owner
     */
@@ -107,7 +139,6 @@ class PlannerPlan extends Entity
 
     /**
     * Sets the owner
-    * ID of the Group that owns the plan. A valid group must exist before this field can be set. After it is set, this property can’t be updated.
     *
     * @param string $val The owner
     *
@@ -151,7 +182,7 @@ class PlannerPlan extends Entity
 
      /**
      * Gets the buckets
-    * Read-only. Nullable. Collection of buckets in the plan.
+    * Collection of buckets in the plan. Read-only. Nullable.
      *
      * @return array|null The buckets
      */
@@ -166,9 +197,9 @@ class PlannerPlan extends Entity
 
     /**
     * Sets the buckets
-    * Read-only. Nullable. Collection of buckets in the plan.
+    * Collection of buckets in the plan. Read-only. Nullable.
     *
-    * @param PlannerBucket $val The buckets
+    * @param PlannerBucket[] $val The buckets
     *
     * @return PlannerPlan
     */
@@ -180,7 +211,7 @@ class PlannerPlan extends Entity
 
     /**
     * Gets the details
-    * Read-only. Nullable. Additional details about the plan.
+    * Additional details about the plan. Read-only. Nullable.
     *
     * @return PlannerPlanDetails|null The details
     */
@@ -199,7 +230,7 @@ class PlannerPlan extends Entity
 
     /**
     * Sets the details
-    * Read-only. Nullable. Additional details about the plan.
+    * Additional details about the plan. Read-only. Nullable.
     *
     * @param PlannerPlanDetails $val The details
     *
@@ -214,7 +245,7 @@ class PlannerPlan extends Entity
 
      /**
      * Gets the tasks
-    * Read-only. Nullable. Collection of tasks in the plan.
+    * Collection of tasks in the plan. Read-only. Nullable.
      *
      * @return array|null The tasks
      */
@@ -229,9 +260,9 @@ class PlannerPlan extends Entity
 
     /**
     * Sets the tasks
-    * Read-only. Nullable. Collection of tasks in the plan.
+    * Collection of tasks in the plan. Read-only. Nullable.
     *
-    * @param PlannerTask $val The tasks
+    * @param PlannerTask[] $val The tasks
     *
     * @return PlannerPlan
     */

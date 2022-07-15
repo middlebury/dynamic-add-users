@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * LocalSecurityOptionsSmartCardRemovalBehaviorType File
 * PHP version 7
 *
@@ -29,8 +29,8 @@ class LocalSecurityOptionsSmartCardRemovalBehaviorType extends Enum
     /**
     * The Enum LocalSecurityOptionsSmartCardRemovalBehaviorType
     */
-    const LOCK_WORKSTATION = "lockWorkstation";
     const NO_ACTION = "noAction";
+    const LOCK_WORKSTATION = "lockWorkstation";
     const FORCE_LOGOFF = "forceLogoff";
     const DISCONNECT_REMOTE_DESKTOP_SESSION = "disconnectRemoteDesktopSession";
 }

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * MobileAppIntentAndState File
 * PHP version 7
 *
@@ -73,7 +73,7 @@ class MobileAppIntentAndState extends Entity
     * Sets the mobileAppList
     * The list of payload intents and states for the tenant.
     *
-    * @param MobileAppIntentAndStateDetail $val The mobileAppList
+    * @param MobileAppIntentAndStateDetail[] $val The mobileAppList
     *
     * @return MobileAppIntentAndState
     */

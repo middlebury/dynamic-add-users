@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DirectorySettingTemplate File
 * PHP version 7
 *
@@ -102,7 +102,7 @@ class DirectorySettingTemplate extends DirectoryObject
     * Sets the values
     * Collection of settingTemplateValues that list the set of available settings, defaults and types that make up this template.  Read-only.
     *
-    * @param SettingTemplateValue $val The values
+    * @param SettingTemplateValue[] $val The values
     *
     * @return DirectorySettingTemplate
     */

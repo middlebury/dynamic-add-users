@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Request File
 * PHP version 7
 *
@@ -88,7 +88,7 @@ class Request extends Entity
 
     /**
     * Gets the createdBy
-    * The user who created this request.
+    * The principal that created the request.
     *
     * @return IdentitySet|null The createdBy
     */
@@ -107,7 +107,7 @@ class Request extends Entity
 
     /**
     * Sets the createdBy
-    * The user who created this request.
+    * The principal that created the request.
     *
     * @param IdentitySet $val The createdBy
     *

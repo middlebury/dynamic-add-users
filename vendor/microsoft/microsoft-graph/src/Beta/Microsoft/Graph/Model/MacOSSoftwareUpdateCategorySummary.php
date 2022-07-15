@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * MacOSSoftwareUpdateCategorySummary File
 * PHP version 7
 *
@@ -284,7 +284,7 @@ class MacOSSoftwareUpdateCategorySummary extends Entity
     * Sets the updateStateSummaries
     * Summary of the update states.
     *
-    * @param MacOSSoftwareUpdateStateSummary $val The updateStateSummaries
+    * @param MacOSSoftwareUpdateStateSummary[] $val The updateStateSummaries
     *
     * @return MacOSSoftwareUpdateCategorySummary
     */

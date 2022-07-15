@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * IosLobAppProvisioningConfiguration File
 * PHP version 7
 *
@@ -321,7 +321,7 @@ class IosLobAppProvisioningConfiguration extends Entity
     * Sets the assignments
     * The associated group assignments for IosLobAppProvisioningConfiguration.
     *
-    * @param IosLobAppProvisioningConfigurationAssignment $val The assignments
+    * @param IosLobAppProvisioningConfigurationAssignment[] $val The assignments
     *
     * @return IosLobAppProvisioningConfiguration
     */
@@ -351,7 +351,7 @@ class IosLobAppProvisioningConfiguration extends Entity
     * Sets the deviceStatuses
     * The list of device installation states for this mobile app configuration.
     *
-    * @param ManagedDeviceMobileAppConfigurationDeviceStatus $val The deviceStatuses
+    * @param ManagedDeviceMobileAppConfigurationDeviceStatus[] $val The deviceStatuses
     *
     * @return IosLobAppProvisioningConfiguration
     */
@@ -381,7 +381,7 @@ class IosLobAppProvisioningConfiguration extends Entity
     * Sets the groupAssignments
     * The associated group assignments.
     *
-    * @param MobileAppProvisioningConfigGroupAssignment $val The groupAssignments
+    * @param MobileAppProvisioningConfigGroupAssignment[] $val The groupAssignments
     *
     * @return IosLobAppProvisioningConfiguration
     */
@@ -411,7 +411,7 @@ class IosLobAppProvisioningConfiguration extends Entity
     * Sets the userStatuses
     * The list of user installation states for this mobile app configuration.
     *
-    * @param ManagedDeviceMobileAppConfigurationUserStatus $val The userStatuses
+    * @param ManagedDeviceMobileAppConfigurationUserStatus[] $val The userStatuses
     *
     * @return IosLobAppProvisioningConfiguration
     */

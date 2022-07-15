@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ChatInfo File
 * PHP version 7
 *
@@ -25,7 +25,7 @@ class ChatInfo extends Entity
 {
     /**
     * Gets the messageId
-    * The unique identifier of a message in a Microsoft Teams channel.
+    * The unique identifier for a message in a Microsoft Teams channel.
     *
     * @return string|null The messageId
     */
@@ -40,7 +40,7 @@ class ChatInfo extends Entity
 
     /**
     * Sets the messageId
-    * The unique identifier of a message in a Microsoft Teams channel.
+    * The unique identifier for a message in a Microsoft Teams channel.
     *
     * @param string $val The value of the messageId
     *

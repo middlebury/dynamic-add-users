@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * GroupPolicyDefinitionValue File
 * PHP version 7
 *
@@ -205,7 +205,7 @@ class GroupPolicyDefinitionValue extends Entity
     * Sets the presentationValues
     * The associated group policy presentation values with the definition value.
     *
-    * @param GroupPolicyPresentationValue $val The presentationValues
+    * @param GroupPolicyPresentationValue[] $val The presentationValues
     *
     * @return GroupPolicyDefinitionValue
     */

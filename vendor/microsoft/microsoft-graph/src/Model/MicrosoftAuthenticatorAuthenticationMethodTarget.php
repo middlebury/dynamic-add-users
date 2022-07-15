@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * MicrosoftAuthenticatorAuthenticationMethodTarget File
 * PHP version 7
 *
@@ -26,7 +26,7 @@ class MicrosoftAuthenticatorAuthenticationMethodTarget extends AuthenticationMet
 {
     /**
     * Gets the authenticationMode
-    * Determines which types of notifications can be used for sign-in. Possible values are: any, deviceBasedPush (passwordless only), push.
+    * Determines which types of notifications can be used for sign-in. The possible values are: deviceBasedPush (passwordless only), push, and any.
     *
     * @return MicrosoftAuthenticatorAuthenticationMode|null The authenticationMode
     */
@@ -45,7 +45,7 @@ class MicrosoftAuthenticatorAuthenticationMethodTarget extends AuthenticationMet
 
     /**
     * Sets the authenticationMode
-    * Determines which types of notifications can be used for sign-in. Possible values are: any, deviceBasedPush (passwordless only), push.
+    * Determines which types of notifications can be used for sign-in. The possible values are: deviceBasedPush (passwordless only), push, and any.
     *
     * @param MicrosoftAuthenticatorAuthenticationMode $val The authenticationMode
     *

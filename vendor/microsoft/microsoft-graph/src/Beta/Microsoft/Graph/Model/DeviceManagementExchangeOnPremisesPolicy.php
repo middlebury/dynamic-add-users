@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DeviceManagementExchangeOnPremisesPolicy File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class DeviceManagementExchangeOnPremisesPolicy extends Entity
     * Sets the accessRules
     * The list of device access rules in Exchange. The access rules apply globally to the entire Exchange organization
     *
-    * @param DeviceManagementExchangeAccessRule $val The accessRules
+    * @param DeviceManagementExchangeAccessRule[] $val The accessRules
     *
     * @return DeviceManagementExchangeOnPremisesPolicy
     */
@@ -107,7 +107,7 @@ class DeviceManagementExchangeOnPremisesPolicy extends Entity
     * Sets the knownDeviceClasses
     * The list of device classes known to Exchange
     *
-    * @param DeviceManagementExchangeDeviceClass $val The knownDeviceClasses
+    * @param DeviceManagementExchangeDeviceClass[] $val The knownDeviceClasses
     *
     * @return DeviceManagementExchangeOnPremisesPolicy
     */

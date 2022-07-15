@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Message File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class Message extends OutlookItem
     * Sets the bccRecipients
     * The Bcc: recipients for the message.
     *
-    * @param Recipient $val The bccRecipients
+    * @param Recipient[] $val The bccRecipients
     *
     * @return Message
     */
@@ -89,7 +89,7 @@ class Message extends OutlookItem
 
     /**
     * Gets the bodyPreview
-    * The first 255 characters of the message body. It is in text format.
+    * The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well.
     *
     * @return string|null The bodyPreview
     */
@@ -104,7 +104,7 @@ class Message extends OutlookItem
 
     /**
     * Sets the bodyPreview
-    * The first 255 characters of the message body. It is in text format.
+    * The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well.
     *
     * @param string $val The bodyPreview
     *
@@ -136,7 +136,7 @@ class Message extends OutlookItem
     * Sets the ccRecipients
     * The Cc: recipients for the message.
     *
-    * @param Recipient $val The ccRecipients
+    * @param Recipient[] $val The ccRecipients
     *
     * @return Message
     */
@@ -383,7 +383,7 @@ class Message extends OutlookItem
     /**
     * Sets the internetMessageHeaders
     *
-    * @param InternetMessageHeader $val The internetMessageHeaders
+    * @param InternetMessageHeader[] $val The internetMessageHeaders
     *
     * @return Message
     */
@@ -604,7 +604,7 @@ class Message extends OutlookItem
     /**
     * Sets the replyTo
     *
-    * @param Recipient $val The replyTo
+    * @param Recipient[] $val The replyTo
     *
     * @return Message
     */
@@ -721,7 +721,7 @@ class Message extends OutlookItem
     /**
     * Sets the toRecipients
     *
-    * @param Recipient $val The toRecipients
+    * @param Recipient[] $val The toRecipients
     *
     * @return Message
     */
@@ -809,7 +809,7 @@ class Message extends OutlookItem
     * Sets the attachments
     * The fileAttachment and itemAttachment attachments for the message.
     *
-    * @param Attachment $val The attachments
+    * @param Attachment[] $val The attachments
     *
     * @return Message
     */
@@ -839,7 +839,7 @@ class Message extends OutlookItem
     * Sets the extensions
     * The collection of open extensions defined for the message. Nullable.
     *
-    * @param Extension $val The extensions
+    * @param Extension[] $val The extensions
     *
     * @return Message
     */
@@ -869,7 +869,7 @@ class Message extends OutlookItem
     * Sets the multiValueExtendedProperties
     * The collection of multi-value extended properties defined for the message. Nullable.
     *
-    * @param MultiValueLegacyExtendedProperty $val The multiValueExtendedProperties
+    * @param MultiValueLegacyExtendedProperty[] $val The multiValueExtendedProperties
     *
     * @return Message
     */
@@ -899,7 +899,7 @@ class Message extends OutlookItem
     * Sets the singleValueExtendedProperties
     * The collection of single-value extended properties defined for the message. Nullable.
     *
-    * @param SingleValueLegacyExtendedProperty $val The singleValueExtendedProperties
+    * @param SingleValueLegacyExtendedProperty[] $val The singleValueExtendedProperties
     *
     * @return Message
     */

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ThreatAssessmentRequest File
 * PHP version 7
 *
@@ -191,7 +191,7 @@ class ThreatAssessmentRequest extends Entity
 
     /**
     * Gets the requestSource
-    * The source of the threat assessment request. Possible values are: administrator.
+    * The source of the threat assessment request. Possible values are: user, administrator.
     *
     * @return ThreatAssessmentRequestSource|null The requestSource
     */
@@ -210,7 +210,7 @@ class ThreatAssessmentRequest extends Entity
 
     /**
     * Sets the requestSource
-    * The source of the threat assessment request. Possible values are: administrator.
+    * The source of the threat assessment request. Possible values are: user, administrator.
     *
     * @param ThreatAssessmentRequestSource $val The requestSource
     *
@@ -275,7 +275,7 @@ class ThreatAssessmentRequest extends Entity
     * Sets the results
     * A collection of threat assessment results. Read-only. By default, a GET /threatAssessmentRequests/{id} does not return this property unless you apply $expand on it.
     *
-    * @param ThreatAssessmentResult $val The results
+    * @param ThreatAssessmentResult[] $val The results
     *
     * @return ThreatAssessmentRequest
     */

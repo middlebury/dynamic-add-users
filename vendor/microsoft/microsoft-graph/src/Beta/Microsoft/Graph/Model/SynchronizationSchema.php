@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * SynchronizationSchema File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class SynchronizationSchema extends Entity
     * Sets the synchronizationRules
     * A collection of synchronization rules configured for the synchronizationJob or synchronizationTemplate.
     *
-    * @param SynchronizationRule $val The synchronizationRules
+    * @param SynchronizationRule[] $val The synchronizationRules
     *
     * @return SynchronizationSchema
     */
@@ -103,7 +103,7 @@ class SynchronizationSchema extends Entity
     * Sets the directories
     * Contains the collection of directories and all of their objects.
     *
-    * @param DirectoryDefinition $val The directories
+    * @param DirectoryDefinition[] $val The directories
     *
     * @return SynchronizationSchema
     */

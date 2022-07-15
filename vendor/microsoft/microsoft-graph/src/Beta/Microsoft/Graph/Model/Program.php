@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * Program File
 * PHP version 7
 *
@@ -102,7 +102,7 @@ class Program extends Entity
     * Sets the controls
     * Controls associated with the program.
     *
-    * @param ProgramControl $val The controls
+    * @param ProgramControl[] $val The controls
     *
     * @return Program
     */

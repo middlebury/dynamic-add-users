@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * OutlookUser File
 * PHP version 7
 *
@@ -44,7 +44,7 @@ class OutlookUser extends Entity
     * Sets the masterCategories
     * A list of categories defined for the user.
     *
-    * @param OutlookCategory $val The masterCategories
+    * @param OutlookCategory[] $val The masterCategories
     *
     * @return OutlookUser
     */

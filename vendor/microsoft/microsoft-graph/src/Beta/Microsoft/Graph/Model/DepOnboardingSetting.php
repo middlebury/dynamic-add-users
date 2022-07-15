@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * DepOnboardingSetting File
 * PHP version 7
 *
@@ -478,7 +478,7 @@ class DepOnboardingSetting extends Entity
     * Sets the enrollmentProfiles
     * The enrollment profiles.
     *
-    * @param EnrollmentProfile $val The enrollmentProfiles
+    * @param EnrollmentProfile[] $val The enrollmentProfiles
     *
     * @return DepOnboardingSetting
     */
@@ -508,7 +508,7 @@ class DepOnboardingSetting extends Entity
     * Sets the importedAppleDeviceIdentities
     * The imported Apple device identities.
     *
-    * @param ImportedAppleDeviceIdentity $val The importedAppleDeviceIdentities
+    * @param ImportedAppleDeviceIdentity[] $val The importedAppleDeviceIdentities
     *
     * @return DepOnboardingSetting
     */

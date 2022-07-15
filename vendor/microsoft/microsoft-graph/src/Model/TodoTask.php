@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * TodoTask File
 * PHP version 7
 *
@@ -87,6 +87,35 @@ class TodoTask extends Entity
     public function setBodyLastModifiedDateTime($val)
     {
         $this->_propDict["bodyLastModifiedDateTime"] = $val;
+        return $this;
+    }
+
+    /**
+    * Gets the categories
+    * The categories associated with the task. Each category corresponds to the displayName property of an outlookCategory that the user has defined.
+    *
+    * @return string|null The categories
+    */
+    public function getCategories()
+    {
+        if (array_key_exists("categories", $this->_propDict)) {
+            return $this->_propDict["categories"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the categories
+    * The categories associated with the task. Each category corresponds to the displayName property of an outlookCategory that the user has defined.
+    *
+    * @param string $val The categories
+    *
+    * @return TodoTask
+    */
+    public function setCategories($val)
+    {
+        $this->_propDict["categories"] = $val;
         return $this;
     }
 
@@ -414,6 +443,36 @@ class TodoTask extends Entity
 
 
      /**
+     * Gets the checklistItems
+    * A collection of smaller subtasks linked to the more complex parent task.
+     *
+     * @return array|null The checklistItems
+     */
+    public function getChecklistItems()
+    {
+        if (array_key_exists("checklistItems", $this->_propDict)) {
+           return $this->_propDict["checklistItems"];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+    * Sets the checklistItems
+    * A collection of smaller subtasks linked to the more complex parent task.
+    *
+    * @param ChecklistItem[] $val The checklistItems
+    *
+    * @return TodoTask
+    */
+    public function setChecklistItems($val)
+    {
+        $this->_propDict["checklistItems"] = $val;
+        return $this;
+    }
+
+
+     /**
      * Gets the extensions
     * The collection of open extensions defined for the task. Nullable.
      *
@@ -432,7 +491,7 @@ class TodoTask extends Entity
     * Sets the extensions
     * The collection of open extensions defined for the task. Nullable.
     *
-    * @param Extension $val The extensions
+    * @param Extension[] $val The extensions
     *
     * @return TodoTask
     */
@@ -462,7 +521,7 @@ class TodoTask extends Entity
     * Sets the linkedResources
     * A collection of resources linked to the task.
     *
-    * @param LinkedResource $val The linkedResources
+    * @param LinkedResource[] $val The linkedResources
     *
     * @return TodoTask
     */

@@ -1,7 +1,7 @@
 <?php
 /**
 * Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
-*
+* 
 * ManagementIntent File
 * PHP version 7
 *
@@ -102,7 +102,7 @@ class ManagementIntent extends \Beta\Microsoft\Graph\Model\Entity
     * Sets the managementTemplates
     * The collection of management templates associated with the management intent. Optional. Read-only.
     *
-    * @param ManagementTemplateDetailedInfo $val The managementTemplates
+    * @param ManagementTemplateDetailedInfo[] $val The managementTemplates
     *
     * @return ManagementIntent
     */
