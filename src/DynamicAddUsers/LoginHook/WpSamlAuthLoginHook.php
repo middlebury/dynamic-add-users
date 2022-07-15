@@ -1,6 +1,6 @@
 <?php
 
-namespace DynamicAddUsers\LoginMapper;
+namespace DynamicAddUsers\LoginHook;
 
 use Exception;
 use WP_User;
@@ -9,14 +9,14 @@ use DynamicAddUsers\DynamicAddUsersPluginInterface;
 /**
  * Map user logins to a user id that can be referenced in the Directory system.
  *
- * Implementations of the LoginMapper *should* take action on user login and
+ * Implementations of the LoginHook *should* take action on user login and
  * call
  *    DynamicAddUsersPluginInterface::onLogin(WP_User $user, $external_user_id = NULL)
  * after extracting the external user identifier from the login attributes.
  * DynamicAddUsersPluginInterface::onLogin() should be called on every login,
  * even if no external user identifier is present in the login attributes.
  */
-class WpSamlAuthLoginMapper extends LoginMapperBase implements LoginMapperInterface
+class WpSamlAuthLoginHook extends LoginHookBase implements LoginHookInterface
 {
 
   /**
@@ -280,14 +280,14 @@ class WpSamlAuthLoginMapper extends LoginMapperBase implements LoginMapperInterf
     if ($this->getSetting('dynamic_add_users__wp_saml_auth__record_login_attributes') != '1') {
       $messages[] = [
         'success' => FALSE,
-        'message' => 'The WpSamlAuthLoginMapper is not currently configured to store login attributes. Without recording attributes we can not do further tests.',
+        'message' => 'The WpSamlAuthLoginHook is not currently configured to store login attributes. Without recording attributes we can not do further tests.',
       ];
       return $messages;
     }
     else {
       $messages[] = [
         'success' => TRUE,
-        'message' => 'The WpSamlAuthLoginMapper is currently configured to store login attributes.',
+        'message' => 'The WpSamlAuthLoginHook is currently configured to store login attributes.',
       ];
     }
 

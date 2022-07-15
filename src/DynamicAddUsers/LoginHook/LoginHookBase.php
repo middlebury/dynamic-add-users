@@ -1,11 +1,11 @@
 <?php
 
-namespace DynamicAddUsers\LoginMapper;
+namespace DynamicAddUsers\LoginHook;
 
 /**
- * A base class with common functionality for login mapper implementations.
+ * A base class with common functionality for login hook implementations.
  */
-abstract class LoginMapperBase
+abstract class LoginHookBase
 {
 
   const load = 1;

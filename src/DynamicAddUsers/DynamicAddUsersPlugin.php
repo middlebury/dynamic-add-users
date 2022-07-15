@@ -8,9 +8,9 @@ use DynamicAddUsers\Directory\NullDirectory;
 use DynamicAddUsers\Directory\MicrosoftGraphDirectory;
 use DynamicAddUsers\UserManager;
 use DynamicAddUsers\GroupSyncer;
-use DynamicAddUsers\LoginMapper\NullLoginMapper;
-use DynamicAddUsers\LoginMapper\UserLoginLoginMapper;
-use DynamicAddUsers\LoginMapper\WpSamlAuthLoginMapper;
+use DynamicAddUsers\LoginHook\NullLoginHook;
+use DynamicAddUsers\LoginHook\UserLoginLoginHook;
+use DynamicAddUsers\LoginHook\WpSamlAuthLoginHook;
 use DynamicAddUsers\Admin\AddUsers;
 use DynamicAddUsers\Admin\NetworkSettings;
 use WP_User;
@@ -29,7 +29,7 @@ class DynamicAddUsersPlugin implements DynamicAddUsersPluginInterface
     // Check the database tables.
     add_action( 'plugins_loaded', [$this, 'checkDatabaseState'] );
     // Set up login actions.
-    $this->getLoginMapper()->setup($this);
+    $this->getLoginHook()->setup($this);
     // Register our AddUsers interface.
     AddUsers::init($this);
     // Register our NetworkSettings interface.
@@ -59,10 +59,10 @@ class DynamicAddUsersPlugin implements DynamicAddUsersPluginInterface
   protected $groupSyncer;
 
   /**
-   * @var \DynamicAddUsers\LoginMapper\LoginMapperInterface $loginMapper
+   * @var \DynamicAddUsers\LoginHook\LoginHookInterface $loginHook
    *   The service implementation for mapping login attributes to external IDs.
    */
-  protected $loginMapper;
+  protected $loginHook;
 
   /**
    * Answer the currently configured DirectoryInterface implementation.
@@ -112,26 +112,26 @@ class DynamicAddUsersPlugin implements DynamicAddUsersPluginInterface
   }
 
   /**
-   * Answer the currently configured LoginMapper implementation.
+   * Answer the currently configured LoginHook implementation.
    *
-   * @return \DynamicAddUsers\LoginMapper\LoginMapperInterface
+   * @return \DynamicAddUsers\LoginHook\LoginHookInterface
    */
-  public function getLoginMapper() {
-    if (!isset($this->loginMapper)) {
+  public function getLoginHook() {
+    if (!isset($this->loginHook)) {
       // Try to load the configured directory implementation.
-      $implementationId = get_site_option('dynamic_add_users__login_mapper_impl', 'null_login_mapper');
-      foreach ($this->getImplementingClasses('DynamicAddUsers\LoginMapper\LoginMapperInterface') as $class) {
+      $implementationId = get_site_option('dynamic_add_users__login_hook_impl', 'null_login_hook');
+      foreach ($this->getImplementingClasses('DynamicAddUsers\LoginHook\LoginHookInterface') as $class) {
         if ($class::id() == $implementationId) {
-          $this->loginMapper = new $class();
+          $this->loginHook = new $class();
         }
       }
 
       // Set a null directory by default to allow bootstrapping of bad values.
-      if (!isset($this->loginMapper)) {
-        $this->loginMapper = new NullLoginMapper();
+      if (!isset($this->loginHook)) {
+        $this->loginHook = new NullLoginHook();
       }
     }
-    return $this->loginMapper;
+    return $this->loginHook;
   }
 
   /*******************************************************
@@ -141,14 +141,14 @@ class DynamicAddUsersPlugin implements DynamicAddUsersPluginInterface
   /**
    * Action to take on user login.
    *
-   * LoginMapperInterface implementations *should* call this function after
+   * LoginHookInterface implementations *should* call this function after
    * attempting to map a login response to an external user identifier.
    *
    * Flow of actions:
-   *   1. A LoginMapperInterface implementation hooks into the authentication
+   *   1. A LoginHookInterface implementation hooks into the authentication
    *      plugin's post-authentication action and maps the user attributes to an
    *      external user-id that is valid in the DirectoryInterface implementation.
-   *   2. The LoginMapperInterface implementation calls onLogin().
+   *   2. The LoginHookInterface implementation calls onLogin().
    *   3. onLogin() looks up a user's groups in the
    *      DirectoryInterface implementation.
    *   4. onLogin() passes the user and their groups to the
@@ -301,51 +301,51 @@ class DynamicAddUsersPlugin implements DynamicAddUsersPluginInterface
   }
 
   /**
-   * Answer an array of LoginMapper implementations that can be configured.
+   * Answer an array of LoginHook implementations that can be configured.
    *
    * Format:
    *   [id => class]
    *
    * @return array
    */
-  public function getLoginMapperImplementations() {
+  public function getLoginHookImplementations() {
     $implementations = [];
-    foreach ($this->getImplementingClasses('DynamicAddUsers\LoginMapper\LoginMapperInterface') as $class) {
+    foreach ($this->getImplementingClasses('DynamicAddUsers\LoginHook\LoginHookInterface') as $class) {
       $implementations[$class::id()] = $class;
     }
     return $implementations;
   }
 
   /**
-   * Answer an array of LoginMapper implementations that can be configured.
+   * Answer an array of LoginHook implementations that can be configured.
    *
    * Format:
    *   [id => label]
    *
    * @return array
    */
-  public function getLoginMapperImplementationLabels() {
+  public function getLoginHookImplementationLabels() {
     $implementations = [];
-    foreach ($this->getImplementingClasses('DynamicAddUsers\LoginMapper\LoginMapperInterface') as $class) {
+    foreach ($this->getImplementingClasses('DynamicAddUsers\LoginHook\LoginHookInterface') as $class) {
       $implementations[$class::id()] = $class::label();
     }
     return $implementations;
   }
 
   /**
-   * Set the LoginMapper implementation to use.
+   * Set the LoginHook implementation to use.
    *
    * @param string $id
    *   The identifier of the implementation that should be used.
    */
-  public function setLoginMapperImplementation($id) {
-    $implementations = $this->getLoginMapperImplementations();
+  public function setLoginHookImplementation($id) {
+    $implementations = $this->getLoginHookImplementations();
     if (isset($implementations[$id])) {
-      update_site_option('dynamic_add_users__login_mapper_impl', $id);
-      unset($this->loginMapper);
+      update_site_option('dynamic_add_users__login_hook_impl', $id);
+      unset($this->loginHook);
     }
     else {
-      throw new Exception('Login Mapper ID, '.esc_attr($id).' is not one of [' . implode(', ', array_keys($implementations)). '].');
+      throw new Exception('Login Hook ID, '.esc_attr($id).' is not one of [' . implode(', ', array_keys($implementations)). '].');
     }
   }
 
@@ -367,9 +367,9 @@ class DynamicAddUsersPlugin implements DynamicAddUsersPluginInterface
       NullDirectory::load;
       CASDirectoryDirectory::load;
       MicrosoftGraphDirectory::load;
-      NullLoginMapper::load;
-      UserLoginLoginMapper::load;
-      WpSamlAuthLoginMapper::load;
+      NullLoginHook::load;
+      UserLoginLoginHook::load;
+      WpSamlAuthLoginHook::load;
     }
 
     return array_filter(

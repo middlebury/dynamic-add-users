@@ -91,12 +91,12 @@ class NetworkSettings {
         if ($_POST['form_section'] == 'directory') {
           $this->saveImplementationOptions($this->plugin->getDirectory());
         }
-        elseif ($_POST['form_section'] == 'login_mapper') {
-          $this->saveImplementationOptions($this->plugin->getLoginMapper());
+        elseif ($_POST['form_section'] == 'login_hook') {
+          $this->saveImplementationOptions($this->plugin->getLoginHook());
         }
         else {
             $this->plugin->setDirectoryImplementation($_POST['dynamic_add_users_directory_impl']);
-            $this->plugin->setLoginMapperImplementation($_POST['dynamic_add_users_login_mapper_impl']);
+            $this->plugin->setLoginHookImplementation($_POST['dynamic_add_users_login_hook_impl']);
         }
       }
       catch(Exception $e) {
@@ -111,8 +111,8 @@ class NetworkSettings {
     // Directory settings.
     $this->printServiceForm('directory', 'Directory', $this->plugin->getDirectory());
 
-    // LoginMapper settings.
-    $this->printServiceForm('login_mapper', 'Login Mapper', $this->plugin->getLoginMapper());
+    // LoginHook settings.
+    $this->printServiceForm('login_hook', 'Login Hook', $this->plugin->getLoginHook());
 
   }
 
@@ -138,11 +138,11 @@ class NetworkSettings {
     }
     $directoryDescriptions .= "</ul>";
 
-    $loginMapperDescriptions = "<ul>";
-    foreach ($this->plugin->getLoginMapperImplementations() as $class) {
-      $loginMapperDescriptions .= "<li><strong>" . esc_html($class::label()) . "</strong>: " . wp_kses_data($class::description()) . "</li>";
+    $loginHookDescriptions = "<ul>";
+    foreach ($this->plugin->getLoginHookImplementations() as $class) {
+      $loginHookDescriptions .= "<li><strong>" . esc_html($class::label()) . "</strong>: " . wp_kses_data($class::description()) . "</li>";
     }
-    $loginMapperDescriptions .= "</ul>";
+    $loginHookDescriptions .= "</ul>";
 
     return [
       'dynamic_add_users_directory_impl' => [
@@ -152,12 +152,12 @@ class NetworkSettings {
         'type' => 'select',
         'options' => $this->plugin->getDirectoryImplementationLabels(),
       ],
-      'dynamic_add_users_login_mapper_impl' => [
-        'label' => 'Login Mapper implementation',
-        'description' => 'The implementation to use for mapping login attributes to external user IDs that will be recognized by the directory. ' . $loginMapperDescriptions,
-        'value' => $this->plugin->getLoginMapper()::id(),
+      'dynamic_add_users_login_hook_impl' => [
+        'label' => 'Login Hook implementation',
+        'description' => 'The implementation to use for mapping login attributes to external user IDs that will be recognized by the directory. ' . $loginHookDescriptions,
+        'value' => $this->plugin->getLoginHook()::id(),
         'type' => 'select',
-        'options' => $this->plugin->getLoginMapperImplementationLabels(),
+        'options' => $this->plugin->getLoginHookImplementationLabels(),
       ],
     ];
   }
@@ -274,8 +274,8 @@ class NetworkSettings {
     // Directory test.
     $this->serviceTestForm('directory', 'Directory', $this->plugin->getDirectory());
 
-    // LoginMapper settings.
-    $this->serviceTestForm('login_mapper', 'Login Mapper', $this->plugin->getLoginMapper());
+    // LoginHook settings.
+    $this->serviceTestForm('login_hook', 'Login Hook', $this->plugin->getLoginHook());
   }
 
   /**

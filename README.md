@@ -14,9 +14,8 @@ Dynamic Add Users has several components that work together to provide its
 functionality:
  * A `DynamicAddUsersPlugin` singleton to manage configuration and access to services.
  * A **Directory** service with providers that allow lookup of user and group information.
- * **Login-Mapper** providers that evaluate user/login attributes
-   at login time to map the user identifiers present in the login response to
-   user identifiers known to the directory service.
+ * **Login-Hook** providers that trigger sync operations at login time and may
+   provide access to user identifiers present in the login response.
  * **User Manager** and **Group Syncer** services and APIs for creating user accounts
    and bulk-adding users.
  * Network administrator configuration screens.
@@ -42,38 +41,48 @@ Each **Directory** service implementation provides API methods defined in
    the Dynamic Add Users screen to work with only native WordPress accounts with
    no lookup in external data-sources.
  * **CAS Directory** - The CAS Directory provider allows user/group search and
-   lookup via Middlebury's custom [CAS Directory web service](https://mediawiki.middlebury.edu/LIS/CAS_Directory). Usage requires configuring the
-   URL of the service as well as access tokens.
- * **Microsoft Graph** (in development) - When complete, will allow user/group
-   search in Azure AD via Microsoft's [Graph API](https://docs.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0).
+   lookup via Middlebury's custom [CAS Directory web service](https://mediawiki.middlebury.edu/LIS/CAS_Directory).
+   Usage requires configuring the URL of the service as well as access tokens.
+   Groups are identified by their DistinguishedName attribute
+   (e.g. <code>CN=ITS Staff,OU=General,OU=Groups,DC=middlebury,DC=edu</code>)
+   and users are identified by their <code>middleburyCollegeUID</code> attribute.
+ * **Microsoft Graph** - The Graph directory provider allows user/group
+   search and lookup in Azure AD via Microsoft's
+   [Graph API](https://docs.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0).
+   Groups are referenced by their ID property in AzureAD (a GUID value like
+   <code>20f74211-e62b-40f9-b00a-513a01a2e431</code>). Users are referenced by a
+   configurable primary identifier attribute and an optional secondary/fall-back
+   identifier. Transforms may be applied to these identifiers to allow the
+   external identifier to meet WordPress's allowed-character restrictions and
+   length limits for usernames.
 
-### The **Login-Mapper**
+### The **Login-Hook**
 
-The Dynamic Add Users **Login-Mapper** providers evaluate user/login attributes
+The Dynamic Add Users **Login-Hook** providers evaluate user/login attributes
 at login time to map the user identifiers present in the login response to user
 identifiers known to the directory service. This component allows hooking into
 authentication plugin's own login actions that may provide access to additional
 attributes that are not present in the native WordPress `wp_login` action.
 
-Each **Login-Mapper** implementation will register itself with an appropriate
+Each **Login-Hook** implementation will register itself with an appropriate
 login action and if possible, return a user-id that is known to the currently
 configured Directory service.
 
 #### Implementations
-* **Null** - This Login-Mapper is enabled by default and always returns a
+* **Null** - This Login-Hook is enabled by default and always returns a
   null result. Useful as a placeholder when debugging or when no mapping is
   desired.
-* **User Login** - This Login-Mapper hooks into the native `wp_login` action and
+* **User Login** - This Login-Hook hooks into the native `wp_login` action and
   always returns the `user_login` field on the WordPress user account. If these
   values are known to the currently-configured directory implementation, then
-  this is the appropriate Login-Mapper to use. It needs no configuration.
-* **WP SAML Auth** - This Login-Mapper hooks into login flow for the [WP SAML Auth
+  this is the appropriate Login-Hook to use. It needs no configuration.
+* **WP SAML Auth** - This Login-Hook hooks into login flow for the [WP SAML Auth
   plugin](https://wordpress.org/plugins/wp-saml-auth/) and provides access to additional SAML attributes that may be present
   in the authentication response from that plugin. It requires configuration of
   the particular SAML attribute to use when doing Directory lookups.
 
 ## Configuration
-By default, Dynamic Add Users uses place-holder Null **Directory** and **Login-Mapper**
+By default, Dynamic Add Users uses place-holder Null **Directory** and **Login-Hook**
 implementations. The implementations in-use and implementation-specific configuration
 can be set under **Network Admin &rarr; Settings &rarr; Dynamic Add Users**.
 
@@ -88,7 +97,7 @@ plugins can use to work with it or extend its abilities.
 The singleton DynamicAddUsersPlugin provides access to all services of the plugin
 and can be accessed via the `dynamic_add_users()` function. The configured service
 implementations can then be accessed via the methods detailed in
-[`DynamicAddUsersPluginInterface.php`](https://github.com/middlebury/dynamic-add-users/blob/main/src/DynamicAddUsers/DynamicAddUsersPluginInterface.php): `getDirectory()`, `getLoginMapper()`, `getUserManager()`, and `getGroupSyncer()`.
+[`DynamicAddUsersPluginInterface.php`](https://github.com/middlebury/dynamic-add-users/blob/main/src/DynamicAddUsers/DynamicAddUsersPluginInterface.php): `getDirectory()`, `getLoginHook()`, `getUserManager()`, and `getGroupSyncer()`.
 
 Example:
 ```
@@ -228,6 +237,6 @@ Plugins may provide additional implementations of the **Directory** service by
 implementing the `\DynamicAddUsers\Directory\DirectoryInterface` in a class and
 ensuring that the class is loaded at runtime before DynamicAddUsers executes.
 
-Plugins may provide additional **Login-Mapper** implementations by
-implementing the `\DynamicAddUsers\LoginMapper\LoginMapperInterface` in a class
+Plugins may provide additional **Login-Hook** implementations by
+implementing the `\DynamicAddUsers\LoginHook\LoginHookInterface` in a class
 and ensuring that the class is loaded at runtime before DynamicAddUsers executes.

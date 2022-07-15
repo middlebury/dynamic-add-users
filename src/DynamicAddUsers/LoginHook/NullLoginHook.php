@@ -1,6 +1,6 @@
 <?php
 
-namespace DynamicAddUsers\LoginMapper;
+namespace DynamicAddUsers\LoginHook;
 
 use Exception;
 use WP_User;
@@ -9,14 +9,14 @@ use DynamicAddUsers\DynamicAddUsersPluginInterface;
 /**
  * Map user logins to a user id that can be referenced in the Directory system.
  *
- * Implementations of the LoginMapper *should* take action on user login and
+ * Implementations of the LoginHook *should* take action on user login and
  * call
  *    DynamicAddUsersPluginInterface::onLogin(WP_User $user, $external_user_id = NULL)
  * after extracting the external user identifier from the login attributes.
  * DynamicAddUsersPluginInterface::onLogin() should be called on every login,
  * even if no external user identifier is present in the login attributes.
  */
-class NullLoginMapper extends LoginMapperBase implements LoginMapperInterface
+class NullLoginHook extends LoginHookBase implements LoginHookInterface
 {
 
   /**
@@ -26,7 +26,7 @@ class NullLoginMapper extends LoginMapperBase implements LoginMapperInterface
    *   The implementation id.
    */
   public static function id() {
-    return 'null_login_mapper';
+    return 'null_login_hook';
   }
 
   /**
@@ -36,7 +36,7 @@ class NullLoginMapper extends LoginMapperBase implements LoginMapperInterface
    *   The implementation label.
    */
   public static function label() {
-    return 'Null Login Mapper';
+    return 'Null Login Hook';
   }
 
   /**
