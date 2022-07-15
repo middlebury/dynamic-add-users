@@ -95,18 +95,18 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
     $matches = [];
 
     $path = "/groups";
-    $path .= "?\$filter=startswith(displayName, '" . urlencode($search) ."') or startswith(mail, '" . urlencode($search) ."')&\$count=true&\$top=10&\$orderby=displayName&\$select=id,displayName,mail,description,groupTypes";
-
-    // print_r($path);
+    $path .= "?\$filter=startswith(displayName, '" . urlencode($search) ."') or startswith(mail, '" . urlencode($search) ."')"
+    ."&\$count=true&\$top=10&\$orderby=displayName"
+    ."&\$select=id,displayName,mail,description,groupTypes";
 
     $result = $this->getGraph()
       ->createRequest("GET", $path)
       ->addHeaders(['ConsistencyLevel' => 'eventual'])
       ->setReturnType(Group::class)
       ->execute();
+
     if (is_array($result)) {
       foreach ($result as $group) {
-        // print_r($group);
         $matches[$group->getId()] = $group->getDisplayName();
         if ($group->getDescription() && $group->getDescription() != $group->getDisplayName()) {
           $matches[$group->getId()] .= ' (' . $group->getDescription() . ')';
@@ -205,6 +205,7 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
       ->createRequest("GET", $path)
       ->setReturnType(User::class)
       ->execute();
+
     if (is_array($result)) {
       foreach ($result as $user) {
         $memberInfo[$user->getId()] = $this->extractUserInfo($user);
