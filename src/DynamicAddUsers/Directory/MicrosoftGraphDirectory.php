@@ -52,7 +52,9 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
     $matches = [];
 
     $path = "/users";
-    $path .= "?\$filter=startswith(displayName, '" . urlencode($search) ."') or startswith(givenName, '" . urlencode($search) ."') or startswith(surname, '" . urlencode($search) ."') or startswith(mail, '" . urlencode($search) ."')&\$count=true&\$top=10&\$orderby=displayName&\$select=id,displayName,mail,givenName,surname,userPrincipalName,extension_a5f5e158fc8b49ce98aa89ab99fd2a76_middleburyCollegeUID";
+    $path .= "?\$filter=startswith(displayName, '" . urlencode($search) ."') or startswith(givenName, '" . urlencode($search) ."') or startswith(surname, '" . urlencode($search) ."') or startswith(mail, '" . urlencode($search) ."')"
+      . " &\$count=true&\$top=10&\$orderby=displayName"
+      . " &\$select=".implode(',', $this->getUserGraphProperties());
 
     // print_r($path);
 
@@ -188,7 +190,7 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
     $memberInfo = [];
 
     $path = "/groups/" . urlencode($groupId) . "/transitiveMembers" ;
-    $path .= "?\$select=id,displayName,mail,givenName,surname,userPrincipalName,extension_a5f5e158fc8b49ce98aa89ab99fd2a76_middleburyCollegeUID";
+    $path .= "?\$select=" . implode(',', $this->getUserGraphProperties());
 
     $result = $this->getGraph()
       ->createRequest("GET", $path)
@@ -299,24 +301,38 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
    * @return Microsoft\Graph\Model\User
    */
   protected function fetchUserForLogin($login) {
-    // First search by MiddleburyCollegeUID.
-    $path = "/users?\$filter=extension_a5f5e158fc8b49ce98aa89ab99fd2a76_middleburyCollegeUID eq '" . urlencode($login) ."'&\$count=true&\$top=10&\$orderby=displayName&\$select=id,displayName,mail,givenName,surname,userPrincipalName,extension_a5f5e158fc8b49ce98aa89ab99fd2a76_middleburyCollegeUID";
+    // First search by the primary unique ID.
+    try {
+      return $this->fetchUserByProperty($this->getPrimaryUniqueIdProperty(), $this->getPrimaryUniqueIdFromLogin($login));
+    } catch (\Exception $e) {
+      // If we didn't find an account based on the primary id, try a secondary ID if configured.
+      if ($e->getCode() == 404 && !empty($this->getSecondaryUniqueIdProperty())) {
+        return $this->fetchUserByProperty($this->getSecondaryUniqueIdProperty(), $this->getSecondaryUniqueIdFromLogin($login));
+      } else {
+        // If we don't support secondary ids or get another error, just throw it.
+        throw $e;
+      }
+    }
+  }
+
+  /**
+   * Answer an MS Graph User object matching a login string.
+   *
+   * @param string $property
+   *   The MSGraph property to match.
+   * @param string $value
+   *   The user-id value to match.
+   * @return Microsoft\Graph\Model\User
+   */
+  protected function fetchUserByProperty($property, $value) {
+    $path = "/users?\$filter=" . $property . " eq '" . urlencode($value) . "'"
+      . "&\$count=true&\$top=10&\$orderby=displayName"
+      . "&\$select=" . implode(",", $this->getUserGraphProperties());
     $result = $this->getGraph()
       ->createRequest("GET", $path)
       ->addHeaders(['ConsistencyLevel' => 'eventual'])
       ->setReturnType(User::class)
       ->execute();
-
-    // If not found and the login ends in 'ext', search on userPrincipalName.
-    if (empty($result) && preg_match('/ext$/i', $login)) {
-      $upn = preg_replace('/^(.+)ext$/i', '\1#EXT#@middleburycollege.onmicrosoft.com', $login);
-      $path = "/users?\$filter=userPrincipalName eq '" . urlencode($upn) ."'&\$count=true&\$top=10&\$orderby=displayName&\$select=id,displayName,mail,givenName,surname,userPrincipalName,extension_a5f5e158fc8b49ce98aa89ab99fd2a76_middleburyCollegeUID";
-      $result = $this->getGraph()
-        ->createRequest("GET", $path)
-        ->addHeaders(['ConsistencyLevel' => 'eventual'])
-        ->setReturnType(User::class)
-        ->execute();
-    }
 
     if (count($result) < 1) {
       throw new \Exception('Could not get user. Expecting 1 entry, found '.count($result), 404);
@@ -328,6 +344,21 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
     return $result[0];
   }
 
+  protected function getUserGraphProperties() {
+    $properties = [
+      'id',
+      'displayName',
+      'mail',
+      'givenName',
+      'surname',
+      $this->getPrimaryUniqueIdProperty(),
+    ];
+    if (!empty($this->getSecondaryUniqueIdProperty())) {
+      $properties .= $this->getSecondaryUniqueIdProperty();
+    }
+    return $properties;
+  }
+
   /**
    * Answer the user info matching an MS Graph User object.
    *
@@ -336,15 +367,8 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
    */
   protected function extractUserInfo (User $user) {
     $info = array();
-    $properties = $user->getProperties();
-    // print_r($properties);
-    if (empty($properties['extension_a5f5e158fc8b49ce98aa89ab99fd2a76_middleburyCollegeUID'])) {
-      $login = preg_replace('/@middleburycollege.onmicrosoft.com$/', '', $user->getUserPrincipalName());
-      $login = preg_replace('/#EXT#$/', 'ext', $login);
-    } else {
-      $login = $properties['extension_a5f5e158fc8b49ce98aa89ab99fd2a76_middleburyCollegeUID'];
-    }
-    $info['user_login'] = $login;
+
+    $info['user_login'] = $this->getLoginForGraphUser($user);
     $info['user_email'] = $user->getMail();
 
     preg_match('/^(.+)@(.+)$/', $info['user_email'], $matches);
@@ -366,6 +390,120 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
       $info['nickname'] = $emailUser;
     }
     return $info;
+  }
+
+  /**
+   * Answer the user login matching an MS Graph User object.
+   *
+   * @param \Microsoft\Graph\Model\User $user
+   * @return array
+   */
+  protected function getLoginForGraphUser (User $user) {
+    $properties = $user->getProperties();
+    // print_r($properties);
+
+    // Primary Unique ID.
+    if (!empty($properties[$this->getPrimaryUniqueIdProperty()])) {
+      $login = $properties[$this->getPrimaryUniqueIdProperty()];
+      // Strip a suffix if configured.
+      if (in_array($this->getSetting('dynamic_add_users__primary_unique_id__transform'), ['strip_suffix', 'strip_suffix_and_convert_ext'])) {
+        $login = preg_replace('/' . preg_quote($this->getSetting('dynamic_add_users__primary_unique_id__suffix')) . '$/', '', $login);
+      }
+      // Convert /#EXT#$/ to 'ext' if configured.
+      if ($this->getSetting('dynamic_add_users__primary_unique_id__transform') == 'strip_suffix_and_convert_ext') {
+        $login = preg_replace('/#EXT#$/', 'ext', $login);
+      }
+
+      if (empty($login)) {
+        throw new \Exception('Primary Unique ID "' . $properties[$this->getPrimaryUniqueIdProperty()] . '" in the ' . $this->getPrimaryUniqueIdProperty() . ' property resulted in an empty login after transform.');
+      }
+      return $login;
+    }
+    // Secondary/Fallback unique ID.
+    else {
+      $login = $properties[$this->getSecondaryUniqueIdProperty()];
+      // Strip a suffix if configured.
+      if (in_array($this->getSetting('dynamic_add_users__secondary_unique_id__transform'), ['strip_suffix', 'strip_suffix_and_convert_ext'])) {
+        $login = preg_replace('/' . preg_quote($this->getSetting('dynamic_add_users__secondary_unique_id__suffix')) . '$/', '', $login);
+      }
+      // Convert /#EXT#$/ to 'ext' if configured.
+      if ($this->getSetting('dynamic_add_users__secondary_unique_id__transform') == 'strip_suffix_and_convert_ext') {
+        $login = preg_replace('/#EXT#$/', 'ext', $login);
+      }
+
+      if (empty($login)) {
+        throw new \Exception('Secondary Unique ID "' . $properties[$this->getSecondaryUniqueIdProperty()] . '" in the ' . $this->getSecondaryUniqueIdProperty() . ' property resulted in an empty login after transform.');
+      }
+      return $login;
+    }
+  }
+
+  /**
+   * Answer a primary user-id value to lookup in Graph for a WordPress login.
+   *
+   * @param string $login
+   *   The WordPress login.
+   *
+   * @return string
+   *   A transformed ID to use in MS Graph lookups.
+   */
+  protected function getPrimaryUniqueIdFromLogin($login) {
+    // Append a suffix that we would have stripped if configured.
+    if ($this->getSetting('dynamic_add_users__primary_unique_id__transform') == 'strip_suffix') {
+      return $login . $this->getSetting('dynamic_add_users__primary_unique_id__suffix');
+    }
+    // Convert /ext$/ to '#EXT#' and append a suffix that we would have stripped if configured.
+    if ($this->getSetting('dynamic_add_users__primary_unique_id__transform') == 'strip_suffix_and_convert_ext') {
+      return preg_replace('/^(.+)ext$/i', '\1#EXT#' . $this->getSetting('dynamic_add_users__primary_unique_id__suffix'), $login);
+    }
+    // Return the login unmodified.
+    else {
+      return $login;
+    }
+  }
+
+  /**
+   * Answer the primary unique-id property key.
+   *
+   * @return string
+   *   The property in MS Graph that holds the primary unique-id.
+   */
+  protected function getPrimaryUniqueIdProperty() {
+    return $this->getSetting('dynamic_add_users__primary_unique_id__property');
+  }
+
+  /**
+   * Answer the secondary unique-id property key.
+   *
+   * @return string
+   *   The property in MS Graph that holds a secondary/fall-back unique-id.
+   */
+  protected function getSecondaryUniqueIdProperty() {
+    return $this->getSetting('dynamic_add_users__secondary_unique_id__property');
+  }
+
+  /**
+   * Answer a secondary user-id value to lookup in Graph for a WordPress login.
+   *
+   * @param string $login
+   *   The WordPress login.
+   *
+   * @return string
+   *   A transformed ID to use in MS Graph lookups.
+   */
+  protected function getSecondaryUniqueIdFromLogin($login) {
+    // Append a suffix that we would have stripped if configured.
+    if ($this->getSetting('dynamic_add_users__secondary_unique_id__transform') == 'strip_suffix') {
+      return $login . $this->getSetting('dynamic_add_users__secondary_unique_id__suffix');
+    }
+    // Convert /ext$/ to '#EXT#' and append a suffix that we would have stripped if configured.
+    if ($this->getSetting('dynamic_add_users__secondary_unique_id__transform') == 'strip_suffix_and_convert_ext') {
+      return preg_replace('/^(.+)ext$/i', '\1#EXT#' . $this->getSetting('dynamic_add_users__secondary_unique_id__suffix'), $login);
+    }
+    // Return the login unmodified.
+    else {
+      return $login;
+    }
   }
 
   /**
@@ -417,6 +555,52 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
         'value' => $this->getSetting('dynamic_add_users__microsoft_graph__application_secret'),
         'type' => 'password',
       ],
+      'dynamic_add_users__primary_unique_id__property' => [
+        'label' => 'Primary Unique ID property',
+        'description' => 'If specified, this property key will be used as the primary ID for user accounts and checked first. Example: <code>extension_a5f5e158fc8b49ce98aa89ab99fd2a76_middleburyCollegeUID</code>',
+        'value' => $this->getSetting('dynamic_add_users__primary_unique_id__property'),
+        'type' => 'text',
+      ],
+      'dynamic_add_users__primary_unique_id__transform' => [
+        'label' => 'Primary Unique ID transform',
+        'description' => 'Select a transform (if any) for the primary unique id',
+        'value' => $this->getSetting('dynamic_add_users__primary_unique_id__transform'),
+        'type' => 'select',
+        'options' => [
+          'none' => 'None',
+          'strip_suffix' => 'Strip suffix',
+          'strip_suffix_and_convert_ext' => 'Strip suffix and convert #EXT#',
+        ],
+      ],
+      'dynamic_add_users__primary_unique_id__suffix' => [
+        'label' => 'Primary Unique ID suffix',
+        'description' => 'If specified and one of the "Strip suffix" is chosen, this suffix will be stripped from the unique-id to store the shorter version as the WordPress username, then added to the username when doing lookups in the directory. WordPress limits user logins to 60 characters, so long email addresses or UPNs may need to have a suffix converted. <br><br> Example: <ul><li>Use "Strip suffix and convert #EXT#" with a suffix of <code>@middleburycollege.onmicrosoft.com</code> to convert a UPN like <code>johndoe_example.com#EXT#@middleburycollege.onmicrosoft.com</code> to and from a WordPress username like <code>johndoe_example.comext</code></li><li>Use "Strip suffix" with a suffix of "@middlebury.edu" to convert a UPN like <code>johndoe@middlebury.edu</code> to and from a WordPress username like <code>johndoe</code></li></ul>',
+        'value' => $this->getSetting('dynamic_add_users__primary_unique_id__suffix'),
+        'type' => 'text',
+      ],
+      'dynamic_add_users__secondary_unique_id__property' => [
+        'label' => 'Secondary Unique ID property',
+        'description' => 'If specified, this property key will be used as the secondary ID for user accounts and used as a fall-back if the user account does not have the primary ID property. For example, if an institutional ID property is used as the primary ID, then guest accounts without this institutional id might fall back to the userPrincipalName as a secondary ID. Example: <code>userPrincipalName</code>',
+        'value' => $this->getSetting('dynamic_add_users__secondary_unique_id__property'),
+        'type' => 'text',
+      ],
+      'dynamic_add_users__secondary_unique_id__transform' => [
+        'label' => 'Secondary Unique ID transform',
+        'description' => 'Select a transform (if any) for the secondary unique id',
+        'value' => $this->getSetting('dynamic_add_users__secondary_unique_id__transform'),
+        'type' => 'select',
+        'options' => [
+          'none' => 'None',
+          'strip_suffix' => 'Strip Suffix',
+          'strip_suffix_and_convert_ext' => 'Strip suffix and convert #EXT#',
+        ],
+      ],
+      'dynamic_add_users__secondary_unique_id__suffix' => [
+        'label' => 'Secondary Unique ID suffix',
+        'description' => 'If specified and one of the "Strip suffix" is chosen, this suffix will be stripped from the unique-id to store the shorter version as the WordPress username, then added to the username when doing lookups in the directory. WordPress limits user logins to 60 characters, so long email addresses or UPNs may need to have a suffix converted. <br><br> Example: <ul><li>Use "Strip suffix and convert #EXT#" with a suffix of <code>@middleburycollege.onmicrosoft.com</code> to convert a UPN like <code>johndoe_example.com#EXT#@middleburycollege.onmicrosoft.com</code> to and from a WordPress username like <code>johndoe_example.comext</code></li><li>Use "Strip suffix" with a suffix of "@middlebury.edu" to convert a UPN like <code>johndoe@middlebury.edu</code> to and from a WordPress username like <code>johndoe</code></li></ul>',
+        'value' => $this->getSetting('dynamic_add_users__secondary_unique_id__suffix'),
+        'type' => 'text',
+      ],
     ];
   }
 
@@ -436,6 +620,18 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
     }
     if (empty($this->getSetting('dynamic_add_users__microsoft_graph__application_secret'))) {
       $messages[] = 'The Application Secret must be specified.';
+    }
+    if (empty($this->getSetting('dynamic_add_users__primary_unique_id__property'))) {
+      $messages[] = 'The Primary Unique ID property must be specified.';
+    }
+    if (!empty($this->getSetting('dynamic_add_users__primary_unique_id__transform')) && $this->getSetting('dynamic_add_users__primary_unique_id__transform') != 'none' && empty($this->getSetting('dynamic_add_users__primary_unique_id__suffix'))) {
+      $messages[] = 'If you are specifying that a suffix from the Primary Unique ID will be stripped you must be specify it.';
+    }
+    if (empty($this->getSetting('dynamic_add_users__secondary_unique_id__property'))) {
+      $messages[] = 'The secondary Unique ID property must be specified.';
+    }
+    if (!empty($this->getSetting('dynamic_add_users__secondary_unique_id__transform')) && $this->getSetting('dynamic_add_users__secondary_unique_id__transform') != 'none' && empty($this->getSetting('dynamic_add_users__secondary_unique_id__suffix'))) {
+      $messages[] = 'If you are specifying that a suffix from the secondary Unique ID will be stripped you must be specify it.';
     }
     return $messages;
   }
@@ -543,6 +739,19 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
 
     switch($arguments['query_type']) {
       case 'user_lookup':
+        try {
+          $externalId = $this->getPrimaryUniqueIdFromLogin($arguments['query']);
+          $messages[] = [
+            'success' => TRUE,
+            'message' => 'Converted user id from <code>' . esc_html($arguments['query']) . '</code> to <code>' . esc_html($this->getPrimaryUniqueIdFromLogin($arguments['query'])) . '</code> to match against primary property: <code>' . $this->getPrimaryUniqueIdProperty() . '</code>',
+          ];
+        }
+        catch (Exception $e) {
+          $messages[] = [
+            'success' => FALSE,
+            'message' => 'Failed to lookup user info for "' . esc_html($arguments['query']) . '" Code: ' . $e->getCode() . ' Message: ' . esc_html($e->getMessage()),
+          ];
+        }
         try {
           $info = $this->getUserInfo($arguments['query']);
           $messages[] = [
