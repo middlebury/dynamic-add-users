@@ -157,6 +157,3 @@ function dynamic_add_users__filter_group_matches($matches) {
   return $results;
   */
 }
-
-
-require_once( dirname(__FILE__) . '/src/middlebury-tweaks.php' );

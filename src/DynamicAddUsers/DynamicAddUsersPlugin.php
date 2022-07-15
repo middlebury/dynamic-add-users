@@ -34,6 +34,10 @@ class DynamicAddUsersPlugin implements DynamicAddUsersPluginInterface
     AddUsers::init($this);
     // Register our NetworkSettings interface.
     NetworkSettings::init($this);
+    // Include tweaks if enabled.
+    if (get_site_option('dynamic_add_users__include_middlebury_tweaks', false)) {
+      require_once __DIR__ . '/../middlebury-tweaks.php';
+    }
   }
 
   /*******************************************************

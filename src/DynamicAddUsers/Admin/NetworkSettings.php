@@ -97,6 +97,11 @@ class NetworkSettings {
         else {
             $this->plugin->setDirectoryImplementation($_POST['dynamic_add_users_directory_impl']);
             $this->plugin->setLoginHookImplementation($_POST['dynamic_add_users_login_hook_impl']);
+            if ($_POST['dynamic_add_users__include_middlebury_tweaks'] == 'true') {
+              update_site_option('dynamic_add_users__include_middlebury_tweaks', true);
+            } else {
+              update_site_option('dynamic_add_users__include_middlebury_tweaks', false);
+            }
         }
       }
       catch(Exception $e) {
@@ -106,7 +111,9 @@ class NetworkSettings {
     }
 
     // Implementation choices.
-    $this->printForm('Dynamic Add Users settings', 'h2', 'dynamic_add_users_settings', $this->getImplementationChoices(), NULL, 'general');
+    $generalSettings = array_merge($this->getImplementationChoices(), $this->getOtherSettings());
+
+    $this->printForm('Dynamic Add Users settings', 'h2', 'dynamic_add_users_settings', $generalSettings, NULL, 'general');
 
     // Directory settings.
     $this->printServiceForm('directory', 'Directory', $this->plugin->getDirectory());
@@ -158,6 +165,18 @@ class NetworkSettings {
         'value' => $this->plugin->getLoginHook()::id(),
         'type' => 'select',
         'options' => $this->plugin->getLoginHookImplementationLabels(),
+      ],
+    ];
+  }
+
+  protected function getOtherSettings() {
+    return [
+      'dynamic_add_users__include_middlebury_tweaks' => [
+        'label' => 'Include Middlebury Tweaks?',
+        'description' => "Filter out old guest accounts that shouldn't be able to log in any more. Values will look like: <code>guest_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</code>",
+        'value' => get_site_option('dynamic_add_users__include_middlebury_tweaks', false) ? 'true' : 'false',
+        'type' => 'select',
+        'options' => ['false' => 'false', 'true' => 'true'],
       ],
     ];
   }
