@@ -272,7 +272,9 @@ class GroupSyncer implements GroupSyncerInterface
     $changes = array();
     $memberInfo = $this->directory->getGroupMemberInfo($group_id);
     if (!is_array($memberInfo)) {
-      throw new Exception("Could not find members for group '".$group_label."' with id '".$group_id."'.");
+      throw new Exception("Could not find members for group '".wp_kses_data($group_label)."' with id '".wp_kses_data($group_id)."'.");
+    } elseif (empty($memberInfo)) {
+      $changes []= "No members found for group '".wp_kses_data($group_label)."' with id '".wp_kses_data($group_id)."'. Either the group is empty or membership is hidden.";
     } else {
       $user_ids = array();
       foreach ($memberInfo as $info) {

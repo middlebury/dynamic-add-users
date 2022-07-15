@@ -142,6 +142,8 @@ class AddUsers {
           $memberInfo = $this->plugin->getDirectory()->getGroupMemberInfo($_POST['group']);
           if (!is_array($memberInfo)) {
             print "Could not find members for '".$_POST['group']."'.";
+          } elseif (empty($memberInfo)) {
+            print "No members found for  '".wp_kses_data($_POST['group_search'])."' with id '".$_POST['group']."'. Either the group is empty or membership is hidden.";
           } else {
             foreach ($memberInfo as $info) {
               try {
