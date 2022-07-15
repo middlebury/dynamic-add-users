@@ -76,7 +76,7 @@ class CasDirectoryDirectory extends DirectoryBase implements DirectoryInterface
    * @param string $search
    * @return array
    */
-  public function getGroupsBySearchFromDirectory ($search) {
+  protected function getGroupsBySearchFromDirectory ($search) {
     $xpath = $this->query(array(
       'action' => 'search_groups',
       'query' => $search,

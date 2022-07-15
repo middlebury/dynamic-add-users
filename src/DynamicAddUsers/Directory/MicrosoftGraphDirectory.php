@@ -91,7 +91,7 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
    * @param string $search
    * @return array
    */
-  public function getGroupsBySearchFromDirectory ($search) {
+  protected function getGroupsBySearchFromDirectory ($search) {
     $matches = [];
 
     $path = "/groups";

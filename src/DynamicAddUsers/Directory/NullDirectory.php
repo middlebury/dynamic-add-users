@@ -65,7 +65,7 @@ class NullDirectory extends DirectoryBase implements DirectoryInterface
    * @param string $search
    * @return array
    */
-  public function getGroupsBySearchFromDirectory ($search) {
+  protected function getGroupsBySearchFromDirectory ($search) {
     return [];
   }
 
