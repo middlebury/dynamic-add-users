@@ -132,20 +132,32 @@ class NetworkSettings {
   }
 
   protected function getImplementationChoices() {
+    $directoryDescriptions = "<ul>";
+    foreach ($this->plugin->getDirectoryImplementations() as $class) {
+      $directoryDescriptions .= "<li><strong>" . esc_html($class::label()) . "</strong>: " . wp_kses_data($class::description()) . "</li>";
+    }
+    $directoryDescriptions .= "</ul>";
+
+    $loginMapperDescriptions = "<ul>";
+    foreach ($this->plugin->getLoginMapperImplementations() as $class) {
+      $loginMapperDescriptions .= "<li><strong>" . esc_html($class::label()) . "</strong>: " . wp_kses_data($class::description()) . "</li>";
+    }
+    $loginMapperDescriptions .= "</ul>";
+
     return [
       'dynamic_add_users_directory_impl' => [
         'label' => 'Directory implementation',
-        'description' => 'The directory implementation to use for user/group lookup.',
+        'description' => 'The directory implementation to use for user/group lookup. ' . $directoryDescriptions,
         'value' => $this->plugin->getDirectory()::id(),
         'type' => 'select',
-        'options' => $this->plugin->getDirectoryImplementations(),
+        'options' => $this->plugin->getDirectoryImplementationLabels(),
       ],
       'dynamic_add_users_login_mapper_impl' => [
         'label' => 'Login Mapper implementation',
-        'description' => 'The implementation to use for mapping login attributes to external user IDs that will be recognized by the directory.',
+        'description' => 'The implementation to use for mapping login attributes to external user IDs that will be recognized by the directory. ' . $loginMapperDescriptions,
         'value' => $this->plugin->getLoginMapper()::id(),
         'type' => 'select',
-        'options' => $this->plugin->getLoginMapperImplementations(),
+        'options' => $this->plugin->getLoginMapperImplementationLabels(),
       ],
     ];
   }

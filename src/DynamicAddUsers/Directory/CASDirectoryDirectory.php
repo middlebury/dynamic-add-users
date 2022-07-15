@@ -35,6 +35,16 @@ class CasDirectoryDirectory extends DirectoryBase implements DirectoryInterface
     return 'CAS Directory';
   }
 
+  /**
+   * Answer a description for this implementation.
+   *
+   * @return string
+   *   The description text.
+   */
+  public static function description() {
+    return "This implementation looks up users and groups against <a href=\"https://mediawiki.middlebury.edu/LIS/CAS_Directory\">Middlebury's CAS-Directory web-service</a>. Groups are identified by their DistinguishedName attribute (e.g. <code>CN=ITS Staff,OU=General,OU=Groups,DC=middlebury,DC=edu</code>) and users are identified by their <code>middleburyCollegeUID</code> attribute.";
+  }
+
   /** API Methods **/
 
   /**

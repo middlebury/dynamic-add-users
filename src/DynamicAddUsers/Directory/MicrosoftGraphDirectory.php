@@ -39,6 +39,16 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
     return 'Microsoft Graph';
   }
 
+  /**
+   * Answer a description for this implementation.
+   *
+   * @return string
+   *   The description text.
+   */
+  public static function description() {
+    return "This implementation looks up users and groups against <a href=\"https://docs.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0\">Microsoft's Graph API</a>. Groups are referenced by their ID property in AzureAD (a GUID value like <code>20f74211-e62b-40f9-b00a-513a01a2e431</code>). Users are referenced by a configurable primary identifier attribute and an optional secondary/fall-back identifier.";
+  }
+
   /** API Methods **/
 
   /**

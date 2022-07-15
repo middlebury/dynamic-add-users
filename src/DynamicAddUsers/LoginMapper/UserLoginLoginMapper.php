@@ -40,6 +40,16 @@ class UserLoginLoginMapper extends LoginMapperBase implements LoginMapperInterfa
   }
 
   /**
+   * Answer a description for this implementation.
+   *
+   * @return string
+   *   The description text.
+   */
+  public static function description() {
+    return 'This implementation hooks into the built-in <code>wp_login</code> action to trigger user/group updates and will hand off the newly logged-in account\'s login (a.k.a "username") to the Directory implementation without modification.';
+  }
+
+  /**
    * @var \DynamicAddUsers\DynamicAddUsersPluginInterface $dynamicAddUsersPlugin
    *   The plugin instance which will this implementation will call
    *   onLogin(WP_User $user, $external_user_id = NULL) on user login.

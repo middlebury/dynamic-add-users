@@ -25,6 +25,14 @@ interface ConfigurableInterface
   public static function label();
 
   /**
+   * Answer a description for this implementation.
+   *
+   * @return string
+   *   The description text.
+   */
+  public static function description();
+
+  /**
    * Answer an array of settings used by this directory.
    *
    * This is a nested array that describes the form elements/settings used by

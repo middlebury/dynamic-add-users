@@ -251,6 +251,22 @@ class DynamicAddUsersPlugin implements DynamicAddUsersPluginInterface
    * Configuration -- Internal methods of the plugin.
    *******************************************************/
 
+   /**
+    * Answer an array of directory implementations that can be configured.
+    *
+    * Format:
+    *   [id => class]
+    *
+    * @return array
+    */
+   public function getDirectoryImplementations() {
+     $implementations = [];
+     foreach ($this->getImplementingClasses('DynamicAddUsers\Directory\DirectoryInterface') as $class) {
+       $implementations[$class::id()] = $class;
+     }
+     return $implementations;
+   }
+
   /**
    * Answer an array of directory implementations that can be configured.
    *
@@ -259,7 +275,7 @@ class DynamicAddUsersPlugin implements DynamicAddUsersPluginInterface
    *
    * @return array
    */
-  public function getDirectoryImplementations() {
+  public function getDirectoryImplementationLabels() {
     $implementations = [];
     foreach ($this->getImplementingClasses('DynamicAddUsers\Directory\DirectoryInterface') as $class) {
       $implementations[$class::id()] = $class::label();
@@ -288,11 +304,27 @@ class DynamicAddUsersPlugin implements DynamicAddUsersPluginInterface
    * Answer an array of LoginMapper implementations that can be configured.
    *
    * Format:
-   *   [id => label]
+   *   [id => class]
    *
    * @return array
    */
   public function getLoginMapperImplementations() {
+    $implementations = [];
+    foreach ($this->getImplementingClasses('DynamicAddUsers\LoginMapper\LoginMapperInterface') as $class) {
+      $implementations[$class::id()] = $class;
+    }
+    return $implementations;
+  }
+
+  /**
+   * Answer an array of LoginMapper implementations that can be configured.
+   *
+   * Format:
+   *   [id => label]
+   *
+   * @return array
+   */
+  public function getLoginMapperImplementationLabels() {
     $implementations = [];
     foreach ($this->getImplementingClasses('DynamicAddUsers\LoginMapper\LoginMapperInterface') as $class) {
       $implementations[$class::id()] = $class::label();

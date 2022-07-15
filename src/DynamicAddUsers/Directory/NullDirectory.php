@@ -32,6 +32,16 @@ class NullDirectory extends DirectoryBase implements DirectoryInterface
     return 'Null Directory';
   }
 
+  /**
+   * Answer a description for this implementation.
+   *
+   * @return string
+   *   The description text.
+   */
+  public static function description() {
+    return "This implementation does no lookups against any external data-source. It allows the DynamicAddUsers UI to still function with only lookups of local users.";
+  }
+
   /** API Methods **/
 
   /**

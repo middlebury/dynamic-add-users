@@ -40,6 +40,16 @@ class WpSamlAuthLoginMapper extends LoginMapperBase implements LoginMapperInterf
   }
 
   /**
+   * Answer a description for this implementation.
+   *
+   * @return string
+   *   The description text.
+   */
+  public static function description() {
+    return 'This implementation hooks into the <a href="https://wordpress.org/plugins/wp-saml-auth/">WP SAML Auth</a> plugins\'s <code>wp_saml_auth_new_user_authenticated</code> and <code>wp_saml_auth_existing_user_authenticated</code> actions to trigger user/group updates and will refer to a configurable attribute in the SAML response.';
+  }
+
+  /**
    * @var \DynamicAddUsers\DynamicAddUsersPluginInterface $dynamicAddUsersPlugin
    *   The plugin instance which will this implementation will call
    *   onLogin(WP_User $user, $external_user_id = NULL) on user login.

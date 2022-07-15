@@ -40,6 +40,16 @@ class NullLoginMapper extends LoginMapperBase implements LoginMapperInterface
   }
 
   /**
+   * Answer a description for this implementation.
+   *
+   * @return string
+   *   The description text.
+   */
+  public static function description() {
+    return 'A placeholder implementation that does nothing. No actions are triggered on login.';
+  }
+
+  /**
    * @var \DynamicAddUsers\DynamicAddUsersPluginInterface $dynamicAddUsersPlugin
    *   The plugin instance which will this implementation will call
    *   onLogin(WP_User $user, $external_user_id = NULL) on user login.
