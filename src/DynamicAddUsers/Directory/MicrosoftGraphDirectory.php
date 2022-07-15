@@ -363,7 +363,7 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
       $this->getPrimaryUniqueIdProperty(),
     ];
     if (!empty($this->getSecondaryUniqueIdProperty())) {
-      $properties .= $this->getSecondaryUniqueIdProperty();
+      $properties[] = $this->getSecondaryUniqueIdProperty();
     }
     return $properties;
   }
