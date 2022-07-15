@@ -134,8 +134,7 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
    * @return array
    */
   public function getUserInfo ($login) {
-    $user = $this->fetchUserForLogin($login);
-    return $this->extractUserInfo($user);
+    return $this->extractUserInfo($this->fetchUserForLogin($login));
   }
 
   /**
