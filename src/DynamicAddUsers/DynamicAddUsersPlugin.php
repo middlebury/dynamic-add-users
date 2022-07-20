@@ -175,7 +175,7 @@ class DynamicAddUsersPlugin implements DynamicAddUsersPluginInterface
     if (!is_null($external_user_id)) {
       try {
         $groups = $this->getDirectory()->getGroupsForUser($external_user_id);
-        $this->getGroupSyncer()->syncUser($user->ID, $groups);
+        $this->getGroupSyncer()->syncUser($user->ID, array_keys($groups));
       } catch (Exception $e) {
         if ($e->getCode() == 404 || $e->getCode() == 400) {
           // Skip if not found in the data source.

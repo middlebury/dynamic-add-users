@@ -54,7 +54,9 @@ interface DirectoryInterface extends ConfigurableInterface
   public function getUserInfo ($login);
 
   /**
-   * Fetch an array of group ids a user is a member of.
+   * Fetch an array of group ids and display names a user is a member of.
+   *
+   * Ex: array('100' => 'All Students', '5' => 'Faculty');
    *
    * Throws an exception if the user isn't found in the underlying data-source.
    *

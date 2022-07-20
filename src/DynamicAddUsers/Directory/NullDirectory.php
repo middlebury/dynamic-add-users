@@ -91,9 +91,14 @@ class NullDirectory extends DirectoryBase implements DirectoryInterface
   }
 
   /**
-   * Fetch an array of group ids a user is a member of.
+   * Fetch an array of group ids and display names a user is a member of.
+   *
+   * Ex: array('100' => 'All Students', '5' => 'Faculty');
    *
    * Throws an exception if the user isn't found in the underlying data-source.
+   *
+   * Note: IDs and values are defined by the underlying implementation and can
+   * only be assumed to be strings.
    *
    * @param string $login
    * @return array

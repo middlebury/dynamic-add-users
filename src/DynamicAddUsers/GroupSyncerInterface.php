@@ -37,10 +37,10 @@ interface GroupSyncerInterface
    * Synchronize a user given their new list of groups, setting roles in sites.
    *
    * @param object $user
-   * @param array $groups
+   * @param array $group_ids
    * @return NULL
    */
-  public function syncUser ($user_id, array $groups);
+  public function syncUser ($user_id, array $group_ids);
 
   /**
    * Synchronize all groups.
