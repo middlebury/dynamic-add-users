@@ -153,7 +153,7 @@ class CasDirectoryDirectory extends DirectoryBase implements DirectoryInterface
 
     $groups = [];
     foreach ($xpath->query('cas:attribute[@name="MemberOf"]', $entries->item(0)) as $attribute) {
-      $groups[$attribute->getAttribute('value')] = $this->extractGroupDisplayName($attribute, $xpath);
+      $groups[$attribute->getAttribute('value')] = self::convertDnToDisplayPath($attribute->getAttribute('value'));
     }
     return $groups;
   }
