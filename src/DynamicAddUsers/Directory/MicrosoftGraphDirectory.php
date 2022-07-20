@@ -637,10 +637,10 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
     if (!empty($this->getSetting('dynamic_add_users__primary_unique_id__transform')) && $this->getSetting('dynamic_add_users__primary_unique_id__transform') != 'none' && empty($this->getSetting('dynamic_add_users__primary_unique_id__suffix'))) {
       $messages[] = 'If you are specifying that a suffix from the Primary Unique ID will be stripped you must be specify it.';
     }
-    if (empty($this->getSetting('dynamic_add_users__secondary_unique_id__property'))) {
-      $messages[] = 'The secondary Unique ID property must be specified.';
+    if (empty($this->getSetting('dynamic_add_users__secondary_unique_id__property')) && $this->getSetting('dynamic_add_users__secondary_unique_id__transform', 'none') != 'none') {
+      $messages[] = 'The secondary Unique ID property must be specified if you are applying transforms to it.';
     }
-    if (!empty($this->getSetting('dynamic_add_users__secondary_unique_id__transform')) && $this->getSetting('dynamic_add_users__secondary_unique_id__transform') != 'none' && empty($this->getSetting('dynamic_add_users__secondary_unique_id__suffix'))) {
+    if ($this->getSetting('dynamic_add_users__secondary_unique_id__transform', 'none') != 'none' && empty($this->getSetting('dynamic_add_users__secondary_unique_id__suffix'))) {
       $messages[] = 'If you are specifying that a suffix from the secondary Unique ID will be stripped you must be specify it.';
     }
     return $messages;
