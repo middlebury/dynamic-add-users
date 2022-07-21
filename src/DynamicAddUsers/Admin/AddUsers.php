@@ -130,8 +130,8 @@ class AddUsers {
     if (!empty($_POST['group'])) {
       try {
         if (isset($_POST['group_sync']) && $_POST['group_sync'] == 'sync') {
-          $this->plugin->getGroupSyncer()->keepGroupInSync($_POST['group'], strip_tags($_POST['role']));
-          $changes = $this->plugin->getGroupSyncer()->syncGroup(get_current_blog_id(), $_POST['group'], strip_tags($_POST['role']));
+          $this->plugin->getGroupSyncer()->keepGroupInSync($_POST['group'], strip_tags($_POST['role']), strip_tags($_POST['group_search']));
+          $changes = $this->plugin->getGroupSyncer()->syncGroup(get_current_blog_id(), $_POST['group'], strip_tags($_POST['role']), strip_tags($_POST['group_search']));
           if (count($changes)) {
             print implode("\n<br/>", $changes);
           } else {
@@ -142,6 +142,8 @@ class AddUsers {
           $memberInfo = $this->plugin->getDirectory()->getGroupMemberInfo($_POST['group']);
           if (!is_array($memberInfo)) {
             print "Could not find members for '".$_POST['group']."'.";
+          } elseif (empty($memberInfo)) {
+            print "No members found for  '".wp_kses_data($_POST['group_search'])."' with id '".$_POST['group']."'. Either the group is empty or membership is hidden.";
           } else {
             foreach ($memberInfo as $info) {
               try {
@@ -173,7 +175,7 @@ class AddUsers {
           $this->plugin->getGroupSyncer()->stopSyncingGroup($_POST['sync_group_id']);
         } catch (Exception $e) {
           if ($e->getCode() == 404) {
-            print "Group '".esc_html($_POST['sync_group_id'])."' was not found. You may want to stop syncing.";
+            print "Group '".esc_html($_POST['sync_group_label'])."' with ID '".esc_html($_POST['sync_group_id'])."' was not found. You may want to stop syncing.";
           } else {
             print "Error: " . esc_html($e->getMessage());
           }
@@ -183,7 +185,7 @@ class AddUsers {
       } else {
         try {
           $changes = $this->plugin->getGroupSyncer()->syncGroup(get_current_blog_id(), $_POST['sync_group_id'], $_POST['role']);
-          print "<strong>Synchronizing  ". DirectoryBase::convertDnToDisplayPath($_POST['sync_group_id']) . ":</strong>\n<br/>";
+          print "<strong>Synchronizing ".esc_html($_POST['sync_group_label']).":</strong>\n<br/>";
           print " &nbsp; &nbsp; ";
           if (count($changes)) {
             print implode("\n<br/> &nbsp; &nbsp; ", $changes);
@@ -192,7 +194,7 @@ class AddUsers {
           }
         } catch (Exception $e) {
           if ($e->getCode() == 404) {
-            print "Group '".esc_html($_POST['sync_group_id'])."' was not found. You may want to stop syncing.";
+            print "Group '".esc_html($_POST['sync_group_label'])."' with ID '".esc_html($_POST['sync_group_id'])."' was not found. You may want to stop syncing.";
           } else {
             print "Error: " . esc_html($e->getMessage());
           }
@@ -246,7 +248,7 @@ class AddUsers {
       foreach ($groups as $group) {
         print "\n\t<tr>";
         print "\n\t\t<td>";
-        print DirectoryBase::convertDnToDisplayPath($group->group_id);
+        print DirectoryBase::getGroupDisplayLabel($group);
         print "\n\t\t</td>";
         print "\n\t\t<td style='padding-left: 10px; padding-right: 10px;'>";
         print $group->role;
@@ -255,6 +257,7 @@ class AddUsers {
         print "\n\t\t\t<form action='"."' method='post'>";
         print "\n\t\t\t<input type='hidden' name='sync_group_id' value='".htmlentities($group->group_id)."'/>";
         print "\n\t\t\t<input type='hidden' name='role' value='".$group->role."'/>";
+        print "\n\t\t\t<input type='hidden' name='sync_group_label' value='" . esc_attr( DirectoryBase::getGroupDisplayLabel($group) ) . "'/>";
         print "\n\t\t\t<input type='submit' name='sync_now' value='Sync Now'/>";
         print "\n\t\t\t<input type='submit' name='stop_syncing' value='Stop Syncing'/>";
         print "\n\t\t\t<input type='submit' name='stop_syncing_and_remove_users' value='Stop Syncing And Remove Users'/>";

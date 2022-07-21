@@ -91,12 +91,17 @@ class NetworkSettings {
         if ($_POST['form_section'] == 'directory') {
           $this->saveImplementationOptions($this->plugin->getDirectory());
         }
-        elseif ($_POST['form_section'] == 'login_mapper') {
-          $this->saveImplementationOptions($this->plugin->getLoginMapper());
+        elseif ($_POST['form_section'] == 'login_hook') {
+          $this->saveImplementationOptions($this->plugin->getLoginHook());
         }
         else {
             $this->plugin->setDirectoryImplementation($_POST['dynamic_add_users_directory_impl']);
-            $this->plugin->setLoginMapperImplementation($_POST['dynamic_add_users_login_mapper_impl']);
+            $this->plugin->setLoginHookImplementation($_POST['dynamic_add_users_login_hook_impl']);
+            if ($_POST['dynamic_add_users__include_middlebury_tweaks'] == 'true') {
+              update_site_option('dynamic_add_users__include_middlebury_tweaks', true);
+            } else {
+              update_site_option('dynamic_add_users__include_middlebury_tweaks', false);
+            }
         }
       }
       catch(Exception $e) {
@@ -106,13 +111,15 @@ class NetworkSettings {
     }
 
     // Implementation choices.
-    $this->printForm('Dynamic Add Users settings', 'h2', 'dynamic_add_users_settings', $this->getImplementationChoices(), NULL, 'general');
+    $generalSettings = array_merge($this->getImplementationChoices(), $this->getOtherSettings());
+
+    $this->printForm('Dynamic Add Users settings', 'h2', 'dynamic_add_users_settings', $generalSettings, NULL, 'general');
 
     // Directory settings.
     $this->printServiceForm('directory', 'Directory', $this->plugin->getDirectory());
 
-    // LoginMapper settings.
-    $this->printServiceForm('login_mapper', 'Login Mapper', $this->plugin->getLoginMapper());
+    // LoginHook settings.
+    $this->printServiceForm('login_hook', 'Login Hook', $this->plugin->getLoginHook());
 
   }
 
@@ -132,20 +139,44 @@ class NetworkSettings {
   }
 
   protected function getImplementationChoices() {
+    $directoryDescriptions = "<ul>";
+    foreach ($this->plugin->getDirectoryImplementations() as $class) {
+      $directoryDescriptions .= "<li><strong>" . esc_html($class::label()) . "</strong>: " . wp_kses_data($class::description()) . "</li>";
+    }
+    $directoryDescriptions .= "</ul>";
+
+    $loginHookDescriptions = "<ul>";
+    foreach ($this->plugin->getLoginHookImplementations() as $class) {
+      $loginHookDescriptions .= "<li><strong>" . esc_html($class::label()) . "</strong>: " . wp_kses_data($class::description()) . "</li>";
+    }
+    $loginHookDescriptions .= "</ul>";
+
     return [
       'dynamic_add_users_directory_impl' => [
         'label' => 'Directory implementation',
-        'description' => 'The directory implementation to use for user/group lookup.',
+        'description' => 'The directory implementation to use for user/group lookup. ' . $directoryDescriptions,
         'value' => $this->plugin->getDirectory()::id(),
         'type' => 'select',
-        'options' => $this->plugin->getDirectoryImplementations(),
+        'options' => $this->plugin->getDirectoryImplementationLabels(),
       ],
-      'dynamic_add_users_login_mapper_impl' => [
-        'label' => 'Login Mapper implementation',
-        'description' => 'The implementation to use for mapping login attributes to external user IDs that will be recognized by the directory.',
-        'value' => $this->plugin->getLoginMapper()::id(),
+      'dynamic_add_users_login_hook_impl' => [
+        'label' => 'Login Hook implementation',
+        'description' => 'The implementation to use for mapping login attributes to external user IDs that will be recognized by the directory. ' . $loginHookDescriptions,
+        'value' => $this->plugin->getLoginHook()::id(),
         'type' => 'select',
-        'options' => $this->plugin->getLoginMapperImplementations(),
+        'options' => $this->plugin->getLoginHookImplementationLabels(),
+      ],
+    ];
+  }
+
+  protected function getOtherSettings() {
+    return [
+      'dynamic_add_users__include_middlebury_tweaks' => [
+        'label' => 'Include Middlebury Tweaks?',
+        'description' => "Filter out old guest accounts that shouldn't be able to log in any more. Values will look like: <code>guest_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</code>",
+        'value' => get_site_option('dynamic_add_users__include_middlebury_tweaks', false) ? 'true' : 'false',
+        'type' => 'select',
+        'options' => ['false' => 'false', 'true' => 'true'],
       ],
     ];
   }
@@ -262,8 +293,8 @@ class NetworkSettings {
     // Directory test.
     $this->serviceTestForm('directory', 'Directory', $this->plugin->getDirectory());
 
-    // LoginMapper settings.
-    $this->serviceTestForm('login_mapper', 'Login Mapper', $this->plugin->getLoginMapper());
+    // LoginHook settings.
+    $this->serviceTestForm('login_hook', 'Login Hook', $this->plugin->getLoginHook());
   }
 
   /**

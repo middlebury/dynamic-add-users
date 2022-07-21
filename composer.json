@@ -23,5 +23,8 @@
     "psr-4": {
       "DynamicAddUsers\\": "src/DynamicAddUsers/"
     }
+  },
+  "require": {
+    "microsoft/microsoft-graph": "^1.45"
   }
 }

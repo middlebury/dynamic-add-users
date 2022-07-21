@@ -44,7 +44,7 @@ class GroupSyncer implements GroupSyncerInterface
    * @param string $role
    * @return NULL
    */
-  public function keepGroupInSync ($group_id, $role) {
+  public function keepGroupInSync ($group_id, $role, $group_label = NULL) {
     $synced = $this->getSyncedGroups();
     foreach ($synced as $group) {
       if ($group->group_id == $group_id && $group->role == $role)
@@ -59,6 +59,7 @@ class GroupSyncer implements GroupSyncerInterface
     $wpdb->insert($groups, array(
       'blog_id' => get_current_blog_id(),
       'group_id' => $group_id,
+      'group_label' => $group_label,
       'role' => $role,
     ));
   }
@@ -121,10 +122,10 @@ class GroupSyncer implements GroupSyncerInterface
    * Synchronize a user given their new list of groups, setting roles in sites.
    *
    * @param object $user
-   * @param array $groups
+   * @param array $group_ids
    * @return NULL
    */
-  public function syncUser ($user_id, array $groups) {
+  public function syncUser ($user_id, array $group_ids) {
     global $wpdb;
 
     $group_table = $wpdb->base_prefix . "dynaddusers_groups";
@@ -148,10 +149,10 @@ class GroupSyncer implements GroupSyncerInterface
     WHERE
       ";
     $args = array();
-    if (count($groups)) {
-      $placeholders = array_fill(0, count($groups), '%s');
+    if (count($group_ids)) {
+      $placeholders = array_fill(0, count($group_ids), '%s');
       $query .= "\n\tg.group_id IN (".implode(', ', $placeholders).")";
-      $args = array_merge($args, $groups);
+      $args = array_merge($args, $group_ids);
     }
     $roles_to_ensure = $wpdb->get_results($wpdb->prepare($query, $args));
     foreach ($roles_to_ensure as $role_to_ensure) {
@@ -180,10 +181,10 @@ class GroupSyncer implements GroupSyncerInterface
       s.user_id = %s
       ";
     $args = array($user_id);
-    if (count($groups)) {
-      $placeholders = array_fill(0, count($groups), '%s');
+    if (count($group_ids)) {
+      $placeholders = array_fill(0, count($group_ids), '%s');
       $query .= "\n\t AND s.group_id NOT IN (".implode(', ', $placeholders).")";
-      $args = array_merge($args, $groups);
+      $args = array_merge($args, $group_ids);
     }
     $roles_gone = $wpdb->get_results($wpdb->prepare($query, $args));
     foreach ($roles_gone as $role_gone) {
@@ -243,7 +244,7 @@ class GroupSyncer implements GroupSyncerInterface
   public function syncGroups (array $groups) {
     foreach ($groups as $group) {
       try {
-        $this->syncGroup($group->blog_id, $group->group_id, $group->role);
+        $this->syncGroup($group->blog_id, $group->group_id, $group->role, $group->group_label);
       } catch (Exception $e) {
         user_error($e->getMessage(), E_USER_WARNING);
       }
@@ -256,9 +257,10 @@ class GroupSyncer implements GroupSyncerInterface
    * @param int $blog_id
    * @param string $groups_id
    * @param string $role
+   * @param string $group_label
    * @return NULL
    */
-  public function syncGroup ($blog_id, $group_id, $role) {
+  public function syncGroup ($blog_id, $group_id, $role, $group_label = NULL) {
     global $wpdb;
     $role_levels = array(
       'subscriber' => 1,
@@ -270,7 +272,9 @@ class GroupSyncer implements GroupSyncerInterface
     $changes = array();
     $memberInfo = $this->directory->getGroupMemberInfo($group_id);
     if (!is_array($memberInfo)) {
-      throw new Exception("Could not find members for '".$group_id."'.");
+      throw new Exception("Could not find members for group '".wp_kses_data($group_label)."' with id '".wp_kses_data($group_id)."'.");
+    } elseif (empty($memberInfo)) {
+      $changes []= "No members found for group '".wp_kses_data($group_label)."' with id '".wp_kses_data($group_id)."'. Either the group is empty or membership is hidden.";
     } else {
       $user_ids = array();
       foreach ($memberInfo as $info) {

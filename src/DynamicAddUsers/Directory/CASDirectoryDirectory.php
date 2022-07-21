@@ -35,6 +35,16 @@ class CasDirectoryDirectory extends DirectoryBase implements DirectoryInterface
     return 'CAS Directory';
   }
 
+  /**
+   * Answer a description for this implementation.
+   *
+   * @return string
+   *   The description text.
+   */
+  public static function description() {
+    return "This implementation looks up users and groups against <a href=\"https://mediawiki.middlebury.edu/LIS/CAS_Directory\">Middlebury's CAS-Directory web-service</a>. Usage requires configuring the URL of the service as well as access tokens. Groups are identified by their DistinguishedName attribute (e.g. <code>CN=ITS Staff,OU=General,OU=Groups,DC=middlebury,DC=edu</code>) and users are identified by their <code>middleburyCollegeUID</code> attribute.";
+  }
+
   /** API Methods **/
 
   /**
@@ -66,7 +76,7 @@ class CasDirectoryDirectory extends DirectoryBase implements DirectoryInterface
    * @param string $search
    * @return array
    */
-  public function getGroupsBySearchFromDirectory ($search) {
+  protected function getGroupsBySearchFromDirectory ($search) {
     $xpath = $this->query(array(
       'action' => 'search_groups',
       'query' => $search,
@@ -115,9 +125,14 @@ class CasDirectoryDirectory extends DirectoryBase implements DirectoryInterface
   }
 
   /**
-   * Fetch an array of group ids a user is a member of.
+   * Fetch an array of group ids and display names a user is a member of.
+   *
+   * Ex: array('100' => 'All Students', '5' => 'Faculty');
    *
    * Throws an exception if the user isn't found in the underlying data-source.
+   *
+   * Note: IDs and values are defined by the underlying implementation and can
+   * only be assumed to be strings.
    *
    * @param string $login
    * @return array
@@ -138,7 +153,7 @@ class CasDirectoryDirectory extends DirectoryBase implements DirectoryInterface
 
     $groups = [];
     foreach ($xpath->query('cas:attribute[@name="MemberOf"]', $entries->item(0)) as $attribute) {
-      $groups[] = $attribute->getAttribute('value');
+      $groups[$attribute->getAttribute('value')] = self::convertDnToDisplayPath($attribute->getAttribute('value'));
     }
     return $groups;
   }

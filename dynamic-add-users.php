@@ -15,7 +15,7 @@
  * Plugin Name:       Dynamic Add Users
  * Plugin URI:        https://github.com/middlebury/dynamic-add-users
  * Description:       Replaces the 'Add User' screen with a dynamic search for users and groups.
- * Version:           1.1.0
+ * Version:           1.2.0
  * Author:            Middlebury College
  * Author URI:        https://github.com/middlebury/
  * License:           GPL-2.0+
@@ -157,6 +157,3 @@ function dynamic_add_users__filter_group_matches($matches) {
   return $results;
   */
 }
-
-
-require_once( dirname(__FILE__) . '/src/middlebury-tweaks.php' );

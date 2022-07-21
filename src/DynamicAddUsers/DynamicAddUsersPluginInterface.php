@@ -32,11 +32,11 @@ interface DynamicAddUsersPluginInterface
   public function getGroupSyncer();
 
   /**
-   * Answer the currently configured LoginMapper implementation.
+   * Answer the currently configured LoginHook implementation.
    *
-   * @return \DynamicAddUsers\LoginMapper\LoginMapperInterface
+   * @return \DynamicAddUsers\LoginHook\LoginHookInterface
    */
-  public function getLoginMapper();
+  public function getLoginHook();
 
   /*******************************************************
    * Login flow -- Internal methods of the plugin.
@@ -45,14 +45,14 @@ interface DynamicAddUsersPluginInterface
   /**
    * Action to take on user login.
    *
-   * LoginMapperInterface implementations *should* call this function after
+   * LoginHookInterface implementations *should* call this function after
    * attempting to map a login response to an external user identifier.
    *
    * Flow of actions:
-   *   1. A LoginMapperInterface implementation hooks into the authentication
+   *   1. A LoginHookInterface implementation hooks into the authentication
    *      plugin's post-authentication action and maps the user attributes to an
    *      external user-id that is valid in the DirectoryInterface implementation.
-   *   2. The LoginMapperInterface implementation calls onLogin().
+   *   2. The LoginHookInterface implementation calls onLogin().
    *   3. onLogin() looks up a user's groups in the
    *      DirectoryInterface implementation.
    *   4. onLogin() passes the user and their groups to the
@@ -93,21 +93,21 @@ interface DynamicAddUsersPluginInterface
   public function setDirectoryImplementation($id);
 
   /**
-   * Answer an array of LoginMapper implementations that can be configured.
+   * Answer an array of LoginHook implementations that can be configured.
    *
    * Format:
    *   [id => label]
    *
    * @return array
    */
-  public function getLoginMapperImplementations();
+  public function getLoginHookImplementations();
 
   /**
-   * Set the LoginMapper implementation to use.
+   * Set the LoginHook implementation to use.
    *
    * @param string $id
    *   The identifier of the implementation that should be used.
    */
-  public function setLoginMapperImplementation($id);
+  public function setLoginHookImplementation($id);
 
 }
