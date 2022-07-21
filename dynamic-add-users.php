@@ -71,11 +71,12 @@ dynamic_add_users();
  *
  * @param WP_User $user
  * @param array $groups
+ *   An array of group-id => group-display-name.
  */
 function dynamic_add_users__update_user_on_login(WP_User $user, array $groups) {
   /*
   // Example: Let institution users do something.
-  if (in_array('CN=institution,OU=General,OU=Groups,DC=middlebury,DC=edu', $groups)) {
+  if (in_array('CN=institution,OU=General,OU=Groups,DC=middlebury,DC=edu', array_keys($groups))) {
     $user->add_cap('middlebury_custom_capability');
   }
   // For all other users disallow this capability.
