@@ -149,6 +149,7 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
     $groups = [];
     $user = $this->fetchUserForLogin($login);
     $path = "/users/".$user->getId()."/transitiveMemberOf?\$select=id,displayName,mail,description,groupTypes";
+    $path .= "&\$top=999";
     $resultGroups = $this->getPaginatedResults($path, ['ConsistencyLevel' => 'eventual'], Group::class);
     if (is_array($resultGroups)) {
       foreach ($resultGroups as $group) {
@@ -197,6 +198,7 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
 
     $path = "/groups/" . urlencode($groupId) . "/transitiveMembers" ;
     $path .= "?\$select=" . implode(',', $this->getUserGraphProperties());
+    $path .= "&\$top=999";
     $result = $this->getPaginatedResults($path, [], User::class);
     if (is_array($result)) {
       foreach ($result as $user) {
