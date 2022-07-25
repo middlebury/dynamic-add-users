@@ -146,22 +146,19 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
    * @return array
    */
   public function getGroupsForUser ($login) {
+    $groups = [];
     $user = $this->fetchUserForLogin($login);
     $path = "/users/".$user->getId()."/transitiveMemberOf?\$select=id,displayName,mail,description,groupTypes";
-    $result = $this->getGraph()
-      ->createRequest("GET", $path)
-      ->addHeaders(['ConsistencyLevel' => 'eventual'])
-      ->setReturnType(Group::class)
-      ->execute();
-    $groups = [];
-    if (is_array($result)) {
-      foreach ($result as $group) {
+    $resultGroups = $this->getPaginatedResults($path, ['ConsistencyLevel' => 'eventual'], Group::class);
+    if (is_array($resultGroups)) {
+      foreach ($resultGroups as $group) {
         $groups[$group->getId()] = $group->getDisplayName();
         if ($group->getDescription()) {
           $groups[$group->getId()] .= ' (' . $group->getDescription() . ')';
         }
       }
     }
+    asort($groups,  SORT_NATURAL | SORT_FLAG_CASE);
     return $groups;
   }
 
@@ -200,15 +197,18 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
 
     $path = "/groups/" . urlencode($groupId) . "/transitiveMembers" ;
     $path .= "?\$select=" . implode(',', $this->getUserGraphProperties());
-
-    $result = $this->getGraph()
-      ->createRequest("GET", $path)
-      ->setReturnType(User::class)
-      ->execute();
-
+    $result = $this->getPaginatedResults($path, [], User::class);
     if (is_array($result)) {
       foreach ($result as $user) {
-        $memberInfo[$user->getId()] = $this->extractUserInfo($user);
+        try {
+          $memberInfo[$user->getId()] = $this->extractUserInfo($user);
+        } catch (\Exception $e) {
+          // Skip over malformed user accounts.
+          if (!in_array($e->getCode(), [4900, 4901])) {
+            // Throw other exceptions.
+            throw $e;
+          }
+        }
       }
     }
 
@@ -302,6 +302,35 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
       $this->graph->setAccessToken($this->getAccessToken());
     }
     return $this->graph;
+  }
+
+  /**
+   * Merge paged lookup results into a single return array.
+   *
+   * @param string $path
+   *   The Graph path to query.
+   * @param array $headers
+   *   Additional headers for the request.
+   * @param string $classname
+   *   The result-object className.
+   */
+  protected function getPaginatedResults($path, $headers, $classname) {
+    $result = $this->getGraph()
+      ->createRequest("GET", $path)
+      ->addHeaders($headers)
+      ->execute();
+    $resultObjects = $result->getResponseAsObject($classname);
+    while ($nextPageUrl = $result->getNextLink()) {
+      $result = $this->getGraph()
+        ->createRequest("GET", $nextPageUrl)
+        ->addHeaders($headers)
+        ->execute();
+      foreach ($result->getResponseAsObject($classname) as $object) {
+        $resultObjects[] = $object;
+      }
+    }
+
+    return $resultObjects;
   }
 
   /**
@@ -425,7 +454,7 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
       }
 
       if (empty($login)) {
-        throw new \Exception('Primary Unique ID "' . $properties[$this->getPrimaryUniqueIdProperty()] . '" in the ' . $this->getPrimaryUniqueIdProperty() . ' property resulted in an empty login after transform.');
+        throw new \Exception('Primary Unique ID "' . $properties[$this->getPrimaryUniqueIdProperty()] . '" in the ' . $this->getPrimaryUniqueIdProperty() . ' property resulted in an empty login after transform.', 4900);
       }
       return $login;
     }
@@ -442,7 +471,7 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
       }
 
       if (empty($login)) {
-        throw new \Exception('Secondary Unique ID "' . $properties[$this->getSecondaryUniqueIdProperty()] . '" in the ' . $this->getSecondaryUniqueIdProperty() . ' property resulted in an empty login after transform.');
+        throw new \Exception('Secondary Unique ID "' . $properties[$this->getSecondaryUniqueIdProperty()] . '" in the ' . $this->getSecondaryUniqueIdProperty() . ' property resulted in an empty login after transform.', 4901);
       }
       return $login;
     }
@@ -779,7 +808,7 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
           $groups = $this->getGroupsForUser($arguments['query']);
           $messages[] = [
             'success' => TRUE,
-            'message' => 'Found groups for "' . esc_html($arguments['query']) . '": <pre>' . esc_html(print_r($groups, true)) . '</pre>',
+            'message' => 'Found ' . count($groups) . ' groups for "' . esc_html($arguments['query']) . '": <pre>' . esc_html(print_r($groups, true)) . '</pre>',
           ];
         }
         catch (Exception $e) {
@@ -809,7 +838,7 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
           $info = $this->getGroupMemberInfo($arguments['query']);
           $messages[] = [
             'success' => TRUE,
-            'message' => 'Found user info for members of "' . esc_html($arguments['query']) . '": <pre>' . esc_html(print_r($info, true)) . '</pre>',
+            'message' => 'Found user info for ' . count($info) . ' members of "' . esc_html($arguments['query']) . '": <pre>' . esc_html(print_r($info, true)) . '</pre>',
           ];
         }
         catch (Exception $e) {
