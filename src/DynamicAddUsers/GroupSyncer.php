@@ -357,9 +357,9 @@ class GroupSyncer implements GroupSyncerInterface
     }
     foreach ($members as $user_id) {
       try {
-        $user = get_userdata($user_id);
         if (is_user_member_of_blog($user_id, $blog_id) && $user_id != get_current_user_id()) {
           remove_user_from_blog($user_id, $blog_id);
+          $user = get_userdata($user_id);
           print "Removed ".$user->display_name."<br/>\n";
         }
       } catch (Exception $e) {
