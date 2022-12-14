@@ -39,7 +39,6 @@ define( 'DYNAMIC_ADD_USERS_VERSION', '1.2.0' );
 require_once( __DIR__ . '/vendor/autoload.php' );
 
 use DynamicAddUsers\DynamicAddUsersPlugin;
-use WP_User;
 
 /**
  * Answer the plugin instance.
