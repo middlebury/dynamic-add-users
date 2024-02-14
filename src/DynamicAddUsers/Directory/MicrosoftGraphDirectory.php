@@ -376,10 +376,22 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
       ->execute();
 
     if (count($result) < 1) {
-      throw new \Exception('Could not get user. Expecting 1 entry, found '.count($result), 404);
+      throw new \Exception('Could not get user. Expecting 1 entry, found '.count($result).' in AzureAD.', 404);
     }
     else if (count($result) > 1) {
-      throw new \Exception('Could not get user. Expecting 1 entry, found '.count($result));
+      ob_start();
+      foreach ($result as $user) {
+        $properties = $user->getProperties();
+        print "\n\t<hr><dl>";
+        print "\n\t\t<dt>Primary ID property (".$this->getPrimaryUniqueIdProperty()."):</dt><dd>".(empty($properties[$this->getPrimaryUniqueIdProperty()])?"":$properties[$this->getPrimaryUniqueIdProperty()])."</dd>";
+        print "\n\t\t<dt>Secondary ID property (".$this->getSecondaryUniqueIdProperty()."):</dt><dd>".(empty($properties[$this->getSecondaryUniqueIdProperty()])?"":$properties[$this->getSecondaryUniqueIdProperty()])."</dd>";
+        print "\n\t\t<dt>Mapped username in WordPress:</dt><dd>".$this->getLoginForGraphUser($user)."</dd>";
+        print "\n\t\t<dt>UserPrincipalName:</dt><dd>".$user->getUserPrincipalName()."</dd>";
+        print "\n\t\t<dt>Display Name:</dt><dd>".$user->getDisplayName()."</dd>";
+        print "\n\t\t<dt>Mail:</dt><dd>".$user->getMail()."</dd>";
+        print "\n\t</dl>";
+      }
+      throw new \Exception('Could not get user. Expecting 1 entry, found '.count($result)." users in AzureAD:\n".ob_get_clean());
     }
 
     return $result[0];

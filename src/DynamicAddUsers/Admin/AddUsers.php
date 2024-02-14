@@ -95,7 +95,6 @@ class AddUsers {
       try {
         $info = $this->plugin->getDirectory()->getUserInfo($_POST['user']);
         if (!is_array($info)) {
-          print "Could not find user '".$_POST['user']."'.";
         } else {
           try {
             // Get or create the user object.
@@ -109,6 +108,8 @@ class AddUsers {
         // the local user database for a matching user.
         if ($e->getCode() >= 400 && $e->getCode() < 500) {
           $user = get_user_by('login', $_POST['user']);
+        } else {
+          print $e->getMessage()."\n";
         }
       }
 
@@ -216,7 +217,7 @@ class AddUsers {
     $this->printRoleElement();
     print "\n</form>";
     if (strlen($userResults)) {
-      print "\n<p style='border: 1px solid red; color: red; padding: 0.5em;'>".$userResults."</p>";
+      print "\n<div style='border: 1px solid red; color: red; padding: 0.5em;'>".$userResults."</div>";
     }
 
     print "\n<form id='dynaddusers_group_form' action='".$_SERVER['REQUEST_URI']."' method='post'>";
