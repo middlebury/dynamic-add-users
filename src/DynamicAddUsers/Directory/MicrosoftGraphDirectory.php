@@ -377,24 +377,11 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
 
     if (count($result) < 1) {
       throw new \Exception('Could not get user. Expecting 1 entry, found '.count($result).' in AzureAD.', 404);
+    } else if (count($result) === 1) {
+      return $result[0];
+    } else {
+      return $this->getPrimaryAccountFromUserList($result);
     }
-    else if (count($result) > 1) {
-      ob_start();
-      foreach ($result as $user) {
-        $properties = $user->getProperties();
-        print "\n\t<hr><dl>";
-        print "\n\t\t<dt>Primary ID property (".$this->getPrimaryUniqueIdProperty()."):</dt><dd>".(empty($properties[$this->getPrimaryUniqueIdProperty()])?"":$properties[$this->getPrimaryUniqueIdProperty()])."</dd>";
-        print "\n\t\t<dt>Secondary ID property (".$this->getSecondaryUniqueIdProperty()."):</dt><dd>".(empty($properties[$this->getSecondaryUniqueIdProperty()])?"":$properties[$this->getSecondaryUniqueIdProperty()])."</dd>";
-        print "\n\t\t<dt>Mapped username in WordPress:</dt><dd>".$this->getLoginForGraphUser($user)."</dd>";
-        print "\n\t\t<dt>UserPrincipalName:</dt><dd>".$user->getUserPrincipalName()."</dd>";
-        print "\n\t\t<dt>Display Name:</dt><dd>".$user->getDisplayName()."</dd>";
-        print "\n\t\t<dt>Mail:</dt><dd>".$user->getMail()."</dd>";
-        print "\n\t</dl>";
-      }
-      throw new \Exception('Could not get user. Expecting 1 entry, found '.count($result)." users in AzureAD:\n".ob_get_clean());
-    }
-
-    return $result[0];
   }
 
   protected function getUserGraphProperties() {
@@ -404,12 +391,55 @@ class MicrosoftGraphDirectory extends DirectoryBase implements DirectoryInterfac
       'mail',
       'givenName',
       'surname',
+      'userType',
       $this->getPrimaryUniqueIdProperty(),
     ];
     if (!empty($this->getSecondaryUniqueIdProperty())) {
       $properties[] = $this->getSecondaryUniqueIdProperty();
     }
     return $properties;
+  }
+
+  /**
+   * Filter a list of MS Graph User objects to find a single "primary" one.
+   *
+   * @param array $users
+   *   The MSGraph User list.
+   * @return Microsoft\Graph\Model\User
+   *   A single user if one can be determined to be "primary".
+   */
+  protected function getPrimaryAccountFromUserList(array $users) {
+    // Give priority to users with the type "Member" over "Guest" or other
+    // account types.
+    $memberUsers = [];
+    foreach ($users as $user) {
+      if (strtolower($user->getUserType()) == "member") {
+        $memberUsers[] = $user;
+      }
+    }
+    // If we only have a single user with type "Member", then return that user.
+    if (count($memberUsers) === 1) {
+      return $memberUsers[0];
+    }
+
+    // Not sure what to do if we have multiple "Member" accounts with the same
+    // ID or multiple "Guest" accounts with the same ID.
+    // Perhaps we could do some email filtering or other logic, but hopefully
+    // this case won't come up.
+    ob_start();
+    foreach ($users as $user) {
+      $properties = $user->getProperties();
+      print "\n\t<hr><dl>";
+      print "\n\t\t<dt>Primary ID property (".$this->getPrimaryUniqueIdProperty()."):</dt><dd>".(empty($properties[$this->getPrimaryUniqueIdProperty()])?"":$properties[$this->getPrimaryUniqueIdProperty()])."</dd>";
+      print "\n\t\t<dt>Secondary ID property (".$this->getSecondaryUniqueIdProperty()."):</dt><dd>".(empty($properties[$this->getSecondaryUniqueIdProperty()])?"":$properties[$this->getSecondaryUniqueIdProperty()])."</dd>";
+      print "\n\t\t<dt>User Type:</dt><dd>".$user->getUserType()."</dd>";
+      print "\n\t\t<dt>Mapped username in WordPress:</dt><dd>".$this->getLoginForGraphUser($user)."</dd>";
+      print "\n\t\t<dt>UserPrincipalName:</dt><dd>".$user->getUserPrincipalName()."</dd>";
+      print "\n\t\t<dt>Display Name:</dt><dd>".$user->getDisplayName()."</dd>";
+      print "\n\t\t<dt>Mail:</dt><dd>".$user->getMail()."</dd>";
+      print "\n\t</dl>";
+    }
+    throw new \Exception('Could not get single user for ID. Expecting 1 entry, found '.count($users)." users in AzureAD that share an ID and User Type:\n".ob_get_clean());
   }
 
   /**
