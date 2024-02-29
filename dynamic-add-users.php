@@ -62,6 +62,24 @@ dynamic_add_users();
  *******************************************************/
 
 /**
+ * Action: Make changes to a newly created user account.
+ *
+ * This plugin will call
+ *   doAction('dynamic_add_users__update_user_on_create', $user)
+ * when a user account is first created. Below is an example implementation.
+ *
+ * @param WP_User $user
+ */
+function dynamic_add_users__update_user_on_create(WP_User $user) {
+  /*
+  // Example: Set the authentication type for new accounts.
+	if (defined('CAMPUSPRESS_AUTH_SHIBBOLETH')) {
+	  update_usermeta($user->ID, 'shibboleth_account', true);
+	}
+  */
+}
+
+/**
  * Action: Set/unset roles and capabilities for the user based on groups.
  *
  * This plugin will call

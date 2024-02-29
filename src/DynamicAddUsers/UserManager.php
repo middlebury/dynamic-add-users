@@ -109,6 +109,10 @@ class UserManager implements UserManagerInterface
     $user = get_userdata($userId);
     if (!is_object($user))
       throw new Exception("Problem fetching information for $userId");
+
+    // Allow other code to make changes to the new user account.
+    do_action('dynamic_add_users__update_user_on_create', $user);
+
     return $user;
   }
 

@@ -107,6 +107,33 @@ $wordpressUser = dynamic_add_users()->getUserManager()->getOrCreateUser($userInf
 
 ### Actions and Filters
 
+#### `dynamic_add_users__update_user_on_create`
+
+Make changes to a newly created user accounts. This is useful if new accounts
+need to be updated in some way.
+
+Example:
+
+```
+/**
+ * Action: Make changes to a newly created user account.
+ *
+ * This plugin will call
+ *   doAction('dynamic_add_users__update_user_on_create', $user)
+ * when a user account is first created. Below is an example implementation.
+ *
+ * @param WP_User $user
+ */
+function dynamic_add_users__update_user_on_create(WP_User $user) {
+  /*
+  // Example: Set the authentication type for new accounts.
+	if (defined('CAMPUSPRESS_AUTH_SHIBBOLETH')) {
+	  update_usermeta($user->ID, 'shibboleth_account', true);
+	}
+  */
+}
+```
+
 #### `dynamic_add_users__update_user_on_login`
 
 Set/unset roles and capabilities for the user based on groups. This is useful for

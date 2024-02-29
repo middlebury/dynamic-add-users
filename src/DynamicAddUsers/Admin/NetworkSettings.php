@@ -173,7 +173,7 @@ class NetworkSettings {
     return [
       'dynamic_add_users__include_middlebury_tweaks' => [
         'label' => 'Include Middlebury Tweaks?',
-        'description' => "Filter out old guest accounts that shouldn't be able to log in any more. Values will look like: <code>guest_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</code>",
+        'description' => "<ul><li>Filter out old guest accounts that shouldn't be able to log in any more -- values will look like: <code>guest_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</code></li><li>Set authentication type to 'Shibboleth' when adding new accounts.</li></ul>",
         'value' => get_site_option('dynamic_add_users__include_middlebury_tweaks', false) ? 'true' : 'false',
         'type' => 'select',
         'options' => ['false' => 'false', 'true' => 'true'],
