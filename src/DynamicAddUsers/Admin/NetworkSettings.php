@@ -40,7 +40,19 @@ class NetworkSettings {
   protected function __construct(DynamicAddUsersPluginInterface $plugin) {
     $this->plugin = $plugin;
 
-    add_action('network_admin_menu', [$this, 'networkAdminMenu']);
+    if ( is_multisite() ) {
+      add_action('network_admin_menu', [$this, 'networkAdminMenu']);
+    }
+    else {
+      add_action('admin_menu', [$this, 'adminMenu']);
+    }
+  }
+
+  /**
+   * Handler for the 'admin_menu' action. Create our menu item[s].
+   */
+  public function adminMenu () {
+    add_options_page( 'Dynamic Add Users', 'Dynamic Add Users', 'activate_plugins', 'dynamic_add_users', [$this, 'settingsController'] );
   }
 
   /**
@@ -54,7 +66,7 @@ class NetworkSettings {
    * Common entry point for our settings pages.
    */
   public function settingsController () {
-    if (!current_user_can('manage_network')) {
+    if (!current_user_can( is_multisite() ? 'manage_network' : 'activate_plugins' )) {
       wp_die('You don\'t have permissions to use this page.');
     }
 
@@ -73,9 +85,11 @@ class NetworkSettings {
   }
 
   public function printTabMenu($currentTab = 'settings') {
+    $page = is_multisite() ? 'settings.php' : 'options-general.php';
+
     print "\n<h2 class='nav-tab-wrapper'>";
-    print "\n\t<a class='nav-tab " . ($currentTab == 'settings' ? 'nav-tab-active' : '') . "' href='" . network_admin_url( 'settings.php?page=dynamic_add_users&tab=settings' ) . "'>Settings</a>";
-    print "\n\t<a class='nav-tab " . ($currentTab == 'test' ? 'nav-tab-active' : '') . "' href='" . network_admin_url( 'settings.php?page=dynamic_add_users&tab=test' ) . "'>Test</a>";
+    print "\n\t<a class='nav-tab " . ($currentTab == 'settings' ? 'nav-tab-active' : '') . "' href='" . network_admin_url( $page . '?page=dynamic_add_users&tab=settings' ) . "'>Settings</a>";
+    print "\n\t<a class='nav-tab " . ($currentTab == 'test' ? 'nav-tab-active' : '') . "' href='" . network_admin_url( $page . '?page=dynamic_add_users&tab=test' ) . "'>Test</a>";
     print "\n</h2>";
   }
 
