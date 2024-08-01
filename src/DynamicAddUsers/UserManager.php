@@ -59,7 +59,8 @@ class UserManager implements UserManagerInterface
     }
 
     // Create a new user with a random pass since we are using external logins.
-    $userId = wpmu_create_user($userInfo['user_login'], md5(rand().serialize($userInfo)), $userInfo['user_email']);
+    $create_user = is_multisite() ? "wpmu_create_user" : "wp_create_user";
+    $userId = $create_user($userInfo['user_login'], md5(rand().serialize($userInfo)), $userInfo['user_email']);
 
     // If we don't have a user-id, check for old accounts with conflicting email
     // addresses.
@@ -84,7 +85,8 @@ class UserManager implements UserManagerInterface
               trigger_error('DynamicAddUsers: Renamed email for old account ' . $oldUser->id . ' / '. $oldUser->get('user_login') . ' from ' . $userInfo['user_email'] . ' to ' . $replacementEmail . '. This address was reused in new user account ' . $userInfo['user_login'], E_USER_WARNING);
 
               // Try creating the new user account again.
-              $userId = wpmu_create_user($userInfo['user_login'], md5(rand().serialize($userInfo)), $userInfo['user_email']);
+              $create_user = is_multisite() ? "wpmu_create_user" : "wp_create_user";
+              $userId = $create_user($userInfo['user_login'], md5(rand().serialize($userInfo)), $userInfo['user_email']);
             }
             else {
               throw new Exception("Could not create a user for ".print_r($userInfo, true) . '. An existing user with that email address exists in WordPress but the email domain is not middlebury.edu or miis.edu.');
@@ -151,7 +153,12 @@ class UserManager implements UserManagerInterface
       }
     }
 
-    add_user_to_blog($blog_id, $user->ID, $role);
+    if ( is_multisite() ) {
+      add_user_to_blog($blog_id, $user->ID, $role);
+    }
+    else {
+      $user->set_role( $role );
+    }
 
     // Note that they are now going to be managed as part of the group.
     if ($sync_group) {
@@ -173,9 +180,11 @@ class UserManager implements UserManagerInterface
    * @return NULL
    */
   public function removeUserFromBlog ($user_id, $group_id, $blog_id) {
-    // remove the user from the blog if they are a member
-    if (is_user_member_of_blog($user_id, $blog_id))
-      remove_user_from_blog($user_id, $blog_id);
+    if ( is_multisite() ) {
+      // remove the user from the blog if they are a member
+      if (is_user_member_of_blog($user_id, $blog_id))
+        remove_user_from_blog($user_id, $blog_id);
+    }
 
     // Update our list of synced users, cleaning up if needed.
     global $wpdb;
@@ -203,7 +212,7 @@ class UserManager implements UserManagerInterface
    * @return mixed string role or NULL if none.
    */
   public function getUsersCurrentRoleInBlog($user_id, $blog_id = NULL) {
-    if (!is_null($blog_id)) {
+    if ( !is_null($blog_id) && is_multisite() ) {
       switch_to_blog($blog_id);
     }
     $user = new WP_User( $user_id );
@@ -221,7 +230,7 @@ class UserManager implements UserManagerInterface
         break;
       }
     }
-    if (!is_null($blog_id)) {
+    if ( !is_null($blog_id) && is_multisite() ) {
       restore_current_blog();
     }
     return $existing_role;
