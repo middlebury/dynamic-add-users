@@ -167,8 +167,10 @@ class GroupSyncer implements GroupSyncerInterface
         $this->userManager->addUserToBlog($user, $role_to_ensure->role, $role_to_ensure->blog_id, $role_to_ensure->group_id);
       }
     }
-    // Switch back to the current blog if we left it.
-    restore_current_blog();
+    if ( is_multisite() ) {
+      // Switch back to the current blog if we left it.
+      restore_current_blog();
+    }
 
     // Get a list of the blogs where the user was previously added, but is no longer
     // in one of the groups
@@ -211,8 +213,10 @@ class GroupSyncer implements GroupSyncerInterface
       }
     }
 
-    // Switch back to the current blog if we left it.
-    restore_current_blog();
+    if ( is_multisite() ) {
+      // Switch back to the current blog if we left it.
+      restore_current_blog();
+    }
   }
 
   /**
